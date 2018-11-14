@@ -1,0 +1,41 @@
+#### Lights ####
+kitchenlightsdimmer:
+  control: hidden
+  entities:
+  - input_number.kitchen_brightness
+  - group.kitchenlights
+alllights:
+  control: hidden
+  entities:
+  - input_number.kitchen_brightness
+  - group.kitchenlights
+  - switch.furnace_switch_9
+  - switch.lamp
+  - switch.bathroom_light
+  - switch.bathroom_fan
+  - input_number.bed_brightness
+livingroomlights:
+  control: hidden
+  entities:
+  - switch.furnace_switch_9
+  - switch.lamp
+
+kitchenlights: light.front_kitchen_6, light.back_kitchen_7
+
+bathroom: switch.bathroom_light, switch.bathroom_fan
+
+switches: switch.bathroom_light, switch.bathroom_fan, switch.lamp, switch.furnace_switch_9
+
+couch_lights:
+  control: hidden
+  entities:
+  - input_select.couch_color
+
+couch_light_colors:
+  control: hidden
+  name: Couch Colors
+  entities:
+  - input_text.couch_color
+  - input_number.couch_r
+  - input_number.couch_g
+  - input_number.couch_b

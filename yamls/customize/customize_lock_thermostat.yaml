@@ -1,0 +1,10 @@
+### LOCK ###
+lock.schlage_deadbolt_5:
+  entity_picture: /local/lock.jpg
+  friendly_name: Schlage Camelot
+
+### THERMOSTAT
+climate.thermostat:
+  entity_picture: /local/thermostat.jpg
+  friendly_name: Honeywell Thermostat
+

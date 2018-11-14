@@ -1,0 +1,25 @@
+    - name: Home
+      latitude: !secret latitude_loc_home
+      longitude: !secret longitude_loc_home
+      radius: 200
+      icon: mdi:castle
+    - name: Dipan
+      latitude: !secret latitude_loc_dipan
+      longitude: !secret longitude_loc_dipan
+      radius: 200
+      icon: mdi:account
+    - name: Parents
+      latitude: !secret latitude_loc_parents
+      longitude: !secret longitude_loc_parents
+      radius: 1000
+      icon: mdi:home-heart
+    - name: Gina
+      latitude: !secret latitude_loc_gina
+      longitude: !secret longitude_loc_gina
+      radius: 200
+      icon: mdi:home-heart
+    - name: Kiel
+      latitude: !secret latitude_loc_kiel
+      longitude: !secret longitude_loc_kiel
+      radius: 1000
+      icon: mdi:home-heart

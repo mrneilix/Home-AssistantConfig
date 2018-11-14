@@ -1,0 +1,195 @@
+# Lock Battery Level
+- id: lock_battery_low_notify
+  alias: 'Lock Battery Low Notify'
+  initial_state: false
+  trigger:
+    platform: numeric_state
+    entity_id: sensor.lock_battery_level
+    below: '50'
+    above: '25'
+  action:
+    - service: notify.html5
+      data_template:
+        message: "Lock Battery Low"
+        title: "Lock Battery Low"
+        data:
+          tag: 'lock-low-battery'
+          renotify: 0
+          icon: '/local/lock.jpg'
+          badge: '/local/lock-badge.png'
+          
+- id: lock_battery_very_low_notify
+  alias: 'Lock Battery Very Low Notify'
+  initial_state: false
+  trigger:
+    platform: numeric_state
+    entity_id: sensor.lock_battery_level
+    below: '25'
+  action:
+    - service: notify.html5
+      data_template:
+        message: "Lock Battery Very Low"
+        title: "Lock Battery Very Low"
+        data:
+          tag: 'lock-low-battery'
+          renotify: 0
+          icon: '/local/lock.jpg'
+          badge: '/local/lock-badge.png'
+          
+# Parents
+- id: lock_parents_lock_code_toggle
+  alias: 'Lock Parents Lock Code On'
+  initial_state: false
+  trigger:
+    - platform: state
+      entity_id: input_boolean.parents_lock_code
+  action:
+    - service_template: >
+          {% if is_state('input_boolean.parents_lock_code', 'on') %}
+            rest_command.set_parents_lock_code
+          {% else %}
+            rest_command.clear_parents_lock_code
+          {% endif %}
+
+# Temporary Lock Code
+- id: lock_set_temp_lock_code
+  alias: 'Lock Temporary Lock Code'
+  initial_state: false
+  trigger:
+    - platform: state
+      entity_id: input_text.lock_code_temp
+  condition:
+    - condition: template
+      value_template: "{{ not is_state('input_text.lock_code_temp', 'Code') }}"
+  action:
+    - service: script.lock_set_temp_lock_code
+
+# Temporary Lock Code Used
+- id: lock_temp_lock_code_used
+  alias: 'Lock Temporary Lock Code Used'
+  initial_state: false
+  trigger:
+    - platform: state
+      entity_id: sensor.last_lock_code_name
+      to: 'Temp'
+  condition:
+    - condition: state
+      entity_id: input_boolean.temp_lock_code_set
+      state: 'on'
+  action:
+    - service: script.lock_clear_temp_code
+
+# Notify if unlocked without code
+- id: lock_door_unlocked_notify_unknown_code
+  alias: 'Lock Door Unlocked Notify Unknown Code'
+  initial_state: false
+  trigger:
+    platform: state
+    entity_id: lock.schlage_deadbolt_5
+    to: 'unlocked'
+    from: 'locked'
+    for:
+      seconds: 15
+  condition:
+    - condition: state
+      entity_id: device_tracker.neil
+      state: 'not_home'
+    - condition: state
+      entity_id: input_boolean.presence_automations
+      state: 'on'
+    - condition: template
+      value_template: "{{ not is_state('sensor.last_lock_code_name', 'Parents') or not is_state('sensor.last_lock_code_name', 'Gina') or not is_state('sensor.last_lock_code_name', 'Temp') or not is_state('sensor.last_lock_code_name', 'Guest') or not is_state('sensor.last_lock_code_name', 'Neil') }}"
+  action:
+    - service: notify.html5
+      data_template:
+        message: "Door was unlocked at {{ as_timestamp(now()) | timestamp_custom('%I:%M:%S %p', true) }}"
+        title: "Door Unlocked"
+        data:
+          tag: 'door-unlocked'
+          icon: '/local/lock.jpg'
+          badge: '/local/lock-badge.png'
+
+# Lock Pin Entered
+- id: lock_code_entered
+  alias: 'Lock Code Entered'
+  initial_state: false
+  trigger:
+    - platform: state
+      entity_id: sensor.last_lock_code_used
+  condition:
+    - condition: state
+      entity_id: input_boolean.restart_complete
+      state: 'on'
+    - condition: state
+      entity_id: input_boolean.presence_automations
+      state: 'on'
+    - condition: template
+      value_template: "{{ not is_state('sensor.last_lock_code_name', 'Neil') }}"
+  action:
+    - service: script.lock_code_entered
+
+# Auto Lock
+- id: lock_door_auto_lock
+  alias: 'Lock Door Auto Lock'
+  initial_state: false
+  trigger:
+    - platform: state
+      entity_id: lock.schlage_deadbolt_5
+      to: 'unlocked'
+      from: 'locked'
+      for:
+        seconds: 20
+  condition:
+    condition: state
+    entity_id: input_boolean.autolock
+    state: 'on'
+  action:
+    - delay: 00:00:10
+    - condition: state
+      entity_id: input_boolean.autolock
+      state: 'on'
+    - service: lock.lock
+      entity_id: lock.schlage_deadbolt_5
+
+      
+- id: lock_auto_lock_door_switch_on
+  alias: 'Lock Auto Lock Door Switch On'
+  initial_state: false
+  trigger:
+    platform: state
+    entity_id: input_boolean.autolock
+    to: 'on'
+    from: 'off'
+  condition:
+    - condition: state
+      entity_id: lock.schlage_deadbolt_5
+      state: 'unlocked'
+  action:
+    - service: script.lock_auto_lock_door_on
+
+      
+- id: lock_auto_lock_door_switch_off
+  alias: 'Lock Auto Lock Door Switch Off'
+  initial_state: false
+  trigger:
+    platform: state
+    entity_id: input_boolean.autolock
+    to: 'off'
+    from: 'on'
+  action:
+    - service: script.lock_auto_lock_door_off
+
+- id: lock_auto_lock_door_switch_update_locked
+  alias: 'Lock Auto Lock Door Switch Update Locked'
+  initial_state: false
+  trigger:
+    platform: state
+    entity_id: lock.schlage_deadbolt_5
+    to: 'locked'
+    from: 'unlocked'
+  condition:
+    - condition: state
+      entity_id: input_boolean.autolock
+      state: 'off'
+  action:
+    - service: script.lock_auto_lock_door_on

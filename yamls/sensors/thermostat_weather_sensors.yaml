@@ -1,0 +1,136 @@
+  - platform: darksky
+    api_key: !secret darksky_api_key
+    update_interval: '00:05:00'
+    monitored_conditions:
+      - summary
+      - icon
+      - nearest_storm_distance
+      - precip_intensity
+      - precip_probability
+      - temperature
+      - apparent_temperature
+      - dew_point
+      - wind_speed
+      - cloud_cover
+      - humidity
+      - visibility
+      - minutely_summary
+      - hourly_summary
+      - daily_summary
+      - temperature_high
+      - temperature_low
+      - apparent_temperature_high
+      - apparent_temperature_low
+      - precip_intensity_max
+      - moon_phase
+
+  - name: Illuminance
+    platform: illuminance
+    api_key: !secret wu_api_key
+    query: !secret wu_pws
+    scan_interval:
+      minutes: 5
+
+  - platform: pollen
+    zip_code: "00544"
+    monitored_conditions:
+    - allergy_index_today
+    - allergy_index_tomorrow
+
+  - platform: template
+    sensors:
+      temp:
+        friendly_name: "Temperature Description"
+        value_template: >-
+          {%- if states('sensor.dark_sky_apparent_temperature') | int < 32 -%}
+              FuckingCold
+          {%  elif states('sensor.dark_sky_apparent_temperature') | int < 60 -%}
+              Cold
+          {%  elif states('sensor.dark_sky_apparent_temperature') | int > 85 -%}
+              FuckingHot
+          {%  elif states('sensor.dark_sky_apparent_temperature') | int > 100 -%}
+              FuckingHot
+          {%  elif states('sensor.dark_sky_apparent_temperature') | int > 78 -%}
+              Hot
+          {%  elif states('sensor.dark_sky_apparent_temperature') | int > 70 -%}
+              Warm
+          {% else %}
+              Pleasant
+          {% endif %}
+      forecast_icon:
+        friendly_name: "Today's Forecast"
+        value_template: >
+          {{states.sensor.dark_sky_daytime_high_temperature.state|round(0)}}°F/{{states.sensor.dark_sky_overnight_low_temperature.state|round(0)}}°F/{{states.sensor.dark_sky_precip_probability.state|round(0)}}%
+        entity_picture_template: >-
+          {% if is_state("sensor.dark_sky_icon", "clear-day") %}
+            /local/dark_sky/clear-day.png
+          {% elif is_state("sensor.dark_sky_icon", "clear-night") %}
+            /local/dark_sky/clear-night.png
+          {% elif is_state("sensor.dark_sky_icon", "cloudy") %}
+            /local/dark_sky/cloudy.png
+          {% elif is_state("sensor.dark_sky_icon", "rain") %}
+            /local/dark_sky/rain.png    
+          {% elif is_state("sensor.dark_sky_icon", "sleet") %}
+            /local/dark_sky/sleet.png
+          {% elif is_state("sensor.dark_sky_icon", "snow") %}
+            /local/dark_sky/snow.png
+          {% elif is_state("sensor.dark_sky_icon", "wind") %}
+            /local/dark_sky/wind.png
+          {% elif is_state("sensor.dark_sky_icon", "fog") %}
+            /local/dark_sky/fog.png
+          {% elif is_state("sensor.dark_sky_icon", "partly-cloudy-day") %}
+            /local/dark_sky/partly-cloudy-day.png
+          {% elif is_state("sensor.dark_sky_icon", "partly-cloudy-night") %}
+            /local/dark_sky/partly-cloudy-night.png
+          {% else %}
+            error
+          {% endif %}
+      precipitation_soon:
+        friendly_name: "Precipitation Soon"
+        value_template: >-
+          {%- if (states.sensor.dark_sky_precip_probability.state > "50") and 'Rain' in states.sensor.dark_sky_minutely_summary.state %}
+              Rain
+          {%  elif (states.sensor.dark_sky_precip_probability.state > "50") and 'rain' in states.sensor.dark_sky_minutely_summary.state %}
+              Rain
+          {%  elif (states.sensor.dark_sky_precip_probability.state > "50") and 'Drizzle' in states.sensor.dark_sky_minutely_summary.state %}
+              Rain
+          {%  elif (states.sensor.dark_sky_precip_probability.state > "50") and 'drizzle' in states.sensor.dark_sky_minutely_summary.state %}
+              Rain
+          {%- elif (states.sensor.dark_sky_precip_probability.state > "50") and 'Snow' in states.sensor.dark_sky_minutely_summary.state %}
+              Snow
+          {%  elif (states.sensor.dark_sky_precip_probability.state > "50") and 'snow' in states.sensor.dark_sky_minutely_summary.state %}
+              Snow
+          {%- elif (states.sensor.dark_sky_precip_probability.state > "50") and 'sleet' in states.sensor.dark_sky_minutely_summary.state %}
+              Sleet
+          {%  elif (states.sensor.dark_sky_precip_probability.state > "50") and 'Sleet' in states.sensor.dark_sky_minutely_summary.state %}
+              Sleet
+          {% else %}
+              None
+          {%- endif %}
+          
+      daylight_remaining_hm:
+        friendly_name: "Sun"
+        entity_id: sensor.dark_sky_apparent_temperature
+        value_template: >
+          {%- if is_state("sun.sun", "above_horizon") %}
+            {{ (as_timestamp(state_attr('sun.sun', 'sunset')) - now().timestamp()) |timestamp_custom('%H:%M', false) }}
+          {%- else %}
+            {{ (as_timestamp(state_attr('sun.sun', 'next_rising')) - now().timestamp()) |timestamp_custom('%H:%M', false) }}
+          {%- endif %}
+        entity_picture_template: >-
+          {% if states.sun.sun.attributes.elevation > 10 %}
+            /local/sun/weather-sunny.png
+          {% elif states.sun.sun.attributes.elevation < 10 and states.sun.sun.attributes.azimuth < 180 %}
+            /local/sun/weather-sunset-up.png
+          {% elif states.sun.sun.attributes.elevation < 10 and states.sun.sun.attributes.azimuth > 180 %}
+            /local/sun/weather-sunset-down.png
+          {% else %}
+            /local/sun/weather-sunset.png
+          {% endif %}
+# THERMOSTAT
+      thermostatmode:
+        value_template: "{{ states.climate.thermostat.attributes.operation_mode }}"
+        friendly_name: "Thermostat Mode"
+      current_set_temp:
+        value_template: "{{ states.climate.thermostat.attributes.temperature | int }}"
+        friendly_name: "Current Set Temperature"

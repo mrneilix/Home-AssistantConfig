@@ -1,0 +1,33 @@
+### LIGHT ###
+light.front_kitchen_6:
+  entity_picture: /local/kitchen-light.png
+  friendly_name: Front Kitchen
+  google_assistant: true
+  google_assistant_name: Front Kitchen
+  aliases:
+    - Front Kitchen
+light.back_kitchen_7:
+  entity_picture: /local/kitchen-light.png
+  friendly_name: Back Kitchen
+  google_assistant: true
+  google_assistant_name: Back Kitchen
+  aliases:
+    - Back Kitchen
+light.couch:
+  icon: mdi:seat-recline-normal
+  friendly_name: Couch
+  google_assistant: true
+  google_assistant_name: Couch Lights
+  aliases:
+    - Couch
+    - Couch Light
+    - Couch Lights
+light.bed:
+  icon: mdi:hotel
+  friendly_name: Bed
+  google_assistant: true
+  google_assistant_name: Bed Lights
+  aliases:
+    - Bed
+    - Bed Light
+    - Bed Lights

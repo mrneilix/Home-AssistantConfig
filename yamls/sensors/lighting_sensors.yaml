@@ -1,0 +1,81 @@
+  - platform: template
+    sensors:
+# KITCHEN
+      kitchen_brightness_percent:
+        friendly_name: "Kitchen Brightness Percent"
+        value_template: >-
+          {% if is_state("light.front_kitchen_6", "on") and states.light.front_kitchen_6.attributes.brightness > 229 %}
+            100
+          {% elif is_state("light.front_kitchen_6", "on") and states.light.front_kitchen_6.attributes.brightness > 0 %}
+            {{ (states.light.front_kitchen_6.attributes.brightness | int / 2.55) | round(0) }}
+          {% else %}
+            0
+          {%- endif %}
+          
+# BED
+      bed_brightness_percent:
+        friendly_name: "Bed Brightness Percent"
+        value_template: >-
+          {% if is_state("light.bed", "on") and states.light.bed.attributes.brightness > 229 %}
+            100
+          {% elif is_state("light.bed", "on") and states.light.bed.attributes.brightness > 0 %}
+            {{ (states.light.bed.attributes.brightness | int / 2.55) | round(0) }}
+          {% else %}
+            0
+          {%- endif %}
+
+# COUCH
+      couch_light_color:
+        friendly_name: "Couch Color"
+        value_template: >-
+          {%- if states.light.couch.state == 'off' or states.light.couch.state == 'unavailable' %}
+            (0,0,0)
+          {% else %}
+            {{ states.light.couch.attributes.rgb_color }}
+          {%- endif %}
+      couch_light_color_name:
+        friendly_name: "Couch Color Name"
+        value_template: >-
+          {%- if states.light.couch.state == 'off' or states.light.couch.state == 'unavailable' %}
+            Disable
+          {% elif is_state_attr('light.couch', 'rgb_color', (0,0,0)) %}
+            Disable
+          {% elif is_state_attr('light.couch', 'rgb_color', (255,255,255)) %}
+            White
+          {% elif is_state_attr('light.couch', 'rgb_color', (255,242,230)) %}
+            Soft White
+          {% elif is_state_attr('light.couch', 'rgb_color', (0,0,255)) %}
+            Blue
+          {% elif is_state_attr('light.couch', 'rgb_color', (0,255,0)) %}
+            Green
+          {% elif is_state_attr('light.couch', 'rgb_color', (255,0,0)) %}
+            Red
+          {% elif is_state_attr('light.couch', 'rgb_color', (255,0,255)) %}
+            Purple
+          {% else %}
+            Custom
+          {%- endif %}
+      couch_red:
+        friendly_name: "Couch Red"
+        value_template: >-
+          {% if is_state("light.couch", "on") %}
+            {{ states.light.couch.attributes.rgb_color[0]|int }}
+          {% else %}
+            0
+          {%- endif %}
+      couch_green:
+        friendly_name: "Couch Green"
+        value_template: >-
+          {% if is_state("light.couch", "on") %}
+            {{ states.light.couch.attributes.rgb_color[1]|int }}
+          {% else %}
+            0
+          {%- endif %}
+      couch_blue:
+        friendly_name: "Couch Blue"
+        value_template: >-
+          {% if is_state("light.couch", "on") %}
+            {{ states.light.couch.attributes.rgb_color[2]|int }}
+          {% else %}
+            0
+          {%- endif %}

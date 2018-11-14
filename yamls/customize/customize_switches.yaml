@@ -1,0 +1,38 @@
+### SWITCHES ###
+switch.furnace_switch_9:
+  entity_picture: /local/furnace.png
+  friendly_name: Furnace Light
+  google_assistant: true
+  google_assistant_type: light
+  google_assistant_name: Furnace Light
+  aliases:
+    - Furnace switch
+    - Furnace light
+switch.lamp:
+  entity_picture: /local/lamp.jpg
+  friendly_name: Lamp
+  google_assistant: true
+  google_assistant_type: light
+  google_assistant_name: Lamp
+  aliases:
+    - Lamp
+    - living room lamp
+switch.bathroom_light:
+  friendly_name: Bathroom Light
+  icon: mdi:lightbulb
+  google_assistant: true
+  google_assistant_type: light
+  google_assistant_name: Bathroom Light
+  aliases:
+    - Bathroom Light
+switch.bathroom_fan:
+  friendly_name: Bathroom Fan
+  icon: mdi:fan
+  google_assistant: true
+  google_assistant_type: light
+  google_assistant_name: Bathroom Fan
+  aliases:
+    - Bathroom Fan
+switch.yi_power:
+  friendly_name: Yi Cam Power
+  icon: mdi:webcam

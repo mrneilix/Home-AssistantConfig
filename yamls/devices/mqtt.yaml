@@ -1,0 +1,5 @@
+    broker: !secret mqtt_ip
+    port: !secret mqtt_port
+    discovery: false
+    username: !secret hassio_addon_username
+    password: !secret mqtt_pw

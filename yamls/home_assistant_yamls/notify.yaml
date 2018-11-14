@@ -1,0 +1,20 @@
+  - platform: joaoapps_join
+    api_key: !secret join_api_key
+    device_id: !secret join_device_pixel
+    device_name: Pixel
+    name: Pixel
+  - platform: joaoapps_join
+    api_key: !secret join_api_key
+    device_id: !secret join_device_fire
+    device_name: fire
+    name: Fire
+  - name: html5
+    platform: html5
+    gcm_api_key: !secret gcm_api
+    gcm_sender_id: !secret gcm_sender
+  - name: Google Assistant
+    platform: rest
+    resource: !secret google_assistant_broadcast
+  - name: Google Assistant Command
+    platform: rest
+    resource: !secret google_assistant_command

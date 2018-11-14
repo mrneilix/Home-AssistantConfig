@@ -1,0 +1,124 @@
+- id: weather_notify_rain
+  alias: 'Weather Notify Rain'
+  initial_state: false
+  trigger:
+    - platform: state
+      entity_id: sensor.precipitation_soon
+      to: 'Rain'
+  condition:
+    - condition: state
+      entity_id: input_boolean.notifications_on
+      state: 'on'
+    - condition: state
+      entity_id: input_boolean.weather_notifications
+      state: 'on'
+    - condition: state
+      entity_id: input_boolean.weather_dont_renotify
+      state: 'off'
+  action:
+    - service: notify.html5
+      data_template:
+        message: "{{ as_timestamp(now()) | timestamp_custom('%I:%M %p', true) }} {{ states('sensor.dark_sky_minutely_summary') }}"
+        title: "Rain"
+        data:
+          tag: 'weather'
+          icon: '/local/weather-rainy.png'
+          badge: '/local/weather-rainy.png'
+    - service: input_boolean.turn_on
+      data:
+        entity_id: input_boolean.weather_dont_renotify
+
+- id: weather_notify_snow
+  alias: 'Weather Notify Snow'
+  initial_state: false
+  trigger:
+    - platform: state
+      entity_id: sensor.precipitation_soon
+      to: 'Snow'
+  condition:
+    - condition: state
+      entity_id: input_boolean.notifications_on
+      state: 'on'
+    - condition: state
+      entity_id: input_boolean.weather_notifications
+      state: 'on'
+    - condition: state
+      entity_id: input_boolean.weather_dont_renotify
+      state: 'off'
+  action:
+    - service: notify.html5
+      data_template:
+        message: "{{ as_timestamp(now()) | timestamp_custom('%I:%M %p', true) }} {{ states('sensor.dark_sky_minutely_summary') }}"
+        title: "Snow"
+        data:
+          tag: 'weather'
+          icon: '/local/weather-snowy.png'
+          badge: '/local/weather-snowy.png'
+    - service: input_boolean.turn_on
+      data:
+        entity_id: input_boolean.weather_dont_renotify
+
+- id: weather_notify_sleet
+  alias: 'Weather Notify Sleet'
+  initial_state: false
+  trigger:
+    - platform: state
+      entity_id: sensor.precipitation_soon
+      to: 'Sleet'
+  condition:
+    - condition: state
+      entity_id: input_boolean.notifications_on
+      state: 'on'
+    - condition: state
+      entity_id: input_boolean.weather_notifications
+      state: 'on'
+    - condition: state
+      entity_id: input_boolean.weather_dont_renotify
+      state: 'off'
+  action:
+    - service: notify.html5
+      data_template:
+        message: "{{ as_timestamp(now()) | timestamp_custom('%I:%M %p', true) }} {{ states('sensor.dark_sky_minutely_summary') }}"
+        title: "Sleet"
+        data:
+          tag: 'weather'
+          icon: '/local/weather-hail.png'
+          badge: '/local/weather-hail.png'
+    - service: input_boolean.turn_on
+      data:
+        entity_id: input_boolean.weather_dont_renotify
+
+- id: weather_allow_renotify_after_1_hour
+  alias: 'Weather Allow Renotify After 1 Hour'
+  initial_state: false
+  trigger:
+    - platform: state
+      entity_id: input_boolean.weather_dont_renotify
+      to: 'on'
+      for:
+        hours: 1
+  condition:
+    - condition: state
+      entity_id: input_boolean.notifications_on
+      state: 'on'
+    - condition: state
+      entity_id: input_boolean.weather_notifications
+      state: 'on'
+  action:
+    - service: input_boolean.turn_off
+      data:
+        entity_id: input_boolean.weather_dont_renotify
+
+- id: weather_notifications_off
+  alias: 'Weather Notifications Off'
+  initial_state: false
+  trigger:
+    - platform: state
+      entity_id: device_tracker.neil
+      to: 'not_home'
+      for:
+        hours: 6
+  action:
+    - service: input_boolean.turn_off
+      data:
+        entity_id: input_boolean.weather_dont_renotify

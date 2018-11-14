@@ -1,0 +1,166 @@
+- id: tv_open_casting_apps
+  alias: 'TV Open Casting Apps'
+  initial_state: false
+  trigger:
+    - platform: template
+      value_template: "{% if is_state_attr('media_player.living_room_tv', 'app_name', 'YouTube TV') %} true{% endif %}"
+    - platform: template
+      value_template: "{% if is_state_attr('media_player.living_room_tv', 'app_name', 'YouTube') %} true{% endif %}"
+    - platform: template
+      value_template: "{% if is_state_attr('media_player.living_room_tv', 'app_name', 'Plex') %} true{% endif %}"
+    - platform: template
+      value_template: "{% if is_state_attr('media_player.living_room_tv', 'app_name', 'HBO GO') %} true{% endif %}"
+    - platform: template
+      value_template: "{% if is_state_attr('media_player.living_room_tv', 'app_name', 'Showtime Anytime') %}true{% endif %}"
+    - platform: template
+      value_template: "{% if is_state_attr('media_player.living_room_tv', 'app_name', 'YouTube Music') %} true{% endif %}"
+    - platform: template
+      value_template: "{% if is_state_attr('media_player.living_room_tv', 'app_name', 'Netflix') %} true{% endif %}"
+    - platform: template
+      value_template: "{% if is_state_attr('media_player.living_room_tv', 'app_name', 'Starz') %} true{% endif %}"
+  condition:
+    - condition: state
+      entity_id: input_boolean.restart_complete
+      state: 'on'
+  action:
+    - service: joaoapps_join.pixel_send_tasker
+      data_template:
+        command: >
+          {% if is_state_attr('media_player.living_room_tv', 'app_name', 'YouTube TV') %}
+            yttv
+          {%-elif is_state_attr('media_player.living_room_tv', 'app_name', 'Netflix') %}
+            netflix
+          {%-elif is_state_attr('media_player.living_room_tv', 'app_name', 'YouTube Music') %}
+            ytmusic
+          {%-elif is_state_attr('media_player.living_room_tv', 'app_name', 'YouTube') %}
+            yt
+          {%-elif is_state_attr('media_player.living_room_tv', 'app_name', 'Plex') %}
+            plex
+          {%-elif is_state_attr('media_player.living_room_tv', 'app_name', 'HBO GO') %}
+            hbo
+          {%-elif is_state_attr('media_player.living_room_tv', 'app_name', 'Starz') %}
+            starz
+          {%-elif is_state_attr('media_player.living_room_tv', 'app_name', 'Showtime Anytime') %}
+            showtime
+          {% else %}
+          {% endif %}
+    - service: joaoapps_join.fire_send_tasker
+      data:
+        command: max_brightness
+    - service: joaoapps_join.fire_send_tasker
+      data_template:
+        command: >
+          {% if is_state_attr('media_player.living_room_tv', 'app_name', 'YouTube TV') %}
+            yttv
+          {%-elif is_state_attr('media_player.living_room_tv', 'app_name', 'Netflix') %}
+            netflix
+          {%-elif is_state_attr('media_player.living_room_tv', 'app_name', 'YouTube Music') %}
+            ytmusic
+          {%-elif is_state_attr('media_player.living_room_tv', 'app_name', 'YouTube') %}
+            yt
+          {%-elif is_state_attr('media_player.living_room_tv', 'app_name', 'Plex') %}
+            plex
+          {%-elif is_state_attr('media_player.living_room_tv', 'app_name', 'HBO GO') %}
+            hbo
+          {%-elif is_state_attr('media_player.living_room_tv', 'app_name', 'Starz') %}
+            starz
+          {%-elif is_state_attr('media_player.living_room_tv', 'app_name', 'Showtime Anytime') %}
+            showtime
+          {% else %}
+          {% endif %}
+
+
+- id: tv_on_notify_theater_mode
+  alias: 'TV On Notify Theater Mode'
+  initial_state: false
+  trigger:
+    - platform: state
+      entity_id: switch.tv_power
+      to: 'on'
+      for:
+        seconds: 60
+  condition:
+    - condition: state
+      entity_id: input_boolean.notifications_on
+      state: 'on'
+    - condition: template
+      value_template: '{{(as_timestamp(now()) - as_timestamp(states.media_player.living_room_tv.last_changed) < 120)}}'
+  action:
+    - service: shell_command.restart_tv_power_status
+    - service: notify.html5
+      data:
+        message: "Turn on Theater Mode?"
+        data: {
+          renotify: 0,
+          tag: 'tv',
+          icon: '/local/tv.jpg',
+          badge: '/local/television.png',
+          actions: [
+            {
+              action: "theater_mode",
+              title: "Theater Mode"
+            },
+            {
+              action: "dismiss",
+              title: "Dismiss"
+            },
+      ]
+    }
+- id: tv_on_notify_theater_mode_selected
+  alias: 'TV On Notify Theater Mode Selected'
+  initial_state: false
+  trigger:
+    platform: event
+    event_type: html5_notification.clicked
+    event_data:
+      action: theater_mode
+  action:
+    service: homeassistant.turn_on
+    entity_id: scene.theater_mode
+
+
+- id: tv_off_fire_tablet_auto_brightness_on
+  alias: 'TV Off Fire Tablet Auto Brightness On'
+  initial_state: false
+  trigger:
+    - platform: state
+      entity_id: switch.tv_power
+      to: 'off'
+      for:
+        seconds: 60
+  condition:
+    - condition: state
+      entity_id: device_tracker.neil
+      state: 'home'
+  action:
+    - service: joaoapps_join.fire_send_tasker
+      data:
+        command: arrive
+
+- id: tv_power_monitor_restart
+  alias: 'TV Power Monitor Restart'
+  initial_state: false
+  trigger:
+    - platform: template
+      value_template: "{{ as_timestamp(now()) - as_timestamp(states.sensor.tv_power.last_updated) > 3600 }} "
+    - platform: state
+      entity_id: media_player.living_room_tv
+  condition:
+    - condition: state
+      entity_id: input_boolean.restart_complete
+      state: 'on'
+  action:
+    - service: shell_command.restart_tv_power_status
+
+- id: tv_input_group_toggle_visible
+  alias: 'TV Input Group Toggle Visible'
+  initial_state: false
+  trigger:
+    - platform: state
+      entity_id: switch.tv_power
+  condition:
+    - condition: state
+      entity_id: input_boolean.restart_complete
+      state: 'on'
+  action:
+    - service: script.tv_input_group_toggle_visible

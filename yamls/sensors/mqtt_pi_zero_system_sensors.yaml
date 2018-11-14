@@ -1,0 +1,32 @@
+  - platform: mqtt
+    state_topic: "sys_stat"
+    name: "Pi Zero Date Data Collected"
+    value_template: '{{ value_json.datetimedatacollected }}'
+  - platform: mqtt
+    state_topic: "sys_stat"
+    name: "Pi Zero Boot Time"
+    value_template: '{{ value_json.boottime }}'
+  - platform: mqtt
+    state_topic: "sys_stat"
+    name: "Pi Zero Disk Usage"
+    unit_of_measurement: '%'
+    value_template: '{{ value_json.diskusage }}'
+  - platform: mqtt
+    state_topic: "sys_stat"
+    name: "Pi Zero Virtual Memory"
+    value_template: '{{ value_json.virtualmem }}'
+    unit_of_measurement: '%'
+  - platform: mqtt
+    state_topic: "sys_stat"
+    name: "Pi Zero CPU Usage"
+    unit_of_measurement: '%'
+    value_template: '{{ value_json.cpuusage }}'
+  - platform: mqtt
+    state_topic: "sys_stat"
+    name: "Pi Zero CPU Temp"
+    unit_of_measurement: '°F'
+    value_template: '{{ value_json.cputemp }}'
+  - platform: mqtt
+    state_topic: "sys_stat"
+    name: "Pi Zero Disk Size"
+    value_template: '{{ value_json.disktotal }}'

@@ -1,0 +1,8 @@
+  - platform: flux_led
+    devices:
+      192.168.1.188:
+        name: couch
+        mode: "rgb"
+      192.168.1.119:
+        name: bed
+        mode: "rgb"

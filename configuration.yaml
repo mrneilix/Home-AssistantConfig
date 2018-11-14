@@ -1,0 +1,94 @@
+homeassistant:
+  name: Atlanta Condo
+  latitude: !secret latitude_loc_home
+  longitude: !secret longitude_loc_home
+  elevation: 363
+  unit_system: imperial
+  time_zone: America/New_York
+  customize: !include_dir_merge_named yamls/customize
+  customize_glob: !include yamls/home_assistant_yamls/customize_glob.yaml
+  whitelist_external_dirs:
+    - /config/
+    - /
+
+frontend: !include yamls/home_assistant_yamls/frontend.yaml
+
+customizer:
+  custom_ui: hosted
+
+custom_updater: !include yamls/home_assistant_yamls/custom_updater.yaml
+
+config:
+
+hassio:
+
+http:
+  api_password: !secret http_password
+  ssl_certificate: !secret ssl_cert
+  ssl_key: !secret ssl_key
+  base_url: !secret base_url
+  cors_allowed_origins: !include yamls/home_assistant_yamls/cors_allowed_origins.yaml
+  trusted_networks:
+    - 127.0.0.1
+    - !secret trusted_network
+
+logger:
+  default: error
+
+map:
+
+discovery:
+  ignore:
+    - roku
+    - google_cast
+
+sun: !include yamls/home_assistant_yamls/sun.yaml
+
+tts: !include yamls/home_assistant_yamls/tts.yaml
+
+vera:
+  vera_controller_url: !secret vera_controller_url
+  exclude: [2, 3, 12, 13, 14, 16, 17, 19, 20, 21, 24, 25]
+
+wemo:
+  discovery: true
+
+google:
+  client_id: !secret gcal_client_id
+  client_secret: !secret gcal_client_secret
+  
+updater:
+
+# Include Folders
+group: !include_dir_merge_named yamls/groups
+automation: !include_dir_merge_list yamls/automation
+script: !include_dir_merge_named yamls/scripts
+sensor: !include_dir_merge_list yamls/sensors
+
+
+# Include HA Yamls
+input_number: !include yamls/home_assistant_yamls/input_numbers.yaml
+input_select: !include yamls/home_assistant_yamls/input_selector.yaml
+notify: !include yamls/home_assistant_yamls/notify.yaml
+binary_sensor: !include yamls/home_assistant_yamls/binary_sensors.yaml
+recorder: !include yamls/home_assistant_yamls/recorder.yaml
+input_boolean: !include yamls/home_assistant_yamls/input_boolean.yaml
+logbook: !include yamls/home_assistant_yamls/logbook.yaml
+history: !include yamls/home_assistant_yamls/history.yaml
+input_text: !include yamls/home_assistant_yamls/input_text.yaml
+google_assistant: !include yamls/home_assistant_yamls/google_assistant.yaml
+joaoapps_join: !include yamls/home_assistant_yamls/join.yaml
+zone: !include yamls/home_assistant_yamls/zone.yaml
+panel_iframe: !include yamls/home_assistant_yamls/panel_iframe.yaml
+rest_command: !include yamls/home_assistant_yamls/rest_command.yaml
+shell_command: !include yamls/home_assistant_yamls/shell_commands.yaml
+scene: !include yamls/home_assistant_yamls/scenes.yaml
+
+# Include Devices Yamls
+device_tracker: !include yamls/devices/device_tracker.yaml
+switch: !include yamls/devices/switches.yaml
+media_player: !include yamls/devices/media_player.yaml
+light: !include yamls/devices/lights.yaml
+climate: !include yamls/devices/climate.yaml
+mqtt: !include yamls/devices/mqtt.yaml
+cast: !include yamls/devices/cast.yaml

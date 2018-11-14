@@ -1,0 +1,37 @@
+  restart_complete:
+    initial: off
+  kitchen_light_script_running:
+    initial: off
+  couch_light_script_running:
+    initial: off
+  bed_light_script_running:
+    initial: off
+  presence_automations:
+    icon: mdi:home
+    name: Presence Automations
+    initial: on
+  notifications_on:
+    icon: mdi:bell
+    name: Notifications On
+  presence_running:
+    initial: off 
+  away:
+    name: No One Home
+  autolock:
+    name: Autolock Door
+    icon: mdi:lock-smart
+    initial: on
+  temp_lock_code_set:
+    name: Temporary Lock Code Set
+  weather_notifications:
+    icon: mdi:white-balance-sunny
+    name: Weather Notifications
+  weather_dont_renotify:
+    name: Weather Notifications Off
+    initial: off
+  parents_lock_code:
+    name: Parent's Lock Code
+  butters_home:
+    name: Butters
+  config_updated:
+    name: Config Updated

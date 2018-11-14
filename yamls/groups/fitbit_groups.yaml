@@ -1,0 +1,33 @@
+fitbit_active:
+  name: Activity
+  entities:
+  - sensor.steps
+  - sensor.distance
+  - sensor.floors
+  - sensor.activity_calories
+  - sensor.calories
+  - sensor.calories_bmr
+  - sensor.time_very_active
+  - sensor.time_fairly_active
+  - sensor.time_lightly_active
+  - sensor.time_sedentary
+  - sensor.resting_heart_rate
+fitbit_sleep:
+  name: Sleep
+  entities:
+  - sensor.sleep_efficiency
+  - sensor.sleep_time_asleep
+  - sensor.sleep_time_awake
+  - sensor.sleep_time_to_fall_asleep
+  - sensor.sleep_start_time
+  - sensor.sleep_time_in_bed_hours
+  - sensor.time_after_wakeup
+  - sensor.awakenings_count
+fitbit_msc:
+  name: Miscellaneous
+  entities:
+  - sensor.weight
+  - sensor.bmi
+  - sensor.body_fat
+  - sensor.aria_battery
+  - sensor.charge_2_battery

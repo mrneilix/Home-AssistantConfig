@@ -1,0 +1,143 @@
+- id: system_startup
+  alias: 'System Startup'
+  hide_entity: true
+  initial_state: true
+  trigger:
+    platform: homeassistant
+    event: start
+  action:
+    - service: logger.set_level
+      data:
+        homeassistant.components: fatal
+    - delay: 00:00:60
+    - service: script.startup_scripts
+    - delay: 00:00:20
+    - service: automation.turn_on
+      entity_id: group.all_automations
+    - delay: 00:00:20
+    - service: logger.set_level
+      data:
+        homeassistant.components: critical
+    - service: input_boolean.turn_on
+      data:
+        entity_id: input_boolean.restart_complete
+
+- id: system_internet_down
+  alias: 'System Internet Down'
+  initial_state: false
+  trigger: 
+    - platform: template
+      value_template: '{{ states.sensor.speedtest_download.state| float < 5 }}'
+  condition:
+    - condition: state
+      entity_id: input_boolean.restart_complete
+      state: 'on'
+  action:      
+    - service: homeassistant.restart
+    
+- id: system_monitor_pi_zero_down
+  alias: 'System Monitor Pi Zero Down'
+  initial_state: false
+  trigger: 
+    - platform: state
+      entity_id: sensor.pi_zero_monitor_presence_status
+      to: 'offline'
+      for:
+        minutes: 2
+    - platform: state
+      entity_id: sensor.pi_zero_monitor_presence_status
+      to: 'unknown'
+    - platform: state
+      entity_id: sensor.neil_mqtt_pixel
+      to: 'unknown'
+      for:
+        minutes: 5
+    - platform: state
+      entity_id: sensor.neil_mqtt_charge_2
+      to: 'unknown'
+      for:
+        minutes: 5
+    - platform: state
+      entity_id: sensor.butters_mqtt_tile
+      to: 'unknown'
+      for:
+        minutes: 5
+  condition:
+    - condition: state
+      entity_id: input_boolean.restart_complete
+      state: 'on'
+  action:
+    - service: script.monitor_offline
+
+- id: system_scheduled_reboot_pi
+  alias: 'System Scheduled Reboot Pi'
+  initial_state: false
+  trigger:
+    platform: time
+    at: '04:00:00'
+  condition:
+    condition: time
+    weekday:
+    - mon
+    - wed
+    - fri
+  action:
+    - service: shell_command.reboot_pi_zero
+    - delay: 00:00:60
+    - service: hassio.host_reboot
+    
+- id: system_restart_tv_power_status
+  alias: 'System Restart TV Power Status'
+  initial_state: false
+  trigger:
+    platform: time
+    at: '04:30:00'
+  action:
+    - service: shell_command.restart_tv_power_status
+    
+- id: system_update_input_boolean_for_config_backup
+  alias: 'System Update Input Boolean for Config Backup'
+  initial_state: false
+  trigger:
+    - platform: state
+      entity_id: sensor.automation
+    - platform: state
+      entity_id: sensor.customize
+    - platform: state
+      entity_id: sensor.devices
+    - platform: state
+      entity_id: sensor.groups
+    - platform: state
+      entity_id: sensor.home_assistant_yamls
+    - platform: state
+      entity_id: sensor.scripts
+    - platform: state
+      entity_id: sensor.sensors
+    - platform: state
+      entity_id: sensor.config
+  condition:
+    - condition: state
+      entity_id: input_boolean.config_updated
+      state: 'off'
+  action:
+    - service: input_boolean.turn_on
+      data:
+        entity_id: input_boolean.config_updated
+
+- id: system_backup_config
+  alias: 'System Backup Config'
+  initial_state: false
+  trigger:
+    platform: time
+    at: '03:30:00'
+  condition:
+    - condition: state
+      entity_id: input_boolean.config_updated
+      state: 'on'
+  action:  
+    - service: hassio.snapshot_full
+      data_template:
+        name: Automated Backup {{ now().strftime('%Y-%m-%d') }}
+    - service: input_boolean.turn_off
+      data:
+        entity_id: input_boolean.config_updated

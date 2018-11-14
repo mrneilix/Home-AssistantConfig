@@ -1,0 +1,6 @@
+  - name: fire
+    device_id: !secret join_device_fire
+    api_key: !secret join_api_key
+  - name: pixel
+    device_id: !secret join_device_pixel
+    api_key: !secret join_api_key

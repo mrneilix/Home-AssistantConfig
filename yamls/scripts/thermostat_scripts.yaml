@@ -1,0 +1,135 @@
+thermostat_set_home_not_morning:
+  alias: Thermostat Temp Not Morning
+  sequence:
+    - service: climate.set_operation_mode
+      entity_id: climate.thermostat
+      data_template:
+        operation_mode: >
+          {% if is_state('sensor.temp', 'Cold') or is_state('sensor.temp', 'FuckingCold') %}
+            heat
+          {% else %}
+            cool
+          {% endif %}
+    - delay: 00:00:10
+    - service: climate.set_temperature
+      entity_id: climate.thermostat
+      data_template:
+        temperature: >
+          {% if is_state('sensor.temp', 'Cold') %}
+            70
+          {%-elif is_state('sensor.temp', 'FuckingCold') %}
+            73
+          {%-elif is_state('sensor.temp', 'FuckingHot') %}
+            70
+          {%-elif is_state('sensor.temp', 'Pleasant') %}
+            74
+          {% else %}
+            72
+          {% endif %}
+    - delay: 00:00:05
+    - service: script.thermostat_update_inputs
+      
+thermostat_set_home_morning:
+  alias: Thermostat Temp Home Morning
+  sequence:
+    - service: climate.set_operation_mode
+      entity_id: climate.thermostat
+      data_template:
+        operation_mode: >
+          {% if is_state('sensor.temp', 'Cold') or is_state('sensor.temp', 'FuckingCold') %}
+            heat
+          {% else %}
+            cool
+          {% endif %}
+    - delay: 00:00:10
+    - service: climate.set_temperature
+      entity_id: climate.thermostat
+      data_template:
+        temperature: >
+          {% if is_state('sensor.temp', 'Cold') %}
+            70
+          {%-elif is_state('sensor.temp', 'FuckingCold') %}
+            73
+          {%-elif is_state('sensor.temp', 'FuckingHot') %}
+            70
+          {% else %}
+            72
+          {% endif %}
+    - delay: 00:00:05
+    - service: script.thermostat_update_inputs
+
+thermostat_home_set_temp:
+  alias: Thermostat Home Set Temp
+  sequence:
+    - service_template: >
+          {%- if now().hour >= 6 and now().hour < 11 %}
+            script.thermostat_set_home_morning
+          {% else %}
+            script.thermostat_set_home_not_morning
+          {% endif %}
+    - delay: 00:00:20
+    - service: input_boolean.turn_off
+      data:
+        entity_id: input_boolean.presence_running
+
+thermostat_update_inputs:
+  alias: Update Thermostat
+  sequence:
+    - service: input_select.select_option
+      data_template:
+        entity_id: input_select.thermostat_mode
+        option: "{{ states.sensor.thermostatmode.state }}"
+    - service: input_number.set_value
+      data_template:
+        entity_id: input_number.target_temp
+        value: "{{ states.sensor.current_set_temp.state | int }}"
+
+thermostat_temp_everyone_away:
+  alias: Thermostat Temp Away
+  sequence:
+    - service: climate.set_operation_mode
+      entity_id: climate.thermostat
+      data_template:
+        operation_mode: >
+          {% if is_state('sensor.temp', 'Cold') or is_state('sensor.temp', 'FuckingCold') %}
+            heat
+          {% else %}
+            cool
+          {% endif %}
+    - delay: 00:00:10
+    - service: climate.set_temperature
+      entity_id: climate.thermostat
+      data_template:
+        temperature: >
+          {% if is_state('sensor.temp', 'Cold') or is_state('sensor.temp', 'FuckingCold') %}
+            60
+          {% else %}
+            85
+          {% endif %}
+    - delay: 00:00:05
+    - service: script.thermostat_update_inputs
+        
+thermostat_set_temp_only_butters_home:
+  alias: Thermostat Set Temp Only Butters Home
+  sequence:
+    - service: climate.set_operation_mode
+      entity_id: climate.thermostat
+      data_template:
+        operation_mode: >
+          {% if is_state('sensor.temp', 'Cold') or is_state('sensor.temp', 'FuckingCold') %}
+            heat
+          {% else %}
+            cool
+          {% endif %}
+    - delay: 00:00:10
+    - service: climate.set_temperature
+      entity_id: climate.thermostat
+      data_template:
+        temperature: >
+          {% if is_state('sensor.temp', 'Cold') or is_state('sensor.temp', 'FuckingCold') %}
+            65
+          {% else %}
+            78
+          {% endif %}
+    - delay: 00:00:05
+    - service: script.thermostat_update_inputs

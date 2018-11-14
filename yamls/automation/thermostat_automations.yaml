@@ -1,0 +1,114 @@
+ # This automation script runs when the thermostat mode selector is changed.
+- id: thermostat_set_mode
+  alias: 'Thermostat Set Mode'
+  initial_state: false
+  trigger:
+    platform: state
+    entity_id: input_select.thermostat_mode
+  condition:
+    - condition: state
+      entity_id: input_boolean.presence_running
+      state: 'off'
+  action:
+    service: climate.set_operation_mode
+    entity_id: climate.thermostat
+    data_template:
+      operation_mode: "{{ states('input_select.thermostat_mode') }}"
+
+# Sets the input slider mode to current
+- id: thermostat_update_controls
+  alias: 'Thermostat Update Controls'
+  initial_state: false
+  trigger:
+    - platform: state
+      entity_id: sensor.current_set_temp
+    - platform: state
+      entity_id: sensor.thermostatmode
+  condition:
+    - condition: state
+      entity_id: input_boolean.presence_running
+      state: 'off'
+  action:
+    - service: script.thermostat_update_inputs
+
+ # This automation script runs when the thermostat slider is changed.
+- id: thermostat_set_temp
+  alias: 'Thermostat Set Temp'
+  initial_state: false
+  trigger:
+    platform: state
+    entity_id: input_number.target_temp
+  condition:
+    - condition: state
+      entity_id: input_boolean.presence_running
+      state: 'off'
+  action:
+    service: climate.set_temperature
+    entity_id: climate.thermostat
+    data_template:
+      temperature: "{{ states('input_number.target_temp') | int }}"
+
+# Set Temp on Weather Minus Morning
+- id: thermostat_set_temp_when_home_after_11_am
+  alias: 'Thermostat Set Temp When Home after 11 AM'
+  initial_state: false
+  trigger:
+    - platform: state
+      entity_id: sensor.temp
+    - platform: time
+      at: '11:01:00'
+  condition:
+    - condition: state
+      entity_id: input_boolean.restart_complete
+      state: 'on'
+    - condition: state
+      entity_id: binary_sensor.anyone_home
+      state: 'on'
+    - condition: time
+      after: '11:00:00'
+      before: '06:00:00'
+  action:
+    - service: script.thermostat_set_home_not_morning
+      
+# Set Temp on Weather In Morning
+- id: thermostat_set_temp_when_home_after_6_am
+  alias: 'Thermostat Set Temp When Home after 6 AM'
+  initial_state: false
+  trigger:
+    - platform: state
+      entity_id: sensor.temp
+    - platform: time
+      at: '06:01:00'
+  condition:
+    - condition: state
+      entity_id: input_boolean.restart_complete
+      state: 'on'
+    - condition: state
+      entity_id: binary_sensor.anyone_home
+      state: 'on'
+    - condition: time
+      after: '06:00:00'
+      before: '11:00:00'
+  action:
+    - service: script.thermostat_set_home_morning
+
+- id: thermostat_set_when_away
+  alias: 'Thermostat Set When Away'
+  initial_state: false
+  trigger:
+    - platform: state
+      entity_id: sensor.temp
+  condition:
+    - condition: state
+      entity_id: input_boolean.restart_complete
+      state: 'on'
+    - condition: state
+      entity_id: binary_sensor.anyone_home
+      state: 'off'
+  action:
+    - service_template: >
+          {% if is_state('input_boolean.butters_home', 'off') %}
+            script.thermostat_temp_everyone_away
+          {% else %}
+            script.thermostat_set_temp_only_butters_home
+          {% endif %}

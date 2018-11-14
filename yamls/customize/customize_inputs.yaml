@@ -1,0 +1,50 @@
+### INPUT NUMBERS ###
+input_number.couch_r:
+  entity_picture: /local/couch_lights/couch_red.jpg
+  friendly_name: Couch Red
+input_number.couch_g:
+  entity_picture: /local/couch_lights/couch_green.jpg
+  friendly_name: Couch Green
+input_number.couch_b:
+  entity_picture: /local/couch_lights/couch_blue.jpg
+  friendly_name: Couch Blue
+input_number.couch_brightness:
+  icon: mdi:seat-recline-normal
+  friendly_name: Couch Brightness
+
+input_number.bed_brightness:
+  icon: mdi:hotel
+  friendly_name: Bed Brightness
+input_number.target_temp:
+  icon: mdi:thermometer
+  friendly_name: Set Temperature
+input_number.kitchen_brightness:
+  entity_picture: /local/dimmer.png
+  friendly_name: Kitchen Lights Dimmer
+  
+### INPUT SELECT ###
+input_select.thermostat_mode:
+  icon: mdi:air-conditioner
+  friendly_name: Set Mode
+input_select.couch_color:
+  entity_picture: /local/couch_lights/couch.jpg
+  friendly_name: Couch Color
+
+
+### INPUT TEXT ###
+input_text.couch_color:
+  icon: mdi:seat-recline-normal
+  friendly_name: Couch Color Name
+
+### INPUT BOOLEAN ###
+input_boolean.temp_lock_code_set:
+  custom_ui_state_card: state-card-custom-ui
+  state_card_mode: badges
+  templates:
+    icon: >
+      if (state === 'on') return 'mdi:home-lock-open';
+      return 'mdi:home-lock';
+input_boolean.parents_lock_code:
+  entity_picture: /local/mom-dad.jpg
+input_boolean.butters_home:
+  entity_picture: /local/butters.jpg

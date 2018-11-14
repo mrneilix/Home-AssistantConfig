@@ -1,0 +1,49 @@
+tv_on:
+  alias: TV On
+  sequence:
+    - service: shell_command.stop_tv_power_status
+    - delay: 00:00:01
+    - service: shell_command.tv_on
+    - delay: 00:00:10
+    - service: shell_command.start_tv_power_status
+
+tv_off:
+  alias: TV Off
+  sequence:
+    - service: shell_command.stop_tv_power_status
+    - delay: 00:00:01
+    - service: media_player.turn_off
+      entity_id: media_player.living_room_tv
+    - service: shell_command.tv_off
+    - delay: 00:00:10
+    - service: shell_command.start_tv_power_status
+
+tv_input_chromecast:
+  alias: TV Input Chromecast
+  sequence:
+    - service_template: >
+          {%- if is_state("sensor.tv_power", "on") %}
+            script.do_nothing
+          {% else %}
+            script.tv_on
+          {% endif %}
+    - service: shell_command.tv_input_chromecast
+
+tv_input_playstation:
+  alias: TV Input PS4
+  sequence:
+    - service_template: >
+          {%- if is_state("sensor.tv_power", "on") %}
+            script.do_nothing
+          {% else %}
+            script.tv_on
+          {% endif %}
+    - service: shell_command.tv_input_ps4
+
+tv_input_group_toggle_visible:
+  alias: TV Input Group Toggle Visible
+  sequence:
+    - service: group.set_visibility
+      data_template:
+        entity_id: group.tv_input
+        visible: "{{ is_state('switch.tv_power', 'on') }}"

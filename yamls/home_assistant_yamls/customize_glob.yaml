@@ -1,0 +1,9 @@
+  sensor.stock*:
+    custom_ui_state_card: state-card-custom-ui
+    extra_badge:
+      - attribute: close
+        unit: USD
+      - attribute: high
+        unit: USD
+      - attribute: low
+        unit: USD

@@ -1,0 +1,433 @@
+  - platform: fitbit
+    clock_format: 12H
+    monitored_resources:
+      - "activities/activityCalories"
+      - "activities/calories"
+      - "activities/caloriesBMR"
+      - "activities/distance"
+      - "activities/floors"
+      - "activities/heart"
+      - "activities/minutesFairlyActive"
+      - "activities/minutesLightlyActive"
+      - "activities/minutesSedentary"
+      - "activities/minutesVeryActive"
+      - "activities/steps"
+      - "body/bmi"
+      - "body/fat"
+      - "body/weight"
+      - "devices/battery"
+      - "sleep/awakeningsCount"
+      - "sleep/efficiency"
+      - "sleep/minutesAfterWakeup"
+      - "sleep/minutesAsleep"
+      - "sleep/minutesAwake"
+      - "sleep/minutesToFallAsleep"
+      - "sleep/startTime"
+      - "sleep/timeInBed"
+      
+  - platform: template
+    sensors:
+      sleep_time_asleep:
+        friendly_name: Time Asleep
+        icon_template: mdi:sleep
+        value_template: >-
+          {% if states.sensor.sleep_minutes_asleep.state is defined %}
+          {% set time = states.sensor.sleep_minutes_asleep.state | int %}
+          {% set minutes = (time % 60) | int %}
+          {% set hours = ((time % 1440) / 60) | int %}
+          {% set days = (time / 1440) | int %}
+
+          {%- if time < 1 -%}
+            Less than a minute
+          {%- else -%}
+            {%- if days > 0 -%}
+              {%- if days == 1 -%}
+                1 day
+              {%- else -%}
+                {{ days }} days
+              {%- endif -%}
+            {%- endif -%}
+            {%- if hours > 0 -%}
+              {%- if days > 0 -%}
+                {{ ', ' }}
+              {%- endif -%}
+              {%- if hours == 1 -%}
+                1 hour
+              {%- else -%}
+                {{ hours }} hours
+              {%- endif -%}
+            {%- endif -%}
+            {%- if minutes > 0 -%}
+              {%- if days > 0 or hours > 0 -%}
+                {{ ', ' }}
+              {%- endif -%}
+              {%- if minutes == 1 -%}
+                1 minute
+              {%- else -%}
+                {{ minutes }} minutes
+              {%- endif -%}
+            {%- endif -%}
+          {%- endif -%}
+          {% else %}
+          0
+          {% endif %}
+          
+      sleep_time_awake:
+        friendly_name: Sleep Time Awake
+        icon_template: mdi:sleep
+        value_template: >-
+          {% if states.sensor.sleep_minutes_awake.state is defined %}
+          {% set time = states.sensor.sleep_minutes_awake.state | int %}
+          {% set minutes = (time % 60) | int %}
+          {% set hours = ((time % 1440) / 60) | int %}
+          {% set days = (time / 1440) | int %}
+
+          {%- if time < 1 -%}
+            Less than a minute
+          {%- else -%}
+            {%- if days > 0 -%}
+              {%- if days == 1 -%}
+                1 day
+              {%- else -%}
+                {{ days }} days
+              {%- endif -%}
+            {%- endif -%}
+            {%- if hours > 0 -%}
+              {%- if days > 0 -%}
+                {{ ', ' }}
+              {%- endif -%}
+              {%- if hours == 1 -%}
+                1 hour
+              {%- else -%}
+                {{ hours }} hours
+              {%- endif -%}
+            {%- endif -%}
+            {%- if minutes > 0 -%}
+              {%- if days > 0 or hours > 0 -%}
+                {{ ', ' }}
+              {%- endif -%}
+              {%- if minutes == 1 -%}
+                1 minute
+              {%- else -%}
+                {{ minutes }} minutes
+              {%- endif -%}
+            {%- endif -%}
+          {%- endif -%}
+          {% else %}
+          0
+          {% endif %}
+          
+      sleep_time_to_fall_asleep:
+        friendly_name: Sleep Time to Fall Asleep
+        icon_template: mdi:sleep
+        value_template: >-
+          {% if states.sensor.sleep_minutes_to_fall_asleep.state is defined %}
+          {% set time = states.sensor.sleep_minutes_to_fall_asleep.state | int %}
+          {% set minutes = (time % 60) | int %}
+          {% set hours = ((time % 1440) / 60) | int %}
+          {% set days = (time / 1440) | int %}
+
+          {%- if time < 1 -%}
+            Less than a minute
+          {%- else -%}
+            {%- if days > 0 -%}
+              {%- if days == 1 -%}
+                1 day
+              {%- else -%}
+                {{ days }} days
+              {%- endif -%}
+            {%- endif -%}
+            {%- if hours > 0 -%}
+              {%- if days > 0 -%}
+                {{ ', ' }}
+              {%- endif -%}
+              {%- if hours == 1 -%}
+                1 hour
+              {%- else -%}
+                {{ hours }} hours
+              {%- endif -%}
+            {%- endif -%}
+            {%- if minutes > 0 -%}
+              {%- if days > 0 or hours > 0 -%}
+                {{ ', ' }}
+              {%- endif -%}
+              {%- if minutes == 1 -%}
+                1 minute
+              {%- else -%}
+                {{ minutes }} minutes
+              {%- endif -%}
+            {%- endif -%}
+          {%- endif -%}
+          {% else %}
+          0
+          {% endif %}
+          
+      sleep_time_in_bed_hours:
+        friendly_name: Sleep Time in Bed
+        icon_template: mdi:hotel
+        value_template: >-
+          {% if states.sensor.sleep_time_in_bed.state is defined %}
+          {% set time = states.sensor.sleep_time_in_bed.state | int %}
+          {% set minutes = (time % 60) | int %}
+          {% set hours = ((time % 1440) / 60) | int %}
+          {% set days = (time / 1440) | int %}
+
+          {%- if time < 1 -%}
+            Less than a minute
+          {%- else -%}
+            {%- if days > 0 -%}
+              {%- if days == 1 -%}
+                1 day
+              {%- else -%}
+                {{ days }} days
+              {%- endif -%}
+            {%- endif -%}
+            {%- if hours > 0 -%}
+              {%- if days > 0 -%}
+                {{ ', ' }}
+              {%- endif -%}
+              {%- if hours == 1 -%}
+                1 hour
+              {%- else -%}
+                {{ hours }} hours
+              {%- endif -%}
+            {%- endif -%}
+            {%- if minutes > 0 -%}
+              {%- if days > 0 or hours > 0 -%}
+                {{ ', ' }}
+              {%- endif -%}
+              {%- if minutes == 1 -%}
+                1 minute
+              {%- else -%}
+                {{ minutes }} minutes
+              {%- endif -%}
+            {%- endif -%}
+          {%- endif -%}
+          {% else %}
+          0
+          {% endif %}
+          
+      time_after_wakeup:
+        friendly_name: Time After Wakeup
+        icon_template: mdi:sleep
+        value_template: >-
+          {% if states.sensor.minutes_after_wakeup.state is defined %}
+          {% set time = states.sensor.minutes_after_wakeup.state | int %}
+          {% set minutes = (time % 60) | int %}
+          {% set hours = ((time % 1440) / 60) | int %}
+          {% set days = (time / 1440) | int %}
+
+          {%- if time < 1 -%}
+            Less than a minute
+          {%- else -%}
+            {%- if days > 0 -%}
+              {%- if days == 1 -%}
+                1 day
+              {%- else -%}
+                {{ days }} days
+              {%- endif -%}
+            {%- endif -%}
+            {%- if hours > 0 -%}
+              {%- if days > 0 -%}
+                {{ ', ' }}
+              {%- endif -%}
+              {%- if hours == 1 -%}
+                1 hour
+              {%- else -%}
+                {{ hours }} hours
+              {%- endif -%}
+            {%- endif -%}
+            {%- if minutes > 0 -%}
+              {%- if days > 0 or hours > 0 -%}
+                {{ ', ' }}
+              {%- endif -%}
+              {%- if minutes == 1 -%}
+                1 minute
+              {%- else -%}
+                {{ minutes }} minutes
+              {%- endif -%}
+            {%- endif -%}
+          {%- endif -%}
+          {% else %}
+          0
+          {% endif %}
+          
+      time_very_active:
+        friendly_name: Very Active
+        icon_template: mdi:run
+        value_template: >-
+          {% if states.sensor.minutes_very_active.state is defined %}
+          {% set time = states.sensor.minutes_very_active.state | int %}
+          {% set minutes = (time % 60) | int %}
+          {% set hours = ((time % 1440) / 60) | int %}
+          {% set days = (time / 1440) | int %}
+
+          {%- if time < 1 -%}
+            Less than a minute
+          {%- else -%}
+            {%- if days > 0 -%}
+              {%- if days == 1 -%}
+                1 day
+              {%- else -%}
+                {{ days }} days
+              {%- endif -%}
+            {%- endif -%}
+            {%- if hours > 0 -%}
+              {%- if days > 0 -%}
+                {{ ', ' }}
+              {%- endif -%}
+              {%- if hours == 1 -%}
+                1 hour
+              {%- else -%}
+                {{ hours }} hours
+              {%- endif -%}
+            {%- endif -%}
+            {%- if minutes > 0 -%}
+              {%- if days > 0 or hours > 0 -%}
+                {{ ', ' }}
+              {%- endif -%}
+              {%- if minutes == 1 -%}
+                1 minute
+              {%- else -%}
+                {{ minutes }} minutes
+              {%- endif -%}
+            {%- endif -%}
+          {%- endif -%}
+          {% else %}
+          0
+          {% endif %}
+          
+      time_fairly_active:
+        friendly_name: Fairly Active
+        icon_template: mdi:walk
+        value_template: >-
+          {% if states.sensor.minutes_fairly_active.state is defined %}
+          {% set time = states.sensor.minutes_fairly_active.state | int %}
+          {% set minutes = (time % 60) | int %}
+          {% set hours = ((time % 1440) / 60) | int %}
+          {% set days = (time / 1440) | int %}
+
+          {%- if time < 1 -%}
+            Less than a minute
+          {%- else -%}
+            {%- if days > 0 -%}
+              {%- if days == 1 -%}
+                1 day
+              {%- else -%}
+                {{ days }} days
+              {%- endif -%}
+            {%- endif -%}
+            {%- if hours > 0 -%}
+              {%- if days > 0 -%}
+                {{ ', ' }}
+              {%- endif -%}
+              {%- if hours == 1 -%}
+                1 hour
+              {%- else -%}
+                {{ hours }} hours
+              {%- endif -%}
+            {%- endif -%}
+            {%- if minutes > 0 -%}
+              {%- if days > 0 or hours > 0 -%}
+                {{ ', ' }}
+              {%- endif -%}
+              {%- if minutes == 1 -%}
+                1 minute
+              {%- else -%}
+                {{ minutes }} minutes
+              {%- endif -%}
+            {%- endif -%}
+          {%- endif -%}
+          {% else %}
+          0
+          {% endif %}
+          
+      time_lightly_active:
+        friendly_name: Lightly Active
+        icon_template: mdi:walk
+        value_template: >-
+          {% if states.sensor.minutes_lightly_active.state is defined %}
+          {% set time = states.sensor.minutes_lightly_active.state | int %}
+          {% set minutes = (time % 60) | int %}
+          {% set hours = ((time % 1440) / 60) | int %}
+          {% set days = (time / 1440) | int %}
+
+          {%- if time < 1 -%}
+            Less than a minute
+          {%- else -%}
+            {%- if days > 0 -%}
+              {%- if days == 1 -%}
+                1 day
+              {%- else -%}
+                {{ days }} days
+              {%- endif -%}
+            {%- endif -%}
+            {%- if hours > 0 -%}
+              {%- if days > 0 -%}
+                {{ ', ' }}
+              {%- endif -%}
+              {%- if hours == 1 -%}
+                1 hour
+              {%- else -%}
+                {{ hours }} hours
+              {%- endif -%}
+            {%- endif -%}
+            {%- if minutes > 0 -%}
+              {%- if days > 0 or hours > 0 -%}
+                {{ ', ' }}
+              {%- endif -%}
+              {%- if minutes == 1 -%}
+                1 minute
+              {%- else -%}
+                {{ minutes }} minutes
+              {%- endif -%}
+            {%- endif -%}
+          {%- endif -%}
+          {% else %}
+          0
+          {% endif %}
+          
+      time_sedentary:
+        friendly_name: Sedentary
+        icon_template: mdi:seat-recline-normal
+        value_template: >-
+          {% if states.sensor.minutes_sedentary.state is defined %}
+          {% set time = states.sensor.minutes_sedentary.state | int %}
+          {% set minutes = (time % 60) | int %}
+          {% set hours = ((time % 1440) / 60) | int %}
+          {% set days = (time / 1440) | int %}
+
+          {%- if time < 1 -%}
+            Less than a minute
+          {%- else -%}
+            {%- if days > 0 -%}
+              {%- if days == 1 -%}
+                1 day
+              {%- else -%}
+                {{ days }} days
+              {%- endif -%}
+            {%- endif -%}
+            {%- if hours > 0 -%}
+              {%- if days > 0 -%}
+                {{ ', ' }}
+              {%- endif -%}
+              {%- if hours == 1 -%}
+                1 hour
+              {%- else -%}
+                {{ hours }} hours
+              {%- endif -%}
+            {%- endif -%}
+            {%- if minutes > 0 -%}
+              {%- if days > 0 or hours > 0 -%}
+                {{ ', ' }}
+              {%- endif -%}
+              {%- if minutes == 1 -%}
+                1 minute
+              {%- else -%}
+                {{ minutes }} minutes
+              {%- endif -%}
+            {%- endif -%}
+          {%- endif -%}
+          {% else %}
+          0
+          {% endif %}

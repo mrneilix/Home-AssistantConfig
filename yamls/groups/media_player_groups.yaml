@@ -1,0 +1,58 @@
+media_switches: 
+  control: hidden
+  name: Media Players
+  entities:
+  - switch.tv_power
+  - scene.theater_mode
+  - input_text.gh_speak
+google_cast: media_player.kitchen_home, media_player.living_room_tv
+tv_input:
+  control: hidden
+  name: TV Input
+  entities:
+  - script.tv_input_chromecast
+  - script.tv_input_playstation
+google_assistant:
+  control: hidden
+  name: Google Assistant
+  entities:
+  - input_text.broadcast_message
+  - input_text.google_command
+plex_players:
+  control: hidden
+  name: Plex Players
+  entities:
+  - media_player.plex_web_chrome
+  - media_player.plex_pixel_2_xl
+  - media_player.plex_pixel_2_xl_2
+  - media_player.plex_plex_web_chrome
+  - media_player.plex_desktop
+  - media_player.tablet_living_room_plex
+  - media_player.plex_galaxy_note8
+  
+tautulli: 
+  control: hidden
+  name: Plex Server
+  entities:
+  - sensor.tautulli_direct_play
+  - sensor.tautulli_direct_stream
+  - sensor.tautulli_total
+  - sensor.tautulli_total_bandwidth
+  - sensor.tautulli_transcode
+  - sensor.watching_plex
+  
+downloaders:
+  control: hidden
+  name: Downloaders
+  entities:
+  - sensor.sonarr_upcoming_list
+  - sensor.radarr_upcoming_list
+desktop_disk_space:
+  control: hidden
+  name: Desktop Disk Space
+  entities:
+  - sensor.desktop_disk_space_c
+  - sensor.desktop_disk_space_e
+  - sensor.desktop_disk_space_f
+  - sensor.desktop_disk_space_i
+  - sensor.desktop_disk_space_j

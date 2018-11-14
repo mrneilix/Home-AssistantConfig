@@ -1,0 +1,31 @@
+- id: bed_light_adjust_input_number
+  alias: 'Bed Light Adjust Input Number'
+  initial_state: false
+  trigger:
+    platform: state
+    entity_id: sensor.bed_brightness_percent
+  condition:
+    - condition: state
+      entity_id: input_boolean.restart_complete
+      state: 'on'
+    - condition: state
+      entity_id: input_boolean.bed_light_script_running
+      state: 'off'
+  action:
+    - service: script.bed_light_adjust_input_number
+
+- id: bed_light_set_brightness
+  alias: 'Bed Light Set Brightness'
+  initial_state: false
+  trigger:
+    platform: state
+    entity_id: input_number.bed_brightness
+  condition:
+    - condition: state
+      entity_id: input_boolean.restart_complete
+      state: 'on'
+    - condition: state
+      entity_id: input_boolean.bed_light_script_running
+      state: 'off'
+  action:
+    - service: script.bed_light_set_brightness

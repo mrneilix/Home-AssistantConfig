@@ -1,0 +1,190 @@
+startup_scripts:
+  alias: Startup Scripts
+  sequence:
+    - service: sensor.update_speedtest
+    - service: lock.lock
+      entity_id: lock.schlage_deadbolt_5
+    - service: shell_command.restart_tv_power_status
+    - service: script.startup_input_booleans
+    - service: script.startup_couch_colors
+    - service: script.kitchen_light_set_input_number
+    - service: script.bed_light_adjust_input_number
+    - service: rest_command.clear_lock_code
+    - service: script.thermostat_update_inputs
+    - delay: 00:00:02
+    - service: google_assistant.request_sync
+    - service: joaoapps_join.pixel_send_tasker
+      data:
+        command: "get_phone_location"
+    - service: script.startup_presence
+    - service: script.tv_input_group_toggle_visible
+    - condition: template
+      value_template: "{{ is_state('sensor.pi_zero_monitor_offline', 'offline') or is_state('sensor.pi_zero_monitor_offline', 'unknown') }}"
+    - service: script.monitor_offline
+
+startup_presence:
+  alias: Startup Presence
+  sequence:
+    - service_template: >
+          {% if is_state('device_tracker.neil', 'home') %}
+            script.startup_neil_home
+          {% else %}
+            script.startup_neil_not_home
+          {% endif %}
+    - condition: state
+      entity_id: binary_sensor.anyone_home
+      state: 'off'
+    - service: input_boolean.turn_on
+      data:
+        entity_id: input_boolean.away
+    - service: script.presence_leave
+
+startup_input_booleans:
+  alias: Startup Input Booleans
+  sequence:
+    - service_template: > 
+          {%- if now().hour >= 8 and now().hour < 23 and is_state('device_tracker.neil', 'home')%}
+            input_boolean.turn_on
+          {% else %}
+            input_boolean.turn_off
+          {% endif %}
+      data:
+        entity_id: input_boolean.notifications_on
+    - service_template: > 
+          {%- if now().hour >= 8 and now().hour < 23 and is_state('device_tracker.neil', 'home')%}
+            input_boolean.turn_on
+          {% else %}
+            input_boolean.turn_off
+          {% endif %}
+      data:
+        entity_id: input_boolean.weather_notifications
+    - service_template: > 
+          {% if is_state('device_tracker.butters', 'home') %}
+            input_boolean.turn_on
+          {% else %}
+            input_boolean.turn_off
+          {% endif %}
+      data:
+        entity_id: input_boolean.butters_home
+
+monitor_offline:
+  alias: Monitor Offline
+  sequence:
+    - service: shell_command.restart_monitor
+    - delay: 00:02:00
+    - condition: state
+      entity_id: sensor.pi_zero_monitor_offline
+      state: 'offline'
+    - service: shell_command.reboot_pi_zero
+
+startup_neil_home:
+  alias: Startup Neil Home
+  sequence:
+    - service: input_boolean.turn_off
+      data:
+        entity_id: input_boolean.parents_lock_code
+    - service: switch.turn_off
+      entity_id: switch.yi_power
+    - service_template: >
+          {% if is_state('binary_sensor.dark_out', 'on') %}
+            script.presence_arrive_dark_out
+          {% else %}
+            script.thermostat_home_set_temp
+          {% endif %}
+    - service: rest_command.clear_parents_lock_code
+    
+startup_neil_not_home:
+  alias: Startup Neil Not Home
+  sequence:
+    - service: input_boolean.turn_on
+      data:
+        entity_id: input_boolean.parents_lock_code
+    - service: switch.turn_on
+      entity_id: switch.yi_power
+    - service_template: >
+          {% if is_state('input_boolean.butters_home', 'off') %}
+            script.thermostat_temp_everyone_away
+          {% else %}
+            script.thermostat_set_temp_only_butters_home
+          {% endif %}
+    - service: rest_command.set_parents_lock_code
+      
+restart_homeassistant:
+  alias: Restart Home Assistant
+  sequence:
+    - service: homeassistant.restart
+
+system_reboot:
+  alias: Reboot System
+  sequence:
+    - service: hassio.host_reboot
+
+startup_couch_colors:
+  alias: Startup Load Couch
+  sequence:
+    - service: script.couch_group_toggle_visibility
+    - service: input_select.select_option
+      entity_id: input_select.couch_color
+      data_template:
+        option: >
+          {% if is_state('sensor.couch_light_color_name', 'White') %}
+            White
+          {%-elif is_state('sensor.couch_light_color_name', 'Soft White') %}
+            Soft White
+          {%-elif is_state('sensor.couch_light_color_name', 'Blue') %}
+            Blue
+          {%-elif is_state('sensor.couch_light_color_name', 'Red') %}
+            Red
+          {%-elif is_state('sensor.couch_light_color_name', 'Green') %}
+            Green
+          {%-elif is_state('sensor.couch_light_color_name', 'Purple') %}
+            Purple
+          {%-elif is_state('sensor.couch_light_color_name', 'Disable') %}
+            Disable
+          {% else %}
+            Custom
+          # {% endif %}
+    - delay: 00:00:02
+    - service: scene.turn_on
+      data_template:
+        entity_id: >
+          {% if is_state('input_select.couch_color', 'White') %}
+            scene.couch_white
+          {%-elif is_state('input_select.couch_color', 'Soft White') %}
+            scene.couch_soft_white
+          {%-elif is_state('input_select.couch_color', 'Blue') %}
+            scene.couch_blue
+          {%-elif is_state('input_select.couch_color', 'Green') %}
+            scene.couch_green
+          {%-elif is_state('input_select.couch_color', 'Red') %}
+            scene.couch_red
+          {%-elif is_state('input_select.couch_color', 'Purple') %}
+            scene.couch_purple
+          {%-elif is_state('input_select.couch_color', 'Disable') %}
+            scene.couch_turn_off
+          {% else %}
+            scene.couch_custom
+          {% endif %}
+    - delay: 00:00:01
+    - service: input_number.set_value
+      data_template:
+        entity_id: input_number.couch_r
+        value: '{{ states.sensor.couch_red.state | int }}'
+    - service: input_number.set_value
+      data_template:
+        entity_id: input_number.couch_g
+        value: '{{ states.sensor.couch_green.state | int }}'
+    - service: input_number.set_value
+      data_template:
+        entity_id: input_number.couch_b
+        value: '{{ states.sensor.couch_blue.state | int }}'
+    - delay: 00:00:01
+    - service: input_text.set_value
+      data_template:
+        entity_id: input_text.couch_color
+        value: '{{ states.sensor.couch_light_color_name.state }}'
+
+do_nothing:
+  alias: Do Nothing
+  sequence:
+    - delay: 00:00:01

@@ -1,0 +1,72 @@
+presence_arrive:
+  alias: Presence Arrive
+  sequence:
+    - service: input_boolean.turn_on
+      data:
+        entity_id: input_boolean.presence_running
+    - service: lock.unlock
+      entity_id: lock.schlage_deadbolt_5
+    - service: input_boolean.turn_off
+      data:
+        entity_id: input_boolean.away
+    - service: switch.turn_on
+      entity_id: switch.space_heater_8
+    - service: switch.turn_off
+      entity_id: switch.yi_power
+    - service_template: >
+          {% if is_state('binary_sensor.dark_out', 'on') %}
+            script.presence_arrive_dark_out
+          {% else %}
+            script.thermostat_home_set_temp
+          {% endif %}
+    - service: joaoapps_join.fire_send_tasker
+      data:
+        command: arrive
+    - service: joaoapps_join.pixel_send_tasker
+      data:
+        command: "get_phone_location"
+
+presence_arrive_dark_out:
+  alias: Presence Arrive Dark Out
+  sequence:
+    - service: script.thermostat_home_set_temp
+    - condition: time
+      before: '03:58:00'
+      after: '04:10:00'
+    - service: script.kitchen_lights_on
+
+presence_leave:
+  alias: Presence Leave
+  sequence:
+    - service: input_boolean.turn_on
+      data:
+        entity_id: input_boolean.presence_running
+    - service: input_boolean.turn_on
+      data:
+        entity_id: input_boolean.parents_lock_code
+    - service: script.couch_light_off
+    - service: script.kitchen_lights_off
+    - service: script.bed_light_off
+    - service: switch.turn_off
+      entity_id: group.switches
+    - service: switch.turn_on
+      entity_id: switch.yi_power
+    - service: script.tv_off
+    - service: joaoapps_join.fire_send_tasker
+      data:
+        command: leave
+    - service: joaoapps_join.pixel_send_tasker
+      data:
+        command: "get_phone_location"
+    - service: input_boolean.turn_on
+      data:
+        entity_id: input_boolean.away
+    - service_template: >
+          {% if is_state('input_boolean.butters_home', 'off') %}
+            script.thermostat_temp_everyone_away
+          {% else %}
+            script.thermostat_set_temp_only_butters_home
+          {% endif %}
+    - service: input_boolean.turn_off
+      data:
+        entity_id: input_boolean.presence_running

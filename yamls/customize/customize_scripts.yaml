@@ -1,0 +1,25 @@
+### SCRIPTS ###
+script.leave:
+  friendly_name: Leave
+  icon: mdi:walk
+script.arrive:
+  friendly_name: Arrive
+  icon: mdi:human-greeting
+script.restart_homeassistant:
+  icon: mdi:refresh
+script.system_reboot:
+  icon: mdi:power-standby
+script.arrive_touch:
+  friendly_name: Arrive
+  icon: mdi:human-greeting
+script.leave_touch:
+  friendly_name: Leave
+  icon: mdi:walk
+script.tv_on:
+  icon: mdi:television-classic
+script.tv_off:
+  icon: mdi:television-classic-off
+script.tv_input_playstation:
+  icon: mdi:playstation
+script.tv_input_chromecast:
+  icon: mdi:cast

@@ -1,0 +1,129 @@
+  project_id: !secret gactions_project_id
+  api_key: !secret gactions_homegraph_api_key
+  expose_by_default: false
+  exposed_domains:
+    - switch
+    - light
+    - script
+    - scene
+  entity_config:
+  ### Lights ###
+    light.front_kitchen_6:
+      room: Kitchen
+      expose: true
+      aliases:
+        - Front Kitchen
+    light.back_kitchen_7:
+      room: Kitchen
+      expose: true
+      aliases:
+        - Back Kitchen
+    light.couch:
+      room: Living Room
+      expose: true
+      aliases:
+        - Couch
+        - Couch Light
+        - Couch Lights
+    light.bed:
+      room: Bedroom
+      expose: true
+      aliases:
+        - Bed
+        - Bed Light
+        - Bed Lights
+    switch.furnace_switch_9:
+      room: Hallway
+      expose: true
+      aliases:
+        - Furnace switch
+        - Furnace light
+    switch.bathroom_light:
+      room: Bathroom
+      expose: true
+      aliases:
+        - Bathroom light
+    switch.bathroom_fan:
+      room: Bathroom
+      expose: true
+      aliases:
+        - Bathroom fan
+    switch.lamp:
+      room: Living Room
+      expose: true
+      aliases:
+        - Lamp
+    switch.yi_power:
+      room: Living Room
+      expose: true
+      aliases:
+        - Webcam
+  ### Scenes ###
+    scene.lights_off:
+      room: Home
+      name: All Off
+      expose: true
+
+  ### Scripts ###
+    script.leave:
+      room: Home
+      expose: true
+      aliases:
+        - bye
+        - leave
+        - I'm leaving
+        - I'm not home
+        - I left my place
+    script.arrive:
+      room: Home
+      expose: true
+      aliases:
+        - Hello
+        - I'm Home
+        - Welcome
+        - Arrive
+    script.system_reboot:
+      room: Home
+      expose: true
+      aliases:
+        - Reboot Raspberry Pi
+        - Reboot Pi
+        - Restart Raspberry Pi
+        - Restart Pi
+        - Restart System
+        - Reboot System
+    script.restart_homeassistant:
+      room: Home
+      expose: true
+      aliases:
+        - Restart Home Assistant
+        - Reboot Home Assistant
+    script.unlock_door:
+      name: Door Unlock
+      room: Entryway
+      expose: true
+      aliases:
+        - Unlock the Door
+        - Unlock the Front Door
+        - Door unlock
+        - front door unlock
+    script.auto_lock_door_on:
+      name: Auto Lock On
+      room: Entryway
+      expose: true
+      aliases:
+        - Auto lock
+        - Door Auto lock
+        - Front Door Auto lock
+        - Auto lock the door
+        - Auto lock the front door
+    script.auto_lock_door_off:
+      name: Auto Lock Off
+      room: Entryway
+      expose: true
+      aliases:
+        - Auto lock off
+        - Door Auto lock off
+        - Front Door Auto lock off
+        - turn off auto lock
+        - turn off door auto lock

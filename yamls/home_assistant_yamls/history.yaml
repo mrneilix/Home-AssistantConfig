@@ -1,0 +1,71 @@
+  use_include_order: True
+  include:
+    domains:
+      - climate
+      - device_tracker
+      - lock
+      - switch
+      - binary_sensor
+      - input_boolean
+    entities:
+      # Weather
+      - sensor.thermostatmode
+      - sensor.current_set_temp
+      - sensor.dark_sky_temperature
+      - sensor.temp
+      - sensor.illuminance
+      - sun.sun
+      - sensor.daylight_remaining_hm
+      # Plex
+      - sensor.plex
+      - sensor.watching_plex
+      - sensor.tautulli_total
+      # System
+      - sensor.processor_use
+      - sensor.memory_use_percent
+      - sensor.speedtest_download
+      - sensor.speedtest_upload
+      - sensor.pi_zero_boot_time
+      - sensor.pi_zero_cpu_temp
+      - sensor.pi_zero_cpu_usage
+      - sensor.pi_zero_monitor_presence_status
+      # FitBit
+      - sensor.steps
+      - sensor.activity_calories
+      - sensor.calories
+      - sensor.calories_bmr
+      - sensor.distance
+      - sensor.floors
+      - sensor.time_after_wakeup
+      - sensor.time_very_active
+      - sensor.time_fairly_active
+      - sensor.time_lightly_active
+      - sensor.time_sedentary
+      - sensor.minutes_after_wakeup
+      - sensor.minutes_very_active
+      - sensor.minutes_fairly_active
+      - sensor.minutes_lightly_active
+      - sensor.minutes_sedentary
+      # TV
+      - sensor.tv_power
+      # Presence
+      - sensor.butters_mqtt_tile
+      - sensor.neil_mqtt_charge_2
+      - sensor.neil_mqtt_pixel
+      # Lock
+      - sensor.lock_battery_level
+      - sensor.last_lock_code_used
+      - sensor.last_lock_code_name
+
+  exclude:
+    entities:
+      - input_boolean.notifications_on
+      - input_boolean.couch_light_script_running
+      - input_boolean.bed_light_script_running
+      - input_boolean.kitchen_light_script_running
+      - input_boolean.presence_automations
+      - input_boolean.presence_running
+      - input_boolean.restart_complete
+      - input_boolean.weather_dont_renotify
+      - binary_sensor.vera_up
+      - binary_sensor.anyone_home_but_neil

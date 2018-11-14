@@ -1,0 +1,74 @@
+kitchen_light_set_input_number:
+  alias: Set Kitchen Input Slider
+  sequence:
+    - service: input_boolean.turn_on
+      data:
+        entity_id: input_boolean.kitchen_light_script_running
+    - delay: 00:00:03
+    - service: input_number.set_value
+      data_template:
+        entity_id: input_number.kitchen_brightness
+        value: '{{ states.sensor.kitchen_brightness_percent.state | int }}'
+    - delay: 00:00:03
+    - service: input_boolean.turn_off
+      data:
+        entity_id: input_boolean.kitchen_light_script_running
+
+
+kitchen_lights_set_brightness:
+  alias: Kitchen Lights Set Brightness
+  sequence:
+    - service: input_boolean.turn_on
+      data:
+        entity_id: input_boolean.kitchen_light_script_running
+    - service: light.turn_on
+      entity_id: light.front_kitchen_6
+      data_template:
+        transition: 3
+        brightness: '{{ states.input_number.kitchen_brightness.state | multiply(2.55) | int }}'
+    - service: light.turn_on
+      entity_id: light.back_kitchen_7
+      data_template:
+        transition: 3
+        brightness: '{{ states.input_number.kitchen_brightness.state | multiply(2.55) | int }}'
+    - delay: 00:00:03
+    - service: input_boolean.turn_off
+      data:
+        entity_id: input_boolean.kitchen_light_script_running
+        
+kitchen_lights_on:
+  alias: Kitchen Lights On
+  sequence:
+    - service: input_boolean.turn_on
+      data:
+        entity_id: input_boolean.kitchen_light_script_running
+    - delay: 00:00:02
+    - service: scene.turn_on
+      entity_id: scene.kitchen_lights_on
+    - delay: 00:00:03
+    - service: input_number.set_value
+      data:
+        entity_id: input_number.kitchen_brightness
+        value: 100
+    - delay: 00:00:10
+    - service: input_boolean.turn_off
+      data:
+        entity_id: input_boolean.kitchen_light_script_running
+
+kitchen_lights_off:
+  alias: Kitchen Lights Off
+  sequence:
+    - service: input_boolean.turn_on
+      data:
+        entity_id: input_boolean.kitchen_light_script_running
+    - delay: 00:00:02
+    - service: scene.turn_on
+      entity_id: scene.kitchen_lights_off
+    - service: input_number.set_value
+      data:
+        entity_id: input_number.kitchen_brightness
+        value: 0
+    - delay: 00:00:10
+    - service: input_boolean.turn_off
+      data:
+        entity_id: input_boolean.kitchen_light_script_running

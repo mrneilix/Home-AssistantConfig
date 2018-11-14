@@ -1,0 +1,75 @@
+- id: calendar_falcons_game_on
+  alias: 'Calendar Falcons Game On'
+  initial_state: false
+  trigger:
+    platform: state
+    entity_id: calendar.falcons
+    to: 'on'
+  condition:
+    - condition: state
+      entity_id: input_boolean.restart_complete
+      state: 'on'
+    - condition: state
+      entity_id: input_boolean.couch_light_script_running
+      state: 'off'
+    - condition: state
+      entity_id: device_tracker.neil
+      state: 'home'
+  action:
+    - service: input_boolean.turn_on
+      data:
+        entity_id: input_boolean.couch_light_script_running
+    - service: scene.turn_on
+      entity_id: scene.couch_red
+    - service: script.couch_light_update_input_select
+    - delay: 00:00:02
+    - service: script.couch_light_scripts_trigger
+    - service: joaoapps_join.pixel_send_tasker
+      data:
+        command: falcons
+
+- id: calendar_family_birthday_notify
+  alias: 'Calendar Family Birthday Notify'
+  initial_state: false
+  trigger:
+    platform: time
+    at: '09:00:00'
+  condition:
+    - condition: state
+      entity_id: input_boolean.notifications_on
+      state: 'on'
+    - condition: state
+      entity_id: calendar.family_birthdays
+      state: 'on'
+  action:
+    - service: notify.html5
+      data_template:
+        message: "{{ states.calendar.family_birthdays.attributes.message }}"
+        title: "Family Birthday Today"
+        data:
+          tag: 'family'
+          icon: '/local/home-heart.png'
+          badge: '/local/home-heart.png'
+
+- id: calendar_friend_birthday_notify
+  alias: 'Calendar Friend Birthday Notify'
+  initial_state: false
+  trigger:
+    platform: time
+    at: '09:00:00'
+  condition:
+    - condition: state
+      entity_id: input_boolean.notifications_on
+      state: 'on'
+    - condition: state
+      entity_id: calendar.friend_birthdays
+      state: 'on'
+  action:
+    - service: notify.html5
+      data_template:
+        message: "{{ states.calendar.friend_birthdays.attributes.message }}"
+        title: "Friend Birthday Today"
+        data:
+          tag: 'friend'
+          icon: '/local/cake.png'
+          badge: '/local/cake.png'

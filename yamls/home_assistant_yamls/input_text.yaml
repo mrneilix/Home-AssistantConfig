@@ -1,0 +1,20 @@
+  couch_color:
+    name: Couch Color Name
+    initial: Color Name
+  bed_color:
+    name: Bed Color Name
+    initial: Color Name
+  gh_speak:
+    name: Google Home Speak
+    initial: ' '
+  lock_code_temp:
+    name: Temporary Lock Code
+    initial: Code
+    min: 4
+    max: 4
+  broadcast_message:
+    name: Broadcast Message
+    initial: ' '
+  google_command:
+    name: Google Command
+    initial: ' '

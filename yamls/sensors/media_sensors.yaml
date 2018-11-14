@@ -1,0 +1,112 @@
+  - platform: plex
+    host: !secret desktop_ip
+    port: !secret plex_port
+    username: !secret plex_username
+    password: !secret plex_pw
+
+  - platform: tautulli
+    host: !secret tautulli_server
+    ssl: true
+    verify_ssl: true
+    token: !secret tautulli_api
+    monitored_conditions:
+      - stream_count
+      - stream_count_transcode
+      - stream_count_direct_play
+      - stream_count_direct_stream
+      - total_bandwidth
+
+  - platform: sonarr
+    api_key: !secret sonarr_api
+    host: !secret desktop_ip
+    monitored_conditions:
+      - diskspace
+      - upcoming
+    unit: GB
+    days: 1
+  - platform: radarr
+    api_key: !secret radarr_api
+    host: !secret desktop_ip
+    monitored_conditions:
+      - upcoming
+      - diskspace
+    days: 14
+    unit: TB
+    
+  - platform: template
+    sensors:
+      watching_plex:
+        friendly_name: Watching Plex
+        value_template: >-
+          {% if states.sensor.plex.state == '0' %}
+            Nothing Playing
+          {% else %}
+            {% for attr in states.sensor.plex.attributes %}
+            {% if not attr=="friendly_name" and not attr=="unit_of_measurement" %}
+              {{attr}} is watching {{states.sensor.plex.attributes[attr]}} {{" |  "}}
+            {% endif %}
+            {% endfor %}
+          {% endif %}
+      sonarr_upcoming_list:
+        friendly_name: Upcoming Episodes
+        icon_template: mdi:television
+        value_template: >
+          {% for attr in states.sensor.sonarr_upcoming.attributes %}
+          {% if not attr=="friendly_name" and not attr=="icon" and not attr=="unit_of_measurement" and not attr=="hidden" and not attr=="custom_ui_state_card" %}
+            {{attr}}: {{states.sensor.sonarr_upcoming.attributes[attr]}} {{" |  "}}
+          {% endif %}
+          {% endfor %}
+      radarr_upcoming_list:
+        friendly_name: Upcoming Movies
+        icon_template: mdi:video
+        value_template: >
+          {% for attr in states.sensor.radarr_upcoming.attributes %}
+          {% if not attr=="friendly_name" and not attr=="icon" and not attr=="unit_of_measurement" and not attr=="hidden" and not attr=="custom_ui_state_card" %}
+            {{attr}} {{" |  "}}
+          {% endif %}
+          {% endfor %}
+      desktop_disk_space_c:
+        friendly_name: "C: - Main"
+        icon_template: mdi:harddisk
+        value_template: >
+          {% for attr in states.sensor.sonarr_disk_space.attributes %}
+          {% if  "C" in attr  %}
+            {{states.sensor.sonarr_disk_space.attributes[attr] }}
+          {% endif %}
+          {% endfor %}
+      desktop_disk_space_e:
+        friendly_name: "E: - TV"
+        icon_template: mdi:harddisk
+        value_template: >
+          {% for attr in states.sensor.radarr_disk_space.attributes %}
+          {% if  "E" in attr  %}
+            {{states.sensor.radarr_disk_space.attributes[attr] }} 
+          {% endif %}
+          {% endfor %}
+      desktop_disk_space_f:
+        friendly_name: "F: - Archives"
+        icon_template: mdi:harddisk
+        value_template: >
+          {% for attr in states.sensor.radarr_disk_space.attributes %}
+          {% if  "F" in attr  %}
+            {{states.sensor.radarr_disk_space.attributes[attr] }} 
+          {% endif %}
+          {% endfor %}
+      desktop_disk_space_i:
+        friendly_name: "I: - Movies"
+        icon_template: mdi:harddisk
+        value_template: >
+          {% for attr in states.sensor.radarr_disk_space.attributes %}
+          {% if  "I" in attr  %}
+            {{states.sensor.radarr_disk_space.attributes[attr] }} 
+          {% endif %}
+          {% endfor %}
+      desktop_disk_space_j:
+        friendly_name: "J: - ETC"
+        icon_template: mdi:harddisk
+        value_template: >
+          {% for attr in states.sensor.radarr_disk_space.attributes %}
+          {% if  "J" in attr  %}
+            {{states.sensor.radarr_disk_space.attributes[attr] }}
+          {% endif %}
+          {% endfor %}

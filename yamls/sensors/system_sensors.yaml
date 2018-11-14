@@ -1,0 +1,160 @@
+  - platform: systemmonitor
+    resources:
+      - type: disk_use_percent
+        arg: /
+      - type: memory_free
+      - type: memory_use_percent
+      - type: memory_use
+      - type: network_in
+        arg: eth0
+      - type: network_out
+        arg: eth0
+      - type: processor_use
+      - type: last_boot
+      - type: since_last_boot
+  - platform: uptime
+    name: uptime
+    unit_of_measurement: minutes
+  - platform: speedtest
+    monitored_conditions:
+      - ping
+      - download
+      - upload
+    minute:
+      - 0
+      - 15
+      - 30
+      - 45
+
+  - platform: template
+    sensors:
+### Uptime Templated ####
+      since_last_boot_templated:
+        value_template: >-
+          {%- set slb = states.sensor.since_last_boot.state.split(' ') -%}
+          {%- set count = slb | length -%}
+          {%- set hms = slb[count - 1] -%}
+          {%- set hms_trimmed = hms.split('.')[0] -%}
+          {%- set hms_split = hms_trimmed.split(':') -%}
+          {%- set hours = hms_split[0] | int -%}
+          {%- set minutes = hms_split[1] | int -%}
+          {%- set seconds = hms_split[2] | int -%}
+
+          {%- if count == 3 -%}
+            {{ slb[0] ~ ' ' ~ slb[1] ~ ' ' }}
+          {%- endif -%}
+          {%- if hours > 0 -%}
+            {%- if hours == 1 -%}
+              1 hour
+            {%- else -%}
+              {{ hours }} hours
+            {%- endif -%}
+          {%- endif -%}
+          {%- if minutes > 0 -%}
+            {%- if hours > 0 -%}
+              {{ ', ' }}
+            {%- endif -%}
+            {%- if minutes == 1 -%}
+              1 minute
+            {%- else -%}
+              {{ minutes }} minutes
+            {%- endif -%}
+          {%- endif -%}
+          {%- if seconds > 0 -%}
+            {%- if hours > 0 or minutes > 0 -%}
+              {{ ', ' }}
+            {%- endif -%}
+            {%- if seconds == 1 -%}
+              1 second
+            {%- else -%}
+              {{ seconds }} seconds
+            {%- endif -%}
+          {%- endif -%}
+
+      ha_uptime:
+        friendly_name: Home Assistant Uptime
+        value_template: >-
+          {% if states.sensor.uptime.state is defined %}
+          {% set time = states.sensor.uptime.state | int %}
+          {% set minutes = (time % 60) | int %}
+          {% set hours = ((time % 1440) / 60) | int %}
+          {% set days = (time / 1440) | int %}
+
+          {%- if time < 1 -%}
+            Less than a minute
+          {%- else -%}
+            {%- if days > 0 -%}
+              {%- if days == 1 -%}
+                1 day
+              {%- else -%}
+                {{ days }} days
+              {%- endif -%}
+            {%- endif -%}
+            {%- if hours > 0 -%}
+              {%- if days > 0 -%}
+                {{ ', ' }}
+              {%- endif -%}
+              {%- if hours == 1 -%}
+                1 hour
+              {%- else -%}
+                {{ hours }} hours
+              {%- endif -%}
+            {%- endif -%}
+            {%- if minutes > 0 -%}
+              {%- if days > 0 or hours > 0 -%}
+                {{ ', ' }}
+              {%- endif -%}
+              {%- if minutes == 1 -%}
+                1 minute
+              {%- else -%}
+                {{ minutes }} minutes
+              {%- endif -%}
+            {%- endif -%}
+          {%- endif -%}
+          {% else %}
+          0
+          {% endif %}
+### Pi Zero Uptime Templated ####
+      pi_zero_uptime:
+        friendly_name: Pi Zero Uptime
+        value_template: >-
+          {% if ((as_timestamp(now()) - as_timestamp(states.sensor.pi_zero_boot_time.state)) / 60) is defined %}
+          {% set time = ((as_timestamp(now()) - as_timestamp(states.sensor.pi_zero_boot_time.state)) / 60) | int %}
+          {% set minutes = (time % 60) | int %}
+          {% set hours = ((time % 1440) / 60) | int %}
+          {% set days = (time / 1440) | int %}
+
+          {%- if time < 1 -%}
+            Less than a minute
+          {%- else -%}
+            {%- if days > 0 -%}
+              {%- if days == 1 -%}
+                1 day
+              {%- else -%}
+                {{ days }} days
+              {%- endif -%}
+            {%- endif -%}
+            {%- if hours > 0 -%}
+              {%- if days > 0 -%}
+                {{ ', ' }}
+              {%- endif -%}
+              {%- if hours == 1 -%}
+                1 hour
+              {%- else -%}
+                {{ hours }} hours
+              {%- endif -%}
+            {%- endif -%}
+            {%- if minutes > 0 -%}
+              {%- if days > 0 or hours > 0 -%}
+                {{ ', ' }}
+              {%- endif -%}
+              {%- if minutes == 1 -%}
+                1 minute
+              {%- else -%}
+                {{ minutes }} minutes
+              {%- endif -%}
+            {%- endif -%}
+          {%- endif -%}
+          {% else %}
+          0
+          {% endif %}

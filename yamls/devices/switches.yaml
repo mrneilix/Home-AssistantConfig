@@ -1,0 +1,24 @@
+  - platform: tplink
+    host: !secret lamp_ip
+    name: lamp
+  - platform: tplink
+    host: !secret bathroom_light_ip
+    name: bathroom_light
+  - platform: tplink
+    host: !secret bathroom_fan_ip
+    name: bathroom_fan
+  - platform: template
+    switches:
+      tv_power:
+        friendly_name: TV Power
+        value_template: "{{ is_state('sensor.tv_power', 'on') }}"
+        turn_on:
+          service: script.tv_on
+        turn_off:
+          service: script.tv_off
+        icon_template: >-
+          {%- if is_state("sensor.tv_power", "on") -%}
+            mdi:television-classic
+          {%- else -%}
+            mdi:television-classic-off
+          {%- endif -%}
