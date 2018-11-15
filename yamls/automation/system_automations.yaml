@@ -134,7 +134,9 @@
     - condition: state
       entity_id: input_boolean.config_updated
       state: 'on'
-  action:  
+  action:
+    - service: shell_command.git_backup
+    - delay: 00:00:60
     - service: hassio.snapshot_full
       data_template:
         name: Automated Backup {{ now().strftime('%Y-%m-%d') }}
