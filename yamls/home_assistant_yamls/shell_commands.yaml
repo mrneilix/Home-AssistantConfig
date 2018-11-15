@@ -8,4 +8,4 @@ start_tv_power_status: !secret start_tv_power_status
 desktop_screen_off: !secret desktop_screen_off
 tv_input_chromecast: !secret tv_input_chromecast
 tv_input_ps4: !secret tv_input_ps4
-# neil_code_entered: !secret neil_code_entered
+git_backup: !secret git_backup
