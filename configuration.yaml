@@ -57,6 +57,9 @@ google:
   client_id: !secret gcal_client_id
   client_secret: !secret gcal_client_secret
 
+ifttt:
+  key: !secret ifttt_key
+
 updater:
 
 # Include Folders
