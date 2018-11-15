@@ -32,6 +32,11 @@
         - Bed
         - Bed Light
         - Bed Lights
+    switch.space_heater_8:
+      room: Bedroom
+      expose: true
+      aliases:
+        - Space Heater
     switch.furnace_switch_9:
       room: Hallway
       expose: true

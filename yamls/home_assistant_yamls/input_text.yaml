@@ -1,9 +1,6 @@
   couch_color:
     name: Couch Color Name
     initial: Color Name
-  bed_color:
-    name: Bed Color Name
-    initial: Color Name
   gh_speak:
     name: Google Home Speak
     initial: ' '

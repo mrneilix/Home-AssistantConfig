@@ -8,7 +8,7 @@ bed_light_adjust_input_number:
     - service: input_number.set_value
       data_template:
         entity_id: input_number.bed_brightness
-        value: '{{ states.light.bed.attributes.brightness | multiply(2.55) | int }}'
+        value: '{{ states.sensor.bed_brightness_percent.state | multiply(2.55) | int }}'
     - delay: 00:00:03
     - service: input_boolean.turn_off
       data:
@@ -47,4 +47,4 @@ bed_light_off:
     - delay: 00:00:10
     - service: input_boolean.turn_off
       data:
-        entity_id: input_boolean.kitchen_light_script_running
+        entity_id: input_boolean.bed_light_script_running

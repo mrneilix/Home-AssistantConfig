@@ -4,7 +4,9 @@
       kitchen_brightness_percent:
         friendly_name: "Kitchen Brightness Percent"
         value_template: >-
-          {% if is_state("light.front_kitchen_6", "on") and states.light.front_kitchen_6.attributes.brightness > 229 %}
+          {% if is_state("light.front_kitchen_6", "off") %}
+            0
+          {% elif is_state("light.front_kitchen_6", "on") and states.light.front_kitchen_6.attributes.brightness > 229 %}
             100
           {% elif is_state("light.front_kitchen_6", "on") and states.light.front_kitchen_6.attributes.brightness > 0 %}
             {{ (states.light.front_kitchen_6.attributes.brightness | int / 2.55) | round(0) }}
@@ -16,7 +18,9 @@
       bed_brightness_percent:
         friendly_name: "Bed Brightness Percent"
         value_template: >-
-          {% if is_state("light.bed", "on") and states.light.bed.attributes.brightness > 229 %}
+          {% if is_state("light.bed", "off") or states.light.bed.state == 'unavailable' %}
+            0
+          {% elif is_state("light.bed", "on") and states.light.bed.attributes.brightness > 229 %}
             100
           {% elif is_state("light.bed", "on") and states.light.bed.attributes.brightness > 0 %}
             {{ (states.light.bed.attributes.brightness | int / 2.55) | round(0) }}
