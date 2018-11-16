@@ -9,10 +9,6 @@
       - input_select
       - lock
       - script
-      - shell_command
-      - tts
-      - google_assistant
-      - rest_command
     entities:
       # TV Power
       - sensor.tv_power
@@ -39,13 +35,11 @@
       - automation.weather_notify_sleet
       - automation.weather_notify_rain
       - automation.weather_notify_snow
-      - automation.lock_door_auto_lock
       - automation.tv_off_fire_tablet_auto_brightness_on
       - automation.presence_get_phone_location_tasker
       - automation.couch_group_toggle_visibility
       - automation.tv_input_group_toggle_visible
       - automation.presence_turn_desktop_display_off
-      - automation.calendar_falcons_game_on
       - automation.calendar_family_birthday_notify
       - automation.calendar_friend_birthday_notify
       - input_boolean.weather_dont_renotify
