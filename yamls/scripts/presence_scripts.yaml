@@ -26,6 +26,21 @@ presence_arrive:
       data:
         command: "get_phone_location"
 
+presence_someone_not_neil_home:
+  alias: Presence Someone Not Neil Home
+  sequence:
+    - service: input_boolean.turn_on
+      data:
+        entity_id: input_boolean.presence_running
+    - service: lock.unlock
+      entity_id: lock.schlage_deadbolt_5
+    - service_template: >
+          {% if is_state('binary_sensor.dark_out', 'on') %}
+            script.presence_arrive_dark_out
+          {% else %}
+            script.thermostat_home_set_temp
+          {% endif %}
+
 presence_arrive_dark_out:
   alias: Presence Arrive Dark Out
   sequence:
@@ -70,3 +85,51 @@ presence_leave:
     - service: input_boolean.turn_off
       data:
         entity_id: input_boolean.presence_running
+
+presence_parents_home:
+  alias: Presence Parents Home
+  sequence:
+    - service: script.presence_someone_not_neil_home
+    - service: media_player.volume_set
+      data_template:
+        entity_id: media_player.kitchen_home
+        volume_level: 0.6
+    - service: tts.google_say
+      entity_id: media_player.kitchen_home
+      data_template:
+        message: "Hello, Mom or Dad."
+    - condition: state
+      entity_id: input_boolean.notifications_on
+      state: 'on'
+    - service: notify.html5
+      data_template:
+        message: "Parents unlocked the door at {{ as_timestamp(now()) | timestamp_custom('%I:%M:%S %p', true) }}"
+        title: "Door Unlocked"
+        data:
+          tag: 'door-unlocked'
+          icon: '/local/mom-dad.jpg'
+          badge: '/local/lock-badge.png'
+
+presence_gina_home:
+  alias: Presence Gina Home
+  sequence:
+    - service: script.presence_someone_not_neil_home
+    - service: media_player.volume_set
+      data_template:
+        entity_id: media_player.kitchen_home
+        volume_level: 0.6
+    - service: tts.google_say
+      entity_id: media_player.kitchen_home
+      data_template:
+        message: "Hello, Gina."
+    - condition: state
+      entity_id: input_boolean.notifications_on
+      state: 'on'
+    - service: notify.html5
+      data_template:
+        message: "Gina unlocked the door at {{ as_timestamp(now()) | timestamp_custom('%I:%M:%S %p', true) }}"
+        title: "Door Unlocked"
+        data:
+          tag: 'door-unlocked'
+          icon: '/local/gina.jpg'
+          badge: '/local/lock-badge.png'

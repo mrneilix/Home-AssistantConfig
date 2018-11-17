@@ -1,6 +1,7 @@
-lock_code_entered:
+lock_code_entered_not_family:
   alias: Lock Code Entered
   sequence:
+    - service: script.presence_someone_not_neil_home
     - service: media_player.volume_set
       data_template:
         entity_id: media_player.kitchen_home
@@ -13,51 +14,11 @@ lock_code_entered:
       entity_id: input_boolean.presence_automations
       state: 'on'
     - service_template: >
-          {% if is_state('binary_sensor.parents_home', 'on') %}
-            script.lock_parents_code_entered
-          {%-elif is_state('sensor.last_lock_code_name', 'Parents') %}
-            script.lock_parents_code_entered
-          {%-elif is_state('binary_sensor.gina_home', 'on') %}
-            script.lock_gina_code_entered
-          {%-elif is_state('sensor.last_lock_code_name', 'Gina') %}
-            script.lock_gina_code_entered
-          {%-elif is_state('sensor.last_lock_code_name', 'Guest') %}
+          {% if is_state('sensor.last_lock_code_name', 'Guest') %}
             script.lock_guest_code_entered
           {% else %}
             script.lock_temp_code_entered
           {% endif %}
-          
-lock_parents_code_entered:
-  alias: Lock Parents Code Entered
-  sequence:
-    - service: script.arrive
-    - condition: state
-      entity_id: input_boolean.notifications_on
-      state: 'on'
-    - service: notify.html5
-      data_template:
-        message: "{{ states('sensor.last_lock_code_name') }} unlocked the door at {{ as_timestamp(now()) | timestamp_custom('%I:%M:%S %p', true) }}"
-        title: "Door Unlocked"
-        data:
-          tag: 'door-unlocked'
-          icon: '/local/mom-dad.jpg'
-          badge: '/local/lock-badge.png'
-
-lock_gina_code_entered:
-  alias: Lock Gina Code Entered
-  sequence:
-    - service: script.arrive
-    - condition: state
-      entity_id: input_boolean.notifications_on
-      state: 'on'
-    - service: notify.html5
-      data_template:
-        message: "{{ states('sensor.last_lock_code_name') }} unlocked the door at {{ as_timestamp(now()) | timestamp_custom('%I:%M:%S %p', true) }}"
-        title: "Door Unlocked"
-        data:
-          tag: 'door-unlocked'
-          icon: '/local/gina.jpg'
-          badge: '/local/lock-badge.png'
 
 lock_guest_code_entered:
   alias: Lock Guest Code Entered

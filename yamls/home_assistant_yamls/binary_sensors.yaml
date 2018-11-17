@@ -30,14 +30,10 @@
           - sensor.last_lock_code_name
           - sensor.dark_sky_apparent_temperature
 
-      parents_home:
+      parents_code:
         friendly_name: Parents Lock Code
         value_template: >-
-          {% if is_state("sensor.last_lock_code_name", "Parents") and is_state("device_tracker.neil", "not_home") and (as_timestamp(now()) - as_timestamp(states.sensor.last_lock_code_name.last_updated) < 600 ) and states('sensor.uptime') | int > 10 %}
-            True
-          {%-elif is_state("device_tracker.mom", "home") and is_state("device_tracker.neil", "not_home") %}
-            True
-          {%-elif is_state("device_tracker.dad", "home") and is_state("device_tracker.neil", "not_home") %}
+          {% if is_state("sensor.last_lock_code_name", "Parents") and (as_timestamp(now()) - as_timestamp(states.sensor.last_lock_code_name.last_updated) < 600 ) and states('sensor.uptime') | int > 10 %}
             True
           {% else %}
             False
@@ -46,12 +42,10 @@
           - sensor.last_lock_code_name
           - sensor.dark_sky_apparent_temperature
 
-      gina_home:
+      gina_code:
         friendly_name: Parents Lock Code
         value_template: >-
           {% if is_state("sensor.last_lock_code_name", "Gina") and (as_timestamp(now()) - as_timestamp(states.sensor.last_lock_code_name.last_updated) < 600 ) and states('sensor.uptime') | int > 10 %}
-            True
-          {%-elif is_state("device_tracker.gina", "home") and is_state("device_tracker.neil", "not_home") %}
             True
           {% else %}
             False
@@ -87,20 +81,21 @@
       anyone_home_but_neil:
         friendly_name: Anyone Home But Neil
         value_template: >-
-          {%- if is_state("device_tracker.dad", "home") and is_state("device_tracker.neil", "not_home") %}
+          {%- if is_state("device_tracker.neil", "home") %}
+            False
+          {%-elif is_state("device_tracker.gina", "home") %}
             True
-          {%-elif is_state("device_tracker.mom", "home") and is_state("device_tracker.neil", "not_home") %}
-            True
-          {%-elif is_state("device_tracker.gina", "home") and is_state("device_tracker.neil", "not_home") %}
+          {%-elif is_state("device_tracker.parents", "home") %}
             True
           {%- else -%}
             False
           {%- endif %}
         entity_id:
-          - device_tracker.dad
-          - device_tracker.mom
-          - device_tracker.gina
+          - binary_sensor.parents_code
+          - binary_sensor.gina_code
           - device_tracker.neil
+          - device_tracker.gina
+          - device_tracker.parents
 
       butters_tile:
         friendly_name: Butters Tile

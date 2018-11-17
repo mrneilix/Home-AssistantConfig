@@ -37,3 +37,6 @@ device_tracker.butters:
 device_tracker.monitor_neil:
   custom_ui_state_card: state-card-custom-ui
   state_card_mode: badges
+device_tracker.parents:
+  custom_ui_state_card: state-card-custom-ui
+  state_card_mode: badges

@@ -78,8 +78,7 @@ device_trackers:
   - device_tracker.monitor_neil
   - device_tracker.butters
   - device_tracker.gina
-  - device_tracker.dad
-  - device_tracker.mom
+  - device_tracker.parents
 auto_lock_automations:
   entities:
   - automation.lock_door_auto_lock

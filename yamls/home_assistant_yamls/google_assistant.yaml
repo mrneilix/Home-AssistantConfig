@@ -6,8 +6,8 @@
     - light
     - script
     - scene
+    - input_boolean
   entity_config:
-  ### Lights ###
     light.front_kitchen_6:
       room: Kitchen
       expose: true
@@ -63,14 +63,14 @@
       expose: true
       aliases:
         - Webcam
-  ### Scenes ###
-    scene.lights_off:
+    input_boolean.autolock:
       room: Home
-      name: All Off
       expose: true
-
-  ### Scripts ###
-    script.leave:
+      aliases:
+        - Autolock
+        - Door Auto lock
+        - Front Door Auto lock
+    script.presence_leave:
       room: Home
       expose: true
       aliases:
@@ -79,7 +79,7 @@
         - I'm leaving
         - I'm not home
         - I left my place
-    script.arrive:
+    script.presence_arrive:
       room: Home
       expose: true
       aliases:
@@ -103,7 +103,7 @@
       aliases:
         - Restart Home Assistant
         - Reboot Home Assistant
-    script.unlock_door:
+    script.lock_unlock_door:
       name: Door Unlock
       room: Entryway
       expose: true
@@ -112,23 +112,23 @@
         - Unlock the Front Door
         - Door unlock
         - front door unlock
-    script.auto_lock_door_on:
-      name: Auto Lock On
-      room: Entryway
-      expose: true
-      aliases:
-        - Auto lock
-        - Door Auto lock
-        - Front Door Auto lock
-        - Auto lock the door
-        - Auto lock the front door
-    script.auto_lock_door_off:
-      name: Auto Lock Off
-      room: Entryway
-      expose: true
-      aliases:
-        - Auto lock off
-        - Door Auto lock off
-        - Front Door Auto lock off
-        - turn off auto lock
-        - turn off door auto lock
+    # script.auto_lock_door_on:
+      # name: Auto Lock On
+      # room: Entryway
+      # expose: true
+      # aliases:
+        # - Auto lock
+        # - Door Auto lock
+        # - Front Door Auto lock
+        # - Auto lock the door
+        # - Auto lock the front door
+    # script.auto_lock_door_off:
+      # name: Auto Lock Off
+      # room: Entryway
+      # expose: true
+      # aliases:
+        # - Auto lock off
+        # - Door Auto lock off
+        # - Front Door Auto lock off
+        # - turn off auto lock
+        # - turn off door auto lock

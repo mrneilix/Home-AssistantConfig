@@ -124,9 +124,9 @@
       entity_id: input_boolean.presence_automations
       state: 'on'
     - condition: template
-      value_template: "{{ not is_state('sensor.last_lock_code_name', 'Neil') }}"
+      value_template: "{{ not is_state('sensor.last_lock_code_name', 'Neil') and not is_state('sensor.last_lock_code_name', 'Gina') and not is_state('sensor.last_lock_code_name', 'Parents')}}"
   action:
-    - service: script.lock_code_entered
+    - service: script.lock_code_entered_not_family
 
 # Auto Lock
 - id: lock_door_auto_lock

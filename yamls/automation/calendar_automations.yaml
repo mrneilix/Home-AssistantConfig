@@ -16,17 +16,21 @@
       entity_id: device_tracker.neil
       state: 'home'
   action:
-    - service: input_boolean.turn_on
-      data:
-        entity_id: input_boolean.couch_light_script_running
-    - service: scene.turn_on
-      entity_id: scene.couch_red
-    - service: script.couch_light_update_input_select
-    - delay: 00:00:02
-    - service: script.couch_light_scripts_trigger
     - service: joaoapps_join.pixel_send_tasker
       data:
         command: falcons
+    - service: input_boolean.turn_on
+      data:
+        entity_id: input_boolean.couch_light_script_running
+    - service: light.turn_on
+      entity_id: light.couch
+    - delay: 00:00:02
+    - service: scene.turn_on
+      entity_id: scene.couch_red
+    - delay: 00:00:02
+    - service: script.couch_light_update_all_controls
+
+
 
 - id: calendar_family_birthday_notify
   alias: 'Calendar Family Birthday Notify'

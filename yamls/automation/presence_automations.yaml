@@ -104,6 +104,31 @@
       data:
         entity_id: input_boolean.parents_lock_code
 
+- id: presence_family_home
+  alias: 'Presence Family Home'
+  initial_state: false
+  trigger:
+    - platform: state
+      entity_id: binary_sensor.anyone_home_but_neil
+      to: 'on'
+  condition:
+    - condition: state
+      entity_id: input_boolean.restart_complete
+      state: 'on'
+    - condition: state
+      entity_id: input_boolean.presence_automations
+      state: 'on'
+    - condition: state
+      entity_id: input_boolean.away
+      state: 'on'
+  action:
+    - service_template: >
+          {% if is_state('device_tracker.parents', 'home') %}
+            script.presence_parents_home
+          {% else %}
+            script.presence_gina_home
+          {% endif %}
+
 - id: presence_turn_desktop_display_off
   alias: 'Presence Turn Desktop Display Off'
   initial_state: false
@@ -125,7 +150,7 @@
   initial_state: false
   trigger:
     - platform: time
-      minutes: 30
+      minutes: '/30'
       seconds: 00
   condition:
     - condition: state

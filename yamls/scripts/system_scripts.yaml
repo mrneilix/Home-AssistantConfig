@@ -123,66 +123,8 @@ startup_couch_colors:
   alias: Startup Load Couch
   sequence:
     - service: script.couch_group_toggle_visibility
-    - service: input_select.select_option
-      entity_id: input_select.couch_color
-      data_template:
-        option: >
-          {% if is_state('sensor.couch_light_color_name', 'White') %}
-            White
-          {%-elif is_state('sensor.couch_light_color_name', 'Soft White') %}
-            Soft White
-          {%-elif is_state('sensor.couch_light_color_name', 'Blue') %}
-            Blue
-          {%-elif is_state('sensor.couch_light_color_name', 'Red') %}
-            Red
-          {%-elif is_state('sensor.couch_light_color_name', 'Green') %}
-            Green
-          {%-elif is_state('sensor.couch_light_color_name', 'Purple') %}
-            Purple
-          {%-elif is_state('sensor.couch_light_color_name', 'Disable') %}
-            Disable
-          {% else %}
-            Custom
-          # {% endif %}
     - delay: 00:00:02
-    - service: scene.turn_on
-      data_template:
-        entity_id: >
-          {% if is_state('input_select.couch_color', 'White') %}
-            scene.couch_white
-          {%-elif is_state('input_select.couch_color', 'Soft White') %}
-            scene.couch_soft_white
-          {%-elif is_state('input_select.couch_color', 'Blue') %}
-            scene.couch_blue
-          {%-elif is_state('input_select.couch_color', 'Green') %}
-            scene.couch_green
-          {%-elif is_state('input_select.couch_color', 'Red') %}
-            scene.couch_red
-          {%-elif is_state('input_select.couch_color', 'Purple') %}
-            scene.couch_purple
-          {%-elif is_state('input_select.couch_color', 'Disable') %}
-            scene.couch_turn_off
-          {% else %}
-            scene.couch_custom
-          {% endif %}
-    - delay: 00:00:01
-    - service: input_number.set_value
-      data_template:
-        entity_id: input_number.couch_r
-        value: '{{ states.sensor.couch_red.state | int }}'
-    - service: input_number.set_value
-      data_template:
-        entity_id: input_number.couch_g
-        value: '{{ states.sensor.couch_green.state | int }}'
-    - service: input_number.set_value
-      data_template:
-        entity_id: input_number.couch_b
-        value: '{{ states.sensor.couch_blue.state | int }}'
-    - delay: 00:00:01
-    - service: input_text.set_value
-      data_template:
-        entity_id: input_text.couch_color
-        value: '{{ states.sensor.couch_light_color_name.state }}'
+    - service: script.couch_light_update_all_controls
 
 do_nothing:
   alias: Do Nothing

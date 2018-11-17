@@ -23,14 +23,6 @@
       - confidence
       - timestamp
   - platform: mqtt
-    state_topic: "monitor/monitor/FABFA2BD-0146-7D6E-00FB-ABAD08160A18-5638-58745"
-    value_template: '{{ value_json.confidence }}'
-    name: 'Neil MQTT Fitbit'
-    force_update: true
-    json_attributes:
-      - confidence
-      - timestamp
-  - platform: mqtt
     state_topic: "monitor/monitor/status"
     name: 'Pi Zero Monitor Presence Status'
     force_update: true

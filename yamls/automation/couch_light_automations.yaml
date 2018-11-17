@@ -87,7 +87,7 @@
     - service: input_boolean.turn_on
       data:
         entity_id: input_boolean.couch_light_script_running
-    - service: script.couch_light_update_input_select
+    - service: script.couch_light_update_all_controls
 
 - id: couch_light_set_input_text
   alias: 'Couch Lights Set Input Text'
@@ -107,7 +107,7 @@
       entity_id: input_boolean.couch_light_script_running
       state: 'off'
   action:
-    service: script.couch_color_name
+    service: script.couch_color_name_from_input_text
 
 - id: couch_color_google_voice
   alias: 'Couch Color Google Voice'
