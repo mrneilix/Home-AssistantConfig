@@ -43,7 +43,9 @@
         friendly_name: "Temperature Description"
         value_template: >-
           {%- if states('sensor.dark_sky_apparent_temperature') | int < 32 -%}
-              FuckingCold
+              ReallyFuckingCold
+          {%  elif states('sensor.dark_sky_apparent_temperature') | int < 40 -%}
+              Cold
           {%  elif states('sensor.dark_sky_apparent_temperature') | int < 60 -%}
               Cold
           {%  elif states('sensor.dark_sky_apparent_temperature') | int > 85 -%}

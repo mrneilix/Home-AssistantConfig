@@ -54,15 +54,17 @@
       aliases:
         - Bathroom fan
     switch.lamp:
-      room: Living Room
+      room: Lamp
       expose: true
       aliases:
         - Lamp
     switch.yi_power:
-      room: Living Room
+      room: Home
       expose: true
       aliases:
         - Webcam
+        - Cam
+        - Camera
     input_boolean.autolock:
       room: Home
       expose: true
@@ -70,7 +72,17 @@
         - Autolock
         - Door Auto lock
         - Front Door Auto lock
+    script.lock_unlock_door:
+      name: Unlock the Door
+      room: Entryway
+      expose: true
+      aliases:
+        - Unlock the Door
+        - Unlock the Front Door
+        - Door unlock
+        - front door unlock
     script.presence_leave:
+      name: Leave
       room: Home
       expose: true
       aliases:
@@ -82,6 +94,7 @@
     script.presence_arrive:
       room: Home
       expose: true
+      name: Arrive
       aliases:
         - Hello
         - I'm Home
@@ -90,6 +103,7 @@
     script.system_reboot:
       room: Home
       expose: true
+      name: Reboot Pi
       aliases:
         - Reboot Raspberry Pi
         - Reboot Pi
@@ -100,35 +114,7 @@
     script.restart_homeassistant:
       room: Home
       expose: true
+      name: Restart Home Assistant
       aliases:
         - Restart Home Assistant
         - Reboot Home Assistant
-    script.lock_unlock_door:
-      name: Door Unlock
-      room: Entryway
-      expose: true
-      aliases:
-        - Unlock the Door
-        - Unlock the Front Door
-        - Door unlock
-        - front door unlock
-    # script.auto_lock_door_on:
-      # name: Auto Lock On
-      # room: Entryway
-      # expose: true
-      # aliases:
-        # - Auto lock
-        # - Door Auto lock
-        # - Front Door Auto lock
-        # - Auto lock the door
-        # - Auto lock the front door
-    # script.auto_lock_door_off:
-      # name: Auto Lock Off
-      # room: Entryway
-      # expose: true
-      # aliases:
-        # - Auto lock off
-        # - Door Auto lock off
-        # - Front Door Auto lock off
-        # - turn off auto lock
-        # - turn off door auto lock
