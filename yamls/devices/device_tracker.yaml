@@ -1,11 +1,11 @@
     - platform: bluetooth_tracker
-      consider_home: 600
+      consider_home: 540
       interval_seconds: 5
       new_device_defaults:
         track_new_devices: true
         hide_if_away: true
     - platform: ping
-      consider_home: 600
+      consider_home: 540
       interval_seconds: 2
       hosts:
         neil_wifi: !secret my_phone_wifi
