@@ -7,11 +7,10 @@ views:
   - title: Home
     icon: mdi:home
     cards:
-      - type: glance
-        column_width: calc(100% / 10)
+      - type: entities
         entities:
-          - binary_sensor.neil_home
-          - device_tracker.tile_a8aa8037bf760498
+          - device_tracker.neil
+          - device_tracker.butters
           - sensor.plex
           - sensor.dark_sky_precip_probability
           - sensor.dark_sky_temperature
@@ -19,35 +18,36 @@ views:
           - sensor.dark_sky_daytime_high_temperature
           - sensor.dark_sky_overnight_low_temperature
           - sensor.forecast_icon
-          - sun.sun
+          - sensor.daylight_remaining_hm
       - type: entities
         title: Lights
         show_header_toggle: false
         entities:
           - input_number.kitchen_brightness
-          - group.kitchenlights
           - switch.furnace_switch_9
           - switch.lamp
           - switch.bathroom_light
           - switch.bathroom_fan
           - input_number.bed_brightness
       - type: entities
+        title: Kitchen Lights
+        show_header_toggle: true
+        entities:
+          - light.front_kitchen_6
+          - light.back_kitchen_7
+      - type: entities
         title: Couch Lights
         show_header_toggle: false
         entities:
           - input_select.couch_color
-      - type: conditional
-        conditions:
-          - entity: light.couch
-            state: "on"
-        card:
-          type: entities
-          title: Couch Colors
-          entities:
-            - input_text.couch_color
-            - input_number.couch_r
-            - input_number.couch_g
-            - input_number.couch_b
+      - type: entities
+        title: Couch Colors
+        show_header_toggle: false
+        entities:
+          - input_text.couch_color
+          - input_number.couch_r
+          - input_number.couch_g
+          - input_number.couch_b
       - type: entities
         title: Lock
         show_header_toggle: true
@@ -76,7 +76,6 @@ views:
           - input_boolean.notifications_on
           - input_boolean.presence_automations
           - input_boolean.autolock
-          - switch.yi_power
           - input_boolean.parents_lock_code
           - input_boolean.butters_home
   - title: Media Players
@@ -89,6 +88,12 @@ views:
           - switch.tv_power
           - scene.theater_mode
           - input_text.gh_speak
+      - type: entities
+        title: TV Input
+        show_header_toggle: false
+        entities:
+          - script.tv_input_chromecast
+          - script.tv_input_playstation
       - type: media-control
         entity: media_player.kitchen_home
       - type: media-control
@@ -110,6 +115,8 @@ views:
           - sensor.tautulli_transcode
           - sensor.watching_plex
       - type: media-control
+        entity: media_player.plex_pixel_2_xl
+      - type: media-control
         entity: media_player.plex_desktop
       - type: entities
         title: Downloaders
@@ -126,19 +133,6 @@ views:
           - sensor.desktop_disk_space_f
           - sensor.desktop_disk_space_i
           - sensor.desktop_disk_space_j
-  - title: Scenes
-    icon: mdi:home-automation
-    cards:
-      - type: entities
-        entities:
-          - scene.theater_mode
-          - scene.tv_off
-          - scene.kitchen_on
-          - scene.kitchen_off
-          - scene.lights_on
-          - scene.lights_off
-          - script.leave_touch
-          - script.arrive_touch
   - title: FitBit
     icon: mdi:heart-pulse
     cards:
@@ -199,6 +193,8 @@ views:
           - sensor.dark_sky_visibility
           - sensor.dark_sky_cloud_coverage
           - sensor.dark_sky_moon_phase
+          - sensor.allergy_index_today
+          - sensor.allergy_index_tomorrow
           - sensor.dark_sky_summary
           - sensor.dark_sky_minutely_summary
           - sensor.dark_sky_hourly_summary
@@ -224,6 +220,7 @@ views:
           - sensor.pi_zero_cpu_temp
           - sensor.pi_zero_cpu_usage
           - sensor.pi_zero_disk_usage
+          - sensor.pi_zero_uptime
       - type: entities
         title: System Control
         show_header_toggle: false
@@ -238,16 +235,21 @@ views:
           - sensor.lock_battery_level
           - input_boolean.temp_lock_code_set
           - input_text.lock_code_temp
-          - script.clear_lock_code
-      - type: glance
+      - type: entities
         title: Device Trackers
         show_header_toggle: false
         entities:
           - device_tracker.neil
-          - device_tracker.neil_wifi
           - device_tracker.neil_pixel_tasker
-          - binary_sensor.pi_zero_presence_neil_home
-          - device_tracker.tile_a8aa8037bf760498
+          - device_tracker.monitor_neil
+          - device_tracker.butters
           - device_tracker.gina
-          - device_tracker.dad
-          - device_tracker.mom
+          - device_tracker.parents
+      - type: entities
+        title: Calendar List
+        show_header_toggle: false
+        entities:
+          - sensor.template_calendar_events
+          - sensor.template_calendar_family_birthdays
+          - sensor.template_calendar_friend_birthdays
+          - sensor.template_calendar_facebook_events

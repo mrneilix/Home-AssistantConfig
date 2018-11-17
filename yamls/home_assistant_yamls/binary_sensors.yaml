@@ -18,10 +18,10 @@
           - device_tracker.mom
           - device_tracker.gina
 
-      neil_lock_code:
-        friendly_name: Neil Lock Code
+      lock_code_entered:
+        friendly_name: Lock Code Entered
         value_template: >-
-          {% if is_state("sensor.last_lock_code_name", "Neil") and (as_timestamp(now()) - as_timestamp(states.sensor.last_lock_code_name.last_updated) < 600 ) and states('sensor.uptime') | int > 10 %}
+          {% if (as_timestamp(now()) - as_timestamp(states.sensor.last_lock_code_name.last_updated) < 600 ) and states('sensor.uptime') | int > 10 %}
             True
           {% else %}
             False
@@ -29,11 +29,24 @@
         entity_id:
           - sensor.last_lock_code_name
           - sensor.dark_sky_apparent_temperature
+
+      neil_lock_code:
+        friendly_name: Neil Lock Code
+        value_template: >-
+          {% if is_state("sensor.last_lock_code_name", "Neil") and is_state("binary_sensor.lock_code_entered", "on") %}
+            True
+          {% else %}
+            False
+          {% endif %}
+        entity_id:
+          - sensor.last_lock_code_name
+          - sensor.dark_sky_apparent_temperature
+          - binary_sensor.lock_code_entered
 
       parents_code:
         friendly_name: Parents Lock Code
         value_template: >-
-          {% if is_state("sensor.last_lock_code_name", "Parents") and (as_timestamp(now()) - as_timestamp(states.sensor.last_lock_code_name.last_updated) < 600 ) and states('sensor.uptime') | int > 10 %}
+          {% if is_state("sensor.last_lock_code_name", "Parents") and is_state("binary_sensor.lock_code_entered", "on") %}
             True
           {% else %}
             False
@@ -41,11 +54,12 @@
         entity_id:
           - sensor.last_lock_code_name
           - sensor.dark_sky_apparent_temperature
+          - binary_sensor.lock_code_entered
 
       gina_code:
         friendly_name: Parents Lock Code
         value_template: >-
-          {% if is_state("sensor.last_lock_code_name", "Gina") and (as_timestamp(now()) - as_timestamp(states.sensor.last_lock_code_name.last_updated) < 600 ) and states('sensor.uptime') | int > 10 %}
+          {% if is_state("sensor.last_lock_code_name", "Gina") and is_state("binary_sensor.lock_code_entered", "on") %}
             True
           {% else %}
             False
@@ -53,6 +67,7 @@
         entity_id:
           - sensor.last_lock_code_name
           - sensor.dark_sky_apparent_temperature
+          - binary_sensor.lock_code_entered
 
       presence_mqtt_pixel:
         friendly_name: Neil MQTT Pixel

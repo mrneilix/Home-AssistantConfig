@@ -78,7 +78,9 @@ couch_light_input_select_select_option:
       entity_id: input_select.couch_color
       data_template:
         option: >
-          {% if is_state('sensor.couch_light_color_name', 'White') %}
+          {% if is_state('light.couch', 'off') or is_state('light.couch', 'unavailable') or is_state('sensor.couch_light_color_name', 'Disable') %}
+            Disable
+          {%-elif is_state('sensor.couch_light_color_name', 'White') %}
             White
           {%-elif is_state('sensor.couch_light_color_name', 'Soft White') %}
             Soft White
@@ -115,7 +117,9 @@ couch_light_trigger_scene:
     - service: scene.turn_on
       data_template:
         entity_id: >
-          {% if is_state('input_select.couch_color', 'White') %}
+          {% if is_state('input_select.couch_color', 'Disable') %}
+            scene.couch_turn_off
+          {%-elif is_state('input_select.couch_color', 'White') %}
             scene.couch_white
           {%-elif is_state('input_select.couch_color', 'Soft White') %}
             scene.couch_soft_white
@@ -146,22 +150,6 @@ couch_light_update_input_numbers:
       data_template:
         entity_id: input_number.couch_b
         value: '{{ states.sensor.couch_blue.state | int }}'
-
-couch_light_off:
-  alias: Couch Off
-  sequence:
-    - service: input_boolean.turn_on
-      data:
-        entity_id: input_boolean.couch_light_script_running
-    - service: scene.turn_on
-      entity_id: scene.couch_turn_off
-    - service: script.couch_light_update_input_numbers
-    - delay: 00:00:01
-    - service: script.couch_light_update_input_text
-    - delay: 00:00:02
-    - service: input_boolean.turn_off
-      data:
-        entity_id: input_boolean.couch_light_script_running
 
 couch_light_update_input_text:
   alias: Couch Light Update Input Text

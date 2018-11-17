@@ -11,42 +11,8 @@
     - condition: state
       entity_id: input_boolean.couch_light_script_running
       state: 'off'
-    - condition: template
-      value_template: "{{ not is_state('input_select.couch_color', 'Disable') }}"
   action:
     - service: script.couch_light_scripts_trigger
-
-- id: couch_light_off
-  alias: 'Couch Light Off'
-  initial_state: false
-  trigger:
-  - platform: state
-    entity_id: sensor.couch_light_color_name
-    to: 'Disable'
-  - platform: state
-    entity_id: sensor.couch_light_color
-    to: '(0,0,0)'
-  - platform: state
-    entity_id: light.couch
-    to: 'off'
-  - platform: state
-    entity_id: input_text.couch_color
-    to: 'Disable'
-  - platform: state
-    entity_id: input_text.couch_color
-    to: 'disable'
-  - platform: state
-    entity_id: input_select.couch_color
-    to: 'Disable'
-  condition:
-    - condition: state
-      entity_id: input_boolean.restart_complete
-      state: 'on'
-    - condition: state
-      entity_id: input_boolean.couch_light_script_running
-      state: 'off'
-  action:
-    service: script.couch_light_off
 
 - id: couch_color_slider
   alias: 'Couch Color Slider'
@@ -59,8 +25,6 @@
   - platform: state
     entity_id: input_number.couch_b
   condition:
-    - condition: template
-      value_template: "{{ not is_state('input_select.couch_color', 'Disable') }}"
     - condition: state
       entity_id: input_boolean.restart_complete
       state: 'on'
@@ -70,12 +34,12 @@
   action:
     service: script.couch_color_input_numbers
 
-- id: couch_lights_on
-  alias: 'Couch Lights On'
+- id: couch_lights_sensor_changed
+  alias: 'Couch Lights Sensor Changed'
   initial_state: false
   trigger:
-    platform: template
-    value_template: "{{ not is_state('sensor.couch_light_color_name', 'Disable') }}"
+    platform: state
+    entity_id: sensor.couch_light_color_name
   condition:
     - condition: state
       entity_id: input_boolean.restart_complete
@@ -96,13 +60,9 @@
     - platform: state
       entity_id: input_text.couch_color
   condition:
-    - condition: template
-      value_template: "{{ not is_state('input_select.couch_color', 'Disable') }}"
     - condition: state
       entity_id: input_boolean.restart_complete
       state: 'on'
-    - condition: template
-      value_template: "{{ not is_state('input_text.couch_color', 'Disable') or not is_state('input_text.couch_color', 'disable') or not is_state('input_text.couch_color', 'Custom') or not is_state('sensor.couch_light_color', '(0,0,0)')  }}"
     - condition: state
       entity_id: input_boolean.couch_light_script_running
       state: 'off'

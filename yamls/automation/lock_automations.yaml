@@ -115,7 +115,8 @@
   initial_state: false
   trigger:
     - platform: state
-      entity_id: sensor.last_lock_code_used
+      entity_id: binary_sensor.lock_code_entered
+      to: 'on'
   condition:
     - condition: state
       entity_id: input_boolean.restart_complete
@@ -123,8 +124,9 @@
     - condition: state
       entity_id: input_boolean.presence_automations
       state: 'on'
-    - condition: template
-      value_template: "{{ not is_state('sensor.last_lock_code_name', 'Neil') and not is_state('sensor.last_lock_code_name', 'Gina') and not is_state('sensor.last_lock_code_name', 'Parents')}}"
+    - condition: state
+      entity_id: binary_sensor.anyone_home
+      state: 'off'
   action:
     - service: script.lock_code_entered_not_family
 
