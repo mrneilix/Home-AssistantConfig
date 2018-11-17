@@ -6,3 +6,8 @@
       192.168.1.119:
         name: bed
         mode: "rgb"
+  - platform: group
+    name: Kitchen
+    entities:
+      - light.back_kitchen_7
+      - light.front_kitchen_6

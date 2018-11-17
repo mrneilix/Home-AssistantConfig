@@ -15,7 +15,7 @@
       to: 'on'
       from: 'off'
     - platform: state
-      entity_id: group.kitchenlights
+      entity_id: light.kitchen
       to: 'on'
       from: 'off'
   condition:
@@ -29,7 +29,7 @@
       entity_id: input_boolean.presence_running
       state: 'off'
   action:
-    - service: script.kitchen_light_on
+    - service: script.kitchen_lights_on
 
 - id: kitchen_lights_off
   alias: 'Kitchen Lights Off'
@@ -48,12 +48,9 @@
       to: 'off'
       from: 'on'
     - platform: state
-      entity_id: group.kitchenlights
+      entity_id: light.kitchen
       to: 'off'
       from: 'on'
-    - platform: numeric_state
-      entity_id: input_number.kitchen_brightness
-      below: 2
   condition:
     - condition: state
       entity_id: input_boolean.restart_complete
@@ -65,45 +62,7 @@
       entity_id: input_boolean.presence_running
       state: 'off'
   action:
-    - service: script.kitchen_light_off
-
-- id: kitchen_light_set_brightness_slider
-  alias: 'Kitchen Light Set Brightness Slider'
-  initial_state: false
-  trigger:
-    platform: state
-    entity_id: sensor.kitchen_brightness_percent
-  condition:
-    - condition: state
-      entity_id: input_boolean.restart_complete
-      state: 'on'
-    - condition: state
-      entity_id: input_boolean.kitchen_light_script_running
-      state: 'off'
-    - condition: state
-      entity_id: input_boolean.presence_running
-      state: 'off'
-  action:
-    - service: script.kitchen_light_set_input_number
-
-- id: kitchen_light_set_brightness
-  alias: 'Kitchen Light Set Brightness'
-  initial_state: false
-  trigger:
-    platform: state
-    entity_id: input_number.kitchen_brightness
-  condition:
-    - condition: state
-      entity_id: input_boolean.restart_complete
-      state: 'on'
-    - condition: state
-      entity_id: input_boolean.kitchen_light_script_running
-      state: 'off'
-    - condition: state
-      entity_id: input_boolean.presence_running
-      state: 'off'
-  action:
-    - service: script.kitchen_lights_set_brightness
+    - service: script.kitchen_lights_off
 
 - id: kitchen_lights_on_when_dark_out
   alias: 'Kitchen Lights On When Dark Out'
@@ -132,8 +91,8 @@
       after: '08:00:00'
       before: '22:00:00'
   action:
-    - service: script.kitchen_light_on
-        
+    - service: script.kitchen_lights_on
+
 - id: bathroom_fan_off_after_1_hour
   alias: 'Bathroom Fan Off After 1 Hour'
   initial_state: false

@@ -65,34 +65,20 @@
 ### Other Lighting Scenes ###
 - name: kitchen_lights_on
   entities:
-    light.front_kitchen_6:
+    light.kitchen::
       state: on
       brightness: 255
       transition: 3
-    light.back_kitchen_7:
-      state: on
-      brightness: 255
-      transition: 3
-    group.kitchenlights:
-      state: on
 
 - name: kitchen_lights_off
   entities:
-    light.front_kitchen_6:
+    light.kitchen:
       state: off
       transition: 3
-    light.back_kitchen_7:
-      state: off
-      transition: 3
-    group.kitchenlights:
-      state: off
 
 - name: lights_Off
   entities:
-    light.front_kitchen_6:
-      state: off
-      transition: 3
-    light.back_kitchen_7:
+    light.kitchen:
       state: off
       transition: 3
     switch.furnace_switch_9: off
@@ -104,11 +90,7 @@
 
 - name: theater_mode
   entities:
-    light.front_kitchen_6:
-      state: on
-      brightness: 127
-      transition: 3
-    light.back_kitchen_7:
+    light.kitchen:
       state: on
       brightness: 127
       transition: 3

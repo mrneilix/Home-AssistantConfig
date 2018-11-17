@@ -8,16 +8,11 @@
     - scene
     - input_boolean
   entity_config:
-    light.front_kitchen_6:
+    light.kitchen:
       room: Kitchen
       expose: true
       aliases:
-        - Front Kitchen
-    light.back_kitchen_7:
-      room: Kitchen
-      expose: true
-      aliases:
-        - Back Kitchen
+        - Kitchen
     light.couch:
       room: Living Room
       expose: true

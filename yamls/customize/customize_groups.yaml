@@ -32,12 +32,6 @@ group.media_switches:
 group.thermostat:
   entity_picture: /local/thermostat.jpg
   friendly_name: Thermostat
-group.kitchenlights:
-  entity_picture: /local/kitchen.jpg
-  friendly_name: Kitchen Lights
-group.kitchenlightsdimmer:
-  friendly_name: Kitchen Lights Dimmer
-  icon: mdi:lightbulb
 group.alllights:
   icon: mdi:lightbulb
   friendly_name: Lights

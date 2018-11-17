@@ -7,7 +7,6 @@ startup_scripts:
     - service: shell_command.restart_tv_power_status
     - service: script.startup_input_booleans
     - service: script.startup_couch_colors
-    - service: script.kitchen_light_set_input_number
     - service: script.bed_light_adjust_input_number
     - service: rest_command.clear_lock_code
     - service: script.thermostat_update_inputs

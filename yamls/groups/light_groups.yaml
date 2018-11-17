@@ -1,14 +1,8 @@
 #### Lights ####
-kitchenlightsdimmer:
-  control: hidden
-  entities:
-  - input_number.kitchen_brightness
-  - group.kitchenlights
 alllights:
   control: hidden
   entities:
-  - input_number.kitchen_brightness
-  - group.kitchenlights
+  - light.kitchen
   - switch.furnace_switch_9
   - switch.lamp
   - switch.bathroom_light

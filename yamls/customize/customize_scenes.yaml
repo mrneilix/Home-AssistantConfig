@@ -3,30 +3,15 @@
 scene.lights_on:
   icon: mdi:lightbulb
   friendly_name: Lights On
-  google_assistant: true
-  google_assistant_type: scene
-  google_assistant_name: Lights On
-  aliases:
-    - Lights On
+
 scene.lights_off:
   icon: mdi:lightbulb-outline
   friendly_name: Lights Off
-  google_assistant: true
-  google_assistant_type: scene
-  google_assistant_name: Lights Off
-  aliases:
-    - Lights Off
-    - Good Night
-    - Night Night
+
 scene.theater_mode:
   icon: mdi:movie
   friendly_name: Theater Mode
-  google_assistant: true
-  google_assistant_type: scene
-  google_assistant_name: Theater Mode
-  aliases:
-    - Theater Mode
-    - TV mode
+
 scene.leave:
   icon: mdi:walk
   friendly_name: Leave
