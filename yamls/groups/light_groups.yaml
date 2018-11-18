@@ -7,7 +7,7 @@ alllights:
   - switch.lamp
   - switch.bathroom_light
   - switch.bathroom_fan
-  - input_number.bed_brightness
+  - light.bed
 livingroomlights:
   control: hidden
   entities:
@@ -17,8 +17,6 @@ livingroomlights:
 kitchenlights: light.front_kitchen_6, light.back_kitchen_7
 
 bathroom: switch.bathroom_light, switch.bathroom_fan
-
-switches: switch.bathroom_light, switch.bathroom_fan, switch.lamp, switch.furnace_switch_9, switch.space_heater_8
 
 couch_lights:
   control: hidden

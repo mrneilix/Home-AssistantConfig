@@ -13,18 +13,17 @@ light.kitchen:
     pin: true
     off_when_min: true
     report_when_not_changed: false
-light.front_kitchen_6:
-  entity_picture: /local/kitchen-light.png
-  friendly_name: Front Kitchen
-
-light.back_kitchen_7:
-  entity_picture: /local/kitchen-light.png
-  friendly_name: Back Kitchen
-
-light.couch:
-  icon: mdi:seat-recline-normal
-  friendly_name: Couch
 
 light.bed:
-  icon: mdi:hotel
+  entity_picture: /local/bed.jpg
   friendly_name: Bed
+  custom_ui_state_card: state-card-custom-ui
+  state_card_mode: single-line
+  stretch_slider: true
+  hide_control: false
+  show_last_changed: false
+  slider_theme:
+    min: 0
+    max: 255
+    pin: true
+    off_when_min: true

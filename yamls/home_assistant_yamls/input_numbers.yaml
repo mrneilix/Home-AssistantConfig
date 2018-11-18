@@ -1,9 +1,3 @@
-bed_brightness:
-  name: Bed Dimmer
-  min: 0
-  max: 100
-  step: 1
-  mode: slider
 target_temp:
   name: Target Temperature
   min: 60

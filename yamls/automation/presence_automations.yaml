@@ -144,22 +144,3 @@
       state: 'on'
   action:
     - service: shell_command.desktop_screen_off
-    
-- id: presence_get_phone_location_tasker
-  alias: 'Presence Get Phone Location Tasker'
-  initial_state: false
-  trigger:
-    - platform: time
-      minutes: '/30'
-      seconds: 00
-  condition:
-    - condition: state
-      entity_id: input_boolean.restart_complete
-      state: 'on'
-    - condition: state
-      entity_id: device_tracker.neil
-      state: 'not_home'
-  action:
-    - service: joaoapps_join.pixel_send_tasker
-      data:
-        command: "get_phone_location"

@@ -1,10 +1,6 @@
   restart_complete:
     initial: off
-  kitchen_light_script_running:
-    initial: off
   couch_light_script_running:
-    initial: off
-  bed_light_script_running:
     initial: off
   presence_automations:
     icon: mdi:home

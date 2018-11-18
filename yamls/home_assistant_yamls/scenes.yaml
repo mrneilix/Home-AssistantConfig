@@ -65,7 +65,7 @@
 ### Other Lighting Scenes ###
 - name: kitchen_lights_on
   entities:
-    light.kitchen::
+    light.kitchen:
       state: on
       brightness: 255
       transition: 3
@@ -87,6 +87,7 @@
     light.bed: off
     switch.bathroom_light: off
     switch.bathroom_fan: off
+    switch.space_heater_8: off
 
 - name: theater_mode
   entities:

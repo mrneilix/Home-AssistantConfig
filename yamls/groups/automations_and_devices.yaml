@@ -5,9 +5,9 @@ auto:
   - input_boolean.weather_notifications
   - input_boolean.notifications_on
   - input_boolean.presence_automations
+  - input_boolean.parents_lock_code
   - input_boolean.autolock
   - switch.yi_power
-  - input_boolean.parents_lock_code
   - input_boolean.butters_home
 #### Devices ####
 thermostat: climate.thermostat, input_number.target_temp, input_select.thermostat_mode

@@ -8,20 +8,10 @@ input_number.couch_g:
 input_number.couch_b:
   entity_picture: /local/couch_lights/couch_blue.jpg
   friendly_name: Couch Blue
-input_number.couch_brightness:
-  icon: mdi:seat-recline-normal
-  friendly_name: Couch Brightness
-
-input_number.bed_brightness:
-  icon: mdi:hotel
-  friendly_name: Bed Brightness
 input_number.target_temp:
   icon: mdi:thermometer
   friendly_name: Set Temperature
-input_number.kitchen_brightness:
-  entity_picture: /local/dimmer.png
-  friendly_name: Kitchen Lights Dimmer
-  
+
 ### INPUT SELECT ###
 input_select.thermostat_mode:
   icon: mdi:air-conditioner
@@ -29,7 +19,6 @@ input_select.thermostat_mode:
 input_select.couch_color:
   entity_picture: /local/couch_lights/couch.jpg
   friendly_name: Couch Color
-
 
 ### INPUT TEXT ###
 input_text.couch_color:

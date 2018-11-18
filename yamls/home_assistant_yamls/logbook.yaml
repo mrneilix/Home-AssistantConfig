@@ -36,7 +36,6 @@
       - automation.weather_notify_rain
       - automation.weather_notify_snow
       - automation.tv_off_fire_tablet_auto_brightness_on
-      - automation.presence_get_phone_location_tasker
       - automation.couch_group_toggle_visibility
       - automation.tv_input_group_toggle_visible
       - automation.presence_turn_desktop_display_off
@@ -51,8 +50,5 @@
       - input_boolean.restart_complete
       - script.thermostat_set_home_morning
       - script.thermostat_set_home_not_morning
-      - script.thermostat_update_inputs
-      - script.thermostat_temp_everyone_away
-      - script.thermostat_set_temp_only_butters_home
       - script.couch_group_toggle_visibility
       - script.tv_input_group_toggle_visible
