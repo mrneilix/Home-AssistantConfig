@@ -59,10 +59,7 @@ presence_leave:
       data:
         entity_id: input_boolean.parents_lock_code
     - service: scene.turn_on
-      entity_id: scene.lights_Off
-    - service: switch.turn_on
-      entity_id: switch.yi_power
-    - service: script.tv_off
+      entity_id: scene.leave
     - service: joaoapps_join.fire_send_tasker
       data:
         command: leave
@@ -129,7 +126,7 @@ presence_gina_home:
           badge: '/local/lock-badge.png'
 
 presence_tasker_phone_location:
-  alias: Presence Parents Home
+  alias: Presence Tasker Phone Location
   sequence:
     - service: joaoapps_join.pixel_send_tasker
       data:

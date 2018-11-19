@@ -14,23 +14,18 @@
       entity_id: switch.furnace_switch_9
       to: 'on'
       from: 'off'
-    - platform: state
-      entity_id: light.kitchen
-      to: 'on'
-      from: 'off'
   condition:
     - condition: state
       entity_id: input_boolean.restart_complete
       state: 'on'
     - condition: state
-      entity_id: input_boolean.kitchen_light_script_running
-      state: 'off'
-    - condition: state
       entity_id: input_boolean.presence_running
       state: 'off'
+    - condition: state
+      entity_id: input_boolean.kitchen_lights_running
+      state: 'off'
   action:
-    - service: light.turn_on
-      entity_id: light.kitchen
+    - service: script.kitchen_lights_on
 
 - id: kitchen_lights_off
   alias: 'Kitchen Lights Off'
@@ -48,23 +43,18 @@
       entity_id: switch.furnace_switch_9
       to: 'off'
       from: 'on'
-    - platform: state
-      entity_id: light.kitchen
-      to: 'off'
-      from: 'on'
   condition:
     - condition: state
       entity_id: input_boolean.restart_complete
       state: 'on'
     - condition: state
-      entity_id: input_boolean.kitchen_light_script_running
-      state: 'off'
-    - condition: state
       entity_id: input_boolean.presence_running
       state: 'off'
+    - condition: state
+      entity_id: input_boolean.kitchen_lights_running
+      state: 'off'
   action:
-    - service: light.turn_off
-      entity_id: light.kitchen
+    - service: script.kitchen_lights_off
 
 - id: kitchen_lights_on_when_dark_out
   alias: 'Kitchen Lights On When Dark Out'
@@ -78,10 +68,7 @@
       entity_id: input_boolean.restart_complete
       state: 'on'
     - condition: state
-      entity_id: group.kitchenlights
-      state: 'off'  
-    - condition: state
-      entity_id: input_boolean.kitchen_light_script_running
+      entity_id: light.kitchen
       state: 'off'
     - condition: state
       entity_id: input_boolean.presence_running
@@ -92,9 +79,37 @@
     - condition: time
       after: '08:00:00'
       before: '22:00:00'
+    - condition: state
+      entity_id: input_boolean.kitchen_lights_running
+      state: 'off'
   action:
-    - service: light.turn_on
+    - service: script.kitchen_lights_on
+
+- id: kitchen_lights_off_when_not_dark_out
+  alias: 'Kitchen Lights Off When Not Dark Out'
+  initial_state: false
+  trigger:
+    platform: state
+    entity_id: binary_sensor.dark_out
+    to: 'off'
+  condition:
+    - condition: state
+      entity_id: input_boolean.restart_complete
+      state: 'on'
+    - condition: state
       entity_id: light.kitchen
+      state: 'on'
+    - condition: state
+      entity_id: input_boolean.presence_running
+      state: 'off'
+    - condition: state
+      entity_id: binary_sensor.anyone_home
+      state: 'on'
+    - condition: state
+      entity_id: input_boolean.kitchen_lights_running
+      state: 'off'
+  action:
+    - service: script.kitchen_lights_off
 
 - id: bathroom_fan_off_after_1_hour
   alias: 'Bathroom Fan Off After 1 Hour'

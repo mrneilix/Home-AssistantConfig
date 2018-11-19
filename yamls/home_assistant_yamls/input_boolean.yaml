@@ -31,3 +31,5 @@
     name: Butters
   config_updated:
     name: Config Updated
+  kitchen_lights_running:
+    initial: off

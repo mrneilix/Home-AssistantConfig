@@ -3,7 +3,12 @@ tv_on:
   sequence:
     - service: shell_command.stop_tv_power_status
     - delay: 00:00:01
-    - service: shell_command.tv_on
+    # - service: shell_command.tv_on
+    - service: mqtt.publish
+      data_template:
+        topic: 'frame/monitor'
+        payload: 'turn_monitor_on'
+        retain: false
     - delay: 00:00:10
     - service: shell_command.start_tv_power_status
 
@@ -14,7 +19,12 @@ tv_off:
     - delay: 00:00:01
     - service: media_player.turn_off
       entity_id: media_player.living_room_tv
-    - service: shell_command.tv_off
+    # - service: shell_command.tv_off
+    - service: mqtt.publish
+      data_template:
+        topic: 'frame/monitor'
+        payload: 'turn_monitor_off'
+        retain: false
     - delay: 00:00:10
     - service: shell_command.start_tv_power_status
 

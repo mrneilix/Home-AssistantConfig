@@ -97,11 +97,21 @@ couch_light_input_select_select_option:
           {% endif %}
 
 couch_light_scripts_trigger:
-  alias: Couch Light Scripts Trigger
+  alias: Couch Light Script Trigger
   sequence:
     - service: input_boolean.turn_on
       data:
         entity_id: input_boolean.couch_light_script_running
+    - service_template: >
+          {% if is_state('light.couch', 'on') %}
+            script.couch_light_scripts_trigger_light_already_on
+          {% else %}
+            script.couch_light_scripts_trigger_light_already_off
+          {% endif %}
+
+couch_light_scripts_trigger_light_already_on:
+  alias: Couch Light Scripts Trigger Light Already On
+  sequence:
     - service: script.couch_light_trigger_scene
     - delay: 00:00:01
     - service: script.couch_light_update_input_numbers
@@ -110,6 +120,12 @@ couch_light_scripts_trigger:
     - service: input_boolean.turn_off
       data:
         entity_id: input_boolean.couch_light_script_running
+
+couch_light_scripts_trigger_light_already_off:
+  alias: Couch Light Scripts Trigger Light Already On
+  sequence:
+    - delay: 00:00:02
+    - service: script.couch_light_scripts_trigger_light_already_on
 
 couch_light_trigger_scene:
   alias: Couch Light Trigger Scene

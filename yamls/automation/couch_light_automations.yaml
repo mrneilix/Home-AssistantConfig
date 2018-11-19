@@ -1,4 +1,4 @@
-- id: couch_lights_bulb_color
+- id: couch_lights_bulb_color_light_already_on
   alias: 'Couch Lights Bulb Color'
   initial_state: false
   trigger:

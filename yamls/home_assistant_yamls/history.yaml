@@ -8,6 +8,7 @@
       - binary_sensor
       - input_boolean
     entities:
+      - light.kitchen
       # Weather
       - sensor.thermostatmode
       - sensor.current_set_temp
@@ -61,11 +62,10 @@
     entities:
       - input_boolean.notifications_on
       - input_boolean.couch_light_script_running
-      - input_boolean.bed_light_script_running
-      - input_boolean.kitchen_light_script_running
       - input_boolean.presence_automations
       - input_boolean.presence_running
       - input_boolean.restart_complete
       - input_boolean.weather_dont_renotify
+      - input_boolean.kitchen_lights_running
       - binary_sensor.vera_up
       - binary_sensor.anyone_home_but_neil

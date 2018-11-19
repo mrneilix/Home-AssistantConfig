@@ -47,7 +47,7 @@ startup_input_booleans:
       data:
         entity_id: input_boolean.notifications_on
     - service_template: > 
-          {%- if now().hour >= 8 and now().hour < 23 and is_state('device_tracker.neil', 'home')%}
+          {%- if now().hour >= 8 and now().hour < 23 and is_state('device_tracker.neil', 'home') %}
             input_boolean.turn_on
           {% else %}
             input_boolean.turn_off
@@ -82,7 +82,7 @@ startup_neil_home:
     - service: switch.turn_off
       entity_id: switch.yi_power
     - service_template: >
-          {% if is_state('binary_sensor.dark_out', 'on') %}
+          {% if is_state('binary_sensor.dark_out', 'on') and now().hour >= 8 and now().hour < 23 %}
             script.presence_arrive_dark_out
           {% else %}
             script.thermostat_home_set_temp

@@ -9,6 +9,7 @@
       - input_select
       - lock
       - script
+      - light
     entities:
       # TV Power
       - sensor.tv_power
@@ -41,13 +42,13 @@
       - automation.presence_turn_desktop_display_off
       - automation.calendar_family_birthday_notify
       - automation.calendar_friend_birthday_notify
+      - automation.tv_power_monitor_restart
       - input_boolean.weather_dont_renotify
       - input_boolean.away
-      - input_boolean.bed_light_script_running
       - input_boolean.couch_light_script_running
       - input_boolean.presence_running
-      - input_boolean.kitchen_light_script_running
       - input_boolean.restart_complete
+      - input_boolean.kitchen_lights_running
       - script.thermostat_set_home_morning
       - script.thermostat_set_home_not_morning
       - script.couch_group_toggle_visibility
