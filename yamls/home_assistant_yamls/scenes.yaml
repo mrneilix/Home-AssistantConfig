@@ -81,10 +81,12 @@
     light.kitchen:
       state: off
       transition: 3
-    switch.furnace_switch_9: off
-    switch.lamp: off
     light.couch: off
     light.bed: off
+- name: switches_off
+  entities:
+    switch.furnace_switch_9: off
+    switch.lamp: off
     switch.bathroom_light: off
     switch.bathroom_fan: off
     switch.space_heater_8: off
@@ -100,17 +102,11 @@
       rgb_color: [0,0,100]
       transition: 1
 
-- name: leave
+- name: leave_switches_off
   entities:
-    light.kitchen:
-      state: off
-      transition: 3
     switch.furnace_switch_9: off
     switch.yi_power: on
     switch.lamp: off
-    light.couch: off
-    light.bed: off
     switch.bathroom_light: off
     switch.bathroom_fan: off
-    switch.tv_power: off
     switch.space_heater_8: off

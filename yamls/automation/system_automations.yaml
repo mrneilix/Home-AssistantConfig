@@ -85,16 +85,7 @@
     - service: shell_command.reboot_pi_zero
     - delay: 00:00:60
     - service: hassio.host_reboot
-    
-- id: system_restart_tv_power_status
-  alias: 'System Restart TV Power Status'
-  initial_state: false
-  trigger:
-    platform: time
-    at: '04:30:00'
-  action:
-    - service: shell_command.restart_tv_power_status
-    
+
 - id: system_update_input_boolean_for_config_backup
   alias: 'System Update Input Boolean for Config Backup'
   initial_state: false

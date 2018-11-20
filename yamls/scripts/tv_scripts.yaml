@@ -1,53 +1,25 @@
 tv_on:
   alias: TV On
   sequence:
-    - service: shell_command.stop_tv_power_status
-    - delay: 00:00:01
-    # - service: shell_command.tv_on
-    - service: mqtt.publish
-      data_template:
-        topic: 'frame/monitor'
-        payload: 'turn_monitor_on'
-        retain: false
-    - delay: 00:00:10
-    - service: shell_command.start_tv_power_status
+    - service: switch.turn_on
+      entity_id: switch.tv_power
 
 tv_off:
   alias: TV Off
   sequence:
-    - service: shell_command.stop_tv_power_status
-    - delay: 00:00:01
     - service: media_player.turn_off
       entity_id: media_player.living_room_tv
-    # - service: shell_command.tv_off
-    - service: mqtt.publish
-      data_template:
-        topic: 'frame/monitor'
-        payload: 'turn_monitor_off'
-        retain: false
     - delay: 00:00:10
-    - service: shell_command.start_tv_power_status
+    - shell_command.tv_off
 
 tv_input_chromecast:
   alias: TV Input Chromecast
   sequence:
-    - service_template: >
-          {%- if is_state("sensor.tv_power", "on") %}
-            script.do_nothing
-          {% else %}
-            script.tv_on
-          {% endif %}
     - service: shell_command.tv_input_chromecast
 
 tv_input_playstation:
   alias: TV Input PS4
   sequence:
-    - service_template: >
-          {%- if is_state("sensor.tv_power", "on") %}
-            script.do_nothing
-          {% else %}
-            script.tv_on
-          {% endif %}
     - service: shell_command.tv_input_ps4
 
 tv_input_group_toggle_visible:

@@ -59,10 +59,13 @@ presence_leave:
       data:
         entity_id: input_boolean.parents_lock_code
     - service: scene.turn_on
-      entity_id: scene.leave
+      entity_id: scene.lights_off
+    - service: scene.turn_on
+      entity_id: scene.leave_switches_off
     - service: joaoapps_join.fire_send_tasker
       data:
         command: leave
+    - service: script.tv_off
     - service: script.presence_tasker_phone_location
     - service: input_boolean.turn_on
       data:

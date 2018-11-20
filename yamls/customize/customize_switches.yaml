@@ -18,3 +18,7 @@ switch.bathroom_fan:
 switch.yi_power:
   friendly_name: Yi Cam Power
   icon: mdi:webcam
+
+switch.tv_power:
+  friendly_name: TV Power
+  icon: mdi:television-classic
