@@ -85,8 +85,8 @@
       entity_id: input_boolean.notifications_on
       state: 'on'
     - condition: state
-      entity_id: input_boolean.away
-      state: 'off'
+      entity_id: device_tracker.neil
+      state: 'home'
   action:
     - service: notify.html5
       data:

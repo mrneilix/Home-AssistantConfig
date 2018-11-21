@@ -65,7 +65,12 @@ presence_leave:
     - service: joaoapps_join.fire_send_tasker
       data:
         command: leave
-    - service: script.tv_off
+    - service_template: >
+          {% if is_state('switch.tv_power', 'on') %}
+            script.tv_off
+          {% else %}
+            script.do_nothing
+          {% endif %}
     - service: script.presence_tasker_phone_location
     - service: input_boolean.turn_on
       data:
