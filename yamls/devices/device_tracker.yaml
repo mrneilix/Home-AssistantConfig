@@ -33,7 +33,7 @@
     - platform: composite
       name: butters
       entity_id:
-        - device_tracker.tile_a8aa8037bf760498
+        - device_tracker.tile_ba7ceb56d53379ac
         - binary_sensor.butters_tile
     - platform: composite
       name: parents
