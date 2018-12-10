@@ -75,9 +75,9 @@
   initial_state: false
   trigger:
     - platform: state
-      entity_id: switch.tv_power
+      entity_id: media_player.living_room_tv
       from: 'off'
-      to: 'on'
+      to: 'playing'
       for:
         seconds: 60
   condition:

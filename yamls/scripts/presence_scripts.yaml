@@ -5,7 +5,7 @@ presence_arrive:
       data:
         entity_id: input_boolean.presence_running
     - service: lock.unlock
-      entity_id: lock.schlage_deadbolt_5
+      entity_id: lock.schlage_deadbolt_41
     - service: input_boolean.turn_off
       data:
         entity_id: input_boolean.away
@@ -31,7 +31,7 @@ presence_someone_not_neil_home:
       data:
         entity_id: input_boolean.presence_running
     - service: lock.unlock
-      entity_id: lock.schlage_deadbolt_5
+      entity_id: lock.schlage_deadbolt_41
     - service_template: >
           {% if is_state('binary_sensor.dark_out', 'on') %}
             script.presence_arrive_dark_out

@@ -3,7 +3,7 @@ startup_scripts:
   sequence:
     - service: sensor.update_speedtest
     - service: lock.lock
-      entity_id: lock.schlage_deadbolt_5
+      entity_id: lock.schlage_deadbolt_41
     - service: script.startup_input_booleans
     - service: script.startup_couch_colors
     - service: rest_command.clear_lock_code
