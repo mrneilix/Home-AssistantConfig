@@ -3,7 +3,7 @@ alllights:
   control: hidden
   entities:
   - light.kitchen
-  - switch.furnace_switch_9
+  - switch.furnace_switch_29
   - switch.lamp
   - switch.bathroom_light
   - switch.bathroom_fan
@@ -11,10 +11,10 @@ alllights:
 livingroomlights:
   control: hidden
   entities:
-  - switch.furnace_switch_9
+  - switch.furnace_switch_29
   - switch.lamp
 
-kitchenlights: light.front_kitchen_6, light.back_kitchen_7
+kitchenlights: light.front_kitchen_31, light.back_kitchen_30
 
 bathroom: switch.bathroom_light, switch.bathroom_fan
 

@@ -16,8 +16,8 @@ default_view:
   - sensor.dark_sky_precip_probability
   - sensor.dark_sky_temperature
   - sensor.dark_sky_apparent_temperature
-  - sensor.dark_sky_daytime_high_temperature
-  - sensor.dark_sky_overnight_low_temperature
+  - sensor.dark_sky_daytime_high_temperature_0
+  - sensor.dark_sky_overnight_low_temperature_0
   - sensor.forecast_icon
   - sensor.daylight_remaining_hm
   - updater.updater

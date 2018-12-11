@@ -1,6 +1,9 @@
   - platform: darksky
     api_key: !secret darksky_api_key
-    update_interval: '00:05:00'
+    forecast:
+      - 0
+    update_interval:
+      minutes: 5
     monitored_conditions:
       - summary
       - icon
@@ -32,37 +35,36 @@
       minutes: 5
 
   - platform: pollen
-    zip_code: "00544"
+    zip_code: "30308"
     monitored_conditions:
     - allergy_index_today
-    - allergy_index_tomorrow
 
   - platform: template
     sensors:
       temp:
         friendly_name: "Temperature Description"
         value_template: >-
-          {%- if states('sensor.dark_sky_apparent_temperature') | int < 32 -%}
+          {%- if states.sensor.dark_sky_apparent_temperature.state | int < 32 -%}
               ReallyFuckingCold
-          {%  elif states('sensor.dark_sky_apparent_temperature') | int < 40 -%}
+          {%  elif states.sensor.dark_sky_apparent_temperature.state | int < 40 -%}
               Cold
-          {%  elif states('sensor.dark_sky_apparent_temperature') | int < 60 -%}
+          {%  elif states.sensor.dark_sky_apparent_temperature.state | int < 60 -%}
               Cold
-          {%  elif states('sensor.dark_sky_apparent_temperature') | int > 85 -%}
+          {%  elif states.sensor.dark_sky_apparent_temperature.state | int > 85 -%}
               FuckingHot
-          {%  elif states('sensor.dark_sky_apparent_temperature') | int > 100 -%}
+          {%  elif states.sensor.dark_sky_apparent_temperature.state | int > 100 -%}
               FuckingHot
-          {%  elif states('sensor.dark_sky_apparent_temperature') | int > 78 -%}
+          {%  elif states.sensor.dark_sky_apparent_temperature.state | int > 78 -%}
               Hot
-          {%  elif states('sensor.dark_sky_apparent_temperature') | int > 70 -%}
+          {%  elif states.sensor.dark_sky_apparent_temperature.state | int > 70 -%}
               Warm
           {% else %}
               Pleasant
           {% endif %}
       forecast_icon:
-        friendly_name: "Today's Forecast"
+        friendly_name: "Todays Forecast"
         value_template: >
-          {{states.sensor.dark_sky_daytime_high_temperature.state|round(0)}}°F/{{states.sensor.dark_sky_overnight_low_temperature.state|round(0)}}°F/{{states.sensor.dark_sky_precip_probability.state|round(0)}}%
+          {{states.sensor.dark_sky_daytime_high_temperature_0.state|round(0)}}°F/{{states.sensor.dark_sky_overnight_low_temperature_0.state|round(0)}}°F/{{states.sensor.dark_sky_precip_probability.state|round(0)}}%
         entity_picture_template: >-
           {% if is_state("sensor.dark_sky_icon", "clear-day") %}
             /local/dark_sky/clear-day.png
@@ -90,21 +92,21 @@
       precipitation_soon:
         friendly_name: "Precipitation Soon"
         value_template: >-
-          {%- if (states.sensor.dark_sky_precip_probability.state > "50") and 'Rain' in states.sensor.dark_sky_minutely_summary.state %}
+          {%- if (states.sensor.dark_sky_precip_probability.state > "50") and "Rain" in states.sensor.dark_sky_minutely_summary.state %}
               Rain
-          {%  elif (states.sensor.dark_sky_precip_probability.state > "50") and 'rain' in states.sensor.dark_sky_minutely_summary.state %}
+          {%  elif (states.sensor.dark_sky_precip_probability.state > "50") and "rain" in states.sensor.dark_sky_minutely_summary.state %}
               Rain
-          {%  elif (states.sensor.dark_sky_precip_probability.state > "50") and 'Drizzle' in states.sensor.dark_sky_minutely_summary.state %}
+          {%  elif (states.sensor.dark_sky_precip_probability.state > "50") and "Drizzle" in states.sensor.dark_sky_minutely_summary.state %}
               Rain
-          {%  elif (states.sensor.dark_sky_precip_probability.state > "50") and 'drizzle' in states.sensor.dark_sky_minutely_summary.state %}
+          {%  elif (states.sensor.dark_sky_precip_probability.state > "50") and "drizzle" in states.sensor.dark_sky_minutely_summary.state %}
               Rain
-          {%- elif (states.sensor.dark_sky_precip_probability.state > "50") and 'Snow' in states.sensor.dark_sky_minutely_summary.state %}
+          {%- elif (states.sensor.dark_sky_precip_probability.state > "50") and "Snow" in states.sensor.dark_sky_minutely_summary.state %}
               Snow
-          {%  elif (states.sensor.dark_sky_precip_probability.state > "50") and 'snow' in states.sensor.dark_sky_minutely_summary.state %}
+          {%  elif (states.sensor.dark_sky_precip_probability.state > "50") and "snow" in states.sensor.dark_sky_minutely_summary.state %}
               Snow
-          {%- elif (states.sensor.dark_sky_precip_probability.state > "50") and 'sleet' in states.sensor.dark_sky_minutely_summary.state %}
+          {%- elif (states.sensor.dark_sky_precip_probability.state > "50") and "sleet" in states.sensor.dark_sky_minutely_summary.state %}
               Sleet
-          {%  elif (states.sensor.dark_sky_precip_probability.state > "50") and 'Sleet' in states.sensor.dark_sky_minutely_summary.state %}
+          {%  elif (states.sensor.dark_sky_precip_probability.state > "50") and "Sleet" in states.sensor.dark_sky_minutely_summary.state %}
               Sleet
           {% else %}
               None

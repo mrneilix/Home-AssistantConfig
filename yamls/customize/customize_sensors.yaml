@@ -157,19 +157,19 @@ sensor.dark_sky_nearest_storm_distance:
   custom_ui_state_card: state-card-custom-ui
   state_card_mode: badges
   friendly_name: Nearest Storm Distance
-sensor.dark_sky_daytime_high_temperature: 
+sensor.dark_sky_daytime_high_temperature_0:
   custom_ui_state_card: state-card-custom-ui
   state_card_mode: badges
   friendly_name: High Temp
-sensor.dark_sky_overnight_low_temperature: 
+sensor.dark_sky_overnight_low_temperature_0:
   custom_ui_state_card: state-card-custom-ui
   state_card_mode: badges
   friendly_name: Low Temp
-sensor.dark_sky_daytime_high_apparent_temperature : 
+sensor.dark_sky_daytime_high_apparent_temperature_0:
   custom_ui_state_card: state-card-custom-ui
   state_card_mode: badges
   friendly_name: Apparent High Temp
-sensor.dark_sky_overnight_low_apparent_temperature: 
+sensor.dark_sky_overnight_low_apparent_temperature_0:
   custom_ui_state_card: state-card-custom-ui
   state_card_mode: badges
   friendly_name: Apparent Low Temp
@@ -188,9 +188,10 @@ sensor.dark_sky_summary:
 sensor.forecast_icon: 
   custom_ui_state_card: state-card-custom-ui
   state_card_mode: badges
-sensor.dark_sky_moon_phase:
+sensor.dark_sky_moon_phase_0:
   custom_ui_state_card: state-card-custom-ui
   state_card_mode: badges
+  friendly_name: Moon Phase
 sensor.daylight_remaining_hm:
   custom_ui_state_card: state-card-custom-ui
   state_card_mode: badges

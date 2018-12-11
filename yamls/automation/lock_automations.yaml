@@ -85,7 +85,7 @@
   initial_state: false
   trigger:
     platform: state
-    entity_id: lock.schlage_deadbolt_41
+    entity_id: lock.schlage_deadbolt_40
     to: 'unlocked'
     from: 'locked'
     for:
@@ -136,7 +136,7 @@
   initial_state: false
   trigger:
     - platform: state
-      entity_id: lock.schlage_deadbolt_41
+      entity_id: lock.schlage_deadbolt_40
       to: 'unlocked'
       from: 'locked'
       for:
@@ -151,7 +151,7 @@
       entity_id: input_boolean.autolock
       state: 'on'
     - service: lock.lock
-      entity_id: lock.schlage_deadbolt_41
+      entity_id: lock.schlage_deadbolt_40
 
       
 - id: lock_auto_lock_door_switch_on
@@ -164,7 +164,7 @@
     from: 'off'
   condition:
     - condition: state
-      entity_id: lock.schlage_deadbolt_41
+      entity_id: lock.schlage_deadbolt_40
       state: 'unlocked'
   action:
     - service: script.lock_auto_lock_door_on
@@ -186,7 +186,7 @@
   initial_state: false
   trigger:
     platform: state
-    entity_id: lock.schlage_deadbolt_41
+    entity_id: lock.schlage_deadbolt_40
     to: 'locked'
     from: 'unlocked'
   condition:

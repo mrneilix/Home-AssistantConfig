@@ -128,7 +128,7 @@
       entity_id: switch.tv_power
       to: 'off'
       for:
-        seconds: 60
+        seconds: 180
   condition:
     - condition: state
       entity_id: device_tracker.neil
@@ -152,3 +152,16 @@
       state: 'on'
   action:
     - service: script.tv_input_group_toggle_visible
+
+- id: tv_restart_mqtt_monitor
+  alias: 'TV Restart MQTT Monitor'
+  initial_state: false
+  trigger:
+    - platform: template
+      value_template: "{% if (as_timestamp(now()) - as_timestamp(states.sensor.tv_mqtt_monitor.last_updated)) > 600 %} true{% endif %}"
+  condition:
+    - condition: state
+      entity_id: input_boolean.restart_complete
+      state: 'on'
+  action:
+    - service: shell_command.restart_tv_status_monitor

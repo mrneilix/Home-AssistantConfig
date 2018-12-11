@@ -9,5 +9,5 @@
   - platform: group
     name: Kitchen
     entities:
-      - light.back_kitchen_7
-      - light.front_kitchen_6
+      - light.back_kitchen_30
+      - light.front_kitchen_31

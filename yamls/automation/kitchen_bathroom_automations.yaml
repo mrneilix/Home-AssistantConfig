@@ -3,15 +3,15 @@
   initial_state: false
   trigger:
     - platform: state
-      entity_id: light.front_kitchen_6
+      entity_id: light.front_kitchen_31
       to: 'on'
       from: 'off'
     - platform: state
-      entity_id: light.back_kitchen_7
+      entity_id: light.back_kitchen_30
       to: 'on'
       from: 'off'
     - platform: state
-      entity_id: switch.furnace_switch_9
+      entity_id: switch.furnace_switch_29
       to: 'on'
       from: 'off'
   condition:
@@ -32,15 +32,15 @@
   initial_state: false
   trigger:
     - platform: state
-      entity_id: light.front_kitchen_6
+      entity_id: light.front_kitchen_31
       to: 'off'
       from: 'on'
     - platform: state
-      entity_id: light.back_kitchen_7
+      entity_id: light.back_kitchen_30
       to: 'off'
       from: 'on'
     - platform: state
-      entity_id: switch.furnace_switch_9
+      entity_id: switch.furnace_switch_29
       to: 'off'
       from: 'on'
   condition:
@@ -89,9 +89,9 @@
   alias: 'Kitchen Lights Off When Not Dark Out'
   initial_state: false
   trigger:
-    platform: state
-    entity_id: binary_sensor.dark_out
-    to: 'off'
+    platform: numeric_state
+    entity_id: sensor.illuminance
+    above: '7000'
   condition:
     - condition: state
       entity_id: input_boolean.restart_complete

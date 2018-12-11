@@ -1,5 +1,5 @@
 ### SWITCHES ###
-switch.furnace_switch_9:
+switch.furnace_switch_29:
   entity_picture: /local/furnace.png
   friendly_name: Furnace Light
 

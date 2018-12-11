@@ -1,5 +1,5 @@
 ### LOCK ###
-lock.schlage_deadbolt_41:
+lock.schlage_deadbolt_40:
   entity_picture: /local/lock.jpg
   friendly_name: Schlage Camelot
 

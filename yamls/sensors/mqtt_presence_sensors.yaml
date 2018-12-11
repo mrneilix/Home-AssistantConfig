@@ -4,24 +4,45 @@
     name: 'Neil MQTT Pixel'
     force_update: true
     json_attributes:
-      - confidence
+      - id
+      - name
+      - rssi
+      - version
+      - manufacturer
+      - type
       - timestamp
+      - retained
+      - confidence
   - platform: mqtt
     state_topic: "monitor/monitor/C7:E6:70:79:1B:92"
     value_template: '{{ value_json.confidence }}'
     name: 'Neil MQTT Charge 2'
     force_update: true
     json_attributes:
-      - confidence
+      - id
+      - name
+      - rssi
+      - version
+      - manufacturer
+      - type
       - timestamp
+      - retained
+      - confidence
   - platform: mqtt
-    state_topic: "monitor/monitor/D8:2D:94:11:8F:C4"
+    state_topic: "monitor/monitor/C5:FF:36:D0:F1:63"
     value_template: '{{ value_json.confidence }}'
     name: 'Butters MQTT Tile'
     force_update: true
     json_attributes:
-      - confidence
+      - id
+      - name
+      - rssi
+      - version
+      - manufacturer
+      - type
       - timestamp
+      - retained
+      - confidence
   - platform: mqtt
     state_topic: "monitor/monitor/status"
     name: 'Pi Zero Monitor Presence Status'

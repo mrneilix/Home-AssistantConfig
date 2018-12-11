@@ -2,10 +2,10 @@ weather:
   entities:
   - sensor.dark_sky_temperature
   - sensor.dark_sky_apparent_temperature
-  - sensor.dark_sky_daytime_high_temperature
-  - sensor.dark_sky_overnight_low_temperature
-  - sensor.dark_sky_daytime_high_apparent_temperature 
-  - sensor.dark_sky_overnight_low_apparent_temperature
+  - sensor.dark_sky_daytime_high_temperature_0
+  - sensor.dark_sky_overnight_low_temperature_0
+  - sensor.dark_sky_daytime_high_apparent_temperature_0
+  - sensor.dark_sky_overnight_low_apparent_temperature_0
   - sensor.dark_sky_precip_intensity
   - sensor.dark_sky_precip_probability
   - sensor.dark_sky_wind_speed
@@ -13,9 +13,8 @@ weather:
   - sensor.dark_sky_humidity
   - sensor.dark_sky_visibility
   - sensor.dark_sky_cloud_coverage
-  - sensor.dark_sky_moon_phase
+  - sensor.dark_sky_moon_phase_0
   - sensor.allergy_index_today
-  - sensor.allergy_index_tomorrow
   - sensor.dark_sky_summary
   - sensor.dark_sky_minutely_summary
   - sensor.dark_sky_hourly_summary
@@ -58,7 +57,8 @@ system_control:
   entities:
   - script.restart_homeassistant
   - script.system_reboot
-  
+  - script.reboot_pi_zero
+
 temp_lock_code:
   control: hidden
   name: Lock Code
@@ -74,6 +74,8 @@ device_trackers:
   name: Device Trackers
   entities:
   - device_tracker.neil
+  - device_tracker.neil_bluetooth
+  - device_tracker.neil_wifi
   - device_tracker.neil_pixel_tasker
   - device_tracker.monitor_neil
   - device_tracker.butters

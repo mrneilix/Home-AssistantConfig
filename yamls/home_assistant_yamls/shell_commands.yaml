@@ -9,3 +9,6 @@ desktop_screen_off: !secret desktop_screen_off
 tv_input_chromecast: !secret tv_input_chromecast
 tv_input_ps4: !secret tv_input_ps4
 git_backup: !secret git_backup
+restart_tv_status_monitor: !secret restart_tv_status_monitor
+stop_tv_status_monitor: !secret stop_tv_status_monitor
+start_tv_status_monitor: !secret start_tv_status_monitor

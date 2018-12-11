@@ -85,11 +85,11 @@
     light.bed: off
 - name: switches_off
   entities:
-    switch.furnace_switch_9: off
+    switch.furnace_switch_29: off
     switch.lamp: off
     switch.bathroom_light: off
     switch.bathroom_fan: off
-    switch.space_heater_8: off
+    switch.space_heater_35: off
 
 - name: theater_mode
   entities:
@@ -104,9 +104,9 @@
 
 - name: leave_switches_off
   entities:
-    switch.furnace_switch_9: off
+    switch.furnace_switch_29: off
     switch.yi_power: on
     switch.lamp: off
     switch.bathroom_light: off
     switch.bathroom_fan: off
-    switch.space_heater_8: off
+    switch.space_heater_35: off
