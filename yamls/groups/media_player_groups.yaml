@@ -2,7 +2,7 @@ media_switches:
   control: hidden
   name: Media Players
   entities:
-  - switch.tv_power
+  - input_boolean.tv_power
   - scene.theater_mode
   - input_text.gh_speak
 google_cast: media_player.kitchen_home, media_player.living_room_tv

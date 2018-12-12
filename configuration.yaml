@@ -48,7 +48,7 @@ tts: !include yamls/home_assistant_yamls/tts.yaml
 
 vera:
   vera_controller_url: !secret vera_controller_url
-  exclude: [2, 3, 12, 13, 14, 16, 17, 19, 20, 21, 24, 25]
+  exclude: [54]
 
 wemo:
   discovery: true

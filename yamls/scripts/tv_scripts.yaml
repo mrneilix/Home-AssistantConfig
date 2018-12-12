@@ -2,8 +2,7 @@ tv_on:
   alias: TV On
   sequence:
     - service: shell_command.stop_tv_status_monitor
-    - service: switch.turn_on
-      entity_id: switch.tv_power
+    - delay: 00:00:05
     - service: shell_command.tv_on
     - service: script.tv_input_group_toggle_visible
     - delay: 00:00:30
@@ -18,6 +17,7 @@ tv_off:
     - delay: 00:00:10
     - service: shell_command.tv_off
     - delay: 00:00:20
+    - service: script.tv_input_group_toggle_visible
     - service: shell_command.start_tv_status_monitor
 
 tv_input_chromecast:
@@ -36,4 +36,4 @@ tv_input_group_toggle_visible:
     - service: group.set_visibility
       data_template:
         entity_id: group.tv_input
-        visible: "{{ is_state('switch.tv_power', 'on') }}"
+        visible: "{{ is_state('input_boolean.tv_power', 'on') }}"

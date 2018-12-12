@@ -5,7 +5,7 @@ presence_arrive:
       data:
         entity_id: input_boolean.presence_running
     - service: lock.unlock
-      entity_id: lock.schlage_deadbolt_40
+      entity_id: lock.schlage_deadbolt_47
     - service: input_boolean.turn_off
       data:
         entity_id: input_boolean.away
@@ -23,6 +23,7 @@ presence_arrive:
       data:
         command: arrive
     - service: script.presence_tasker_phone_location
+    - service: script.startup_input_booleans
 
 presence_someone_not_neil_home:
   alias: Presence Someone Not Neil Home
@@ -31,7 +32,7 @@ presence_someone_not_neil_home:
       data:
         entity_id: input_boolean.presence_running
     - service: lock.unlock
-      entity_id: lock.schlage_deadbolt_40
+      entity_id: lock.schlage_deadbolt_47
     - service_template: >
           {% if is_state('binary_sensor.dark_out', 'on') %}
             script.presence_arrive_dark_out
@@ -66,7 +67,7 @@ presence_leave:
       data:
         command: leave
     - service_template: >
-          {% if is_state('switch.tv_power', 'on') %}
+          {% if is_state('input_boolean.tv_power', 'on') or is_state('sensor.tv_mqtt_monitor', 'on') %}
             script.tv_off
           {% else %}
             script.do_nothing

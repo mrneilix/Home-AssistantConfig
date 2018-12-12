@@ -119,46 +119,58 @@
     service: homeassistant.turn_on
     entity_id: scene.theater_mode
 
-
-- id: tv_off
-  alias: 'TV Off'
+- id: tv_input_boolean_control
+  alias: 'TV Input Boolean Control'
   initial_state: false
   trigger:
     - platform: state
-      entity_id: switch.tv_power
-      to: 'off'
-      for:
-        seconds: 180
-  condition:
-    - condition: state
-      entity_id: device_tracker.neil
-      state: 'home'
+      entity_id: input_boolean.tv_power
   action:
-    - service: joaoapps_join.fire_send_tasker
-      data:
-        command: arrive
-    - service: media_player.turn_off
-      entity_id: media_player.living_room_tv
+    - service_template: >
+          {% if is_state('input_boolean.tv_power', 'on') %}
+            script.tv_on
+          {% else %}
+            script.tv_off
+          {% endif %}
 
-- id: tv_input_group_toggle_visible
-  alias: 'TV Input Group Toggle Visible'
+- id: tv_update_input_boolean_from_sensor
+  alias: 'TV Update Input Boolean from Sensor'
   initial_state: false
   trigger:
     - platform: state
-      entity_id: switch.tv_power
+      entity_id: sensor.tv_mqtt_monitor
+      to: 'ON'
+      from: 'OFF'
+      for:
+        seconds: 120
+    - platform: state
+      entity_id: sensor.tv_mqtt_monitor
+      to: 'OFF'
+      from: 'ON'
+      for:
+        seconds: 120
   condition:
     - condition: state
       entity_id: input_boolean.restart_complete
       state: 'on'
+    - condition: template
+      value_template: "{{ (as_timestamp(now()) - as_timestamp(states.input_boolean.tv_power.last_updated)) | int > 60 }}"
   action:
-    - service: script.tv_input_group_toggle_visible
+    - service_template: >
+          {% if is_state('sensor.tv_mqtt_monitor', 'ON') %}
+            input_boolean.turn_on
+          {% else %}
+            input_boolean.turn_off
+          {% endif %}
+      data:
+        entity_id: input_boolean.tv_power
 
 - id: tv_restart_mqtt_monitor
   alias: 'TV Restart MQTT Monitor'
   initial_state: false
   trigger:
     - platform: template
-      value_template: "{% if (as_timestamp(now()) - as_timestamp(states.sensor.tv_mqtt_monitor.last_updated)) > 600 %} true{% endif %}"
+      value_template: "{% if (as_timestamp(now()) - as_timestamp(states.sensor.tv_mqtt_monitor.last_updated)) > 600 %} true {% endif %}"
   condition:
     - condition: state
       entity_id: input_boolean.restart_complete

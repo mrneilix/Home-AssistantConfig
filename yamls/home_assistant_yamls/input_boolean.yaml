@@ -33,3 +33,6 @@
     name: Config Updated
   kitchen_lights_running:
     initial: off
+  tv_power:
+    name: TV Power
+    icon: mdi:television-classic

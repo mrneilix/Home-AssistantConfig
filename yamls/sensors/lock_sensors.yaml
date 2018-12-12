@@ -1,12 +1,24 @@
-  - platform: rest
-    name: last_lock_code_used
-    resource: !secret last_lock_code_used
-    
-  - platform: rest
-    name: lock_battery_level
-    resource: !secret lock_battery_level
-    unit_of_measurement: '%'
-    
+  - platform: mqtt
+    state_topic: "Vera/Events/Lock info"
+    name: "Last Lock Code Used"
+    value_template: '{{ value_json.Variable1 }}'
+  - platform: mqtt
+    state_topic: "Vera/Events/Lock info"
+    name: "Lock Pin Code Set"
+    value_template: '{{ value_json.Variable3 }}'
+  - platform: mqtt
+    state_topic: "Vera/Events/Schlage Deadbolt"
+    name: "Lock Pin Add Success"
+    value_template: '{{ value_json.sl_PinProgramSuccess }}'
+  - platform: mqtt
+    state_topic: "Vera/Events/Schlage Deadbolt"
+    name: "Lock Pin Remove Success"
+    value_template: '{{ value_json.sl_PinRemoveSuccess }}'
+  - platform: mqtt
+    state_topic: "Vera/Events/Schlage Deadbolt"
+    name: "Lock Pin Codes"
+    value_template: '{{ value_json.PinCodes }}'
+
   - platform: template
     sensors:
       last_lock_code_name:
@@ -39,3 +51,6 @@
           {% else %}
               Blank
           {%- endif %}
+      lock_battery_level:
+        value_template: "{{ state_attr('lock.schlage_deadbolt_47', 'battery_level') }}"
+        unit_of_measurement: '%'

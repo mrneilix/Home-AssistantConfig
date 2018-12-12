@@ -46,9 +46,9 @@
   action:
     - service_template: >
           {% if is_state('input_boolean.parents_lock_code', 'on') %}
-            rest_command.set_parents_lock_code
+            script.lock_set_parents_lock_code
           {% else %}
-            rest_command.clear_parents_lock_code
+            script.lock_clear_parents_lock_code
           {% endif %}
 
 # Temporary Lock Code
@@ -72,6 +72,10 @@
     - platform: state
       entity_id: sensor.last_lock_code_name
       to: 'Temp'
+    - platform: state
+      entity_id: input_boolean.temp_lock_code_set
+      to: 'off'
+      from: 'on'
   condition:
     - condition: state
       entity_id: input_boolean.temp_lock_code_set
@@ -85,7 +89,7 @@
   initial_state: false
   trigger:
     platform: state
-    entity_id: lock.schlage_deadbolt_40
+    entity_id: lock.schlage_deadbolt_47
     to: 'unlocked'
     from: 'locked'
     for:
@@ -136,7 +140,7 @@
   initial_state: false
   trigger:
     - platform: state
-      entity_id: lock.schlage_deadbolt_40
+      entity_id: lock.schlage_deadbolt_47
       to: 'unlocked'
       from: 'locked'
       for:
@@ -151,9 +155,8 @@
       entity_id: input_boolean.autolock
       state: 'on'
     - service: lock.lock
-      entity_id: lock.schlage_deadbolt_40
+      entity_id: lock.schlage_deadbolt_47
 
-      
 - id: lock_auto_lock_door_switch_on
   alias: 'Lock Auto Lock Door Switch On'
   initial_state: false
@@ -164,12 +167,11 @@
     from: 'off'
   condition:
     - condition: state
-      entity_id: lock.schlage_deadbolt_40
+      entity_id: lock.schlage_deadbolt_47
       state: 'unlocked'
   action:
     - service: script.lock_auto_lock_door_on
 
-      
 - id: lock_auto_lock_door_switch_off
   alias: 'Lock Auto Lock Door Switch Off'
   initial_state: false
@@ -186,7 +188,7 @@
   initial_state: false
   trigger:
     platform: state
-    entity_id: lock.schlage_deadbolt_40
+    entity_id: lock.schlage_deadbolt_47
     to: 'locked'
     from: 'unlocked'
   condition:

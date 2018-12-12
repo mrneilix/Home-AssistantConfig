@@ -1,17 +1,5 @@
-  clear_lock_code:
-    url: !secret clear_lock_code
-    method: post
   set_lock_code:
     url: !secret set_temp_lock_code
-    method: post
-  remove_temp_lock_code_history:
-    url: !secret remove_lock_code_history
-    method: post
-  clear_parents_lock_code:
-    url: !secret clear_parents_lock_code
-    method: post
-  set_parents_lock_code:
-    url: !secret set_parents_lock_code
     method: post
   ga_broadcast:
     url: !secret google_assistant_broadcast_rest

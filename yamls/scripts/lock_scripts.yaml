@@ -1,9 +1,9 @@
-    ### Lock ###
+### Lock ###
 lock_unlock_door:
   alias: Unlock Door
   sequence:
     - service: lock.unlock
-      entity_id: lock.schlage_deadbolt_40
+      entity_id: lock.schlage_deadbolt_47
 
 lock_auto_lock_door_on:
   alias: Turn on Door Auto Lock
@@ -12,13 +12,13 @@ lock_auto_lock_door_on:
       data:
         entity_id: input_boolean.autolock
     - service: lock.lock
-      entity_id: lock.schlage_deadbolt_40
+      entity_id: lock.schlage_deadbolt_47
 
 lock_toggle_state:
   alias: Lock Toggle State
   sequence:
     - service_template: >
-          {% if is_state('lock.schlage_deadbolt_40', 'locked') %}
+          {% if is_state('lock.schlage_deadbolt_47', 'locked') %}
             script.lock_unlock_door
           {% else %}
             script.lock_auto_lock_door_on
@@ -35,7 +35,7 @@ lock_auto_lock_door_off:
         entity_id: input_boolean.autolock
     - delay: 00:00:01
     - service: lock.unlock
-      entity_id: lock.schlage_deadbolt_40
+      entity_id: lock.schlage_deadbolt_47
     - delay: 00:00:05
     - service: input_boolean.turn_off
       data:
@@ -43,16 +43,22 @@ lock_auto_lock_door_off:
     - delay: 00:01:00
     - service: automation.turn_on
       entity_id: group.auto_lock_automations
-     
+
 lock_clear_temp_code:
   alias: Lock Clear Temp Code
   sequence:
-    - service: rest_command.clear_lock_code
-    - service: rest_command.remove_temp_lock_code_history
+    - delay: 00:00:10
+    - service: scene.turn_on
+      entity_id: scene.clear_temp_code
+    - delay: 00:00:20
     - service: input_boolean.turn_off
       data:
         entity_id: input_boolean.temp_lock_code_set
-        
+    - condition: template
+      value_template: "{{ (as_timestamp(now()) - as_timestamp(states.sensor.lock_pin_remove_success.last_updated)) | int > 30 }}"
+    - service: scene.turn_on
+      entity_id: scene.clear_temp_code
+
 lock_set_temp_lock_code:
   alias: Set Temporary Lock Code
   sequence:
@@ -67,3 +73,25 @@ lock_set_temp_lock_code:
     - service: input_boolean.turn_on
       data:
         entity_id: input_boolean.temp_lock_code_set
+
+lock_clear_parents_lock_code:
+  alias: Lock Clear Parents Lock Code
+  sequence:
+    - service: scene.turn_on
+      entity_id: scene.clear_parents_code
+    - delay: 00:00:20
+    - condition: template
+      value_template: "{{ (as_timestamp(now()) - as_timestamp(states.sensor.lock_pin_remove_success.last_updated)) | int > 30 }}"
+    - service: scene.turn_on
+      entity_id: scene.clear_parents_code
+
+lock_set_parents_lock_code:
+  alias: Lock Set Parents Lock Code
+  sequence:
+    - service: scene.turn_on
+      entity_id: scene.add_parents_code
+    - delay: 00:00:20
+    - condition: template
+      value_template: "{{ (as_timestamp(now()) - as_timestamp(states.sensor.lock_pin_remove_success.last_updated)) | int > 30 }}"
+    - service: scene.turn_on
+      entity_id: scene.add_parents_code
