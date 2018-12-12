@@ -63,6 +63,8 @@ presence_leave:
       entity_id: scene.lights_off
     - service: scene.turn_on
       entity_id: scene.leave_switches_off
+    - service: lock.lock
+      entity_id: lock.schlage_deadbolt_47
     - service: joaoapps_join.fire_send_tasker
       data:
         command: leave
