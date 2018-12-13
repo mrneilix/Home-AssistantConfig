@@ -43,7 +43,3 @@
       - timestamp
       - retained
       - confidence
-  - platform: mqtt
-    state_topic: "monitor/monitor/status"
-    name: 'Pi Zero Monitor Presence Status'
-    force_update: true

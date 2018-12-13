@@ -50,6 +50,21 @@
           {% else %}
             script.lock_clear_parents_lock_code
           {% endif %}
+- id: lock_parents_lock_update_input_boolean
+  alias: 'Lock Parents Lock Update Input Boolean'
+  initial_state: false
+  trigger:
+    - platform: state
+      entity_id: binary_sensor.lock_parents_pin
+  action:
+    - service_template: > 
+          {% if is_state('binary_sensor.lock_parents_pin', 'on') %}
+            input_boolean.turn_on
+          {% else %}
+            input_boolean.turn_off
+          {% endif %}
+      data:
+        entity_id: input_boolean.parents_lock_code
 
 # Temporary Lock Code
 - id: lock_set_temp_lock_code
@@ -74,6 +89,10 @@
       to: 'Temp'
     - platform: state
       entity_id: input_boolean.temp_lock_code_set
+      to: 'off'
+      from: 'on'
+    - platform: state
+      entity_id: binary_sensor.lock_temp_pin
       to: 'off'
       from: 'on'
   condition:
@@ -131,6 +150,9 @@
     - condition: state
       entity_id: binary_sensor.anyone_home
       state: 'off'
+    - condition: state
+      entity_id: lock.schlage_deadbolt_47
+      state: 'unlocked'
   action:
     - service: script.lock_code_entered_not_family
 

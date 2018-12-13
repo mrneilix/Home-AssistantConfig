@@ -1,6 +1,7 @@
 tv_off: !secret tv_off
 tv_on: !secret tv_on
 restart_monitor: !secret restart_monitor
+restart_pi_sys_stat: !secret restart_pi_sys_stat
 reboot_pi_zero: !secret reboot_pi_zero
 # restart_tv_power_status: !secret restart_tv_power_status
 # stop_tv_power_status: !secret stop_tv_power_status

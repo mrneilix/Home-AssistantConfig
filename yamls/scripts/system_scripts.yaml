@@ -1,13 +1,10 @@
 startup_scripts:
   alias: Startup Scripts
   sequence:
-    - service: sensor.update_speedtest
     - service: lock.lock
       entity_id: lock.schlage_deadbolt_47
     - service: script.startup_input_booleans
     - service: script.startup_couch_colors
-    - service: scene.turn_on
-      entity_id: scene.clear_temp_code
     - service: script.thermostat_update_inputs
     - delay: 00:00:02
     - service: google_assistant.request_sync
@@ -16,7 +13,7 @@ startup_scripts:
     - service: script.tv_input_group_toggle_visible
     - condition: template
       value_template: "{{ is_state('sensor.pi_zero_monitor_offline', 'offline') or is_state('sensor.pi_zero_monitor_offline', 'unknown') }}"
-    - service: script.monitor_offline
+    - service: shell_command.restart_monitor
 
 startup_presence:
   alias: Startup Presence
@@ -62,16 +59,22 @@ startup_input_booleans:
           {% endif %}
       data:
         entity_id: input_boolean.butters_home
-
-monitor_offline:
-  alias: Monitor Offline
-  sequence:
-    - service: shell_command.restart_monitor
-    - delay: 00:02:00
-    - condition: state
-      entity_id: sensor.pi_zero_monitor_offline
-      state: 'offline'
-    - service: shell_command.reboot_pi_zero
+    - service_template: > 
+          {% if is_state('binary_sensor.lock_parents_pin', 'on') %}
+            input_boolean.turn_on
+          {% else %}
+            input_boolean.turn_off
+          {% endif %}
+      data:
+        entity_id: input_boolean.parents_lock_code
+    - service_template: > 
+          {% if is_state('binary_sensor.lock_temp_pin', 'on') %}
+            input_boolean.turn_on
+          {% else %}
+            input_boolean.turn_off
+          {% endif %}
+      data:
+        entity_id: input_boolean.temp_lock_code_set
 
 startup_neil_home:
   alias: Startup Neil Home
@@ -85,8 +88,9 @@ startup_neil_home:
           {% if is_state('binary_sensor.dark_out', 'on') and now().hour >= 8 and now().hour < 23 %}
             script.presence_arrive_dark_out
           {% else %}
-            script.thermostat_home_set_temp
+            script.do_nothing
           {% endif %}
+    - service: script.thermostat_home_set_temp
     - service: scene.turn_on
       entity_id: scene.clear_parents_code
     

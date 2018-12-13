@@ -137,10 +137,16 @@ sensor.dark_sky_temperature:
   custom_ui_state_card: state-card-custom-ui
   state_card_mode: badges
   friendly_name: Temp
+  # templates:
+    # theme: >
+      # if (state >= 75) return 'temperature_hot'; else if (state <= 40) return 'temperature_cold'; else return 'darkblue';
 sensor.dark_sky_apparent_temperature: 
   custom_ui_state_card: state-card-custom-ui
   state_card_mode: badges
   friendly_name: Apparent Temp
+  # templates:
+    # theme: >
+      # if (state >= 75) return 'temperature_hot'; else if (state <= 40) return 'temperature_cold'; else return 'darkblue';
 sensor.dark_sky_wind_speed: 
   custom_ui_state_card: state-card-custom-ui
   state_card_mode: badges
@@ -161,18 +167,30 @@ sensor.dark_sky_daytime_high_temperature_0:
   custom_ui_state_card: state-card-custom-ui
   state_card_mode: badges
   friendly_name: High Temp
+  # templates:
+    # theme: >
+      # if (state >= 75) return 'temperature_hot'; else if (state <= 40) return 'temperature_cold'; else return 'darkblue';
 sensor.dark_sky_overnight_low_temperature_0:
   custom_ui_state_card: state-card-custom-ui
   state_card_mode: badges
   friendly_name: Low Temp
+  # templates:
+    # theme: >
+      # if (state >= 75) return 'temperature_hot'; else if (state <= 40) return 'temperature_cold'; else return 'darkblue';
 sensor.dark_sky_daytime_high_apparent_temperature_0:
   custom_ui_state_card: state-card-custom-ui
   state_card_mode: badges
   friendly_name: Apparent High Temp
+  # templates:
+    # theme: >
+      # if (state >= 75) return 'temperature_hot'; else if (state <= 40) return 'temperature_cold'; else return 'darkblue';
 sensor.dark_sky_overnight_low_apparent_temperature_0:
   custom_ui_state_card: state-card-custom-ui
   state_card_mode: badges
   friendly_name: Apparent Low Temp
+  # templates:
+    # theme: >
+      # if (state >= 75) return 'temperature_hot'; else if (state <= 40) return 'temperature_cold'; else return 'darkblue';
 sensor.dark_sky_cloud_coverage: 
   custom_ui_state_card: state-card-custom-ui
   state_card_mode: badges

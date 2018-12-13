@@ -11,7 +11,6 @@
         arg: eth0
       - type: processor_use
       - type: last_boot
-      - type: since_last_boot
   - platform: uptime
     name: uptime
     unit_of_measurement: minutes
@@ -28,48 +27,33 @@
 
   - platform: template
     sensors:
-### Uptime Templated ####
+## Uptime Templated ####
       since_last_boot_templated:
         value_template: >-
-          {%- set slb = states.sensor.since_last_boot.state.split(' ') -%}
-          {%- set count = slb | length -%}
-          {%- set hms = slb[count - 1] -%}
-          {%- set hms_trimmed = hms.split('.')[0] -%}
-          {%- set hms_split = hms_trimmed.split(':') -%}
-          {%- set hours = hms_split[0] | int -%}
-          {%- set minutes = hms_split[1] | int -%}
-          {%- set seconds = hms_split[2] | int -%}
+            {% set time = ((as_timestamp(now()) - as_timestamp(states.sensor.last_boot.state)) * 10 )| int %}
+            {% set minutes = ((time % 360000) / 6000) | int %}
+            {% set hours = ((time % 8640000) / 360000) | int %}
+            {% set days = (time / 8640000) | int %}
 
-          {%- if count == 3 -%}
-            {{ slb[0] ~ ' ' ~ slb[1] ~ ' ' }}
-          {%- endif -%}
-          {%- if hours > 0 -%}
-            {%- if hours == 1 -%}
-              1 hour
+            {%- if time < 6000 -%}
+              Less than a minute
             {%- else -%}
-              {{ hours }} hours
+              {%- if days > 0 -%}
+                {{ days }}d
+              {%- endif -%}
+              {%- if hours > 0 -%}
+                {%- if days > 0 -%}
+                  {{ ' ' }}
+                {%- endif -%}
+                {{ hours }}h
+              {%- endif -%}
+              {%- if minutes > 0 -%}
+                {%- if days > 0 or hours > 0 -%}
+                  {{ ' ' }}
+                {%- endif -%}
+                {{ minutes }}m
+              {%- endif -%}
             {%- endif -%}
-          {%- endif -%}
-          {%- if minutes > 0 -%}
-            {%- if hours > 0 -%}
-              {{ ', ' }}
-            {%- endif -%}
-            {%- if minutes == 1 -%}
-              1 minute
-            {%- else -%}
-              {{ minutes }} minutes
-            {%- endif -%}
-          {%- endif -%}
-          {%- if seconds > 0 -%}
-            {%- if hours > 0 or minutes > 0 -%}
-              {{ ', ' }}
-            {%- endif -%}
-            {%- if seconds == 1 -%}
-              1 second
-            {%- else -%}
-              {{ seconds }} seconds
-            {%- endif -%}
-          {%- endif -%}
 
       ha_uptime:
         friendly_name: Home Assistant Uptime

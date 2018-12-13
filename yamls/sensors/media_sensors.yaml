@@ -36,7 +36,12 @@
       - diskspace
     days: 14
     unit: TB
-    
+
+  # - platform: qbittorrent
+    # url: !secret qbittorrent_ip
+    # username: !secret qbittorrent_username
+    # password: !secret http_password
+
   - platform: template
     sensors:
       watching_plex:

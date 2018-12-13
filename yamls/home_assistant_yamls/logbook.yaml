@@ -21,8 +21,8 @@
       - sensor.thermostatmode
       - sensor.current_set_temp
       - sensor.dark_sky_temperature
-      # MSC
-      - sensor.sleep_start_time
+      # Lock
+      - sensor.last_lock_code_used
   exclude:
     entities:
       - automation.notifications_off_at_11pm
@@ -49,7 +49,10 @@
       - input_boolean.presence_running
       - input_boolean.restart_complete
       - input_boolean.kitchen_lights_running
+      - light.front_kitchen_31
+      - light.back_kitchen_30
       - script.thermostat_set_home_morning
       - script.thermostat_set_home_not_morning
       - script.couch_group_toggle_visibility
       - script.tv_input_group_toggle_visible
+      - script.do_nothing

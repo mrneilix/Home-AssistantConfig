@@ -9,6 +9,8 @@
       interval_seconds: 2
       hosts:
         neil_wifi: !secret my_phone_wifi
+    - platform: googlehome
+      host: !secret google_home_ip
     - platform: tile
       username: !secret email
       password: !secret tile_password
@@ -23,6 +25,7 @@
         - device_tracker.neil_bluetooth
         - device_tracker.neil_wifi
         - device_tracker.activbuds_s255
+        - device_tracker.headphones_google_home
         - device_tracker.monitor_neil
         - binary_sensor.neil_lock_code
     - platform: composite
@@ -35,6 +38,7 @@
       entity_id:
         - device_tracker.tile_ba7ceb56d53379ac
         - binary_sensor.butters_tile
+        - device_tracker.butters_tile_google_home
     - platform: composite
       name: parents
       entity_id:

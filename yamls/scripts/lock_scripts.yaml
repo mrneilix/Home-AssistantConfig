@@ -55,7 +55,7 @@ lock_clear_temp_code:
       data:
         entity_id: input_boolean.temp_lock_code_set
     - condition: template
-      value_template: "{{ (as_timestamp(now()) - as_timestamp(states.sensor.lock_pin_remove_success.last_updated)) | int > 30 }}"
+      value_template: "{{ (as_timestamp(now()) - as_timestamp(states.binary_sensor.lock_temp_pin.last_updated)) | int > 60 }}"
     - service: scene.turn_on
       entity_id: scene.clear_temp_code
 
@@ -65,11 +65,13 @@ lock_set_temp_lock_code:
     - service: rest_command.set_lock_code
       data_template:
         templockcode: "{{ states.input_text.lock_code_temp.state }}"
-    - delay: 00:00:05
+    - delay: 00:00:10
     - service: input_text.set_value
       data:
         entity_id: input_text.lock_code_temp
         value: 'Code'
+    - service: scene.turn_on
+      entity_id: scene.check_lock_codes
     - service: input_boolean.turn_on
       data:
         entity_id: input_boolean.temp_lock_code_set
@@ -79,9 +81,9 @@ lock_clear_parents_lock_code:
   sequence:
     - service: scene.turn_on
       entity_id: scene.clear_parents_code
-    - delay: 00:00:20
+    - delay: 00:00:60
     - condition: template
-      value_template: "{{ (as_timestamp(now()) - as_timestamp(states.sensor.lock_pin_remove_success.last_updated)) | int > 30 }}"
+      value_template: "{{ (as_timestamp(now()) - as_timestamp(states.binary_sensor.lock_parents_pin.last_updated)) | int > 60 }}"
     - service: scene.turn_on
       entity_id: scene.clear_parents_code
 
@@ -90,8 +92,8 @@ lock_set_parents_lock_code:
   sequence:
     - service: scene.turn_on
       entity_id: scene.add_parents_code
-    - delay: 00:00:20
+    - delay: 00:00:60
     - condition: template
-      value_template: "{{ (as_timestamp(now()) - as_timestamp(states.sensor.lock_pin_remove_success.last_updated)) | int > 30 }}"
+      value_template: "{{ (as_timestamp(now()) - as_timestamp(states.binary_sensor.lock_parents_pin.last_updated)) | int > 60 }}"
     - service: scene.turn_on
       entity_id: scene.add_parents_code

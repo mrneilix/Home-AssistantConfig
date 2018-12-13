@@ -1,23 +1,7 @@
   - platform: mqtt
-    state_topic: "Vera/Events/Lock info"
     name: "Last Lock Code Used"
-    value_template: '{{ value_json.Variable1 }}'
-  - platform: mqtt
     state_topic: "Vera/Events/Lock info"
-    name: "Lock Pin Code Set"
-    value_template: '{{ value_json.Variable3 }}'
-  - platform: mqtt
-    state_topic: "Vera/Events/Schlage Deadbolt"
-    name: "Lock Pin Add Success"
-    value_template: '{{ value_json.sl_PinProgramSuccess }}'
-  - platform: mqtt
-    state_topic: "Vera/Events/Schlage Deadbolt"
-    name: "Lock Pin Remove Success"
-    value_template: '{{ value_json.sl_PinRemoveSuccess }}'
-  - platform: mqtt
-    state_topic: "Vera/Events/Schlage Deadbolt"
-    name: "Lock Pin Codes"
-    value_template: '{{ value_json.PinCodes }}'
+    value_template: '{{ value_json.Variable1 }}'
 
   - platform: template
     sensors:

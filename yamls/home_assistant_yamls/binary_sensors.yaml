@@ -21,7 +21,7 @@
       lock_code_entered:
         friendly_name: Lock Code Entered
         value_template: >-
-          {% if (as_timestamp(now()) - as_timestamp(states.sensor.last_lock_code_name.last_updated) < 600 ) and states('sensor.uptime') | int > 10 %}
+          {% if (as_timestamp(now()) - as_timestamp(states.sensor.last_lock_code_name.last_updated) < 600 ) and (states('sensor.uptime') | int > 10) and is_state("lock.schlage_deadbolt_47", "unlocked") %}
             True
           {% else %}
             False
@@ -124,7 +124,7 @@
         entity_id:
           - sensor.butters_mqtt_tile
 
-#DARK SKY
+# Dark Outside
       dark_out:
         friendly_name: Dark Outside
         value_template: >-
@@ -140,3 +140,17 @@
     host: 192.168.1.126
     count: 5
     name: vera_up
+
+## Lock Codes MQTT ###
+  - platform: mqtt
+    state_topic: "Vera/Events/Lock info"
+    name: "Lock Parents Pin"
+    value_template: '{{ value_json.Variable4 }}'
+    payload_on: "On"
+    payload_off: "Off"
+  - platform: mqtt
+    state_topic: "Vera/Events/Lock info"
+    name: "Lock Temp Pin"
+    value_template: '{{ value_json.Variable5 }}'
+    payload_on: "On"
+    payload_off: "Off"

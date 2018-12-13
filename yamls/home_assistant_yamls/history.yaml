@@ -29,7 +29,6 @@
       - sensor.pi_zero_boot_time
       - sensor.pi_zero_cpu_temp
       - sensor.pi_zero_cpu_usage
-      - sensor.pi_zero_monitor_presence_status
       # FitBit
       - sensor.steps
       - sensor.activity_calories

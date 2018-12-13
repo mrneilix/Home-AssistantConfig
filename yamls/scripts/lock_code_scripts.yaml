@@ -1,7 +1,6 @@
 lock_code_entered_not_family:
   alias: Lock Code Entered
   sequence:
-    - service: script.presence_someone_not_neil_home
     - service: media_player.volume_set
       data_template:
         entity_id: media_player.kitchen_home

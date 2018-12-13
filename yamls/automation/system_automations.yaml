@@ -9,6 +9,11 @@
     - service: logger.set_level
       data:
         homeassistant.components: fatal
+    - service: scene.turn_on
+      entity_id: scene.startup_reset_variables
+    - service: shell_command.restart_monitor
+    - service: shell_command.restart_tv_status_monitor
+    - service: shell_command.restart_pi_sys_stat
     - delay: 00:00:60
     - service: script.startup_scripts
     - delay: 00:00:20
@@ -40,14 +45,6 @@
   initial_state: false
   trigger: 
     - platform: state
-      entity_id: sensor.pi_zero_monitor_presence_status
-      to: 'offline'
-      for:
-        minutes: 2
-    - platform: state
-      entity_id: sensor.pi_zero_monitor_presence_status
-      to: 'unknown'
-    - platform: state
       entity_id: sensor.neil_mqtt_pixel
       to: 'unknown'
       for:
@@ -67,7 +64,7 @@
       entity_id: input_boolean.restart_complete
       state: 'on'
   action:
-    - service: script.monitor_offline
+    - service: shell_command.restart_monitor
 
 - id: system_scheduled_reboot_pi
   alias: 'System Scheduled Reboot Pi'
@@ -83,7 +80,7 @@
     - fri
   action:
     - service: shell_command.reboot_pi_zero
-    - delay: 00:05:00
+    - delay: 00:10:00
     - service: hassio.host_reboot
 
 - id: system_update_input_boolean_for_config_backup

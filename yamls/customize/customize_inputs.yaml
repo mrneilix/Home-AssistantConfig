@@ -29,10 +29,9 @@ input_text.couch_color:
 input_boolean.temp_lock_code_set:
   custom_ui_state_card: state-card-custom-ui
   state_card_mode: badges
-  templates:
-    icon: >
-      if (state === 'on') return 'mdi:home-lock-open';
-      return 'mdi:home-lock';
+  # templates:
+    # theme: >
+      # if (state === 'on') return 'on_badge'; else return 'off_badge';
 input_boolean.parents_lock_code:
   entity_picture: /local/mom-dad.jpg
 input_boolean.butters_home:
