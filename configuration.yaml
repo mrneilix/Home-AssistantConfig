@@ -14,7 +14,7 @@ homeassistant:
 frontend: !include yamls/home_assistant_yamls/frontend.yaml
 
 customizer:
-  custom_ui: hosted
+  custom_ui: local
 
 custom_updater: !include yamls/home_assistant_yamls/custom_updater.yaml
 
@@ -48,7 +48,7 @@ tts: !include yamls/home_assistant_yamls/tts.yaml
 
 vera:
   vera_controller_url: !secret vera_controller_url
-  exclude: [54]
+  exclude: [58]
 
 wemo:
   discovery: true

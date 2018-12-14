@@ -2,28 +2,28 @@
 light.kitchen:
   entity_picture: /local/kitchen.jpg
   friendly_name: Kitchen
-  custom_ui_state_card: state-card-custom-ui
-  state_card_mode: single-line
-  stretch_slider: true
-  hide_control: false
-  show_last_changed: false
-  slider_theme:
-    min: 0
-    max: 255
-    pin: true
-    off_when_min: true
-    report_when_not_changed: false
+  # custom_ui_state_card: state-card-custom-ui
+  # state_card_mode: single-line
+  # stretch_slider: true
+  # hide_control: false
+  # show_last_changed: false
+  # slider_theme:
+    # min: 0
+    # max: 255
+    # pin: true
+    # off_when_min: true
+    # report_when_not_changed: false
 
 light.bed:
   entity_picture: /local/bed.jpg
   friendly_name: Bed
-  custom_ui_state_card: state-card-custom-ui
-  state_card_mode: single-line
-  stretch_slider: true
-  hide_control: false
-  show_last_changed: false
-  slider_theme:
-    min: 0
-    max: 255
-    pin: true
-    off_when_min: true
+  # custom_ui_state_card: state-card-custom-ui
+  # state_card_mode: single-line
+  # stretch_slider: true
+  # hide_control: false
+  # show_last_changed: false
+  # slider_theme:
+    # min: 0
+    # max: 255
+    # pin: true
+    # off_when_min: true

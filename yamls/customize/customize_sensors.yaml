@@ -1,15 +1,15 @@
 ### SYSTEM SENSORS ###
 sensor.plex:
   friendly_name: Plex
-sensor.received_eth0:
+sensor.network_in_eth0:
   custom_ui_state_card: state-card-custom-ui
   state_card_mode: badges
   friendly_name: Ethernet Received
-sensor.sent_eth0:
+sensor.network_out_eth0:
   custom_ui_state_card: state-card-custom-ui
   state_card_mode: badges
   friendly_name: Ethernet Sent
-sensor.disk_use_percent:
+sensor.disk_use_percent_:
   custom_ui_state_card: state-card-custom-ui
   state_card_mode: badges
   friendly_name: Disk Used
@@ -117,7 +117,7 @@ sensor.template_calendar_facebook_events:
   icon: mdi:facebook
 
 ### WEATHER SENSORS ###
-sensor.allergy_index_today: 
+sensor.allergy_index_today_2: 
   custom_ui_state_card: state-card-custom-ui
   state_card_mode: badges
   friendly_name: Pollen Count

@@ -1,6 +1,6 @@
   - platform: mqtt
     name: "Last Lock Code Used"
-    state_topic: "Vera/Events/Lock info"
+    state_topic: "Vera/Events/63"
     value_template: '{{ value_json.Variable1 }}'
 
   - platform: template

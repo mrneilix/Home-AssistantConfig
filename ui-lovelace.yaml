@@ -7,57 +7,46 @@ views:
   - title: Home
     icon: mdi:home
     cards:
-      - type: glance
+      - type: entities
         entities:
           - device_tracker.neil
           - device_tracker.butters
-          - sensor.plex
+          - sensor.tautulli_total
           - sensor.dark_sky_precip_probability
           - sensor.dark_sky_temperature
           - sensor.dark_sky_apparent_temperature
-          - sensor.dark_sky_daytime_high_temperature
-          - sensor.dark_sky_overnight_low_temperature
+          - sensor.dark_sky_daytime_high_temperature_0
+          - sensor.dark_sky_overnight_low_temperature_0
           - sensor.forecast_icon
           - sensor.daylight_remaining_hm
       - type: entities
         title: Lights
         show_header_toggle: false
         entities:
-          - type: light
-            entity: light.kitchen
-          - type: light
-            entity: switch.furnace_switch_9
-          - type: light
-            entity: switch.lamp
-          - type: light
-            entity: switch.bathroom_light
-          - type: light
-            entity: switch.bathroom_fan
-          - type: light
-            entity: light.bed
+          - light.kitchen
+          - switch.furnace_switch_29
+          - switch.lamp
+          - switch.bathroom_light
+          - switch.bathroom_fan
+          - light.bed
       - type: entities
         title: Couch Lights
         show_header_toggle: false
         entities:
           - input_select.couch_color
-      - type: conditional
-        conditions:
-          - entity: light.couch
-            state: "on"
-        card:
-          type: entities
-          title: Couch Colors
-          show_header_toggle: false
-          entities:
-            - input_text.couch_color
-            - input_number.couch_r
-            - input_number.couch_g
-            - input_number.couch_b
-      - type: entity-button
-        name: Lock
+      - type: entities
+        title: Couch Colors
+        show_header_toggle: false
+        entities:
+          - input_text.couch_color
+          - input_number.couch_r
+          - input_number.couch_g
+          - input_number.couch_b
+      - type: entities
+        title: Lock
         show_header_toggle: true
-        entity: script.lock_toggle_state
-        service: script.turn_on
+        entities:
+          - lock.schlage_deadbolt_47
       - type: entities
         title: Thermostat
         show_header_toggle: true
@@ -91,7 +80,7 @@ views:
         title: TV Inputs
         show_header_toggle: false
         entities:
-          - switch.tv_power
+          - input_boolean.tv_power
           - scene.theater_mode
           - input_text.gh_speak
       - type: entities
@@ -100,22 +89,17 @@ views:
         entities:
           - script.tv_input_chromecast
           - script.tv_input_playstation
-      - type: entity-filter
-        entities:
-          - media_player.kitchen_home
-          - media_player.living_room_tv
-          - media_player.plex_desktop
-        state_filter:
-          - playing
-        card: 
-          type: media-control
+      - type: media-control
+        entity: media_player.kitchen_home
+      - type: media-control
+        entity: media_player.living_room_tv
       - type: entities
         title: Google Assistant
         show_header_toggle: false
         entities:
           - input_text.broadcast_message
           - input_text.google_command
-      - type: glance
+      - type: entities
         title: Plex Server
         show_header_toggle: false
         entities:
@@ -125,6 +109,8 @@ views:
           - sensor.tautulli_total_bandwidth
           - sensor.tautulli_transcode
           - sensor.watching_plex
+      - type: media-control
+        entity: media_player.plex_pixel_2_xl
       - type: entities
         title: Downloaders
         show_header_toggle: false
@@ -188,10 +174,10 @@ views:
         entities:
           - sensor.dark_sky_temperature
           - sensor.dark_sky_apparent_temperature
-          - sensor.dark_sky_daytime_high_temperature
-          - sensor.dark_sky_overnight_low_temperature
-          - sensor.dark_sky_daytime_high_apparent_temperature
-          - sensor.dark_sky_overnight_low_apparent_temperature
+          - sensor.dark_sky_daytime_high_temperature_0
+          - sensor.dark_sky_overnight_low_temperature_0
+          - sensor.dark_sky_daytime_high_apparent_temperature_0
+          - sensor.dark_sky_overnight_low_apparent_temperature_0
           - sensor.dark_sky_precip_intensity
           - sensor.dark_sky_precip_probability
           - sensor.dark_sky_wind_speed
@@ -199,14 +185,12 @@ views:
           - sensor.dark_sky_humidity
           - sensor.dark_sky_visibility
           - sensor.dark_sky_cloud_coverage
-          - sensor.dark_sky_moon_phase
-          - sensor.allergy_index_today
-          - sensor.allergy_index_tomorrow
+          - sensor.dark_sky_moon_phase_0
           - sensor.dark_sky_summary
           - sensor.dark_sky_minutely_summary
           - sensor.dark_sky_hourly_summary
           - sensor.dark_sky_daily_summary
-      - type: glance
+      - type: entities
         title: System Monitor
         show_header_toggle: false
         entities:
@@ -220,7 +204,7 @@ views:
           - sensor.speedtest_download
           - sensor.speedtest_upload
           - sensor.speedtest_ping
-      - type: glance
+      - type: entities
         title: Pi Zero System
         show_header_toggle: false
         entities:
@@ -234,6 +218,7 @@ views:
         entities:
           - script.restart_homeassistant
           - script.system_reboot
+          - script.reboot_pi_zero
       - type: entities
         title: Lock Code
         show_header_toggle: false
@@ -242,11 +227,13 @@ views:
           - sensor.lock_battery_level
           - input_boolean.temp_lock_code_set
           - input_text.lock_code_temp
-      - type: glance
+      - type: entities
         title: Device Trackers
         show_header_toggle: false
         entities:
           - device_tracker.neil
+          - device_tracker.neil_bluetooth
+          - device_tracker.neil_wifi
           - device_tracker.neil_pixel_tasker
           - device_tracker.monitor_neil
           - device_tracker.butters
