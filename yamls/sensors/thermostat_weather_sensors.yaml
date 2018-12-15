@@ -3,7 +3,7 @@
     forecast:
       - 0
     update_interval:
-      minutes: 5
+      minutes: 10
     monitored_conditions:
       - summary
       - icon
@@ -131,10 +131,3 @@
           {% else %}
             /local/sun/weather-sunset.png
           {% endif %}
-# THERMOSTAT
-      thermostatmode:
-        value_template: "{{ states.climate.thermostat.attributes.operation_mode }}"
-        friendly_name: "Thermostat Mode"
-      current_set_temp:
-        value_template: "{{ states.climate.thermostat.attributes.temperature | int }}"
-        friendly_name: "Current Set Temperature"

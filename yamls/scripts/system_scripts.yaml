@@ -5,7 +5,6 @@ startup_scripts:
       entity_id: lock.schlage_deadbolt_47
     - service: script.startup_input_booleans
     - service: script.startup_couch_colors
-    - service: script.thermostat_update_inputs
     - delay: 00:00:02
     - service: google_assistant.request_sync
     - service: script.presence_tasker_phone_location

@@ -3,4 +3,4 @@
   extra_html_url_es5:
     - https://raw.githubusercontent.com/andrey-git/home-assistant-custom-ui/master/state-card-custom-ui-es5.html
   themes: !include_dir_merge_named /config/yamls/themes/
-  javascript_version: latest
+  javascript_version: auto

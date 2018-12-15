@@ -8,7 +8,7 @@
     initial: on
   notifications_on:
     icon: mdi:bell
-    name: Notifications On
+    name: Notifications
   presence_running:
     initial: off 
   away:
@@ -26,7 +26,7 @@
     name: Weather Notifications Off
     initial: off
   parents_lock_code:
-    name: Parent's Lock Code
+    name: Parent's Code
   butters_home:
     name: Butters
   config_updated:

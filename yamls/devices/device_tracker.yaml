@@ -11,6 +11,9 @@
         neil_wifi: !secret my_phone_wifi
     - platform: googlehome
       host: !secret google_home_ip
+      new_device_defaults:
+        track_new_devices: false
+        hide_if_away: true
     - platform: tile
       username: !secret email
       password: !secret tile_password

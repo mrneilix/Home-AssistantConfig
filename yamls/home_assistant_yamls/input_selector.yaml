@@ -1,11 +1,3 @@
-thermostat_mode:
-  name: Thermostat Mode
-  options:
-    - "auto"
-    - "off"
-    - "cool"
-    - "heat"
-
 couch_color:
   name: Couch Led Bulb Color
   icon: mdi:lightbulb

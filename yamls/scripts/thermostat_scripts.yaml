@@ -20,8 +20,6 @@ thermostat_set_home_not_morning:
           {% else %}
             72
           {% endif %}
-    - delay: 00:00:05
-    - service: script.thermostat_update_inputs
       
 thermostat_set_home_morning:
   alias: Thermostat Temp Home Morning
@@ -44,7 +42,6 @@ thermostat_set_home_morning:
             72
           {% endif %}
     - delay: 00:00:05
-    - service: script.thermostat_update_inputs
 
 thermostat_home_set_temp:
   alias: Thermostat Home Set Temp
@@ -59,18 +56,6 @@ thermostat_home_set_temp:
     - service: input_boolean.turn_off
       data:
         entity_id: input_boolean.presence_running
-
-thermostat_update_inputs:
-  alias: Update Thermostat
-  sequence:
-    - service: input_select.select_option
-      data_template:
-        entity_id: input_select.thermostat_mode
-        option: "{{ states.sensor.thermostatmode.state }}"
-    - service: input_number.set_value
-      data_template:
-        entity_id: input_number.target_temp
-        value: "{{ states.sensor.current_set_temp.state | int }}"
 
 thermostat_temp_everyone_away:
   alias: Thermostat Temp Away
@@ -87,7 +72,6 @@ thermostat_temp_everyone_away:
             85
           {% endif %}
     - delay: 00:00:05
-    - service: script.thermostat_update_inputs
         
 thermostat_set_temp_only_butters_home:
   alias: Thermostat Set Temp Only Butters Home
