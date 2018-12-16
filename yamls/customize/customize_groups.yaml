@@ -19,8 +19,6 @@ group.weather_text:
     - sensor.dark_sky_cloud_coverage
 group.system_monitor:
   friendly_name: System Monitor
-  custom_ui_state_card: state-card-custom-ui
-  state_card_mode: badges
 group.plex_players:
   friendly_name: Plex
 group.google_cast:
@@ -52,6 +50,3 @@ group.health:
   friendly_name: FitBit
 group.system_control:
   friendly_name: System Control
-  
-# group.tv_controls:
-  # friendly_name: TV Volume

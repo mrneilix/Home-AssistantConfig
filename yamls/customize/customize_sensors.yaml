@@ -2,105 +2,43 @@
 sensor.plex:
   friendly_name: Plex
 sensor.network_in_eth0:
-  custom_ui_state_card: state-card-custom-ui
-  state_card_mode: badges
   friendly_name: Ethernet Received
 sensor.network_out_eth0:
-  custom_ui_state_card: state-card-custom-ui
-  state_card_mode: badges
   friendly_name: Ethernet Sent
 sensor.disk_use_percent_:
-  custom_ui_state_card: state-card-custom-ui
-  state_card_mode: badges
   friendly_name: Disk Used
 sensor.since_last_boot_templated:
-  custom_ui_state_card: state-card-custom-ui
-  state_card_mode: badges
   friendly_name: System Uptime
   icon: mdi:clock
 sensor.ha_uptime:
-  custom_ui_state_card: state-card-custom-ui
-  state_card_mode: badges
   friendly_name: Home Assistant Uptime
   icon: mdi:clock
 sensor.speedtest_download:
-  custom_ui_state_card: state-card-custom-ui
-  state_card_mode: badges
   friendly_name: Download Speed
   icon: mdi:download-network
 sensor.speedtest_upload:
-  custom_ui_state_card: state-card-custom-ui
-  state_card_mode: badges
   friendly_name: Upload Speed
   icon: mdi:upload-network
 sensor.speedtest_ping:
-  custom_ui_state_card: state-card-custom-ui
-  state_card_mode: badges
   friendly_name: Ping
   icon: mdi:network
-sensor.memory_free:
-  custom_ui_state_card: state-card-custom-ui
-  state_card_mode: badges
-sensor.memory_use:
-  custom_ui_state_card: state-card-custom-ui
-  state_card_mode: badges
-sensor.memory_use_percent:
-  custom_ui_state_card: state-card-custom-ui
-  state_card_mode: badges
-sensor.processor_use:
-  custom_ui_state_card: state-card-custom-ui
-  state_card_mode: badges
-sensor.last_boot:
-  custom_ui_state_card: state-card-custom-ui
-  state_card_mode: badges
-sensor.pi_zero_cpu_temp:
-  custom_ui_state_card: state-card-custom-ui
-  state_card_mode: badges
-sensor.pi_zero_cpu_usage:
-  custom_ui_state_card: state-card-custom-ui
-  state_card_mode: badges
-sensor.pi_zero_disk_usage:
-  custom_ui_state_card: state-card-custom-ui
-  state_card_mode: badges 
-sensor.pi_zero_uptime:
-  custom_ui_state_card: state-card-custom-ui
-  state_card_mode: badges
+
   
 ### Media Sensors ###
 sensor.tautulli_total_bandwidth:
-  custom_ui_state_card: state-card-custom-ui
-  state_card_mode: badges
   unit_of_measurement: Mbit/s
   friendly_name: Total Bandwidth
 sensor.tautulli_direct_play:
-  custom_ui_state_card: state-card-custom-ui
-  state_card_mode: badges
   friendly_name: Direct Play
 sensor.tautulli_direct_stream:
-  custom_ui_state_card: state-card-custom-ui
-  state_card_mode: badges
   friendly_name: Direct Stream
 sensor.tautulli_total:
-  custom_ui_state_card: state-card-custom-ui
-  state_card_mode: badges
   friendly_name: Total
 sensor.tautulli_transcode:
-  custom_ui_state_card: state-card-custom-ui
-  state_card_mode: badges
   friendly_name: Transcode
 sensor.tv_power:
   friendly_name: TV Power
   icon: mdi:television-classic
-sensor.sonarr_upcoming_list:
-  custom_ui_state_card: state-card-custom-ui
-sensor.radarr_upcoming_list:
-  custom_ui_state_card: state-card-custom-ui
-sensor.watching_plex:
-  custom_ui_state_card: state-card-custom-ui
-sensor.sonarr_upcoming:
-  custom_ui_state_card: state-card-custom-ui
-sensor.radarr_upcoming:
-  custom_ui_state_card: state-card-custom-ui
 
 ### CALENDAR SENSORS ###
 sensor.template_calendar_events:
@@ -117,83 +55,35 @@ sensor.template_calendar_facebook_events:
   icon: mdi:facebook
 
 ### WEATHER SENSORS ###
-sensor.allergy_index_today_2: 
-  custom_ui_state_card: state-card-custom-ui
-  state_card_mode: badges
+sensor.allergy_index_today_2:
   friendly_name: Pollen Count
-sensor.allergy_index_tomorrow: 
-  custom_ui_state_card: state-card-custom-ui
-  state_card_mode: badges
+sensor.allergy_index_tomorrow:
   friendly_name: Pollen Count Tomorrow
-sensor.dark_sky_precip_intensity: 
-  custom_ui_state_card: state-card-custom-ui
-  state_card_mode: badges
+sensor.dark_sky_precip_intensity:
   friendly_name: Precip Intensity
-sensor.dark_sky_precip_probability: 
-  custom_ui_state_card: state-card-custom-ui
-  state_card_mode: badges
+sensor.dark_sky_precip_probability:
   friendly_name: Precip Probability
-sensor.dark_sky_temperature: 
-  custom_ui_state_card: state-card-custom-ui
-  state_card_mode: badges
+sensor.dark_sky_temperature:
   friendly_name: Temp
-  # templates:
-    # theme: >
-      # if (state >= 75) return 'temperature_hot'; else if (state <= 40) return 'temperature_cold'; else return 'darkblue';
-sensor.dark_sky_apparent_temperature: 
-  custom_ui_state_card: state-card-custom-ui
-  state_card_mode: badges
+sensor.dark_sky_apparent_temperature:
   friendly_name: Apparent Temp
-  # templates:
-    # theme: >
-      # if (state >= 75) return 'temperature_hot'; else if (state <= 40) return 'temperature_cold'; else return 'darkblue';
-sensor.dark_sky_wind_speed: 
-  custom_ui_state_card: state-card-custom-ui
-  state_card_mode: badges
+sensor.dark_sky_wind_speed:
   friendly_name: Wind Speed
-sensor.dark_sky_humidity: 
-  custom_ui_state_card: state-card-custom-ui
-  state_card_mode: badges
+sensor.dark_sky_humidity:
   friendly_name: Humidity
-sensor.dark_sky_visibility: 
-  custom_ui_state_card: state-card-custom-ui
-  state_card_mode: badges
+sensor.dark_sky_visibility:
   friendly_name: Visibility
 sensor.dark_sky_nearest_storm_distance:
-  custom_ui_state_card: state-card-custom-ui
-  state_card_mode: badges
   friendly_name: Nearest Storm Distance
 sensor.dark_sky_daytime_high_temperature_0:
-  custom_ui_state_card: state-card-custom-ui
-  state_card_mode: badges
   friendly_name: High Temp
-  # templates:
-    # theme: >
-      # if (state >= 75) return 'temperature_hot'; else if (state <= 40) return 'temperature_cold'; else return 'darkblue';
 sensor.dark_sky_overnight_low_temperature_0:
-  custom_ui_state_card: state-card-custom-ui
-  state_card_mode: badges
   friendly_name: Low Temp
-  # templates:
-    # theme: >
-      # if (state >= 75) return 'temperature_hot'; else if (state <= 40) return 'temperature_cold'; else return 'darkblue';
 sensor.dark_sky_daytime_high_apparent_temperature_0:
-  custom_ui_state_card: state-card-custom-ui
-  state_card_mode: badges
   friendly_name: Apparent High Temp
-  # templates:
-    # theme: >
-      # if (state >= 75) return 'temperature_hot'; else if (state <= 40) return 'temperature_cold'; else return 'darkblue';
 sensor.dark_sky_overnight_low_apparent_temperature_0:
-  custom_ui_state_card: state-card-custom-ui
-  state_card_mode: badges
   friendly_name: Apparent Low Temp
-  # templates:
-    # theme: >
-      # if (state >= 75) return 'temperature_hot'; else if (state <= 40) return 'temperature_cold'; else return 'darkblue';
-sensor.dark_sky_cloud_coverage: 
-  custom_ui_state_card: state-card-custom-ui
-  state_card_mode: badges
+sensor.dark_sky_cloud_coverage:
   friendly_name: Cloud Coverage
 sensor.dark_sky_minutely_summary:
   friendly_name: Minutely Summary
@@ -203,31 +93,14 @@ sensor.dark_sky_daily_summary:
   friendly_name: Daily Summary
 sensor.dark_sky_summary:
   friendly_name: Current Weather
-sensor.forecast_icon: 
-  custom_ui_state_card: state-card-custom-ui
-  state_card_mode: badges
 sensor.dark_sky_moon_phase_0:
-  custom_ui_state_card: state-card-custom-ui
-  state_card_mode: badges
   friendly_name: Moon Phase
-sensor.daylight_remaining_hm:
-  custom_ui_state_card: state-card-custom-ui
-  state_card_mode: badges
+
 ### LOCK SENSORS ###
 sensor.last_lock_code_used:
   friendly_name: Last Lock Code Used
-  custom_ui_state_card: state-card-custom-ui
-  state_card_mode: badges
 sensor.lock_battery_level:
   friendly_name: Lock Battery Level
-  custom_ui_state_card: state-card-custom-ui
-  state_card_mode: badges
-sensor.last_lock_code_name:
-  custom_ui_state_card: state-card-custom-ui
-  state_card_mode: badges
 ### BINARY SENSORS ###
 binary_sensor.anyone_home:
   friendly_name: Anyone Home
-binary_sensor.pi_zero_presence_neil_home:
-  custom_ui_state_card: state-card-custom-ui
-  state_card_mode: badges

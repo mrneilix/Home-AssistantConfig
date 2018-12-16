@@ -148,9 +148,17 @@
     value_template: '{{ value_json.Variable4 }}'
     payload_on: "On"
     payload_off: "Off"
+    payload_not_available: ""
   - platform: mqtt
     state_topic: "Vera/Events/Lock info"
     name: "Lock Temp Pin"
     value_template: '{{ value_json.Variable5 }}'
     payload_on: "On"
     payload_off: "Off"
+    payload_not_available: ""
+  - platform: mqtt
+    state_topic: "home/tv/state"
+    name: "TV MQTT Monitor"
+    payload_on: "ON"
+    payload_off: "OFF"
+    payload_not_available: ""

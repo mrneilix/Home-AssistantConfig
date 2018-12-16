@@ -13,8 +13,8 @@ homeassistant:
 
 frontend: !include yamls/home_assistant_yamls/frontend.yaml
 
-customizer:
-  custom_ui: local
+# customizer:
+  # custom_ui: local
 
 custom_updater: !include yamls/home_assistant_yamls/custom_updater.yaml
 
@@ -34,6 +34,9 @@ http:
 
 logger:
   default: error
+
+lovelace:
+  mode: yaml
 
 map:
 

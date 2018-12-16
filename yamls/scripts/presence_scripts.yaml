@@ -70,7 +70,7 @@ presence_leave:
       data:
         command: leave
     - service_template: >
-          {% if is_state('input_boolean.tv_power', 'on') or is_state('sensor.tv_mqtt_monitor', 'on') %}
+          {% if is_state('input_boolean.tv_power', 'on') or is_state('binary_sensor.tv_mqtt_monitor', 'on') %}
             script.tv_off
           {% else %}
             script.do_nothing

@@ -126,7 +126,6 @@ system_reboot:
 startup_couch_colors:
   alias: Startup Load Couch
   sequence:
-    - service: script.couch_group_toggle_visibility
     - delay: 00:00:02
     - service: script.couch_light_update_all_controls
 

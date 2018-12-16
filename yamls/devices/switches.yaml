@@ -7,3 +7,21 @@
   - platform: tplink
     host: !secret bathroom_fan_ip
     name: bathroom_fan
+  - platform: template
+    switches:
+      lock_switch:
+        value_template: "{{ is_state('lock.schlage_deadbolt_47', 'locked') }}"
+        turn_on:
+          service: lock.lock
+          data:
+            entity_id: lock.schlage_deadbolt_47
+        turn_off:
+          service: lock.unlock
+          data:
+            entity_id: lock.schlage_deadbolt_47
+        icon_template: >-
+          {% if is_state('lock.schlage_deadbolt_47', 'locked') %}
+            mdi:lock
+          {% else %}
+            mdi:lock-open-outline
+          {% endif %}

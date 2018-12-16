@@ -174,11 +174,3 @@ couch_light_update_input_text:
       data_template:
         entity_id: input_text.couch_color
         value: '{{ states.sensor.couch_light_color_name.state }}'
-
-couch_group_toggle_visibility:
-  alias: Couch Group Toggle Visibility
-  sequence:
-    - service: group.set_visibility
-      data_template:
-        entity_id: group.couch_light_colors
-        visible: "{{ is_state('light.couch', 'on') }}"

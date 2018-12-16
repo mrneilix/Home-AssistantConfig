@@ -2,41 +2,13 @@
 device_tracker.neil:
   entity_picture: /local/Me.jpg
   friendly_name: Neil
-  custom_ui_state_card: state-card-custom-ui
-  state_card_mode: badges
 device_tracker.neil_bluetooth:
   entity_picture: /local/Me.jpg
   friendly_name: Neil BT
-  custom_ui_state_card: state-card-custom-ui
   state_card_mode: badges
 device_tracker.neil_wifi:
   entity_picture: /local/Me.jpg
   friendly_name: Neil Wi-Fi
-  custom_ui_state_card: state-card-custom-ui
-  state_card_mode: badges
-device_tracker.tile_a8aa8037bf760498:
-  custom_ui_state_card: state-card-custom-ui
-  state_card_mode: badges
-device_tracker.gina:
-  custom_ui_state_card: state-card-custom-ui
-  state_card_mode: badges
-device_tracker.dad:
-  custom_ui_state_card: state-card-custom-ui
-  state_card_mode: badges
-device_tracker.mom:
-  custom_ui_state_card: state-card-custom-ui
-  state_card_mode: badges
 device_tracker.neil_pixel_tasker:
   entity_picture: /local/Me.jpg
   friendly_name: Neil Tasker
-  custom_ui_state_card: state-card-custom-ui
-  state_card_mode: badges
-device_tracker.butters:
-  custom_ui_state_card: state-card-custom-ui
-  state_card_mode: badges
-device_tracker.monitor_neil:
-  custom_ui_state_card: state-card-custom-ui
-  state_card_mode: badges
-device_tracker.parents:
-  custom_ui_state_card: state-card-custom-ui
-  state_card_mode: badges
