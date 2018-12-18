@@ -94,8 +94,6 @@
     - platform: state
       entity_id: sensor.devices
     - platform: state
-      entity_id: sensor.groups
-    - platform: state
       entity_id: sensor.home_assistant_yamls
     - platform: state
       entity_id: sensor.scripts

@@ -11,6 +11,8 @@ resources:
     url: /local/custom-lovelace/thermostat-card/thermostat-card.js?v=0.1.1
   - type: js
     url: /local/custom-lovelace/upcoming-media-card/upcoming-media-card.js?v=0.3.3
+  - type: js
+    url: /local/custom-lovelace/compact-custom-header/compact-custom-header.js?v=0.1.4
 title: Atlanta Condo
 views:
   - badges:
@@ -25,6 +27,7 @@ views:
       - sensor.forecast_icon
       - sensor.daylight_remaining_hm
     cards:
+      - type: custom:compact-custom-header
       - cards:
           - cards:
               - entity: light.kitchen
@@ -73,22 +76,98 @@ views:
                 type: 'custom:button-card'
             type: horizontal-stack
         type: vertical-stack
-      - entities:
-          - input_select.couch_color
-        show_header_toggle: false
-        title: Couch Lights
-        type: entities
-      - card:
-          entities:
-            - input_text.couch_color
-            - input_number.couch_r
-            - input_number.couch_g
-            - input_number.couch_b
-          type: entities
+      - type: 'custom:button-card'
+        action: toggle
+        color: 'auto'
+        color_off: 'rgb(181, 181, 181)'
+        color_type: icon
+        entity: light.couch
+        icon: 'mdi:sofa'
+        name: Couch Light
+        size: 40%
+      - type: conditional
         conditions:
           - entity: light.couch
             state: 'on'
-        type: conditional
+        card:
+          type: vertical-stack
+          cards:
+            - type: horizontal-stack
+              cards:
+                - type: 'custom:button-card'
+                  action: service
+                  service:
+                    domain: scene
+                    action: turn_on
+                    data:
+                      entity_id: scene.couch_white
+                  color: 'rgb(255, 255, 255)'
+                  color_type: icon
+                  icon: 'mdi:sofa'
+                  name: White
+                - type: 'custom:button-card'
+                  action: service
+                  service:
+                    domain: scene
+                    action: turn_on
+                    data:
+                      entity_id: scene.couch_soft_white
+                  color: 'rgb(255, 242, 230)'
+                  color_type: icon
+                  icon: 'mdi:sofa'
+                  name: Soft White
+                - type: 'custom:button-card'
+                  action: service
+                  service:
+                    domain: scene
+                    action: turn_on
+                    data:
+                      entity_id: scene.couch_blue
+                  color: 'rgb(0, 0, 255)'
+                  color_type: icon
+                  icon: 'mdi:sofa'
+                  name: Blue
+            - type: horizontal-stack
+              cards:
+                - type: 'custom:button-card'
+                  action: service
+                  service:
+                    domain: scene
+                    action: turn_on
+                    data:
+                      entity_id: scene.couch_red
+                  color: 'rgb(255, 0, 0)'
+                  color_type: icon
+                  icon: 'mdi:sofa'
+                  name: Red
+                - type: 'custom:button-card'
+                  action: service
+                  service:
+                    domain: scene
+                    action: turn_on
+                    data:
+                      entity_id: scene.couch_green
+                  color: 'rgb(0, 255, 0)'
+                  color_type: icon
+                  icon: 'mdi:sofa'
+                  name: Green
+                - type: 'custom:button-card'
+                  action: service
+                  service:
+                    domain: scene
+                    action: turn_on
+                    data:
+                      entity_id: scene.couch_purple
+                  color: 'rgb(255, 0, 255)'
+                  color_type: icon
+                  icon: 'mdi:sofa'
+                  name: Purple
+            - type: entities
+              entities:
+                - input_text.couch_color
+                - input_number.couch_r
+                - input_number.couch_g
+                - input_number.couch_b
       - cards:
           - cards:
               - entity: climate.thermostat
@@ -230,15 +309,33 @@ views:
         show_header_toggle: false
         title: TV Inputs
         type: entities
-      - card:
-          entities:
-            - script.tv_input_chromecast
-            - script.tv_input_playstation
-          type: entities
+      - type: conditional
         conditions:
           - entity: input_boolean.tv_power
             state: 'on'
-        type: conditional
+        card:
+          type: horizontal-stack
+          cards:
+            - type: 'custom:button-card'
+              action: service
+              service:
+                domain: script
+                action: trigger
+                data:
+                  entity_id: script.tv_input_chromecast
+              color_type: icon
+              icon: 'mdi:cast'
+              name: Chromecast
+            - type: 'custom:button-card'
+              action: service
+              service:
+                domain: script
+                action: trigger
+                data:
+                  entity_id: script.tv_input_playstation
+              color_type: icon
+              icon: 'mdi:playstation'
+              name: Playstation
       - entity: media_player.kitchen_home
         type: media-control
       - entity: media_player.living_room_tv

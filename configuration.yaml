@@ -72,15 +72,12 @@ weather:
       minutes: 15
 
 # Include Folders
-group: !include_dir_merge_named yamls/groups
 automation: !include_dir_merge_list yamls/automation
 script: !include_dir_merge_named yamls/scripts
 sensor: !include_dir_merge_list yamls/sensors
 
-
 # Include HA Yamls
 input_number: !include yamls/home_assistant_yamls/input_numbers.yaml
-input_select: !include yamls/home_assistant_yamls/input_selector.yaml
 notify: !include yamls/home_assistant_yamls/notify.yaml
 binary_sensor: !include yamls/home_assistant_yamls/binary_sensors.yaml
 recorder: !include yamls/home_assistant_yamls/recorder.yaml
@@ -95,6 +92,7 @@ panel_iframe: !include yamls/home_assistant_yamls/panel_iframe.yaml
 rest_command: !include yamls/home_assistant_yamls/rest_command.yaml
 shell_command: !include yamls/home_assistant_yamls/shell_commands.yaml
 scene: !include yamls/home_assistant_yamls/scenes.yaml
+group: !include yamls/home_assistant_yamls/groups.yaml
 
 # Include Devices Yamls
 device_tracker: !include yamls/devices/device_tracker.yaml

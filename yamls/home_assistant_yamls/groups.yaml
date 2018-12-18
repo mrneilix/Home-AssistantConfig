@@ -1,0 +1,8 @@
+auto_lock_automations:
+  entities:
+  - automation.lock_door_auto_lock
+  - automation.lock_auto_lock_door_switch_on
+  - automation.lock_auto_lock_door_switch_update_locked
+
+bathroom: switch.bathroom_light, switch.bathroom_fan
+

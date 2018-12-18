@@ -62,7 +62,6 @@ couch_color_input_numbers:
 couch_light_update_all_controls:
   alias: Couch Light Update All Controls
   sequence:
-    - service: script.couch_light_input_select_select_option
     - delay: 00:00:02
     - service: script.couch_light_update_input_text
     - service: script.couch_light_update_input_numbers
@@ -70,31 +69,6 @@ couch_light_update_all_controls:
     - service: input_boolean.turn_off
       data:
         entity_id: input_boolean.couch_light_script_running
-
-couch_light_input_select_select_option:
-  alias: Couch Light Input Select Select Option
-  sequence:
-    - service: input_select.select_option
-      entity_id: input_select.couch_color
-      data_template:
-        option: >
-          {% if is_state('light.couch', 'off') or is_state('light.couch', 'unavailable') or is_state('sensor.couch_light_color_name', 'Disable') %}
-            Disable
-          {%-elif is_state('sensor.couch_light_color_name', 'White') %}
-            White
-          {%-elif is_state('sensor.couch_light_color_name', 'Soft White') %}
-            Soft White
-          {%-elif is_state('sensor.couch_light_color_name', 'Blue') %}
-            Blue
-          {%-elif is_state('sensor.couch_light_color_name', 'Red') %}
-            Red
-          {%-elif is_state('sensor.couch_light_color_name', 'Green') %}
-            Green
-          {%-elif is_state('sensor.couch_light_color_name', 'Purple') %}
-            Purple
-          {% else %}
-            Custom
-          {% endif %}
 
 couch_light_scripts_trigger:
   alias: Couch Light Script Trigger
@@ -112,7 +86,6 @@ couch_light_scripts_trigger:
 couch_light_scripts_trigger_light_already_on:
   alias: Couch Light Scripts Trigger Light Already On
   sequence:
-    - service: script.couch_light_trigger_scene
     - delay: 00:00:01
     - service: script.couch_light_update_input_numbers
     - service: script.couch_light_update_input_text
@@ -126,30 +99,6 @@ couch_light_scripts_trigger_light_already_off:
   sequence:
     - delay: 00:00:02
     - service: script.couch_light_scripts_trigger_light_already_on
-
-couch_light_trigger_scene:
-  alias: Couch Light Trigger Scene
-  sequence:
-    - service: scene.turn_on
-      data_template:
-        entity_id: >
-          {% if is_state('input_select.couch_color', 'Disable') %}
-            scene.couch_turn_off
-          {%-elif is_state('input_select.couch_color', 'White') %}
-            scene.couch_white
-          {%-elif is_state('input_select.couch_color', 'Soft White') %}
-            scene.couch_soft_white
-          {%-elif is_state('input_select.couch_color', 'Blue') %}
-            scene.couch_blue
-          {%-elif is_state('input_select.couch_color', 'Green') %}
-            scene.couch_green
-          {%-elif is_state('input_select.couch_color', 'Red') %}
-            scene.couch_red
-          {%-elif is_state('input_select.couch_color', 'Purple') %}
-            scene.couch_purple
-          {% else %}
-            scene.couch_custom
-          {% endif %}
 
 couch_light_update_input_numbers:
   alias: Couch Light Update Input Numbers
