@@ -1,11 +1,11 @@
 My HassIO Config
-![Main View With Couch Lights Off](https://github.com/mrneilix/Home-AssistantConfig/blob/master/Screenshots/main-view-couch-off.png?raw=true)
-![Main View With Couch Lights On](https://github.com/mrneilix/Home-AssistantConfig/blob/master/Screenshots/main-view-couch-on.png?raw=true)
-![Media View With TV Off](https://github.com/mrneilix/Home-AssistantConfig/blob/master/Screenshots/media-view-tv-off.png?raw=true)
-![Media View With TV On](https://github.com/mrneilix/Home-AssistantConfig/blob/master/Screenshots/media-view-tv-on.png?raw=true)
-![Fitbit View](https://github.com/mrneilix/Home-AssistantConfig/blob/master/Screenshots/fitbit_view.png?raw=true)
-![Calendar and Lock View](https://github.com/mrneilix/Home-AssistantConfig/blob/master/Screenshots/calendar_lock_view.png?raw=true)
-![System View](https://github.com/mrneilix/Home-AssistantConfig/blob/master/Screenshots/system_view.png?raw=true)
+![Main View With Couch Lights Off](Screenshots/main-view-couch-off.png)
+![Main View With Couch Lights On](Screenshots/main-view-couch-on.png)
+![Media View With TV Off](Screenshots/media-view-tv-off.png)
+![Media View With TV On](Screenshots/media-view-tv-on.png)
+![Fitbit View](Screenshots/fitbit_view.png)
+![Calendar and Lock View](Screenshots/calendar_lock_view.png)
+![System View](Screenshots/system_view.png)
 
 Custom Components:
 Monitor on my Pi Zero: https://github.com/andrewjfreyer/monitor/blob/master/monitor.sh
