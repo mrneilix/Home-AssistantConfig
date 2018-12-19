@@ -143,16 +143,16 @@
 
 ## Lock Codes MQTT ###
   - platform: mqtt
-    state_topic: "Vera/Events/Lock info"
+    state_topic: "Vera/Events/Parents Lock Code"
     name: "Lock Parents Pin"
-    value_template: '{{ value_json.Variable4 }}'
+    value_template: '{{ value_json.Variable1 }}'
     payload_on: "On"
     payload_off: "Off"
     payload_not_available: ""
   - platform: mqtt
-    state_topic: "Vera/Events/Lock info"
+    state_topic: "Vera/Events/Temp Lock Code"
     name: "Lock Temp Pin"
-    value_template: '{{ value_json.Variable5 }}'
+    value_template: '{{ value_json.Variable1 }}'
     payload_on: "On"
     payload_off: "Off"
     payload_not_available: ""

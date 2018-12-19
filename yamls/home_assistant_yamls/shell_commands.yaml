@@ -3,9 +3,6 @@ tv_on: !secret tv_on
 restart_monitor: !secret restart_monitor
 restart_pi_sys_stat: !secret restart_pi_sys_stat
 reboot_pi_zero: !secret reboot_pi_zero
-# restart_tv_power_status: !secret restart_tv_power_status
-# stop_tv_power_status: !secret stop_tv_power_status
-# start_tv_power_status: !secret start_tv_power_status
 desktop_screen_off: !secret desktop_screen_off
 tv_input_chromecast: !secret tv_input_chromecast
 tv_input_ps4: !secret tv_input_ps4

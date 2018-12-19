@@ -12,8 +12,8 @@
     - service: scene.turn_on
       entity_id: scene.startup_reset_variables
     - service: shell_command.restart_monitor
+    - service: shell_command.restart_pi_sys_stat
     - service: shell_command.restart_tv_status_monitor
-    # - service: shell_command.restart_pi_sys_stat
     - delay: 00:00:60
     - service: script.startup_scripts
     - delay: 00:00:20

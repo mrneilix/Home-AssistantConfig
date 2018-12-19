@@ -12,7 +12,7 @@ resources:
   - type: js
     url: /local/custom-lovelace/upcoming-media-card/upcoming-media-card.js?v=0.3.3
   - type: js
-    url: /local/custom-lovelace/compact-custom-header/compact-custom-header.js?v=0.1.4
+    url: /local/custom-lovelace/compact-custom-header/compact-custom-header.js?v=0.1.6
 title: Atlanta Condo
 views:
   - badges:
@@ -28,6 +28,14 @@ views:
       - sensor.daylight_remaining_hm
     cards:
       - type: custom:compact-custom-header
+        notification: true
+        menu: true
+        options: true
+        voice: false
+        clock: options
+        clock_format: 12
+        clock_am_pm: true
+        header: true
       - cards:
           - cards:
               - entity: light.kitchen
@@ -54,8 +62,8 @@ views:
           - cards:
               - action: toggle
                 card_style: ''
-                color: 'rgb(57, 111, 182)'
-                color_off: 'rgb(181, 181, 181)'
+                color: var(--primary-color)
+                color_off: var(--paper-item-icon-color)
                 color_type: icon
                 default_color: var(--primary-text-color)
                 entity: switch.bathroom_light
@@ -65,8 +73,8 @@ views:
                 type: 'custom:button-card'
               - action: toggle
                 card_style: ''
-                color: 'rgb(57, 111, 182)'
-                color_off: 'rgb(181, 181, 181)'
+                color: var(--primary-color)
+                color_off: var(--paper-item-icon-color)
                 color_type: icon
                 default_color: var(--primary-text-color)
                 entity: switch.bathroom_fan
@@ -79,7 +87,7 @@ views:
       - type: 'custom:button-card'
         action: toggle
         color: 'auto'
-        color_off: 'rgb(181, 181, 181)'
+        color_off: var(--paper-item-icon-color)
         color_type: icon
         entity: light.couch
         icon: 'mdi:sofa'
@@ -175,23 +183,50 @@ views:
                 type: thermostat
             type: horizontal-stack
           - cards:
-              - action: toggle
-                card_style: ''
-                color: 'rgb(57, 111, 182)'
-                color_off: 'rgb(181, 181, 181)'
-                color_type: icon
-                default_color: var(--primary-text-color)
-                entity: switch.lock_switch
-                icon: attribute
-                name: Lock
-                size: 40%
-                type: 'custom:button-card'
+              - type: conditional
+                conditions:
+                  - entity: lock.schlage_deadbolt_47
+                    state: locked
+                card:
+                  type: 'custom:button-card'
+                  action: service
+                  service:
+                    domain: lock
+                    action: unlock
+                    data:
+                      entity_id: lock.schlage_deadbolt_47
+                  card_style: ''
+                  color: var(--primary-color)
+                  color_type: icon
+                  default_color: var(--primary-text-color)
+                  icon: mdi:lock
+                  name: Lock
+                  size: 40%
+              - type: conditional
+                conditions:
+                  - entity: lock.schlage_deadbolt_47
+                    state: unlocked
+                card:
+                  type: 'custom:button-card'
+                  action: service
+                  service:
+                    domain: lock
+                    action: lock
+                    data:
+                      entity_id: lock.schlage_deadbolt_47
+                  card_style: ''
+                  color: var(--paper-item-icon-color)
+                  color_type: icon
+                  default_color: var(--primary-text-color)
+                  icon: mdi:lock-open-outline
+                  name: Lock
+                  size: 40%
             type: horizontal-stack
           - cards:
               - action: toggle
                 card_style: ''
-                color: 'rgb(57, 111, 182)'
-                color_off: 'rgb(181, 181, 181)'
+                color: var(--primary-color)
+                color_off: var(--paper-item-icon-color)
                 color_type: icon
                 default_color: var(--primary-text-color)
                 entity: input_boolean.weather_notifications
@@ -201,8 +236,8 @@ views:
                 type: 'custom:button-card'
               - action: toggle
                 card_style: ''
-                color: 'rgb(57, 111, 182)'
-                color_off: 'rgb(181, 181, 181)'
+                color: var(--primary-color)
+                color_off: var(--paper-item-icon-color)
                 color_type: icon
                 default_color: var(--primary-text-color)
                 entity: input_boolean.notifications_on
@@ -212,8 +247,8 @@ views:
                 type: 'custom:button-card'
               - action: toggle
                 card_style: ''
-                color: 'rgb(57, 111, 182)'
-                color_off: 'rgb(181, 181, 181)'
+                color: var(--primary-color)
+                color_off: var(--paper-item-icon-color)
                 color_type: icon
                 default_color: var(--primary-text-color)
                 entity: input_boolean.presence_automations
@@ -223,8 +258,8 @@ views:
                 type: 'custom:button-card'
               - action: toggle
                 card_style: ''
-                color: 'rgb(57, 111, 182)'
-                color_off: 'rgb(181, 181, 181)'
+                color: var(--primary-color)
+                color_off: var(--paper-item-icon-color)
                 color_type: icon
                 default_color: var(--primary-text-color)
                 entity: switch.space_heater_35
@@ -236,8 +271,8 @@ views:
           - cards:
               - action: toggle
                 card_style: ''
-                color: 'rgb(57, 111, 182)'
-                color_off: 'rgb(181, 181, 181)'
+                color: var(--primary-color)
+                color_off: var(--paper-item-icon-color)
                 color_type: icon
                 default_color: var(--primary-text-color)
                 entity: input_boolean.parents_lock_code
@@ -247,8 +282,8 @@ views:
                 type: 'custom:button-card'
               - action: toggle
                 card_style: ''
-                color: 'rgb(57, 111, 182)'
-                color_off: 'rgb(181, 181, 181)'
+                color: var(--primary-color)
+                color_off: var(--paper-item-icon-color)
                 color_type: icon
                 default_color: var(--primary-text-color)
                 entity: input_boolean.autolock
@@ -258,8 +293,8 @@ views:
                 type: 'custom:button-card'
               - action: toggle
                 card_style: ''
-                color: 'rgb(57, 111, 182)'
-                color_off: 'rgb(181, 181, 181)'
+                color: var(--primary-color)
+                color_off: var(--paper-item-icon-color)
                 color_type: icon
                 default_color: var(--primary-text-color)
                 entity: switch.yi_power
@@ -269,8 +304,8 @@ views:
                 type: 'custom:button-card'
               - action: toggle
                 card_style: ''
-                color: 'rgb(57, 111, 182)'
-                color_off: 'rgb(181, 181, 181)'
+                color: var(--primary-color)
+                color_off: var(--paper-item-icon-color)
                 color_type: icon
                 default_color: var(--primary-text-color)
                 entity: input_boolean.butters_home
@@ -479,8 +514,8 @@ views:
           - cards:
               - action: toggle
                 card_style: ''
-                color: 'rgb(57, 111, 182)'
-                color_off: 'rgb(181, 181, 181)'
+                color: var(--primary-color)
+                color_off: var(--paper-item-icon-color)
                 color_type: icon
                 default_color: var(--primary-text-color)
                 entity: input_boolean.temp_lock_code_set
