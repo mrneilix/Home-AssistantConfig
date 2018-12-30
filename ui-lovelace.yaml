@@ -12,7 +12,7 @@ resources:
   - type: js
     url: /local/custom-lovelace/upcoming-media-card/upcoming-media-card.js?v=0.3.3
   - type: js
-    url: /local/custom-lovelace/compact-custom-header/compact-custom-header.js?v=0.1.8
+    url: /local/custom-lovelace/compact-custom-header/compact-custom-header.js?v=0.2.0
 title: Atlanta Condo
 views:
   - badges:

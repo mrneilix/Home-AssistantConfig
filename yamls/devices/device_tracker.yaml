@@ -30,6 +30,7 @@
         - device_tracker.activbuds_s255
         - device_tracker.headphones_google_home
         - device_tracker.monitor_neil
+        - device_tracker.neil_bt_google_home
         - binary_sensor.neil_lock_code
     - platform: composite
       name: monitor_neil
