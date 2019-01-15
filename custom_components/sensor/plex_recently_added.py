@@ -18,7 +18,7 @@ from homeassistant.components.sensor import PLATFORM_SCHEMA
 from homeassistant.const import CONF_HOST, CONF_PORT, CONF_SSL
 from homeassistant.helpers.entity import Entity
 
-__version__ = '0.1.9'
+__version__ = '0.2.1'
 
 _LOGGER = logging.getLogger(__name__)
 
@@ -28,6 +28,7 @@ CONF_SSL_CERT = 'ssl_cert'
 CONF_TOKEN = 'token'
 CONF_MAX = 'max'
 CONF_IMG_CACHE = 'img_dir'
+CONF_SECTION_TYPES = 'section_types'
 
 PLATFORM_SCHEMA = PLATFORM_SCHEMA.extend({
     vol.Optional(CONF_SSL, default=False): cv.boolean,
@@ -38,6 +39,8 @@ PLATFORM_SCHEMA = PLATFORM_SCHEMA.extend({
     vol.Optional(CONF_DL_IMAGES, default=True): cv.boolean,
     vol.Optional(CONF_HOST, default='localhost'): cv.string,
     vol.Optional(CONF_PORT, default=32400): cv.port,
+    vol.Optional(CONF_SECTION_TYPES, 
+                default=['movie', 'show']): vol.All(cv.ensure_list, [cv.string]),
     vol.Optional(CONF_IMG_CACHE, 
                 default='/custom-lovelace/upcoming-media-card/images/plex/'): cv.string
 })
@@ -55,6 +58,7 @@ class PlexRecentlyAddedSensor(Entity):
         self._dir = conf.get(CONF_IMG_CACHE)
         self.img = '{0}{1}{2}{3}{4}.jpg'.format(
             self.conf_dir, {}, self._dir, {}, {})
+        self.img_url = '{0}{1}{2}{3}.jpg'.format({}, self._dir, {}, {})
         self._tz = timezone(str(hass.config.time_zone))
         self.cert = conf.get(CONF_SSL_CERT)
         self.ssl = 's' if conf.get(CONF_SSL) or self.cert else ''
@@ -62,6 +66,7 @@ class PlexRecentlyAddedSensor(Entity):
         self.server_name = conf.get(CONF_SERVER)
         self.max_items = int(conf.get(CONF_MAX))
         self.dl_images = conf.get(CONF_DL_IMAGES)
+        self.sections = conf.get(CONF_SECTION_TYPES)
         if self.server_name:
             self.server_ip, self.local_ip, self.port = get_server_ip(
                 self.server_name, self.token)
@@ -157,13 +162,13 @@ class PlexRecentlyAddedSensor(Entity):
                     continue
                 if self.dl_images:
                     if os.path.isfile(self.img.format('www', 'p', key)):
-                        card_item['poster'] = self.img.format('../local',
-                                                              'p', key)
+                        card_item['poster'] = self.img_url.format('/local',
+                                                                  'p', key)
                     else:
                         continue
                     if os.path.isfile(self.img.format('www', 'f', key)):
-                        card_item['fanart'] = self.img.format('../local',
-                                                              'f', key)
+                        card_item['fanart'] = self.img_url.format('/local',
+                                                                  'f', key)
                     else:
                         card_item['fanart'] = ''
                 else:
@@ -196,7 +201,8 @@ class PlexRecentlyAddedSensor(Entity):
         try:
             libraries = plex.get(all_libraries, headers=headers, timeout=10)
             for lib_section in libraries.json()['MediaContainer']['Directory']:
-                sections.append(lib_section['key'])
+                if lib_section['type'] in self.sections:
+                    sections.append(lib_section['key'])
         except OSError:
             _LOGGER.warning("Host %s is not available", self.server_ip)
             self._state = '%s cannot be reached' % self.server_ip
@@ -253,6 +259,9 @@ class PlexRecentlyAddedSensor(Entity):
                         elif media['type'] == 'episode':
                             poster = media.get('grandparentThumb', '')
                             fanart = media.get('grandparentArt', '')
+                        else:
+                            _LOGGER.error("Media type: %s", media['type'])
+                            continue
                         poster_jpg = '{}p{}.jpg'.format(directory,
                                                         media['ratingKey'])
                         fanart_jpg = '{}f{}.jpg'.format(directory,

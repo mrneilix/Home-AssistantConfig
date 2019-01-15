@@ -60,9 +60,7 @@ views:
                 type: picture-entity
             type: horizontal-stack
           - cards:
-              - type: 'custom:button-card'
-                action: toggle
-                long_press_action: more_info
+              - action: toggle
                 card_style: ''
                 color: var(--primary-color)
                 color_off: var(--paper-item-icon-color)
@@ -72,9 +70,8 @@ views:
                 icon: 'mdi:toilet'
                 name: Bathroom Light
                 size: 40%
-              - type: 'custom:button-card'
-                action: toggle
-                long_press_action: more_info
+                type: 'custom:button-card'
+              - action: toggle
                 card_style: ''
                 color: var(--primary-color)
                 color_off: var(--paper-item-icon-color)
@@ -84,19 +81,18 @@ views:
                 icon: 'mdi:fan'
                 name: Bathroom Fan
                 size: 40%
+                type: 'custom:button-card'
             type: horizontal-stack
         type: vertical-stack
-      # - type: 'custom:button-card'
-        # action: toggle
-        # color: 'auto'
-        # color_off: var(--paper-item-icon-color)
-        # color_type: icon
-        # entity: light.couch
-        # icon: 'mdi:sofa'
-        # name: Couch Light
-        # size: 40%
-      - entity: light.couch
-        type: light
+      - type: 'custom:button-card'
+        action: toggle
+        color: 'auto'
+        color_off: var(--paper-item-icon-color)
+        color_type: icon
+        entity: light.couch
+        icon: 'mdi:sofa'
+        name: Couch Light
+        size: 40%
       - type: conditional
         conditions:
           - entity: light.couch
@@ -107,7 +103,6 @@ views:
             - type: horizontal-stack
               cards:
                 - type: 'custom:button-card'
-                  long_press_action: more_info
                   action: service
                   service:
                     domain: scene
@@ -119,7 +114,6 @@ views:
                   icon: 'mdi:sofa'
                   name: White
                 - type: 'custom:button-card'
-                  long_press_action: more_info
                   action: service
                   service:
                     domain: scene
@@ -131,7 +125,6 @@ views:
                   icon: 'mdi:sofa'
                   name: Soft White
                 - type: 'custom:button-card'
-                  long_press_action: more_info
                   action: service
                   service:
                     domain: scene
@@ -145,7 +138,6 @@ views:
             - type: horizontal-stack
               cards:
                 - type: 'custom:button-card'
-                  long_press_action: more_info
                   action: service
                   service:
                     domain: scene
@@ -157,7 +149,6 @@ views:
                   icon: 'mdi:sofa'
                   name: Red
                 - type: 'custom:button-card'
-                  long_press_action: more_info
                   action: service
                   service:
                     domain: scene
@@ -169,7 +160,6 @@ views:
                   icon: 'mdi:sofa'
                   name: Green
                 - type: 'custom:button-card'
-                  long_press_action: more_info
                   action: service
                   service:
                     domain: scene
@@ -199,7 +189,6 @@ views:
                     state: locked
                 card:
                   type: 'custom:button-card'
-                  long_press_action: more_info
                   action: service
                   service:
                     domain: lock
@@ -219,7 +208,6 @@ views:
                     state: unlocked
                 card:
                   type: 'custom:button-card'
-                  long_press_action: more_info
                   action: service
                   service:
                     domain: lock
@@ -235,9 +223,7 @@ views:
                   size: 40%
             type: horizontal-stack
           - cards:
-              - type: 'custom:button-card'
-                long_press_action: more_info
-                action: toggle
+              - action: toggle
                 card_style: ''
                 color: var(--primary-color)
                 color_off: var(--paper-item-icon-color)
@@ -247,9 +233,8 @@ views:
                 icon: 'mdi:white-balance-sunny'
                 name: Weather
                 size: 40%
-              - type: 'custom:button-card'
-                long_press_action: more_info
-                action: toggle
+                type: 'custom:button-card'
+              - action: toggle
                 card_style: ''
                 color: var(--primary-color)
                 color_off: var(--paper-item-icon-color)
@@ -259,9 +244,8 @@ views:
                 icon: 'mdi:bell'
                 name: Notifications
                 size: 40%
-              - type: 'custom:button-card'
-                long_press_action: more_info
-                action: toggle
+                type: 'custom:button-card'
+              - action: toggle
                 card_style: ''
                 color: var(--primary-color)
                 color_off: var(--paper-item-icon-color)
@@ -271,9 +255,8 @@ views:
                 icon: 'mdi:home'
                 name: Presence
                 size: 40%
-              - type: 'custom:button-card'
-                long_press_action: more_info
-                action: toggle
+                type: 'custom:button-card'
+              - action: toggle
                 card_style: ''
                 color: var(--primary-color)
                 color_off: var(--paper-item-icon-color)
@@ -283,11 +266,10 @@ views:
                 icon: 'mdi:radiator'
                 name: Space Heater
                 size: 40%
+                type: 'custom:button-card'
             type: horizontal-stack
           - cards:
-              - type: 'custom:button-card'
-                long_press_action: more_info
-                action: toggle
+              - action: toggle
                 card_style: ''
                 color: var(--primary-color)
                 color_off: var(--paper-item-icon-color)
@@ -297,9 +279,8 @@ views:
                 icon: 'mdi:human-female-boy'
                 name: Parents Code
                 size: 40%
-              - type: 'custom:button-card'
-                long_press_action: more_info
-                action: toggle
+                type: 'custom:button-card'
+              - action: toggle
                 card_style: ''
                 color: var(--primary-color)
                 color_off: var(--paper-item-icon-color)
@@ -309,9 +290,8 @@ views:
                 icon: 'mdi:lock-smart'
                 name: Autolock
                 size: 40%
-              - type: 'custom:button-card'
-                long_press_action: more_info
-                action: toggle
+                type: 'custom:button-card'
+              - action: toggle
                 card_style: ''
                 color: var(--primary-color)
                 color_off: var(--paper-item-icon-color)
@@ -321,9 +301,8 @@ views:
                 icon: 'mdi:webcam'
                 name: Camera
                 size: 40%
-              - type: 'custom:button-card'
-                long_press_action: more_info
-                action: toggle
+                type: 'custom:button-card'
+              - action: toggle
                 card_style: ''
                 color: var(--primary-color)
                 color_off: var(--paper-item-icon-color)
@@ -333,6 +312,7 @@ views:
                 icon: 'mdi:dog-side'
                 name: Butters
                 size: 40%
+                type: 'custom:button-card'
             type: horizontal-stack
         type: vertical-stack
       - cards:
@@ -372,7 +352,6 @@ views:
           type: horizontal-stack
           cards:
             - type: 'custom:button-card'
-              long_press_action: more_info
               action: service
               service:
                 domain: script
@@ -383,7 +362,6 @@ views:
               icon: 'mdi:cast'
               name: Chromecast
             - type: 'custom:button-card'
-              long_press_action: more_info
               action: service
               service:
                 domain: script
@@ -534,9 +512,7 @@ views:
                 type: glance
             type: horizontal-stack
           - cards:
-              - type: 'custom:button-card'
-                action: toggle
-                long_press_action: more_info
+              - action: toggle
                 card_style: ''
                 color: var(--primary-color)
                 color_off: var(--paper-item-icon-color)
@@ -546,6 +522,7 @@ views:
                 icon: 'mdi:lock'
                 name: Temp Code
                 size: 32%
+                type: 'custom:button-card'
             type: horizontal-stack
           - cards:
               - entities:
