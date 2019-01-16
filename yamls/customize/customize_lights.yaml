@@ -1,8 +1,11 @@
 ### LIGHT ###
 light.kitchen:
-  entity_picture: /local/kitchen.jpg
+  entity_picture: /local/pictures/kitchen.jpg
   friendly_name: Kitchen
 
 light.bed:
-  entity_picture: /local/bed.jpg
+  entity_picture: /local/pictures/bed.jpg
   friendly_name: Bed
+
+light.couch:
+  friendly_name: Couch

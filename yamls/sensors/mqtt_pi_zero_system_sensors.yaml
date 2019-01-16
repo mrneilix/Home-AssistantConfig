@@ -30,3 +30,59 @@
     state_topic: "sys_stat"
     name: "Pi Zero Disk Size"
     value_template: '{{ value_json.disktotal }}'
+
+  - platform: template
+    sensors:
+### Pi Zero Uptime Templated ####
+      pi_zero_uptime:
+        friendly_name: Pi Zero Uptime
+        entity_id: sensor.dark_sky_apparent_temperature
+        icon_template: mdi:clock
+        value_template: >-
+          {% if ((as_timestamp(now()) - as_timestamp(states.sensor.pi_zero_boot_time.state)) / 60) is defined %}
+          {% set time = ((as_timestamp(now()) - as_timestamp(states.sensor.pi_zero_boot_time.state)) / 60) | int %}
+          {% set minutes = (time % 60) | int %}
+          {% set hours = ((time % 1440) / 60) | int %}
+          {% set days = (time / 1440) | int %}
+
+          {%- if time < 1 -%}
+            Less than a minute
+          {%- else -%}
+            {%- if days > 0 -%}
+              {%- if days == 1 -%}
+                1 day
+              {%- else -%}
+                {{ days }} days
+              {%- endif -%}
+            {%- endif -%}
+            {%- if hours > 0 -%}
+              {%- if days > 0 -%}
+                {{ ', ' }}
+              {%- endif -%}
+              {%- if hours == 1 -%}
+                1 hour
+              {%- else -%}
+                {{ hours }} hours
+              {%- endif -%}
+            {%- endif -%}
+            {%- if minutes > 0 -%}
+              {%- if days > 0 or hours > 0 -%}
+                {{ ', ' }}
+              {%- endif -%}
+              {%- if minutes == 1 -%}
+                1 minute
+              {%- else -%}
+                {{ minutes }} minutes
+              {%- endif -%}
+            {%- endif -%}
+          {%- endif -%}
+          {% else %}
+          0
+          {% endif %}
+
+      pi_zero_last_system_poll:
+        friendly_name: Pi Zero Last Poll
+        entity_id: sensor.dark_sky_apparent_temperature
+        icon_template: mdi:clock
+        value_template: >-
+          {{relative_time(states.sensor.pi_zero_date_data_collected.last_updated)}}

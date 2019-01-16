@@ -23,8 +23,8 @@ media_player.plex_sn9cutn2drm:
 
 media_player.kitchen_home:
   friendly_name: Google Home
-  entity_picture: /local/google-home.png
+  entity_picture: /local/pictures/google-home.png
 
 media_player.living_room_tv:
   friendly_name: Chromecast
-  entity_picture: /local/chromecast.png
+  entity_picture: /local/pictures/chromecast.png

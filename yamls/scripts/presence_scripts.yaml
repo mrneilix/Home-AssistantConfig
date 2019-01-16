@@ -110,8 +110,8 @@ presence_parents_home:
         title: "Door Unlocked"
         data:
           tag: 'door-unlocked'
-          icon: '/local/mom-dad.jpg'
-          badge: '/local/lock-badge.png'
+          icon: '/local/pictures/mom-dad.jpg'
+          badge: '/local/pictures/lock-badge.png'
 
 presence_gina_home:
   alias: Presence Gina Home
@@ -134,8 +134,8 @@ presence_gina_home:
         title: "Door Unlocked"
         data:
           tag: 'door-unlocked'
-          icon: '/local/gina.jpg'
-          badge: '/local/lock-badge.png'
+          icon: '/local/pictures/gina.jpg'
+          badge: '/local/pictures/lock-badge.png'
 
 presence_tasker_phone_location:
   alias: Presence Tasker Phone Location

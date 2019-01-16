@@ -7,6 +7,7 @@
       - switch
       - binary_sensor
       - input_boolean
+      - proximity
     entities:
       - light.kitchen
       # Weather

@@ -32,8 +32,8 @@ lock_guest_code_entered:
         title: "Door Unlocked"
         data:
           tag: 'door-unlocked'
-          icon: '/local/guest.png'
-          badge: '/local/lock-badge.png'
+          icon: '/local/pictures/guest.png'
+          badge: '/local/pictures/lock-badge.png'
 
 lock_temp_code_entered:
   alias: Lock Temp Code Entered
@@ -48,8 +48,8 @@ lock_temp_code_entered:
         title: "Door Unlocked"
         data:
           tag: 'door-unlocked'
-          icon: '/local/guest.png'
-          badge: '/local/lock-badge.png'
+          icon: '/local/pictures/guest.png'
+          badge: '/local/pictures/lock-badge.png'
 
 lock_clear_temp_code:
   alias: Lock Clear Temp Code

@@ -7,7 +7,6 @@ startup_scripts:
     - service: script.startup_couch_colors
     - delay: 00:00:02
     - service: google_assistant.request_sync
-    - service: script.presence_tasker_phone_location
     - service: script.startup_presence
     - condition: template
       value_template: "{{ is_state('sensor.pi_zero_monitor_offline', 'offline') or is_state('sensor.pi_zero_monitor_offline', 'unknown') }}"

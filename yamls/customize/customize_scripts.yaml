@@ -24,4 +24,4 @@ script.tv_input_playstation:
 script.tv_input_chromecast:
   icon: mdi:cast
 script.reboot_pi_zero:
-  entity_picture: /local/raspberry-pi-zero.png
+  entity_picture: /local/pictures/raspberry-pi-zero.png

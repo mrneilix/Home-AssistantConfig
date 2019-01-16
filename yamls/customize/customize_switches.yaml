@@ -1,10 +1,10 @@
 ### SWITCHES ###
 switch.furnace_switch_29:
-  entity_picture: /local/furnace.png
+  entity_picture: /local/pictures/furnace.png
   friendly_name: Furnace Light
 
 switch.lamp:
-  entity_picture: /local/lamp.jpg
+  entity_picture: /local/pictures/lamp.jpg
   friendly_name: Lamp
 
 switch.bathroom_light:

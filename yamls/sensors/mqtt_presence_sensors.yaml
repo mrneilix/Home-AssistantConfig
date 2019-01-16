@@ -3,43 +3,16 @@
     value_template: '{{ value_json.confidence }}'
     name: 'Neil MQTT Pixel'
     force_update: true
-    json_attributes:
-      - id
-      - name
-      - rssi
-      - version
-      - manufacturer
-      - type
-      - timestamp
-      - retained
-      - confidence
+    json_attributes_topic: "monitor/monitor/B4:F1:DA:26:F9:07"
   - platform: mqtt
     state_topic: "monitor/monitor/C7:E6:70:79:1B:92"
     value_template: '{{ value_json.confidence }}'
     name: 'Neil MQTT Charge 2'
     force_update: true
-    json_attributes:
-      - id
-      - name
-      - rssi
-      - version
-      - manufacturer
-      - type
-      - timestamp
-      - retained
-      - confidence
+    json_attributes_topic: "monitor/monitor/C7:E6:70:79:1B:92"
   - platform: mqtt
     state_topic: "monitor/monitor/C5:FF:36:D0:F1:63"
     value_template: '{{ value_json.confidence }}'
     name: 'Butters MQTT Tile'
     force_update: true
-    json_attributes:
-      - id
-      - name
-      - rssi
-      - version
-      - manufacturer
-      - type
-      - timestamp
-      - retained
-      - confidence
+    json_attributes_topic: "monitor/monitor/C5:FF:36:D0:F1:63"

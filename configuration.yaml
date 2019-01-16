@@ -69,7 +69,7 @@ weather:
     mode: daily
     api_key: !secret darksky_api_key
     update_interval:
-      minutes: 15
+      minutes: 30
 
 # Include Folders
 automation: !include_dir_merge_list yamls/automation
@@ -93,6 +93,7 @@ rest_command: !include yamls/home_assistant_yamls/rest_command.yaml
 shell_command: !include yamls/home_assistant_yamls/shell_commands.yaml
 scene: !include yamls/home_assistant_yamls/scenes.yaml
 group: !include yamls/home_assistant_yamls/groups.yaml
+proximity: !include yamls/home_assistant_yamls/proximity.yaml
 
 # Include Devices Yamls
 device_tracker: !include yamls/devices/device_tracker.yaml

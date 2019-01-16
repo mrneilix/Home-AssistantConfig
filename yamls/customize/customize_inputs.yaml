@@ -1,24 +1,16 @@
 ### INPUT NUMBERS ###
 input_number.couch_r:
-  entity_picture: /local/couch_lights/couch_red.jpg
+  entity_picture: /local/pictures/couch_red.jpg
   friendly_name: Couch Red
 input_number.couch_g:
-  entity_picture: /local/couch_lights/couch_green.jpg
+  entity_picture: /local/pictures/couch_green.jpg
   friendly_name: Couch Green
 input_number.couch_b:
-  entity_picture: /local/couch_lights/couch_blue.jpg
+  entity_picture: /local/pictures/couch_blue.jpg
   friendly_name: Couch Blue
 input_number.target_temp:
   icon: mdi:thermometer
   friendly_name: Set Temperature
-
-### INPUT SELECT ###
-input_select.thermostat_mode:
-  icon: mdi:air-conditioner
-  friendly_name: Set Mode
-input_select.couch_color:
-  entity_picture: /local/couch_lights/couch.jpg
-  friendly_name: Couch Color
 
 ### INPUT TEXT ###
 input_text.couch_color:
@@ -26,10 +18,7 @@ input_text.couch_color:
   friendly_name: Couch Color Name
 
 ### INPUT BOOLEAN ###
-input_boolean.temp_lock_code_set:
-  custom_ui_state_card: state-card-custom-ui
-  state_card_mode: badges
 input_boolean.parents_lock_code:
-  entity_picture: /local/mom-dad.jpg
+  entity_picture: /local/pictures/mom-dad.jpg
 input_boolean.butters_home:
-  entity_picture: /local/butters.jpg
+  entity_picture: /local/pictures/butters.jpg

@@ -1,14 +1,14 @@
 ### DEVICE TRACKER ###
 device_tracker.neil:
-  entity_picture: /local/Me.jpg
+  entity_picture: /local/pictures/Me.jpg
   friendly_name: Neil
 device_tracker.neil_bluetooth:
-  entity_picture: /local/Me.jpg
+  entity_picture: /local/pictures/Me.jpg
   friendly_name: Neil BT
   state_card_mode: badges
 device_tracker.neil_wifi:
-  entity_picture: /local/Me.jpg
+  entity_picture: /local/pictures/Me.jpg
   friendly_name: Neil Wi-Fi
 device_tracker.neil_pixel_tasker:
-  entity_picture: /local/Me.jpg
+  entity_picture: /local/pictures/Me.jpg
   friendly_name: Neil Tasker

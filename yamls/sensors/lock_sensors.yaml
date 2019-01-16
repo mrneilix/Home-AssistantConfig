@@ -23,15 +23,15 @@
           {%- endif %}
         entity_picture_template: >-
           {%- if 'Temporary' in states.sensor.last_lock_code_used.state %}
-              /local/guest.png
+              /local/pictures/guest.png
           {%  elif 'Neil' in states.sensor.last_lock_code_used.state %}
-              /local/Me.jpg
+              /local/pictures/Me.jpg
           {%  elif 'Gina' in states.sensor.last_lock_code_used.state %}
-              /local/gina.jpg
+              /local/pictures/gina.jpg
           {%  elif 'Parents' in states.sensor.last_lock_code_used.state %}
-              /local/mom-dad.jpg
+              /local/pictures/mom-dad.jpg
           {%  elif 'Guest' in states.sensor.last_lock_code_used.state %}
-              /local/guest.png
+              /local/pictures/guest.png
           {% else %}
               Blank
           {%- endif %}

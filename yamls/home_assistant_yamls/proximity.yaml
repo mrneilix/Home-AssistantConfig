@@ -1,0 +1,13 @@
+  neil_home:
+    zone: home
+    tolerance: 100
+    devices:
+      - device_tracker.neil_pixel_tasker
+    unit_of_measurement: mi
+
+  butters_home:
+    zone: home
+    tolerance: 100
+    devices:
+      - device_tracker.tile_ba7ceb56d53379ac
+    unit_of_measurement: mi

@@ -1,10 +1,10 @@
 resources:
   - type: module
-    url: /local/button-card.js?v=0.0.3
+    url: /local/custom-lovelace/button-card/button-card.js?v=0.0.3
+  - type: module
+    url: /local/custom-lovelace/weather-card/weather-card.js?v=1.0.1
   - type: js
-    url: /local/weather-card.js
-  - type: js
-    url: /local/tracker-card.js?v=0.1.5
+    url: /local/custom-lovelace/tracker-card-master/tracker-card.js?v=0.1.5
   - type: js
     url: /local/custom-lovelace/monster-card/monster-card.js?v=0.2.3
   - type: module
@@ -46,15 +46,15 @@ views:
           - cards:
               - entity: switch.furnace_switch_29
                 state_image:
-                  'off': /local/furnace-off.png
-                  'on': /local/furnace.png
+                  'off': /local/pictures/furnace-off.png
+                  'on': /local/pictures/furnace.png
                 tap_action:
                   action: toggle
                 type: picture-entity
               - entity: switch.lamp
                 state_image:
-                  'off': /local/lamp-off.jpg
-                  'on': /local/lamp.jpg
+                  'off': /local/pictures/lamp-off.jpg
+                  'on': /local/pictures/lamp.jpg
                 tap_action:
                   action: toggle
                 type: picture-entity
@@ -97,6 +97,7 @@ views:
         # size: 40%
       - entity: light.couch
         type: light
+        name: Couch
       - type: conditional
         conditions:
           - entity: light.couch
@@ -336,16 +337,17 @@ views:
             type: horizontal-stack
         type: vertical-stack
       - cards:
-          - entities:
+          - type: entities
+            show_header_toggle: false
+            title: Weather Summary
+            entities:
               - sensor.dark_sky_summary
               - sensor.dark_sky_minutely_summary
               - sensor.dark_sky_hourly_summary
               - sensor.dark_sky_daily_summary
-            show_header_toggle: false
-            title: Weather Summary
-            type: entities
-          - entity: weather.dark_sky
-            type: weather-forecast
+          - type: custom:weather-card
+            entity: weather.dark_sky
+            icons: '/local/custom-lovelace/weather-card/icons/animated/'
         type: vertical-stack
     icon: 'mdi:home'
     path: default_view
@@ -553,6 +555,17 @@ views:
                 type: entities
             type: horizontal-stack
         type: vertical-stack
+      - type: map
+        geo_location_sources:
+          - nsw_rural_fire_service_feed
+        entities:
+          - zone.home
+          - zone.dipan
+          - zone.parents
+          - zone.gina
+          - zone.kiel
+          - device_tracker.tile_ba7ceb56d53379ac
+          - device_tracker.neil_pixel_tasker
     icon: 'mdi:calendar-today'
     path: weather_and_calendar
     title: General
@@ -596,6 +609,7 @@ views:
                   - sensor.pi_zero_cpu_temp
                   - sensor.pi_zero_uptime
                   - sensor.speedtest_ping
+                  - sensor.pi_zero_last_system_poll
                 title: Pi Zero System Monitor
                 type: glance
             type: horizontal-stack

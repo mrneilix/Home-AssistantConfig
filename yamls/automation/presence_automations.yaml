@@ -150,3 +150,29 @@
       state: 'on'
   action:
     - service: shell_command.desktop_screen_off
+
+- id: presence_from_tasker_when_near_home
+  alias: 'Presence From Tasker When Near Home'
+  initial_state: false
+  trigger:
+    - platform: time
+      minutes: 30
+  condition:
+    - condition: numeric_state
+      entity_id: proximity.neil_home
+      below: 30
+  action:
+    - service: script.presence_tasker_phone_location
+
+- id: presence_from_tasker_when_far_from_home
+  alias: 'Presence From Tasker When Far From Home'
+  initial_state: false
+  trigger:
+    - platform: time
+      hours: 6
+  condition:
+    - condition: numeric_state
+      entity_id: proximity.neil_home
+      above: 30
+  action:
+    - service: script.presence_tasker_phone_location

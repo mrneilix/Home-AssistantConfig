@@ -11,6 +11,7 @@
       - script
       - light
       - scene
+      - proximity
     entities:
       # TV Power
       - sensor.tv_power
