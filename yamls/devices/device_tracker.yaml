@@ -9,14 +9,14 @@
       interval_seconds: 2
       hosts:
         neil_wifi: !secret my_phone_wifi
-    - platform: googlehome
-      new_device_defaults:
-        track_new_devices: false
-        hide_if_away: true
-      host: !secret google_home_ip
-      rssi_threshold: -100
-      interval_seconds: 10
-      consider_home: 60
+    # - platform: googlehome
+      # new_device_defaults:
+        # track_new_devices: false
+        # hide_if_away: true
+      # host: !secret google_home_ip
+      # rssi_threshold: -100
+      # interval_seconds: 10
+      # consider_home: 60
     - platform: tile
       username: !secret email
       password: !secret tile_password
@@ -35,7 +35,7 @@
         - device_tracker.monitor_neil
         - device_tracker.neil_bt_google_home
         - binary_sensor.neil_lock_code
-        - device_tracker.fitbit_google_home
+#        - device_tracker.fitbit_google_home
     - platform: composite
       name: monitor_neil
       entity_id:
