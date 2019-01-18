@@ -95,10 +95,10 @@ presence_parents_home:
     - service: script.presence_someone_not_neil_home
     - service: media_player.volume_set
       data_template:
-        entity_id: media_player.kitchen_home
+        entity_id: media_player.kitchen_display
         volume_level: 0.6
     - service: tts.google_say
-      entity_id: media_player.kitchen_home
+      entity_id: media_player.kitchen_display
       data_template:
         message: "Hello, Mom or Dad."
     - condition: state
@@ -119,10 +119,10 @@ presence_gina_home:
     - service: script.presence_someone_not_neil_home
     - service: media_player.volume_set
       data_template:
-        entity_id: media_player.kitchen_home
+        entity_id: media_player.kitchen_display
         volume_level: 0.6
     - service: tts.google_say
-      entity_id: media_player.kitchen_home
+      entity_id: media_player.kitchen_display
       data_template:
         message: "Hello, Gina."
     - condition: state

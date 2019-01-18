@@ -359,13 +359,13 @@ views:
       - sensor.tautulli_total_bandwidth
       - sensor.tautulli_transcode
     cards:
-      - entities:
+      - type: entities
+        show_header_toggle: false
+        title: TV Inputs
+        entities:
           - input_boolean.tv_power
           - scene.theater_mode
           - input_text.gh_speak
-        show_header_toggle: false
-        title: TV Inputs
-        type: entities
       - type: conditional
         conditions:
           - entity: input_boolean.tv_power
@@ -395,31 +395,34 @@ views:
               color_type: icon
               icon: 'mdi:playstation'
               name: Playstation
-      - entity: media_player.kitchen_home
+      - entity: media_player.kitchen_display
         type: media-control
       - entity: media_player.living_room_tv
         type: media-control
-      - entities:
-          - input_text.broadcast_message
-          - input_text.google_command
+      - type: entities
         show_header_toggle: false
         title: Google Assistant
-        type: entities
-      - entities:
-          - sensor.watching_plex
+        entities:
+          - input_text.broadcast_message
+          - input_text.google_command
+      - type: entities
         show_header_toggle: false
         title: Watching Plex
-        type: entities
-      - entities:
+        entities:
+          - sensor.watching_plex
+      - type: entities
+        show_header_toggle: false
+        title: Desktop Disk Space
+        entities:
           - sensor.desktop_disk_space_c
           - sensor.desktop_disk_space_e
           - sensor.desktop_disk_space_f
           - sensor.desktop_disk_space_i
           - sensor.desktop_disk_space_j
-        show_header_toggle: false
-        title: Desktop Disk Space
-        type: entities
-      - entities:
+      - type: entity-filter
+        state_filter:
+          - playing
+        entities:
           - media_player.plex_web_chrome
           - media_player.plex_pixel_2_xl
           - media_player.plex_pixel_2_xl_2
@@ -427,25 +430,65 @@ views:
           - media_player.plex_desktop
           - media_player.tablet_living_room_plex
           - media_player.plex_galaxy_note8
-        state_filter:
-          - playing
-        type: entity-filter
         show_empty: false
-      - type: custom:upcoming-media-card
-        entity: sensor.sonarr_upcoming_media
-        title: Upcoming TV
-      - type: custom:upcoming-media-card
-        entity: sensor.radarr_upcoming_media
-        title: Upcoming Movies
-      - type: custom:upcoming-media-card
-        entity: sensor.plex_recently_added
-        title: Recently Downloaded
+      - type: vertical-stack
+        cards:
+        - type: 'custom:button-card'
+          action: toggle
+          long_press_action: more_info
+          card_style: ''
+          color: var(--primary-color)
+          color_off: var(--paper-item-icon-color)
+          color_type: icon
+          default_color: var(--primary-text-color)
+          entity: input_boolean.show_recent_downloads
+          icon: 'mdi:download'
+          name: Show Recent Downloads
+          size: 40%
+        - type: conditional
+          conditions:
+            - entity: input_boolean.show_recent_downloads
+              state: 'on'
+          card:
+            type: custom:upcoming-media-card
+            entity: sensor.plex_recently_added
+            title: Recently Downloaded
+      - type: vertical-stack
+        cards:
+        - type: 'custom:button-card'
+          action: toggle
+          long_press_action: more_info
+          card_style: ''
+          color: var(--primary-color)
+          color_off: var(--paper-item-icon-color)
+          color_type: icon
+          default_color: var(--primary-text-color)
+          entity: input_boolean.show_upcoming_downloads
+          icon: 'mdi:download-outline'
+          name: Show Upcoming Downloads
+          size: 40%
+        - type: conditional
+          conditions:
+            - entity: input_boolean.show_upcoming_downloads
+              state: 'on'
+          card:
+            type: horizontal-stack
+            cards:
+              - type: custom:upcoming-media-card
+                entity: sensor.sonarr_upcoming_media
+                title: Upcoming TV
+              - type: custom:upcoming-media-card
+                entity: sensor.radarr_upcoming_media
+                title: Upcoming Movies
     icon: 'mdi:video'
     path: media_players
     title: Media Players
   - badges: []
     cards:
-      - entities:
+      - type: entities
+        show_header_toggle: false
+        title: Activity
+        entities:
           - sensor.steps
           - sensor.distance
           - sensor.floors
@@ -457,10 +500,10 @@ views:
           - sensor.time_lightly_active
           - sensor.time_sedentary
           - sensor.resting_heart_rate
+      - type: entities
         show_header_toggle: false
-        title: Activity
-        type: entities
-      - entities:
+        title: Sleep
+        entities:
           - sensor.sleep_efficiency
           - sensor.sleep_time_asleep
           - sensor.sleep_time_awake
@@ -469,32 +512,28 @@ views:
           - sensor.sleep_time_in_bed_hours
           - sensor.time_after_wakeup
           - sensor.awakenings_count
+      - type: entities
         show_header_toggle: false
-        title: Sleep
-        type: entities
-      - entities:
+        title: Miscellaneous
+        entities:
           - sensor.weight
           - sensor.bmi
           - sensor.body_fat
           - sensor.aria_battery
           - sensor.charge_2_battery
-        show_header_toggle: false
-        title: Miscellaneous
-        type: entities
     icon: 'mdi:heart-pulse'
     path: health
     title: FitBit
   - badges:
       - device_tracker.neil
-      - device_tracker.neil_bluetooth
-      - device_tracker.neil_wifi
-      - device_tracker.neil_pixel_tasker
-      - device_tracker.monitor_neil
       - device_tracker.gina
       - device_tracker.parents
       - device_tracker.butters
     cards:
-      - entities:
+      - type: glance
+        title: Weather
+        show_header_toggle: false
+        entities:
           - sensor.dark_sky_temperature
           - sensor.dark_sky_apparent_temperature
           - sensor.dark_sky_daytime_high_temperature_0
@@ -510,32 +549,32 @@ views:
           - sensor.dark_sky_cloud_coverage
           - sensor.dark_sky_moon_phase_0
           - sensor.allergy_index_today_2
-        title: Weather
-        type: glance
-      - entities:
+      - type: entities
+        title: Weather Summary
+        show_header_toggle: false
+        entities:
           - sensor.dark_sky_summary
           - sensor.dark_sky_minutely_summary
           - sensor.dark_sky_hourly_summary
           - sensor.dark_sky_daily_summary
+      - type: entities
+        title: Calendar List
         show_header_toggle: false
-        title: Weather Summary
-        type: entities
-      - entities:
+        entities:
           - sensor.template_calendar_events
           - sensor.template_calendar_family_birthdays
           - sensor.template_calendar_friend_birthdays
           - sensor.template_calendar_facebook_events
-        show_header_toggle: false
-        title: Calendar List
-        type: entities
-      - cards:
-          - cards:
-              - entities:
+      - type: vertical-stack
+        cards:
+          - type: horizontal-stack
+            cards:
+              - type: glance
+                entities:
                   - sensor.last_lock_code_name
                   - sensor.lock_battery_level
-                type: glance
-            type: horizontal-stack
-          - cards:
+          - type: horizontal-stack
+            cards:
               - type: 'custom:button-card'
                 action: toggle
                 long_press_action: more_info
@@ -548,31 +587,92 @@ views:
                 icon: 'mdi:lock'
                 name: Temp Code
                 size: 32%
-            type: horizontal-stack
-          - cards:
-              - entities:
+          - type: horizontal-stack
+            cards:
+              - type: entities
+                entities:
                   - input_text.lock_code_temp
-                type: entities
-            type: horizontal-stack
-        type: vertical-stack
-      - type: map
-        geo_location_sources:
-          - nsw_rural_fire_service_feed
-        entities:
-          - zone.home
-          - zone.dipan
-          - zone.parents
-          - zone.gina
-          - zone.kiel
-          - device_tracker.tile_ba7ceb56d53379ac
-          - device_tracker.neil_pixel_tasker
+      - type: vertical-stack
+        cards:
+        - type: 'custom:button-card'
+          action: toggle
+          long_press_action: more_info
+          card_style: ''
+          color: var(--primary-color)
+          color_off: var(--paper-item-icon-color)
+          color_type: icon
+          default_color: var(--primary-text-color)
+          entity: input_boolean.show_device_trackers
+          icon: 'mdi:map-marker'
+          name: Show Device Trackers
+          size: 40%
+        - type: conditional
+          conditions:
+            - entity: input_boolean.show_device_trackers
+              state: 'on'
+          card:
+            type: vertical-stack
+            cards:
+              - type: entities
+                entities:
+                  - entity: device_tracker.neil
+                    secondary_info: last-changed
+                  - entity: device_tracker.monitor_neil
+                    secondary_info: last-changed
+                  - entity: device_tracker.neil_bluetooth
+                    secondary_info: last-changed
+                  - entity: device_tracker.192_168_1_233_b4_f1_da_26_f9_07
+                    secondary_info: last-changed
+                  - entity: device_tracker.neil_pixel_tasker
+                    secondary_info: last-changed
+                  - entity: device_tracker.neil_wifi
+                    secondary_info: last-changed
+                  - entity: device_tracker.activbuds_s255
+                    secondary_info: last-changed
+                  - entity: device_tracker.192_168_1_233_88_88_88_89_95_1d
+                    secondary_info: last-changed
+                  - entity: device_tracker.192_168_1_233_c7_e6_70_79_1b_92
+                    secondary_info: last-changed
+                  - type: divider
+                  - entity: device_tracker.butters
+                    secondary_info: last-changed
+                  - entity: device_tracker.tile_ba7ceb56d53379ac 
+                    secondary_info: last-changed
+                  - entity: device_tracker.192_168_1_233_c5_ff_36_d0_f1_63
+                    secondary_info: last-changed
+                  - type: divider
+                  - entity: device_tracker.parents
+                    secondary_info: last-changed
+                  - entity: device_tracker.dad_phone
+                    secondary_info: last-changed
+                  - entity: device_tracker.mom_phone
+                    secondary_info: last-changed
+                  - entity: device_tracker.gina
+                    secondary_info: last-changed
+                  - entity: device_tracker.gina_phone
+                    secondary_info: last-changed
+                  - type: divider
+                  - entity: device_tracker.kitchen_display
+              - type: map
+                geo_location_sources:
+                  - nsw_rural_fire_service_feed
+                entities:
+                  - zone.home
+                  - zone.dipan
+                  - zone.parents
+                  - zone.gina
+                  - zone.kiel
+                  - device_tracker.tile_ba7ceb56d53379ac
+                  - device_tracker.neil_pixel_tasker
     icon: 'mdi:calendar-today'
     path: weather_and_calendar
     title: General
   - badges: []
     cards:
-      - cards:
-          - cards:
+      - type: vertical-stack
+        cards:
+          - type: horizontal-stack
+            cards:
               - entities:
                   - sensor.memory_free
                   - sensor.memory_use
@@ -586,25 +686,25 @@ views:
                   - sensor.speedtest_ping
                 title: Pi System Monitor
                 type: glance
-            type: horizontal-stack
-          - cards:
+          - type: horizontal-stack
+            cards:
               - entity: sensor.memory_use_percent
                 name: Pi Memory Usage
                 type: gauge
-            type: horizontal-stack
-          - cards:
+          - type: horizontal-stack
+            cards:
               - entity: sensor.processor_use
                 name: Pi Processor Use
                 type: gauge
-            type: horizontal-stack
-          - cards:
+          - type: horizontal-stack
+            cards:
               - entity: sensor.disk_use_percent
                 name: Pi Disk Usage
                 type: gauge
-            type: horizontal-stack
-        type: vertical-stack
-      - cards:
-          - cards:
+      - type: vertical-stack
+        cards:
+          - type: horizontal-stack
+            cards:
               - entities:
                   - sensor.pi_zero_cpu_temp
                   - sensor.pi_zero_uptime
@@ -612,18 +712,16 @@ views:
                   - sensor.pi_zero_last_system_poll
                 title: Pi Zero System Monitor
                 type: glance
-            type: horizontal-stack
-          - cards:
+          - type: horizontal-stack
+            cards:
               - entity: sensor.pi_zero_cpu_usage
                 name: Pi Zero CPU Usage
                 type: gauge
-            type: horizontal-stack
-          - cards:
+          - type: horizontal-stack
+            cards:
               - entity: sensor.pi_zero_disk_usage
                 name: Pi Zero Disk Usage
                 type: gauge
-            type: horizontal-stack
-        type: vertical-stack
       - entities:
           - script.restart_homeassistant
           - script.system_reboot

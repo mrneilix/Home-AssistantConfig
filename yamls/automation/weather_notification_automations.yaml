@@ -22,8 +22,8 @@
         title: "Rain"
         data:
           tag: 'weather'
-          icon: '/local/weather-rainy.png'
-          badge: '/local/weather-rainy.png'
+          icon: '/local/pictures/weather-rainy.png'
+          badge: '/local/pictures/weather-rainy.png'
     - service: input_boolean.turn_on
       data:
         entity_id: input_boolean.weather_dont_renotify
@@ -52,8 +52,8 @@
         title: "Snow"
         data:
           tag: 'weather'
-          icon: '/local/weather-snowy.png'
-          badge: '/local/weather-snowy.png'
+          icon: '/local/pictures/weather-snowy.png'
+          badge: '/local/pictures/weather-snowy.png'
     - service: input_boolean.turn_on
       data:
         entity_id: input_boolean.weather_dont_renotify
@@ -82,8 +82,8 @@
         title: "Sleet"
         data:
           tag: 'weather'
-          icon: '/local/weather-hail.png'
-          badge: '/local/weather-hail.png'
+          icon: '/local/pictures/weather-hail.png'
+          badge: '/local/pictures/weather-hail.png'
     - service: input_boolean.turn_on
       data:
         entity_id: input_boolean.weather_dont_renotify

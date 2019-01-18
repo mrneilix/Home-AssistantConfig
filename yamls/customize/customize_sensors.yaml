@@ -1,6 +1,8 @@
 ### SYSTEM SENSORS ###
 sensor.plex:
   friendly_name: Plex
+sensor.watching_plex:
+  icon: mdi:plex
 sensor.network_in_eth0:
   friendly_name: Ethernet Received
 sensor.network_out_eth0:
@@ -101,6 +103,7 @@ sensor.last_lock_code_used:
   friendly_name: Last Lock Code Used
 sensor.lock_battery_level:
   friendly_name: Lock Battery Level
+  icon: mdi:battery
 ### BINARY SENSORS ###
 binary_sensor.anyone_home:
   friendly_name: Anyone Home

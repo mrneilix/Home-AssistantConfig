@@ -36,3 +36,9 @@
   tv_power:
     name: TV Power
     icon: mdi:television-classic
+  show_device_trackers:
+    name: Show Device Trackers
+  show_upcoming_downloads:
+    name: Show Upcoming Downloads
+  show_recent_downloads:
+    name: Show Recent Downloads

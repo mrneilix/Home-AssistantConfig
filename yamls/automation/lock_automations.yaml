@@ -129,8 +129,8 @@
         title: "Door Unlocked"
         data:
           tag: 'door-unlocked'
-          icon: '/local/lock.jpg'
-          badge: '/local/lock-badge.png'
+          icon: '/local/pictures/lock.jpg'
+          badge: '/local/pictures/lock-badge.png'
 
 # Lock Pin Entered
 - id: lock_code_entered
@@ -219,3 +219,22 @@
       state: 'off'
   action:
     - service: script.lock_auto_lock_door_on
+
+- id: lock_minimote_button_1_pressed
+  alias: 'Lock Minimote button 1 Pressed'
+  trigger:
+    platform: state
+    entity_id: sensor.minimote_72
+    to: '1'
+  action:
+    - service: lock.unlock
+      entity_id: lock.schlage_deadbolt_47
+
+- id: lock_minimote_button_2_pressed
+  alias: 'Lock Minimote button 2 Pressed'
+  trigger:
+    platform: state
+    entity_id: sensor.minimote_72
+    to: '3'
+  action:
+    - service: script.lock_auto_lock_door_off

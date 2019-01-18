@@ -10,10 +10,10 @@
   action:
     - service: media_player.volume_set
       data_template:
-        entity_id: media_player.kitchen_home
+        entity_id: media_player.kitchen_display
         volume_level: 0.6
     - service: tts.google_say
-      entity_id: media_player.kitchen_home
+      entity_id: media_player.kitchen_display
       data_template:
         message: "{{states('input_text.gh_speak')}}."
     - delay: 00:00:02
@@ -33,7 +33,7 @@
   action:
     - service: media_player.volume_set
       data_template:
-        entity_id: media_player.kitchen_home
+        entity_id: media_player.kitchen_display
         volume_level: 0.6
     - service: rest_command.ga_broadcast
       data_template:

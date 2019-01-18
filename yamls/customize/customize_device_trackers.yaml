@@ -5,7 +5,6 @@ device_tracker.neil:
 device_tracker.neil_bluetooth:
   entity_picture: /local/pictures/Me.jpg
   friendly_name: Neil BT
-  state_card_mode: badges
 device_tracker.neil_wifi:
   entity_picture: /local/pictures/Me.jpg
   friendly_name: Neil Wi-Fi

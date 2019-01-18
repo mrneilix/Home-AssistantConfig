@@ -18,8 +18,8 @@
         data:
           tag: 'Vera-down'
           renotify: 0
-          icon: '/local/vera.png'
-          badge: '/local/vera.png'
+          icon: '/local/pictures/vera.png'
+          badge: '/local/pictures/vera.png'
           
 - id: notify_restart_complete
   alias: 'Notify Restart Complete'
@@ -43,8 +43,8 @@
         data:
           tag: 'restart_complete'
           renotify: 0
-          icon: '/local/restart-ha-badge.png'
-          badge: '/local/restart-ha-badge.png'
+          icon: '/local/pictures/restart-ha-badge.png'
+          badge: '/local/pictures/restart-ha-badge.png'
           
 - id: notifications_off_at_11pm
   alias: 'Notifications Off at 11PM'
