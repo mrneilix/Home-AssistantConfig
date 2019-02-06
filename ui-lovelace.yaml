@@ -33,14 +33,16 @@ views:
         clock_format: 12
         clock_am_pm: true
         header: true
-      - cards:
-          - cards:
+      - type: vertical-stack
+        cards:
+          - type: horizontal-stack
+            cards:
               - entity: light.kitchen
                 type: light
               - entity: light.bed
                 type: light
-            type: horizontal-stack
-          - cards:
+          - type: horizontal-stack
+            cards:
               - entity: switch.furnace_switch_29
                 state_image:
                   'off': /local/pictures/furnace-off.png
@@ -55,8 +57,8 @@ views:
                 tap_action:
                   action: toggle
                 type: picture-entity
-            type: horizontal-stack
-          - cards:
+          - type: horizontal-stack
+            cards:
               - type: 'custom:button-card'
                 action: toggle
                 long_press_action: more_info
@@ -81,17 +83,6 @@ views:
                 icon: 'mdi:fan'
                 name: Bathroom Fan
                 size: 40%
-            type: horizontal-stack
-        type: vertical-stack
-      # - type: 'custom:button-card'
-        # action: toggle
-        # color: 'auto'
-        # color_off: var(--paper-item-icon-color)
-        # color_type: icon
-        # entity: light.couch
-        # icon: 'mdi:sofa'
-        # name: Couch Light
-        # size: 40%
       - entity: light.couch
         type: light
         name: Couch
@@ -184,13 +175,15 @@ views:
                 - input_number.couch_r
                 - input_number.couch_g
                 - input_number.couch_b
-      - cards:
-          - cards:
+      - type: vertical-stack
+        cards:
+          - type: horizontal-stack
+            cards:
               - entity: climate.thermostat
                 name: Thermostat
                 type: thermostat
-            type: horizontal-stack
-          - cards:
+          - type: vertical-stack
+            cards:
               - type: conditional
                 conditions:
                   - entity: lock.schlage_deadbolt_47
@@ -231,8 +224,8 @@ views:
                   icon: mdi:lock-open-outline
                   name: Lock
                   size: 40%
-            type: horizontal-stack
-          - cards:
+          - type: horizontal-stack
+            cards:
               - type: 'custom:button-card'
                 long_press_action: more_info
                 action: toggle
@@ -281,8 +274,8 @@ views:
                 icon: 'mdi:radiator'
                 name: Space Heater
                 size: 40%
-            type: horizontal-stack
-          - cards:
+          - type: horizontal-stack
+            cards:
               - type: 'custom:button-card'
                 long_press_action: more_info
                 action: toggle
@@ -331,21 +324,38 @@ views:
                 icon: 'mdi:dog-side'
                 name: Butters
                 size: 40%
-            type: horizontal-stack
-        type: vertical-stack
-      - cards:
-          - type: entities
-            show_header_toggle: false
-            title: Weather Summary
-            entities:
-              - sensor.dark_sky_summary
-              - sensor.dark_sky_minutely_summary
-              - sensor.dark_sky_hourly_summary
-              - sensor.dark_sky_daily_summary
-          - type: custom:weather-card
-            entity: weather.dark_sky
-            icons: '/local/custom-lovelace/weather-card/icons/animated/'
-        type: vertical-stack
+      - type: vertical-stack
+        cards:
+        - type: 'custom:button-card'
+          action: toggle
+          long_press_action: more_info
+          card_style: ''
+          color: var(--primary-color)
+          color_off: var(--paper-item-icon-color)
+          color_type: icon
+          default_color: var(--primary-text-color)
+          entity: input_boolean.show_weather_summary
+          icon: 'mdi:weather-sunny'
+          name: Show Weather Summary
+          size: 40%
+        - type: conditional
+          conditions:
+            - entity: input_boolean.show_weather_summary
+              state: 'on'
+          card:
+            type: vertical-stack
+            cards:
+              - type: entities
+                show_header_toggle: false
+                title: Weather Summary
+                entities:
+                  - sensor.dark_sky_summary
+                  - sensor.dark_sky_minutely_summary
+                  - sensor.dark_sky_hourly_summary
+                  - sensor.dark_sky_daily_summary
+              - type: custom:weather-card
+                entity: weather.dark_sky
+                icons: '/local/custom-lovelace/weather-card/icons/animated/'
     icon: 'mdi:home'
     path: default_view
     title: Home
@@ -519,33 +529,57 @@ views:
       - device_tracker.parents
       - device_tracker.butters
     cards:
-      - type: glance
-        title: Weather
-        show_header_toggle: false
-        entities:
-          - sensor.dark_sky_temperature
-          - sensor.dark_sky_apparent_temperature
-          - sensor.dark_sky_daytime_high_temperature_0
-          - sensor.dark_sky_overnight_low_temperature_0
-          - sensor.dark_sky_daytime_high_apparent_temperature_0
-          - sensor.dark_sky_overnight_low_apparent_temperature_0
-          - sensor.dark_sky_precip_intensity
-          - sensor.dark_sky_precip_probability
-          - sensor.dark_sky_wind_speed
-          - sensor.dark_sky_nearest_storm_distance
-          - sensor.dark_sky_humidity
-          - sensor.dark_sky_visibility
-          - sensor.dark_sky_cloud_coverage
-          - sensor.dark_sky_moon_phase_0
-          - sensor.allergy_index_today_2
-      - type: entities
-        title: Weather Summary
-        show_header_toggle: false
-        entities:
-          - sensor.dark_sky_summary
-          - sensor.dark_sky_minutely_summary
-          - sensor.dark_sky_hourly_summary
-          - sensor.dark_sky_daily_summary
+      - type: vertical-stack
+        cards:
+        - type: 'custom:button-card'
+          action: toggle
+          long_press_action: more_info
+          card_style: ''
+          color: var(--primary-color)
+          color_off: var(--paper-item-icon-color)
+          color_type: icon
+          default_color: var(--primary-text-color)
+          entity: input_boolean.show_weather_summary
+          icon: 'mdi:weather-sunny'
+          name: Show Weather Summary
+          size: 40%
+        - type: conditional
+          conditions:
+            - entity: input_boolean.show_weather_summary
+              state: 'on'
+          card:
+            type: vertical-stack
+            cards:
+              - type: glance
+                title: Weather
+                show_header_toggle: false
+                entities:
+                  - sensor.dark_sky_temperature
+                  - sensor.dark_sky_apparent_temperature
+                  - sensor.dark_sky_daytime_high_temperature_0
+                  - sensor.dark_sky_overnight_low_temperature_0
+                  - sensor.dark_sky_daytime_high_apparent_temperature_0
+                  - sensor.dark_sky_overnight_low_apparent_temperature_0
+                  - sensor.dark_sky_precip_intensity
+                  - sensor.dark_sky_precip_probability
+                  - sensor.dark_sky_wind_speed
+                  - sensor.dark_sky_nearest_storm_distance
+                  - sensor.dark_sky_humidity
+                  - sensor.dark_sky_visibility
+                  - sensor.dark_sky_cloud_coverage
+                  - sensor.dark_sky_moon_phase_0
+                  - sensor.allergy_index_today_2
+              - type: entities
+                show_header_toggle: false
+                title: Weather Summary
+                entities:
+                  - sensor.dark_sky_summary
+                  - sensor.dark_sky_minutely_summary
+                  - sensor.dark_sky_hourly_summary
+                  - sensor.dark_sky_daily_summary
+              - type: custom:weather-card
+                entity: weather.dark_sky
+                icons: '/local/custom-lovelace/weather-card/icons/animated/'
       - type: entities
         title: Calendar List
         show_header_toggle: false
@@ -658,9 +692,28 @@ views:
     cards:
       - type: vertical-stack
         cards:
-          - type: horizontal-stack
+        - type: 'custom:button-card'
+          action: toggle
+          long_press_action: more_info
+          card_style: ''
+          color: var(--primary-color)
+          color_off: var(--paper-item-icon-color)
+          color_type: icon
+          default_color: var(--primary-text-color)
+          entity: input_boolean.show_pi_system_monitor
+          icon: 'mdi:home-circle'
+          name: Show Pi System Monitor
+        - type: conditional
+          conditions:
+            - entity: input_boolean.show_pi_system_monitor
+              state: 'on'
+          card:
+            type: vertical-stack
             cards:
-              - entities:
+              - type: glance
+                title: Pi System Monitor
+                show_header_toggle: false
+                entities:
                   - sensor.memory_free
                   - sensor.memory_use
                   - sensor.network_in_eth0
@@ -671,51 +724,97 @@ views:
                   - sensor.speedtest_download
                   - sensor.speedtest_upload
                   - sensor.speedtest_ping
-                title: Pi System Monitor
-                type: glance
-          - type: horizontal-stack
-            cards:
-              - entity: sensor.memory_use_percent
+              - type: gauge
+                entity: sensor.memory_use_percent
                 name: Pi Memory Usage
-                type: gauge
-          - type: horizontal-stack
-            cards:
-              - entity: sensor.processor_use
+              - type: gauge
+                entity: sensor.processor_use
                 name: Pi Processor Use
-                type: gauge
-          - type: horizontal-stack
-            cards:
-              - entity: sensor.disk_use_percent
+              - type: gauge
+                entity: sensor.disk_use_percent
                 name: Pi Disk Usage
-                type: gauge
       - type: vertical-stack
         cards:
-          - type: horizontal-stack
+        - type: 'custom:button-card'
+          action: toggle
+          long_press_action: more_info
+          card_style: ''
+          color: var(--primary-color)
+          color_off: var(--paper-item-icon-color)
+          color_type: icon
+          default_color: var(--primary-text-color)
+          entity: input_boolean.show_pi_zero_system_monitor
+          icon: 'mdi:numeric-0-box'
+          name: Show Pi Zero System Monitor
+        - type: conditional
+          conditions:
+            - entity: input_boolean.show_pi_zero_system_monitor
+              state: 'on'
+          card:
+            type: vertical-stack
             cards:
-              - entities:
+              - type: glance
+                title: Pi Zero System Monitor
+                show_header_toggle: false
+                entities:
                   - sensor.pi_zero_cpu_temp
                   - sensor.pi_zero_uptime
                   - sensor.speedtest_ping
                   - sensor.pi_zero_last_system_poll
-                title: Pi Zero System Monitor
-                type: glance
-          - type: horizontal-stack
-            cards:
-              - entity: sensor.pi_zero_cpu_usage
+              - type: gauge
+                entity: sensor.pi_zero_cpu_usage
                 name: Pi Zero CPU Usage
-                type: gauge
+              - type: gauge
+                entity: sensor.pi_zero_disk_usage
+                name: Pi Zero Disk Usage
+      - type: vertical-stack
+        cards:
           - type: horizontal-stack
             cards:
-              - entity: sensor.pi_zero_disk_usage
-                name: Pi Zero Disk Usage
-                type: gauge
-      - entities:
-          - script.restart_homeassistant
-          - script.system_reboot
-          - script.reboot_pi_zero
-        show_header_toggle: false
-        title: System Control
-        type: entities
+              - type: 'custom:button-card'
+                action: service
+                service:
+                  domain: script
+                  action: turn_on
+                  data:
+                    entity_id: script.restart_homeassistant
+                card_style: ''
+                color: var(--primary-color)
+                color_off: var(--paper-item-icon-color)
+                color_type: icon
+                default_color: var(--primary-text-color)
+                icon: 'mdi:home-assistant'
+                name: Restart Home Assistant
+          - type: horizontal-stack
+            cards:
+              - type: 'custom:button-card'
+                action: service
+                service:
+                  domain: script
+                  action: turn_on
+                  data:
+                    entity_id: script.system_reboot
+                card_style: ''
+                color: var(--primary-color)
+                color_off: var(--paper-item-icon-color)
+                color_type: icon
+                default_color: var(--primary-text-color)
+                icon: 'mdi:home-circle'
+                name: Reboot System
+              - type: 'custom:button-card'
+                action: service
+                service:
+                  domain: script
+                  action: turn_on
+                  data:
+                    entity_id: script.reboot_pi_zero
+                card_style: ''
+                color: var(--primary-color)
+                color_off: var(--paper-item-icon-color)
+                color_type: icon
+                default_color: var(--primary-text-color)
+                icon: 'mdi:numeric-0-box'
+                name: Reboot Pi Zero
       - title: null
         trackers:
           - sensor.custom_card_tracker

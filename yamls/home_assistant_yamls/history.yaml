@@ -70,6 +70,9 @@
       - input_boolean.show_device_trackers
       - input_boolean.show_recent_downloads
       - input_boolean.show_upcoming_downloads
+      - input_boolean.display_weather_summary
+      - input_boolean.show_pi_system_monitor
+      - input_boolean.show_pi_zero_system_monitor
       - binary_sensor.vera_up
       - binary_sensor.anyone_home_but_neil
       - binary_sensor.front_door_sensor_73

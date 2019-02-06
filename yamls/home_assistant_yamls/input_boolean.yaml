@@ -44,3 +44,9 @@
     name: Show Recent Downloads
   door_open:
     initial: off
+  show_weather_summary:
+    initial: on
+  show_pi_system_monitor:
+    initial: on
+  show_pi_zero_system_monitor:
+    initial: on

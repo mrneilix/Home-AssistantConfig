@@ -4,7 +4,6 @@
       - binary_sensor
       - device_tracker
       - input_boolean
-      - input_number
       - script
       - light
       - scene
@@ -65,7 +64,9 @@
       - input_boolean.show_device_trackers
       - input_boolean.show_recent_downloads
       - input_boolean.show_upcoming_downloads
-      - input_text.lock_code_temp
+      - input_boolean.display_weather_summary
+      - input_boolean.show_pi_system_monitor
+      - input_boolean.show_pi_zero_system_monitor
       - light.front_kitchen_31
       - light.back_kitchen_30
       - script.thermostat_set_home_morning

@@ -18,8 +18,14 @@ Fitbit View (I didn't sleep much)
 Calendar, Device Tracker, and Temp Lock Code View
 ![Calendar and Lock View](Screenshots/calendar_lock_view.png)
 
+Calendar, Device Tracker, and Temp Lock Code View With All Expanded
+![Calendar and Lock View](Screenshots/calendar_lock_view_collapsed.png)
+
 System Monitor View
 ![System View](Screenshots/system_view.png)
+
+System Monitor View With All Expanded
+![System View](Screenshots/system_view_collapsed.png)
 
 ## Custom Components:
 
