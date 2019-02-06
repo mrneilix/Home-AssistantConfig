@@ -1,13 +1,27 @@
 My HassIO Config
+
+Main view with Couch Lights Off and Door Locked
 ![Main View With Couch Lights Off](Screenshots/main-view-couch-off.png)
+
+Main view with Couch Lights On and Door Locked
 ![Main View With Couch Lights On](Screenshots/main-view-couch-on.png)
+
+Media View with TV and Input Booleans Off
 ![Media View With TV Off](Screenshots/media-view-tv-off.png)
+
+Media View with TV and Input Booleans On
 ![Media View With TV On](Screenshots/media-view-tv-on.png)
+
+Fitbit View (I didn't sleep much)
 ![Fitbit View](Screenshots/fitbit_view.png)
+
+Calendar, Device Tracker, and Temp Lock Code View
 ![Calendar and Lock View](Screenshots/calendar_lock_view.png)
+
+System Monitor View
 ![System View](Screenshots/system_view.png)
 
-##Custom Components:
+## Custom Components:
 
 Monitor on my Pi Zero: https://github.com/andrewjfreyer/monitor/blob/master/monitor.sh
 
