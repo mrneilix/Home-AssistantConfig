@@ -1,12 +1,15 @@
 # Lock Battery Level
 - id: lock_battery_low_notify
   alias: 'Lock Battery Low Notify'
-  initial_state: false
   trigger:
     platform: numeric_state
     entity_id: sensor.lock_battery_level
     below: '50'
     above: '25'
+  condition:
+    - condition: state
+      entity_id: input_boolean.restart_complete
+      state: 'on'
   action:
     - service: notify.html5
       data_template:
@@ -20,11 +23,14 @@
           
 - id: lock_battery_very_low_notify
   alias: 'Lock Battery Very Low Notify'
-  initial_state: false
   trigger:
     platform: numeric_state
     entity_id: sensor.lock_battery_level
     below: '25'
+  condition:
+    - condition: state
+      entity_id: input_boolean.restart_complete
+      state: 'on'
   action:
     - service: notify.html5
       data_template:
@@ -35,93 +41,26 @@
           renotify: 0
           icon: '/local/lock.jpg'
           badge: '/local/lock-badge.png'
-          
-# Parents
-- id: lock_parents_lock_code_toggle
-  alias: 'Lock Parents Lock Code On'
-  initial_state: false
-  trigger:
-    - platform: state
-      entity_id: input_boolean.parents_lock_code
-  action:
-    - service_template: >
-          {% if is_state('input_boolean.parents_lock_code', 'on') %}
-            script.lock_set_parents_lock_code
-          {% else %}
-            script.lock_clear_parents_lock_code
-          {% endif %}
-- id: lock_parents_lock_update_input_boolean
-  alias: 'Lock Parents Lock Update Input Boolean'
-  initial_state: false
-  trigger:
-    - platform: state
-      entity_id: binary_sensor.lock_parents_pin
-  action:
-    - service_template: > 
-          {% if is_state('binary_sensor.lock_parents_pin', 'on') %}
-            input_boolean.turn_on
-          {% else %}
-            input_boolean.turn_off
-          {% endif %}
-      data:
-        entity_id: input_boolean.parents_lock_code
-
-# Temporary Lock Code
-- id: lock_set_temp_lock_code
-  alias: 'Lock Temporary Lock Code'
-  initial_state: false
-  trigger:
-    - platform: state
-      entity_id: input_text.lock_code_temp
-  condition:
-    - condition: template
-      value_template: "{{ not is_state('input_text.lock_code_temp', 'Code') }}"
-  action:
-    - service: script.lock_set_temp_lock_code
-
-# Temporary Lock Code Used
-- id: lock_temp_lock_code_used
-  alias: 'Lock Temporary Lock Code Used'
-  initial_state: false
-  trigger:
-    - platform: state
-      entity_id: sensor.last_lock_code_name
-      to: 'Temp'
-    - platform: state
-      entity_id: input_boolean.temp_lock_code_set
-      to: 'off'
-      from: 'on'
-    - platform: state
-      entity_id: binary_sensor.lock_temp_pin
-      to: 'off'
-      from: 'on'
-  condition:
-    - condition: state
-      entity_id: input_boolean.temp_lock_code_set
-      state: 'on'
-  action:
-    - service: script.lock_clear_temp_code
 
 # Notify if unlocked without code
 - id: lock_door_unlocked_notify_unknown_code
   alias: 'Lock Door Unlocked Notify Unknown Code'
-  initial_state: false
   trigger:
     platform: state
-    entity_id: lock.schlage_deadbolt_47
-    to: 'unlocked'
-    from: 'locked'
+    entity_id: input_boolean.door_open
+    to: 'on'
     for:
-      seconds: 15
+      seconds: 10
   condition:
-    - condition: state
-      entity_id: device_tracker.neil
-      state: 'not_home'
     - condition: state
       entity_id: input_boolean.presence_automations
       state: 'on'
-    - condition: template
-      value_template: "{{ not is_state('sensor.last_lock_code_name', 'Parents') or not is_state('sensor.last_lock_code_name', 'Gina') or not is_state('sensor.last_lock_code_name', 'Temp') or not is_state('sensor.last_lock_code_name', 'Guest') or not is_state('sensor.last_lock_code_name', 'Neil') }}"
+    - condition: state
+      entity_id: input_boolean.restart_complete
+      state: 'on'
+    - condition: state
+      entity_id: binary_sensor.anyone_home
+      state: 'off'
   action:
     - service: notify.html5
       data_template:
@@ -135,7 +74,6 @@
 # Lock Pin Entered
 - id: lock_code_entered
   alias: 'Lock Code Entered'
-  initial_state: false
   trigger:
     - platform: state
       entity_id: binary_sensor.lock_code_entered
@@ -159,7 +97,6 @@
 # Auto Lock
 - id: lock_door_auto_lock
   alias: 'Lock Door Auto Lock'
-  initial_state: false
   trigger:
     - platform: state
       entity_id: lock.schlage_deadbolt_47
@@ -167,10 +104,18 @@
       from: 'locked'
       for:
         seconds: 20
+    - platform: state
+      entity_id: input_boolean.door_open
+      to: 'on'
+      for:
+        seconds: 10
   condition:
-    condition: state
-    entity_id: input_boolean.autolock
-    state: 'on'
+    - condition: state
+      entity_id: input_boolean.autolock
+      state: 'on'
+    - condition: state
+      entity_id: input_boolean.restart_complete
+      state: 'on'
   action:
     - delay: 00:00:10
     - condition: state
@@ -181,7 +126,6 @@
 
 - id: lock_auto_lock_door_switch_on
   alias: 'Lock Auto Lock Door Switch On'
-  initial_state: false
   trigger:
     platform: state
     entity_id: input_boolean.autolock
@@ -191,23 +135,28 @@
     - condition: state
       entity_id: lock.schlage_deadbolt_47
       state: 'unlocked'
+    - condition: state
+      entity_id: input_boolean.restart_complete
+      state: 'on'
   action:
     - service: script.lock_auto_lock_door_on
 
 - id: lock_auto_lock_door_switch_off
   alias: 'Lock Auto Lock Door Switch Off'
-  initial_state: false
   trigger:
     platform: state
     entity_id: input_boolean.autolock
     to: 'off'
     from: 'on'
+  condition:
+    - condition: state
+      entity_id: input_boolean.restart_complete
+      state: 'on'
   action:
     - service: script.lock_auto_lock_door_off
 
 - id: lock_auto_lock_door_switch_update_locked
   alias: 'Lock Auto Lock Door Switch Update Locked'
-  initial_state: false
   trigger:
     platform: state
     entity_id: lock.schlage_deadbolt_47
@@ -217,6 +166,9 @@
     - condition: state
       entity_id: input_boolean.autolock
       state: 'off'
+    - condition: state
+      entity_id: input_boolean.restart_complete
+      state: 'on'
   action:
     - service: script.lock_auto_lock_door_on
 
@@ -226,15 +178,60 @@
     platform: state
     entity_id: sensor.minimote_72
     to: '1'
+  condition:
+    - condition: state
+      entity_id: input_boolean.restart_complete
+      state: 'on'
   action:
     - service: lock.unlock
       entity_id: lock.schlage_deadbolt_47
 
-- id: lock_minimote_button_2_pressed
-  alias: 'Lock Minimote button 2 Pressed'
+- id: lock_minimote_button_3_pressed
+  alias: 'Lock Minimote button 3 Pressed'
   trigger:
     platform: state
     entity_id: sensor.minimote_72
     to: '3'
+  condition:
+    - condition: state
+      entity_id: input_boolean.restart_complete
+      state: 'on'
   action:
     - service: script.lock_auto_lock_door_off
+
+- id: lock_door_opened_update_input_boolean
+  alias: 'Lock Door Opened Update Input Boolean'
+  trigger:
+    platform: state
+    entity_id: binary_sensor.front_door_sensor_73
+  condition:
+    - condition: state
+      entity_id: input_boolean.door_open
+      state: 'off'
+    - condition: state
+      entity_id: input_boolean.restart_complete
+      state: 'on'
+  action:
+    - service: input_boolean.turn_on
+      data:
+        entity_id: input_boolean.door_open
+
+- id: lock_door_opened_poll_lock
+  alias: 'Lock Door Opened Poll Lock'
+  trigger:
+    platform: state
+    entity_id: input_boolean.door_open
+    to: 'on'
+    for:
+      seconds: 10
+  condition:
+    - condition: state
+      entity_id: input_boolean.restart_complete
+      state: 'on'
+  action:
+    - service: scene.turn_on
+      entity_id: scene.poll_front_door_when_opened
+    - delay: 00:00:30
+    - service: input_boolean.turn_off
+      data:
+        entity_id: input_boolean.door_open

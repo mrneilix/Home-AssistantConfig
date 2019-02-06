@@ -1,7 +1,6 @@
 # Set Temp on Weather Minus Morning
 - id: thermostat_set_temp_when_home_after_11_am
   alias: 'Thermostat Set Temp When Home after 11 AM'
-  initial_state: false
   trigger:
     - platform: state
       entity_id: sensor.temp
@@ -23,7 +22,6 @@
 # Set Temp on Weather In Morning
 - id: thermostat_set_temp_when_home_after_6_am
   alias: 'Thermostat Set Temp When Home after 6 AM'
-  initial_state: false
   trigger:
     - platform: state
       entity_id: sensor.temp
@@ -44,7 +42,6 @@
 
 - id: thermostat_set_when_away
   alias: 'Thermostat Set When Away'
-  initial_state: false
   trigger:
     - platform: state
       entity_id: sensor.temp

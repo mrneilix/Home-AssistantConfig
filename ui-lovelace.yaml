@@ -4,7 +4,7 @@ resources:
   - type: module
     url: /local/custom-lovelace/weather-card/weather-card.js?v=1.0.1
   - type: js
-    url: /local/custom-lovelace/tracker-card-master/tracker-card.js?v=0.1.5
+    url: /local/custom-lovelace/tracker-card-master/tracker-card.js?v=0.3.0
   - type: js
     url: /local/custom-lovelace/monster-card/monster-card.js?v=0.2.3
   - type: module
@@ -12,7 +12,7 @@ resources:
   - type: js
     url: /local/custom-lovelace/upcoming-media-card/upcoming-media-card.js?v=0.3.4
   - type: js
-    url: /local/custom-lovelace/compact-custom-header/compact-custom-header.js?v=0.2.7
+    url: /local/custom-lovelace/compact-custom-header/compact-custom-header.js?v=0.2.9
 title: Atlanta Condo
 views:
   - badges:
@@ -26,6 +26,7 @@ views:
       - sensor.dark_sky_overnight_low_temperature_0
       - sensor.forecast_icon
       - sensor.daylight_remaining_hm
+      - sensor.illuminance
     cards:
       - type: custom:compact-custom-header
         notification: true
@@ -353,8 +354,6 @@ views:
     path: default_view
     title: Home
   - badges:
-      - sensor.tautulli_direct_play
-      - sensor.tautulli_direct_stream
       - sensor.tautulli_total
       - sensor.tautulli_total_bandwidth
       - sensor.tautulli_transcode
@@ -399,12 +398,6 @@ views:
         type: media-control
       - entity: media_player.living_room_tv
         type: media-control
-      - type: entities
-        show_header_toggle: false
-        title: Google Assistant
-        entities:
-          - input_text.broadcast_message
-          - input_text.google_command
       - type: entities
         show_header_toggle: false
         title: Watching Plex
@@ -651,8 +644,6 @@ views:
                     secondary_info: last-changed
                   - entity: device_tracker.gina_phone
                     secondary_info: last-changed
-                  - type: divider
-                  - entity: device_tracker.kitchen_display
               - type: map
                 geo_location_sources:
                   - nsw_rural_fire_service_feed

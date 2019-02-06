@@ -14,16 +14,6 @@ lock_auto_lock_door_on:
     - service: lock.lock
       entity_id: lock.schlage_deadbolt_47
 
-lock_toggle_state:
-  alias: Lock Toggle State
-  sequence:
-    - service_template: >
-          {% if is_state('lock.schlage_deadbolt_47', 'locked') %}
-            script.lock_unlock_door
-          {% else %}
-            script.lock_auto_lock_door_on
-          {% endif %}
-
 lock_auto_lock_door_off:
   alias: Turn off Door Auto Lock
   sequence:

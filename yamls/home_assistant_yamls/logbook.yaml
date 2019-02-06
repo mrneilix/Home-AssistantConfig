@@ -2,12 +2,9 @@
     domains:
       - automation
       - binary_sensor
-      - climate
       - device_tracker
       - input_boolean
       - input_number
-      - input_select
-      - lock
       - script
       - light
       - scene
@@ -39,22 +36,58 @@
       - automation.weather_notify_rain
       - automation.weather_notify_snow
       - automation.tv_off_fire_tablet_auto_brightness_on
-      - automation.couch_group_toggle_visibility
+      - automation.couch_color_slider
+      - automation.couch_lights_sensor_changed
+      - automation.couch_light_set_input_text
+      - automation.couch_color_google_voice
       - automation.tv_input_group_toggle_visible
       - automation.presence_turn_desktop_display_off
       - automation.calendar_family_birthday_notify
       - automation.calendar_friend_birthday_notify
       - automation.tv_power_monitor_restart
+      - automation.presence_from_tasker_when_near_home
+      - automation.presence_from_tasker_when_far_from_home
+      - automation.kitchen_lights_on
+      - automation.kitchen_lights_off
+      - automation.kitchen_lights_on_when_dark_out
+      - automation.kitchen_lights_off_when_not_dark_out
+      - automation.system_startup
+      - automation.lock_door_opened_poll_lock
+      - automation.lock_door_opened_update_input_boolean
+      - binary_sensor.front_door_sensor_73
       - input_boolean.weather_dont_renotify
       - input_boolean.away
       - input_boolean.couch_light_script_running
       - input_boolean.presence_running
       - input_boolean.restart_complete
       - input_boolean.kitchen_lights_running
+      - input_boolean.door_open
+      - input_boolean.show_device_trackers
+      - input_boolean.show_recent_downloads
+      - input_boolean.show_upcoming_downloads
+      - input_text.lock_code_temp
       - light.front_kitchen_31
       - light.back_kitchen_30
       - script.thermostat_set_home_morning
       - script.thermostat_set_home_not_morning
-      - script.couch_group_toggle_visibility
       - script.tv_input_group_toggle_visible
       - script.do_nothing
+      - script.presence_tasker_phone_location
+      - script.kitchen_lights_on
+      - script.kitchen_lights_off
+      - script.startup_presence
+      - script.startup_input_booleans
+      - script.startup_neil_home
+      - script.startup_neil_not_home
+      - script.startup_couch_colors
+      - script.couch_color_input_text
+      - script.couch_light_update_all_controls
+      - script.couch_color_name_from_input_text
+      - script.couch_color_google_voice
+      - script.couch_color_input_numbers
+      - script.couch_light_scripts_trigger
+      - script.couch_light_scripts_trigger_light_already_on
+      - script.couch_light_scripts_trigger_light_already_off
+      - script.couch_light_update_input_numbers
+      - script.couch_light_update_input_text
+      - switch.front_door_sensor_73

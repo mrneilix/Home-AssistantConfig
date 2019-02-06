@@ -57,7 +57,6 @@
       - sensor.lock_battery_level
       - sensor.last_lock_code_used
       - sensor.last_lock_code_name
-
   exclude:
     entities:
       - input_boolean.notifications_on
@@ -67,5 +66,10 @@
       - input_boolean.restart_complete
       - input_boolean.weather_dont_renotify
       - input_boolean.kitchen_lights_running
+      - input_boolean.door_open
+      - input_boolean.show_device_trackers
+      - input_boolean.show_recent_downloads
+      - input_boolean.show_upcoming_downloads
       - binary_sensor.vera_up
       - binary_sensor.anyone_home_but_neil
+      - binary_sensor.front_door_sensor_73

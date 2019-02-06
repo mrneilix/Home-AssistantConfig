@@ -7,7 +7,7 @@ sensor.network_in_eth0:
   friendly_name: Ethernet Received
 sensor.network_out_eth0:
   friendly_name: Ethernet Sent
-sensor.disk_use_percent_:
+sensor.disk_use_percent:
   friendly_name: Disk Used
 sensor.since_last_boot_templated:
   friendly_name: System Uptime

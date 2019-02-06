@@ -1,12 +1,8 @@
 lock_code_entered_not_family:
   alias: Lock Code Entered
   sequence:
-    - service: media_player.volume_set
-      data_template:
-        entity_id: media_player.kitchen_home
-        volume_level: 0.6
     - service: tts.google_say
-      entity_id: media_player.kitchen_home
+      entity_id: media_player.kitchen_display
       data_template:
         message: "Hello, {{states('sensor.last_lock_code_name')}}."
     - condition: state
@@ -54,17 +50,21 @@ lock_temp_code_entered:
 lock_clear_temp_code:
   alias: Lock Clear Temp Code
   sequence:
-    - delay: 00:00:10
     - service: scene.turn_on
       entity_id: scene.clear_temp_code
-    - delay: 00:00:20
-    - service: input_boolean.turn_off
+    - delay: 00:00:60
+    - condition: state
+      entity_id: binary_sensor.lock_temp_pin
+      state: 'on'
+    - service: scene.turn_on
+      entity_id: scene.clear_temp_code
+    - delay: 00:00:60
+    - condition: state
+      entity_id: binary_sensor.lock_temp_pin
+      state: 'on'
+    - service: input_boolean.turn_on
       data:
         entity_id: input_boolean.temp_lock_code_set
-    - condition: template
-      value_template: "{{ (as_timestamp(now()) - as_timestamp(states.binary_sensor.lock_temp_pin.last_updated)) | int > 60 }}"
-    - service: scene.turn_on
-      entity_id: scene.clear_temp_code
 
 lock_set_temp_lock_code:
   alias: Set Temporary Lock Code
@@ -72,10 +72,6 @@ lock_set_temp_lock_code:
     - service: rest_command.set_lock_code
       data_template:
         templockcode: "{{ states.input_text.lock_code_temp.state }}"
-    # - service: mqtt.publish
-      # data_template:
-        # topic: "Vera/Events/SetTempLockCode"
-        # payload: "{{ states.input_text.lock_code_temp.state }}"
     - delay: 00:00:10
     - service: input_text.set_value
       data:
@@ -93,18 +89,38 @@ lock_clear_parents_lock_code:
     - service: scene.turn_on
       entity_id: scene.clear_parents_code
     - delay: 00:00:60
-    - condition: template
-      value_template: "{{ (as_timestamp(now()) - as_timestamp(states.binary_sensor.lock_parents_pin.last_updated)) | int > 60 }}"
+    - condition: state
+      entity_id: binary_sensor.lock_parents_pin
+      state: 'on'
     - service: scene.turn_on
       entity_id: scene.clear_parents_code
+    - delay: 00:00:60
+    - condition: state
+      entity_id: binary_sensor.lock_parents_pin
+      state: 'on'
+    - service: input_boolean.turn_on
+      data:
+        entity_id: input_boolean.parents_lock_code
 
 lock_set_parents_lock_code:
   alias: Lock Set Parents Lock Code
   sequence:
     - service: scene.turn_on
       entity_id: scene.add_parents_code
-    - delay: 00:00:60
-    - condition: template
-      value_template: "{{ (as_timestamp(now()) - as_timestamp(states.binary_sensor.lock_parents_pin.last_updated)) | int > 60 }}"
+    - delay: 00:00:10
+    - condition: state
+      entity_id: device_tracker.neil
+      state: 'not_home'
+    - delay: 00:00:50
+    - condition: state
+      entity_id: binary_sensor.lock_parents_pin
+      state: 'off'
     - service: scene.turn_on
       entity_id: scene.add_parents_code
+    - delay: 00:00:60
+    - condition: state
+      entity_id: binary_sensor.lock_parents_pin
+      state: 'off'
+    - service: input_boolean.turn_off
+      data:
+        entity_id: input_boolean.parents_lock_code

@@ -1,6 +1,5 @@
 - id: tv_open_casting_apps
   alias: 'TV Open Casting Apps'
-  initial_state: false
   trigger:
     - platform: template
       value_template: "{% if is_state_attr('media_player.living_room_tv', 'app_name', 'YouTube TV') %} true{% endif %}"
@@ -52,8 +51,8 @@
         command: >
           {% if is_state_attr('media_player.living_room_tv', 'app_name', 'YouTube TV') %}
             yttv
-          {%-elif is_state_attr('media_player.living_room_tv', 'app_name', 'Netflix') %}
-            netflix
+          # {%-elif is_state_attr('media_player.living_room_tv', 'app_name', 'Netflix') %}
+            # netflix
           {%-elif is_state_attr('media_player.living_room_tv', 'app_name', 'YouTube Music') %}
             ytmusic
           {%-elif is_state_attr('media_player.living_room_tv', 'app_name', 'YouTube') %}
@@ -69,15 +68,19 @@
           {% else %}
           {% endif %}
 
-
 - id: tv_on_notify_theater_mode
   alias: 'TV On Notify Theater Mode'
-  initial_state: false
   trigger:
     - platform: state
       entity_id: media_player.living_room_tv
       from: 'off'
       to: 'playing'
+      for:
+        seconds: 60
+    - platform: state
+      entity_id: binary_sensor.tv_mqtt_power
+      to: 'on'
+      from: 'off'
       for:
         seconds: 60
   condition:
@@ -87,6 +90,9 @@
     - condition: state
       entity_id: device_tracker.neil
       state: 'home'
+    - condition: state
+      entity_id: input_boolean.restart_complete
+      state: 'on'
   action:
     - service: notify.html5
       data:
@@ -109,22 +115,28 @@
     }
 - id: tv_on_notify_theater_mode_selected
   alias: 'TV On Notify Theater Mode Selected'
-  initial_state: false
   trigger:
     platform: event
     event_type: html5_notification.clicked
     event_data:
       action: theater_mode
+  condition:
+    - condition: state
+      entity_id: input_boolean.restart_complete
+      state: 'on'
   action:
     service: homeassistant.turn_on
     entity_id: scene.theater_mode
 
 - id: tv_input_boolean_control
   alias: 'TV Input Boolean Control'
-  initial_state: false
   trigger:
     - platform: state
       entity_id: input_boolean.tv_power
+  condition:
+    - condition: state
+      entity_id: input_boolean.restart_complete
+      state: 'on'
   action:
     - service_template: >
           {% if is_state('input_boolean.tv_power', 'on') %}
@@ -135,7 +147,6 @@
 
 - id: tv_update_input_boolean_from_sensor
   alias: 'TV Update Input Boolean from Sensor'
-  initial_state: false
   trigger:
     - platform: state
       entity_id: binary_sensor.tv_mqtt_monitor
@@ -167,7 +178,6 @@
 
 - id: tv_restart_mqtt_monitor
   alias: 'TV Restart MQTT Monitor'
-  initial_state: false
   trigger:
     - platform: template
       value_template: "{% if (as_timestamp(now()) - as_timestamp(states.binary_sensor.tv_mqtt_monitor.last_updated)) > 600 %} true {% endif %}"

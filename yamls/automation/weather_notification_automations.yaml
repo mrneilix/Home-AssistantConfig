@@ -1,6 +1,5 @@
 - id: weather_notify_rain
   alias: 'Weather Notify Rain'
-  initial_state: false
   trigger:
     - platform: state
       entity_id: sensor.precipitation_soon
@@ -15,6 +14,9 @@
     - condition: state
       entity_id: input_boolean.weather_dont_renotify
       state: 'off'
+    - condition: state
+      entity_id: input_boolean.restart_complete
+      state: 'on'
   action:
     - service: notify.html5
       data_template:
@@ -30,7 +32,6 @@
 
 - id: weather_notify_snow
   alias: 'Weather Notify Snow'
-  initial_state: false
   trigger:
     - platform: state
       entity_id: sensor.precipitation_soon
@@ -45,6 +46,9 @@
     - condition: state
       entity_id: input_boolean.weather_dont_renotify
       state: 'off'
+    - condition: state
+      entity_id: input_boolean.restart_complete
+      state: 'on'
   action:
     - service: notify.html5
       data_template:
@@ -60,7 +64,6 @@
 
 - id: weather_notify_sleet
   alias: 'Weather Notify Sleet'
-  initial_state: false
   trigger:
     - platform: state
       entity_id: sensor.precipitation_soon
@@ -75,6 +78,9 @@
     - condition: state
       entity_id: input_boolean.weather_dont_renotify
       state: 'off'
+    - condition: state
+      entity_id: input_boolean.restart_complete
+      state: 'on'
   action:
     - service: notify.html5
       data_template:
@@ -90,7 +96,6 @@
 
 - id: weather_allow_renotify_after_1_hour
   alias: 'Weather Allow Renotify After 1 Hour'
-  initial_state: false
   trigger:
     - platform: state
       entity_id: input_boolean.weather_dont_renotify
@@ -104,6 +109,9 @@
     - condition: state
       entity_id: input_boolean.weather_notifications
       state: 'on'
+    - condition: state
+      entity_id: input_boolean.restart_complete
+      state: 'on'
   action:
     - service: input_boolean.turn_off
       data:
@@ -111,13 +119,16 @@
 
 - id: weather_notifications_off
   alias: 'Weather Notifications Off'
-  initial_state: false
   trigger:
     - platform: state
       entity_id: device_tracker.neil
       to: 'not_home'
       for:
         hours: 6
+  condition:
+    - condition: state
+      entity_id: input_boolean.restart_complete
+      state: 'on'
   action:
     - service: input_boolean.turn_off
       data:

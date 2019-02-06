@@ -1,6 +1,5 @@
 - id: calendar_falcons_game_on
   alias: 'Calendar Falcons Game On'
-  initial_state: false
   trigger:
     platform: state
     entity_id: calendar.atlanta_falcons
@@ -30,11 +29,8 @@
     - delay: 00:00:02
     - service: script.couch_light_update_all_controls
 
-
-
 - id: calendar_family_birthday_notify
   alias: 'Calendar Family Birthday Notify'
-  initial_state: false
   trigger:
     platform: time
     at: '09:00:00'
@@ -44,6 +40,9 @@
       state: 'on'
     - condition: state
       entity_id: calendar.family_birthdays
+      state: 'on'
+    - condition: state
+      entity_id: input_boolean.restart_complete
       state: 'on'
   action:
     - service: notify.html5
@@ -57,7 +56,6 @@
 
 - id: calendar_friend_birthday_notify
   alias: 'Calendar Friend Birthday Notify'
-  initial_state: false
   trigger:
     platform: time
     at: '09:00:00'
@@ -67,6 +65,9 @@
       state: 'on'
     - condition: state
       entity_id: calendar.friend_birthdays
+      state: 'on'
+    - condition: state
+      entity_id: input_boolean.restart_complete
       state: 'on'
   action:
     - service: notify.html5

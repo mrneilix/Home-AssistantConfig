@@ -1,17 +1,15 @@
 - id: google_home_talk
   alias: 'Google Home Talk'
-  initial_state: false
   trigger:
     - platform: state
       entity_id: input_text.gh_speak
   condition:
     - condition: template
       value_template: "{{ not is_state('input_text.gh_speak', ' ') }}"
+    - condition: state
+      entity_id: input_boolean.restart_complete
+      state: 'on'
   action:
-    - service: media_player.volume_set
-      data_template:
-        entity_id: media_player.kitchen_display
-        volume_level: 0.6
     - service: tts.google_say
       entity_id: media_player.kitchen_display
       data_template:
@@ -20,42 +18,4 @@
     - service: input_text.set_value
       data:
         entity_id: input_text.gh_speak
-        value: ' '
-- id: google_broadcast
-  alias: 'Google Broadcast'
-  initial_state: false
-  trigger:
-    - platform: state
-      entity_id: input_text.broadcast_message
-  condition:
-    - condition: template
-      value_template: "{{ not is_state('input_text.broadcast_message', ' ') }}"
-  action:
-    - service: media_player.volume_set
-      data_template:
-        entity_id: media_player.kitchen_display
-        volume_level: 0.6
-    - service: rest_command.ga_broadcast
-      data_template:
-        broadcast: "{{states('input_text.broadcast_message')}}."
-    - service: input_text.set_value
-      data:
-        entity_id: input_text.broadcast_message
-        value: ' '
-- id: google_command
-  alias: 'Google Command'
-  initial_state: false
-  trigger:
-    - platform: state
-      entity_id: input_text.google_command
-  condition:
-    - condition: template
-      value_template: "{{ not is_state('input_text.google_command', ' ') }}"
-  action:
-    - service: rest_command.ga_command
-      data_template:
-        command: "{{states('input_text.google_command')}}."
-    - service: input_text.set_value
-      data:
-        entity_id: input_text.google_command
         value: ' '

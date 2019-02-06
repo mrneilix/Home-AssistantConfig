@@ -57,9 +57,6 @@ presence_leave:
     - service: input_boolean.turn_on
       data:
         entity_id: input_boolean.presence_running
-    - service: input_boolean.turn_on
-      data:
-        entity_id: input_boolean.parents_lock_code
     - service: scene.turn_on
       entity_id: scene.lights_off
     - service: scene.turn_on
@@ -93,10 +90,6 @@ presence_parents_home:
   alias: Presence Parents Home
   sequence:
     - service: script.presence_someone_not_neil_home
-    - service: media_player.volume_set
-      data_template:
-        entity_id: media_player.kitchen_display
-        volume_level: 0.6
     - service: tts.google_say
       entity_id: media_player.kitchen_display
       data_template:
@@ -117,10 +110,6 @@ presence_gina_home:
   alias: Presence Gina Home
   sequence:
     - service: script.presence_someone_not_neil_home
-    - service: media_player.volume_set
-      data_template:
-        entity_id: media_player.kitchen_display
-        volume_level: 0.6
     - service: tts.google_say
       entity_id: media_player.kitchen_display
       data_template:

@@ -1,11 +1,11 @@
     - platform: bluetooth_tracker
-      consider_home: 540
+      consider_home: 480
       interval_seconds: 3
       new_device_defaults:
         track_new_devices: false
         hide_if_away: true
     - platform: ping
-      consider_home: 540
+      consider_home: 480
       interval_seconds: 2
       hosts:
         neil_wifi: !secret my_phone_wifi
@@ -47,11 +47,11 @@
     - platform: composite
       name: parents
       entity_id:
-        - binary_sensor.parents_code
+        - binary_sensor.parents_code_entered
         - device_tracker.mom_phone
         - device_tracker.dad_phone
     - platform: composite
       name: gina
       entity_id:
         - device_tracker.gina_phone
-        - binary_sensor.gina_code
+        - binary_sensor.gina_code_entered

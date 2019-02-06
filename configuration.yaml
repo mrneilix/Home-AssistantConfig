@@ -54,7 +54,9 @@ vera:
   exclude: [58]
 
 wemo:
-  discovery: true
+  discovery: false
+  static:
+    - !secret yi_cam_outlet
 
 google:
   client_id: !secret gcal_client_id

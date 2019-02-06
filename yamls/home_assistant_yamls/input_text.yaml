@@ -9,9 +9,3 @@
     initial: Code
     min: 4
     max: 4
-  broadcast_message:
-    name: Broadcast Message
-    initial: ' '
-  google_command:
-    name: Google Command
-    initial: ' '

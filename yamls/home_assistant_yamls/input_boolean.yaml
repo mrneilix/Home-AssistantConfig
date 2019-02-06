@@ -42,3 +42,5 @@
     name: Show Upcoming Downloads
   show_recent_downloads:
     name: Show Recent Downloads
+  door_open:
+    initial: off

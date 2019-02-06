@@ -1,6 +1,5 @@
 - id: notify_vera_down
   alias: 'Notify Vera Down'
-  initial_state: false
   trigger:
     platform: state
     entity_id: binary_sensor.vera_up
@@ -9,6 +8,9 @@
   condition:
     - condition: state
       entity_id: input_boolean.notifications_on
+      state: 'on'
+    - condition: state
+      entity_id: input_boolean.restart_complete
       state: 'on'
   action:
     - service: notify.html5
@@ -23,7 +25,6 @@
           
 - id: notify_restart_complete
   alias: 'Notify Restart Complete'
-  initial_state: false
   trigger:
     platform: state
     entity_id: input_boolean.restart_complete
@@ -43,15 +44,18 @@
         data:
           tag: 'restart_complete'
           renotify: 0
-          icon: '/local/pictures/restart-ha-badge.png'
-          badge: '/local/pictures/restart-ha-badge.png'
+          icon: '/local/pictures/restart-ha.png'
+          badge: '/local/pictures/restart-ha.png'
           
 - id: notifications_off_at_11pm
   alias: 'Notifications Off at 11PM'
-  initial_state: false
   trigger:
     - platform: time
       at: '23:00:00'
+  condition:
+    - condition: state
+      entity_id: input_boolean.restart_complete
+      state: 'on'
   action:
     - service: input_boolean.turn_off
       data:
@@ -62,7 +66,6 @@
 
 - id: notifications_on_if_neil_is_home_at_8am
   alias: 'Notifications On if Neil is Home at 8AM'
-  initial_state: false
   trigger:
     platform: time
     at: '08:00:00'
@@ -70,6 +73,9 @@
     - condition: state
       entity_id: device_tracker.neil
       state: 'home'
+    - condition: state
+      entity_id: input_boolean.restart_complete
+      state: 'on'
   action:
     - service: input_boolean.turn_on
       data:
@@ -80,10 +86,16 @@
 
 - id: notify_update_available
   alias: 'Notify Update Available'
-  initial_state: false
   trigger:
     - platform: state
       entity_id: updater.updater
+  condition:
+    - condition: state
+      entity_id: input_boolean.notifications_on
+      state: 'on'
+    - condition: state
+      entity_id: input_boolean.restart_complete
+      state: 'on'
   action:
     service: notify.html5
     data_template: 

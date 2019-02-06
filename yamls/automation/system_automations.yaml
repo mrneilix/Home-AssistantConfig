@@ -9,6 +9,10 @@
     - service: logger.set_level
       data:
         homeassistant.components: fatal
+    - service: logbook.log
+      data_template:
+        name: Restarting
+        message: Hass is Restarting
     - service: scene.turn_on
       entity_id: scene.startup_reset_variables
     - service: shell_command.restart_monitor
@@ -18,9 +22,6 @@
     - service: shell_command.restart_tv_status_monitor
     - delay: 00:00:50
     - service: script.startup_scripts
-    - delay: 00:00:20
-    - service: automation.turn_on
-      entity_id: group.all_automations
     - delay: 00:00:20
     - service: logger.set_level
       data:
@@ -32,7 +33,6 @@
 
 - id: system_internet_down
   alias: 'System Internet Down'
-  initial_state: false
   trigger: 
     - platform: template
       value_template: '{{ states.sensor.speedtest_download.state| float < 5 }}'
@@ -45,7 +45,6 @@
     
 - id: system_monitor_pi_zero_down
   alias: 'System Monitor Pi Zero Down'
-  initial_state: false
   trigger: 
     - platform: state
       entity_id: sensor.neil_mqtt_pixel
@@ -71,24 +70,40 @@
 
 - id: system_scheduled_reboot_pi
   alias: 'System Scheduled Reboot Pi'
-  initial_state: false
   trigger:
     platform: time
     at: '04:00:00'
   condition:
-    condition: time
-    weekday:
-    - mon
-    - wed
-    - fri
+    - condition: state
+      entity_id: input_boolean.restart_complete
+      state: 'on'
+    - condition: time
+      weekday:
+      - mon
   action:
     - service: shell_command.reboot_pi_zero
     - delay: 00:10:00
     - service: hassio.host_reboot
 
+- id: system_scheduled_restart_ha
+  alias: 'System Scheduled Restart HA'
+  trigger:
+    platform: time
+    at: '04:30:00'
+  condition:
+    - condition: state
+      entity_id: input_boolean.restart_complete
+      state: 'on'
+    - condition: time
+      weekday:
+      - mon
+      - wed
+      - fri
+  action:
+    - service: homeassistant.restart
+
 - id: system_update_input_boolean_for_config_backup
   alias: 'System Update Input Boolean for Config Backup'
-  initial_state: false
   trigger:
     - platform: state
       entity_id: sensor.automation
@@ -108,6 +123,9 @@
     - condition: state
       entity_id: input_boolean.config_updated
       state: 'off'
+    - condition: state
+      entity_id: input_boolean.restart_complete
+      state: 'on'
   action:
     - service: input_boolean.turn_on
       data:
@@ -115,13 +133,15 @@
 
 - id: system_backup_config
   alias: 'System Backup Config'
-  initial_state: false
   trigger:
     platform: time
     at: '03:30:00'
   condition:
     - condition: state
       entity_id: input_boolean.config_updated
+      state: 'on'
+    - condition: state
+      entity_id: input_boolean.restart_complete
       state: 'on'
   action:
     - service: shell_command.git_backup
@@ -132,3 +152,11 @@
     - service: input_boolean.turn_off
       data:
         entity_id: input_boolean.config_updated
+    - delay: 00:05:00
+    - condition: time
+      weekday:
+      - sun
+      - tue
+      - thu
+      - sat
+    - service: homeassistant.restart

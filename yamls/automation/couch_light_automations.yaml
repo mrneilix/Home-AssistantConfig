@@ -1,6 +1,5 @@
 - id: couch_color_slider
   alias: 'Couch Color Slider'
-  initial_state: false
   trigger:
   - platform: state
     entity_id: input_number.couch_r
@@ -20,7 +19,6 @@
 
 - id: couch_lights_sensor_changed
   alias: 'Couch Lights Sensor Changed'
-  initial_state: false
   trigger:
     platform: state
     entity_id: sensor.couch_light_color_name
@@ -39,7 +37,6 @@
 
 - id: couch_light_set_input_text
   alias: 'Couch Lights Set Input Text'
-  initial_state: false
   trigger:
     - platform: state
       entity_id: input_text.couch_color
@@ -55,7 +52,6 @@
 
 - id: couch_color_google_voice
   alias: 'Couch Color Google Voice'
-  initial_state: false
   trigger:
     - platform: state
       entity_id: sensor.couch_light_color

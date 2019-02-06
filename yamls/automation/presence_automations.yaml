@@ -1,10 +1,13 @@
 - id: presence_automations_on
   alias: 'Presence Automations On'
-  initial_state: false
   trigger:
     platform: state
     entity_id: input_boolean.presence_automations
     to: 'on'
+  condition:
+    - condition: state
+      entity_id: input_boolean.restart_complete
+      state: 'on'
   action:
     - service_template: >
           {% if is_state('binary_sensor.anyone_home', 'on') and now().hour >= 6 and now().hour < 11 %}
@@ -15,7 +18,6 @@
 
 - id: presence_leave
   alias: 'Presence Leave'
-  initial_state: false
   trigger:
     - platform: state
       entity_id: binary_sensor.anyone_home
@@ -32,7 +34,6 @@
 
 - id: presence_update_butters_input_boolean
   alias: 'Presence Update Butters Input Boolean'
-  initial_state: false
   trigger:
     - platform: state
       entity_id: device_tracker.butters
@@ -42,8 +43,12 @@
       entity_id: device_tracker.butters
       to: 'not_home'
       from: 'home'
+  condition:
+    - condition: state
+      entity_id: input_boolean.restart_complete
+      state: 'on'
   action:
-    - service_template: > 
+    - service_template: >
           {% if is_state('device_tracker.butters', 'home') %}
             input_boolean.turn_on
           {% else %}
@@ -54,7 +59,6 @@
 
 - id: presence_butters_not_home
   alias: 'Presence Butters Not Home'
-  initial_state: false
   trigger:
     - platform: state
       entity_id: input_boolean.butters_home
@@ -79,7 +83,6 @@
 
 - id: presence_neil_home
   alias: 'Presence Neil Home'
-  initial_state: false
   trigger:
     - platform: state
       entity_id: device_tracker.neil
@@ -96,23 +99,31 @@
       state: 'on'
   action:
     - service: script.presence_arrive
-    - delay:
-        seconds: 5
-    - service: media_player.volume_set
-      data_template:
-        entity_id: media_player.kitchen_home
-        volume_level: 0.6
+    - delay: 00:00:05
     - service: tts.google_say
-      entity_id: media_player.kitchen_home
+      entity_id: media_player.kitchen_display
       data:
         message: "Hello, Neil"
-    - service: input_boolean.turn_off
-      data:
-        entity_id: input_boolean.parents_lock_code
+    - service: script.lock_clear_parents_lock_code
+
+- id: presence_neil_not_home
+  alias: 'Presence Neil Not Home'
+  trigger:
+    - platform: state
+      entity_id: device_tracker.neil
+      to: 'not_home'
+  condition:
+    - condition: state
+      entity_id: input_boolean.restart_complete
+      state: 'on'
+    - condition: state
+      entity_id: input_boolean.presence_automations
+      state: 'on'
+  action:
+    - service: script.lock_set_parents_lock_code
 
 - id: presence_family_home
   alias: 'Presence Family Home'
-  initial_state: false
   trigger:
     - platform: state
       entity_id: binary_sensor.anyone_home_but_neil
@@ -137,7 +148,6 @@
 
 - id: presence_turn_desktop_display_off
   alias: 'Presence Turn Desktop Display Off'
-  initial_state: false
   trigger: 
     - platform: state
       entity_id: device_tracker.neil
@@ -153,26 +163,30 @@
 
 - id: presence_from_tasker_when_near_home
   alias: 'Presence From Tasker When Near Home'
-  initial_state: false
   trigger:
-    - platform: time
-      minutes: 30
+    - platform: time_pattern
+      minutes: '/30'
   condition:
     - condition: numeric_state
       entity_id: proximity.neil_home
       below: 30
+    - condition: state
+      entity_id: input_boolean.restart_complete
+      state: 'on'
   action:
     - service: script.presence_tasker_phone_location
 
 - id: presence_from_tasker_when_far_from_home
   alias: 'Presence From Tasker When Far From Home'
-  initial_state: false
   trigger:
-    - platform: time
-      hours: 6
+    - platform: time_pattern
+      hours: '/6'
   condition:
     - condition: numeric_state
       entity_id: proximity.neil_home
       above: 30
+    - condition: state
+      entity_id: input_boolean.restart_complete
+      state: 'on'
   action:
     - service: script.presence_tasker_phone_location

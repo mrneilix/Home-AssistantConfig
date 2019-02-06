@@ -43,8 +43,8 @@
           - sensor.dark_sky_apparent_temperature
           - binary_sensor.lock_code_entered
 
-      parents_code:
-        friendly_name: Parents Lock Code
+      parents_code_entered:
+        friendly_name: Parent's Lock Code Entered
         value_template: >-
           {% if is_state("sensor.last_lock_code_name", "Parents") and is_state("binary_sensor.lock_code_entered", "on") %}
             True
@@ -56,8 +56,8 @@
           - sensor.dark_sky_apparent_temperature
           - binary_sensor.lock_code_entered
 
-      gina_code:
-        friendly_name: Parents Lock Code
+      gina_code_entered:
+        friendly_name: Gina's Lock Code Entered
         value_template: >-
           {% if is_state("sensor.last_lock_code_name", "Gina") and is_state("binary_sensor.lock_code_entered", "on") %}
             True
