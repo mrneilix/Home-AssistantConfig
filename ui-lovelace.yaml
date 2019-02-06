@@ -1,4 +1,4 @@
-resources: 
+resources:
   - type: module
     url: /local/custom-lovelace/button-card/button-card.js?v=0.0.3
   - type: module
