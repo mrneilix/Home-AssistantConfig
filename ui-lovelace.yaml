@@ -6,10 +6,6 @@ resources:
   - type: js
     url: /local/custom-lovelace/tracker-card-master/tracker-card.js?v=0.3.0
   - type: js
-    url: /local/custom-lovelace/monster-card/monster-card.js?v=0.2.3
-  - type: module
-    url: /local/custom-lovelace/thermostat-card/thermostat-card.js?v=0.1.1
-  - type: js
     url: /local/custom-lovelace/upcoming-media-card/upcoming-media-card.js?v=0.3.4
   - type: js
     url: /local/custom-lovelace/compact-custom-header/compact-custom-header.js?v=0.2.9

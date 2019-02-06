@@ -26,13 +26,15 @@ Radarr Upcoming: https://github.com/custom-components/sensor.radarr_upcoming_med
 
 ## Custom Cards:
 
-Custom Button: https://github.com/kuuji/button-card
+Custom Button: https://github.com/kuuji/button-card (I actually used an older fork so I could use the long press action: https://github.com/Lopton/button-card)
 
 Upcoming Media: https://github.com/custom-cards/upcoming-media-card
 
 Compact Custom Header: https://github.com/maykar/custom-lovelace/tree/master/compact-custom-header
 
 Tracker Card: https://github.com/custom-cards/tracker-card
+
+Animated Weather Card: https://github.com/bramkragten/custom-ui/tree/master/weather-card
 
 
 ## Hardware:
@@ -44,6 +46,8 @@ Raspberry Pi Zero W (for Monitor and My TV Control)
 Numerous Z Wave Switches
 
 Schlage Camelot Z Wave Lock
+
+Monoprice Z Wave Door Sensor (Vera has been annoying about my lock, so I have to use that to tell when the door is opened)
 
 Nexlux WiFi Wireless LED Smart Controller (And a few RGB Strips)
 
