@@ -102,6 +102,18 @@
   action:
     - service: homeassistant.restart
 
+- id: system_restart_ha_if_MQTT_did_not_update
+  alias: 'System Restart HA if MQTT Did Not Update'
+  trigger:
+    platform: state
+    entity_id: input_boolean.restart_complete
+    to: 'on'
+  condition:
+    - condition: template
+      value_template: "{{ ((as_timestamp(now()) - as_timestamp(states.sensor.last_boot.state)) < 600) and  is_state('sensor.pi_zero_uptime', 'unknown') }}"
+  action:
+    - service: homeassistant.restart
+
 - id: system_update_input_boolean_for_config_backup
   alias: 'System Update Input Boolean for Config Backup'
   trigger:

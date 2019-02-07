@@ -3,15 +3,17 @@ sensor.plex:
   friendly_name: Plex
 sensor.watching_plex:
   icon: mdi:plex
-sensor.network_in_eth0:
-  friendly_name: Ethernet Received
-sensor.network_out_eth0:
-  friendly_name: Ethernet Sent
 sensor.disk_use_percent:
   friendly_name: Disk Used
 sensor.since_last_boot_templated:
   friendly_name: System Uptime
   icon: mdi:clock
+sensor.memory_use:
+  friendly_name: RAM Used
+sensor.memory_free:
+  friendly_name: RAM Free
+sensor.since_last_boot:
+  device_class: timestamp
 sensor.ha_uptime:
   friendly_name: Home Assistant Uptime
   icon: mdi:clock

@@ -25,7 +25,7 @@
     state_topic: "sys_stat"
     name: "Pi Zero CPU Temp"
     unit_of_measurement: '°F'
-    value_template: '{{ value_json.cputemp }}'
+    value_template: '{{ value_json.cputemp | round(1) }}'
   - platform: mqtt
     state_topic: "sys_stat"
     name: "Pi Zero Disk Size"

@@ -248,7 +248,7 @@ views:
                 default_color: var(--primary-text-color)
                 entity: input_boolean.notifications_on
                 icon: 'mdi:bell'
-                name: Notifications
+                name: Notify
                 size: 40%
               - type: 'custom:button-card'
                 long_press_action: more_info
@@ -286,7 +286,7 @@ views:
                 default_color: var(--primary-text-color)
                 entity: input_boolean.parents_lock_code
                 icon: 'mdi:human-female-boy'
-                name: Parents Code
+                name: Family Code
                 size: 40%
               - type: 'custom:button-card'
                 long_press_action: more_info
@@ -364,51 +364,58 @@ views:
       - sensor.tautulli_total_bandwidth
       - sensor.tautulli_transcode
     cards:
-      - type: entities
-        show_header_toggle: false
-        title: TV Inputs
-        entities:
-          - input_boolean.tv_power
-          - scene.theater_mode
-          - input_text.gh_speak
+      - type: vertical-stack
+        cards:
+        - type: entities
+          show_header_toggle: false
+          title: TV Inputs
+          entities:
+            - input_boolean.tv_power
+            - scene.theater_mode
+            - input_text.gh_speak
+        - type: conditional
+          conditions:
+            - entity: input_boolean.tv_power
+              state: 'on'
+          card:
+            type: horizontal-stack
+            cards:
+              - type: 'custom:button-card'
+                long_press_action: more_info
+                action: service
+                service:
+                  domain: script
+                  action: trigger
+                  data:
+                    entity_id: script.tv_input_chromecast
+                color_type: icon
+                icon: 'mdi:cast'
+                name: Chromecast
+              - type: 'custom:button-card'
+                long_press_action: more_info
+                action: service
+                service:
+                  domain: script
+                  action: trigger
+                  data:
+                    entity_id: script.tv_input_playstation
+                color_type: icon
+                icon: 'mdi:playstation'
+                name: Playstation
+        - entity: media_player.kitchen_display
+          type: media-control
+        - entity: media_player.living_room_tv
+          type: media-control
       - type: conditional
         conditions:
-          - entity: input_boolean.tv_power
-            state: 'on'
+          - entity: sensor.tautulli_total
+            state_not: '0'
         card:
-          type: horizontal-stack
-          cards:
-            - type: 'custom:button-card'
-              long_press_action: more_info
-              action: service
-              service:
-                domain: script
-                action: trigger
-                data:
-                  entity_id: script.tv_input_chromecast
-              color_type: icon
-              icon: 'mdi:cast'
-              name: Chromecast
-            - type: 'custom:button-card'
-              long_press_action: more_info
-              action: service
-              service:
-                domain: script
-                action: trigger
-                data:
-                  entity_id: script.tv_input_playstation
-              color_type: icon
-              icon: 'mdi:playstation'
-              name: Playstation
-      - entity: media_player.kitchen_display
-        type: media-control
-      - entity: media_player.living_room_tv
-        type: media-control
-      - type: entities
-        show_header_toggle: false
-        title: Watching Plex
-        entities:
-          - sensor.watching_plex
+          type: entities
+          show_header_toggle: false
+          title: Watching Plex
+          entities:
+            - sensor.watching_plex
       - type: entities
         show_header_toggle: false
         title: Desktop Disk Space
@@ -716,9 +723,9 @@ views:
                 entities:
                   - sensor.memory_free
                   - sensor.memory_use
-                  - sensor.network_in_eth0
-                  - sensor.network_out_eth0
-                  - sensor.last_boot
+                  - sensor.network_downloaded
+                  - sensor.network_uploaded
+                  - sensor.last_boot_date_time
                   - sensor.since_last_boot_templated
                   - sensor.ha_uptime
                   - sensor.speedtest_download
@@ -726,7 +733,7 @@ views:
                   - sensor.speedtest_ping
               - type: gauge
                 entity: sensor.memory_use_percent
-                name: Pi Memory Usage
+                name: Pi RAM Usage
               - type: gauge
                 entity: sensor.processor_use
                 name: Pi Processor Use
@@ -759,7 +766,6 @@ views:
                 entities:
                   - sensor.pi_zero_cpu_temp
                   - sensor.pi_zero_uptime
-                  - sensor.speedtest_ping
                   - sensor.pi_zero_last_system_poll
               - type: gauge
                 entity: sensor.pi_zero_cpu_usage
