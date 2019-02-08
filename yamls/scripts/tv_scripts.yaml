@@ -1,29 +1,19 @@
-tv_on:
-  alias: TV On
-  sequence:
-    - service: shell_command.stop_tv_status_monitor
-    - delay: 00:00:05
-    - service: shell_command.tv_on
-    - delay: 00:00:30
-    - service: shell_command.restart_tv_status_monitor
-
 tv_off:
   alias: TV Off
   sequence:
-    - service: shell_command.stop_tv_status_monitor
-    - service: media_player.turn_off
-      entity_id: media_player.living_room_tv
-    - delay: 00:00:10
-    - service: shell_command.tv_off
-    - delay: 00:00:30
-    - service: shell_command.restart_tv_status_monitor
+    - service: switch.turn_off
+      entity_id: switch.hdmi_0
 
 tv_input_chromecast:
   alias: TV Input Chromecast
   sequence:
-    - service: shell_command.tv_input_chromecast
+    - service: hdmi_cec.select_device
+      data_template:
+        device: '3.0.0.0'
 
 tv_input_playstation:
   alias: TV Input PS4
   sequence:
-    - service: shell_command.tv_input_ps4
+    - service: hdmi_cec.select_device
+      data_template:
+        device: '1.0.0.0'

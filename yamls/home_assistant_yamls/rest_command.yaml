@@ -1,12 +1,6 @@
   set_lock_code:
     url: !secret set_temp_lock_code
     method: post
-  ga_broadcast:
-    url: !secret google_assistant_broadcast_rest
-    method: get
-  ga_command:
-    url: !secret google_assistant_command_rest
-    method: get
   neil_code_entered:
     method: post
     url: !secret neil_code_entered_url

@@ -366,16 +366,21 @@ views:
     cards:
       - type: vertical-stack
         cards:
-        - type: entities
-          show_header_toggle: false
-          title: TV Inputs
-          entities:
-            - input_boolean.tv_power
-            - scene.theater_mode
-            - input_text.gh_speak
+        - type: 'custom:button-card'
+          action: toggle
+          long_press_action: more_info
+          card_style: ''
+          color: var(--primary-color)
+          color_off: var(--paper-item-icon-color)
+          color_type: icon
+          default_color: var(--primary-text-color)
+          entity: switch.hdmi_0
+          icon: 'mdi:television-classic'
+          name: TV
+          size: 40%
         - type: conditional
           conditions:
-            - entity: input_boolean.tv_power
+            - entity: switch.hdmi_0
               state: 'on'
           card:
             type: horizontal-stack
@@ -402,6 +407,12 @@ views:
                 color_type: icon
                 icon: 'mdi:playstation'
                 name: Playstation
+        - type: entities
+          show_header_toggle: false
+          title: MSC
+          entities:
+            - scene.theater_mode
+            - input_text.gh_speak
         - entity: media_player.kitchen_display
           type: media-control
         - entity: media_player.living_room_tv
@@ -805,7 +816,7 @@ views:
                 color_off: var(--paper-item-icon-color)
                 color_type: icon
                 default_color: var(--primary-text-color)
-                icon: 'mdi:home-circle'
+                icon: 'mdi:power-cycle'
                 name: Reboot System
               - type: 'custom:button-card'
                 action: service

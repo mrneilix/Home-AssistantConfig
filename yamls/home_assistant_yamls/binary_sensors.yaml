@@ -4,8 +4,7 @@
       anyone_home:
         value_template: >-
           {%- if is_state("device_tracker.neil", "home")
-          or is_state("device_tracker.dad", "home")
-          or is_state("device_tracker.mom", "home")
+          or is_state("device_tracker.parents", "home")
           or is_state("device_tracker.gina", "home")
               -%}
           True
@@ -14,14 +13,13 @@
           {%- endif %}
         entity_id:
           - device_tracker.neil
-          - device_tracker.dad
-          - device_tracker.mom
+          - device_tracker.parents
           - device_tracker.gina
 
       lock_code_entered:
         friendly_name: Lock Code Entered
         value_template: >-
-          {% if (as_timestamp(now()) - as_timestamp(states.sensor.last_lock_code_name.last_updated) < 600 ) and (states('sensor.uptime') | int > 10) and is_state("lock.schlage_deadbolt_47", "unlocked") %}
+          {% if (as_timestamp(now()) - as_timestamp(states.lock.schlage_deadbolt_47.last_changed) < 300 ) and (states('sensor.uptime') | int > 10) %}
             True
           {% else %}
             False
@@ -106,7 +104,7 @@
             False
           {%- endif %}
         entity_id:
-          - binary_sensor.parents_code
+          - binary_sensor.parents_code_entered
           - binary_sensor.gina_code
           - device_tracker.neil
           - device_tracker.gina
@@ -140,25 +138,3 @@
     host: 192.168.1.126
     count: 5
     name: vera_up
-
-## Lock Codes MQTT ###
-  - platform: mqtt
-    state_topic: "Vera/Events/Parents Lock Code"
-    name: "Lock Parents Pin"
-    value_template: '{{ value_json.Variable1 }}'
-    payload_on: "On"
-    payload_off: "Off"
-    payload_not_available: ""
-  - platform: mqtt
-    state_topic: "Vera/Events/Temp Lock Code"
-    name: "Lock Temp Pin"
-    value_template: '{{ value_json.Variable1 }}'
-    payload_on: "On"
-    payload_off: "Off"
-    payload_not_available: ""
-  - platform: mqtt
-    state_topic: "home/tv/state"
-    name: "TV MQTT Monitor"
-    payload_on: "ON"
-    payload_off: "OFF"
-    payload_not_available: ""

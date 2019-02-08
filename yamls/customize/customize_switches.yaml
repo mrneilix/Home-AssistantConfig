@@ -19,6 +19,6 @@ switch.yi_power:
   friendly_name: Yi Cam Power
   icon: mdi:webcam
 
-switch.tv_power:
+switch.hdmi_0:
   friendly_name: TV Power
   icon: mdi:television-classic

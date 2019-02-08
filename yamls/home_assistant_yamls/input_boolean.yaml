@@ -33,9 +33,6 @@
     name: Config Updated
   kitchen_lights_running:
     initial: off
-  tv_power:
-    name: TV Power
-    icon: mdi:television-classic
   show_device_trackers:
     name: Show Device Trackers
   show_upcoming_downloads:

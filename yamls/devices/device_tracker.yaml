@@ -30,7 +30,6 @@
       entity_id:
         - device_tracker.neil_bluetooth
         - device_tracker.neil_wifi
-        # - device_tracker.activbuds_s255
         - device_tracker.monitor_neil
         - binary_sensor.neil_lock_code
     - platform: composite

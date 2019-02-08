@@ -52,19 +52,6 @@ lock_clear_temp_code:
   sequence:
     - service: scene.turn_on
       entity_id: scene.clear_temp_code
-    - delay: 00:00:60
-    - condition: state
-      entity_id: binary_sensor.lock_temp_pin
-      state: 'on'
-    - service: scene.turn_on
-      entity_id: scene.clear_temp_code
-    - delay: 00:00:60
-    - condition: state
-      entity_id: binary_sensor.lock_temp_pin
-      state: 'on'
-    - service: input_boolean.turn_on
-      data:
-        entity_id: input_boolean.temp_lock_code_set
 
 lock_set_temp_lock_code:
   alias: Set Temporary Lock Code
@@ -88,39 +75,9 @@ lock_clear_parents_lock_code:
   sequence:
     - service: scene.turn_on
       entity_id: scene.clear_parents_code
-    - delay: 00:00:60
-    - condition: state
-      entity_id: binary_sensor.lock_parents_pin
-      state: 'on'
-    - service: scene.turn_on
-      entity_id: scene.clear_parents_code
-    - delay: 00:00:60
-    - condition: state
-      entity_id: binary_sensor.lock_parents_pin
-      state: 'on'
-    - service: input_boolean.turn_on
-      data:
-        entity_id: input_boolean.parents_lock_code
 
 lock_set_parents_lock_code:
   alias: Lock Set Parents Lock Code
   sequence:
     - service: scene.turn_on
       entity_id: scene.add_parents_code
-    - delay: 00:00:10
-    - condition: state
-      entity_id: device_tracker.neil
-      state: 'not_home'
-    - delay: 00:00:50
-    - condition: state
-      entity_id: binary_sensor.lock_parents_pin
-      state: 'off'
-    - service: scene.turn_on
-      entity_id: scene.add_parents_code
-    - delay: 00:00:60
-    - condition: state
-      entity_id: binary_sensor.lock_parents_pin
-      state: 'off'
-    - service: input_boolean.turn_off
-      data:
-        entity_id: input_boolean.parents_lock_code

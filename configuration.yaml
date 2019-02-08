@@ -38,7 +38,7 @@ logger:
 lovelace:
   mode: yaml
 
-map:
+system_health:
 
 discovery:
   ignore:
@@ -105,3 +105,4 @@ light: !include yamls/devices/lights.yaml
 climate: !include yamls/devices/climate.yaml
 mqtt: !include yamls/devices/mqtt.yaml
 cast: !include yamls/devices/cast.yaml
+hdmi_cec: !include yamls/devices/cec.yaml

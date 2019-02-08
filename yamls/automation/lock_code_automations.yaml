@@ -15,24 +15,6 @@
           {% else %}
             script.lock_clear_parents_lock_code
           {% endif %}
-- id: lock_parents_lock_update_input_boolean
-  alias: 'Lock Parents Lock Update Input Boolean'
-  trigger:
-    - platform: state
-      entity_id: binary_sensor.lock_parents_pin
-  condition:
-    - condition: state
-      entity_id: input_boolean.restart_complete
-      state: 'on'
-  action:
-    - service_template: >
-          {% if is_state('binary_sensor.lock_parents_pin', 'on') %}
-            input_boolean.turn_on
-          {% else %}
-            input_boolean.turn_off
-          {% endif %}
-      data:
-        entity_id: input_boolean.parents_lock_code
 
 # Temporary Lock Code
 - id: lock_set_temp_lock_code
@@ -62,29 +44,7 @@
       from: 'on'
   condition:
     - condition: state
-      entity_id: binary_sensor.lock_temp_pin
-      state: 'on'
-    - condition: state
       entity_id: input_boolean.restart_complete
       state: 'on'
   action:
     - service: script.lock_clear_temp_code
-
-- id: lock_temp_code_off_update_input_boolean
-  alias: 'Lock Temp Lock Code Off Update Input Boolean'
-  trigger:
-    - platform: state
-      entity_id: binary_sensor.lock_temp_pin
-      to: 'off'
-      from: 'on'
-  condition:
-    - condition: state
-      entity_id: input_boolean.temp_lock_code_set
-      state: 'on'
-    - condition: state
-      entity_id: input_boolean.restart_complete
-      state: 'on'
-  action:
-    - service: input_boolean.turn_off
-      data:
-        entity_id: input_boolean.temp_lock_code_set

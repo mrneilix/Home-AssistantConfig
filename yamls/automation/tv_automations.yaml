@@ -78,11 +78,9 @@
       for:
         seconds: 60
     - platform: state
-      entity_id: binary_sensor.tv_mqtt_power
+      entity_id: switch.hdmi_0
       to: 'on'
       from: 'off'
-      for:
-        seconds: 60
   condition:
     - condition: state
       entity_id: input_boolean.notifications_on
@@ -127,63 +125,3 @@
   action:
     service: homeassistant.turn_on
     entity_id: scene.theater_mode
-
-- id: tv_input_boolean_control
-  alias: 'TV Input Boolean Control'
-  trigger:
-    - platform: state
-      entity_id: input_boolean.tv_power
-  condition:
-    - condition: state
-      entity_id: input_boolean.restart_complete
-      state: 'on'
-  action:
-    - service_template: >
-          {% if is_state('input_boolean.tv_power', 'on') %}
-            script.tv_on
-          {% else %}
-            script.tv_off
-          {% endif %}
-
-- id: tv_update_input_boolean_from_sensor
-  alias: 'TV Update Input Boolean from Sensor'
-  trigger:
-    - platform: state
-      entity_id: binary_sensor.tv_mqtt_monitor
-      to: 'on'
-      from: 'off'
-      for:
-        seconds: 120
-    - platform: state
-      entity_id: binary_sensor.tv_mqtt_monitor
-      to: 'off'
-      from: 'on'
-      for:
-        seconds: 120
-  condition:
-    - condition: state
-      entity_id: input_boolean.restart_complete
-      state: 'on'
-    - condition: template
-      value_template: "{{ (as_timestamp(now()) - as_timestamp(states.input_boolean.tv_power.last_updated)) | int > 60 }}"
-  action:
-    - service_template: >
-          {% if is_state('binary_sensor.tv_mqtt_monitor', 'on') %}
-            input_boolean.turn_on
-          {% else %}
-            input_boolean.turn_off
-          {% endif %}
-      data:
-        entity_id: input_boolean.tv_power
-
-- id: tv_restart_mqtt_monitor
-  alias: 'TV Restart MQTT Monitor'
-  trigger:
-    - platform: template
-      value_template: "{% if (as_timestamp(now()) - as_timestamp(states.binary_sensor.tv_mqtt_monitor.last_updated)) > 600 %} true {% endif %}"
-  condition:
-    - condition: state
-      entity_id: input_boolean.restart_complete
-      state: 'on'
-  action:
-    - service: shell_command.restart_tv_status_monitor

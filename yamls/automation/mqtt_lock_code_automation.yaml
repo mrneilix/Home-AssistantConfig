@@ -1,0 +1,69 @@
+- id: mqtt_lock_parents_code_on
+  alias: MQTT Lock Parents Code On
+  trigger:
+    - platform: mqtt
+      topic: "Vera/Events/Parents Lock Code"
+  condition:
+    condition: template
+    value_template: "{{ trigger.payload_json.Variable1 == 'On' }}"
+  action:
+    - service: automation.turn_off
+      entity_id: automation.lock_parents_lock_code_toggle
+    - delay: 00:00:02
+    - service: input_boolean.turn_on
+      data:
+        entity_id: input_boolean.parents_lock_code
+    - delay: 00:00:30
+    - service: automation.turn_on
+      entity_id: automation.lock_parents_lock_code_toggle
+
+- id: mqtt_lock_parents_code_off
+  alias: MQTT Lock Parents Code Off
+  trigger:
+    - platform: mqtt
+      topic: "Vera/Events/Parents Lock Code"
+  condition:
+    condition: template
+    value_template: "{{ trigger.payload_json.Variable1 == 'Off' }}"
+  action:
+    - service: automation.turn_off
+      entity_id: automation.lock_parents_lock_code_toggle
+    - delay: 00:00:02
+    - service: input_boolean.turn_off
+      data:
+        entity_id: input_boolean.parents_lock_code
+    - delay: 00:00:30
+    - service: automation.turn_on
+      entity_id: automation.lock_parents_lock_code_toggle
+
+- id: mqtt_lock_temp_code_on
+  alias: MQTT Lock Temp Code On
+  trigger:
+    - platform: mqtt
+      topic: "Vera/Events/Temp Lock Code"
+  condition:
+    condition: template
+    value_template: "{{ trigger.payload_json.Variable1 == 'On' }}"
+  action:
+    - service: input_boolean.turn_on
+      data:
+        entity_id: input_boolean.temp_lock_code_set
+
+- id: mqtt_lock_temp_code_off
+  alias: MQTT Lock Temp Code Off
+  trigger:
+    - platform: mqtt
+      topic: "Vera/Events/Temp Lock Code"
+  condition:
+    condition: template
+    value_template: "{{ trigger.payload_json.Variable1 == 'Off' }}"
+  action:
+    - service: automation.turn_off
+      entity_id: automation.lock_temp_lock_code_used
+    - delay: 00:00:02
+    - service: input_boolean.turn_off
+      data:
+        entity_id: input_boolean.temp_lock_code_set
+    - delay: 00:00:30
+    - service: automation.turn_on
+      entity_id: automation.lock_temp_lock_code_used

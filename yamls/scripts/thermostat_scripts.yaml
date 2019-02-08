@@ -88,7 +88,6 @@ thermostat_set_temp_only_butters_home:
             78
           {% endif %}
     - delay: 00:00:05
-    - service: script.thermostat_update_inputs
 
 thermostat_set_operation_mode:
   alias: Thermostat Temp Not Morning
