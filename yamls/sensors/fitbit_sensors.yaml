@@ -431,3 +431,18 @@
           {% else %}
           0
           {% endif %}
+
+      fitbit_steps:
+        friendly_name: 'Steps'
+        value_template: >
+          {{ states.sensor.steps.state | replace(",","") }}
+        unit_of_measurement: 'steps'
+      fitbit_calories:
+        friendly_name: 'Calories'
+        value_template: >
+          {{ states.sensor.calories.state | replace(",","") }}
+        unit_of_measurement: 'calories'
+      weight_loss:
+        friendly_name: 'Weight Loss'
+        value_template: "{{ '%.1f' | format(210.0 - (states.sensor.weight.state | float)) }}"
+        unit_of_measurement: 'lbs'

@@ -7,6 +7,7 @@
   python_script_urls:
     - https://raw.githubusercontent.com/pnbruckner/homeassistant-config/master/python_scripts.json
   card_urls:
-    - https://raw.githubusercontent.com/kuuji/button-card/master/tracker.json
+    # - https://raw.githubusercontent.com/kuuji/button-card/master/tracker.json
     - https://raw.githubusercontent.com/kalkih/mini-graph-card/master/tracker.json
     - https://raw.githubusercontent.com/maykar/custom-lovelace/master/tracker.json
+    - https://raw.githubusercontent.com/rdehuyss/homeassistant-lovelace-google-calendar-card/master/custom_updater.json

@@ -30,7 +30,7 @@
       entity_id: input_boolean.presence_automations
       state: 'on'
   action:
-    - service: script.presence_leave
+    - service: script.presence_no_humans_home
 
 - id: presence_update_butters_input_boolean
   alias: 'Presence Update Butters Input Boolean'
@@ -79,13 +79,13 @@
       entity_id: binary_sensor.anyone_home
       state: 'off'
   action:
-    - service: script.presence_leave
+    - service: script.presence_no_humans_home
 
-- id: presence_neil_home
-  alias: 'Presence Neil Home'
+- id: presence_someone_home
+  alias: 'Presence Someone Home'
   trigger:
     - platform: state
-      entity_id: device_tracker.neil
+      entity_id: binary_sensor.anyone_home
       to: 'home'
   condition:
     - condition: state
@@ -98,53 +98,7 @@
       entity_id: input_boolean.away
       state: 'on'
   action:
-    - service: script.presence_arrive
-    - delay: 00:00:05
-    - service: tts.google_say
-      entity_id: media_player.kitchen_display
-      data:
-        message: "Hello, Neil"
-    - service: script.lock_clear_parents_lock_code
-
-- id: presence_neil_not_home
-  alias: 'Presence Neil Not Home'
-  trigger:
-    - platform: state
-      entity_id: device_tracker.neil
-      to: 'not_home'
-  condition:
-    - condition: state
-      entity_id: input_boolean.restart_complete
-      state: 'on'
-    - condition: state
-      entity_id: input_boolean.presence_automations
-      state: 'on'
-  action:
-    - service: script.lock_set_parents_lock_code
-
-- id: presence_family_home
-  alias: 'Presence Family Home'
-  trigger:
-    - platform: state
-      entity_id: binary_sensor.anyone_home_but_neil
-      to: 'on'
-  condition:
-    - condition: state
-      entity_id: input_boolean.restart_complete
-      state: 'on'
-    - condition: state
-      entity_id: input_boolean.presence_automations
-      state: 'on'
-    - condition: state
-      entity_id: input_boolean.away
-      state: 'on'
-  action:
-    - service_template: >
-          {% if is_state('device_tracker.parents', 'home') %}
-            script.presence_parents_home
-          {% else %}
-            script.presence_gina_home
-          {% endif %}
+    - service: script.presence_someone_arrived
 
 - id: presence_turn_desktop_display_off
   alias: 'Presence Turn Desktop Display Off'

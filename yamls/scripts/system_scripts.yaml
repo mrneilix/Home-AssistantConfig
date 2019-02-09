@@ -17,16 +17,11 @@ startup_presence:
     - service_template: >
           {% if is_state('device_tracker.neil', 'home') %}
             script.startup_neil_home
-          {% else %}
+          {%-elif is_state('binary_sensor.anyone_home', 'on') %}
             script.startup_neil_not_home
+          {% else %}
+            script.presence_no_humans_home
           {% endif %}
-    - condition: state
-      entity_id: binary_sensor.anyone_home
-      state: 'off'
-    - service: input_boolean.turn_on
-      data:
-        entity_id: input_boolean.away
-    - service: script.presence_leave
 
 startup_input_booleans:
   alias: Startup Input Booleans
@@ -59,9 +54,6 @@ startup_input_booleans:
 startup_neil_home:
   alias: Startup Neil Home
   sequence:
-    - service: input_boolean.turn_off
-      data:
-        entity_id: input_boolean.parents_lock_code
     - service: switch.turn_off
       entity_id: switch.yi_power
     - service_template: >
@@ -71,17 +63,10 @@ startup_neil_home:
             script.do_nothing
           {% endif %}
     - service: script.thermostat_home_set_temp
-    - service: scene.turn_on
-      entity_id: scene.clear_parents_code
-    
+
 startup_neil_not_home:
   alias: Startup Neil Not Home
   sequence:
-    - service: input_boolean.turn_on
-      data:
-        entity_id: input_boolean.parents_lock_code
-    - service: scene.turn_on
-      entity_id: scene.add_parents_code
     - service: switch.turn_on
       entity_id: switch.yi_power
     - service_template: >
@@ -96,6 +81,8 @@ startup_neil_not_home:
 restart_homeassistant:
   alias: Restart Home Assistant
   sequence:
+    - service: switch.turn_on
+      entity_id: switch.yi_power
     - service: homeassistant.restart
 reboot_pi_zero:
   alias: Reboot Pi Zero
@@ -104,6 +91,8 @@ reboot_pi_zero:
 system_reboot:
   alias: Reboot System
   sequence:
+    - service: switch.turn_on
+      entity_id: switch.yi_power
     - service: hassio.host_reboot
 
 startup_couch_colors:

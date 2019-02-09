@@ -9,6 +9,18 @@ resources:
     url: /local/custom-lovelace/upcoming-media-card/upcoming-media-card.js?v=0.3.4
   - type: js
     url: /local/custom-lovelace/compact-custom-header/compact-custom-header.js?v=0.2.9
+  - type: module
+    url: /local/custom-lovelace/circle-sensor-card/circle-sensor-card.js?v=1.2.0
+  - type: js
+    url: https://unpkg.com/moment@2.22.2/moment.js
+  - type: module
+    url: /local/custom-lovelace/calendar-card/calendar-card.js?v=1.0.1
+  - type: js
+    url: /local/custom-lovelace/text-element/text-element.js?v=0.0.2
+  - type: js
+    url: /local/custom-lovelace/card-modder/card-modder.js?v=785dd6
+  - type: js
+    url: /local/custom-lovelace/card-tools/card-tools.js
 title: Atlanta Condo
 views:
   - badges:
@@ -16,6 +28,7 @@ views:
       - device_tracker.butters
       - sensor.tautulli_total
       - sensor.dark_sky_precip_probability
+      - sensor.dark_sky_precip_probability_0
       - sensor.dark_sky_temperature
       - sensor.dark_sky_apparent_temperature
       - sensor.dark_sky_daytime_high_temperature_0
@@ -409,7 +422,6 @@ views:
                 name: Playstation
         - type: entities
           show_header_toggle: false
-          title: MSC
           entities:
             - scene.theater_mode
             - input_text.gh_speak
@@ -422,11 +434,17 @@ views:
           - entity: sensor.tautulli_total
             state_not: '0'
         card:
-          type: entities
-          show_header_toggle: false
-          title: Watching Plex
-          entities:
-            - sensor.watching_plex
+          type: custom:card-modder
+          style:
+            background-image: url("/local/pictures/lovelace-pictures/plex.png")
+            background-size: 100%
+            height: 170px
+          card:
+            type: entities
+            show_header_toggle: false
+            entities:
+              - entity: sensor.watching_plex
+                name: Plex
       - type: entities
         show_header_toggle: false
         title: Desktop Disk Space
@@ -502,6 +520,229 @@ views:
     title: Media Players
   - badges: []
     cards:
+      - type: picture-elements
+        image: /local/pictures/lovelace-pictures/fitbit/fitbit.png
+        elements:
+        - type: custom:circle-sensor-card
+          entity: sensor.weight_loss
+          max: 65
+          min: 0
+          stroke_width: 15
+          gradient: true
+          fill: '#125054'
+          name: loss
+          units: ' '
+          font_style:
+            font-size: 1.1em
+            font-color: white
+            text-shadow: '2px 2px black'
+          style:
+            top: 5%
+            left: 80%
+            width: 4em
+            height: 4em
+            transform: none
+        - type: custom:circle-sensor-card
+          entity: sensor.fitbit_steps
+          max: 10000
+          min: 0
+          stroke_width: 15
+          gradient: true
+          fill: '#125054'
+          name: steps
+          units: ' '
+          font_style:
+            font-size: 1.1em
+            font-color: white
+            text-shadow: '2px 2px black'
+          color_stops:
+            1: '#09C7E8'
+            10000: '#0BDF0E'
+          style:
+            top: 70%
+            left: 5%
+            width: 4em
+            height: 4em
+            transform: none
+        - type: custom:circle-sensor-card
+          entity: sensor.floors
+          max: 10
+          min: 0
+          stroke_width: 15
+          gradient: true
+          fill: '#125054'
+          name: floors
+          units: ' '
+          font_style:
+            font-size: 1.1em
+            font-color: white
+            text-shadow: '2px 2px black'
+          color_stops:
+            1: '#09C7E8'
+            10: '#0BDF0E'
+          style:
+            top: 70%
+            left: 24%
+            width: 4em
+            height: 4em
+            transform: none
+        - type: custom:circle-sensor-card
+          entity: sensor.distance
+          max: 10
+          min: 0
+          stroke_width: 15
+          gradient: true
+          fill: '#125054'
+          name: miles
+          units: ' '
+          font_style:
+            font-size: 1.1em
+            font-color: white
+            text-shadow: '2px 2px black'
+          color_stops:
+            1: '#09C7E8'
+            10: '#0BDF0E'
+          style:
+            top: 70%
+            left: 43%
+            width: 4em
+            height: 4em
+            transform: none
+        - type: custom:circle-sensor-card
+          entity: sensor.fitbit_calories
+          max: 3000
+          min: 0
+          stroke_width: 15
+          gradient: true
+          fill: '#125054'
+          name: cals
+          shadow: true
+          units: ' '
+          font_style:
+            font-size: 1.1em
+            font-color: white
+            text-shadow: '2px 2px black'
+          color_stops:
+            1: '#09C7E8'
+            3000: '#0BDF0E'
+          style:
+            top: 70%
+            left: 62%
+            width: 4em
+            height: 4em
+            transform: none
+        - type: custom:circle-sensor-card
+          entity: sensor.minutes_very_active
+          max: 30
+          min: 0
+          stroke_width: 15
+          gradient: true
+          fill: '#125054'
+          name: active
+          units: ' '
+          font_style:
+            font-size: 1.1em
+            font-color: white
+            text-shadow: '2px 2px black'
+          color_stops:
+            1: '#09C7E8'
+            30: '#0BDF0E'
+          style:
+            top: 70%
+            left: 80%
+            width: 4em
+            height: 4em
+            transform: none
+        - type: custom:text-element
+          text: "Neil"
+          style:
+            top: 6%
+            left: 1%
+            font-size: 18px
+            color: white
+            text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black
+            "--paper-card-background-color": none
+            "--paper-material-elevation-1_-_box-shadow": none
+            "--shadow-elevation-2dp_-_box-shadow": none
+            transform: translate(0%,-50%)
+        - type: state-icon
+          entity: sensor.weight
+          title: Weight
+          style:
+            left: 3%
+            top: 7%
+            "--iron-icon-fill-color": '#09C7E8'
+            transform: none
+        - type: state-label
+          entity: sensor.weight
+          title: Weight
+          style:
+            left: 12%
+            top: 8%
+            color: white
+            transform: none
+        - type: state-icon
+          entity: sensor.bmi
+          title: BMI
+          style:
+            left: 31%
+            top: 7%
+            "--iron-icon-fill-color": '#09C7E8'
+            transform: none
+        - type: state-label
+          entity: sensor.bmi
+          title: BMI
+          style:
+            left: 40%
+            top: 8%
+            color: white
+            transform: none
+        - type: state-icon
+          entity: sensor.body_fat
+          title: Body Fat
+          style:
+            left: 59%
+            top: 7%
+            "--iron-icon-fill-color": '#09C7E8'
+            transform: none
+        - type: state-label
+          entity: sensor.body_fat
+          title: Body Fat
+          style:
+            left: 67%
+            top: 8%
+            color: white
+            transform: none
+        - type: image
+          entity: sensor.charge_2_battery
+          title: Charge 2 Battery
+          image: /local/pictures/lovelace-pictures/fitbit/battery_full.png
+          state_image:
+            "High": /local/pictures/lovelace-pictures/fitbit/battery_high.png
+            "Medium": /local/pictures/lovelace-pictures/fitbit/battery_medium.png
+            "Low": /local/pictures/lovelace-pictures/fitbit/battery_low.png
+          style:
+            left: 12%
+            top: 1%
+            transform: none
+            width: 24px
+            height: 24px
+        - type: state-icon
+          entity: sensor.resting_heart_rate
+          title: Resting HR
+          style:
+            left: 3%
+            top: 21%
+            "--iron-icon-fill-color": red
+            transform: none
+        - type: state-label
+          entity: sensor.resting_heart_rate
+          title: Resting HR
+          style:
+            left: 12%
+            top: 22%
+            color: white
+            transform: none
       - type: entities
         show_header_toggle: false
         title: Activity
@@ -598,14 +839,32 @@ views:
               - type: custom:weather-card
                 entity: weather.dark_sky
                 icons: '/local/custom-lovelace/weather-card/icons/animated/'
-      - type: entities
-        title: Calendar List
-        show_header_toggle: false
-        entities:
-          - sensor.template_calendar_events
-          - sensor.template_calendar_family_birthdays
-          - sensor.template_calendar_friend_birthdays
-          - sensor.template_calendar_facebook_events
+      - type: vertical-stack
+        cards:
+          - type: "custom:calendar-card"
+            name: "Events"
+            showProgressBar: True
+            numberOfDays: 14
+            entities:
+              - calendar.khannaneilgmailcom
+          - type: "custom:calendar-card"
+            name: "Family Birthdays"
+            showProgressBar: false
+            numberOfDays: 30
+            entities:
+              - calendar.family_birthdays
+          - type: "custom:calendar-card"
+            name: "Friend Birthdays"
+            showProgressBar: false
+            numberOfDays: 30
+            entities:
+              - calendar.friend_birthdays
+          - type: "custom:calendar-card"
+            name: "Facebook Events"
+            showProgressBar: True
+            numberOfDays: 14
+            entities:
+              - calendar.facebook_events
       - type: vertical-stack
         cards:
           - type: horizontal-stack

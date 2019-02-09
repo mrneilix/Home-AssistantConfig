@@ -67,6 +67,8 @@ sensor.dark_sky_precip_intensity:
   friendly_name: Precip Intensity
 sensor.dark_sky_precip_probability:
   friendly_name: Precip Probability
+sensor.dark_sky_precip_probability_0:
+  friendly_name: Precip Today
 sensor.dark_sky_temperature:
   friendly_name: Temp
 sensor.dark_sky_apparent_temperature:

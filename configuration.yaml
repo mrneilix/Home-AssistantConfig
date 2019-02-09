@@ -31,6 +31,7 @@ http:
   trusted_networks:
     - 127.0.0.1
     - !secret trusted_network
+    - 172.30.32.0/24
 
 logger:
   default: error

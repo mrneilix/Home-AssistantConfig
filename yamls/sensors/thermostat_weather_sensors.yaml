@@ -29,10 +29,11 @@
 
   - name: Illuminance
     platform: illuminance
-    api_key: !secret wu_api_key
-    query: !secret wu_pws
-    scan_interval:
-      minutes: 5
+    # api_key: !secret wu_api_key
+    # query: !secret wu_pws
+    # scan_interval:
+      # minutes: 5
+    entity_id: sensor.dark_sky_icon
 
   - platform: pollen
     zip_code: "30308"

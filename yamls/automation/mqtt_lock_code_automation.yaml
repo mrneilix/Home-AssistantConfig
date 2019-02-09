@@ -1,5 +1,6 @@
 - id: mqtt_lock_parents_code_on
   alias: MQTT Lock Parents Code On
+  initial_state: true
   trigger:
     - platform: mqtt
       topic: "Vera/Events/Parents Lock Code"
@@ -19,6 +20,7 @@
 
 - id: mqtt_lock_parents_code_off
   alias: MQTT Lock Parents Code Off
+  initial_state: true
   trigger:
     - platform: mqtt
       topic: "Vera/Events/Parents Lock Code"
@@ -38,6 +40,7 @@
 
 - id: mqtt_lock_temp_code_on
   alias: MQTT Lock Temp Code On
+  initial_state: true
   trigger:
     - platform: mqtt
       topic: "Vera/Events/Temp Lock Code"
@@ -51,6 +54,7 @@
 
 - id: mqtt_lock_temp_code_off
   alias: MQTT Lock Temp Code Off
+  initial_state: true
   trigger:
     - platform: mqtt
       topic: "Vera/Events/Temp Lock Code"
