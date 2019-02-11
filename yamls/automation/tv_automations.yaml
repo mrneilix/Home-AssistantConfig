@@ -81,6 +81,8 @@
       entity_id: switch.hdmi_0
       to: 'on'
       from: 'off'
+      for:
+        seconds: 30
   condition:
     - condition: state
       entity_id: input_boolean.notifications_on
@@ -92,25 +94,8 @@
       entity_id: input_boolean.restart_complete
       state: 'on'
   action:
-    - service: notify.html5
-      data:
-        message: "Turn on Theater Mode?"
-        data: {
-          renotify: 0,
-          tag: 'tv',
-          icon: '/local/tv.jpg',
-          badge: '/local/television.png',
-          actions: [
-            {
-              action: "theater_mode",
-              title: "Theater Mode"
-            },
-            {
-              action: "dismiss",
-              title: "Dismiss"
-            },
-      ]
-    }
+    - service: script.notify_theater_mode
+
 - id: tv_on_notify_theater_mode_selected
   alias: 'TV On Notify Theater Mode Selected'
   trigger:
@@ -123,5 +108,17 @@
       entity_id: input_boolean.restart_complete
       state: 'on'
   action:
-    service: homeassistant.turn_on
-    entity_id: scene.theater_mode
+    - service: input_boolean.turn_on
+      data:
+        entity_id: input_boolean.kitchen_lights_running
+    - delay: 00:00:02
+    - service: scene.turn_on
+      entity_id: scene.theater_mode
+    - service: light.turn_on
+      data:
+        entity_id: light.couch
+        rgb_color: [0,0,100]
+    - delay: 00:00:10
+    - service: input_boolean.turn_off
+      data:
+        entity_id: input_boolean.kitchen_lights_running

@@ -84,15 +84,18 @@ restart_homeassistant:
     - service: switch.turn_on
       entity_id: switch.yi_power
     - service: homeassistant.restart
+
 reboot_pi_zero:
   alias: Reboot Pi Zero
   sequence:
     - service: shell_command.reboot_pi_zero
+
 system_reboot:
   alias: Reboot System
   sequence:
     - service: switch.turn_on
       entity_id: switch.yi_power
+    - delay: 00:00:02
     - service: hassio.host_reboot
 
 startup_couch_colors:

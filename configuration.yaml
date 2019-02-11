@@ -13,9 +13,6 @@ homeassistant:
 
 frontend: !include yamls/home_assistant_yamls/frontend.yaml
 
-# customizer:
-  # custom_ui: local
-
 custom_updater: !include yamls/home_assistant_yamls/custom_updater.yaml
 
 config:
@@ -67,6 +64,7 @@ ifttt:
   key: !secret ifttt_key
 
 updater:
+  include_used_components: true
 weather:
   - platform: darksky
     mode: daily
@@ -107,3 +105,4 @@ climate: !include yamls/devices/climate.yaml
 mqtt: !include yamls/devices/mqtt.yaml
 cast: !include yamls/devices/cast.yaml
 hdmi_cec: !include yamls/devices/cec.yaml
+transmission: !include yamls/devices/current_downloads.yaml

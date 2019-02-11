@@ -108,7 +108,7 @@
     to: 'on'
   condition:
     - condition: template
-      value_template: "{{ ((as_timestamp(now()) - as_timestamp(states.sensor.last_boot.state)) < 600) and  is_state('sensor.pi_zero_uptime', 'unknown') }}"
+      value_template: "{{ is_state('sensor.pi_zero_uptime', 'unknown') }}"
   action:
     - service: script.restart_homeassistant
 

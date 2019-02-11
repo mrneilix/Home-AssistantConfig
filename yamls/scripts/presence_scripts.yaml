@@ -9,8 +9,10 @@ presence_someone_arrived:
     - service: input_boolean.turn_off
       data:
         entity_id: input_boolean.away
+    - service: switch.turn_off
+      entity_id: switch.yi_power
     - service: switch.turn_on
-      entity_id: switch.space_heater_35
+      entity_id: switch.space_heater_75
     - service_template: >
           {% if is_state('binary_sensor.dark_out', 'on') %}
             script.presence_arrive_dark_out
@@ -34,8 +36,6 @@ presence_someone_arrived:
 presence_neil_arrived_home:
   alias: Presence Neil Arrived Home
   sequence:
-    - service: switch.turn_off
-      entity_id: switch.yi_power
     - service: joaoapps_join.fire_send_tasker
       data:
         command: arrive
@@ -55,8 +55,7 @@ presence_arrive_dark_out:
     - condition: time
       before: '03:58:00'
       after: '04:10:00'
-    - service: scene.turn_on
-      entity_id: scene.kitchen_lights_on
+    - service: script.kitchen_lights_on
 
 presence_no_humans_home:
   alias: Presence No Humans Home
@@ -65,7 +64,8 @@ presence_no_humans_home:
       data:
         entity_id: input_boolean.presence_running
     - service: scene.turn_on
-      entity_id: scene.lights_off
+      entity_id: scene.rgb_lights_off
+    - service: script.kitchen_lights_off
     - service: scene.turn_on
       entity_id: scene.leave_switches_off
     - service: script.lock_set_parents_lock_code
@@ -98,14 +98,7 @@ presence_parents_home:
     - condition: state
       entity_id: input_boolean.notifications_on
       state: 'on'
-    - service: notify.html5
-      data_template:
-        message: "Parents unlocked the door at {{ as_timestamp(now()) | timestamp_custom('%I:%M:%S %p', true) }}"
-        title: "Door Unlocked"
-        data:
-          tag: 'door-unlocked'
-          icon: '/local/pictures/mom-dad.jpg'
-          badge: '/local/pictures/lock-badge.png'
+    - service: script.notify_parents_home
 
 presence_gina_home:
   alias: Presence Gina Home
@@ -117,14 +110,7 @@ presence_gina_home:
     - condition: state
       entity_id: input_boolean.notifications_on
       state: 'on'
-    - service: notify.html5
-      data_template:
-        message: "Gina unlocked the door at {{ as_timestamp(now()) | timestamp_custom('%I:%M:%S %p', true) }}"
-        title: "Door Unlocked"
-        data:
-          tag: 'door-unlocked'
-          icon: '/local/pictures/gina.jpg'
-          badge: '/local/pictures/lock-badge.png'
+    - service: script.notify_gina_home
 
 presence_tasker_phone_location:
   alias: Presence Tasker Phone Location

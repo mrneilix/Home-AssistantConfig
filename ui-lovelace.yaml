@@ -21,12 +21,14 @@ resources:
     url: /local/custom-lovelace/card-modder/card-modder.js?v=785dd6
   - type: js
     url: /local/custom-lovelace/card-tools/card-tools.js
+  - type: js
+    url: /local/custom-lovelace/auto-entries/auto-entries.js
 title: Atlanta Condo
 views:
   - badges:
       - device_tracker.neil
       - device_tracker.butters
-      - sensor.tautulli_total
+      - sensor.tautulli
       - sensor.dark_sky_precip_probability
       - sensor.dark_sky_precip_probability_0
       - sensor.dark_sky_temperature
@@ -109,7 +111,6 @@ views:
             - type: horizontal-stack
               cards:
                 - type: 'custom:button-card'
-                  long_press_action: more_info
                   action: service
                   service:
                     domain: scene
@@ -121,7 +122,6 @@ views:
                   icon: 'mdi:sofa'
                   name: White
                 - type: 'custom:button-card'
-                  long_press_action: more_info
                   action: service
                   service:
                     domain: scene
@@ -133,7 +133,6 @@ views:
                   icon: 'mdi:sofa'
                   name: Soft White
                 - type: 'custom:button-card'
-                  long_press_action: more_info
                   action: service
                   service:
                     domain: scene
@@ -147,7 +146,6 @@ views:
             - type: horizontal-stack
               cards:
                 - type: 'custom:button-card'
-                  long_press_action: more_info
                   action: service
                   service:
                     domain: scene
@@ -159,7 +157,6 @@ views:
                   icon: 'mdi:sofa'
                   name: Red
                 - type: 'custom:button-card'
-                  long_press_action: more_info
                   action: service
                   service:
                     domain: scene
@@ -171,7 +168,6 @@ views:
                   icon: 'mdi:sofa'
                   name: Green
                 - type: 'custom:button-card'
-                  long_press_action: more_info
                   action: service
                   service:
                     domain: scene
@@ -197,46 +193,17 @@ views:
                 type: thermostat
           - type: vertical-stack
             cards:
-              - type: conditional
-                conditions:
-                  - entity: lock.schlage_deadbolt_47
-                    state: locked
-                card:
-                  type: 'custom:button-card'
-                  long_press_action: more_info
-                  action: service
-                  service:
-                    domain: lock
-                    action: unlock
-                    data:
-                      entity_id: lock.schlage_deadbolt_47
-                  card_style: ''
-                  color: var(--primary-color)
-                  color_type: icon
-                  default_color: var(--primary-text-color)
-                  icon: mdi:lock
-                  name: Lock
-                  size: 40%
-              - type: conditional
-                conditions:
-                  - entity: lock.schlage_deadbolt_47
-                    state: unlocked
-                card:
-                  type: 'custom:button-card'
-                  long_press_action: more_info
-                  action: service
-                  service:
-                    domain: lock
-                    action: lock
-                    data:
-                      entity_id: lock.schlage_deadbolt_47
-                  card_style: ''
-                  color: var(--paper-item-icon-color)
-                  color_type: icon
-                  default_color: var(--primary-text-color)
-                  icon: mdi:lock-open-outline
-                  name: Lock
-                  size: 40%
+              - type: 'custom:button-card'
+                long_press_action: more_info
+                action: toggle
+                entity: switch.front_door_lock
+                card_style: ''
+                color: var(--primary-color)
+                color_type: icon
+                default_color: var(--primary-text-color)
+                icon: attribute
+                name: Lock
+                size: 40%
           - type: horizontal-stack
             cards:
               - type: 'custom:button-card'
@@ -283,7 +250,7 @@ views:
                 color_off: var(--paper-item-icon-color)
                 color_type: icon
                 default_color: var(--primary-text-color)
-                entity: switch.space_heater_35
+                entity: switch.space_heater_75
                 icon: 'mdi:radiator'
                 name: Space Heater
                 size: 40%
@@ -372,10 +339,7 @@ views:
     icon: 'mdi:home'
     path: default_view
     title: Home
-  - badges:
-      - sensor.tautulli_total
-      - sensor.tautulli_total_bandwidth
-      - sensor.tautulli_transcode
+  - badges: []
     cards:
       - type: vertical-stack
         cards:
@@ -429,22 +393,34 @@ views:
           type: media-control
         - entity: media_player.living_room_tv
           type: media-control
-      - type: conditional
-        conditions:
-          - entity: sensor.tautulli_total
-            state_not: '0'
+      - type: custom:card-modder
+        style:
+          background-image: url("/local/pictures/lovelace-pictures/plex.png")
+          background-size: 100%
+          height: 170px
         card:
-          type: custom:card-modder
-          style:
-            background-image: url("/local/pictures/lovelace-pictures/plex.png")
-            background-size: 100%
-            height: 170px
+          type: sensor
+          icon: mdi:plex
+          entity: sensor.plex
+          name: Plex History
+          detail: 2
+          graph: line
+      - type: custom:card-modder
+        style:
+          background-image: url("/local/pictures/lovelace-pictures/plex2.png")
+          background-size: 100% 170px
+          background-repeat: no-repeat
+        card:
+          type: custom:auto-entities
+          show_empty: false
           card:
             type: entities
             show_header_toggle: false
-            entities:
-              - entity: sensor.watching_plex
-                name: Plex
+          filter:
+            include:
+              - entity_id: "sensor.tautulli_watching_*"
+            exclude:
+              - state: "Nothing"
       - type: entities
         show_header_toggle: false
         title: Desktop Disk Space
@@ -747,17 +723,12 @@ views:
         show_header_toggle: false
         title: Activity
         entities:
-          - sensor.steps
-          - sensor.distance
-          - sensor.floors
           - sensor.activity_calories
-          - sensor.calories
           - sensor.calories_bmr
           - sensor.time_very_active
           - sensor.time_fairly_active
           - sensor.time_lightly_active
           - sensor.time_sedentary
-          - sensor.resting_heart_rate
       - type: entities
         show_header_toggle: false
         title: Sleep
@@ -770,15 +741,6 @@ views:
           - sensor.sleep_time_in_bed_hours
           - sensor.time_after_wakeup
           - sensor.awakenings_count
-      - type: entities
-        show_header_toggle: false
-        title: Miscellaneous
-        entities:
-          - sensor.weight
-          - sensor.bmi
-          - sensor.body_fat
-          - sensor.aria_battery
-          - sensor.charge_2_battery
     icon: 'mdi:heart-pulse'
     path: health
     title: FitBit
@@ -841,30 +803,50 @@ views:
                 icons: '/local/custom-lovelace/weather-card/icons/animated/'
       - type: vertical-stack
         cards:
-          - type: "custom:calendar-card"
-            name: "Events"
-            showProgressBar: True
-            numberOfDays: 14
-            entities:
-              - calendar.khannaneilgmailcom
-          - type: "custom:calendar-card"
-            name: "Family Birthdays"
-            showProgressBar: false
-            numberOfDays: 30
-            entities:
-              - calendar.family_birthdays
-          - type: "custom:calendar-card"
-            name: "Friend Birthdays"
-            showProgressBar: false
-            numberOfDays: 30
-            entities:
-              - calendar.friend_birthdays
-          - type: "custom:calendar-card"
-            name: "Facebook Events"
-            showProgressBar: True
-            numberOfDays: 14
-            entities:
-              - calendar.facebook_events
+          - type: conditional
+            conditions:
+              - entity: binary_sensor.show_calendar_events
+                state: 'on'
+            card:
+              type: "custom:calendar-card"
+              name: "Events"
+              showProgressBar: True
+              numberOfDays: 14
+              entities:
+                - calendar.events
+          - type: conditional
+            conditions:
+              - entity: binary_sensor.show_calendar_family_birthdays
+                state: 'on'
+            card:
+              type: "custom:calendar-card"
+              name: "Family Birthdays"
+              showProgressBar: false
+              numberOfDays: 30
+              entities:
+                - calendar.family_birthdays
+          - type: conditional
+            conditions:
+              - entity: binary_sensor.show_calendar_friend_birthdays
+                state: 'on'
+            card:
+              type: "custom:calendar-card"
+              name: "Friend Birthdays"
+              showProgressBar: false
+              numberOfDays: 30
+              entities:
+                - calendar.friend_birthdays
+          - type: conditional
+            conditions:
+              - entity: binary_sensor.show_calendar_facebook
+                state: 'on'
+            card:
+              type: "custom:calendar-card"
+              name: "Facebook Events"
+              showProgressBar: True
+              numberOfDays: 14
+              entities:
+                - calendar.facebook_events
       - type: vertical-stack
         cards:
           - type: horizontal-stack
@@ -923,6 +905,10 @@ views:
                     secondary_info: last-changed
                   - entity: device_tracker.192_168_1_233_b4_f1_da_26_f9_07
                     secondary_info: last-changed
+                  - entity: device_tracker.neil_pixel_gps
+                    secondary_info: last-changed
+                  - entity: device_tracker.tile_p_7231d50c4a0512da2532d71db7a524f9
+                    secondary_info: last-changed
                   - entity: device_tracker.neil_pixel_tasker
                     secondary_info: last-changed
                   - entity: device_tracker.neil_wifi
@@ -961,6 +947,8 @@ views:
                   - zone.gina
                   - zone.kiel
                   - device_tracker.tile_ba7ceb56d53379ac
+                  - device_tracker.neil_pixel_gps
+                  - device_tracker.tile_p_7231d50c4a0512da2532d71db7a524f9
                   - device_tracker.neil_pixel_tasker
     icon: 'mdi:calendar-today'
     path: weather_and_calendar
@@ -1061,6 +1049,20 @@ views:
                 default_color: var(--primary-text-color)
                 icon: 'mdi:home-assistant'
                 name: Restart Home Assistant
+              - type: 'custom:button-card'
+                action: service
+                service:
+                  domain: scene
+                  action: turn_on
+                  data:
+                    entity_id: scene.reboot_vera
+                card_style: ''
+                color: var(--primary-color)
+                color_off: var(--paper-item-icon-color)
+                color_type: icon
+                default_color: var(--primary-text-color)
+                icon: 'mdi:spa'
+                name: Reboot Vera
           - type: horizontal-stack
             cards:
               - type: 'custom:button-card'

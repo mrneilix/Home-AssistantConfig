@@ -21,7 +21,6 @@
       username: !secret email
       password: !secret tile_password
       show_inactive: true
-      monitored_variables: TILE
     - platform: mqtt_json
       devices:
         neil_pixel_tasker: phone_loc
@@ -54,3 +53,8 @@
       entity_id:
         - device_tracker.gina_phone
         - binary_sensor.gina_code_entered
+    - platform: composite
+      name: neil_pixel_gps
+      entity_id:
+        - device_tracker.tile_p_7231d50c4a0512da2532d71db7a524f9
+        - device_tracker.neil_pixel_tasker

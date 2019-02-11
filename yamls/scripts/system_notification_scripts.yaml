@@ -1,0 +1,82 @@
+notify_vera_down:
+  alias: Notify Vera Down
+  sequence:
+    - service: notify.html5
+      data_template:
+        message: "Vera Down"
+        title: "Vera Down"
+        data:
+          tag: 'Vera-down'
+          renotify: 0
+          icon: '/local/pictures/vera.png'
+          badge: '/local/pictures/vera.png'
+
+notify_restart_complete:
+  alias: Notify Restart Complete
+  sequence:
+    - service: notify.html5
+      data_template:
+        message: "Home Assistant Restart Complete"
+        title: "Restart Complete"
+        data:
+          tag: 'restart_complete'
+          renotify: 0
+          icon: '/local/pictures/restart-ha.png'
+          badge: '/local/pictures/restart-ha.png'
+
+notify_update_available:
+  alias: Notify Update Available
+  sequence:
+    - service: notify.html5
+      data_template: 
+        title: 'New Home Assistant Release'
+        message: "Home Assistant  {{ states.updater.updater.state }}  is now available."
+
+notify_theater_mode:
+  alias: Notify Theater Mode
+  sequence:
+    - service: notify.html5
+      data:
+        message: "Turn on Theater Mode?"
+        data: {
+          renotify: 0,
+          tag: 'tv',
+          icon: '/local/tv.jpg',
+          badge: '/local/television.png',
+          actions: [
+            {
+              action: "theater_mode",
+              title: "Theater Mode"
+            },
+            {
+              action: "dismiss",
+              title: "Dismiss"
+            },
+      ]
+    }
+
+notify_lock_battery_low:
+  alias: Notify Lock Battery Low
+  sequence:
+    - service: notify.html5
+      data_template:
+        message: "Lock Battery Low"
+        title: "Lock Battery Low"
+        data:
+          tag: 'lock-low-battery'
+          renotify: 0
+          icon: '/local/lock.jpg'
+          badge: '/local/lock-badge.png'
+
+notify_lock_battery_very_low:
+  alias: Notify Lock Battery Very Low
+  sequence:
+    - service: notify.html5
+      data_template:
+        message: "Lock Battery Very Low"
+        title: "Lock Battery Very Low"
+        data:
+          tag: 'lock-low-battery'
+          renotify: 0
+          icon: '/local/lock.jpg'
+          badge: '/local/lock-badge.png'

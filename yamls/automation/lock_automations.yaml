@@ -11,15 +11,7 @@
       entity_id: input_boolean.restart_complete
       state: 'on'
   action:
-    - service: notify.html5
-      data_template:
-        message: "Lock Battery Low"
-        title: "Lock Battery Low"
-        data:
-          tag: 'lock-low-battery'
-          renotify: 0
-          icon: '/local/lock.jpg'
-          badge: '/local/lock-badge.png'
+    - service: script.notify_lock_battery_low
           
 - id: lock_battery_very_low_notify
   alias: 'Lock Battery Very Low Notify'
@@ -32,15 +24,7 @@
       entity_id: input_boolean.restart_complete
       state: 'on'
   action:
-    - service: notify.html5
-      data_template:
-        message: "Lock Battery Very Low"
-        title: "Lock Battery Very Low"
-        data:
-          tag: 'lock-low-battery'
-          renotify: 0
-          icon: '/local/lock.jpg'
-          badge: '/local/lock-badge.png'
+    - service: script.notify_lock_battery_very_low
 
 # Notify if unlocked without code
 - id: lock_door_unlocked_notify_unknown_code
@@ -62,14 +46,7 @@
       entity_id: binary_sensor.anyone_home
       state: 'off'
   action:
-    - service: notify.html5
-      data_template:
-        message: "Door was unlocked at {{ as_timestamp(now()) | timestamp_custom('%I:%M:%S %p', true) }}"
-        title: "Door Unlocked"
-        data:
-          tag: 'door-unlocked'
-          icon: '/local/pictures/lock.jpg'
-          badge: '/local/pictures/lock-badge.png'
+    - service: script.notify_lock_unlocked_unknown_code
 
 # Lock Pin Entered
 - id: lock_code_entered

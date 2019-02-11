@@ -85,7 +85,13 @@
   alias: 'Presence Someone Home'
   trigger:
     - platform: state
-      entity_id: binary_sensor.anyone_home
+      entity_id: device_tracker.neil
+      to: 'home'
+    - platform: state
+      entity_id: device_tracker.parents
+      to: 'home'
+    - platform: state
+      entity_id: device_tracker.gina
       to: 'home'
   condition:
     - condition: state

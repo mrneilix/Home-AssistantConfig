@@ -11,3 +11,9 @@ device_tracker.neil_wifi:
 device_tracker.neil_pixel_tasker:
   entity_picture: /local/pictures/Me.jpg
   friendly_name: Neil Tasker
+device_tracker.neil_phone_gps:
+  entity_picture: /local/pictures/Me.jpg
+  friendly_name: Neil Phone GPS
+device_tracker.tile_p_7231d50c4a0512da2532d71db7a524f9:
+  entity_picture: /local/pictures/Me.jpg
+  friendly_name: Neil Pixel Tile

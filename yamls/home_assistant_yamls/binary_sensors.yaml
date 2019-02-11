@@ -133,6 +133,14 @@
           {%- endif %}
         entity_id:
           - sensor.illuminance
+      show_calendar_events:
+        value_template: '{{ (((  as_timestamp(strptime(states.calendar.events.attributes.start_time, "%d.%m.%Y")) - as_timestamp(now()) ) / 86400 ) | round(0) < 14 ) }}'
+      show_calendar_family_birthdays:
+        value_template: '{{ (((  as_timestamp(strptime(states.calendar.family_birthdays.attributes.start_time, "%d.%m.%Y")) - as_timestamp(now()) ) / 86400 ) | round(0) < 30 ) }}'
+      show_calendar_friend_birthdays:
+        value_template: '{{ (((  as_timestamp(strptime(states.calendar.friend_birthdays.attributes.start_time, "%d.%m.%Y")) - as_timestamp(now()) ) / 86400 ) | round(0) < 30 ) }}'
+      show_calendar_facebook:
+        value_template: '{{ (((  as_timestamp(strptime(states.calendar.facebook_events.attributes.start_time, "%d.%m.%Y")) - as_timestamp(now()) ) / 86400 ) | round(0) < 14 ) }}'
 
   - platform: ping
     host: 192.168.1.126

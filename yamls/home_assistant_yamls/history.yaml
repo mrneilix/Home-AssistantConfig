@@ -14,10 +14,9 @@
       - sensor.thermostatmode
       - sensor.current_set_temp
       - sensor.dark_sky_temperature
-      - sensor.temp
+      - sensor.dark_sky_apparent_temperature
       - sensor.illuminance
       - sun.sun
-      - sensor.daylight_remaining_hm
       # Plex
       - sensor.plex
       - sensor.watching_plex
@@ -30,35 +29,11 @@
       - sensor.pi_zero_boot_time
       - sensor.pi_zero_cpu_temp
       - sensor.pi_zero_cpu_usage
-      # FitBit
-      - sensor.steps
-      - sensor.activity_calories
-      - sensor.calories
-      - sensor.calories_bmr
-      - sensor.distance
-      - sensor.floors
-      - sensor.time_after_wakeup
-      - sensor.time_very_active
-      - sensor.time_fairly_active
-      - sensor.time_lightly_active
-      - sensor.time_sedentary
-      - sensor.minutes_after_wakeup
-      - sensor.minutes_very_active
-      - sensor.minutes_fairly_active
-      - sensor.minutes_lightly_active
-      - sensor.minutes_sedentary
-      # TV
-      - sensor.tv_power
-      # Presence
-      - sensor.butters_mqtt_tile
-      - sensor.neil_mqtt_charge_2
-      - sensor.neil_mqtt_pixel
       # Lock
-      - sensor.lock_battery_level
-      - sensor.last_lock_code_used
       - sensor.last_lock_code_name
   exclude:
     entities:
+      - device_tracker.kitchen_display
       - input_boolean.notifications_on
       - input_boolean.couch_light_script_running
       - input_boolean.presence_automations
@@ -70,9 +45,28 @@
       - input_boolean.show_device_trackers
       - input_boolean.show_recent_downloads
       - input_boolean.show_upcoming_downloads
-      - input_boolean.display_weather_summary
+      - input_boolean.show_weather_summary
       - input_boolean.show_pi_system_monitor
       - input_boolean.show_pi_zero_system_monitor
+      - input_boolean.config_updated
+      - input_boolean.weather_notifications
+      - input_boolean.notifications_on
+      - input_boolean.away
       - binary_sensor.vera_up
+      - binary_sensor.anyone_home
       - binary_sensor.anyone_home_but_neil
       - binary_sensor.front_door_sensor_73
+      - binary_sensor.lock_code_entered
+      - binary_sensor.gina_code_entered
+      - binary_sensor.parents_code_entered
+      - binary_sensor.neil_lock_code
+      - binary_sensor.presence_mqtt_charge_2
+      - binary_sensor.presence_mqtt_pixel
+      - binary_sensor.butters_tile
+      - binary_sensor.show_calendar_events
+      - binary_sensor.show_calendar_family_birthdays
+      - binary_sensor.show_calendar_friend_birthdays
+      - binary_sensor.show_calendar_facebook
+      - switch.hdmi_4
+      - switch.hdmi_b
+      - switch.front_door_sensor_73

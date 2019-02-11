@@ -24,7 +24,7 @@
       - "sleep/minutesToFallAsleep"
       - "sleep/startTime"
       - "sleep/timeInBed"
-      
+
   - platform: template
     sensors:
       sleep_time_asleep:
@@ -71,7 +71,7 @@
           {% else %}
           0
           {% endif %}
-          
+
       sleep_time_awake:
         friendly_name: Sleep Time Awake
         icon_template: mdi:sleep
@@ -116,7 +116,7 @@
           {% else %}
           0
           {% endif %}
-          
+
       sleep_time_to_fall_asleep:
         friendly_name: Sleep Time to Fall Asleep
         icon_template: mdi:sleep
@@ -161,7 +161,7 @@
           {% else %}
           0
           {% endif %}
-          
+
       sleep_time_in_bed_hours:
         friendly_name: Sleep Time in Bed
         icon_template: mdi:hotel
@@ -206,7 +206,7 @@
           {% else %}
           0
           {% endif %}
-          
+
       time_after_wakeup:
         friendly_name: Time After Wakeup
         icon_template: mdi:sleep
@@ -251,7 +251,12 @@
           {% else %}
           0
           {% endif %}
-          
+
+      fitbit_time_active:
+        friendly_name: Active
+        icon_template: mdi:run
+        value_template: '{{ ((states("sensor.minutes_fairly_active") + states("sensor.minutes_very_active"))  | int ) }}'
+
       time_very_active:
         friendly_name: Very Active
         icon_template: mdi:run
@@ -296,7 +301,7 @@
           {% else %}
           0
           {% endif %}
-          
+
       time_fairly_active:
         friendly_name: Fairly Active
         icon_template: mdi:walk
@@ -437,11 +442,13 @@
         value_template: >
           {{ states.sensor.steps.state | replace(",","") }}
         unit_of_measurement: 'steps'
+
       fitbit_calories:
         friendly_name: 'Calories'
         value_template: >
           {{ states.sensor.calories.state | replace(",","") }}
         unit_of_measurement: 'calories'
+
       weight_loss:
         friendly_name: 'Weight Loss'
         value_template: "{{ '%.1f' | format(210.0 - (states.sensor.weight.state | float)) }}"

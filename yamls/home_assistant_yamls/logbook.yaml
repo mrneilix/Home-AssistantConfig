@@ -9,10 +9,6 @@
       - scene
       - proximity
     entities:
-      # TV Power
-      - sensor.tv_power
-      # Presence
-      - sensor.neil_phone_location
       # System
       - sensor.pi_zero_monitor_offline
       # Weather
@@ -31,9 +27,7 @@
       - automation.notify_restart_complete
       - automation.notify_update_available
       - automation.weather_notifications_off
-      - automation.weather_notify_sleet
-      - automation.weather_notify_rain
-      - automation.weather_notify_snow
+      - automation.weather_notify_precipitation
       - automation.tv_off_fire_tablet_auto_brightness_on
       - automation.couch_color_slider
       - automation.couch_lights_sensor_changed
@@ -54,19 +48,39 @@
       - automation.lock_door_opened_poll_lock
       - automation.lock_door_opened_update_input_boolean
       - binary_sensor.front_door_sensor_73
-      - input_boolean.weather_dont_renotify
-      - input_boolean.away
+      - binary_sensor.vera_up
+      - binary_sensor.anyone_home
+      - binary_sensor.anyone_home_but_neil
+      - binary_sensor.front_door_sensor_73
+      - binary_sensor.lock_code_entered
+      - binary_sensor.gina_code_entered
+      - binary_sensor.neil_lock_code
+      - binary_sensor.presence_mqtt_charge_2
+      - binary_sensor.presence_mqtt_pixel
+      - binary_sensor.butters_tile
+      - binary_sensor.show_calendar_events
+      - binary_sensor.show_calendar_family_birthdays
+      - binary_sensor.show_calendar_friend_birthdays
+      - binary_sensor.show_calendar_facebook
+      - device_tracker.kitchen_display
+      - input_boolean.notifications_on
       - input_boolean.couch_light_script_running
+      - input_boolean.presence_automations
       - input_boolean.presence_running
       - input_boolean.restart_complete
+      - input_boolean.weather_dont_renotify
       - input_boolean.kitchen_lights_running
       - input_boolean.door_open
       - input_boolean.show_device_trackers
       - input_boolean.show_recent_downloads
       - input_boolean.show_upcoming_downloads
-      - input_boolean.display_weather_summary
+      - input_boolean.show_weather_summary
       - input_boolean.show_pi_system_monitor
       - input_boolean.show_pi_zero_system_monitor
+      - input_boolean.config_updated
+      - input_boolean.weather_notifications
+      - input_boolean.notifications_on
+      - input_boolean.away
       - light.front_kitchen_31
       - light.back_kitchen_30
       - script.thermostat_set_home_morning
@@ -91,4 +105,11 @@
       - script.couch_light_scripts_trigger_light_already_off
       - script.couch_light_update_input_numbers
       - script.couch_light_update_input_text
+      - script.notify_snow
+      - script.notify_sleet
+      - script.notify_rain
+      - script.notify_restart_complete
       - switch.front_door_sensor_73
+      - switch.front_door_lock
+      - switch.hdmi_4
+      - switch.hdmi_b

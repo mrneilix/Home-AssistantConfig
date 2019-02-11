@@ -14,3 +14,7 @@
     # title: MQTT
     # icon: mdi:bug
     # url: !secret mosquitto_url
+  phlex:
+    title: Phlex
+    icon: mdi:microphone
+    url: !secret phlex_url

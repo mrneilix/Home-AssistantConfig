@@ -27,7 +27,7 @@
         - Bed
         - Bed Light
         - Bed Lights
-    switch.space_heater_35:
+    switch.space_heater_75:
       room: Bedroom
       expose: true
       aliases:
@@ -106,6 +106,22 @@
         - Restart Pi
         - Restart System
         - Reboot System
+    script.reboot_pi_zero:
+      room: Home
+      expose: true
+      name: Reboot Pi Zero
+      aliases:
+        - Reboot Raspberry Pi Zero
+        - Reboot Pi Zero
+        - Restart Raspberry Pi Zero
+        - Restart Pi Zero
+    scene.reboot_vera:
+      room: Home
+      expose: true
+      name: Reboot Vera
+      aliases:
+        - Reboot Vera
+        - Restart Pi Vera
     script.restart_homeassistant:
       room: Home
       expose: true

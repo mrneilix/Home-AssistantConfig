@@ -1,0 +1,35 @@
+notify_rain:
+  alias: Notify Rain
+  sequence:
+    - service: notify.html5
+      data_template:
+        message: "{{ as_timestamp(now()) | timestamp_custom('%I:%M %p', true) }} {{ states('sensor.dark_sky_minutely_summary') }}"
+        title: "Rain"
+        data:
+          tag: 'weather'
+          icon: '/local/pictures/weather-rainy.png'
+          badge: '/local/pictures/weather-rainy.png'
+
+notify_snow:
+  alias: Notify Snow
+  sequence:
+    - service: notify.html5
+      data_template:
+        message: "{{ as_timestamp(now()) | timestamp_custom('%I:%M %p', true) }} {{ states('sensor.dark_sky_minutely_summary') }}"
+        title: "Snow"
+        data:
+          tag: 'weather'
+          icon: '/local/pictures/weather-snowy.png'
+          badge: '/local/pictures/weather-snowy.png'
+
+notify_sleet:
+  alias: Notify Sleet
+  sequence:
+    - service: notify.html5
+      data_template:
+        message: "{{ as_timestamp(now()) | timestamp_custom('%I:%M %p', true) }} {{ states('sensor.dark_sky_minutely_summary') }}"
+        title: "Sleet"
+        data:
+          tag: 'weather'
+          icon: '/local/pictures/weather-hail.png'
+          badge: '/local/pictures/weather-hail.png'

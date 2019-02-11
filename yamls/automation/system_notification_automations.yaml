@@ -1,10 +1,12 @@
 - id: notify_vera_down
   alias: 'Notify Vera Down'
   trigger:
-    platform: state
-    entity_id: binary_sensor.vera_up
-    to: 'off'
-    from: 'on'
+    - platform: state
+      entity_id: binary_sensor.vera_up
+      to: 'off'
+      from: 'on'
+    - platform: time
+      at: '08:00:00'
   condition:
     - condition: state
       entity_id: input_boolean.notifications_on
@@ -12,17 +14,12 @@
     - condition: state
       entity_id: input_boolean.restart_complete
       state: 'on'
+    - condition: state
+      entity_id: binary_sensor.vera_up
+      state: 'off'
   action:
-    - service: notify.html5
-      data_template:
-        message: "Vera Down"
-        title: "Vera Down"
-        data:
-          tag: 'Vera-down'
-          renotify: 0
-          icon: '/local/pictures/vera.png'
-          badge: '/local/pictures/vera.png'
-          
+    - service: script.notify_vera_down
+
 - id: notify_restart_complete
   alias: 'Notify Restart Complete'
   trigger:
@@ -36,17 +33,11 @@
     - condition: state
       entity_id: input_boolean.notifications_on
       state: 'on'
+    - condition: template
+      value_template: "{{ ((as_timestamp(now()) - as_timestamp(states.sensor.last_boot.state)) > 600) and not is_state('sensor.pi_zero_uptime', 'unknown') }}"
   action:
-    - service: notify.html5
-      data_template:
-        message: "Home Assistant Restart Complete"
-        title: "Restart Complete"
-        data:
-          tag: 'restart_complete'
-          renotify: 0
-          icon: '/local/pictures/restart-ha.png'
-          badge: '/local/pictures/restart-ha.png'
-          
+    - service: script.notify_restart_complete
+
 - id: notifications_off_at_11pm
   alias: 'Notifications Off at 11PM'
   trigger:
@@ -89,6 +80,8 @@
   trigger:
     - platform: state
       entity_id: updater.updater
+    - platform: time
+      at: '09:00:00'
   condition:
     - condition: state
       entity_id: input_boolean.notifications_on
@@ -96,8 +89,7 @@
     - condition: state
       entity_id: input_boolean.restart_complete
       state: 'on'
+    - condition: template
+      value_template: "{{ ( states('sensor.latest_version') | string ) != ( states('sensor.current_version') | string ) }}"
   action:
-    service: notify.html5
-    data_template: 
-      title: 'New Home Assistant Release'
-      message: "Home Assistant  {{ states.updater.updater.state }}  is now available."
+    - service: script.notify_update_available

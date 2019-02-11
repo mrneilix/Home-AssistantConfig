@@ -29,6 +29,14 @@
     force_update: true
     json_attributes_topic: "monitor/monitor/status"
 
+  - platform: version
+
+  - platform: rest
+    resource: https://pypi.python.org/pypi/homeassistant/json
+    name: Latest version
+    value_template: '{{ value_json.info.version }}'
+    scan_interval: 3600
+
   - platform: template
     sensors:
 ## Uptime Templated ####
@@ -40,7 +48,7 @@
             {% set hours = ((time % 86400) / 3600) | int %}
             {% set days = (time / 86400) | int %}
 
-            {%- if time < 6000 -%}
+            {%- if time < 60 -%}
               Less than a minute
             {%- else -%}
               {%- if days > 0 -%}
