@@ -1,7 +1,5 @@
   include:
     domains:
-      - automation
-      - binary_sensor
       - device_tracker
       - input_boolean
       - script
@@ -17,51 +15,9 @@
       - sensor.dark_sky_temperature
       # Lock
       - sensor.last_lock_code_used
+      - binary_sensor.lock_code_entered
   exclude:
     entities:
-      - automation.notifications_off_at_11pm
-      - automation.thermostat_set_temp_when_home_after_11_am
-      - automation.thermostat_set_temp_when_home_after_6_am
-      - automation.notifications_on_if_neil_is_home_at_8am
-      - automation.weather_allow_renotify_after_1_hour
-      - automation.notify_restart_complete
-      - automation.notify_update_available
-      - automation.weather_notifications_off
-      - automation.weather_notify_precipitation
-      - automation.tv_off_fire_tablet_auto_brightness_on
-      - automation.couch_color_slider
-      - automation.couch_lights_sensor_changed
-      - automation.couch_light_set_input_text
-      - automation.couch_color_google_voice
-      - automation.tv_input_group_toggle_visible
-      - automation.presence_turn_desktop_display_off
-      - automation.calendar_family_birthday_notify
-      - automation.calendar_friend_birthday_notify
-      - automation.tv_power_monitor_restart
-      - automation.presence_from_tasker_when_near_home
-      - automation.presence_from_tasker_when_far_from_home
-      - automation.kitchen_lights_on
-      - automation.kitchen_lights_off
-      - automation.kitchen_lights_on_when_dark_out
-      - automation.kitchen_lights_off_when_not_dark_out
-      - automation.system_startup
-      - automation.lock_door_opened_poll_lock
-      - automation.lock_door_opened_update_input_boolean
-      - binary_sensor.front_door_sensor_73
-      - binary_sensor.vera_up
-      - binary_sensor.anyone_home
-      - binary_sensor.anyone_home_but_neil
-      - binary_sensor.front_door_sensor_73
-      - binary_sensor.lock_code_entered
-      - binary_sensor.gina_code_entered
-      - binary_sensor.neil_lock_code
-      - binary_sensor.presence_mqtt_charge_2
-      - binary_sensor.presence_mqtt_pixel
-      - binary_sensor.butters_tile
-      - binary_sensor.show_calendar_events
-      - binary_sensor.show_calendar_family_birthdays
-      - binary_sensor.show_calendar_friend_birthdays
-      - binary_sensor.show_calendar_facebook
       - device_tracker.kitchen_display
       - input_boolean.notifications_on
       - input_boolean.couch_light_script_running

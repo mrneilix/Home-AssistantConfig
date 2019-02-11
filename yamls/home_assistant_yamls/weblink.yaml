@@ -1,0 +1,7 @@
+  entities:
+    - name: Router
+      url: !secret google_fiber_box
+    - name: Vera
+      url: !secret vera_page
+    - name: MQTT Web
+      url: !secret mqtt_server

@@ -41,7 +41,7 @@
       entity_id:
         - device_tracker.tile_ba7ceb56d53379ac
         - binary_sensor.butters_tile
-        - device_tracker.192_168_1_233_c5_ff_36_d0_f1_63
+        - device_tracker.butters_tile_google_home
     - platform: composite
       name: parents
       entity_id:

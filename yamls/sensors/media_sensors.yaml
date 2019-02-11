@@ -52,22 +52,7 @@
 
   - platform: template
     sensors:
-      # watching_plex:
-        # friendly_name: Watching Plex
-        # value_template: >
-          # {% if states.sensor.tautulli_total.state == '0' %}
-            # Nothing Playing
-          # {% else %}
-            # {% for attr in states.sensor.tautulli_total.attributes %}
-            # {% if not attr=="friendly_name" and not attr=="unit_of_measurement" and not attr=="icon" and not attr=="custom_ui_state_card"  and not attr=="state_card_mode" %}
-              # {% if attr=="Me" %}
-                # You are watching {{states.sensor.tautulli_total.attributes[attr]}} {{" | "}}
-              # {% else %}
-                # {{attr}} is watching {{states.sensor.tautulli_total.attributes[attr]}} {{" | "}}
-              # {% endif %}
-            # {% endif %}
-            # {% endfor %}
-          # {% endif %}
+
       sonarr_upcoming_list:
         friendly_name: Upcoming Episodes
         icon_template: mdi:television

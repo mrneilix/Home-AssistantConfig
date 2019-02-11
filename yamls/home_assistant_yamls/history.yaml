@@ -5,7 +5,6 @@
       - device_tracker
       - lock
       - switch
-      - binary_sensor
       - input_boolean
       - proximity
     entities:
@@ -19,8 +18,7 @@
       - sun.sun
       # Plex
       - sensor.plex
-      - sensor.watching_plex
-      - sensor.tautulli_total
+      - sensor.tautulli
       # System
       - sensor.processor_use
       - sensor.memory_use_percent
@@ -29,6 +27,9 @@
       - sensor.pi_zero_boot_time
       - sensor.pi_zero_cpu_temp
       - sensor.pi_zero_cpu_usage
+      - sensor.transmission_active_torrents
+      - sensor.transmission_down_speed
+      - sensor.transmission_total_torrents
       # Lock
       - sensor.last_lock_code_name
   exclude:
@@ -52,21 +53,6 @@
       - input_boolean.weather_notifications
       - input_boolean.notifications_on
       - input_boolean.away
-      - binary_sensor.vera_up
-      - binary_sensor.anyone_home
-      - binary_sensor.anyone_home_but_neil
-      - binary_sensor.front_door_sensor_73
-      - binary_sensor.lock_code_entered
-      - binary_sensor.gina_code_entered
-      - binary_sensor.parents_code_entered
-      - binary_sensor.neil_lock_code
-      - binary_sensor.presence_mqtt_charge_2
-      - binary_sensor.presence_mqtt_pixel
-      - binary_sensor.butters_tile
-      - binary_sensor.show_calendar_events
-      - binary_sensor.show_calendar_family_birthdays
-      - binary_sensor.show_calendar_friend_birthdays
-      - binary_sensor.show_calendar_facebook
       - switch.hdmi_4
       - switch.hdmi_b
       - switch.front_door_sensor_73

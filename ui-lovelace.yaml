@@ -18,11 +18,11 @@ resources:
   - type: js
     url: /local/custom-lovelace/text-element/text-element.js?v=0.0.2
   - type: js
-    url: /local/custom-lovelace/card-modder/card-modder.js?v=785dd6
+    url: /local/custom-lovelace/card-modder/card-modder.js?v=b0ddee
   - type: js
-    url: /local/custom-lovelace/card-tools/card-tools.js
+    url: /local/custom-lovelace/card-tools/card-tools.js?v=297fcc
   - type: js
-    url: /local/custom-lovelace/auto-entries/auto-entries.js
+    url: /local/custom-lovelace/auto-entries/auto-entries.js?v=0
 title: Atlanta Condo
 views:
   - badges:
@@ -339,7 +339,10 @@ views:
     icon: 'mdi:home'
     path: default_view
     title: Home
-  - badges: []
+  - badges:
+      - sensor.transmission_active_torrents
+      - sensor.transmission_down_speed
+      - sensor.transmission_total_torrents
     cards:
       - type: vertical-stack
         cards:
@@ -401,7 +404,7 @@ views:
         card:
           type: sensor
           icon: mdi:plex
-          entity: sensor.plex
+          entity: sensor.tautulli
           name: Plex History
           detail: 2
           graph: line
@@ -903,7 +906,7 @@ views:
                     secondary_info: last-changed
                   - entity: device_tracker.neil_bluetooth
                     secondary_info: last-changed
-                  - entity: device_tracker.192_168_1_233_b4_f1_da_26_f9_07
+                  - entity: device_tracker.neil_pixel_google_home
                     secondary_info: last-changed
                   - entity: device_tracker.neil_pixel_gps
                     secondary_info: last-changed
@@ -915,16 +918,16 @@ views:
                     secondary_info: last-changed
                   - entity: device_tracker.activbuds_s255
                     secondary_info: last-changed
-                  - entity: device_tracker.192_168_1_233_88_88_88_89_95_1d
+                  - entity: device_tracker.headphones_google_home
                     secondary_info: last-changed
-                  - entity: device_tracker.192_168_1_233_c7_e6_70_79_1b_92
+                  - entity: device_tracker.fitbit_google_home
                     secondary_info: last-changed
                   - type: divider
                   - entity: device_tracker.butters
                     secondary_info: last-changed
                   - entity: device_tracker.tile_ba7ceb56d53379ac 
                     secondary_info: last-changed
-                  - entity: device_tracker.192_168_1_233_c5_ff_36_d0_f1_63
+                  - entity: device_tracker.butters_tile_google_home
                     secondary_info: last-changed
                   - type: divider
                   - entity: device_tracker.parents
@@ -1093,6 +1096,20 @@ views:
                 default_color: var(--primary-text-color)
                 icon: 'mdi:numeric-0-box'
                 name: Reboot Pi Zero
+      - type: entities
+        entities:
+          - type: weblink
+            name: Router
+            url: !secret google_fiber_box
+            icon: mdi:router-wireless
+          - type: weblink
+            name: Vera
+            url: !secret vera_page
+            icon: mdi:spa
+          - type: weblink
+            name: MQTT
+            url: !secret mqtt_server
+            icon: mdi:bug
       - title: null
         trackers:
           - sensor.custom_card_tracker

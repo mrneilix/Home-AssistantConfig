@@ -4,6 +4,12 @@
     devices:
       - device_tracker.neil_pixel_tasker
     unit_of_measurement: mi
+  neil_composite_tracker:
+    zone: home
+    tolerance: 100
+    devices:
+      - device_tracker.neil_pixel_gps
+    unit_of_measurement: mi
 
   butters_home:
     zone: home

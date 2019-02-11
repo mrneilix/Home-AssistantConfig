@@ -95,7 +95,7 @@ shell_command: !include yamls/home_assistant_yamls/shell_commands.yaml
 scene: !include yamls/home_assistant_yamls/scenes.yaml
 group: !include yamls/home_assistant_yamls/groups.yaml
 proximity: !include yamls/home_assistant_yamls/proximity.yaml
-
+weblink: !include yamls/home_assistant_yamls/weblink.yaml
 # Include Devices Yamls
 device_tracker: !include yamls/devices/device_tracker.yaml
 switch: !include yamls/devices/switches.yaml

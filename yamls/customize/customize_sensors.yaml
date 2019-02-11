@@ -1,8 +1,4 @@
 ### SYSTEM SENSORS ###
-sensor.plex:
-  friendly_name: Plex
-sensor.watching_plex:
-  icon: mdi:plex
 sensor.disk_use_percent:
   friendly_name: Disk Used
 sensor.since_last_boot_templated:
@@ -27,22 +23,17 @@ sensor.speedtest_ping:
   friendly_name: Ping
   icon: mdi:network
 
+
   
 ### Media Sensors ###
-sensor.tautulli_total_bandwidth:
-  unit_of_measurement: Mbit/s
-  friendly_name: Total Bandwidth
-sensor.tautulli_direct_play:
-  friendly_name: Direct Play
-sensor.tautulli_direct_stream:
-  friendly_name: Direct Stream
-sensor.tautulli_total:
-  friendly_name: Total
-sensor.tautulli_transcode:
-  friendly_name: Transcode
+sensor.tautulli:
+  friendly_name: Plex
+  unit_of_measurement: Streams
 sensor.tv_power:
   friendly_name: TV Power
   icon: mdi:television-classic
+sensor.plex:
+  friendly_name: Plex
 
 ### CALENDAR SENSORS ###
 sensor.template_calendar_events:
