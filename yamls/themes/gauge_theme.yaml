@@ -1,4 +1,5 @@
 gauge_theme:
-  red: "#FF0000"
-  yellow: "#FFFF00"
-  green: "#008000"
+  label-badge-red: "#FF0000"
+  label-badge-yellow: "#FFFF00"
+  label-badge-green: "#008000"
+  

@@ -1066,13 +1066,28 @@ views:
                   - sensor.speedtest_ping
               - type: gauge
                 entity: sensor.memory_use_percent
+                theme: gauge_theme
                 name: Pi RAM Usage
+                severity:
+                  green: 0
+                  yellow: 45
+                  red: 85
               - type: gauge
                 entity: sensor.processor_use
+                theme: gauge_theme
                 name: Pi Processor Use
+                severity:
+                  green: 0
+                  yellow: 45
+                  red: 85
               - type: gauge
                 entity: sensor.disk_use_percent
+                theme: gauge_theme
                 name: Pi Disk Usage
+                severity:
+                  green: 0
+                  yellow: 45
+                  red: 85
       - type: vertical-stack
         cards:
         - type: 'custom:button-card'
@@ -1102,10 +1117,20 @@ views:
                   - sensor.pi_zero_last_system_poll
               - type: gauge
                 entity: sensor.pi_zero_cpu_usage
+                theme: gauge_theme
                 name: Pi Zero CPU Usage
+                severity:
+                  green: 0
+                  yellow: 45
+                  red: 85
               - type: gauge
                 entity: sensor.pi_zero_disk_usage
+                theme: gauge_theme
                 name: Pi Zero Disk Usage
+                severity:
+                  green: 0
+                  yellow: 45
+                  red: 85
       - type: vertical-stack
         cards:
           - type: horizontal-stack
