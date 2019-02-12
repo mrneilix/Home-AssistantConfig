@@ -1,9 +1,0 @@
-    host: !secret desktop_ip
-    username: !secret transmission_username
-    password: !secret http_password
-    monitored_conditions:
-      - 'current_status'
-      - 'download_speed'
-      - 'upload_speed'
-      - 'active_torrents'
-      - 'total_torrents'

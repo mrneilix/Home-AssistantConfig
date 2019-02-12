@@ -339,10 +339,7 @@ views:
     icon: 'mdi:home'
     path: default_view
     title: Home
-  - badges:
-      - sensor.transmission_active_torrents
-      - sensor.transmission_down_speed
-      - sensor.transmission_total_torrents
+  - badges: []
     cards:
       - type: vertical-stack
         cards:
