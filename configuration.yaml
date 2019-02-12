@@ -105,4 +105,3 @@ climate: !include yamls/devices/climate.yaml
 mqtt: !include yamls/devices/mqtt.yaml
 cast: !include yamls/devices/cast.yaml
 hdmi_cec: !include yamls/devices/cec.yaml
-transmission: !include yamls/devices/current_downloads.yaml

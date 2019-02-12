@@ -18,11 +18,13 @@ resources:
   - type: js
     url: /local/custom-lovelace/text-element/text-element.js?v=0.0.2
   - type: js
-    url: /local/custom-lovelace/card-modder/card-modder.js?v=b0ddee
+    url: /local/custom-lovelace/card-modder/card-modder.js?v=97f383
   - type: js
     url: /local/custom-lovelace/card-tools/card-tools.js?v=297fcc
   - type: js
     url: /local/custom-lovelace/auto-entries/auto-entries.js?v=0
+  - type: module
+    url: /local/custom-lovelace/canvas-gauge-card/canvas-gauge-card.js?v=0.0.2
 title: Atlanta Condo
 views:
   - badges:
@@ -341,6 +343,15 @@ views:
     title: Home
   - badges: []
     cards:
+      - type: custom:compact-custom-header
+        notification: true
+        menu: true
+        options: true
+        voice: false
+        clock: options
+        clock_format: 12
+        clock_am_pm: true
+        header: true
       - type: vertical-stack
         cards:
         - type: 'custom:button-card'
@@ -421,15 +432,57 @@ views:
               - entity_id: "sensor.tautulli_watching_*"
             exclude:
               - state: "Nothing"
-      - type: entities
-        show_header_toggle: false
-        title: Desktop Disk Space
-        entities:
-          - sensor.desktop_disk_space_c
-          - sensor.desktop_disk_space_e
-          - sensor.desktop_disk_space_f
-          - sensor.desktop_disk_space_i
-          - sensor.desktop_disk_space_j
+      - type: vertical-stack
+        cards:
+        - type: horizontal-stack
+          cards:
+            - type: custom:canvas-gauge-card
+              entity: sensor.desktop_disk_space_e
+              card_height: 62
+              shadow_height: "25%"
+              font_size: 0.9em
+              shadow_bottom: "20"
+              gauge:
+                type: "radial-gauge"
+                width: 110
+                height: 110
+                minValue: 0
+                maxValue: 111
+                startAngle: 40
+                ticksAngle: 280
+                valueBox: true
+                majorTicks: ["0", "11", "22", "33", "44", "55", "66", "77", "88", "99", "111"]
+                minorTicks: 2
+                strokeTicks: true
+                highlights: [{"from": 90, "to": 111, "color": "rgba(200, 50, 50, .75)" }]
+                colorPlate: "#ddd"
+                borders: false
+                needleType: "arrow"
+                needleWidth: 2
+                needleCircleSize: 7
+                needleCircleOuter: true
+                needleCircleInner: false
+                animationDuration: 1500
+                animationRule: "linear"
+            - type: gauge
+              entity: sensor.desktop_disk_space_c
+              max: 111.01
+          - type: horizontal-stack
+            cards:
+              - type: gauge
+                entity: sensor.desktop_disk_space_e
+                max: 7.28
+              - type: gauge
+                entity: sensor.desktop_disk_space_i
+                max: 7.28
+          - type: horizontal-stack
+            cards:
+              - type: gauge
+                entity: sensor.desktop_disk_space_j
+                max: 3.64
+              - type: gauge
+                entity: sensor.desktop_disk_space_f
+                max: 1397
       - type: entity-filter
         state_filter:
           - playing
@@ -496,6 +549,15 @@ views:
     title: Media Players
   - badges: []
     cards:
+      - type: custom:compact-custom-header
+        notification: true
+        menu: true
+        options: true
+        voice: false
+        clock: options
+        clock_format: 12
+        clock_am_pm: true
+        header: true
       - type: picture-elements
         image: /local/pictures/lovelace-pictures/fitbit/fitbit.png
         elements:
@@ -750,6 +812,15 @@ views:
       - device_tracker.parents
       - device_tracker.butters
     cards:
+      - type: custom:compact-custom-header
+        notification: true
+        menu: true
+        options: true
+        voice: false
+        clock: options
+        clock_format: 12
+        clock_am_pm: true
+        header: true
       - type: vertical-stack
         cards:
         - type: 'custom:button-card'
@@ -955,6 +1026,15 @@ views:
     title: General
   - badges: []
     cards:
+      - type: custom:compact-custom-header
+        notification: true
+        menu: true
+        options: true
+        voice: false
+        clock: options
+        clock_format: 12
+        clock_am_pm: true
+        header: true
       - type: vertical-stack
         cards:
         - type: 'custom:button-card'
