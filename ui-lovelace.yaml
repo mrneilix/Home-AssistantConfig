@@ -23,8 +23,6 @@ resources:
     url: /local/custom-lovelace/card-tools/card-tools.js?v=297fcc
   - type: js
     url: /local/custom-lovelace/auto-entries/auto-entries.js?v=0
-  - type: module
-    url: /local/custom-lovelace/canvas-gauge-card/canvas-gauge-card.js?v=0.0.2
 title: Atlanta Condo
 views:
   - badges:
@@ -418,7 +416,7 @@ views:
           graph: line
       - type: custom:card-modder
         style:
-          background-image: url("/local/pictures/lovelace-pictures/plex2.png")
+          background-image: url("/local/pictures/lovelace-pictures/plex.png")
           background-size: 100% 170px
           background-repeat: no-repeat
         card:
