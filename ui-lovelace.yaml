@@ -434,55 +434,50 @@ views:
               - state: "Nothing"
       - type: vertical-stack
         cards:
-        - type: horizontal-stack
-          cards:
-            - type: custom:canvas-gauge-card
-              entity: sensor.desktop_disk_space_e
-              card_height: 62
-              shadow_height: "25%"
-              font_size: 0.9em
-              shadow_bottom: "20"
-              gauge:
-                type: "radial-gauge"
-                width: 110
-                height: 110
-                minValue: 0
-                maxValue: 111
-                startAngle: 40
-                ticksAngle: 280
-                valueBox: true
-                majorTicks: ["0", "11", "22", "33", "44", "55", "66", "77", "88", "99", "111"]
-                minorTicks: 2
-                strokeTicks: true
-                highlights: [{"from": 90, "to": 111, "color": "rgba(200, 50, 50, .75)" }]
-                colorPlate: "#ddd"
-                borders: false
-                needleType: "arrow"
-                needleWidth: 2
-                needleCircleSize: 7
-                needleCircleOuter: true
-                needleCircleInner: false
-                animationDuration: 1500
-                animationRule: "linear"
-            - type: gauge
-              entity: sensor.desktop_disk_space_c
-              max: 111.01
+          - type: gauge
+            entity: sensor.desktop_disk_space_c
+            max: 111
+            theme: gauge_theme
+            severity:
+              green: 0
+              yellow: 80
+              red: 95
           - type: horizontal-stack
             cards:
               - type: gauge
                 entity: sensor.desktop_disk_space_e
                 max: 7.28
+                theme: gauge_theme
+                severity:
+                  green: 0
+                  yellow: 4
+                  red: 6
               - type: gauge
                 entity: sensor.desktop_disk_space_i
                 max: 7.28
+                theme: gauge_theme
+                severity:
+                  green: 0
+                  yellow: 4
+                  red: 6
           - type: horizontal-stack
             cards:
               - type: gauge
                 entity: sensor.desktop_disk_space_j
                 max: 3.64
+                theme: gauge_theme
+                severity:
+                  green: 0
+                  yellow: 2.5
+                  red: 3
               - type: gauge
                 entity: sensor.desktop_disk_space_f
                 max: 1397
+                theme: gauge_theme
+                severity:
+                  green: 0
+                  yellow: 900
+                  red: 1100
       - type: entity-filter
         state_filter:
           - playing
