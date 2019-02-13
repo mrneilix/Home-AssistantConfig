@@ -32,6 +32,8 @@
       - sensor.desktop_amd_radeon_tm_r7_360_series_load_gpu_core
       # Lock
       - sensor.last_lock_code_name
+      # Fitbit
+      - sensor.fitbit_time_active
   exclude:
     entities:
       - device_tracker.kitchen_display
