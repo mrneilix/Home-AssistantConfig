@@ -2,9 +2,7 @@
     resources:
       - type: disk_use_percent
         arg: /
-      - type: memory_free
       - type: memory_use_percent
-      - type: memory_use
       - type: network_in
         arg: eth0
       - type: network_out
@@ -28,6 +26,9 @@
     state_topic: "monitor/monitor/status"
     force_update: true
     json_attributes_topic: "monitor/monitor/status"
+
+  - platform: openhardwaremonitor
+    host: !secret desktop_ip
 
   - platform: version
 

@@ -19,24 +19,6 @@
   exclude:
     entities:
       - device_tracker.kitchen_display
-      - input_boolean.notifications_on
-      - input_boolean.couch_light_script_running
-      - input_boolean.presence_automations
-      - input_boolean.presence_running
-      - input_boolean.restart_complete
-      - input_boolean.weather_dont_renotify
-      - input_boolean.kitchen_lights_running
-      - input_boolean.door_open
-      - input_boolean.show_device_trackers
-      - input_boolean.show_recent_downloads
-      - input_boolean.show_upcoming_downloads
-      - input_boolean.show_weather_summary
-      - input_boolean.show_pi_system_monitor
-      - input_boolean.show_pi_zero_system_monitor
-      - input_boolean.config_updated
-      - input_boolean.weather_notifications
-      - input_boolean.notifications_on
-      - input_boolean.away
       - light.front_kitchen_31
       - light.back_kitchen_30
       - script.thermostat_set_home_morning

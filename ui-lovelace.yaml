@@ -23,6 +23,8 @@ resources:
     url: /local/custom-lovelace/card-tools/card-tools.js?v=297fcc
   - type: js
     url: /local/custom-lovelace/auto-entries/auto-entries.js?v=0
+  - type: module
+    url: /local/custom-lovelace/mini-graph-card-bundle/mini-graph-card-bundle.js?v=0.2.2
 title: Atlanta Condo
 views:
   - badges:
@@ -430,52 +432,6 @@ views:
               - entity_id: "sensor.tautulli_watching_*"
             exclude:
               - state: "Nothing"
-      - type: vertical-stack
-        cards:
-          - type: gauge
-            entity: sensor.desktop_disk_space_c
-            max: 111
-            theme: gauge_theme
-            severity:
-              green: 0
-              yellow: 80
-              red: 95
-          - type: horizontal-stack
-            cards:
-              - type: gauge
-                entity: sensor.desktop_disk_space_e
-                max: 7.28
-                theme: gauge_theme
-                severity:
-                  green: 0
-                  yellow: 4
-                  red: 6
-              - type: gauge
-                entity: sensor.desktop_disk_space_i
-                max: 7.28
-                theme: gauge_theme
-                severity:
-                  green: 0
-                  yellow: 4
-                  red: 6
-          - type: horizontal-stack
-            cards:
-              - type: gauge
-                entity: sensor.desktop_disk_space_j
-                max: 3.64
-                theme: gauge_theme
-                severity:
-                  green: 0
-                  yellow: 2.5
-                  red: 3
-              - type: gauge
-                entity: sensor.desktop_disk_space_f
-                max: 1397
-                theme: gauge_theme
-                severity:
-                  green: 0
-                  yellow: 900
-                  red: 1100
       - type: entity-filter
         state_filter:
           - playing
@@ -663,7 +619,7 @@ views:
             height: 4em
             transform: none
         - type: custom:circle-sensor-card
-          entity: sensor.minutes_very_active
+          entity: sensor.fitbit_time_active
           max: 30
           min: 0
           stroke_width: 15
@@ -1030,107 +986,6 @@ views:
         header: true
       - type: vertical-stack
         cards:
-        - type: 'custom:button-card'
-          action: toggle
-          long_press_action: more_info
-          card_style: ''
-          color: var(--primary-color)
-          color_off: var(--paper-item-icon-color)
-          color_type: icon
-          default_color: var(--primary-text-color)
-          entity: input_boolean.show_pi_system_monitor
-          icon: 'mdi:home-circle'
-          name: Show Pi System Monitor
-        - type: conditional
-          conditions:
-            - entity: input_boolean.show_pi_system_monitor
-              state: 'on'
-          card:
-            type: vertical-stack
-            cards:
-              - type: glance
-                title: Pi System Monitor
-                show_header_toggle: false
-                entities:
-                  - sensor.memory_free
-                  - sensor.memory_use
-                  - sensor.network_downloaded
-                  - sensor.network_uploaded
-                  - sensor.last_boot_date_time
-                  - sensor.since_last_boot_templated
-                  - sensor.ha_uptime
-                  - sensor.speedtest_download
-                  - sensor.speedtest_upload
-                  - sensor.speedtest_ping
-              - type: gauge
-                entity: sensor.memory_use_percent
-                theme: gauge_theme
-                name: Pi RAM Usage
-                severity:
-                  green: 0
-                  yellow: 45
-                  red: 85
-              - type: gauge
-                entity: sensor.processor_use
-                theme: gauge_theme
-                name: Pi Processor Use
-                severity:
-                  green: 0
-                  yellow: 45
-                  red: 85
-              - type: gauge
-                entity: sensor.disk_use_percent
-                theme: gauge_theme
-                name: Pi Disk Usage
-                severity:
-                  green: 0
-                  yellow: 45
-                  red: 85
-      - type: vertical-stack
-        cards:
-        - type: 'custom:button-card'
-          action: toggle
-          long_press_action: more_info
-          card_style: ''
-          color: var(--primary-color)
-          color_off: var(--paper-item-icon-color)
-          color_type: icon
-          default_color: var(--primary-text-color)
-          entity: input_boolean.show_pi_zero_system_monitor
-          icon: 'mdi:numeric-0-box'
-          name: Show Pi Zero System Monitor
-        - type: conditional
-          conditions:
-            - entity: input_boolean.show_pi_zero_system_monitor
-              state: 'on'
-          card:
-            type: vertical-stack
-            cards:
-              - type: glance
-                title: Pi Zero System Monitor
-                show_header_toggle: false
-                entities:
-                  - sensor.pi_zero_cpu_temp
-                  - sensor.pi_zero_uptime
-                  - sensor.pi_zero_last_system_poll
-              - type: gauge
-                entity: sensor.pi_zero_cpu_usage
-                theme: gauge_theme
-                name: Pi Zero CPU Usage
-                severity:
-                  green: 0
-                  yellow: 45
-                  red: 85
-              - type: gauge
-                entity: sensor.pi_zero_disk_usage
-                theme: gauge_theme
-                name: Pi Zero Disk Usage
-                severity:
-                  green: 0
-                  yellow: 45
-                  red: 85
-      - type: vertical-stack
-        cards:
           - type: horizontal-stack
             cards:
               - type: 'custom:button-card'
@@ -1191,6 +1046,208 @@ views:
                 default_color: var(--primary-text-color)
                 icon: 'mdi:numeric-0-box'
                 name: Reboot Pi Zero
+      - type: 'custom:button-card'
+        action: toggle
+        long_press_action: more_info
+        card_style: ''
+        color: var(--primary-color)
+        color_off: var(--paper-item-icon-color)
+        color_type: icon
+        default_color: var(--primary-text-color)
+        entity: input_boolean.show_system_stats
+        icon: 'mdi:desktop-classic'
+        name: System Stats
+      - type: conditional
+        conditions:
+          - entity: input_boolean.show_system_stats
+            state: 'on'
+        card:
+          type: vertical-stack
+          cards:
+            - type: horizontal-stack
+              cards:
+              - type: custom:mini-graph-card
+                name: CPU Usage
+                icon: mdi:chip
+                entities:
+                  - sensor.desktop_amd_a8_6600k_apu_with_radeon_hd_graphics_load_cpu_total
+                  - sensor.pi_zero_cpu_usage
+                  - sensor.processor_use
+              - type: custom:mini-graph-card
+                name: RAM Usage
+                icon: mdi:memory
+                entities:
+                  - sensor.desktop_generic_memory_load_memory
+                  - sensor.memory_use_percent
+                  - sensor.pi_zero_virtual_memory
+            - type: horizontal-stack
+              cards:
+              - type: custom:mini-graph-card
+                name: Speed Test
+                icon: mdi:wan
+                entities:
+                  - sensor.speedtest_download
+                  - sensor.speedtest_upload
+            - type: horizontal-stack
+              cards:
+              - type: entities
+                entities:
+                  - sensor.last_boot_date_time
+                  - sensor.since_last_boot_templated
+                  - sensor.ha_uptime
+                  - type: divider
+                  - sensor.pi_zero_uptime
+                  - sensor.pi_zero_last_system_poll
+                  - type: divider
+                  - sensor.network_downloaded
+                  - sensor.network_uploaded
+                  - sensor.speedtest_ping
+            - type: horizontal-stack
+              cards:
+                - type: gauge
+                  entity: sensor.desktop_disk_space_c
+                  max: 111
+                  theme: gauge_theme
+                  severity:
+                    green: 0
+                    yellow: 80
+                    red: 95
+            - type: horizontal-stack
+              cards:
+                - type: horizontal-stack
+                  cards:
+                    - type: gauge
+                      entity: sensor.desktop_disk_space_e
+                      max: 7.28
+                      theme: gauge_theme
+                      severity:
+                        green: 0
+                        yellow: 4
+                        red: 6
+                    - type: gauge
+                      entity: sensor.desktop_disk_space_i
+                      max: 7.28
+                      theme: gauge_theme
+                      severity:
+                        green: 0
+                        yellow: 4
+                        red: 6
+            - type: horizontal-stack
+              cards:
+                - type: gauge
+                  entity: sensor.desktop_disk_space_j
+                  max: 3.64
+                  theme: gauge_theme
+                  severity:
+                    green: 0
+                    yellow: 2.5
+                    red: 3
+                - type: gauge
+                  entity: sensor.desktop_disk_space_f
+                  max: 1397
+                  theme: gauge_theme
+                  severity:
+                    green: 0
+                    yellow: 900
+                    red: 1100
+            - type: horizontal-stack
+              cards:
+                - type: custom:mini-graph-card
+                  name: Desktop GPU
+                  icon: mdi:gpu
+                  entities:
+                    - sensor.desktop_amd_radeon_tm_r7_360_series_load_gpu_core
+            # type: vertical-stack
+            # cards:
+              # - type: glance
+                # title: Pi System Monitor
+                # show_header_toggle: false
+                # entities:
+                  # - sensor.memory_free
+                  # - sensor.memory_use
+                  # - sensor.network_downloaded
+                  # - sensor.network_uploaded
+                  # - sensor.last_boot_date_time
+                  # - sensor.since_last_boot_templated
+                  # - sensor.ha_uptime
+                  # - sensor.speedtest_download
+                  # - sensor.speedtest_upload
+                  # - sensor.speedtest_ping
+              # - type: gauge
+                # entity: sensor.memory_use_percent
+                # theme: gauge_theme
+                # name: Pi RAM Usage
+                # severity:
+                  # green: 0
+                  # yellow: 45
+                  # red: 85
+              # - type: gauge
+                # entity: sensor.processor_use
+                # theme: gauge_theme
+                # name: Pi Processor Use
+                # severity:
+                  # green: 0
+                  # yellow: 45
+                  # red: 85
+              # - type: gauge
+                # entity: sensor.disk_use_percent
+                # theme: gauge_theme
+                # name: Pi Disk Usage
+                # severity:
+                  # green: 0
+                  # yellow: 45
+                  # red: 85
+      # - type: vertical-stack
+        # cards:
+        # - type: 'custom:button-card'
+          # action: toggle
+          # long_press_action: more_info
+          # card_style: ''
+          # color: var(--primary-color)
+          # color_off: var(--paper-item-icon-color)
+          # color_type: icon
+          # default_color: var(--primary-text-color)
+          # entity: input_boolean.show_pi_zero_system_monitor
+          # icon: 'mdi:numeric-0-box'
+          # name: Show Pi Zero System Monitor
+        # - type: conditional
+          # conditions:
+            # - entity: input_boolean.show_pi_zero_system_monitor
+              # state: 'on'
+          # card:
+            # type: vertical-stack
+            # cards:
+              # - type: glance
+                # title: Pi Zero System Monitor
+                # show_header_toggle: false
+                # entities:
+                  # - sensor.pi_zero_cpu_temp
+                  # - sensor.pi_zero_uptime
+                  # - sensor.pi_zero_last_system_poll
+              # - type: gauge
+                # entity: sensor.pi_zero_cpu_usage
+                # theme: gauge_theme
+                # name: Pi Zero CPU Usage
+                # severity:
+                  # green: 0
+                  # yellow: 45
+                  # red: 85
+              # - type: gauge
+                # entity: sensor.pi_zero_disk_usage
+                # theme: gauge_theme
+                # name: Pi Zero Disk Usage
+                # severity:
+                  # green: 0
+                  # yellow: 45
+                  # red: 85
+              # - type: gauge
+                # entity: sensor.pi_zero_virtual_memory
+                # theme: gauge_theme
+                # name: Pi Zero RAM Usage
+                # severity:
+                  # green: 0
+                  # yellow: 45
+                  # red: 85
       - type: entities
         entities:
           - type: weblink

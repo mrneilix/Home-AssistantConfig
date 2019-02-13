@@ -47,6 +47,7 @@ presence_neil_arrived_home:
         message: "Hello, Neil"
     - delay: 00:00:50
     - service: script.lock_clear_parents_lock_code
+    - service: script.startup_input_booleans
 
 
 presence_arrive_dark_out:

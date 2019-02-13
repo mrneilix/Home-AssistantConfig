@@ -20,16 +20,16 @@
       - sensor.plex
       - sensor.tautulli
       # System
+      - sensor.desktop_amd_a8_6600k_apu_with_radeon_hd_graphics_load_cpu_total
+      - sensor.pi_zero_cpu_usage
       - sensor.processor_use
       - sensor.memory_use_percent
       - sensor.speedtest_download
       - sensor.speedtest_upload
       - sensor.pi_zero_boot_time
-      - sensor.pi_zero_cpu_temp
-      - sensor.pi_zero_cpu_usage
-      - sensor.transmission_active_torrents
-      - sensor.transmission_down_speed
-      - sensor.transmission_total_torrents
+      - sensor.pi_zero_virtual_memory
+      - sensor.desktop_generic_memory_load_memory
+      - sensor.desktop_amd_radeon_tm_r7_360_series_load_gpu_core
       # Lock
       - sensor.last_lock_code_name
   exclude:
@@ -47,8 +47,7 @@
       - input_boolean.show_recent_downloads
       - input_boolean.show_upcoming_downloads
       - input_boolean.show_weather_summary
-      - input_boolean.show_pi_system_monitor
-      - input_boolean.show_pi_zero_system_monitor
+      - input_boolean.show_system_stats
       - input_boolean.config_updated
       - input_boolean.weather_notifications
       - input_boolean.notifications_on

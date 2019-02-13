@@ -255,8 +255,9 @@
       fitbit_time_active:
         friendly_name: Active
         icon_template: mdi:run
-        value_template: '{{ ((states("sensor.minutes_fairly_active") + states("sensor.minutes_very_active"))  | int ) }}'
-
+        value_template: >- 
+          {{ (states('sensor.minutes_fairly_active') | float | int) + (states('sensor.minutes_very_active') | float | int) }}
+          
       time_very_active:
         friendly_name: Very Active
         icon_template: mdi:run

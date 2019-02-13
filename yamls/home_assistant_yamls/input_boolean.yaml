@@ -43,7 +43,5 @@
     initial: off
   show_weather_summary:
     initial: on
-  show_pi_system_monitor:
-    name: Show Pi System Monitor
-  show_pi_zero_system_monitor:
-    name: Show Pi Zero Systat Monitor
+  show_system_stats:
+    name: Show System Stats

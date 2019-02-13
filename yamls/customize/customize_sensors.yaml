@@ -1,13 +1,9 @@
 ### SYSTEM SENSORS ###
 sensor.disk_use_percent:
-  friendly_name: Disk Used
+  friendly_name: HA Disk Usage
 sensor.since_last_boot_templated:
   friendly_name: System Uptime
   icon: mdi:clock
-sensor.memory_use:
-  friendly_name: RAM Used
-sensor.memory_free:
-  friendly_name: RAM Free
 sensor.since_last_boot:
   device_class: timestamp
 sensor.ha_uptime:
@@ -22,9 +18,20 @@ sensor.speedtest_upload:
 sensor.speedtest_ping:
   friendly_name: Ping
   icon: mdi:network
-
-
-  
+sensor.desktop_amd_a8_6600k_apu_with_radeon_hd_graphics_load_cpu_total:
+  friendly_name: Desktop CPU
+sensor.desktop_generic_memory_load_memory:
+  friendly_name: Desktop RAM
+sensor.pi_zero_virtual_memory:
+  friendly_name: Pi Zero RAM
+sensor.pi_zero_cpu_usage:
+  friendly_name: Pi Zero CPU
+sensor.processor_use:
+  friendly_name: HA CPU
+sensor.desktop_amd_radeon_tm_r7_360_series_load_gpu_core:
+  friendly_name: Desktop GPU
+sensor.memory_use_percent:
+  friendly_name: HA RAM
 ### Media Sensors ###
 sensor.tautulli:
   friendly_name: Plex
