@@ -5,7 +5,6 @@
       - device_tracker
       - lock
       - switch
-      - input_boolean
       - proximity
     entities:
       - light.kitchen
@@ -34,26 +33,15 @@
       - sensor.last_lock_code_name
       # Fitbit
       - sensor.fitbit_time_active
+      # Presence
+      - input_boolean.away
+      - input_boolean.presence_automations
+      - input_boolean.config_updated
+      - input_boolean.temp_lock_code_set
+      - input_boolean.parents_lock_code
   exclude:
     entities:
       - device_tracker.kitchen_display
-      - input_boolean.notifications_on
-      - input_boolean.couch_light_script_running
-      - input_boolean.presence_automations
-      - input_boolean.presence_running
-      - input_boolean.restart_complete
-      - input_boolean.weather_dont_renotify
-      - input_boolean.kitchen_lights_running
-      - input_boolean.door_open
-      - input_boolean.show_device_trackers
-      - input_boolean.show_recent_downloads
-      - input_boolean.show_upcoming_downloads
-      - input_boolean.show_weather_summary
-      - input_boolean.show_system_stats
-      - input_boolean.config_updated
-      - input_boolean.weather_notifications
-      - input_boolean.notifications_on
-      - input_boolean.away
       - switch.hdmi_4
       - switch.hdmi_b
       - switch.front_door_sensor_73

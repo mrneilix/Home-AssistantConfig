@@ -98,8 +98,8 @@
     - condition: state
       entity_id: input_boolean.autolock
       state: 'on'
-    - service: lock.lock
-      entity_id: lock.schlage_deadbolt_47
+    - service: script.lock_auto_lock_door
+
 
 - id: lock_auto_lock_door_switch_on
   alias: 'Lock Auto Lock Door Switch On'
@@ -200,7 +200,7 @@
     entity_id: input_boolean.door_open
     to: 'on'
     for:
-      seconds: 10
+      seconds: 60
   condition:
     - condition: state
       entity_id: input_boolean.restart_complete

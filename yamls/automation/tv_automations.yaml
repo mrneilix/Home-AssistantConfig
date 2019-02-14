@@ -94,7 +94,7 @@
       entity_id: input_boolean.restart_complete
       state: 'on'
   action:
-    - service: script.notify_theater_mode
+    - service: script.tv_notify_theater_mode
 
 - id: tv_on_notify_theater_mode_selected
   alias: 'TV On Notify Theater Mode Selected'
@@ -108,17 +108,4 @@
       entity_id: input_boolean.restart_complete
       state: 'on'
   action:
-    - service: input_boolean.turn_on
-      data:
-        entity_id: input_boolean.kitchen_lights_running
-    - delay: 00:00:02
-    - service: scene.turn_on
-      entity_id: scene.theater_mode
-    - service: light.turn_on
-      data:
-        entity_id: light.couch
-        rgb_color: [0,0,100]
-    - delay: 00:00:10
-    - service: input_boolean.turn_off
-      data:
-        entity_id: input_boolean.kitchen_lights_running
+    - service: script.tv_turn_on_theater_mode

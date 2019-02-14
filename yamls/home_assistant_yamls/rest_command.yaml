@@ -1,6 +1,3 @@
-  set_lock_code:
-    url: !secret set_temp_lock_code
-    method: post
   neil_code_entered:
     method: post
     url: !secret neil_code_entered_url

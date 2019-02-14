@@ -34,3 +34,18 @@ lock_auto_lock_door_off:
     - service: automation.turn_on
       entity_id: group.auto_lock_automations
 
+lock_auto_lock_door:
+  alias: Auto Lock door
+  sequence:
+    - service: lock.lock
+      entity_id: lock.schlage_deadbolt_47
+    - delay: 00:00:30
+    - condition: state
+      entity_id: lock.schlage_deadbolt_47
+      state: 'unlocked'
+    - service: script.lock_auto_lock_door_loop_if_fails
+
+lock_auto_lock_door_loop_if_fails:
+  alias: Auto Lock Door Loop If Fails to Lock
+  sequence:
+    - service: script.lock_auto_lock_door

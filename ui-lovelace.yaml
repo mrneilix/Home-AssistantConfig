@@ -18,13 +18,13 @@ resources:
   - type: js
     url: /local/custom-lovelace/text-element/text-element.js?v=0.0.2
   - type: js
-    url: /local/custom-lovelace/card-modder/card-modder.js?v=97f383
+    url: /local/custom-lovelace/card-modder/card-modder.js?v=8acc2d
   - type: js
     url: /local/custom-lovelace/card-tools/card-tools.js?v=297fcc
   - type: js
     url: /local/custom-lovelace/auto-entries/auto-entries.js?v=0
   - type: module
-    url: /local/custom-lovelace/mini-graph-card-bundle/mini-graph-card-bundle.js?v=0.2.2
+    url: /local/custom-lovelace/mini-graph-card-bundle/mini-graph-card-bundle.js?v=0.2.4
 title: Atlanta Condo
 views:
   - badges:
@@ -1027,7 +1027,7 @@ views:
                   domain: script
                   action: turn_on
                   data:
-                    entity_id: script.system_reboot
+                    entity_id: script.confirm_system_reboot
                 card_style: ''
                 color: var(--primary-color)
                 color_off: var(--paper-item-icon-color)

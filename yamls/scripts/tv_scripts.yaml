@@ -17,3 +17,44 @@ tv_input_playstation:
     - service: hdmi_cec.select_device
       data_template:
         device: '1.0.0.0'
+
+tv_notify_theater_mode:
+  alias: Notify Theater Mode
+  sequence:
+    - service: notify.html5
+      data:
+        message: "Turn on Theater Mode?"
+        data: {
+          renotify: 0,
+          tag: 'tv',
+          icon: '/local/tv.jpg',
+          badge: '/local/television.png',
+          actions: [
+            {
+              action: "theater_mode",
+              title: "Theater Mode"
+            },
+            {
+              action: "dismiss",
+              title: "Dismiss"
+            },
+      ]
+    }
+
+tv_turn_on_theater_mode:
+  alias: Theater Mode Selected
+  sequence:
+    - service: input_boolean.turn_on
+      data:
+        entity_id: input_boolean.kitchen_lights_running
+    - delay: 00:00:02
+    - service: scene.turn_on
+      entity_id: scene.theater_mode
+    - service: light.turn_on
+      data:
+        entity_id: light.couch
+        rgb_color: [0,0,100]
+    - delay: 00:00:10
+    - service: input_boolean.turn_off
+      data:
+        entity_id: input_boolean.kitchen_lights_running

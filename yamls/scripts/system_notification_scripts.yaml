@@ -32,29 +32,6 @@ notify_update_available:
         title: 'New Home Assistant Release'
         message: "Home Assistant  {{ states.updater.updater.state }}  is now available."
 
-notify_theater_mode:
-  alias: Notify Theater Mode
-  sequence:
-    - service: notify.html5
-      data:
-        message: "Turn on Theater Mode?"
-        data: {
-          renotify: 0,
-          tag: 'tv',
-          icon: '/local/tv.jpg',
-          badge: '/local/television.png',
-          actions: [
-            {
-              action: "theater_mode",
-              title: "Theater Mode"
-            },
-            {
-              action: "dismiss",
-              title: "Dismiss"
-            },
-      ]
-    }
-
 notify_lock_battery_low:
   alias: Notify Lock Battery Low
   sequence:

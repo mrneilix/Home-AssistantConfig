@@ -41,21 +41,30 @@ lock_clear_temp_code:
       entity_id: scene.clear_temp_code
 
 lock_set_temp_lock_code:
-  alias: Set Temporary Lock Code
+  alias: Lock Set Temp Lock Code
   sequence:
-    - service: rest_command.set_lock_code
+    - service: mqtt.publish
       data_template:
-        templockcode: "{{ states.input_text.lock_code_temp.state }}"
+        topic: "Vera/Events/SetTempLockCode"
+        payload_template: "{{ states.input_text.lock_code_temp.state }}"
     - delay: 00:00:10
     - service: input_text.set_value
       data:
         entity_id: input_text.lock_code_temp
         value: 'Code'
-    - service: scene.turn_on
-      entity_id: scene.check_lock_codes
-    - service: input_boolean.turn_on
-      data:
-        entity_id: input_boolean.temp_lock_code_set
+    - delay: 00:00:60
+    - condition: state
+      entity_id: input_boolean.temp_lock_code_set
+      state: 'off'
+    - service: notify.html5
+      data_template:
+        message: "Temporary Lock Code Did Not Update"
+        title: "Temporary Lock Code Not On"
+        data:
+          tag: 'lock_not_updated'
+          renotify: 0
+          icon: '/local/lock.jpg'
+          badge: '/local/lock-badge.png'
 
 lock_clear_parents_lock_code:
   alias: Lock Clear Parents Lock Code

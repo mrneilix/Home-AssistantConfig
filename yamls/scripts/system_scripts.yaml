@@ -90,6 +90,29 @@ reboot_pi_zero:
   sequence:
     - service: shell_command.reboot_pi_zero
 
+confirm_system_reboot:
+  alias: Confirm System Reboot
+  sequence:
+    - service: notify.html5
+      data:
+        message: "Are you sure you want to reboot?"
+        data: {
+          renotify: 0,
+          tag: 'reboot',
+          icon: '/local/pictures/restart-ha.png',
+          badge: '/local/pictures/restart-ha.png',
+          actions: [
+            {
+              action: "confirm_system_reboot",
+              title: "Yes"
+            },
+            {
+              action: "dismiss",
+              title: "Dismiss"
+            },
+      ]
+    }
+
 system_reboot:
   alias: Reboot System
   sequence:

@@ -90,7 +90,7 @@ thermostat_set_temp_only_butters_home:
     - delay: 00:00:05
 
 thermostat_set_operation_mode:
-  alias: Thermostat Temp Not Morning
+  alias: Thermostat Set Operation Mode
   sequence:
     - service: climate.set_operation_mode
       entity_id: climate.thermostat
