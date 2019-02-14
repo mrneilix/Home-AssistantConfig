@@ -13,6 +13,12 @@
       - full_title
       - friendly_name
 
+  - platform: qbittorrent
+    url: !secret qbittorrent_ip
+    name: "downloading"
+    username: !secret qbittorrent_username
+    password: !secret http_password
+
   - platform: sonarr
     api_key: !secret sonarr_api
     host: !secret desktop_ip
@@ -146,3 +152,13 @@
               {{ used }}
             {% endif %}
           {% endfor %}
+### Sample for my Tautulli Sensors by Username
+  # tautulli_watching_me:
+    # icon_template: mdi:plex
+    # friendly_name: "I am Watching"
+    # value_template: >
+      # {% if state_attr('sensor.tautulli', 'USERNAME') ['full_title'] | string == "" %}
+        # Nothing
+      # {% else %}
+        # {{ state_attr('sensor.tautulli', 'USERNAME') ['full_title'] }}
+      # {% endif %}
