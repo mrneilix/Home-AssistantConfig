@@ -1,3 +1,4 @@
+  mode: storage
   track:
     - components
     - python_scripts

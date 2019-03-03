@@ -13,7 +13,7 @@ homeassistant:
 
 frontend: !include yamls/home_assistant_yamls/frontend.yaml
 
-custom_updater: !include yamls/home_assistant_yamls/custom_updater.yaml
+# custom_updater: !include yamls/home_assistant_yamls/custom_updater.yaml
 
 config:
 
@@ -69,8 +69,10 @@ weather:
   - platform: darksky
     mode: daily
     api_key: !secret darksky_api_key
-    update_interval:
-      minutes: 30
+
+speedtestdotnet:
+  scan_interval:
+    minutes: 15
 
 # Include Folders
 automation: !include_dir_merge_list yamls/automation
@@ -105,3 +107,4 @@ climate: !include yamls/devices/climate.yaml
 mqtt: !include yamls/devices/mqtt.yaml
 cast: !include yamls/devices/cast.yaml
 hdmi_cec: !include yamls/devices/cec.yaml
+googlehome: !include yamls/devices/googlehome.yaml

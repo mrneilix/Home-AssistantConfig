@@ -1,0 +1,4 @@
+  devices:
+    host: !secret google_home_ip
+    track_alarms: true
+    rssi_threshold: -100

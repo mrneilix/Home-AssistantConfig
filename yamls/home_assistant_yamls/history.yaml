@@ -25,6 +25,7 @@
       - sensor.memory_use_percent
       - sensor.speedtest_download
       - sensor.speedtest_upload
+      - sensor.speedtest_ping
       - sensor.pi_zero_boot_time
       - sensor.pi_zero_virtual_memory
       - sensor.desktop_generic_memory_load_memory
