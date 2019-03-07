@@ -26,6 +26,10 @@
       aliases:
         - Door
         - Door Lock
+        - Unlock the Door
+        - Unlock the Front Door
+        - Door unlock
+        - front door unlock
     light.bed:
       room: Bedroom
       expose: true
@@ -73,15 +77,6 @@
         - Autolock
         - Door Auto lock
         - Front Door Auto lock
-    script.lock_unlock_door:
-      name: Unlock the Door
-      room: Entryway
-      expose: true
-      aliases:
-        - Unlock the Door
-        - Unlock the Front Door
-        - Door unlock
-        - front door unlock
     script.presence_leave:
       name: Leave
       room: Home
