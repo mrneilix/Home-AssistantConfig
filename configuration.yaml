@@ -6,18 +6,17 @@ homeassistant:
   unit_system: imperial
   time_zone: America/New_York
   customize: !include yamls/home_assistant_yamls/customize.yaml
-  customize_glob: !include yamls/home_assistant_yamls/customize_glob.yaml
   whitelist_external_dirs:
     - /config/
     - /
   auth_providers:
-   - type: homeassistant
-   - type: trusted_networks
-     trusted_networks:
-       - 127.0.0.1
-       - !secret trusted_network
-       - 172.30.32.0/24
-   - type: legacy_api_password
+    - type: homeassistant
+    - type: trusted_networks
+      trusted_networks:
+        - 127.0.0.1
+        - !secret trusted_network
+        - 172.30.32.0/24
+    - type: legacy_api_password
 frontend: !include yamls/home_assistant_yamls/frontend.yaml
 
 custom_updater:
