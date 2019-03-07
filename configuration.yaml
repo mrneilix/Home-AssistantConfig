@@ -5,7 +5,7 @@ homeassistant:
   elevation: 363
   unit_system: imperial
   time_zone: America/New_York
-  customize: !include_dir_merge_named yamls/customize
+  customize: !include yamls/home_assistant_yamls/customize.yaml
   customize_glob: !include yamls/home_assistant_yamls/customize_glob.yaml
   whitelist_external_dirs:
     - /config/
@@ -13,7 +13,7 @@ homeassistant:
 
 frontend: !include yamls/home_assistant_yamls/frontend.yaml
 
-# custom_updater: !include yamls/home_assistant_yamls/custom_updater.yaml
+custom_updater:
 
 config:
 
@@ -81,6 +81,7 @@ sensor: !include_dir_merge_list yamls/sensors
 
 # Include HA Yamls
 input_number: !include yamls/home_assistant_yamls/input_numbers.yaml
+input_select: !include yamls/home_assistant_yamls/input_select.yaml
 notify: !include yamls/home_assistant_yamls/notify.yaml
 binary_sensor: !include yamls/home_assistant_yamls/binary_sensors.yaml
 recorder: !include yamls/home_assistant_yamls/recorder.yaml

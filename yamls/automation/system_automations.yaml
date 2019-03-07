@@ -118,8 +118,6 @@
     - platform: state
       entity_id: sensor.automation
     - platform: state
-      entity_id: sensor.customize
-    - platform: state
       entity_id: sensor.devices
     - platform: state
       entity_id: sensor.home_assistant_yamls

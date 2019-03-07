@@ -5,3 +5,15 @@
       accept: 'application/json'
     content_type: 'application/json'
     payload: !secret neil_code_entered_payload
+  google_home_clear_alarm:
+    method: post
+    url: !secret clear_google_home_alarm_url
+    headers:
+      Content-Type: application/json
+    payload: '{"ids": ["{{ states.sensor.Kitchen_Display_Alarm_ID.state | replace("/", "\/") }}"]}'
+  google_home_clear_timer:
+    method: post
+    url: !secret clear_google_home_alarm_url
+    headers:
+      Content-Type: application/json
+    payload: '{"ids": ["{{ states.sensor.Kitchen_Display_Timer_ID.state | replace("/", "\/") }}"]}'

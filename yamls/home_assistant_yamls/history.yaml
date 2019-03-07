@@ -26,10 +26,11 @@
       - sensor.speedtest_download
       - sensor.speedtest_upload
       - sensor.speedtest_ping
-      - sensor.pi_zero_boot_time
       - sensor.pi_zero_virtual_memory
       - sensor.desktop_generic_memory_load_memory
       - sensor.desktop_amd_radeon_tm_r7_360_series_load_gpu_core
+      - sensor.kitchen_display_time_remaining_alarm
+      - sensor.kitchen_display_time_remaining_timer
       # Lock
       - sensor.last_lock_code_name
       # Fitbit

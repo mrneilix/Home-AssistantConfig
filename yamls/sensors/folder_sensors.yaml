@@ -9,7 +9,5 @@
   - platform: folder
     folder: /config/yamls/home_assistant_yamls
   - platform: folder
-    folder: /config/yamls/customize
-  - platform: folder
     folder: /config
     filter: '*.yaml'

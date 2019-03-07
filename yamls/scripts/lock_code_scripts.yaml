@@ -18,7 +18,7 @@ lock_code_entered_not_family:
 lock_guest_code_entered:
   alias: Lock Guest Code Entered
   sequence:
-    - service: script.arrive
+    - service: script.presence_someone_arrived
     - condition: state
       entity_id: input_boolean.notifications_on
       state: 'on'
@@ -27,10 +27,29 @@ lock_guest_code_entered:
 lock_temp_code_entered:
   alias: Lock Temp Code Entered
   sequence:
-    - service: script.arrive
-    - condition: state
-      entity_id: input_boolean.notifications_on
-      state: 'on'
+    - service: input_boolean.turn_on
+      data:
+        entity_id: input_boolean.presence_running
+    - service: lock.unlock
+      entity_id: lock.schlage_deadbolt_47
+    - service: switch.turn_on
+      entity_id: switch.space_heater_75
+    - service_template: >
+          {% if is_state('binary_sensor.dark_out', 'on') %}
+            script.presence_arrive_dark_out
+          {% else %}
+            script.do_nothing
+          {% endif %}
+    - delay: 00:01:00
+    - service: input_boolean.turn_off
+      data:
+        entity_id: input_boolean.presence_running
+    - service_template: >
+          {% if is_state("input_select.temp_code_single_use", "Yes") %}
+            script.lock_clear_temp_code
+          {% else %}
+            script.do_nothing
+          {% endif %}
     - service: script.notify_temp_code_entered
 
 lock_clear_temp_code:
@@ -39,6 +58,10 @@ lock_clear_temp_code:
     - delay: 00:00:10
     - service: scene.turn_on
       entity_id: scene.clear_temp_code
+    - service: input_select.select_option
+      data:
+        entity_id: input_select.temp_code_single_use
+        option: "Yes"
 
 lock_set_temp_lock_code:
   alias: Lock Set Temp Lock Code

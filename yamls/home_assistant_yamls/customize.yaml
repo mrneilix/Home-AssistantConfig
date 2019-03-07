@@ -1,23 +1,33 @@
+### MEDIA PLAYERS ###
+media_player.kitchen_display:
+  friendly_name: Google Home Hub
+media_player.living_room_tv:
+  friendly_name: Chromecast
+
+### SCENES ###
+scene.theater_mode:
+  icon: mdi:movie
+  friendly_name: Theater Mode
+
+### INPUT NUMBERS ###
+input_number.couch_r:
+  entity_picture: /local/pictures/couch_red.jpg
+input_number.couch_g:
+  entity_picture: /local/pictures/couch_green.jpg
+input_number.couch_b:
+  entity_picture: /local/pictures/couch_blue.jpg
+
 ### SYSTEM SENSORS ###
 sensor.disk_use_percent:
   friendly_name: HA Disk Usage
-sensor.since_last_boot_templated:
-  friendly_name: System Uptime
-  icon: mdi:clock
 sensor.since_last_boot:
   device_class: timestamp
-sensor.ha_uptime:
-  friendly_name: Home Assistant Uptime
-  icon: mdi:clock
 sensor.speedtest_download:
   friendly_name: Download Speed
-  icon: mdi:download-network
 sensor.speedtest_upload:
   friendly_name: Upload Speed
-  icon: mdi:upload-network
 sensor.speedtest_ping:
   friendly_name: Ping
-  icon: mdi:network
 sensor.desktop_amd_a8_6600k_apu_with_radeon_hd_graphics_load_cpu_total:
   friendly_name: Desktop CPU
 sensor.desktop_generic_memory_load_memory:
@@ -32,29 +42,13 @@ sensor.desktop_amd_radeon_tm_r7_360_series_load_gpu_core:
   friendly_name: Desktop GPU
 sensor.memory_use_percent:
   friendly_name: HA RAM
+
 ### Media Sensors ###
 sensor.tautulli:
   friendly_name: Plex
   unit_of_measurement: Streams
-sensor.tv_power:
-  friendly_name: TV Power
-  icon: mdi:television-classic
 sensor.plex:
   friendly_name: Plex
-
-### CALENDAR SENSORS ###
-sensor.template_calendar_events:
-  friendly_name: Events
-  icon: mdi:calendar
-sensor.template_calendar_family_birthdays:
-  friendly_name: "Family's Birthdays"
-  icon: mdi:home-heart
-sensor.template_calendar_friend_birthdays:
-  friendly_name: "Friend's Birthdays"
-  icon: mdi:cake
-sensor.template_calendar_facebook_events:
-  friendly_name: Facebook Events
-  icon: mdi:facebook
 
 ### WEATHER SENSORS ###
 sensor.allergy_index_today_2:
@@ -99,13 +93,3 @@ sensor.dark_sky_summary:
   friendly_name: Current Weather
 sensor.dark_sky_moon_phase_0:
   friendly_name: Moon Phase
-
-### LOCK SENSORS ###
-sensor.last_lock_code_used:
-  friendly_name: Last Lock Code Used
-sensor.lock_battery_level:
-  friendly_name: Lock Battery Level
-  icon: mdi:battery
-### BINARY SENSORS ###
-binary_sensor.anyone_home:
-  friendly_name: Anyone Home

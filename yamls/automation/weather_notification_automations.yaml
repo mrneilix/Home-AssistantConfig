@@ -12,9 +12,6 @@
       to: 'Snow'
   condition:
     - condition: state
-      entity_id: input_boolean.notifications_on
-      state: 'on'
-    - condition: state
       entity_id: input_boolean.weather_notifications
       state: 'on'
     - condition: state
@@ -46,9 +43,6 @@
         hours: 1
   condition:
     - condition: state
-      entity_id: input_boolean.notifications_on
-      state: 'on'
-    - condition: state
       entity_id: input_boolean.weather_notifications
       state: 'on'
     - condition: state
@@ -74,4 +68,4 @@
   action:
     - service: input_boolean.turn_off
       data:
-        entity_id: input_boolean.weather_dont_renotify
+        entity_id: input_boolean.weather_notifications

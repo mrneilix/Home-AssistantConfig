@@ -58,7 +58,6 @@
 
   - platform: template
     sensors:
-
       sonarr_upcoming_list:
         friendly_name: Upcoming Episodes
         icon_template: mdi:television
@@ -152,6 +151,7 @@
               {{ used }}
             {% endif %}
           {% endfor %}
+
 ### Sample for my Tautulli Sensors by Username
   # tautulli_watching_me:
     # icon_template: mdi:plex

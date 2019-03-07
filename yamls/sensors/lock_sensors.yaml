@@ -38,3 +38,5 @@
       lock_battery_level:
         value_template: "{{ state_attr('lock.schlage_deadbolt_47', 'battery_level') }}"
         unit_of_measurement: '%'
+        friendly_name: Lock Battery Level
+        icon_template: mdi:battery

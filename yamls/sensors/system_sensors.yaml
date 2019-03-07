@@ -12,17 +12,9 @@
   - platform: uptime
     name: uptime
     unit_of_measurement: minutes
-  # - platform: speedtest
-    # monitored_conditions:
-      # - ping
-      # - download
-      # - upload
-    # minute:
-      # - 0
-      # - 15
-      # - 30
-      # - 45
+
   - platform: mqtt
+    name: Monitor Status
     state_topic: "monitor/monitor/status"
     force_update: true
     json_attributes_topic: "monitor/monitor/status"
@@ -31,6 +23,11 @@
     host: !secret desktop_ip
 
   - platform: version
+
+  - platform: time_date
+    display_options:
+      - 'time'
+      - 'beat'
 
   - platform: rest
     resource: https://pypi.python.org/pypi/homeassistant/json
@@ -42,7 +39,9 @@
     sensors:
 ## Uptime Templated ####
       since_last_boot_templated:
+        friendly_name: System Uptime
         entity_id: sensor.uptime
+        icon_template: mdi:clock
         value_template: >-
             {% set time = ((as_timestamp(now()) - as_timestamp(states.sensor.last_boot.state)) )| int %}
             {% set minutes = ((time % 3600) / 60) | int %}
@@ -72,6 +71,7 @@
       ha_uptime:
         friendly_name: Home Assistant Uptime
         entity_id: sensor.uptime
+        icon_template: mdi:clock
         value_template: >-
           {% if states.sensor.uptime.state is defined %}
           {% set time = states.sensor.uptime.state | int %}

@@ -9,14 +9,6 @@
       interval_seconds: 2
       hosts:
         neil_wifi: !secret my_phone_wifi
-    # - platform: googlehome
-      # host: !secret google_home_ip
-      # rssi_threshold: -100
-      # interval_seconds: 10
-      # consider_home: 30
-      # new_device_defaults:
-        # track_new_devices: false
-        # hide_if_away: true
     - platform: tile
       username: !secret email
       password: !secret tile_password
@@ -41,7 +33,6 @@
       entity_id:
         - device_tracker.tile_ba7ceb56d53379ac
         - binary_sensor.butters_tile
-        - device_tracker.butters_tile_google_home
     - platform: composite
       name: parents
       entity_id:

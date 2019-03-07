@@ -35,13 +35,17 @@
     initial: off
   show_device_trackers:
     name: Show Device Trackers
+    initial: off
   show_upcoming_downloads:
     name: Show Upcoming Downloads
+    initial: off
   show_recent_downloads:
     name: Show Recent Downloads
+    initial: off
   door_open:
     initial: off
   show_weather_summary:
     initial: on
   show_system_stats:
     name: Show System Stats
+    initial: off
