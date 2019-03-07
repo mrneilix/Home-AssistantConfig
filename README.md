@@ -27,6 +27,20 @@ System Monitor View
 System Monitor View With All Expanded
 ![System View](Screenshots/system_view_collapsed.png)
 
+## Weblinks:
+Router
+![Router](Screenshots/weblink-router.png)
+Vera
+![Vera](Screenshots/weblink-vera.png)
+QBittorrent
+![QBittorrent](Screenshots/weblink-qbittorrent.png)
+MQTT
+![MQTT](Screenshots/weblink-mqtt.png)
+Sonarr
+![Sonarr](Screenshots/weblink-tv.png)
+Radarr
+![MQTT](Screenshots/weblink-movies.png)
+
 ## Custom Components:
 
 Monitor on my Pi Zero: https://github.com/andrewjfreyer/monitor/blob/master/monitor.sh
@@ -55,6 +69,18 @@ Compact Custom Header: https://github.com/maykar/custom-lovelace/tree/master/com
 Tracker Card: https://github.com/custom-cards/tracker-card
 
 Animated Weather Card: https://github.com/bramkragten/custom-ui/tree/master/weather-card
+
+Circle Sensor Card (for FitBit): https://github.com/custom-cards/circle-sensor-card
+
+Card Modder (to updated the background image of a couple cards): https://github.com/thomasloven/lovelace-card-modder
+
+Card Tools: https://github.com/thomasloven/lovelace-card-tools
+
+External Weblink (to allow for the sensor value to show up with the weblinks): https://github.com/custom-cards/ext-weblink
+
+Popup Card (I found this to be far more useful than I imagined initially, but click on an entity and see whatever you want): https://github.com/thomasloven/lovelace-popup-card
+
+Text Element (for when you use a markup on a picture element): https://github.com/custom-cards/text-element
 
 
 ## Hardware:

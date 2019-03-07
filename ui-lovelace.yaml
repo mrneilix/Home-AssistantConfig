@@ -1208,12 +1208,12 @@ views:
             icon: mdi:download
             entity: sensor.downloading_status
           - type: custom:ext-weblink
-            name: Sonarr
+            name: TV
             url: !secret sonarr_weblink
             icon: mdi:television-classic
             entity: sensor.sonarr_upcoming
           - type: custom:ext-weblink
-            name: Radarr
+            name: Movies
             url: !secret radarr_weblink
             icon: mdi:filmstrip
             entity: sensor.radarr_upcoming
