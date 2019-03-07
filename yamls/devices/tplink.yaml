@@ -1,0 +1,5 @@
+  discovery: true
+  switch:
+    - host: !secret lamp_ip
+    - host: !secret bathroom_light_ip
+    - host: !secret bathroom_fan_ip

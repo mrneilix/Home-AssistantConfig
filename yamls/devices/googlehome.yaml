@@ -1,4 +1,5 @@
   devices:
     - host: !secret google_home_ip
       track_alarms: true
+      track_devices: false
       device_types: 1

@@ -21,9 +21,9 @@ try:
         ATTRIBUTION as DSS_ATTRIBUTION)
 except ImportError:
     from homeassistant.components.sensor.darksky import (
-        CONF_ATTRIBUTION as DSS_ATTRIBUTION)
+        ATTRIBUTION as DSS_ATTRIBUTION)
 from homeassistant.components.sensor.yr import (
-    CONF_ATTRIBUTION as YRS_ATTRIBUTION)
+    ATTRIBUTION as YRS_ATTRIBUTION)
 from homeassistant.components.weather.darksky import (
     ATTRIBUTION as DSW_ATTRIBUTION, MAP_CONDITION as DSW_MAP_CONDITION)
 from homeassistant.const import (

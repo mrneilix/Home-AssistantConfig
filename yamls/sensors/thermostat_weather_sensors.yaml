@@ -27,13 +27,10 @@
       - precip_intensity_max
       - moon_phase
 
-  - name: Illuminance
-    platform: illuminance
-    # api_key: !secret wu_api_key
-    # query: !secret wu_pws
-    # scan_interval:
-      # minutes: 5
-    entity_id: sensor.dark_sky_icon
+  - platform: yr
+
+  - platform: illuminance
+    entity_id: sensor.yr_symbol
 
   - platform: pollen
     zip_code: "30308"

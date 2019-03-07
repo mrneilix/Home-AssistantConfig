@@ -1,12 +1,3 @@
-  - platform: tplink
-    host: !secret lamp_ip
-    name: lamp
-  - platform: tplink
-    host: !secret bathroom_light_ip
-    name: bathroom_light
-  - platform: tplink
-    host: !secret bathroom_fan_ip
-    name: bathroom_fan
   - platform: template
     switches:
       front_door_lock:

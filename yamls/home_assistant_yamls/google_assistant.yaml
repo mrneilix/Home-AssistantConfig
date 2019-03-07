@@ -1,4 +1,5 @@
   project_id: !secret gactions_project_id
+  allow_unlock: true
   api_key: !secret gactions_homegraph_api_key
   expose_by_default: false
   exposed_domains:
@@ -20,6 +21,11 @@
         - Couch
         - Couch Light
         - Couch Lights
+    lock.schlage_deadbolt_47:
+      expose: true
+      aliases:
+        - Door
+        - Door Lock
     light.bed:
       room: Bedroom
       expose: true
