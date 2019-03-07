@@ -33,9 +33,6 @@
     name: Config Updated
   kitchen_lights_running:
     initial: off
-  show_device_trackers:
-    name: Show Device Trackers
-    initial: off
   show_upcoming_downloads:
     name: Show Upcoming Downloads
     initial: off

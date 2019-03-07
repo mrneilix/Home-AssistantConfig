@@ -34,7 +34,7 @@
     entity_id: input_boolean.door_open
     to: 'on'
     for:
-      seconds: 10
+      seconds: 20
   condition:
     - condition: state
       entity_id: input_boolean.presence_automations
@@ -65,9 +65,6 @@
     - condition: state
       entity_id: binary_sensor.anyone_home
       state: 'off'
-    - condition: state
-      entity_id: lock.schlage_deadbolt_47
-      state: 'unlocked'
   action:
     - service: script.lock_code_entered_not_family
 
@@ -85,7 +82,7 @@
       entity_id: input_boolean.door_open
       to: 'on'
       for:
-        seconds: 10
+        seconds: 20
   condition:
     - condition: state
       entity_id: input_boolean.autolock
@@ -209,6 +206,4 @@
     - service: scene.turn_on
       entity_id: scene.poll_front_door_when_opened
     - delay: 00:00:30
-    - service: input_boolean.turn_off
-      data:
-        entity_id: input_boolean.door_open
+    - service: script.lock_update_door_open_boolean

@@ -972,39 +972,19 @@ views:
                 entity: input_boolean.temp_lock_code_set
                 icon: 'mdi:lock'
                 name: Temp Code
-      - type: vertical-stack
-        cards:
-        - type: 'custom:button-card'
-          action: toggle
-          long_press_action: more_info
-          card_style: ''
-          color: var(--primary-color)
-          color_off: var(--paper-item-icon-color)
-          color_type: icon
-          default_color: var(--primary-text-color)
-          entity: input_boolean.show_device_trackers
-          icon: 'mdi:map-marker'
-          name: Show Map
-        - type: conditional
-          conditions:
-            - entity: input_boolean.show_device_trackers
-              state: 'on'
-          card:
-            type: vertical-stack
-            cards:
-              - type: map
-                geo_location_sources:
-                  - nsw_rural_fire_service_feed
-                entities:
-                  - zone.home
-                  - zone.dipan
-                  - zone.parents
-                  - zone.gina
-                  - zone.kiel
-                  - device_tracker.tile_ba7ceb56d53379ac
-                  - device_tracker.neil_pixel_gps
-                  - device_tracker.tile_p_7231d50c4a0512da2532d71db7a524f9
-                  - device_tracker.neil_pixel_tasker
+      - type: map
+        geo_location_sources:
+          - nsw_rural_fire_service_feed
+        entities:
+          - zone.home
+          - zone.dipan
+          - zone.parents
+          - zone.gina
+          - zone.kiel
+          - device_tracker.tile_ba7ceb56d53379ac
+          - device_tracker.neil_pixel_gps
+          - device_tracker.tile_p_7231d50c4a0512da2532d71db7a524f9
+          - device_tracker.neil_pixel_tasker
     icon: 'mdi:calendar-today'
     path: weather_and_calendar
     title: General

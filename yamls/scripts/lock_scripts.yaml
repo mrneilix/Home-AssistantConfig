@@ -13,6 +13,11 @@ lock_auto_lock_door_on:
         entity_id: input_boolean.autolock
     - service: lock.lock
       entity_id: lock.schlage_deadbolt_47
+    - delay: 00:00:10
+    - condition: state
+      entity_id: lock.schlage_deadbolt_47
+      state: 'locked'
+    - service: script.lock_update_door_open_boolean
 
 lock_auto_lock_door_off:
   alias: Turn off Door Auto Lock
@@ -39,13 +44,22 @@ lock_auto_lock_door:
   sequence:
     - service: lock.lock
       entity_id: lock.schlage_deadbolt_47
-    - delay: 00:00:30
-    - condition: state
-      entity_id: lock.schlage_deadbolt_47
-      state: 'unlocked'
-    - service: script.lock_auto_lock_door_loop_if_fails
+    - delay: 00:00:15
+    - service_template: >
+          {% if is_state('lock.schlage_deadbolt_47', 'locked') %}
+            script.lock_update_door_open_boolean
+          {% else %}
+            script.lock_auto_lock_door_loop_if_fails
+          {% endif %}
 
 lock_auto_lock_door_loop_if_fails:
   alias: Auto Lock Door Loop If Fails to Lock
   sequence:
     - service: script.lock_auto_lock_door
+
+lock_update_door_open_boolean:
+  alias: Lock Update Door Open Boolean
+  sequence:
+    - service: input_boolean.turn_off
+      data:
+        entity_id: input_boolean.door_open

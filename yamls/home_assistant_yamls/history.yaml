@@ -41,6 +41,7 @@
       - input_boolean.config_updated
       - input_boolean.temp_lock_code_set
       - input_boolean.parents_lock_code
+      - input_boolean.butters
   exclude:
     entities:
       - device_tracker.kitchen_display

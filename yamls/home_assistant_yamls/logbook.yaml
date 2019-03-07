@@ -32,6 +32,7 @@
       - input_boolean.parents_lock_code
       - input_boolean.away
       - input_boolean.autolock
+      - input_boolean.butters
       # Scripts
       - script.lock_temp_code_entered
       - script.lock_set_temp_lock_code
