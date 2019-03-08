@@ -17,6 +17,9 @@ input_number.couch_g:
 input_number.couch_b:
   entity_picture: /local/pictures/couch_blue.jpg
 
+### SWITCHES ###
+switch.hdmi_0:
+  friendly_name: TV
 ### SYSTEM SENSORS ###
 sensor.disk_use_percent:
   friendly_name: HA Disk Usage
