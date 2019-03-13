@@ -2,4 +2,5 @@ restart_monitor: !secret restart_monitor
 restart_pi_sys_stat: !secret restart_pi_sys_stat
 reboot_pi_zero: !secret reboot_pi_zero
 desktop_screen_off: !secret desktop_screen_off
+desktop_backup_sync: !secret desktop_backup_sync
 git_backup: !secret git_backup

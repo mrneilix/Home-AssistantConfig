@@ -8,15 +8,15 @@ tv_input_chromecast:
   alias: TV Input Chromecast
   sequence:
     - service: hdmi_cec.select_device
-      data_template:
-        device: '3.0.0.0'
+      data:
+        device: Chromecast
 
 tv_input_playstation:
   alias: TV Input PS4
   sequence:
     - service: hdmi_cec.select_device
-      data_template:
-        device: '1.0.0.0'
+      data:
+        device: PS4
 
 tv_notify_theater_mode:
   alias: Notify Theater Mode

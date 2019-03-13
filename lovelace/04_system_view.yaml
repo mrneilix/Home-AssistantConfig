@@ -1,0 +1,219 @@
+title: System
+icon: mdi:desktop-classic
+path: system_monitor
+cards:
+  - !include compact_custom_header.yaml
+  - type: vertical-stack
+    cards:
+      - type: horizontal-stack
+        cards:
+          - type: 'custom:button-card'
+            action: service
+            service:
+              domain: script
+              action: turn_on
+              data:
+                entity_id: script.restart_homeassistant
+            card_style: ''
+            color: var(--primary-color)
+            color_off: var(--paper-item-icon-color)
+            color_type: icon
+            default_color: var(--primary-text-color)
+            icon: 'mdi:home-assistant'
+            name: Restart Home Assistant
+          - type: 'custom:button-card'
+            action: service
+            service:
+              domain: scene
+              action: turn_on
+              data:
+                entity_id: scene.reboot_vera
+            card_style: ''
+            color: var(--primary-color)
+            color_off: var(--paper-item-icon-color)
+            color_type: icon
+            default_color: var(--primary-text-color)
+            icon: 'mdi:spa'
+            name: Reboot Vera
+      - type: horizontal-stack
+        cards:
+          - type: 'custom:button-card'
+            action: service
+            service:
+              domain: script
+              action: turn_on
+              data:
+                entity_id: script.confirm_system_reboot
+            card_style: ''
+            color: var(--primary-color)
+            color_off: var(--paper-item-icon-color)
+            color_type: icon
+            default_color: var(--primary-text-color)
+            icon: 'mdi:power-cycle'
+            name: Reboot System
+          - type: 'custom:button-card'
+            action: service
+            service:
+              domain: script
+              action: turn_on
+              data:
+                entity_id: script.reboot_pi_zero
+            card_style: ''
+            color: var(--primary-color)
+            color_off: var(--paper-item-icon-color)
+            color_type: icon
+            default_color: var(--primary-text-color)
+            icon: 'mdi:numeric-0-box'
+            name: Reboot Pi Zero
+  - type: entities
+    entities:
+      - sensor.last_boot_date_time
+      - sensor.since_last_boot_templated
+      - sensor.ha_uptime
+      - type: divider
+      - sensor.pi_zero_uptime
+      - sensor.pi_zero_last_system_poll
+      - type: divider
+      - sensor.network_downloaded
+      - sensor.network_uploaded
+      - sensor.speedtest_ping
+  - type: 'custom:button-card'
+    action: toggle
+    card_style: ''
+    color: var(--primary-color)
+    color_off: var(--paper-item-icon-color)
+    color_type: icon
+    default_color: var(--primary-text-color)
+    entity: input_boolean.show_system_stats
+    icon: 'mdi:desktop-classic'
+    name: System Stats
+  - type: conditional
+    conditions:
+      - entity: input_boolean.show_system_stats
+        state: 'on'
+    card:
+      type: vertical-stack
+      cards:
+        - type: horizontal-stack
+          cards:
+          - type: custom:mini-graph-card
+            name: CPU Usage
+            icon: mdi:chip
+            entities:
+              - sensor.desktop_amd_a8_6600k_apu_with_radeon_hd_graphics_load_cpu_total
+              - sensor.pi_zero_cpu_usage
+              - sensor.processor_use
+          - type: custom:mini-graph-card
+            name: RAM Usage
+            icon: mdi:memory
+            entities:
+              - sensor.desktop_generic_memory_load_memory
+              - sensor.memory_use_percent
+              - sensor.pi_zero_virtual_memory
+        - type: horizontal-stack
+          cards:
+          - type: custom:mini-graph-card
+            name: Speed Test
+            icon: mdi:wan
+            entities:
+              - sensor.speedtest_download
+              - sensor.speedtest_upload
+  - type: conditional
+    conditions:
+      - entity: input_boolean.show_system_stats
+        state: 'on'
+    card:
+      type: vertical-stack
+      cards:
+        - type: horizontal-stack
+          cards:
+            - type: gauge
+              entity: sensor.desktop_disk_space_c
+              max: 111
+              theme: gauge_theme
+              severity:
+                green: 0
+                yellow: 80
+                red: 95
+        - type: horizontal-stack
+          cards:
+            - type: horizontal-stack
+              cards:
+                - type: gauge
+                  entity: sensor.desktop_disk_space_e
+                  max: 7.28
+                  theme: gauge_theme
+                  severity:
+                    green: 0
+                    yellow: 4
+                    red: 6
+                - type: gauge
+                  entity: sensor.desktop_disk_space_i
+                  max: 7.28
+                  theme: gauge_theme
+                  severity:
+                    green: 0
+                    yellow: 4
+                    red: 6
+        - type: horizontal-stack
+          cards:
+            - type: gauge
+              entity: sensor.desktop_disk_space_j
+              max: 3.64
+              theme: gauge_theme
+              severity:
+                green: 0
+                yellow: 2.5
+                red: 3
+            - type: gauge
+              entity: sensor.desktop_disk_space_f
+              max: 1397
+              theme: gauge_theme
+              severity:
+                green: 0
+                yellow: 900
+                red: 1100
+        - type: horizontal-stack
+          cards:
+            - type: custom:mini-graph-card
+              name: Desktop GPU
+              icon: mdi:gpu
+              entities:
+                - sensor.desktop_amd_radeon_tm_r7_360_series_load_gpu_core
+  - type: entities
+    entities:
+      - type: custom:ext-weblink
+        name: Router
+        url: !secret google_fiber_box_weblink
+        icon: mdi:router-wireless
+        entity: sensor.speedtest_download
+      - type: custom:ext-weblink
+        name: Vera
+        url: !secret vera_weblink
+        icon: mdi:spa
+        entity: binary_sensor.vera_up
+      - type: custom:ext-weblink
+        name: MQTT
+        url: !secret mosquitto_url
+        icon: mdi:bug
+        entity: binary_sensor.mqtt_status
+      - type: custom:ext-weblink
+        name: QBitTorrent
+        url: !secret QBitTorrent_weblink
+        icon: mdi:download
+        entity: sensor.downloading_status
+      - type: custom:ext-weblink
+        name: TV
+        url: !secret sonarr_weblink
+        icon: mdi:television-classic
+        entity: sensor.sonarr_upcoming
+      - type: custom:ext-weblink
+        name: Movies
+        url: !secret radarr_weblink
+        icon: mdi:filmstrip
+        entity: sensor.radarr_upcoming
+  - type: 'custom:tracker-card'
+    trackers:
+      - sensor.custom_card_tracker
+      - sensor.custom_component_tracker
+      - sensor.custom_python_script_tracker

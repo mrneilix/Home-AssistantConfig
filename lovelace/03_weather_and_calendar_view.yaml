@@ -1,0 +1,89 @@
+title: General
+icon: mdi:calendar-today
+path: weather_and_calendar
+badges:
+  - device_tracker.neil
+  - device_tracker.gina
+  - device_tracker.parents
+  - device_tracker.butters
+cards:
+  - !include compact_custom_header.yaml
+  - !include weather_summary_card.yaml
+  - type: vertical-stack
+    cards:
+      - type: conditional
+        conditions:
+          - entity: binary_sensor.show_calendar_events
+            state: 'on'
+        card:
+          type: "custom:calendar-card"
+          name: "Events"
+          showProgressBar: True
+          numberOfDays: 14
+          entities:
+            - calendar.events
+      - type: conditional
+        conditions:
+          - entity: binary_sensor.show_calendar_family_birthdays
+            state: 'on'
+        card:
+          type: "custom:calendar-card"
+          name: "Family Birthdays"
+          showProgressBar: false
+          numberOfDays: 30
+          entities:
+            - calendar.family_birthdays
+      - type: conditional
+        conditions:
+          - entity: binary_sensor.show_calendar_friend_birthdays
+            state: 'on'
+        card:
+          type: "custom:calendar-card"
+          name: "Friend Birthdays"
+          showProgressBar: false
+          numberOfDays: 30
+          entities:
+            - calendar.friend_birthdays
+      - type: conditional
+        conditions:
+          - entity: binary_sensor.show_calendar_facebook
+            state: 'on'
+        card:
+          type: "custom:calendar-card"
+          name: "Facebook Events"
+          showProgressBar: True
+          numberOfDays: 14
+          entities:
+            - calendar.facebook_events
+  - type: horizontal-stack
+    cards:
+      - type: custom:card-modder
+        report_size: 7
+        card:
+          type: glance
+          entities:
+            - sensor.last_lock_code_name
+            - sensor.lock_battery_level
+      - type: 'custom:button-card'
+        action: more_info
+        card_style: ''
+        color: var(--primary-color)
+        color_off: var(--paper-item-icon-color)
+        color_type: icon
+        default_color: var(--primary-text-color)
+        entity: input_boolean.temp_lock_code_set
+        icon: 'mdi:lock'
+        name: Temp Code
+  - type: map
+    geo_location_sources:
+      - nsw_rural_fire_service_feed
+    entities:
+      - zone.home
+      - zone.dipan
+      - zone.parents
+      - zone.gina
+      - zone.kiel
+      - device_tracker.tile_ba7ceb56d53379ac
+      - device_tracker.neil_pixel_gps
+      - device_tracker.tile_p_7231d50c4a0512da2532d71db7a524f9
+      - device_tracker.neil_pixel_tasker

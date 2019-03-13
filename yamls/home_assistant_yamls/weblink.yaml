@@ -4,7 +4,7 @@
     - name: Vera
       url: !secret vera_weblink
     - name: MQTT Web
-      url: !secret mqtt_server_weblink
+      url: !secret mosquitto_url
     - name: QBitTorrent
       url: !secret QBitTorrent_weblink
     - name: Sonarr

@@ -1,0 +1,138 @@
+title: Media Players
+icon: mdi:video
+path: media_players
+cards:
+  - !include compact_custom_header.yaml
+  - type: vertical-stack
+    cards:
+    - type: 'custom:button-card'
+      action: toggle
+      card_style: ''
+      color: var(--primary-color)
+      color_off: var(--paper-item-icon-color)
+      color_type: icon
+      default_color: var(--primary-text-color)
+      entity: switch.hdmi_0
+      icon: 'mdi:television-classic'
+      name: TV
+    - type: conditional
+      conditions:
+        - entity: switch.hdmi_0
+          state: 'on'
+      card:
+        type: horizontal-stack
+        cards:
+          - type: 'custom:button-card'
+            action: service
+            service:
+              domain: script
+              action: turn_on
+              data:
+                entity_id: script.tv_input_chromecast
+            color_type: icon
+            icon: 'mdi:cast'
+            name: Chromecast
+          - type: 'custom:button-card'
+            action: service
+            service:
+              domain: script
+              action: turn_on
+              data:
+                entity_id: script.tv_input_playstation
+            color_type: icon
+            icon: 'mdi:playstation'
+            name: Playstation
+    - type: entities
+      show_header_toggle: false
+      entities:
+        - scene.theater_mode
+        - input_text.gh_speak
+    - entity: media_player.kitchen_display
+      type: media-control
+    - entity: media_player.living_room_tv
+      type: media-control
+  - type: custom:card-modder
+    style:
+      background-image: url("/local/pictures/lovelace-pictures/plex.png")
+      background-size: 100%
+      height: 170px
+    card:
+      type: sensor
+      icon: mdi:plex
+      entity: sensor.tautulli
+      name: Plex History
+      detail: 2
+      graph: line
+  - type: custom:card-modder
+    style:
+      background-image: url("/local/pictures/lovelace-pictures/plex.png")
+      background-size: 100% 170px
+      background-repeat: no-repeat
+    card:
+      type: custom:auto-entities
+      show_empty: false
+      card:
+        type: entities
+        show_header_toggle: false
+      filter:
+        include:
+          - entity_id: "sensor.tautulli_watching_*"
+        exclude:
+          - state: "Nothing"
+  - type: entity-filter
+    state_filter:
+      - playing
+    entities:
+      - media_player.plex_web_chrome
+      - media_player.plex_pixel_2_xl
+      - media_player.plex_pixel_2_xl_2
+      - media_player.plex_plex_web_chrome
+      - media_player.plex_desktop
+      - media_player.tablet_living_room_plex
+      - media_player.plex_galaxy_note8
+    show_empty: false
+  - type: vertical-stack
+    cards:
+    - type: 'custom:button-card'
+      action: toggle
+      card_style: ''
+      color: var(--primary-color)
+      color_off: var(--paper-item-icon-color)
+      color_type: icon
+      default_color: var(--primary-text-color)
+      entity: input_boolean.show_recent_downloads
+      icon: 'mdi:download'
+      name: Show Recent Downloads
+    - type: conditional
+      conditions:
+        - entity: input_boolean.show_recent_downloads
+          state: 'on'
+      card:
+        type: custom:upcoming-media-card
+        entity: sensor.plex_recently_added
+        title: Recently Downloaded
+  - type: vertical-stack
+    cards:
+    - type: 'custom:button-card'
+      action: toggle
+      card_style: ''
+      color: var(--primary-color)
+      color_off: var(--paper-item-icon-color)
+      color_type: icon
+      default_color: var(--primary-text-color)
+      entity: input_boolean.show_upcoming_downloads
+      icon: 'mdi:download-outline'
+      name: Show Upcoming Downloads
+    - type: conditional
+      conditions:
+        - entity: input_boolean.show_upcoming_downloads
+          state: 'on'
+      card:
+        type: horizontal-stack
+        cards:
+          - type: custom:upcoming-media-card
+            entity: sensor.sonarr_upcoming_media
+            title: Upcoming TV
+          - type: custom:upcoming-media-card
+            entity: sensor.radarr_upcoming_media
+            title: Upcoming Movies

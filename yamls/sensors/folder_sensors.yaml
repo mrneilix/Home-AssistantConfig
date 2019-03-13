@@ -11,3 +11,5 @@
   - platform: folder
     folder: /config
     filter: '*.yaml'
+  - platform: folder
+    folder: /config/lovelace

@@ -128,3 +128,43 @@
   action:
     - service: switch.turn_off
       entity_id: group.bathroom
+
+- id: bathroom_lights_on_turn_off_orb
+  alias: 'Bathroom Lights On Turn Off Orb'
+  trigger:
+    platform: state
+    entity_id: switch.bathroom_light
+    to: 'on'
+  condition:
+    - condition: state
+      entity_id: input_boolean.restart_complete
+      state: 'on'
+    - condition: state
+      entity_id: input_boolean.presence_running
+      state: 'off'
+    - condition: state
+      entity_id: binary_sensor.anyone_home
+      state: 'on'
+  action:
+    - service: light.turn_off
+      entity_id: light.bathroom_orb
+
+- id: bathroom_lights_off_turn_on_orb
+  alias: 'Bathroom Lights Off Turn On Orb'
+  trigger:
+    platform: state
+    entity_id: switch.bathroom_light
+    to: 'off'
+  condition:
+    - condition: state
+      entity_id: input_boolean.restart_complete
+      state: 'on'
+    - condition: state
+      entity_id: input_boolean.presence_running
+      state: 'off'
+    - condition: state
+      entity_id: binary_sensor.anyone_home
+      state: 'on'
+  action:
+    - service: light.turn_on
+      entity_id: light.bathroom_orb

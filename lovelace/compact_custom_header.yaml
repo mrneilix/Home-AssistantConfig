@@ -1,0 +1,8 @@
+type: custom:compact-custom-header
+voice: hide
+menu: show
+notifications: show
+options: clock
+clock_format: 12
+clock_am_pm: true
+header: true

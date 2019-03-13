@@ -10,10 +10,10 @@
     title: Tautulli
     icon: mdi:filmstrip
     url: !secret tautulli_url
-  # mqtt:
-    # title: MQTT
-    # icon: mdi:bug
-    # url: !secret mosquitto_url
+  mqtt:
+    title: MQTT
+    icon: mdi:bug
+    url: !secret mosquitto_url
   phlex:
     title: Phlex
     icon: mdi:microphone

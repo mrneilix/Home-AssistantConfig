@@ -14,6 +14,11 @@
       expose: true
       aliases:
         - Kitchen
+    light.bathroom_orb:
+      room: Bathroom
+      expose: true
+      aliases:
+        - Bathroom Orb
     light.couch:
       room: Living Room
       expose: true
@@ -59,7 +64,7 @@
       aliases:
         - Bathroom fan
     switch.lamp:
-      room: Lamp
+      room: Living Room
       expose: true
       aliases:
         - Lamp

@@ -13,6 +13,8 @@ presence_someone_arrived:
       entity_id: switch.yi_power
     - service: switch.turn_on
       entity_id: switch.space_heater_75
+    - service: light.turn_on
+      entity_id: light.bathroom_orb
     - service_template: >
           {% if is_state('binary_sensor.dark_out', 'on') %}
             script.presence_arrive_dark_out
@@ -73,6 +75,8 @@ presence_no_humans_home:
         entity_id: input_boolean.presence_running
     - service: scene.turn_on
       entity_id: scene.rgb_lights_off
+    - service: light.turn_off
+      entity_id: light.bathroom_orb
     - service: script.kitchen_lights_off
     - service: scene.turn_on
       entity_id: scene.leave_switches_off
