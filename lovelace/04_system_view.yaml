@@ -65,6 +65,36 @@ cards:
             default_color: var(--primary-text-color)
             icon: 'mdi:numeric-0-box'
             name: Reboot Pi Zero
+      - type: horizontal-stack
+        cards:
+          - type: 'custom:button-card'
+            action: service
+            service:
+              domain: script
+              action: turn_on
+              data:
+                entity_id: script.system_desktop_display_off
+            card_style: ''
+            color: var(--primary-color)
+            color_off: var(--paper-item-icon-color)
+            color_type: icon
+            default_color: var(--primary-text-color)
+            icon: 'mdi:monitor'
+            name: Monitor Off
+          - type: 'custom:button-card'
+            action: service
+            service:
+              domain: script
+              action: turn_on
+              data:
+                entity_id: script.system_git_backup
+            card_style: ''
+            color: var(--primary-color)
+            color_off: var(--paper-item-icon-color)
+            color_type: icon
+            default_color: var(--primary-text-color)
+            icon: 'mdi:github-circle'
+            name: Git Backup
   - type: entities
     entities:
       - sensor.last_boot_date_time

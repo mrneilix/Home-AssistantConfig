@@ -11,9 +11,9 @@ badges:
   - sensor.dark_sky_apparent_temperature
   - sensor.dark_sky_daytime_high_temperature_0
   - sensor.dark_sky_overnight_low_temperature_0
-  - sensor.forecast_icon
   - sensor.daylight_remaining_hm
   - sensor.illuminance
+  - sensor.last_lock_code_name
 cards:
   - !include compact_custom_header.yaml
   - type: vertical-stack

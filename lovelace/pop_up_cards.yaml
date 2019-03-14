@@ -159,3 +159,35 @@ input_boolean.temp_lock_code_set:
             entity: input_boolean.temp_lock_code_set
             icon: 'mdi:lock'
             name: Temp Code
+sensor.last_lock_code_name:
+  title: Lock Info
+  card:
+    type: vertical-stack
+    cards:
+      - type: history-graph
+        title: Last Lock Code
+        entities:
+          - sensor.last_lock_code_name
+      - type: history-graph
+        title: Lock
+        entities:
+          - lock.schlage_deadbolt_47
+      - type: 'custom:button-card'
+        action: toggle
+        card_style: ''
+        color: var(--primary-color)
+        color_off: var(--paper-item-icon-color)
+        color_type: icon
+        default_color: var(--primary-text-color)
+        entity: switch.front_door_lock
+        icon: mdi:lock
+        name: Lock
+      - type: entities
+        entities:
+          - entity: input_boolean.parents_lock_code
+            secondary_info: last-changed
+            icon: mdi:human-female-boy
+          - entity: input_boolean.temp_lock_code_set
+            secondary_info: last-changed
+            icon: mdi:lock
+          - entity: sensor.lock_battery_level

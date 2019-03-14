@@ -59,34 +59,6 @@
           {% else %}
               Pleasant
           {% endif %}
-      forecast_icon:
-        friendly_name: "Todays Forecast"
-        value_template: >
-          {{states.sensor.dark_sky_daytime_high_temperature_0.state|round(0)}}°F/{{states.sensor.dark_sky_overnight_low_temperature_0.state|round(0)}}°F/{{states.sensor.dark_sky_precip_probability.state|round(0)}}%
-        entity_picture_template: >-
-          {% if is_state("sensor.dark_sky_icon", "clear-day") %}
-            /local/dark_sky/clear-day.png
-          {% elif is_state("sensor.dark_sky_icon", "clear-night") %}
-            /local/dark_sky/clear-night.png
-          {% elif is_state("sensor.dark_sky_icon", "cloudy") %}
-            /local/dark_sky/cloudy.png
-          {% elif is_state("sensor.dark_sky_icon", "rain") %}
-            /local/dark_sky/rain.png    
-          {% elif is_state("sensor.dark_sky_icon", "sleet") %}
-            /local/dark_sky/sleet.png
-          {% elif is_state("sensor.dark_sky_icon", "snow") %}
-            /local/dark_sky/snow.png
-          {% elif is_state("sensor.dark_sky_icon", "wind") %}
-            /local/dark_sky/wind.png
-          {% elif is_state("sensor.dark_sky_icon", "fog") %}
-            /local/dark_sky/fog.png
-          {% elif is_state("sensor.dark_sky_icon", "partly-cloudy-day") %}
-            /local/dark_sky/partly-cloudy-day.png
-          {% elif is_state("sensor.dark_sky_icon", "partly-cloudy-night") %}
-            /local/dark_sky/partly-cloudy-night.png
-          {% else %}
-            error
-          {% endif %}
       precipitation_soon:
         friendly_name: "Precipitation Soon"
         value_template: >-

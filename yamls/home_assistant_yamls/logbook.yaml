@@ -5,6 +5,7 @@
       - switch
       - script
       - automation
+      - lock
     entities:
       # Automations
       # - automation.bathroom_fan_off_after_1_hour

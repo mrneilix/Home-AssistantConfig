@@ -127,6 +127,15 @@ startup_couch_colors:
     - delay: 00:00:02
     - service: script.couch_light_update_all_controls
 
+system_git_backup:
+  alias: Startup Load Couch
+  sequence:
+    - service: shell_command.git_backup
+
+system_desktop_display_off:
+  alias: System Desktop Display Off
+  sequence:
+    - service: shell_command.desktop_screen_off
 do_nothing:
   alias: Do Nothing
   sequence:
