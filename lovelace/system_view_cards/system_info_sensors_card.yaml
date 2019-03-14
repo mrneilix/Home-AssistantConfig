@@ -1,0 +1,14 @@
+type: entities
+title: System Info
+show_header_toggle: false
+entities:
+  - sensor.last_boot_date_time
+  - sensor.since_last_boot_templated
+  - sensor.ha_uptime
+  - type: divider
+  - sensor.pi_zero_uptime
+  - sensor.pi_zero_last_system_poll
+  - type: divider
+  - sensor.network_downloaded
+  - sensor.network_uploaded
+  - sensor.speedtest_ping

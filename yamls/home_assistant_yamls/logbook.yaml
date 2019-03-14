@@ -29,6 +29,10 @@
       # Lock
       - sensor.last_lock_code_used
       - binary_sensor.lock_code_entered
+      - binary_sensor.front_door_sensor_73
+      - binary_sensor.lock_code_entered_gina
+      - binary_sensor.lock_code_entered_neil
+      - binary_sensor.lock_code_entered_parents
       # Input Booleans
       - input_boolean.presence_automations
       - input_boolean.temp_lock_code_set

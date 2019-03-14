@@ -1,0 +1,10 @@
+type: custom:auto-entities
+show_empty: false
+card:
+  type: entities
+  show_header_toggle: false
+filter:
+  include:
+    - entity_id: "sensor.kitchen_display_time_remaining_*"
+  exclude:
+    - state: "Not Set"

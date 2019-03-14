@@ -1,0 +1,46 @@
+type: vertical-stack
+cards:
+  - type: conditional
+    conditions:
+      - entity: binary_sensor.show_calendar_events
+        state: 'on'
+    card:
+      type: "custom:calendar-card"
+      name: "Events"
+      showProgressBar: True
+      numberOfDays: 14
+      entities:
+        - calendar.events
+  - type: conditional
+    conditions:
+      - entity: binary_sensor.show_calendar_family_birthdays
+        state: 'on'
+    card:
+      type: "custom:calendar-card"
+      name: "Family Birthdays"
+      showProgressBar: false
+      numberOfDays: 30
+      entities:
+        - calendar.family_birthdays
+  - type: conditional
+    conditions:
+      - entity: binary_sensor.show_calendar_friend_birthdays
+        state: 'on'
+    card:
+      type: "custom:calendar-card"
+      name: "Friend Birthdays"
+      showProgressBar: false
+      numberOfDays: 30
+      entities:
+        - calendar.friend_birthdays
+  - type: conditional
+    conditions:
+      - entity: binary_sensor.show_calendar_facebook
+        state: 'on'
+    card:
+      type: "custom:calendar-card"
+      name: "Facebook Events"
+      showProgressBar: True
+      numberOfDays: 14
+      entities:
+        - calendar.facebook_events

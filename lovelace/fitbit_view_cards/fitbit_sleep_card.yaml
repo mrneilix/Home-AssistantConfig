@@ -1,0 +1,12 @@
+type: entities
+show_header_toggle: false
+title: Sleep
+entities:
+  - sensor.sleep_efficiency
+  - sensor.sleep_time_asleep
+  - sensor.sleep_time_awake
+  - sensor.sleep_time_to_fall_asleep
+  - sensor.sleep_start_time
+  - sensor.sleep_time_in_bed_hours
+  - sensor.time_after_wakeup
+  - sensor.awakenings_count

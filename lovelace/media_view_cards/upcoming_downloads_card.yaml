@@ -1,0 +1,21 @@
+type: vertical-stack
+cards:
+- type: 'custom:button-card'
+  action: toggle
+  color: var(--primary-color)
+  entity: input_boolean.show_upcoming_downloads
+  icon: attribute
+  name: Show Upcoming Downloads
+- type: conditional
+  conditions:
+    - entity: input_boolean.show_upcoming_downloads
+      state: 'on'
+  card:
+    type: horizontal-stack
+    cards:
+      - type: custom:upcoming-media-card
+        entity: sensor.sonarr_upcoming_media
+        title: Upcoming TV
+      - type: custom:upcoming-media-card
+        entity: sensor.radarr_upcoming_media
+        title: Upcoming Movies

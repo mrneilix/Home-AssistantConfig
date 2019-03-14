@@ -41,7 +41,8 @@
       - input_boolean.config_updated
       - input_boolean.temp_lock_code_set
       - input_boolean.parents_lock_code
-      - input_boolean.butters
+      - input_boolean.butters_home
+      - binary_sensor.front_door_sensor_73
   exclude:
     entities:
       - device_tracker.kitchen_display

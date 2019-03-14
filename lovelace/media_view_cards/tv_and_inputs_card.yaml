@@ -1,0 +1,42 @@
+type: vertical-stack
+cards:
+- type: 'custom:button-card'
+  action: toggle
+  color: var(--primary-color)
+  entity: switch.hdmi_0
+  icon: attribute
+  name: TV
+- type: conditional
+  conditions:
+    - entity: switch.hdmi_0
+      state: 'on'
+  card:
+    type: horizontal-stack
+    cards:
+      - type: 'custom:button-card'
+        action: service
+        service:
+          domain: script
+          action: turn_on
+          data:
+            entity_id: script.tv_input_chromecast
+        icon: 'mdi:cast'
+        name: Chromecast
+      - type: 'custom:button-card'
+        action: service
+        service:
+          domain: script
+          action: turn_on
+          data:
+            entity_id: script.tv_input_playstation
+        icon: 'mdi:playstation'
+        name: Playstation
+- type: entities
+  show_header_toggle: false
+  entities:
+    - scene.theater_mode
+    - input_text.gh_speak
+- entity: media_player.kitchen_display
+  type: media-control
+- entity: media_player.living_room_tv
+  type: media-control

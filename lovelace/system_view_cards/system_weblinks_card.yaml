@@ -1,0 +1,34 @@
+type: entities
+title: Weblinks
+show_header_toggle: false
+entities:
+  - type: custom:ext-weblink
+    name: Router
+    url: !secret google_fiber_box_weblink
+    icon: mdi:router-wireless
+    entity: sensor.speedtest_download
+  - type: custom:ext-weblink
+    name: Vera
+    url: !secret vera_weblink
+    icon: mdi:spa
+    entity: binary_sensor.vera_up
+  - type: custom:ext-weblink
+    name: MQTT
+    url: !secret mosquitto_url
+    icon: mdi:bug
+    entity: binary_sensor.mqtt_status
+  - type: custom:ext-weblink
+    name: QBitTorrent
+    url: !secret QBitTorrent_weblink
+    icon: mdi:download
+    entity: sensor.downloading_down_speed
+  - type: custom:ext-weblink
+    name: TV
+    url: !secret sonarr_weblink
+    icon: mdi:television-classic
+    entity: sensor.sonarr_upcoming
+  - type: custom:ext-weblink
+    name: Movies
+    url: !secret radarr_weblink
+    icon: mdi:filmstrip
+    entity: sensor.radarr_upcoming

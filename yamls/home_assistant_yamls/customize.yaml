@@ -16,10 +16,22 @@ input_number.couch_g:
   entity_picture: /local/pictures/couch_green.jpg
 input_number.couch_b:
   entity_picture: /local/pictures/couch_blue.jpg
-
+### LIGHT ###
+light.bathroom_orb:
+  friendly_name: Bathroom Orb
 ### SWITCHES ###
 switch.hdmi_0:
   friendly_name: TV
+  icon: mdi:television-classic
+switch.bathroom_light:
+  friendly_name: Bathroom Light
+  icon: mdi:toilet
+switch.bathroom_fan:
+  friendly_name: Bathroom Fan
+  icon: mdi:fan
+switch.yi_power:
+  friendly_name: Camera
+  icon: mdi:webcam
 ### SYSTEM SENSORS ###
 sensor.disk_use_percent:
   friendly_name: HA Disk Usage

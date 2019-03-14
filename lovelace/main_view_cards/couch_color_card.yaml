@@ -1,0 +1,83 @@
+type: conditional
+conditions:
+  - entity: light.couch
+    state: 'on'
+card:
+  type: vertical-stack
+  cards:
+    - type: horizontal-stack
+      cards:
+        - type: 'custom:button-card'
+          action: service
+          service:
+            domain: scene
+            action: turn_on
+            data:
+              entity_id: scene.couch_white
+          color: 'rgb(255, 255, 255)'
+          color_type: icon
+          icon: 'mdi:sofa'
+          name: White
+        - type: 'custom:button-card'
+          action: service
+          service:
+            domain: scene
+            action: turn_on
+            data:
+              entity_id: scene.couch_soft_white
+          color: 'rgb(255, 242, 230)'
+          color_type: icon
+          icon: 'mdi:sofa'
+          name: Soft White
+        - type: 'custom:button-card'
+          action: service
+          service:
+            domain: scene
+            action: turn_on
+            data:
+              entity_id: scene.couch_blue
+          color: 'rgb(0, 0, 255)'
+          color_type: icon
+          icon: 'mdi:sofa'
+          name: Blue
+    - type: horizontal-stack
+      cards:
+        - type: 'custom:button-card'
+          action: service
+          service:
+            domain: scene
+            action: turn_on
+            data:
+              entity_id: scene.couch_red
+          color: 'rgb(255, 0, 0)'
+          color_type: icon
+          icon: 'mdi:sofa'
+          name: Red
+        - type: 'custom:button-card'
+          action: service
+          service:
+            domain: scene
+            action: turn_on
+            data:
+              entity_id: scene.couch_green
+          color: 'rgb(0, 255, 0)'
+          color_type: icon
+          icon: 'mdi:sofa'
+          name: Green
+        - type: 'custom:button-card'
+          action: service
+          service:
+            domain: scene
+            action: turn_on
+            data:
+              entity_id: scene.couch_purple
+          color: 'rgb(255, 0, 255)'
+          color_type: icon
+          icon: 'mdi:sofa'
+          name: Purple
+    - type: entities
+      entities:
+        - input_text.couch_color
+        - input_number.couch_r
+        - input_number.couch_g
+        - input_number.couch_b

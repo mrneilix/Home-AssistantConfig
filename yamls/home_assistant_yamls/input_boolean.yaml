@@ -18,7 +18,8 @@
     icon: mdi:lock-smart
     initial: on
   temp_lock_code_set:
-    name: Temporary Lock Code Set
+    icon: mdi:lock
+    name: Temp Code
   weather_notifications:
     icon: mdi:white-balance-sunny
     name: Weather Notifications
@@ -26,8 +27,10 @@
     name: Weather Notifications Off
     initial: off
   parents_lock_code:
-    name: Parent's Code
+    icon: mdi:human-female-boy
+    name: Fam Code
   butters_home:
+    icon: mdi:dog-side
     name: Butters
   config_updated:
     name: Config Updated
@@ -36,11 +39,14 @@
   show_upcoming_downloads:
     name: Show Upcoming Downloads
     initial: off
+    icon: mdi:download-outline
   show_recent_downloads:
     name: Show Recent Downloads
     initial: off
+    icon: mdi:download
   door_open:
     initial: off
   show_system_stats:
     name: Show System Stats
     initial: off
+    icon: mdi:desktop-classic

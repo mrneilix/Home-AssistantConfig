@@ -1,0 +1,69 @@
+type: vertical-stack
+cards:
+  - type: horizontal-stack
+    cards:
+      - type: 'custom:button-card'
+        action: service
+        service:
+          domain: script
+          action: turn_on
+          data:
+            entity_id: script.restart_homeassistant
+        color: var(--primary-color)
+        icon: 'mdi:home-assistant'
+        name: Restart Home Assistant
+      - type: 'custom:button-card'
+        action: service
+        service:
+          domain: scene
+          action: turn_on
+          data:
+            entity_id: scene.reboot_vera
+        color: var(--primary-color)
+        icon: 'mdi:spa'
+        name: Reboot Vera
+  - type: horizontal-stack
+    cards:
+      - type: 'custom:button-card'
+        action: service
+        service:
+          domain: script
+          action: turn_on
+          data:
+            entity_id: script.confirm_system_reboot
+        color: var(--primary-color)
+        icon: 'mdi:power-cycle'
+        name: Reboot System
+      - type: 'custom:button-card'
+        action: service
+        service:
+          domain: script
+          action: turn_on
+          data:
+            entity_id: script.reboot_pi_zero
+        color: var(--primary-color)
+        color_type: icon
+        icon: 'mdi:numeric-0-box'
+        name: Reboot Pi Zero
+  - type: horizontal-stack
+    cards:
+      - type: 'custom:button-card'
+        action: service
+        service:
+          domain: script
+          action: turn_on
+          data:
+            entity_id: script.system_desktop_display_off
+        color: var(--primary-color)
+        icon: 'mdi:monitor'
+        name: Monitor Off
+      - type: 'custom:button-card'
+        action: service
+        service:
+          domain: script
+          action: turn_on
+          data:
+            entity_id: script.system_git_backup
+        color: var(--primary-color)
+        icon: 'mdi:github-circle'
+        name: Git Backup

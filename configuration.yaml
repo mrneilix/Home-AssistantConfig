@@ -35,6 +35,9 @@ http:
 
 logger:
   default: error
+  logs:
+    homeassistant.components.system_log: fatal
+    homeassistant.components.tplink: fatal
 
 lovelace:
   mode: yaml

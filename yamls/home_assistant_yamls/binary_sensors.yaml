@@ -30,8 +30,8 @@
           - binary_sensor.front_door_sensor_73
           - sensor.time
 
-      neil_lock_code:
-        friendly_name: Neil Lock Code
+      lock_code_entered_neil:
+        friendly_name: Neil Lock Code Entered
         entity_picture_template: /local/pictures/Me.jpg
         device_class: presence
         value_template: >-
@@ -46,7 +46,7 @@
           - binary_sensor.lock_code_entered
           - binary_sensor.front_door_sensor_73
 
-      parents_code_entered:
+      lock_code_entered_parents:
         friendly_name: Parent's Lock Code Entered
         entity_picture_template: /local/pictures/mom-dad.jpg
         device_class: presence
@@ -62,7 +62,7 @@
           - binary_sensor.lock_code_entered
           - binary_sensor.front_door_sensor_73
 
-      gina_code_entered:
+      lock_code_entered_gina:
         friendly_name: Gina's Lock Code Entered
         entity_picture_template: /local/pictures/gina.jpg
         device_class: presence

@@ -1,0 +1,30 @@
+type: vertical-stack
+cards:
+- type: custom:card-modder
+  style:
+    background-image: url("/local/pictures/lovelace-pictures/plex.png")
+    background-size: 100%
+    height: 170px
+  card:
+    type: sensor
+    icon: mdi:plex
+    entity: sensor.tautulli
+    name: Plex History
+    detail: 2
+    graph: line
+- type: custom:card-modder
+  style:
+    background-image: url("/local/pictures/lovelace-pictures/plex.png")
+    background-size: 100% 170px
+    background-repeat: no-repeat
+  card:
+    type: custom:auto-entities
+    show_empty: false
+    card:
+      type: entities
+      show_header_toggle: false
+    filter:
+      include:
+        - entity_id: "sensor.tautulli_watching_*"
+      exclude:
+        - state: "Nothing"
