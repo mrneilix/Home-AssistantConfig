@@ -11,3 +11,4 @@ cards:
   - !include main_view_cards/weather_summary_card.yaml
   - !include weather_calendar_cards/calendar_card.yaml
   - !include weather_calendar_cards/lock_details_card.yaml
+  - !include weather_calendar_cards/package_tracking_card.yaml

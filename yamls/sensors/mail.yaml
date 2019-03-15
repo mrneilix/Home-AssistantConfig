@@ -1,0 +1,8 @@
+  - platform: fedex
+    username: !secret fedex_username
+    password: !secret climate_pw
+    name: fedex
+  - platform: ups
+    username: !secret hassio_addon_username
+    password: !secret climate_pw
+    name: ups

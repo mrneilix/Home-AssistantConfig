@@ -1,0 +1,11 @@
+type: custom:auto-entities
+show_empty: false
+card:
+  type: entities
+  show_header_toggle: false
+filter:
+  include:
+    - entity_id: "sensor.ups"
+    - entity_id: "sensor.fedex"
+  exclude:
+    - state: "0"
