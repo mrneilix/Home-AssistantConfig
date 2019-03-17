@@ -111,20 +111,22 @@
 - id: system_update_input_boolean_for_config_backup
   alias: 'System Update Input Boolean for Config Backup'
   trigger:
-    - platform: state
-      entity_id: sensor.automation
-    - platform: state
-      entity_id: sensor.devices
-    - platform: state
-      entity_id: sensor.home_assistant_yamls
-    - platform: state
-      entity_id: sensor.scripts
-    - platform: state
-      entity_id: sensor.sensors
-    - platform: state
-      entity_id: sensor.config
-    - platform: state
-      entity_id: sensor.lovelace
+    - platform: event
+      event_type: folder_watcher
+      event_data:
+        event_type: created
+    - platform: event
+      event_type: folder_watcher
+      event_data:
+        event_type: modified
+    - platform: event
+      event_type: folder_watcher
+      event_data:
+        event_type: deleted
+    - platform: event
+      event_type: folder_watcher
+      event_data:
+        event_type: moved
   condition:
     - condition: state
       entity_id: input_boolean.config_updated
