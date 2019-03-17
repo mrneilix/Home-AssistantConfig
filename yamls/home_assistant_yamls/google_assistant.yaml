@@ -10,16 +10,19 @@
     - input_boolean
   entity_config:
     light.kitchen:
+      name: Kitchen Lights
       room: Kitchen
       expose: true
       aliases:
         - Kitchen
     light.bathroom_orb:
-      room: Bathroom
+      name: Bathrrom Orb
+      room: Bathroom 2
       expose: true
       aliases:
         - Bathroom Orb
     light.couch:
+      name: Couch Light
       room: Living Room
       expose: true
       aliases:
@@ -27,6 +30,8 @@
         - Couch Light
         - Couch Lights
     lock.schlage_deadbolt_47:
+      name: Lock
+      room: Entryway
       expose: true
       aliases:
         - Door
@@ -36,6 +41,7 @@
         - Door unlock
         - front door unlock
     light.bed:
+      name: Bed Light
       room: Bedroom
       expose: true
       aliases:
@@ -43,32 +49,38 @@
         - Bed Light
         - Bed Lights
     switch.space_heater_75:
+      name: Space Heater
       room: Bedroom
       expose: true
       aliases:
         - Space Heater
     switch.furnace_switch_29:
+      name: Furnace Switch
       room: Hallway
       expose: true
       aliases:
         - Furnace switch
         - Furnace light
     switch.bathroom_light:
+      name: Bathroom Light
       room: Bathroom
       expose: true
       aliases:
         - Bathroom light
     switch.bathroom_fan:
+      name: Bathroom Fan
       room: Bathroom
       expose: true
       aliases:
         - Bathroom fan
     switch.lamp:
-      room: Living Room
+      name: Lamp
+      room: Lamp
       expose: true
       aliases:
         - Lamp
     switch.yi_power:
+      name: Yi Power
       room: Home
       expose: true
       aliases:
@@ -76,29 +88,28 @@
         - Cam
         - Camera
     input_boolean.autolock:
-      room: Home
+      name: Autolock
+      room: Entryway
       expose: true
       aliases:
         - Autolock
         - Door Auto lock
         - Front Door Auto lock
-    script.presence_leave:
-      name: Leave
+    script.presence_no_humans_home:
+      name: Away
       room: Home
       expose: true
       aliases:
         - bye
         - leave
-        - I'm leaving
         - I'm not home
         - I left my place
-    script.presence_arrive:
+    script.presence_someone_arrived:
       room: Home
       expose: true
       name: Arrive
       aliases:
         - Hello
-        - I'm Home
         - Welcome
         - Arrive
     script.system_reboot:

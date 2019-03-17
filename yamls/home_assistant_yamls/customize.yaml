@@ -108,3 +108,25 @@ sensor.dark_sky_summary:
   friendly_name: Current Weather
 sensor.dark_sky_moon_phase_0:
   friendly_name: Moon Phase
+  
+### PACKAGE SENSORS ###
+sensor.ups:
+  friendly_name: UPS
+sensor.usps_package:
+  friendly_name: USPS
+  icon: mdi:mailbox
+sensor.amazon_package:
+  friendly_name: Amazon
+  icon: mdi:amazon
+sensor.fedex_package:
+  friendly_name: FedEx
+  icon: mdi:package-variant
+sensor.ups_package:
+  friendly_name: UPS
+  icon: mdi:package-variant-closed
+sensor.fedex_package_app:
+  friendly_name: FedEx
+  icon: mdi:package-variant
+sensor.ups_package_app:
+  friendly_name: UPS
+  icon: mdi:package-variant-closed

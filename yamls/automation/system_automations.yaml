@@ -6,9 +6,6 @@
     platform: homeassistant
     event: start
   action:
-    - service: logger.set_level
-      data:
-        homeassistant.components: fatal
     - service: logbook.log
       data_template:
         name: Restarting
@@ -20,10 +17,9 @@
     - service: shell_command.restart_pi_sys_stat
     - delay: 00:00:50
     - service: script.startup_scripts
-    - delay: 00:00:20
-    - service: logger.set_level
-      data:
-        homeassistant.components: critical
+    - delay: 00:01:00
+    - service: automation.turn_on
+      entity_id: group.all_automations
     - service: script.presence_tasker_phone_location
     - service: input_boolean.turn_on
       data:

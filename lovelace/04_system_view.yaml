@@ -12,7 +12,9 @@ cards:
     entity: input_boolean.show_system_stats
     icon: 'mdi:desktop-classic'
     name: System Stats
-  - !include system_view_cards/system_stat_mini_graph_card.yaml
+  - !include system_view_cards/system_cpu_usage_card.yaml
+  - !include system_view_cards/system_speedtest_card.yaml
+  - !include system_view_cards/system_ram_usage_card.yaml
   - !include system_view_cards/system_stat_gauge_card.yaml
   - !include system_view_cards/system_custom_card_tracker_card.yaml
   - !include system_view_cards/system_custom_component_tracker_card.yaml
