@@ -36,7 +36,7 @@
 ### Pi Zero Uptime Templated ####
       pi_zero_uptime:
         friendly_name: Pi Zero Uptime
-        entity_id: sensor.dark_sky_apparent_temperature
+        entity_id: sensor.time
         icon_template: mdi:clock
         value_template: >-
           {% if ((as_timestamp(now()) - as_timestamp(states.sensor.pi_zero_boot_time.state)) / 60) is defined %}
@@ -82,7 +82,7 @@
 
       pi_zero_last_system_poll:
         friendly_name: Pi Zero Last Poll
-        entity_id: sensor.dark_sky_apparent_temperature
+        entity_id: sensor.time
         icon_template: mdi:clock
         value_template: >-
           {{relative_time(states.sensor.pi_zero_date_data_collected.last_updated)}}

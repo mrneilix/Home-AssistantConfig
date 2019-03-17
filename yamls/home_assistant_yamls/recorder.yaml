@@ -21,3 +21,18 @@
       - sensor.since_last_boot
       - sensor.uptime
       - sensor.ha_uptime
+      - sensor.desktop_amd_a8_6600k_apu_with_radeon_hd_graphics_clocks_bus_speed
+      - sensor.desktop_amd_a8_6600k_apu_with_radeon_hd_graphics_clocks_cpu_core_1
+      - sensor.desktop_amd_a8_6600k_apu_with_radeon_hd_graphics_clocks_cpu_core_2
+      - sensor.desktop_amd_a8_6600k_apu_with_radeon_hd_graphics_clocks_cpu_core_3
+      - sensor.desktop_amd_a8_6600k_apu_with_radeon_hd_graphics_clocks_cpu_core_4
+      - sensor.desktop_amd_a8_6600k_apu_with_radeon_hd_graphics_load_cpu_core_1
+      - sensor.desktop_amd_a8_6600k_apu_with_radeon_hd_graphics_load_cpu_core_2
+      - sensor.desktop_amd_a8_6600k_apu_with_radeon_hd_graphics_load_cpu_core_3
+      - sensor.desktop_amd_a8_6600k_apu_with_radeon_hd_graphics_load_cpu_core_4
+      - sensor.desktop_amd_a8_6600k_apu_with_radeon_hd_graphics_temperatures_core_1_4
+      - sensor.desktop_amd_radeon_tm_r7_360_series_clocks_gpu_core
+      - sensor.desktop_amd_radeon_tm_r7_360_series_clocks_gpu_memory
+      - sensor.desktop_amd_radeon_tm_r7_360_series_controls_gpu_fan
+      - sensor.desktop_amd_radeon_tm_r7_360_series_temperatures_gpu_core
+      - sensor.desktop_amd_radeon_tm_r7_360_series_voltages_gpu_core

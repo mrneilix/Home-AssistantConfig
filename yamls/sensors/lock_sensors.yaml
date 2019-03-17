@@ -6,7 +6,7 @@
   - platform: template
     sensors:
       last_lock_code_name:
-        friendly_name: Last Lock Code
+        friendly_name: Lock History
         value_template: >-
           {%- if 'Temporary' in states.sensor.last_lock_code_used.state %}
               Temp

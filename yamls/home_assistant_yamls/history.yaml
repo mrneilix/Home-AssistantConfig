@@ -18,6 +18,26 @@
       # Plex
       - sensor.plex
       - sensor.tautulli
+      - sensor.tautulli_watching_abbas
+      - sensor.tautulli_watching_adroit4
+      - sensor.tautulli_watching_anuj
+      - sensor.tautulli_watching_atul_neeta
+      - sensor.tautulli_watching_austin
+      - sensor.tautulli_watching_ben
+      - sensor.tautulli_watching_brian
+      - sensor.tautulli_watching_emily
+      - sensor.tautulli_watching_eyesbrow_1
+      - sensor.tautulli_watching_eyesbrow_2
+      - sensor.tautulli_watching_karina
+      - sensor.tautulli_watching_kiel
+      - sensor.tautulli_watching_kris
+      - sensor.tautulli_watching_manish
+      - sensor.tautulli_watching_mike
+      - sensor.tautulli_watching_neil
+      - sensor.tautulli_watching_pallav
+      - sensor.tautulli_watching_peter
+      - sensor.tautulli_watching_shappell
+      - sensor.tautulli_watching_tina
       # System
       - sensor.desktop_amd_a8_6600k_apu_with_radeon_hd_graphics_load_cpu_total
       - sensor.pi_zero_cpu_usage

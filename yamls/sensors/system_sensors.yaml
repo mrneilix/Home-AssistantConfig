@@ -40,7 +40,7 @@
 ## Uptime Templated ####
       since_last_boot_templated:
         friendly_name: System Uptime
-        entity_id: sensor.uptime
+        entity_id: sensor.time
         icon_template: mdi:clock
         value_template: >-
             {% set time = ((as_timestamp(now()) - as_timestamp(states.sensor.last_boot.state)) )| int %}
@@ -70,7 +70,7 @@
 
       ha_uptime:
         friendly_name: Home Assistant Uptime
-        entity_id: sensor.uptime
+        entity_id: sensor.time
         icon_template: mdi:clock
         value_template: >-
           {% if states.sensor.uptime.state is defined %}
