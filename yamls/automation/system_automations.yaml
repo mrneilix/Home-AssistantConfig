@@ -106,6 +106,8 @@
     - condition: template
       value_template: "{{ is_state('sensor.pi_zero_uptime', 'unknown') }}"
   action:
+    - service: shell_command.phlex_login
+    - delay: 00:00:05
     - service: script.restart_homeassistant
 
 - id: system_update_input_boolean_for_config_backup

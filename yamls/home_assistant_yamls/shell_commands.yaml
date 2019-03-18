@@ -4,3 +4,4 @@ reboot_pi_zero: !secret reboot_pi_zero
 desktop_screen_off: !secret desktop_screen_off
 desktop_backup_sync: !secret desktop_backup_sync
 git_backup: !secret git_backup
+phlex_login: !secret phlex_login

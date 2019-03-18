@@ -32,3 +32,7 @@ entities:
     url: !secret radarr_weblink
     icon: mdi:filmstrip
     entity: sensor.radarr_upcoming
+  - type: custom:ext-weblink
+    name: InfluxDB
+    url: !secret influx_db_weblink
+    icon: mdi:chart-areaspline

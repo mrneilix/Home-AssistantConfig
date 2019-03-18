@@ -11,3 +11,5 @@
       url: !secret sonarr_weblink
     - name: Radarr
       url: !secret radarr_weblink
+    - name: InfluxDB
+      url: !secret influx_db_weblink

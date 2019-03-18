@@ -95,16 +95,14 @@ input_boolean: !include yamls/home_assistant_yamls/input_boolean.yaml
 logbook: !include yamls/home_assistant_yamls/logbook.yaml
 history: !include yamls/home_assistant_yamls/history.yaml
 input_text: !include yamls/home_assistant_yamls/input_text.yaml
-google_assistant: !include yamls/home_assistant_yamls/google_assistant.yaml
-joaoapps_join: !include yamls/home_assistant_yamls/join.yaml
-zone: !include yamls/home_assistant_yamls/zone.yaml
 panel_iframe: !include yamls/home_assistant_yamls/panel_iframe.yaml
 rest_command: !include yamls/home_assistant_yamls/rest_command.yaml
 shell_command: !include yamls/home_assistant_yamls/shell_commands.yaml
 scene: !include yamls/home_assistant_yamls/scenes.yaml
 group: !include yamls/home_assistant_yamls/groups.yaml
-proximity: !include yamls/home_assistant_yamls/proximity.yaml
 weblink: !include yamls/home_assistant_yamls/weblink.yaml
+# influxdb: !include yamls/home_assistant_yamls/influxdb.yaml
+
 # Include Devices Yamls
 device_tracker: !include yamls/devices/device_tracker.yaml
 switch: !include yamls/devices/switches.yaml
@@ -118,3 +116,7 @@ googlehome: !include yamls/devices/googlehome.yaml
 tplink: !include yamls/devices/tplink.yaml
 tuya: !include yamls/devices/tuya.yaml
 folder_watcher: !include yamls/devices/folder_watcher.yaml
+zone: !include yamls/devices/zone.yaml
+google_assistant: !include yamls/devices/google_assistant.yaml
+joaoapps_join: !include yamls/devices/join.yaml
+proximity: !include yamls/devices/proximity.yaml
