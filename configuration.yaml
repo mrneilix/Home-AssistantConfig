@@ -32,6 +32,7 @@ http:
   base_url: !secret base_url
   cors_allowed_origins: !include yamls/home_assistant_yamls/cors_allowed_origins.yaml
 
+api:
 
 logger:
   default: error
@@ -101,7 +102,7 @@ shell_command: !include yamls/home_assistant_yamls/shell_commands.yaml
 scene: !include yamls/home_assistant_yamls/scenes.yaml
 group: !include yamls/home_assistant_yamls/groups.yaml
 weblink: !include yamls/home_assistant_yamls/weblink.yaml
-# influxdb: !include yamls/home_assistant_yamls/influxdb.yaml
+influxdb: !include yamls/home_assistant_yamls/influxdb.yaml
 
 # Include Devices Yamls
 device_tracker: !include yamls/devices/device_tracker.yaml

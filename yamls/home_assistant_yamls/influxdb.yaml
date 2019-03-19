@@ -1,9 +1,8 @@
-  host: a0d8b954-influxdb
+  host: 127.0.0.1
   port: 8086
-  database: homeassistant
+  database: home_assistant
   username: homeassistant
   password: !secret http_password
-  max_retries: 3
   default_measurement: state
   include:
     domains:

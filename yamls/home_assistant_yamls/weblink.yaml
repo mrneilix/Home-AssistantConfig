@@ -13,3 +13,5 @@
       url: !secret radarr_weblink
     - name: InfluxDB
       url: !secret influx_db_weblink
+    - name: Grafana
+      url: !secret grafana_weblink
