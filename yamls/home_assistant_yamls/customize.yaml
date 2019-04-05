@@ -20,7 +20,7 @@ input_number.couch_b:
 light.bathroom_orb:
   friendly_name: Bathroom Orb
 ### SWITCHES ###
-switch.hdmi_0:
+switch.hdmi_0d:
   friendly_name: TV
   icon: mdi:television-classic
 switch.bathroom_light:
@@ -74,8 +74,10 @@ sensor.dark_sky_precip_intensity:
   friendly_name: Precip Intensity
 sensor.dark_sky_precip_probability:
   friendly_name: Precip Probability
-sensor.dark_sky_precip_probability_0:
+sensor.dark_sky_precip_probability_0d:
   friendly_name: Precip Today
+sensor.dark_sky_precip_probability_0h:
+  friendly_name: Precip
 sensor.dark_sky_temperature:
   friendly_name: Temp
 sensor.dark_sky_apparent_temperature:
@@ -88,13 +90,13 @@ sensor.dark_sky_visibility:
   friendly_name: Visibility
 sensor.dark_sky_nearest_storm_distance:
   friendly_name: Nearest Storm Distance
-sensor.dark_sky_daytime_high_temperature_0:
+sensor.dark_sky_daytime_high_temperature_0d:
   friendly_name: High Temp
-sensor.dark_sky_overnight_low_temperature_0:
+sensor.dark_sky_overnight_low_temperature_0d:
   friendly_name: Low Temp
-sensor.dark_sky_daytime_high_apparent_temperature_0:
+sensor.dark_sky_daytime_high_apparent_temperature_0d:
   friendly_name: Apparent High Temp
-sensor.dark_sky_overnight_low_apparent_temperature_0:
+sensor.dark_sky_overnight_low_apparent_temperature_0d:
   friendly_name: Apparent Low Temp
 sensor.dark_sky_cloud_coverage:
   friendly_name: Cloud Coverage
@@ -106,7 +108,7 @@ sensor.dark_sky_daily_summary:
   friendly_name: Daily Summary
 sensor.dark_sky_summary:
   friendly_name: Current Weather
-sensor.dark_sky_moon_phase_0:
+sensor.dark_sky_moon_phase_0d:
   friendly_name: Moon Phase
   
 ### PACKAGE SENSORS ###

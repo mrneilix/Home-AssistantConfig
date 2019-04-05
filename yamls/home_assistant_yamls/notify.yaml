@@ -8,7 +8,8 @@
     device_id: !secret join_device_fire
     device_name: fire
     name: Fire
-  - name: html5
-    platform: html5
-    gcm_api_key: !secret gcm_api
-    gcm_sender_id: !secret gcm_sender
+  - platform: html5
+    name: html5
+    vapid_pub_key: !secret vapid_pub_key
+    vapid_prv_key: !secret vapid_prv_key
+    vapid_email: !secret vapid_email

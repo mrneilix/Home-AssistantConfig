@@ -2,6 +2,9 @@
     api_key: !secret darksky_api_key
     forecast:
       - 0
+    hourly_forecast:
+      - 0
+      - 1
     scan_interval:
       minutes: 10
     monitored_conditions:
@@ -30,7 +33,7 @@
   - platform: yr
 
   - platform: illuminance
-    entity_id: sensor.yr_symbol
+    entity_id: sensor.dark_sky_icon
 
   - platform: pollen
     zip_code: "30308"

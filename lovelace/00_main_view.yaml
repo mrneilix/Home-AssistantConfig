@@ -4,16 +4,16 @@ path: home
 badges:
   - device_tracker.neil
   - device_tracker.butters
-  - sensor.tautulli
-  - sensor.dark_sky_precip_probability
-  - sensor.dark_sky_precip_probability_0
+  - sensor.plex
+  - sensor.dark_sky_precip_probability_0h
+  - sensor.dark_sky_precip_probability_0d
   - sensor.dark_sky_temperature
   - sensor.dark_sky_apparent_temperature
-  - sensor.dark_sky_daytime_high_temperature_0
-  - sensor.dark_sky_overnight_low_temperature_0
+  - sensor.dark_sky_daytime_high_temperature_0d
+  - sensor.dark_sky_overnight_low_temperature_0d
   - sensor.daylight_remaining_hm
   - sensor.illuminance
-  - sensor.last_lock_code_name
+  # - sensor.last_lock_code_name
 cards:
   - !include compact_custom_header.yaml
   - !include main_view_cards/main_room_lights_card.yaml
