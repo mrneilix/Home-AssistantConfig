@@ -132,10 +132,12 @@ device_tracker.gina:
             secondary_info: last-changed
 sensor.tautulli:
   title: Plex
+  large: true
   card:
     type: vertical-stack
     cards:
       - type: history-graph
+        hours_to_show: 48
         entities:
           - sensor.tautulli
       - type: custom:auto-entities
@@ -148,6 +150,8 @@ sensor.tautulli:
             - entity_id: "sensor.tautulli_watching_*"
           exclude:
             - state: "Nothing"
+      - type: iframe
+        url: !secret grafana_watching_plex
 input_boolean.notifications_on:
   title: Notify
   card:

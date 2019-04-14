@@ -4,7 +4,7 @@ path: home
 badges:
   - device_tracker.neil
   - device_tracker.butters
-  - sensor.plex
+  - sensor.tautulli
   - sensor.dark_sky_precip_probability_0h
   - sensor.dark_sky_precip_probability_0d
   - sensor.dark_sky_temperature

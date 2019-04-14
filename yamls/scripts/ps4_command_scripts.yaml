@@ -1,0 +1,60 @@
+ps4_button_ps:
+  sequence:
+  - service: ps4.send_command
+    data:
+      entity_id: media_player.playstation_4
+      command: ps
+
+ps4_button_option:
+  sequence:
+  - service: ps4.send_command
+    data:
+      entity_id: media_player.playstation_4
+      command: option
+
+ps4_button_enter:
+  sequence:
+  - service: ps4.send_command
+    data:
+      entity_id: media_player.playstation_4
+      command: enter
+
+ps4_button_back:
+  sequence:
+  - service: ps4.send_command
+    data:
+      entity_id: media_player.playstation_4
+      command: back
+
+ps4_button_up:
+  sequence:
+  - service: ps4.send_command
+    data:
+      entity_id: media_player.playstation_4
+      command: up
+
+ps4_button_down:
+  sequence:
+  - service: ps4.send_command
+    data:
+      entity_id: media_player.playstation_4
+      command: down
+
+ps4_button_left:
+  sequence:
+  - service: ps4.send_command
+    data:
+      entity_id: media_player.playstation_4
+      command: left
+
+ps4_button_right:
+  sequence:
+  - service: ps4.send_command
+    data:
+      entity_id: media_player.playstation_4
+      command: right
+ps4_power_off:
+  sequence:
+  - service: media_player.turn_off
+    entity_id: media_player.playstation_4
+  - service: script.tv_off

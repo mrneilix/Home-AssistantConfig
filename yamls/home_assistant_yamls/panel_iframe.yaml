@@ -18,3 +18,5 @@
     title: Phlex
     icon: mdi:microphone
     url: !secret phlex_url
+  grafana_watching_plex:
+    url: !secret grafana_watching_plex

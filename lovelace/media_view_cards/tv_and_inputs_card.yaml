@@ -31,12 +31,72 @@ cards:
             entity_id: script.tv_input_playstation
         icon: 'mdi:playstation'
         name: Playstation
+- type: conditional
+  conditions:
+    - entity: media_player.playstation_4
+      state_not: "off"
+  card:
+    type: custom:card-modder
+    style:
+      border-radius: 5px
+    card:
+      type: vertical-stack
+      cards:
+        - type: custom:mini-media-player
+          entity: media_player.playstation_4
+          artwork: full-cover
+          hide:
+            source: true
+            volume: true
+            icon: true
+            power: true
+            progress: true
+            controls: true
+          shortcuts:
+            columns: 4
+            buttons:
+              - name: HBO GO
+                type: source
+                id: HBO GO®
+              - name: Netflix
+                type: source
+                id: Netflix
+              - name: Plex
+                type: source
+                id: Plex
+              - name: YouTube
+                type: source
+                id: YouTube
+              - icon: 'mdi:playstation'
+                type: script
+                id: script.ps4_button_ps
+              - icon: 'mdi:menu'
+                type: script
+                id: script.ps4_button_option
+              - icon: 'mdi:arrow-left-circle'
+                type: script
+                id: script.ps4_button_back
+              - icon: 'mdi:power-cycle'
+                type: script
+                id: script.ps4_power_off
+              - icon: 'mdi:arrow-left-bold'
+                type: script
+                id: script.ps4_button_left
+              - icon: 'mdi:arrow-up-bold'
+                type: script
+                id: script.ps4_button_up
+              - icon: 'mdi:arrow-down-bold'
+                type: script
+                id: script.ps4_button_down
+              - icon: 'mdi:arrow-right-bold'
+                type: script
+                id: script.ps4_button_right
 - type: entities
   show_header_toggle: false
   entities:
     - scene.theater_mode
     - input_text.gh_speak
-- entity: media_player.kitchen_display
-  type: media-control
-- entity: media_player.living_room_tv
-  type: media-control
+- type: media-control
+  entity: media_player.kitchen_display
+- type: media-control
+  entity: media_player.living_room_tv

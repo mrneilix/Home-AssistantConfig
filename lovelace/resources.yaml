@@ -30,3 +30,5 @@
   url: /local/custom-lovelace/popup-card/popup-card.js?track=true
 - type: js
   url: /local/custom-lovelace/fold-entity-row/fold-entity-row.js?track=true
+- type: module
+  url: /local/custom-lovelace/mini-media-player-bundle/mini-media-player-bundle.js?track=true
