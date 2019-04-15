@@ -18,8 +18,6 @@ presence_someone_arrived:
             script.do_nothing
           {% endif %}
     - delay: 00:00:03
-    # - service: switch.turn_on
-      # entity_id: switch.space_heater_75
     - service: light.turn_on
       entity_id: light.bathroom_orb
     - delay: 00:00:02
@@ -83,6 +81,8 @@ presence_no_humans_home:
     - service: script.kitchen_lights_off
     - service: scene.turn_on
       entity_id: scene.leave_switches_off
+    - service: media_player.turn_off
+      entity_id: media_player.playstation_4
     - service: script.lock_set_parents_lock_code
     - service: joaoapps_join.fire_send_tasker
       data:

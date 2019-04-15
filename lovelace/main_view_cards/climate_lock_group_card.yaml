@@ -5,14 +5,14 @@ cards:
       - entity: climate.thermostat
         name: Thermostat
         type: thermostat
-  - type: vertical-stack
-    cards:
-      - type: 'custom:button-card'
-        action: toggle
-        entity: switch.front_door_lock
-        color: var(--primary-color)
-        icon: attribute
-        name: Lock
+  # - type: vertical-stack
+    # cards:
+      # - type: 'custom:button-card'
+        # action: toggle
+        # entity: switch.front_door_lock
+        # color: var(--primary-color)
+        # icon: attribute
+        # name: Lock
   - type: horizontal-stack
     cards:
       - type: 'custom:button-card'
@@ -30,26 +30,26 @@ cards:
       - type: 'custom:button-card'
         action: toggle
         color: var(--primary-color)
-        entity: input_boolean.autolock
-        icon: attribute
-        name: Autolock
-  - type: horizontal-stack
-    cards:
-      - type: 'custom:button-card'
-        action: more_info
-        color: var(--primary-color)
-        entity: input_boolean.parents_lock_code
-        icon: attribute
-        name: Fam Code
-      - type: 'custom:button-card'
-        action: more_info
-        color: var(--primary-color)
-        entity: input_boolean.temp_lock_code_set
-        icon: attribute
-        name: Temp Code
-      - type: 'custom:button-card'
-        action: toggle
-        color: var(--primary-color)
         entity: switch.yi_power
         icon: attribute
         name: Camera
+  # - type: horizontal-stack
+    # cards:
+      # - type: 'custom:button-card'
+        # action: more_info
+        # color: var(--primary-color)
+        # entity: input_boolean.parents_lock_code
+        # icon: attribute
+        # name: Fam Code
+      # - type: 'custom:button-card'
+        # action: more_info
+        # color: var(--primary-color)
+        # entity: input_boolean.temp_lock_code_set
+        # icon: attribute
+        # name: Temp Code
+      # - type: 'custom:button-card'
+        # action: toggle
+        # color: var(--primary-color)
+        # entity: input_boolean.autolock
+        # icon: attribute
+        # name: Autolock

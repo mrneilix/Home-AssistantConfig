@@ -76,9 +76,9 @@ cards:
               - icon: 'mdi:arrow-left-circle'
                 type: script
                 id: script.ps4_button_back
-              - icon: 'mdi:power-cycle'
+              - icon: 'mdi:select'
                 type: script
-                id: script.ps4_power_off
+                id: script.ps4_button_enter
               - icon: 'mdi:arrow-left-bold'
                 type: script
                 id: script.ps4_button_left
@@ -91,6 +91,9 @@ cards:
               - icon: 'mdi:arrow-right-bold'
                 type: script
                 id: script.ps4_button_right
+              - icon: 'mdi:power-cycle'
+                type: script
+                id: script.ps4_power_off
 - type: entities
   show_header_toggle: false
   entities:
