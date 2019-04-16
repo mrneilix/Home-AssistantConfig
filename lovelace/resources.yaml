@@ -13,7 +13,7 @@
 - type: js
   url: https://unpkg.com/moment@2.22.2/moment.js
 - type: module
-  url: /local/custom-lovelace/calendar-card/calendar-card.js?track=true
+  url: /local/custom-lovelace/atomic-calendar/atomic-calendar.js?track=true
 - type: js
   url: /local/custom-lovelace/text-element/text-element.js?track=true
 - type: js

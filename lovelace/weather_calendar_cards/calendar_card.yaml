@@ -5,10 +5,13 @@ cards:
       - entity: binary_sensor.show_calendar_events
         state: 'on'
     card:
-      type: "custom:calendar-card"
-      name: "Events"
+      type: "custom:atomic-calendar"
+      title: "Events"
       showProgressBar: True
-      numberOfDays: 14
+      showDate: true
+      maxDaysToShow: 14
+      hoursFormat: 12h
+      timeColor: rgb(175, 152, 55)
       entities:
         - calendar.events
   - type: conditional
@@ -16,10 +19,13 @@ cards:
       - entity: binary_sensor.show_calendar_family_birthdays
         state: 'on'
     card:
-      type: "custom:calendar-card"
-      name: "Family Birthdays"
+      type: "custom:atomic-calendar"
+      title: "Family Birthdays"
+      showDate: true
       showProgressBar: false
-      numberOfDays: 30
+      showMonth: true
+      maxDaysToShow: 30
+      fullDayEventText: ' '
       entities:
         - calendar.family_birthdays
   - type: conditional
@@ -27,10 +33,13 @@ cards:
       - entity: binary_sensor.show_calendar_friend_birthdays
         state: 'on'
     card:
-      type: "custom:calendar-card"
-      name: "Friend Birthdays"
+      type: "custom:atomic-calendar"
+      title: "Friend's Birthdays"
+      showDate: true
       showProgressBar: false
-      numberOfDays: 30
+      showMonth: true
+      maxDaysToShow: 30
+      fullDayEventText: ' '
       entities:
         - calendar.friend_birthdays
   - type: conditional
@@ -38,9 +47,12 @@ cards:
       - entity: binary_sensor.show_calendar_facebook
         state: 'on'
     card:
-      type: "custom:calendar-card"
-      name: "Facebook Events"
+      type: "custom:atomic-calendar"
+      title: "Facebook Events"
+      showDate: true
       showProgressBar: True
-      numberOfDays: 14
+      maxDaysToShow: 30
+      hoursFormat: 12h
+      timeColor: rgb(175, 152, 55)
       entities:
         - calendar.facebook_events
