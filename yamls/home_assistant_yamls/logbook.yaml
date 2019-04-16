@@ -2,7 +2,10 @@
     domains:
       - device_tracker
       - light
-      - lock
+      - lock 
+      - input_boolean 
+      - automation
+      - script
     entities:
       # Automations
       - automation.bathroom_fan_off_after_1_hour

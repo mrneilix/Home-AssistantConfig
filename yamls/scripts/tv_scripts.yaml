@@ -21,7 +21,7 @@ tv_input_playstation:
 tv_notify_theater_mode:
   alias: Notify Theater Mode
   sequence:
-    - service: notify.html5
+    - service: notify.html5_phone
       data:
         message: "Turn on Theater Mode?"
         data: {

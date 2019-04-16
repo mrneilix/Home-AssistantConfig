@@ -104,7 +104,7 @@
     to: 'on'
   condition:
     - condition: template
-      value_template: "{{ is_state('sensor.pi_zero_uptime', 'unknown') }}"
+      value_template: "{{ (((as_timestamp(now()) - as_timestamp(states.sensor.last_boot.state)) )| int) < 240}}"
   action:
     - service: shell_command.phlex_login
     - delay: 00:00:05
