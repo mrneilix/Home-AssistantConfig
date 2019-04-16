@@ -57,6 +57,10 @@ sensor.desktop_amd_radeon_tm_r7_360_series_load_gpu_core:
   friendly_name: Desktop GPU
 sensor.memory_use_percent:
   friendly_name: HA RAM
+sensor.disk_use:
+  friendly_name: HA Disk Space
+sensor.pi_zero_disk_usage_total:
+  friendly_name: Pi Zero Disk Space
 
 ### Media Sensors ###
 sensor.tautulli:

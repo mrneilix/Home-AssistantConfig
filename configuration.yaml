@@ -97,7 +97,8 @@ input_boolean: !include yamls/home_assistant_yamls/input_boolean.yaml
 logbook: !include yamls/home_assistant_yamls/logbook.yaml
 history: !include yamls/home_assistant_yamls/history.yaml
 input_text: !include yamls/home_assistant_yamls/input_text.yaml
-panel_iframe: !include yamls/home_assistant_yamls/panel_iframe.yaml
+# panel_iframe: !include yamls/home_assistant_yamls/panel_iframe.yaml
+panel_custom: !include yamls/home_assistant_yamls/panel_custom.yaml
 rest_command: !include yamls/home_assistant_yamls/rest_command.yaml
 shell_command: !include yamls/home_assistant_yamls/shell_commands.yaml
 scene: !include yamls/home_assistant_yamls/scenes.yaml

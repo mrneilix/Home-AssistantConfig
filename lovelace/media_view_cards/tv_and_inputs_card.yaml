@@ -99,7 +99,9 @@ cards:
   entities:
     - scene.theater_mode
     - input_text.gh_speak
-- type: media-control
+- type: custom:mini-media-player
   entity: media_player.kitchen_display
-- type: media-control
+  artwork: full-cover
+- type: custom:mini-media-player
   entity: media_player.living_room_tv
+  artwork: full-cover

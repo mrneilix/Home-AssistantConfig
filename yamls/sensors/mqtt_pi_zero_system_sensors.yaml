@@ -86,3 +86,7 @@
         icon_template: mdi:clock
         value_template: >-
           {{relative_time(states.sensor.pi_zero_date_data_collected.last_updated)}}
+      pi_zero_disk_usage_total:
+        friendly_name: Pi Zero Disk Usage Total
+        icon_template: mdi:harddisk
+        value_template: "{{ (states('sensor.pi_zero_disk_usage') | float / 100 * 14.5) | round (2) }}"

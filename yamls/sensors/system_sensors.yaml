@@ -2,6 +2,8 @@
     resources:
       - type: disk_use_percent
         arg: /
+      - type: disk_use
+        arg: /
       - type: memory_use_percent
       - type: network_in
         arg: eth0

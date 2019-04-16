@@ -1,0 +1,18 @@
+  - name: hassio-main
+    sidebar_title: Configurator
+    sidebar_icon: mdi:wrench
+    js_url: /api/hassio/app/entrypoint.js
+    url_path: configurator
+    embed_iframe: true
+    require_admin: true
+    config:
+      ingress: core_configurator
+  - name: hassio-main
+    sidebar_title: Terminal
+    sidebar_icon: mdi:console
+    js_url: /api/hassio/app/entrypoint.js
+    url_path: terminal
+    embed_iframe: true
+    require_admin: true
+    config:
+      ingress: a0d7b954_ssh
