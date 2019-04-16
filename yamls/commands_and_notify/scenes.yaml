@@ -57,26 +57,3 @@
   entities:
     light.couch:
       state: on
-
-### Other Lighting Scenes ###
-- name: rgb_lights_off
-  entities:
-    light.couch: off
-    light.bed: off
-
-- name: switches_off
-  entities:
-    switch.furnace_switch_29: off
-    switch.lamp: off
-    switch.bathroom_light: off
-    switch.bathroom_fan: off
-    switch.space_heater_75: off
-
-- name: leave_switches_off
-  entities:
-    switch.furnace_switch_29: off
-    switch.yi_power: on
-    switch.lamp: off
-    switch.bathroom_light: off
-    switch.bathroom_fan: off
-    switch.space_heater_75: off

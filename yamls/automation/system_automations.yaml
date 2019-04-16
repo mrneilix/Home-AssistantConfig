@@ -96,7 +96,7 @@
   action:
     - service: script.restart_homeassistant
 
-- id: system_restart_ha_if_MQTT_did_not_update
+- id: system_restart_ha_if_just_rebooted
   alias: 'System Restart HA if MQTT Did Not Update'
   trigger:
     platform: state
@@ -104,10 +104,10 @@
     to: 'on'
   condition:
     - condition: template
-      value_template: "{{ (((as_timestamp(now()) - as_timestamp(states.sensor.last_boot.state)) )| int) < 240}}"
+      value_template: "{{ (((as_timestamp(now()) - as_timestamp(states.sensor.last_boot.state)) )| int) < 300}}"
   action:
     - service: shell_command.phlex_login
-    - delay: 00:00:05
+    - delay: 00:00:15
     - service: script.restart_homeassistant
 
 - id: system_update_input_boolean_for_config_backup

@@ -5,7 +5,7 @@ homeassistant:
   elevation: 363
   unit_system: imperial
   time_zone: America/New_York
-  customize: !include yamls/home_assistant_yamls/customize.yaml
+  customize: !include yamls/front_end/customize.yaml
   whitelist_external_dirs:
     - /config/
     - /
@@ -18,7 +18,7 @@ homeassistant:
         - 172.30.32.0/24
     - type: legacy_api_password
       api_password: !secret http_password
-frontend: !include yamls/home_assistant_yamls/frontend.yaml
+frontend: !include yamls/front_end/frontend.yaml
 
 custom_updater:
 
@@ -31,7 +31,7 @@ http:
   ssl_certificate: !secret ssl_cert
   ssl_key: !secret ssl_key
   base_url: !secret base_url
-  cors_allowed_origins: !include yamls/home_assistant_yamls/cors_allowed_origins.yaml
+  cors_allowed_origins: !include yamls/front_end/cors_allowed_origins.yaml
 
 api:
 
@@ -53,7 +53,7 @@ discovery:
 
 sun: !include yamls/home_assistant_yamls/sun.yaml
 
-tts: !include yamls/home_assistant_yamls/tts.yaml
+tts: !include yamls/commands_and_notify/tts.yaml
 
 vera:
   vera_controller_url: !secret vera_controller_url
@@ -88,23 +88,34 @@ script: !include_dir_merge_named yamls/scripts
 sensor: !include_dir_merge_list yamls/sensors
 
 # Include HA Yamls
-input_number: !include yamls/home_assistant_yamls/input_numbers.yaml
-input_select: !include yamls/home_assistant_yamls/input_select.yaml
-notify: !include yamls/home_assistant_yamls/notify.yaml
 binary_sensor: !include yamls/home_assistant_yamls/binary_sensors.yaml
-recorder: !include yamls/home_assistant_yamls/recorder.yaml
-input_boolean: !include yamls/home_assistant_yamls/input_boolean.yaml
-logbook: !include yamls/home_assistant_yamls/logbook.yaml
-history: !include yamls/home_assistant_yamls/history.yaml
-input_text: !include yamls/home_assistant_yamls/input_text.yaml
-# panel_iframe: !include yamls/home_assistant_yamls/panel_iframe.yaml
-panel_custom: !include yamls/home_assistant_yamls/panel_custom.yaml
-rest_command: !include yamls/home_assistant_yamls/rest_command.yaml
-shell_command: !include yamls/home_assistant_yamls/shell_commands.yaml
-scene: !include yamls/home_assistant_yamls/scenes.yaml
 group: !include yamls/home_assistant_yamls/groups.yaml
-weblink: !include yamls/home_assistant_yamls/weblink.yaml
-influxdb: !include yamls/home_assistant_yamls/influxdb.yaml
+folder_watcher: !include yamls/home_assistant_yamls/folder_watcher.yaml
+zone: !include yamls/home_assistant_yamls/zone.yaml
+proximity: !include yamls/home_assistant_yamls/proximity.yaml
+
+# Commands and Notify
+rest_command: !include yamls/commands_and_notify/rest_command.yaml
+shell_command: !include yamls/commands_and_notify/shell_commands.yaml
+scene: !include yamls/commands_and_notify/scenes.yaml
+notify: !include yamls/commands_and_notify/notify.yaml
+joaoapps_join: !include yamls/commands_and_notify/join.yaml
+
+# Include Front End
+panel_custom: !include yamls/front_end/panel_custom.yaml
+weblink: !include yamls/front_end/weblink.yaml
+
+# Include DBs
+recorder: !include yamls/databases/recorder.yaml
+logbook: !include yamls/databases/logbook.yaml
+history: !include yamls/databases/history.yaml
+influxdb: !include yamls/databases/influxdb.yaml
+
+# Include Inputs
+input_boolean: !include yamls/inputs/input_boolean.yaml
+input_number: !include yamls/inputs/input_numbers.yaml
+input_select: !include yamls/inputs/input_select.yaml
+input_text: !include yamls/inputs/input_text.yaml
 
 # Include Devices Yamls
 device_tracker: !include yamls/devices/device_tracker.yaml
@@ -118,8 +129,4 @@ hdmi_cec: !include yamls/devices/cec.yaml
 googlehome: !include yamls/devices/googlehome.yaml
 tplink: !include yamls/devices/tplink.yaml
 tuya: !include yamls/devices/tuya.yaml
-folder_watcher: !include yamls/devices/folder_watcher.yaml
-zone: !include yamls/devices/zone.yaml
 google_assistant: !include yamls/devices/google_assistant.yaml
-joaoapps_join: !include yamls/devices/join.yaml
-proximity: !include yamls/devices/proximity.yaml

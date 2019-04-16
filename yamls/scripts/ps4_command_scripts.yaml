@@ -53,6 +53,7 @@ ps4_button_right:
     data:
       entity_id: media_player.playstation_4
       command: right
+
 ps4_power_off:
   sequence:
   - service: media_player.turn_off

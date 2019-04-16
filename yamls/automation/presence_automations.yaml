@@ -29,6 +29,9 @@
     - condition: state
       entity_id: input_boolean.presence_automations
       state: 'on'
+    - condition: state
+      entity_id: input_boolean.presence_running
+      state: 'off'
   action:
     - service: script.presence_no_humans_home
 
@@ -76,6 +79,9 @@
       entity_id: input_boolean.presence_automations
       state: 'on'
     - condition: state
+      entity_id: input_boolean.away
+      state: 'on'
+    - condition: state
       entity_id: binary_sensor.anyone_home
       state: 'off'
   action:
@@ -103,6 +109,9 @@
     - condition: state
       entity_id: input_boolean.away
       state: 'on'
+    - condition: state
+      entity_id: input_boolean.presence_running
+      state: 'off'
   action:
     - service: script.presence_someone_arrived
 
