@@ -115,18 +115,18 @@
   action:
     - service: script.presence_someone_arrived
 
-- id: lock_temp_lock_code_used
-  alias: 'Lock Temp Lock Code Used'
-  trigger:
-    - platform: state
-      entity_id: sensor.last_lock_code_name
-      to: 'Temp'
-  condition:
-    - condition: state
-      entity_id: input_boolean.restart_complete
-      state: 'on'
-  action:
-    - service: script.lock_temp_code_entered
+# - id: lock_temp_lock_code_used
+  # alias: 'Lock Temp Lock Code Used'
+  # trigger:
+    # - platform: state
+      # entity_id: sensor.last_lock_code_name
+      # to: 'Temp'
+  # condition:
+    # - condition: state
+      # entity_id: input_boolean.restart_complete
+      # state: 'on'
+  # action:
+    # - service: script.lock_temp_code_entered
 
 - id: presence_turn_desktop_display_off
   alias: 'Presence Turn Desktop Display Off'

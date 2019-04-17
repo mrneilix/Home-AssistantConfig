@@ -4,8 +4,8 @@ presence_someone_arrived:
     - service: input_boolean.turn_on
       data:
         entity_id: input_boolean.presence_running
-    - service: lock.unlock
-      entity_id: lock.schlage_deadbolt_47
+    # - service: lock.unlock
+      # entity_id: lock.schlage_deadbolt_47
     - service: input_boolean.turn_off
       data:
         entity_id: input_boolean.away

@@ -1,8 +1,8 @@
 startup_scripts:
   alias: Startup Scripts
   sequence:
-    - service: lock.lock
-      entity_id: lock.schlage_deadbolt_47
+    # - service: lock.lock
+      # entity_id: lock.schlage_deadbolt_47
     - service: script.startup_input_booleans
     - service: script.startup_couch_colors
     - delay: 00:00:02
