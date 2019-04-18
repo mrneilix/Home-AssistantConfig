@@ -2,7 +2,7 @@
     zone: home
     tolerance: 100
     devices:
-      - device_tracker.neil_pixel_tasker
+      - device_tracker.phone_pixelowntracks
     unit_of_measurement: mi
   neil_composite_tracker:
     zone: home

@@ -11,8 +11,8 @@ card:
           name: RAM Usage
           icon: mdi:memory
           entities:
-            - sensor.desktop_generic_memory_load_memory
             - sensor.memory_use_percent
+            - sensor.desktop_generic_memory_load_memory
             - sensor.pi_zero_virtual_memory
     - type: horizontal-stack
       cards:

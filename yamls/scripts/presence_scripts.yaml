@@ -77,8 +77,6 @@ presence_no_humans_home:
     # - service: script.lock_set_parents_lock_code
     - service: script.presence_leave_turn_stuff_off
     - delay: 00:00:02
-    - service: script.presence_tasker_phone_location
-    - delay: 00:00:02
     - service: joaoapps_join.fire_send_tasker
       data:
         command: leave
@@ -135,9 +133,22 @@ presence_gina_home:
       state: 'on'
     - service: script.notify_gina_home
 
-presence_tasker_phone_location:
-  alias: Presence Tasker Phone Location
+presence_set_neil_device_trackers_away:
+  alias: Presence Set Neil Device Trackers Away
   sequence:
-    - service: joaoapps_join.pixel_send_tasker
+    - service: device_tracker.see
       data:
-        command: "get_phone_location"
+        dev_id: neil_bluetooth
+        location_name: 'not_home'
+    - service: device_tracker.see
+      data:
+        dev_id: neil_wifi
+        location_name: 'not_home'
+    - service: device_tracker.see
+      data:
+        dev_id: monitor_neil
+        location_name: 'not_home'
+    - service: device_tracker.see
+      data:
+        dev_id: neil
+        location_name: 'not_home'

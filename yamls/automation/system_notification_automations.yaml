@@ -34,7 +34,7 @@
       entity_id: input_boolean.notifications_on
       state: 'on'
     - condition: template
-      value_template: "{{ not is_state('sensor.pi_zero_uptime', 'unknown') }}"
+      value_template: "{{ (((as_timestamp(now()) - as_timestamp(states.sensor.last_boot.state)) )| int) < 360}}"
   action:
     - service: script.notify_restart_complete
 

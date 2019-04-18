@@ -85,6 +85,19 @@ restart_homeassistant:
       entity_id: switch.yi_power
     - service: homeassistant.restart
 
+system_restart_if_just_rebooted:
+  alias: System Restart If Just Rebooted
+  sequence:
+    - service: shell_command.phlex_login
+    - delay: 00:01:00
+    - service: script.restart_homeassistant
+
+system_turn_on_automations_on_restart:
+  alias: System Turn On Automations On Restart
+  sequence:
+    - service: automation.turn_on
+      entity_id: group.all_automations
+
 reboot_pi_zero:
   alias: Reboot Pi Zero
   sequence:
@@ -140,3 +153,4 @@ do_nothing:
   alias: Do Nothing
   sequence:
     - delay: 00:00:01
+

@@ -31,6 +31,16 @@ cards:
             entity_id: script.tv_input_playstation
         icon: 'mdi:playstation'
         name: Playstation
+        name: Chromecast
+      - type: 'custom:button-card'
+        action: service
+        name: Theater Mode
+        icon: attribute
+        service:
+          domain: scene
+          action: turn_on
+          data:
+            entity_id: scene.theater_mode
 - type: conditional
   conditions:
     - entity: media_player.playstation_4
@@ -94,14 +104,12 @@ cards:
               - icon: 'mdi:power-cycle'
                 type: script
                 id: script.ps4_power_off
-- type: entities
-  show_header_toggle: false
-  entities:
-    - scene.theater_mode
-    - input_text.gh_speak
 - type: custom:mini-media-player
   entity: media_player.kitchen_display
   artwork: full-cover
+  tts:
+    platform: google
+    entity_id: media_player.kitchen_display
 - type: custom:mini-media-player
   entity: media_player.living_room_tv
   artwork: full-cover

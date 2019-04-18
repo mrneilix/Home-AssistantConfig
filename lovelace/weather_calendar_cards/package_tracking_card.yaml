@@ -1,18 +1,23 @@
-type: custom:auto-entities
-show_empty: false
+type: conditional
+conditions:
+  - entity: binary_sensor.show_calendar_deliveries
+    state: 'on'
 card:
-  type: entities
-  show_header_toggle: false
-filter:
-  include:
-    - entity_id: "sensor.fedex"
-    - entity_id: "sensor.amazon_package"
-    - entity_id: "sensor.fedex_package"
-    - entity_id: "sensor.ups_package"
-    - entity_id: "sensor.fedex_app"
-    - entity_id: "sensor.ups_app"
-    # - entity_id: "sensor.fedex_package_app"
-    # - entity_id: "sensor.ups_package_app"
-  exclude:
-    - state: "0"
-    - state: "unknown"
+  type: "custom:atomic-calendar"
+  title: "Deliveries"
+  enableModeChange: true
+  defaultMode: 1
+  CalEventIcon1: 'mdi:amazon'
+  CalEventIcon2: 'mdi:package-variant'
+  CalEventIcon3: 'mdi:mailbox'
+  CalEventIcon1Filter: Amazon
+  CalEventIcon2Filter: FedEx,UPS
+  CalEventIcon3Filter: USPS
+  showDate: true
+  showProgressBar: false
+  showMonth: true
+  maxDaysToShow: 30
+  fullDayEventText: ' '
+  entities:
+    - entity: calendar.deliveries
+      type: icon1,icon2,icon3

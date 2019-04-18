@@ -150,6 +150,8 @@
         value_template: '{{ (((  as_timestamp(strptime(states.calendar.friend_birthdays.attributes.start_time, "%d.%m.%Y")) - as_timestamp(now()) ) / 86400 ) | round(0) < 30 ) }}'
       show_calendar_facebook:
         value_template: '{{ (((  as_timestamp(strptime(states.calendar.facebook_events.attributes.start_time, "%d.%m.%Y")) - as_timestamp(now()) ) / 86400 ) | round(0) < 30 ) }}'
+      show_calendar_deliveries:
+        value_template: '{{ (((  as_timestamp(strptime(states.calendar.deliveries.attributes.start_time, "%d.%m.%Y")) - as_timestamp(now()) ) / 86400 ) | round(0) < 30 ) }}'
 # MQTT Status
       mqtt_status:
         device_class: connectivity
