@@ -7,9 +7,16 @@ startup_scripts:
     - service: script.startup_couch_colors
     - delay: 00:00:02
     - service: script.startup_presence
-    - condition: template
-      value_template: "{{ is_state('sensor.pi_zero_monitor_offline', 'offline') or is_state('sensor.pi_zero_monitor_offline', 'unknown') }}"
-    - service: shell_command.restart_monitor
+    - delay: 00:01:00
+    - service_template: >
+          {% if (((as_timestamp(now()) - as_timestamp(states.sensor.last_boot.state)) )| int) < 360 %}
+            script.system_restart_if_just_rebooted
+          {% else %}
+            script.system_turn_on_automations_on_restart
+          {% endif %}
+    # - condition: template
+      # value_template: "{{ is_state('sensor.pi_zero_monitor_offline', 'offline') or is_state('sensor.pi_zero_monitor_offline', 'unknown') }}"
+    # - service: shell_command.restart_monitor
 
 startup_presence:
   alias: Startup Presence
@@ -97,6 +104,9 @@ system_turn_on_automations_on_restart:
   sequence:
     - service: automation.turn_on
       entity_id: group.all_automations
+    - service: input_boolean.turn_on
+      data:
+        entity_id: input_boolean.restart_complete
 
 reboot_pi_zero:
   alias: Reboot Pi Zero

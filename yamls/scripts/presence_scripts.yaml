@@ -42,7 +42,6 @@ presence_neil_arrived_home:
     - service: joaoapps_join.fire_send_tasker
       data:
         command: arrive
-    - service: script.presence_tasker_phone_location
     - service_template: > 
           {%- if now().hour >= 8 and now().hour < 23 %}
             input_boolean.turn_on
