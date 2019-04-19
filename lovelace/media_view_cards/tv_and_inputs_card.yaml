@@ -14,28 +14,27 @@ cards:
     type: horizontal-stack
     cards:
       - type: 'custom:button-card'
+        name: Chromecast
+        icon: 'mdi:cast'
         action: service
         service:
           domain: script
           action: turn_on
           data:
             entity_id: script.tv_input_chromecast
-        icon: 'mdi:cast'
-        name: Chromecast
       - type: 'custom:button-card'
+        name: Playstation
+        icon: 'mdi:playstation'
         action: service
         service:
           domain: script
           action: turn_on
           data:
             entity_id: script.tv_input_playstation
-        icon: 'mdi:playstation'
-        name: Playstation
-        name: Chromecast
       - type: 'custom:button-card'
-        action: service
         name: Theater Mode
-        icon: attribute
+        icon: 'mdi:movie'
+        action: service
         service:
           domain: scene
           action: turn_on
