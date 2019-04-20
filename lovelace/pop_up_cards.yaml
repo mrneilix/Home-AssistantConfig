@@ -49,7 +49,6 @@ device_tracker.neil:
           - entity: device_tracker.monitor_neil
           - entity: device_tracker.neil_wifi
             secondary_info: last-changed
-            secondary_info: last-changed
           - entity: device_tracker.neil_bluetooth
             secondary_info: last-changed
           - type: divider
