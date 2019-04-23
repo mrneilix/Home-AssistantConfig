@@ -1,11 +1,12 @@
 type: vertical-stack
 cards:
 - type: 'custom:button-card'
-  action: toggle
+  name: TV
+  tap_action:
+    action: toggle
   color: var(--primary-color)
   entity: switch.hdmi_0
   icon: attribute
-  name: TV
 - type: conditional
   conditions:
     - entity: switch.hdmi_0
@@ -16,29 +17,26 @@ cards:
       - type: 'custom:button-card'
         name: Chromecast
         icon: 'mdi:cast'
-        action: service
-        service:
-          domain: script
-          action: turn_on
-          data:
+        tap_action:
+          action: service
+          service: script.turn_on
+          service_data:
             entity_id: script.tv_input_chromecast
       - type: 'custom:button-card'
         name: Playstation
         icon: 'mdi:playstation'
-        action: service
-        service:
-          domain: script
-          action: turn_on
-          data:
+        tap_action:
+          action: service
+          service: script.turn_on
+          service_data:
             entity_id: script.tv_input_playstation
       - type: 'custom:button-card'
         name: Theater Mode
         icon: 'mdi:movie'
-        action: service
-        service:
-          domain: scene
-          action: turn_on
-          data:
+        tap_action:
+          action: service
+          service: scene.turn_on
+          service_data:
             entity_id: scene.theater_mode
 - type: conditional
   conditions:

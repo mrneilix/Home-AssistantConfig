@@ -16,23 +16,32 @@ cards:
   - type: horizontal-stack
     cards:
       - type: 'custom:button-card'
-        action: more_info
-        color: var(--primary-color)
-        entity: input_boolean.notifications_on
-        icon: attribute
         name: Notify
-      - type: 'custom:button-card'
-        action: toggle
+        entity: input_boolean.notifications_on
+        tap_action:
+          action: toggle
+        hold_action:
+          action: more-info
         color: var(--primary-color)
-        entity: input_boolean.presence_automations
         icon: attribute
+      - type: 'custom:button-card'
         name: Presence
-      - type: 'custom:button-card'
-        action: toggle
+        entity: input_boolean.presence_automations
+        tap_action:
+          action: toggle
+        hold_action:
+          action: more-info
         color: var(--primary-color)
-        entity: switch.yi_power
         icon: attribute
+      - type: 'custom:button-card'
         name: Camera
+        entity: switch.yi_power
+        tap_action:
+          action: toggle
+        hold_action:
+          action: more-info
+        color: var(--primary-color)
+        icon: attribute
   # - type: horizontal-stack
     # cards:
       # - type: 'custom:button-card'

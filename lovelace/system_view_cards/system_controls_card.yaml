@@ -3,67 +3,62 @@ cards:
   - type: horizontal-stack
     cards:
       - type: 'custom:button-card'
-        action: service
-        service:
-          domain: script
-          action: turn_on
-          data:
-            entity_id: script.restart_homeassistant
-        color: var(--primary-color)
+        name: Restart HA
+        entity: script.restart_homeassistant
         icon: 'mdi:home-assistant'
-        name: Restart Home Assistant
-      - type: 'custom:button-card'
-        action: service
-        service:
-          domain: scene
-          action: turn_on
-          data:
-            entity_id: scene.reboot_vera
-        color: var(--primary-color)
-        icon: 'mdi:spa'
-        name: Reboot Vera
-  - type: horizontal-stack
-    cards:
-      - type: 'custom:button-card'
-        action: service
-        service:
-          domain: script
-          action: turn_on
-          data:
-            entity_id: script.confirm_system_reboot
-        color: var(--primary-color)
-        icon: 'mdi:power-cycle'
-        name: Reboot System
-      - type: 'custom:button-card'
-        action: service
-        service:
-          domain: script
-          action: turn_on
-          data:
-            entity_id: script.reboot_pi_zero
-        color: var(--primary-color)
+        tap_action:
+          action: service
+          service: script.restart_homeassistant
+        color: rgb(57, 111, 182)
         color_type: icon
-        icon: 'mdi:numeric-0-box'
-        name: Reboot Pi Zero
+      - type: 'custom:button-card'
+        name: Reboot Vera
+        entity: scene.reboot_vera
+        icon: 'mdi:spa'
+        tap_action:
+          action: service
+          service: scene.turn_on
+          service_data:
+            entity_id: scene.reboot_vera
+        color: rgb(57, 111, 182)
+        color_type: icon
   - type: horizontal-stack
     cards:
       - type: 'custom:button-card'
-        action: service
-        service:
-          domain: script
-          action: turn_on
-          data:
-            entity_id: script.system_desktop_display_off
-        color: var(--primary-color)
-        icon: 'mdi:monitor'
-        name: Monitor Off
+        name: Reboot System
+        entity: script.confirm_system_reboot
+        icon: 'mdi:power-cycle'
+        tap_action:
+          action: service
+          service: script.confirm_system_reboot
+        color: rgb(57, 111, 182)
+        color_type: icon
       - type: 'custom:button-card'
-        action: service
-        service:
-          domain: script
-          action: turn_on
-          data:
-            entity_id: script.system_git_backup
-        color: var(--primary-color)
-        icon: 'mdi:github-circle'
+        name: Reboot Pi Zero
+        entity: script.reboot_pi_zero
+        icon: 'mdi:numeric-0-box'
+        tap_action:
+          action: service
+          service: script.reboot_pi_zero
+        color: rgb(57, 111, 182)
+        color_type: icon
+  - type: horizontal-stack
+    cards:
+      - type: 'custom:button-card'
+        name: Monitor Off
+        entity: script.system_desktop_display_off
+        icon: 'mdi:monitor'
+        tap_action:
+          action: service
+          service: script.system_desktop_display_off
+        color: rgb(57, 111, 182)
+        color_type: icon
+      - type: 'custom:button-card'
         name: Git Backup
+        entity: script.system_git_backup
+        icon: 'mdi:github-circle'
+        tap_action:
+          action: service
+          service: script.system_git_backup
+        color: rgb(57, 111, 182)
+        color_type: icon

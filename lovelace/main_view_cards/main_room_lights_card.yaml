@@ -10,33 +10,43 @@ cards:
         name: Bed
   - type: horizontal-stack
     cards:
-      - entity: switch.furnace_switch_29
+      - type: picture-entity
+        entity: switch.furnace_switch_29
         name: Furnace
         state_image:
           'off': /local/pictures/furnace-off.png
           'on': /local/pictures/furnace.png
         tap_action:
           action: toggle
-        type: picture-entity
-      - entity: switch.lamp
+        hold_action:
+          action: more-info
+      - type: picture-entity
+        entity: switch.lamp
         name: Lamp
         state_image:
           'off': /local/pictures/lamp-off.jpg
           'on': /local/pictures/lamp.jpg
         tap_action:
           action: toggle
-        type: picture-entity
+        hold_action:
+          action: more-info
   - type: horizontal-stack
     cards:
       - type: 'custom:button-card'
-        action: toggle
+        name: Bathroom Light
+        tap_action:
+          action: toggle
+        hold_action:
+          action: more-info
         color: var(--primary-color)
         entity: switch.bathroom_light
         icon: attribute
-        name: Bathroom Light
       - type: 'custom:button-card'
-        action: toggle
+        name: Bathroom Fan
+        tap_action:
+          action: toggle
+        hold_action:
+          action: more-info
         color: var(--primary-color)
         entity: switch.bathroom_fan
         icon: attribute
-        name: Bathroom Fan

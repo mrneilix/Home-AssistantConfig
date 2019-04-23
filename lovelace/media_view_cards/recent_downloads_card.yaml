@@ -1,11 +1,12 @@
 type: vertical-stack
 cards:
 - type: 'custom:button-card'
-  action: toggle
+  name: Show Recent Downloads
+  tap_action:
+    action: toggle
   color: var(--primary-color)
   entity: input_boolean.show_recent_downloads
   icon: attribute
-  name: Show Recent Downloads
 - type: conditional
   conditions:
     - entity: input_boolean.show_recent_downloads

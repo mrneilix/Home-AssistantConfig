@@ -7,11 +7,12 @@ cards:
   - !include system_view_cards/system_info_sensors_card.yaml
   - !include system_view_cards/system_weblinks_card.yaml
   - type: 'custom:button-card'
-    action: toggle
+    name: System Stats
+    tap_action:
+      action: toggle
     color: var(--primary-color)
     entity: input_boolean.show_system_stats
     icon: 'mdi:desktop-classic'
-    name: System Stats
   - !include system_view_cards/system_cpu_usage_card.yaml
   - !include system_view_cards/system_speedtest_card.yaml
   - !include system_view_cards/system_memory_usage_card.yaml

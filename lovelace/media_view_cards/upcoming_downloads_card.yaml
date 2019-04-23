@@ -1,11 +1,12 @@
 type: vertical-stack
 cards:
 - type: 'custom:button-card'
-  action: toggle
+  name: Show Upcoming Downloads
+  tap_action:
+    action: toggle
   color: var(--primary-color)
   entity: input_boolean.show_upcoming_downloads
   icon: attribute
-  name: Show Upcoming Downloads
 - type: conditional
   conditions:
     - entity: input_boolean.show_upcoming_downloads

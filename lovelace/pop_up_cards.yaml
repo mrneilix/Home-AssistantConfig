@@ -7,15 +7,13 @@ sensor.kitchen_display_time_remaining_alarm:
         entities:
           - sensor.kitchen_display_time_remaining_alarm
       - type: 'custom:button-card'
-        action: service
-        service:
-          domain: script
-          action: turn_on
-          data:
-            entity_id: script.google_home_clear_alarm
-        color: var(--primary-color)
-        icon: 'mdi:alarm'
         name: Clear Alarm
+        entity: script.google_home_clear_alarm
+        tap_action:
+          action: service
+          service: script.google_home_clear_alarm
+        color: rgb(57, 111, 182)
+        icon: 'mdi:alarm'
 sensor.kitchen_display_time_remaining_timer:
   title: Timer
   card:
@@ -25,15 +23,13 @@ sensor.kitchen_display_time_remaining_timer:
         entities:
           - sensor.kitchen_display_time_remaining_timer
       - type: 'custom:button-card'
-        action: service
-        service:
-          domain: script
-          action: turn_on
-          data:
-            entity_id: script.google_home_clear_timer
-        color: var(--primary-color)
-        icon: 'mdi:timer-sand'
         name: Clear Timer
+        entity: script.google_home_clear_timer
+        tap_action:
+          action: service
+          service: script.google_home_clear_timer
+        color: rgb(57, 111, 182)
+        icon: 'mdi:timer-sand'
 device_tracker.neil:
   title: Neil
   card:
@@ -58,6 +54,16 @@ device_tracker.neil:
             secondary_info: last-changed
           - entity: device_tracker.phone_pixelowntracks
             secondary_info: last-changed
+      - type: 'custom:button-card'
+        name: Leave
+        entity: script.presence_set_neil_device_trackers_away
+        icon: 'mdi:walk'
+        tap_action:
+          action: service
+          service: script.presence_set_neil_device_trackers_away
+        color: rgb(57, 111, 182)
+        color_type: icon
+        layout: icon_name
       - type: map
         default_zoom: 1
         geo_location_sources:
@@ -82,8 +88,15 @@ device_tracker.butters:
             secondary_info: last-changed
           - entity: device_tracker.tile_ba7ceb56d53379ac 
             secondary_info: last-changed
-          - entity: input_boolean.butters_home
-            secondary_info: last-changed
+      - type: 'custom:button-card'
+        name: Fam Code
+        entity: input_boolean.butters_home
+        tap_action:
+          action: toggle
+        color: rgb(57, 111, 182)
+        color_type: icon
+        icon: attribute
+        layout: icon_name_state
       - type: map
         default_zoom: 1
         geo_location_sources:
@@ -109,11 +122,13 @@ device_tracker.parents:
           - entity: binary_sensor.lock_code_entered_parents
             secondary_info: last-changed
       - type: 'custom:button-card'
-        action: toggle
-        color: var(--primary-color)
-        entity: input_boolean.parents_lock_code
-        icon: attribute
         name: Fam Code
+        entity: input_boolean.parents_lock_code
+        tap_action:
+          action: toggle
+        color: rgb(57, 111, 182)
+        color_type: icon
+        icon: attribute
 device_tracker.gina:
   title: Gina
   card:
@@ -156,17 +171,21 @@ input_boolean.notifications_on:
     type: horizontal-stack
     cards:
       - type: 'custom:button-card'
-        action: toggle
-        color: var(--primary-color)
-        entity: input_boolean.weather_notifications
-        icon: attribute
         name: Weather
-      - type: 'custom:button-card'
-        action: toggle
-        color: var(--primary-color)
-        entity: input_boolean.notifications_on
+        entity: input_boolean.weather_notifications
+        tap_action:
+          action: toggle
+        color: rgb(57, 111, 182)
+        color_type: icon
         icon: attribute
+      - type: 'custom:button-card'
         name: Notify
+        entity: input_boolean.notifications_on
+        tap_action:
+          action: toggle
+        color: rgb(57, 111, 182)
+        color_type: icon
+        icon: attribute
 input_boolean.temp_lock_code_set:
   title: Temp Code
   card:
@@ -181,11 +200,13 @@ input_boolean.temp_lock_code_set:
       - type: horizontal-stack
         cards:
           - type: 'custom:button-card'
-            action: toggle
-            color: var(--primary-color)
-            entity: input_boolean.temp_lock_code_set
-            icon: attribute
             name: Temp Code
+            entity: input_boolean.temp_lock_code_set
+            tap_action:
+              action: toggle
+            color: rgb(57, 111, 182)
+            color_type: icon
+            icon: attribute
 input_boolean.parents_lock_code:
   title: Parents Lock Code
   card:
@@ -195,11 +216,13 @@ input_boolean.parents_lock_code:
         entities:
           - input_boolean.parents_lock_code
       - type: 'custom:button-card'
-        action: toggle
-        color: var(--primary-color)
-        entity: input_boolean.parents_lock_code
-        icon: attribute
         name: Fam Code
+        entity: input_boolean.parents_lock_code
+        tap_action:
+          action: toggle
+        color: rgb(57, 111, 182)
+        color_type: icon
+        icon: attribute
 sensor.last_lock_code_name:
   title: Lock Info
   card:
@@ -214,26 +237,31 @@ sensor.last_lock_code_name:
         entities:
           - lock.schlage_deadbolt_47
       - type: 'custom:button-card'
-        action: toggle
-        color: var(--primary-color)
-        entity: switch.front_door_lock
-        icon: attribute
         name: Lock
+        entity: switch.front_door_lock
+        tap_action:
+          action: toggle
+        color: rgb(57, 111, 182)
+        color_type: icon
+        icon: attribute
       - type: entities
         entities:
           - sensor.lock_battery_level
       - type: horizontal-stack
         cards:
           - type: 'custom:button-card'
-            action: toggle
-            color: var(--primary-color)
-            entity: input_boolean.temp_lock_code_set
-            icon: attribute
             name: Temp Code
-          - type: 'custom:button-card'
-            action: toggle
-            color: var(--primary-color)
-            entity: input_boolean.parents_lock_code
+            entity: input_boolean.temp_lock_code_set
+            tap_action:
+              action: toggle
+            color: rgb(57, 111, 182)
+            color_type: icon
             icon: attribute
+          - type: 'custom:button-card'
+            entity: input_boolean.parents_lock_code
             name: Fam Code
-          
+            tap_action:
+              action: toggle
+            color: rgb(57, 111, 182)
+            color_type: icon
+            icon: attribute
