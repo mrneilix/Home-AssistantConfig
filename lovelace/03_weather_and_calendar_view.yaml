@@ -1,6 +1,7 @@
 title: General
 icon: mdi:calendar-today
 path: weather_and_calendar
+theme: darkblue
 badges:
   - device_tracker.neil
   - device_tracker.gina

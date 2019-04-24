@@ -8,73 +8,85 @@ card:
     - type: horizontal-stack
       cards:
         - type: 'custom:button-card'
-          action: service
-          service:
-            domain: scene
-            action: turn_on
-            data:
-              entity_id: scene.couch_white
-          color: 'rgb(255, 255, 255)'
-          color_type: icon
-          icon: 'mdi:sofa'
           name: White
-        - type: 'custom:button-card'
-          action: service
-          service:
-            domain: scene
-            action: turn_on
-            data:
-              entity_id: scene.couch_soft_white
-          color: 'rgb(255, 242, 230)'
+          entity: script.couch_white
+          tap_action:
+            action: service
+            service: script.couch_white
+          state:
+            - value: 'off'
+              color: 'rgb(255, 255, 255)'
+            - value: 'on'
+              color: 'rgb(255, 255, 255)'
           color_type: icon
-          icon: 'mdi:sofa'
+          icon: attribute
+        - type: 'custom:button-card'
           name: Soft White
-        - type: 'custom:button-card'
-          action: service
-          service:
-            domain: scene
-            action: turn_on
-            data:
-              entity_id: scene.couch_blue
-          color: 'rgb(0, 0, 255)'
+          entity: script.couch_soft_white
+          tap_action:
+            action: service
+            service: script.couch_soft_white
+          state:
+            - value: 'off'
+              color: 'rgb(255, 242, 230)'
+            - value: 'on'
+              color: 'rgb(255, 242, 230)'
           color_type: icon
-          icon: 'mdi:sofa'
+          icon: attribute
+        - type: 'custom:button-card'
           name: Blue
+          entity: script.couch_blue
+          tap_action:
+            action: service
+            service: script.couch_blue
+          state:
+            - value: 'off'
+              color: 'rgb(0, 0, 255)'
+            - value: 'on'
+              color: 'rgb(0, 0, 255)'
+          color_type: icon
+          icon: attribute
     - type: horizontal-stack
       cards:
         - type: 'custom:button-card'
-          action: service
-          service:
-            domain: scene
-            action: turn_on
-            data:
-              entity_id: scene.couch_red
-          color: 'rgb(255, 0, 0)'
-          color_type: icon
-          icon: 'mdi:sofa'
           name: Red
-        - type: 'custom:button-card'
-          action: service
-          service:
-            domain: scene
-            action: turn_on
-            data:
-              entity_id: scene.couch_green
-          color: 'rgb(0, 255, 0)'
+          entity: script.couch_red
+          tap_action:
+            action: service
+            service: script.couch_red
+          state:
+            - value: 'off'
+              color: 'rgb(255, 0, 0)'
+            - value: 'on'
+              color: 'rgb(255, 0, 0)'
           color_type: icon
-          icon: 'mdi:sofa'
+          icon: attribute
+        - type: 'custom:button-card'
           name: Green
-        - type: 'custom:button-card'
-          action: service
-          service:
-            domain: scene
-            action: turn_on
-            data:
-              entity_id: scene.couch_purple
-          color: 'rgb(255, 0, 255)'
+          entity: script.couch_green
+          tap_action:
+            action: service
+            service: script.couch_green
+          state:
+            - value: 'off'
+              color: 'rgb(0, 255, 0)'
+            - value: 'on'
+              color: 'rgb(0, 255, 0)'
           color_type: icon
-          icon: 'mdi:sofa'
+          icon: attribute
+        - type: 'custom:button-card'
           name: Purple
+          entity: script.couch_purple
+          tap_action:
+            action: service
+            service: script.couch_purple
+          state:
+            - value: 'off'
+              color: 'rgb(255, 0, 255)'
+            - value: 'on'
+              color: 'rgb(255, 0, 255)'
+          color_type: icon
+          icon: attribute
     - type: entities
       entities:
         - input_text.couch_color

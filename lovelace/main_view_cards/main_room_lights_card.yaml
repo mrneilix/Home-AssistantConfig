@@ -34,19 +34,17 @@ cards:
     cards:
       - type: 'custom:button-card'
         name: Bathroom Light
-        tap_action:
-          action: toggle
+        entity: switch.bathroom_light
         hold_action:
           action: more-info
+        tap_action:
+          action: toggle
         color: var(--primary-color)
-        entity: switch.bathroom_light
-        icon: attribute
       - type: 'custom:button-card'
         name: Bathroom Fan
-        tap_action:
-          action: toggle
+        entity: switch.bathroom_fan
         hold_action:
           action: more-info
+        tap_action:
+          action: toggle
         color: var(--primary-color)
-        entity: switch.bathroom_fan
-        icon: attribute

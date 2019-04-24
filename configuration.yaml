@@ -24,6 +24,8 @@ custom_updater:
 
 config:
 
+websocket_api:
+
 hassio:
 
 http:

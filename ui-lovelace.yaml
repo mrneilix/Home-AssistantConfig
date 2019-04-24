@@ -7,3 +7,4 @@ views:
   - !include lovelace/02_fitbit_view.yaml
   - !include lovelace/03_weather_and_calendar_view.yaml
   - !include lovelace/04_system_view.yaml
+  - !include lovelace/04_01_system_view_mobile.yaml

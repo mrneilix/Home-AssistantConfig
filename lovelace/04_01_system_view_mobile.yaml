@@ -1,12 +1,12 @@
 title: System
 icon: mdi:desktop-classic
-path: system_monitor
+path: system_monitor_mobile
 theme: darkblue
 cards:
   - !include compact_custom_header.yaml
   - !include system_view_cards/system_controls_card.yaml
   - !include system_view_cards/system_info_sensors_card.yaml
-  - !include system_view_cards/system_weblinks_card.yaml
+  - !include system_view_cards/system_weblinks_card_mobile.yaml
   - !include system_view_cards/system_show_system_stats.yaml
   - !include system_view_cards/system_cpu_usage_card.yaml
   - !include system_view_cards/system_speedtest_card.yaml

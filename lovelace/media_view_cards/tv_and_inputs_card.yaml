@@ -6,7 +6,6 @@ cards:
     action: toggle
   color: var(--primary-color)
   entity: switch.hdmi_0
-  icon: attribute
 - type: conditional
   conditions:
     - entity: switch.hdmi_0
@@ -16,20 +15,28 @@ cards:
     cards:
       - type: 'custom:button-card'
         name: Chromecast
+        entity: script.tv_input_chromecast
         icon: 'mdi:cast'
         tap_action:
           action: service
-          service: script.turn_on
-          service_data:
-            entity_id: script.tv_input_chromecast
+          service: script.tv_input_chromecast
+        state:
+          - value: 'off'
+            color: rgb(57, 111, 182)
+          - value: 'on'
+            color: rgb(57, 111, 182)
       - type: 'custom:button-card'
         name: Playstation
+        entity: script.tv_input_playstation
         icon: 'mdi:playstation'
         tap_action:
           action: service
-          service: script.turn_on
-          service_data:
-            entity_id: script.tv_input_playstation
+          service: script.tv_input_playstation
+        state:
+          - value: 'off'
+            color: rgb(57, 111, 182)
+          - value: 'on'
+            color: rgb(57, 111, 182)
       - type: 'custom:button-card'
         name: Theater Mode
         icon: 'mdi:movie'
@@ -38,6 +45,9 @@ cards:
           service: scene.turn_on
           service_data:
             entity_id: scene.theater_mode
+        state:
+          - value: 'scening'
+            color: rgb(57, 111, 182)
 - type: conditional
   conditions:
     - entity: media_player.playstation_4

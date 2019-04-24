@@ -123,3 +123,34 @@ couch_light_update_input_text:
       data_template:
         entity_id: input_text.couch_color
         value: '{{ states.sensor.couch_light_color_name.state }}'
+
+couch_white:
+  alias: Couch White
+  sequence:
+    - service: scene.turn_on
+      entity_id: scene.couch_white
+couch_soft_white:
+  alias: Couch Soft White
+  sequence:
+    - service: scene.turn_on
+      entity_id: scene.couch_soft_white
+couch_blue:
+  alias: Couch Blue
+  sequence:
+    - service: scene.turn_on
+      entity_id: scene.couch_blue
+couch_red:
+  alias: Couch Red
+  sequence:
+    - service: scene.turn_on
+      entity_id: scene.couch_red
+couch_green:
+  alias: Couch Green
+  sequence:
+    - service: scene.turn_on
+      entity_id: scene.couch_green
+couch_purple:
+  alias: Couch Purple
+  sequence:
+    - service: scene.turn_on
+      entity_id: scene.couch_purple

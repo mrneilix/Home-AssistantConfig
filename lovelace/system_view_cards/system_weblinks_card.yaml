@@ -36,10 +36,6 @@ entities:
     name: Grafana
     url: !secret grafana_weblink
     icon: mdi:chart-areaspline
-  # - type: custom:ext-weblink
-    # name: Configurator
-    # icon: mdi:wrench
-    # url: !secret configurator_url
   - type: custom:ext-weblink
     name: Tautulli
     icon: mdi:filmstrip

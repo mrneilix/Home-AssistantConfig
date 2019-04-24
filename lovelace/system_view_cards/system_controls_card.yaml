@@ -9,7 +9,11 @@ cards:
         tap_action:
           action: service
           service: script.restart_homeassistant
-        color: rgb(57, 111, 182)
+        state:
+          - value: 'off'
+            color: rgb(57, 111, 182)
+          - value: 'on'
+            color: rgb(57, 111, 182)
         color_type: icon
       - type: 'custom:button-card'
         name: Reboot Vera
@@ -20,7 +24,9 @@ cards:
           service: scene.turn_on
           service_data:
             entity_id: scene.reboot_vera
-        color: rgb(57, 111, 182)
+        state:
+          - value: 'scening'
+            color: rgb(57, 111, 182)
         color_type: icon
   - type: horizontal-stack
     cards:
@@ -31,7 +37,11 @@ cards:
         tap_action:
           action: service
           service: script.confirm_system_reboot
-        color: rgb(57, 111, 182)
+        state:
+          - value: 'off'
+            color: rgb(57, 111, 182)
+          - value: 'on'
+            color: rgb(57, 111, 182)
         color_type: icon
       - type: 'custom:button-card'
         name: Reboot Pi Zero
@@ -40,7 +50,11 @@ cards:
         tap_action:
           action: service
           service: script.reboot_pi_zero
-        color: rgb(57, 111, 182)
+        state:
+          - value: 'off'
+            color: rgb(57, 111, 182)
+          - value: 'on'
+            color: rgb(57, 111, 182)
         color_type: icon
   - type: horizontal-stack
     cards:
@@ -51,7 +65,11 @@ cards:
         tap_action:
           action: service
           service: script.system_desktop_display_off
-        color: rgb(57, 111, 182)
+        state:
+          - value: 'off'
+            color: rgb(57, 111, 182)
+          - value: 'on'
+            color: rgb(57, 111, 182)
         color_type: icon
       - type: 'custom:button-card'
         name: Git Backup
@@ -60,5 +78,9 @@ cards:
         tap_action:
           action: service
           service: script.system_git_backup
-        color: rgb(57, 111, 182)
+        state:
+          - value: 'off'
+            color: rgb(57, 111, 182)
+          - value: 'on'
+            color: rgb(57, 111, 182)
         color_type: icon

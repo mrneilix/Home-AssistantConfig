@@ -9,6 +9,20 @@ scene.theater_mode:
   icon: mdi:movie
   friendly_name: Theater Mode
 
+### SCRIPTS ###
+script.couch_white:
+  icon: mdi:sofa
+script.couch_soft_white:
+  icon: mdi:sofa
+script.couch_blue:
+  icon: mdi:sofa
+script.couch_red:
+  icon: mdi:sofa
+script.couch_green:
+  icon: mdi:sofa
+script.couch_purple:
+  icon: mdi:sofa
+
 ### INPUT NUMBERS ###
 input_number.couch_r:
   entity_picture: /local/pictures/couch_red.jpg

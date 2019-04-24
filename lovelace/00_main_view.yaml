@@ -1,6 +1,7 @@
 title: default_view
 icon: mdi:home
 path: home
+theme: darkblue
 badges:
   - device_tracker.neil
   - device_tracker.butters

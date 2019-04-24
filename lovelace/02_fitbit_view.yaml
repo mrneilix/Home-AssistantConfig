@@ -1,6 +1,7 @@
 title: FitBit
 icon: mdi:heart-pulse
 path: health
+theme: darkblue
 cards:
   - !include compact_custom_header.yaml
   - !include fitbit_view_cards/fitbit_picture_elements_card.yaml

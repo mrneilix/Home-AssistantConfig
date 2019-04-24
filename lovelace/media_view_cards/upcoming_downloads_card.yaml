@@ -6,7 +6,6 @@ cards:
     action: toggle
   color: var(--primary-color)
   entity: input_boolean.show_upcoming_downloads
-  icon: attribute
 - type: conditional
   conditions:
     - entity: input_boolean.show_upcoming_downloads

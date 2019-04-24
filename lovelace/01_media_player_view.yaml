@@ -1,6 +1,7 @@
 title: Media Players
 icon: mdi:video
 path: media_players
+theme: darkblue
 cards:
   - !include compact_custom_header.yaml
   - !include media_view_cards/tv_and_inputs_card.yaml
