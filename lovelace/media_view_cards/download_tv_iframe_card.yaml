@@ -1,0 +1,19 @@
+type: vertical-stack
+cards:
+- type: 'custom:button-card'
+  name: Download TV
+  entity: input_boolean.sonarr_iframe
+  icon: mdi:television-classic
+  color: var(--primary-color)
+  tap_action:
+    action: toggle
+  size: 20%
+  style:
+  - padding: 5px 0px
+- type: conditional
+  conditions:
+    - entity: input_boolean.sonarr_iframe
+      state: 'on'
+  card:
+    type: iframe
+    url: !secret sonarr_weblink

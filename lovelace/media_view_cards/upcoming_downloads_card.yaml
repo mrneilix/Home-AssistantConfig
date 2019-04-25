@@ -6,6 +6,9 @@ cards:
     action: toggle
   color: var(--primary-color)
   entity: input_boolean.show_upcoming_downloads
+  size: 20%
+  style:
+  - padding: 5px 0px
 - type: conditional
   conditions:
     - entity: input_boolean.show_upcoming_downloads

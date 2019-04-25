@@ -58,24 +58,24 @@
 
   - platform: template
     sensors:
-      sonarr_upcoming_list:
-        friendly_name: Upcoming Episodes
-        icon_template: mdi:television
-        value_template: >
-          {% for attr in states.sensor.sonarr_upcoming.attributes %}
-          {% if not attr=="friendly_name" and not attr=="icon" and not attr=="unit_of_measurement" and not attr=="hidden" and not attr=="custom_ui_state_card" %}
-            {{attr}}: {{states.sensor.sonarr_upcoming.attributes[attr]}} {{" |  "}}
-          {% endif %}
-          {% endfor %}
-      radarr_upcoming_list:
-        friendly_name: Upcoming Movies
-        icon_template: mdi:video
-        value_template: >
-          {% for attr in states.sensor.radarr_upcoming.attributes %}
-          {% if not attr=="friendly_name" and not attr=="icon" and not attr=="unit_of_measurement" and not attr=="hidden" and not attr=="custom_ui_state_card" %}
-            {{attr}} {{" |  "}}
-          {% endif %}
-          {% endfor %}
+      # sonarr_upcoming_list:
+        # friendly_name: Upcoming Episodes
+        # icon_template: mdi:television
+        # value_template: >
+          # {% for attr in states.sensor.sonarr_upcoming.attributes %}
+          # {% if not attr=="friendly_name" and not attr=="icon" and not attr=="unit_of_measurement" and not attr=="hidden" and not attr=="custom_ui_state_card" %}
+            # {{attr}}: {{states.sensor.sonarr_upcoming.attributes[attr]}} {{" |  "}}
+          # {% endif %}
+          # {% endfor %}
+      # radarr_upcoming_list:
+        # friendly_name: Upcoming Movies
+        # icon_template: mdi:video
+        # value_template: >
+          # {% for attr in states.sensor.radarr_upcoming.attributes %}
+          # {% if not attr=="friendly_name" and not attr=="icon" and not attr=="unit_of_measurement" and not attr=="hidden" and not attr=="custom_ui_state_card" %}
+            # {{attr}} {{" |  "}}
+          # {% endif %}
+          # {% endfor %}
       desktop_disk_space_c:
         friendly_name: "C: - Main"
         icon_template: mdi:harddisk

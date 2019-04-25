@@ -50,3 +50,11 @@
     name: Show System Stats
     initial: off
     icon: mdi:desktop-classic
+  sonarr_iframe:
+    name: Download TV
+    initial: off
+    icon: mdi:television-classic
+  radarr_iframe:
+    name: Download Movies
+    initial: off
+    icon: mdi:filmstrip

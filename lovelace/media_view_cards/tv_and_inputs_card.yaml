@@ -2,10 +2,13 @@ type: vertical-stack
 cards:
 - type: 'custom:button-card'
   name: TV
+  entity: switch.hdmi_0
   tap_action:
     action: toggle
   color: var(--primary-color)
-  entity: switch.hdmi_0
+  size: 20%
+  style:
+  - padding: 5px 0px
 - type: conditional
   conditions:
     - entity: switch.hdmi_0
