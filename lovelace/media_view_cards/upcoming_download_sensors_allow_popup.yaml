@@ -1,0 +1,6 @@
+type: entities
+title: Downloaders
+show_header_toggle: false
+entities:
+  - sensor.sonarr_upcoming
+  - sensor.radarr_upcoming

@@ -283,3 +283,15 @@ sensor.last_lock_code_name:
               action: toggle
             color: rgb(57, 111, 182)
             color_type: icon
+sensor.sonarr_upcoming:
+  title: Sonarr
+  large: true
+  card:
+    type: iframe
+    url: !secret sonarr_weblink
+sensor.radarr_upcoming:
+  title: Radarr
+  large: true
+  card:
+    type: iframe
+    url: !secret radarr_weblink
