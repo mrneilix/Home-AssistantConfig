@@ -17,17 +17,17 @@
     - delay: 00:00:50
     - service: script.startup_scripts
 
-- id: system_internet_down
-  alias: 'System Internet Down'
-  trigger: 
-    - platform: template
-      value_template: '{{ states.sensor.speedtest_download.state| float < 5 }}'
-  condition:
-    - condition: state
-      entity_id: input_boolean.restart_complete
-      state: 'on'
-  action:      
-    - service: script.restart_homeassistant
+# - id: system_internet_down
+  # alias: 'System Internet Down'
+  # trigger: 
+    # - platform: template
+      # value_template: '{{ states.sensor.speedtest_download.state| float < 5 }}'
+  # condition:
+    # - condition: state
+      # entity_id: input_boolean.restart_complete
+      # state: 'on'
+  # action:      
+    # - service: script.restart_homeassistant
     
 - id: system_monitor_pi_zero_down
   alias: 'System Monitor Pi Zero Down'

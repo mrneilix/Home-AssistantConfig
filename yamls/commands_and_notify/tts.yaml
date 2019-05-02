@@ -1,4 +1,2 @@
-  platform: google
-  cache: true
-  cache_dir: /tmp/tts
-  time_memory: 300
+  platform: google_translate
+  service_name: google_say

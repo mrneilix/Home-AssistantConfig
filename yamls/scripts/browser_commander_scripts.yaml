@@ -1,0 +1,24 @@
+browser_commander_show_upcoming_downloads:
+  sequence:
+    - event: browser_command
+      event_data:
+          command: popup
+          title: Upcoming Downloads
+          card:
+            type: horizontal-stack
+            cards:
+            - type: custom:upcoming-media-card
+              entity: sensor.sonarr_upcoming_media
+              title: TV
+            - type: custom:upcoming-media-card
+              entity: sensor.radarr_upcoming_media
+              title: Movies
+browser_commander_show_recent_downloads:
+  sequence:
+    - event: browser_command
+      event_data:
+          command: popup
+          title: Recent Downloads
+          card:
+            type: custom:upcoming-media-card
+            entity: sensor.plex_recently_added

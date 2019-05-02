@@ -51,7 +51,7 @@ presence_neil_arrived_home:
       data:
         entity_id: input_boolean.notifications_on
     - delay: 00:00:05
-    - service: tts.google_say
+    - service: tts.google_translate_say
       entity_id: media_player.kitchen_display
       data:
         message: "Hello, Neil"
@@ -111,7 +111,7 @@ presence_leave_turn_stuff_off:
 presence_parents_home:
   alias: Presence Parents Home
   sequence:
-    - service: tts.google_say
+    - service: tts.google_translate_say
       entity_id: media_player.kitchen_display
       data_template:
         message: "Hello, Mom or Dad."
@@ -123,7 +123,7 @@ presence_parents_home:
 presence_gina_home:
   alias: Presence Gina Home
   sequence:
-    - service: tts.google_say
+    - service: tts.google_translate_say
       entity_id: media_player.kitchen_display
       data_template:
         message: "Hello, Gina."

@@ -19,5 +19,4 @@ cards:
       - media_player.plex_desktop
       - media_player.tablet_living_room_plex
       - media_player.plex_galaxy_note8
-  - !include media_view_cards/recent_downloads_card.yaml
-  - !include media_view_cards/upcoming_downloads_card.yaml
+  - !include media_view_cards/downloads_card.yaml

@@ -1,24 +1,11 @@
-type: vertical-stack
-cards:
-- type: 'custom:button-card'
-  name: Show Upcoming Downloads
-  tap_action:
-    action: toggle
-  color: var(--primary-color)
-  entity: input_boolean.show_upcoming_downloads
-  size: 20%
-  style:
-  - padding: 5px 0px
-- type: conditional
-  conditions:
-    - entity: input_boolean.show_upcoming_downloads
-      state: 'on'
-  card:
-    type: horizontal-stack
-    cards:
-      - type: custom:upcoming-media-card
-        entity: sensor.sonarr_upcoming_media
-        title: Upcoming TV
-      - type: custom:upcoming-media-card
-        entity: sensor.radarr_upcoming_media
-        title: Upcoming Movies
+type: 'custom:button-card'
+name: Show Upcoming Downloads
+entity: script.browser_commander_show_upcoming_downloads
+tap_action:
+  action: service
+  service: script.browser_commander_show_upcoming_downloads
+color: var(--primary-color)
+size: 20%
+icon: mdi:download-outline
+style:
+- padding: 5px 0px

@@ -36,14 +36,6 @@
     name: Config Updated
   kitchen_lights_running:
     initial: off
-  show_upcoming_downloads:
-    name: Show Upcoming Downloads
-    initial: off
-    icon: mdi:download-outline
-  show_recent_downloads:
-    name: Show Recent Downloads
-    initial: off
-    icon: mdi:download
   door_open:
     initial: off
   show_system_stats:

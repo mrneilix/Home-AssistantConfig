@@ -1,19 +1,11 @@
-type: vertical-stack
-cards:
-- type: 'custom:button-card'
-  name: Show Recent Downloads
-  tap_action:
-    action: toggle
-  color: var(--primary-color)
-  entity: input_boolean.show_recent_downloads
-  size: 20%
-  style:
-  - padding: 5px 0px
-- type: conditional
-  conditions:
-    - entity: input_boolean.show_recent_downloads
-      state: 'on'
-  card:
-    type: custom:upcoming-media-card
-    entity: sensor.plex_recently_added
-    title: Recently Downloaded
+type: 'custom:button-card'
+name: Show Recent Downloads
+entity: script.browser_commander_show_recent_downloads
+tap_action:
+  action: service
+  service: script.browser_commander_show_recent_downloads
+color: var(--primary-color)
+size: 20%
+icon: mdi:download
+style:
+- padding: 5px 0px
