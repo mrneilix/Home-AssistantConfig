@@ -4,18 +4,18 @@
       - light
       - lock 
       - input_boolean 
-      - automation
-      - script
     entities:
       # Automations
       - automation.bathroom_fan_off_after_1_hour
-      - automation.lock_code_entered
-      - automation.mqtt_lock_temp_code_off
-      - automation.mqtt_lock_temp_code_on
+      # - automation.lock_code_entered
+      # - automation.mqtt_lock_temp_code_off
+      # - automation.mqtt_lock_temp_code_on
       - automation.presence_automations_on
       - automation.presence_leave
       - automation.presence_someone_home
+      - automation.system_startup
       - automation.system_backup_config
+      - automation.system_scheduled_reboot_pi
       - automation.system_restart_ha_if_mqtt_did_not_update
       - automation.thermostat_set_temp_when_home_after_11_am
       - automation.thermostat_set_temp_when_home_after_6_am
@@ -27,30 +27,30 @@
       - sensor.current_set_temp
       - sensor.dark_sky_temperature
       # Lock
-      - sensor.last_lock_code_used
-      - binary_sensor.lock_code_entered
-      - binary_sensor.front_door_sensor_73
-      - binary_sensor.lock_code_entered_gina
-      - binary_sensor.lock_code_entered_neil
-      - binary_sensor.lock_code_entered_parents
+      # - sensor.last_lock_code_used
+      # - binary_sensor.lock_code_entered
+      # - binary_sensor.front_door_sensor_73
+      # - binary_sensor.lock_code_entered_gina
+      # - binary_sensor.lock_code_entered_neil
+      # - binary_sensor.lock_code_entered_parents
       # Input Booleans
       - input_boolean.presence_automations
-      - input_boolean.temp_lock_code_set
-      - input_boolean.parents_lock_code
-      - input_boolean.away
-      - input_boolean.autolock
+      # - input_boolean.temp_lock_code_set
+      # - input_boolean.parents_lock_code
+      # - input_boolean.away
+      # - input_boolean.autolock
       - input_boolean.butters_home
       # Scripts
-      - script.lock_temp_code_entered
-      - script.lock_set_temp_lock_code
-      - script.lock_auto_lock_door_loop_if_fails
+      # - script.lock_temp_code_entered
+      # - script.lock_set_temp_lock_code
+      # - script.lock_auto_lock_door_loop_if_fails
       - script.presence_gina_home
       - script.presence_neil_arrived_home
       - script.presence_no_humans_home
       - script.presence_parents_home
       - script.presence_someone_arrived
-      - script.startup_neil_home
-      - script.startup_neil_not_home
+      - script.system_restart_if_just_rebooted
+      - script.system_turn_on_automations_on_restart
   exclude:
     entities:
       - light.front_kitchen_31

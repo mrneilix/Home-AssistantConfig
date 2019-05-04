@@ -4,7 +4,7 @@ cards:
     name: Show Recent Downloads
     entity: script.browser_commander_show_recent_downloads
     tap_action:
-      action: service
+      action: call-service
       service: script.browser_commander_show_recent_downloads
     color: var(--primary-color)
     size: 20%
@@ -15,7 +15,7 @@ cards:
     name: Show Upcoming Downloads
     entity: script.browser_commander_show_upcoming_downloads
     tap_action:
-      action: service
+      action: call-service
       service: script.browser_commander_show_upcoming_downloads
     color: var(--primary-color)
     size: 20%

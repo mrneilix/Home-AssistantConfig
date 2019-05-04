@@ -11,7 +11,7 @@ card:
           name: White
           entity: script.couch_white
           tap_action:
-            action: service
+            action: call-service
             service: script.couch_white
           state:
             - value: 'off'
@@ -19,12 +19,12 @@ card:
             - value: 'on'
               color: 'rgb(255, 255, 255)'
           color_type: icon
-          icon: attribute
+          icon: mdi:sofa
         - type: 'custom:button-card'
           name: Soft White
           entity: script.couch_soft_white
           tap_action:
-            action: service
+            action: call-service
             service: script.couch_soft_white
           state:
             - value: 'off'
@@ -32,12 +32,12 @@ card:
             - value: 'on'
               color: 'rgb(255, 242, 230)'
           color_type: icon
-          icon: attribute
+          icon: mdi:sofa
         - type: 'custom:button-card'
           name: Blue
           entity: script.couch_blue
           tap_action:
-            action: service
+            action: call-service
             service: script.couch_blue
           state:
             - value: 'off'
@@ -45,14 +45,14 @@ card:
             - value: 'on'
               color: 'rgb(0, 0, 255)'
           color_type: icon
-          icon: attribute
+          icon: mdi:sofa
     - type: horizontal-stack
       cards:
         - type: 'custom:button-card'
           name: Red
           entity: script.couch_red
           tap_action:
-            action: service
+            action: call-service
             service: script.couch_red
           state:
             - value: 'off'
@@ -60,12 +60,12 @@ card:
             - value: 'on'
               color: 'rgb(255, 0, 0)'
           color_type: icon
-          icon: attribute
+          icon: mdi:sofa
         - type: 'custom:button-card'
           name: Green
           entity: script.couch_green
           tap_action:
-            action: service
+            action: call-service
             service: script.couch_green
           state:
             - value: 'off'
@@ -73,12 +73,12 @@ card:
             - value: 'on'
               color: 'rgb(0, 255, 0)'
           color_type: icon
-          icon: attribute
+          icon: mdi:sofa
         - type: 'custom:button-card'
           name: Purple
           entity: script.couch_purple
           tap_action:
-            action: service
+            action: call-service
             service: script.couch_purple
           state:
             - value: 'off'
@@ -86,7 +86,7 @@ card:
             - value: 'on'
               color: 'rgb(255, 0, 255)'
           color_type: icon
-          icon: attribute
+          icon: mdi:sofa
     - type: entities
       entities:
         - input_text.couch_color

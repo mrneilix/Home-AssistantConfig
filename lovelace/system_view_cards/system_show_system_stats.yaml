@@ -1,10 +1,11 @@
 type: 'custom:button-card'
-name: System Stats
+name: Show System Stats
+entity: script.browser_commander_show_system_stats
 tap_action:
-  action: toggle
+  action: service
+  service: script.browser_commander_show_system_stats
 color: var(--primary-color)
-entity: input_boolean.show_system_stats
-icon: 'mdi:desktop-classic'
 size: 20%
+icon: mdi:desktop-classic
 style:
-  - padding: 5px 0px
+- padding: 5px 0px

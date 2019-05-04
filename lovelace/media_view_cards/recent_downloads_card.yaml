@@ -2,7 +2,7 @@ type: 'custom:button-card'
 name: Show Recent Downloads
 entity: script.browser_commander_show_recent_downloads
 tap_action:
-  action: service
+  action: call-service
   service: script.browser_commander_show_recent_downloads
 color: var(--primary-color)
 size: 20%

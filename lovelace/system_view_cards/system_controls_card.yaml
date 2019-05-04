@@ -7,7 +7,7 @@ cards:
         entity: script.restart_homeassistant
         icon: 'mdi:home-assistant'
         tap_action:
-          action: service
+          action: call-service
           service: script.restart_homeassistant
         state:
           - value: 'off'
@@ -20,7 +20,7 @@ cards:
         entity: scene.reboot_vera
         icon: 'mdi:spa'
         tap_action:
-          action: service
+          action: call-service
           service: scene.turn_on
           service_data:
             entity_id: scene.reboot_vera
@@ -35,7 +35,7 @@ cards:
         entity: script.confirm_system_reboot
         icon: 'mdi:power-cycle'
         tap_action:
-          action: service
+          action: call-service
           service: script.confirm_system_reboot
         state:
           - value: 'off'
@@ -48,7 +48,7 @@ cards:
         entity: script.reboot_pi_zero
         icon: 'mdi:numeric-0-box'
         tap_action:
-          action: service
+          action: call-service
           service: script.reboot_pi_zero
         state:
           - value: 'off'
@@ -63,7 +63,7 @@ cards:
         entity: script.system_desktop_display_off
         icon: 'mdi:monitor'
         tap_action:
-          action: service
+          action: call-service
           service: script.system_desktop_display_off
         state:
           - value: 'off'
@@ -76,7 +76,7 @@ cards:
         entity: script.system_git_backup
         icon: 'mdi:github-circle'
         tap_action:
-          action: service
+          action: call-service
           service: script.system_git_backup
         state:
           - value: 'off'

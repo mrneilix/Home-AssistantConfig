@@ -21,7 +21,7 @@ cards:
         entity: script.tv_input_chromecast
         icon: 'mdi:cast'
         tap_action:
-          action: service
+          action: call-service
           service: script.tv_input_chromecast
         state:
           - value: 'off'
@@ -33,7 +33,7 @@ cards:
         entity: script.tv_input_playstation
         icon: 'mdi:playstation'
         tap_action:
-          action: service
+          action: call-service
           service: script.tv_input_playstation
         state:
           - value: 'off'
@@ -44,7 +44,7 @@ cards:
         name: Theater Mode
         icon: 'mdi:movie'
         tap_action:
-          action: service
+          action: call-service
           service: scene.turn_on
           service_data:
             entity_id: scene.theater_mode

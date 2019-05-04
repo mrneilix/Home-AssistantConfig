@@ -10,7 +10,7 @@ sensor.kitchen_display_time_remaining_alarm:
         name: Clear Alarm
         entity: script.google_home_clear_alarm
         tap_action:
-          action: service
+          action: call-service
           service: script.google_home_clear_alarm
         color: rgb(57, 111, 182)
         icon: 'mdi:alarm'
@@ -29,7 +29,7 @@ sensor.kitchen_display_time_remaining_timer:
         name: Clear Timer
         entity: script.google_home_clear_timer
         tap_action:
-          action: service
+          action: call-service
           service: script.google_home_clear_timer
         color: rgb(57, 111, 182)
         icon: 'mdi:timer-sand'
@@ -65,7 +65,7 @@ device_tracker.neil:
         entity: script.presence_set_neil_device_trackers_away
         icon: 'mdi:walk'
         tap_action:
-          action: service
+          action: call-service
           service: script.presence_set_neil_device_trackers_away
         color_type: icon
         layout: icon_name

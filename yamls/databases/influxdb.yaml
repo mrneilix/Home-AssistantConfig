@@ -6,28 +6,7 @@
   default_measurement: state
   include:
     domains:
-      - climate
-      - device_tracker
-      - lock
-      - light
-      - media_player
-      - proximity
-      - scene
-      - switch
-      - proximity
-      - automation
-      - script
-      - shell_command
-      - input_boolean
-      - input_select
-      - input_number
-      - input_text
-      - binary_sensor
       - sensor
-      - zone
-      - sun
-      - calendar
-      - weather
   exclude:
     entities:
       - sensor.dark_sky_summary
