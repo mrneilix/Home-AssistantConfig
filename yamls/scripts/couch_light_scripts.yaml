@@ -63,7 +63,12 @@ couch_light_update_all_controls:
   alias: Couch Light Update All Controls
   sequence:
     - delay: 00:00:02
-    - service: script.couch_light_update_input_text
+    - service_template: >
+          {% if not is_state('sensor.couch_light_color_name', 'Custom') %}
+            script.couch_light_update_input_text
+          {% else %}
+            script.do_nothing
+          {% endif %}
     - service: script.couch_light_update_input_numbers
     - delay: 00:00:02
     - service: input_boolean.turn_off

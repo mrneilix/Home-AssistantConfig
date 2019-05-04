@@ -12,7 +12,7 @@
     light.couch:
       state: on
       brightness: 100
-      rgb_color: [255,242,230]
+      rgb_color: [255,239,229]
       transition: 1
 
 - name: couch_blue
