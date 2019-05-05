@@ -4,17 +4,17 @@ MrNeilix Hass Config
 Table of Contents
 -----------------
 
-  * [Home](#home)
+  * [MrNeilix Hass Config](#MrNeilix-Hass-Config)
   * [ScreenShots](#Screenshots)
-    * [Main] (#Main)
-    * [Media] (#Media)
-    * [FitBit] (#Fitbit)
-    * [Calendar] (#Calendar)
-    * [System] (#System)
-    * [Weblinks] (#Weblinks)
-  * [Custom Components] (#Custom-Components)
-  * [Custom Cards] (#Custom-Cards)
-  * [Hardware] (#Hardware)
+     * [Main](#Main)
+     * [Media](#Media)
+     * [FitBit](#Fitbit)
+     * [Calendar](#Calendar)
+     * [System](#System)
+     * [Weblinks](#Weblinks)
+  * [Custom Components](#Custom-Components)
+  * [Custom Cards](#Custom-Cards)
+  * [Hardware](#Hardware)
 
 ScreenShots
 ===========
@@ -112,39 +112,22 @@ Custom Cards
 Card | View Used In | Link
 ---- | ------------ | ----
 Card Modder (to updated the background image of a couple cards) | Throughout | https://github.com/thomasloven/lovelace-card-modder
-
 Card Tools (Many of the custom cards have this as a dependency) | Throughout | https://github.com/thomasloven/lovelace-card-tools
-
 Custom Button (Used Throughout) | Throughout | https://github.com/custom-cards/button-card
-
 Popup Card (Used Throughout) | Throughout | https://github.com/thomasloven/lovelace-popup-card
-
 Compact Custom Header | Throughout | https://github.com/maykar/custom-lovelace/tree/master/compact-custom-header
-
 Vertical Stack in Card for hiding the borders that show in a normal vertical stack | Throughout | https://github.com/custom-cards/vertical-stack-in-card
-
-Animated Weather Card | [Main View] (#Main) and [Calendar View] (#Calendar) | https://github.com/bramkragten/custom-ui/tree/master/weather-card
-
-Fold Entity Row (Main View and Calendar View) | [Main View] (#Main) and [Calendar View] (#Calendar) | https://github.com/thomasloven/lovelace-fold-entity-row
-
-Mini Media Player Card for Cast Devices and the PS4 Card inputs and controls | [Media View] (#Media) | https://github.com/kalkih/mini-media-player
-
-Upcoming Media | [Media View] (#Media) | https://github.com/custom-cards/upcoming-media-card
-
-Auto Entries to show hide who is not currently watching my Plex | [Media View] (#Media) | https://github.com/thomasloven/lovelace-auto-entities
-
-Circle Sensor Card | [Fitbit View] (#Fitbit) | https://github.com/custom-cards/circle-sensor-card
-
-Text Element | [Fitbit View] (#Fitbit) | https://github.com/custom-cards/text-element
-
-Atomic Calendar Card for a more detailed and customizable Calendar View | [Calendar View] (#Calendar) | https://github.com/atomic7777/atomic_calendar
-
-Tracker Card | [System View] (#System) | https://github.com/custom-cards/tracker-card
-
-Mini Graph card | [System View] (#System) | https://github.com/kalkih/mini-graph-card
-
-Gauge Card | [System View] (#System) | https://github.com/ciotlosm/custom-lovelace/tree/master/gauge-card
-
+Animated Weather Card | [Main View] (#Main) and [Calendar View](#Calendar) | https://github.com/bramkragten/custom-ui/tree/master/weather-card
+Fold Entity Row (Main View and Calendar View) | [Main View](#Main) and [Calendar View](#Calendar) | https://github.com/thomasloven/lovelace-fold-entity-row
+Mini Media Player Card for Cast Devices and the PS4 Card inputs and controls | [Media View](#Media) | https://github.com/kalkih/mini-media-player
+Upcoming Media | [Media View](#Media) | https://github.com/custom-cards/upcoming-media-card
+Auto Entries to show hide who is not currently watching my Plex | [Media View](#Media) | https://github.com/thomasloven/lovelace-auto-entities
+Circle Sensor Card | [Fitbit View](#Fitbit) | https://github.com/custom-cards/circle-sensor-card
+Text Element | [Fitbit View](#Fitbit) | https://github.com/custom-cards/text-element
+Atomic Calendar Card for a more detailed and customizable Calendar View | [Calendar View](#Calendar) | https://github.com/atomic7777/atomic_calendar
+Tracker Card | [System View](#System) | https://github.com/custom-cards/tracker-card
+Mini Graph card | [System View](#System) | https://github.com/kalkih/mini-graph-card
+Gauge Card | [System View](#System) | https://github.com/ciotlosm/custom-lovelace/tree/master/gauge-card
 Layout Card for the iFrames | Hidden Views | https://github.com/thomasloven/lovelace-layout-card
 
 Hardware
