@@ -63,6 +63,9 @@ System
 System View
 ![System View](Screenshots/system_view.png)
 
+System View With Tracker Card Showing
+![System View](Screenshots/system_view_tracker_card_not_hidden.png)
+
 I made a hidden view here using Compact Custom Header, so it'll navigate to the hidden System Monitor View
 ![System View With Hidden System Monitor View](Screenshots/system_view_system_monitor_view.png)
 
