@@ -11,6 +11,7 @@ Table of Contents
      * [FitBit](#Fitbit)
      * [Calendar](#Calendar)
      * [System](#System)
+     * [Hidden Views with embedded iFrames](#Hidden-Views-with-embedded-iFrames)
      * [Weblinks](#Weblinks)
   * [Custom Components](#Custom-Components)
   * [Custom Cards](#Custom-Cards)
@@ -44,15 +45,6 @@ Media View with Upcoming Downloads Popup
 Media View with Recently Added to Plex Popup
 ![Media View With Recently Added to Plex Popup](Screenshots/media-view-recent-downloads-popup.png)
 
-I made a hidden view here using Compact Custom Header and an iFrame, so it'll navigate to the hidden iFrame to Sonarr
-![Media View With Sonarr Hidden View and iFrame](Screenshots/media-view-sonarr-view-iframe.png)
-
-I made a hidden view here using Compact Custom Header and an iFrame, so it'll navigate to the hidden iFrame to Radarr
-![Media View With Radarr Hidden View and iFrame](Screenshots/media-view-radarr-view-iframe.png)
-
-I made a hidden view here using Compact Custom Header and an iFrame, so it'll navigate to the hidden iFrame to Tautulli
-![Media View With Tautulli Hidden View and iFrame](Screenshots/media-view-tautulli-view-iframe.png)
-
 Fitbit
 ------
 Fitbit View
@@ -67,12 +59,23 @@ Calendar and Device Tracker View With Device Tracker Popup
 ![Calendar and Device Tracker View](Screenshots/calendar_view_device_tacker_popup.png)
 
 System
--------
+------
 System View
 ![System View](Screenshots/system_view.png)
 
 I made a hidden view here using Compact Custom Header, so it'll navigate to the hidden System Monitor View
 ![System View With Hidden System Monitor View](Screenshots/system_view_system_monitor_view.png)
+
+Hidden Views with embedded iFrames
+----------------------------------
+I made a hidden view here using Compact Custom Header and an iFrame, so it'll navigate to the hidden iFrame to Sonarr
+![Media View With Sonarr Hidden View and iFrame](Screenshots/media-view-sonarr-view-iframe.png)
+
+I made a hidden view here using Compact Custom Header and an iFrame, so it'll navigate to the hidden iFrame to Radarr
+![Media View With Radarr Hidden View and iFrame](Screenshots/media-view-radarr-view-iframe.png)
+
+I made a hidden view here using Compact Custom Header and an iFrame, so it'll navigate to the hidden iFrame to Tautulli
+![Media View With Tautulli Hidden View and iFrame](Screenshots/media-view-tautulli-view-iframe.png)
 
 I made a hidden view here using Compact Custom Header and an iFrame, so it'll navigate to the hidden iFrame to QBittorrent
 ![System View With QBittorrent Hidden View and iFrame](Screenshots/system_view_qbittorrent_view.png)
@@ -117,7 +120,7 @@ Custom Button (Used Throughout) | Throughout | https://github.com/custom-cards/b
 Popup Card (Used Throughout) | Throughout | https://github.com/thomasloven/lovelace-popup-card
 Compact Custom Header | Throughout | https://github.com/maykar/custom-lovelace/tree/master/compact-custom-header
 Vertical Stack in Card for hiding the borders that show in a normal vertical stack | Throughout | https://github.com/custom-cards/vertical-stack-in-card
-Animated Weather Card | [Main View] (#Main) and [Calendar View](#Calendar) | https://github.com/bramkragten/custom-ui/tree/master/weather-card
+Animated Weather Card | [Main View](#Main) and [Calendar View](#Calendar) | https://github.com/bramkragten/custom-ui/tree/master/weather-card
 Fold Entity Row (Main View and Calendar View) | [Main View](#Main) and [Calendar View](#Calendar) | https://github.com/thomasloven/lovelace-fold-entity-row
 Mini Media Player Card for Cast Devices and the PS4 Card inputs and controls | [Media View](#Media) | https://github.com/kalkih/mini-media-player
 Upcoming Media | [Media View](#Media) | https://github.com/custom-cards/upcoming-media-card
