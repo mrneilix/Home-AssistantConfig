@@ -23,23 +23,9 @@ entities:
     icon: mdi:download
     entity: sensor.downloading_down_speed
   - type: custom:ext-weblink
-    name: TV
-    url: !secret sonarr_weblink
-    icon: mdi:television-classic
-    entity: sensor.sonarr_upcoming
-  - type: custom:ext-weblink
-    name: Movies
-    url: !secret radarr_weblink
-    icon: mdi:filmstrip
-    entity: sensor.radarr_upcoming
-  - type: custom:ext-weblink
     name: Grafana
     url: !secret grafana_weblink
     icon: mdi:chart-areaspline
-  - type: custom:ext-weblink
-    name: Tautulli
-    icon: mdi:filmstrip
-    url: !secret tautulli_url
   - type: custom:ext-weblink
     name: Phlex TV
     icon: mdi:microphone

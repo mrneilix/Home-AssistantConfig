@@ -1,0 +1,16 @@
+title: Phlex View
+icon: mdi:microphone
+path: phlex_view
+theme: darkblue
+panel: true
+cards:
+  - type: custom:layout-card
+    layout: horizontal
+    column_num: 1
+    column_width: 1000px
+    max_width: [70%, 300px, 30%]
+    cards:
+      - type: iframe
+        url: !secret phlex_url
+        aspect_ratio: 100%
+  - break

@@ -1,9 +1,8 @@
 type: 'custom:button-card'
 name: Show System Stats
-entity: script.browser_commander_show_system_stats
 tap_action:
-  action: service
-  service: script.browser_commander_show_system_stats
+  action: navigate
+  navigation_path: /lovelace/system_monitor_view
 color: var(--primary-color)
 size: 20%
 icon: mdi:desktop-classic

@@ -1,4 +1,4 @@
-type: vertical-stack
+type: custom:vertical-stack-in-card
 cards:
   - type: horizontal-stack
     cards:
@@ -84,3 +84,15 @@ cards:
           - value: 'on'
             color: rgb(57, 111, 182)
         color_type: icon
+  - type: horizontal-stack
+    cards:
+      - type: 'custom:button-card'
+        name: Show System Stats
+        tap_action:
+          action: navigate
+          navigation_path: /lovelace/system_monitor_view
+        color: var(--primary-color)
+        size: 20%
+        icon: mdi:desktop-classic
+        style:
+        - padding: 5px 0px

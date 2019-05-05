@@ -1,24 +1,70 @@
-type: horizontal-stack
+type: custom:vertical-stack-in-card
 cards:
-  - type: 'custom:button-card'
-    name: Show Recent Downloads
-    entity: script.browser_commander_show_recent_downloads
-    tap_action:
-      action: call-service
-      service: script.browser_commander_show_recent_downloads
-    color: var(--primary-color)
-    size: 20%
-    icon: mdi:download
-    style:
-    - padding: 5px 0px
-  - type: 'custom:button-card'
-    name: Show Upcoming Downloads
-    entity: script.browser_commander_show_upcoming_downloads
-    tap_action:
-      action: call-service
-      service: script.browser_commander_show_upcoming_downloads
-    color: var(--primary-color)
-    size: 20%
-    icon: mdi:download-outline
-    style:
-    - padding: 5px 0px
+  - type: horizontal-stack
+    cards:
+      - type: 'custom:button-card'
+        name: Sonarr
+        entity: sensor.sonarr_upcoming
+        icon: mdi:television-classic
+        show_state: true
+        layout: name_state
+        color: var(--primary-color)
+        tap_action:
+          action: navigate
+          navigation_path: /lovelace/sonarr_view
+        hold_action:
+          action: url
+          url: !secret sonarr_weblink
+      - type: 'custom:button-card'
+        name: Radarr
+        entity: sensor.radarr_upcoming
+        icon: mdi:filmstrip
+        show_state: true
+        layout: name_state
+        color: var(--primary-color)
+        tap_action:
+          action: navigate
+          navigation_path: /lovelace/radarr_view
+        hold_action:
+          action: url
+          url: !secret radarr_weblink
+      - type: 'custom:button-card'
+        name: Tautulli
+        entity: sensor.tautulli
+        icon: mdi:view-stream
+        show_state: true
+        layout: name_state
+        color: var(--primary-color)
+        tap_action:
+          action: navigate
+          navigation_path: /lovelace/tautulli_view
+        hold_action:
+          action: url
+          url: !secret tautulli_url
+  - type: horizontal-stack
+    cards:
+      - type: 'custom:button-card'
+        name: Upcoming Downloads
+        icon: mdi:video
+        entity: sensor.upcoming_downloads
+        show_state: false
+        show_name: true
+        layout: name_state
+        color: var(--primary-color)
+        tap_action:
+          action: more-info
+        size: 20%
+        style:
+        - padding: 5px 0px
+      - type: 'custom:button-card'
+        name: Recent Downloads
+        entity: sensor.plex_recently_added
+        show_state: false
+        show_name: true
+        icon: mdi:plex
+        color: var(--primary-color)
+        tap_action:
+          action: more-info
+        size: 20%
+        style:
+        - padding: 5px 0px

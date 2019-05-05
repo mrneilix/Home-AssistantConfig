@@ -7,14 +7,5 @@ clock_format: 12
 clock_am_pm: true
 header: true
 tab_indicator_color: rgb(19, 172, 198)
-chevrons: true
-exceptions:
-  - conditions:
-      user: Neil
-    config:
-      hide_tabs: 5
-  - conditions:
-      user: Phone
-      user_agent: Mobile
-    config:
-      hide_tabs: 4
+redirect: false
+show_tabs: 0,1,2,3,4

@@ -41,7 +41,6 @@
     api_key: !secret sonarr_api
     host: !secret base_url
     port: !secret sonarr_port
-    urlbase: !secret sonarr_url_base
     days: 2
     ssl: true
     max: 10
@@ -49,7 +48,6 @@
     api_key: !secret radarr_api
     host: !secret base_url
     port: !secret radarr_port
-    urlbase: !secret radarr_url_base
     days: 30
     theaters: false
     max: 10
@@ -65,24 +63,24 @@
 
   - platform: template
     sensors:
-      # sonarr_upcoming_list:
-        # friendly_name: Upcoming Episodes
-        # icon_template: mdi:television
-        # value_template: >
-          # {% for attr in states.sensor.sonarr_upcoming.attributes %}
-          # {% if not attr=="friendly_name" and not attr=="icon" and not attr=="unit_of_measurement" and not attr=="hidden" and not attr=="custom_ui_state_card" %}
-            # {{attr}}: {{states.sensor.sonarr_upcoming.attributes[attr]}} {{" |  "}}
-          # {% endif %}
-          # {% endfor %}
-      # radarr_upcoming_list:
-        # friendly_name: Upcoming Movies
-        # icon_template: mdi:video
-        # value_template: >
-          # {% for attr in states.sensor.radarr_upcoming.attributes %}
-          # {% if not attr=="friendly_name" and not attr=="icon" and not attr=="unit_of_measurement" and not attr=="hidden" and not attr=="custom_ui_state_card" %}
-            # {{attr}} {{" |  "}}
-          # {% endif %}
-          # {% endfor %}
+      sonarr_upcoming_list:
+        friendly_name: Upcoming Episodes
+        icon_template: mdi:television
+        value_template: >
+          {% for attr in states.sensor.sonarr_upcoming.attributes %}
+           {% if not attr=="friendly_name" and not attr=="icon" and not attr=="unit_of_measurement" and not attr=="hidden" and not attr=="custom_ui_state_card" %}
+            {{attr}}: {{states.sensor.sonarr_upcoming.attributes[attr]}} {{" |  "}}
+           {% endif %}
+          {% endfor %}
+      radarr_upcoming_list:
+        friendly_name: Upcoming Movies
+        icon_template: mdi:video
+        value_template: >
+          {% for attr in states.sensor.radarr_upcoming.attributes %}
+          {% if not attr=="friendly_name" and not attr=="icon" and not attr=="unit_of_measurement" and not attr=="hidden" and not attr=="custom_ui_state_card" %}
+            {{attr}} {{" |  "}}
+           {% endif %}
+          {% endfor %}
       desktop_disk_space_c:
         friendly_name: "C: - Main"
         icon_template: mdi:harddisk
@@ -158,7 +156,11 @@
               {{ used }}
             {% endif %}
           {% endfor %}
-
+      upcoming_downloads:
+        friendly_name: Upcoming Downloads
+        icon_template: mdi:video
+        value_template: >- 
+          {{ (states('sensor.radarr_upcoming') | float | int) + (states('sensor.sonarr_upcoming') | float | int) }}
 ### Sample for my Tautulli Sensors by Username
   # tautulli_watching_me:
     # icon_template: mdi:plex

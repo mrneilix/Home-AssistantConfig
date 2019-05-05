@@ -1,6 +1,41 @@
-type: entities
-title: Downloaders
-show_header_toggle: false
-entities:
-  - sensor.sonarr_upcoming
-  - sensor.radarr_upcoming
+type: horizontal-stack
+cards:
+  - type: 'custom:button-card'
+    name: Sonarr
+    entity: sensor.sonarr_upcoming
+    icon: mdi:television-classic
+    show_state: true
+    layout: name_state
+    color: var(--primary-color)
+    tap_action:
+      action: navigate
+      navigation_path: /lovelace/sonarr_view
+    hold_action:
+      action: url
+      url: !secret sonarr_weblink
+  - type: 'custom:button-card'
+    name: Radarr
+    entity: sensor.radarr_upcoming
+    icon: mdi:filmstrip
+    show_state: true
+    layout: name_state
+    color: var(--primary-color)
+    tap_action:
+      action: navigate
+      navigation_path: /lovelace/radarr_view
+    hold_action:
+      action: url
+      url: !secret radarr_weblink
+  - type: 'custom:button-card'
+    name: Tautulli
+    entity: sensor.tautulli
+    icon: mdi:view-stream
+    show_state: true
+    layout: name_state
+    color: var(--primary-color)
+    tap_action:
+      action: navigate
+      navigation_path: /lovelace/tautulli_view
+    hold_action:
+      action: url
+      url: !secret tautulli_url

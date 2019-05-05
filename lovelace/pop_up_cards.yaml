@@ -283,15 +283,33 @@ sensor.last_lock_code_name:
               action: toggle
             color: rgb(57, 111, 182)
             color_type: icon
-sensor.sonarr_upcoming:
-  title: Sonarr
-  large: true
+# sensor.sonarr_upcoming:
+  # title: Sonarr
+  # large: true
+  # card:
+    # type: iframe
+    # url: !secret sonarr_weblink
+# sensor.radarr_upcoming:
+  # title: Radarr
+  # large: true
+  # card:
+    # type: iframe
+    # url: !secret radarr_weblink
+
+sensor.upcoming_downloads:
+  title: Upcoming Downloads
   card:
-    type: iframe
-    url: !secret sonarr_weblink
-sensor.radarr_upcoming:
-  title: Radarr
-  large: true
+    type: horizontal-stack
+    cards:
+    - type: custom:upcoming-media-card
+      entity: sensor.sonarr_upcoming_media
+      title: TV
+    - type: custom:upcoming-media-card
+      entity: sensor.radarr_upcoming_media
+      title: Movies
+
+sensor.plex_recently_added:
+  title: Recent Downloads
   card:
-    type: iframe
-    url: !secret radarr_weblink
+    type: custom:upcoming-media-card
+    entity: sensor.plex_recently_added

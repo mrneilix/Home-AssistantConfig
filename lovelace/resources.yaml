@@ -33,4 +33,6 @@
 - type: module
   url: /local/custom-lovelace/mini-media-player-bundle/mini-media-player-bundle.js?track=true
 - type: js
-  url: /local/custom-lovelace/browser-commander/browser-commander.js?track=true
+  url: /local/custom-lovelace/vertical-stack-in-card/vertical-stack-in-card.js?track=true
+- type: js
+  url: /local/custom-lovelace/layout-card/layout-card.js?track=true

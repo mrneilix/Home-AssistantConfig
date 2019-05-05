@@ -38,7 +38,3 @@
     initial: off
   door_open:
     initial: off
-  show_system_stats:
-    name: Show System Stats
-    initial: off
-    icon: mdi:desktop-classic

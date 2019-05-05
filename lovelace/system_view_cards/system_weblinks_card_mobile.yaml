@@ -1,4 +1,4 @@
-type: vertical-stack
+type: custom:vertical-stack-in-card
 cards:
   - type: horizontal-stack
     cards:
@@ -32,6 +32,9 @@ cards:
         layout: name_state
         color: var(--primary-color)
         tap_action:
+          action: navigate
+          navigation_path: /lovelace/mqtt_view
+        hold_action:
           action: url
           url: !secret mosquitto_url
       - type: 'custom:button-card'
@@ -42,30 +45,11 @@ cards:
         layout: name_state
         color: var(--primary-color)
         tap_action:
+          action: navigate
+          navigation_path: /lovelace/qbittorrent_view
+        hold_action:
           action: url
           url: !secret QBitTorrent_weblink
-  - type: horizontal-stack
-    cards:
-      - type: 'custom:button-card'
-        name: Sonarr
-        entity: sensor.sonarr_upcoming
-        icon: mdi:television-classic
-        show_state: true
-        layout: name_state
-        color: var(--primary-color)
-        tap_action:
-          action: url
-          url: !secret sonarr_weblink
-      - type: 'custom:button-card'
-        name: Radarr
-        entity: sensor.radarr_upcoming
-        icon: mdi:filmstrip
-        show_state: true
-        layout: name_state
-        color: var(--primary-color)
-        tap_action:
-          action: url
-          url: !secret radarr_weblink
   - type: horizontal-stack
     cards:
       - type: 'custom:button-card'
@@ -73,19 +57,18 @@ cards:
         icon: mdi:chart-areaspline
         color: var(--primary-color)
         tap_action:
+          action: navigate
+          navigation_path: /lovelace/grafana_view
+        hold_action:
           action: url
           url: !secret grafana_weblink
-      - type: 'custom:button-card'
-        name: Tautulli
-        icon: mdi:filmstrip
-        color: var(--primary-color)
-        tap_action:
-          action: url
-          url: !secret tautulli_url
       - type: 'custom:button-card'
         name: Phlex TV
         icon: mdi:microphone
         color: var(--primary-color)
         tap_action:
+          action: navigate
+          navigation_path: /lovelace/phlex_view
+        hold_action:
           action: url
           url: !secret phlex_url

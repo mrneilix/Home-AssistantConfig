@@ -6,7 +6,6 @@ cards:
   - !include compact_custom_header.yaml
   - !include media_view_cards/tv_and_inputs_card.yaml
   - !include media_view_cards/watching_plex_card.yaml
-  - !include media_view_cards/upcoming_download_sensors_allow_popup.yaml
   - type: entity-filter
     show_empty: false
     state_filter:
