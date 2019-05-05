@@ -122,7 +122,6 @@ Card Tools (Many of the custom cards have this as a dependency) | Throughout | h
 Custom Button (Used Throughout) | Throughout | https://github.com/custom-cards/button-card
 Popup Card (Used Throughout) | Throughout | https://github.com/thomasloven/lovelace-popup-card
 Compact Custom Header | Throughout | https://github.com/maykar/custom-lovelace/tree/master/compact-custom-header
-Vertical Stack in Card for hiding the borders that show in a normal vertical stack | Throughout | https://github.com/custom-cards/vertical-stack-in-card
 Animated Weather Card | [Main View](#Main) and [Calendar View](#Calendar) | https://github.com/bramkragten/custom-ui/tree/master/weather-card
 Fold Entity Row (Main View and Calendar View) | [Main View](#Main) and [Calendar View](#Calendar) | https://github.com/thomasloven/lovelace-fold-entity-row
 Mini Media Player Card for Cast Devices and the PS4 Card inputs and controls | [Media View](#Media) | https://github.com/kalkih/mini-media-player
@@ -135,6 +134,7 @@ Tracker Card | [System View](#System) | https://github.com/custom-cards/tracker-
 Mini Graph card | [System View](#System) | https://github.com/kalkih/mini-graph-card
 Gauge Card | [System View](#System) | https://github.com/ciotlosm/custom-lovelace/tree/master/gauge-card
 Layout Card for the iFrames | [Hidden Views with embedded iFrames](#Hidden-Views-with-embedded-iFrames) | https://github.com/thomasloven/lovelace-layout-card
+Vertical Stack in Card for hiding the borders that show in a normal vertical stack | [Hidden Views with embedded iFrames](#Hidden-Views-with-embedded-iFrames) | https://github.com/custom-cards/vertical-stack-in-card
 
 Hardware
 ========
