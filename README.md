@@ -1,31 +1,52 @@
 My HassIO Config
 
-Main view with Couch Lights Off and Door Locked
+Main view with Couch Lights Off
 ![Main View With Couch Lights Off](Screenshots/main-view-couch-off.png)
 
-Main view with Couch Lights On and Door Locked
+Main view with Couch Lights On
 ![Main View With Couch Lights On](Screenshots/main-view-couch-on.png)
 
-Media View with TV and Input Booleans Off
+Media View with TV Off
 ![Media View With TV Off](Screenshots/media-view-tv-off.png)
 
-Media View with TV and Input Booleans On
+Media View with TV On
 ![Media View With TV On](Screenshots/media-view-tv-on.png)
 
-Fitbit View (I didn't sleep much)
+Media View with Tautulli Popup
+![Media View With Tautulli Popup](Screenshots/media-view-tautulli-popup.png)
+
+Media View with Upcoming Downloads Popup
+![Media View With Upcoming Downloads Popup](Screenshots/media-view-upcoming-downloads-popup.png)
+
+Media View with Recently Added to Plex Popup
+![Media View With Recently Added to Plex Popup](Screenshots/media-view-recent-downloads-popup.png)
+
+I made a hidden view here using Compact Custom Header and an iFrame, so it'll navigate to the hidden iFrame to Sonarr
+![Media View With Sonarr Hidden View and iFrame](Screenshots/media-view-sonarr-view-iframe.png)
+
+I made a hidden view here using Compact Custom Header and an iFrame, so it'll navigate to the hidden iFrame to Radarr
+![Media View With Radarr Hidden View and iFrame](Screenshots/media-view-radarr-view-iframe.png)
+
+I made a hidden view here using Compact Custom Header and an iFrame, so it'll navigate to the hidden iFrame to Tautulli
+![Media View With Tautulli Hidden View and iFrame](Screenshots/media-view-tautulli-view-iframe.png)
+
+Fitbit View
 ![Fitbit View](Screenshots/fitbit_view.png)
 
-Calendar, Device Tracker, and Temp Lock Code View
-![Calendar and Lock View](Screenshots/calendar_lock_view.png)
+Calendar and Device Tracker View
+![Calendar and Device Tracker View](Screenshots/calendar_view.png)
 
-Calendar, Device Tracker, and Temp Lock Code View With All Expanded
-![Calendar and Lock View](Screenshots/calendar_lock_view_collapsed.png)
+Calendar and Device Tracker View With Device Tracker Popup
+![Calendar and Device Tracker View](Screenshots/calendar_view_device_tacker_popup.png)
 
-System Monitor View
+System View
 ![System View](Screenshots/system_view.png)
 
-System Monitor View With All Expanded
-![System View](Screenshots/system_view_collapsed.png)
+I made a hidden view here using Compact Custom Header, so it'll navigate to the hidden System Monitor View
+![System View With Hidden System Monitor View](Screenshots/system_view_system_monitor_view.png)
+
+I made a hidden view here using Compact Custom Header and an iFrame, so it'll navigate to the hidden iFrame to QBittorrent
+![System View With QBittorrent Hidden View and iFrame](Screenshots/system_view_qbittorrent_view.png)
 
 ## Weblinks:
 Router
@@ -45,8 +66,6 @@ Radarr
 
 Monitor on my Pi Zero: https://github.com/andrewjfreyer/monitor/blob/master/monitor.sh
 
-An old version of Tautulli: https://github.com/custom-components/sensor.tautulli
-
 Sun, Composite Device Tracker, and Illumination Sensor: https://github.com/pnbruckner/homeassistant-config/
 
 Custom Updater: https://github.com/custom-components/custom_updater
@@ -59,29 +78,51 @@ Radarr Upcoming: https://github.com/custom-components/sensor.radarr_upcoming_med
 
 
 ## Custom Cards:
-
-Custom Button: https://github.com/kuuji/button-card (I actually used an older fork so I could use the long press action: https://github.com/Lopton/button-card)
-
-Upcoming Media: https://github.com/custom-cards/upcoming-media-card
-
-Compact Custom Header: https://github.com/maykar/custom-lovelace/tree/master/compact-custom-header
-
-Tracker Card: https://github.com/custom-cards/tracker-card
-
-Animated Weather Card: https://github.com/bramkragten/custom-ui/tree/master/weather-card
-
-Circle Sensor Card (for FitBit): https://github.com/custom-cards/circle-sensor-card
-
 Card Modder (to updated the background image of a couple cards): https://github.com/thomasloven/lovelace-card-modder
 
-Card Tools: https://github.com/thomasloven/lovelace-card-tools
+Card Tools (Many of the custom cards have this as a dependency): https://github.com/thomasloven/lovelace-card-tools
 
-External Weblink (to allow for the sensor value to show up with the weblinks): https://github.com/custom-cards/ext-weblink
+Custom Button (Used Throughout): https://github.com/kuuji/button-card
 
-Popup Card (I found this to be far more useful than I imagined initially, but click on an entity and see whatever you want): https://github.com/thomasloven/lovelace-popup-card
+Popup Card (Used Throughout): https://github.com/thomasloven/lovelace-popup-card
 
-Text Element (for when you use a markup on a picture element): https://github.com/custom-cards/text-element
+Compact Custom Header (Used Throughout): https://github.com/maykar/custom-lovelace/tree/master/compact-custom-header
 
+Vertical Stack in Card for hiding the borders that show in a normal vertical stack (Used Throughout): https://github.com/custom-cards/vertical-stack-in-card
+
+
+
+Animated Weather Card (Main View and Calendar View): https://github.com/bramkragten/custom-ui/tree/master/weather-card
+
+Fold Entity Row (Main View and Calendar View): https://github.com/thomasloven/lovelace-fold-entity-row
+
+
+
+Mini Media Player Card for Cast Devices and the PS4 Card inputs and controls (Media View): https://github.com/kalkih/mini-media-player
+
+Upcoming Media (Media View): https://github.com/custom-cards/upcoming-media-card
+
+Auto Entries to show hide who is not currently watching my Plex (Media View): https://github.com/thomasloven/lovelace-auto-entities
+
+
+
+Circle Sensor Card (FitBit View): https://github.com/custom-cards/circle-sensor-card
+
+Text Element (Fitbit View): https://github.com/custom-cards/text-element
+
+Atomic Calendar Card for a more detailed and customizable Calendar View (Calendar View): https://github.com/atomic7777/atomic_calendar
+
+
+
+Tracker Card (System View): https://github.com/custom-cards/tracker-card
+
+Mini Graph card (System Monitor Hidden View): https://github.com/kalkih/mini-graph-card
+
+Gauge Card (System Monitor Hidden View): https://github.com/ciotlosm/custom-lovelace/tree/master/gauge-card
+
+
+
+Layout Card for the iFrames in the Hidden Views: https://github.com/thomasloven/lovelace-layout-card
 
 ## Hardware:
 
@@ -91,7 +132,7 @@ Raspberry Pi Zero W (for Monitor and My TV Control)
 
 Numerous Z Wave Switches
 
-Schlage Camelot Z Wave Lock
+Schlage Camelot Z Wave Lock (Not working anymore)
 
 Monoprice Z Wave Door Sensor (Vera has been annoying about my lock, so I have to use that to tell when the door is opened)
 

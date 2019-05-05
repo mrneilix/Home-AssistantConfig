@@ -43,13 +43,14 @@ cards:
       - type: 'custom:button-card'
         name: Theater Mode
         icon: 'mdi:movie'
+        entity: script.tv_turn_on_theater_mode
         tap_action:
           action: call-service
-          service: scene.turn_on
-          service_data:
-            entity_id: scene.theater_mode
+          service: script.tv_turn_on_theater_mode
         state:
-          - value: 'scening'
+          - value: 'off'
+            color: rgb(57, 111, 182)
+          - value: 'on'
             color: rgb(57, 111, 182)
 - type: conditional
   conditions:
@@ -114,12 +115,3 @@ cards:
               - icon: 'mdi:power-cycle'
                 type: script
                 id: script.ps4_power_off
-- type: custom:mini-media-player
-  entity: media_player.kitchen_display
-  artwork: full-cover
-  tts:
-    platform: google
-    entity_id: media_player.kitchen_display
-- type: custom:mini-media-player
-  entity: media_player.living_room_tv
-  artwork: full-cover

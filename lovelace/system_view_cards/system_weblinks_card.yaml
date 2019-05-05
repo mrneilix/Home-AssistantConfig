@@ -1,32 +1,74 @@
-type: entities
-title: Weblinks
-show_header_toggle: false
-entities:
-  - type: custom:ext-weblink
-    name: Router
-    url: !secret google_fiber_box_weblink
-    icon: mdi:router-wireless
-    entity: sensor.speedtest_download
-  - type: custom:ext-weblink
-    name: Vera
-    url: !secret vera_weblink
-    icon: mdi:spa
-    entity: binary_sensor.vera_up
-  - type: custom:ext-weblink
-    name: MQTT
-    url: !secret mosquitto_url
-    icon: mdi:bug
-    entity: binary_sensor.mqtt_status
-  - type: custom:ext-weblink
-    name: QBitTorrent
-    url: !secret QBitTorrent_weblink
-    icon: mdi:download
-    entity: sensor.downloading_down_speed
-  - type: custom:ext-weblink
-    name: Grafana
-    url: !secret grafana_weblink
-    icon: mdi:chart-areaspline
-  - type: custom:ext-weblink
-    name: Phlex TV
-    icon: mdi:microphone
-    url: !secret phlex_url
+type: custom:vertical-stack-in-card
+cards:
+  - type: horizontal-stack
+    cards:
+      - type: 'custom:button-card'
+        name: Router
+        entity: sensor.speedtest_download
+        icon: mdi:router-wireless
+        show_state: true
+        layout: name_state
+        color: var(--primary-color)
+        tap_action:
+          action: url
+          url: !secret google_fiber_box_weblink
+      - type: 'custom:button-card'
+        name: Vera
+        entity: binary_sensor.vera_up
+        icon: mdi:spa
+        show_state: true
+        layout: name_state
+        color: var(--primary-color)
+        tap_action:
+          action: url
+          url: !secret vera_weblink
+  - type: horizontal-stack
+    cards:
+      - type: 'custom:button-card'
+        name: MQTT
+        entity: binary_sensor.mqtt_status
+        icon: mdi:bug
+        show_state: true
+        layout: name_state
+        color: var(--primary-color)
+        tap_action:
+          action: navigate
+          navigation_path: /lovelace/mqtt_view
+        hold_action:
+          action: url
+          url: !secret mosquitto_url
+      - type: 'custom:button-card'
+        name: QBitTorrent
+        entity: sensor.downloading_down_speed
+        icon: mdi:download
+        show_state: true
+        layout: name_state
+        color: var(--primary-color)
+        tap_action:
+          action: navigate
+          navigation_path: /lovelace/qbittorrent_view
+        hold_action:
+          action: url
+          url: !secret QBitTorrent_weblink
+  - type: horizontal-stack
+    cards:
+      - type: 'custom:button-card'
+        name: Grafana
+        icon: mdi:chart-areaspline
+        color: var(--primary-color)
+        tap_action:
+          action: navigate
+          navigation_path: /lovelace/grafana_view
+        hold_action:
+          action: url
+          url: !secret grafana_weblink
+      - type: 'custom:button-card'
+        name: Phlex TV
+        icon: mdi:microphone
+        color: var(--primary-color)
+        tap_action:
+          action: navigate
+          navigation_path: /lovelace/phlex_view
+        hold_action:
+          action: url
+          url: !secret phlex_url

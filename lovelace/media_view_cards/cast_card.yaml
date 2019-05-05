@@ -1,0 +1,11 @@
+type: custom:vertical-stack-in-card
+cards:
+- type: custom:mini-media-player
+  entity: media_player.kitchen_display
+  artwork: full-cover
+  tts:
+    platform: google
+    entity_id: media_player.kitchen_display
+- type: custom:mini-media-player
+  entity: media_player.living_room_tv
+  artwork: full-cover

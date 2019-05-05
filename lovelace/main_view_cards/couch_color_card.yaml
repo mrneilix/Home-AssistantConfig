@@ -3,7 +3,7 @@ conditions:
   - entity: light.couch
     state: 'on'
 card:
-  type: vertical-stack
+  type: custom:vertical-stack-in-card
   cards:
     - type: horizontal-stack
       cards:
