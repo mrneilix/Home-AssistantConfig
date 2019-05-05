@@ -131,7 +131,7 @@ Atomic Calendar Card for a more detailed and customizable Calendar View | [Calen
 Tracker Card | [System View](#System) | https://github.com/custom-cards/tracker-card
 Mini Graph card | [System View](#System) | https://github.com/kalkih/mini-graph-card
 Gauge Card | [System View](#System) | https://github.com/ciotlosm/custom-lovelace/tree/master/gauge-card
-Layout Card for the iFrames | Hidden Views | https://github.com/thomasloven/lovelace-layout-card
+Layout Card for the iFrames | [Hidden Views with embedded iFrames](#Hidden-Views-with-embedded-iFrames) | https://github.com/thomasloven/lovelace-layout-card
 
 Hardware
 ========
