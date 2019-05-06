@@ -1,0 +1,10 @@
+type: custom:vertical-stack-in-card
+cards:
+  - type: horizontal-stack
+    cards:
+      - type: light
+        entity: light.bathroom_orb
+        name: Bathroom Orb
+      - type: light
+        entity: light.couch
+        name: Couch

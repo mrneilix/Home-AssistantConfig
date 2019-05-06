@@ -18,14 +18,7 @@ badges:
 cards:
   - !include compact_custom_header.yaml
   - !include main_view_cards/main_room_lights_card.yaml
-  - type: horizontal-stack
-    cards:
-      - type: light
-        entity: light.bathroom_orb
-        name: Bathroom Orb
-      - type: light
-        entity: light.couch
-        name: Couch
+  - !include main_view_cards/bathroom_couch_lights_card.yaml
   - !include main_view_cards/couch_color_card.yaml
   - !include main_view_cards/timers_and_alarms_card.yaml
   - !include main_view_cards/climate_lock_group_card.yaml
