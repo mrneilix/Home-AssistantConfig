@@ -12,7 +12,6 @@
       - light.bathroom_orb
       - sun.sun
       # Plex
-      - sensor.plex
       - sensor.tautulli
       - input_boolean.butters_home
   exclude:
