@@ -75,16 +75,16 @@ I made a hidden view here using Compact Custom Header, so it'll navigate to the 
 Hidden Views with embedded iFrames
 ----------------------------------
 I made a hidden view here using Compact Custom Header and an iFrame, so it'll navigate to the hidden iFrame to Sonarr
-![Media View With Sonarr Hidden View and iFrame](Screenshots/media-view-sonarr-view-iframe.png)
+![Media View With Sonarr Hidden View and iFrame](Screenshots/hidden-view-sonarr-view-iframe.png)
 
 I made a hidden view here using Compact Custom Header and an iFrame, so it'll navigate to the hidden iFrame to Radarr
-![Media View With Radarr Hidden View and iFrame](Screenshots/media-view-radarr-view-iframe.png)
+![Media View With Radarr Hidden View and iFrame](Screenshots/hidden-view-radarr-view-iframe.png)
 
 I made a hidden view here using Compact Custom Header and an iFrame, so it'll navigate to the hidden iFrame to Tautulli
-![Media View With Tautulli Hidden View and iFrame](Screenshots/media-view-tautulli-view-iframe.png)
+![Media View With Tautulli Hidden View and iFrame](Screenshots/hidden-view-tautulli-view-iframe.png)
 
 I made a hidden view here using Compact Custom Header and an iFrame, so it'll navigate to the hidden iFrame to QBittorrent
-![System View With QBittorrent Hidden View and iFrame](Screenshots/system_view_qbittorrent_view.png)
+![System View With QBittorrent Hidden View and iFrame](Screenshots/hidden-view-qbittorrent-view-iframe.png)
 
 Weblinks
 --------
