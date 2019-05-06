@@ -121,7 +121,7 @@ input_text: !include yamls/inputs/input_text.yaml
 
 # Include Devices Yamls
 device_tracker: !include yamls/devices/device_tracker.yaml
-switch: !include yamls/devices/switches.yaml
+# switch: !include yamls/devices/switches.yaml
 media_player: !include yamls/devices/media_player.yaml
 light: !include yamls/devices/lights.yaml
 climate: !include yamls/devices/climate.yaml

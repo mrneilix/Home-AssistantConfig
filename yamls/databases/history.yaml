@@ -3,69 +3,20 @@
     domains:
       - climate
       - device_tracker
-      - lock
       - switch
       - proximity
     entities:
       - light.kitchen
-      # Weather
-      - sensor.thermostatmode
-      - sensor.current_set_temp
-      - sensor.dark_sky_temperature
-      - sensor.dark_sky_apparent_temperature
-      - sensor.illuminance
+      - light.couch
+      - light.bed
+      - light.bathroom_orb
       - sun.sun
       # Plex
       - sensor.plex
       - sensor.tautulli
-      - sensor.tautulli_watching_abbas
-      - sensor.tautulli_watching_adroit4
-      - sensor.tautulli_watching_anuj
-      - sensor.tautulli_watching_atul_neeta
-      - sensor.tautulli_watching_austin
-      - sensor.tautulli_watching_ben
-      - sensor.tautulli_watching_brian
-      - sensor.tautulli_watching_emily
-      - sensor.tautulli_watching_eyesbrow_1
-      - sensor.tautulli_watching_eyesbrow_2
-      - sensor.tautulli_watching_karina
-      - sensor.tautulli_watching_kiel
-      - sensor.tautulli_watching_kris
-      - sensor.tautulli_watching_manish
-      - sensor.tautulli_watching_mike
-      - sensor.tautulli_watching_neil
-      - sensor.tautulli_watching_pallav
-      - sensor.tautulli_watching_peter
-      - sensor.tautulli_watching_shappell
-      - sensor.tautulli_watching_tina
-      # System
-      - sensor.desktop_amd_a8_6600k_apu_with_radeon_hd_graphics_load_cpu_total
-      - sensor.pi_zero_cpu_usage
-      - sensor.processor_use
-      - sensor.memory_use_percent
-      - sensor.speedtest_download
-      - sensor.speedtest_upload
-      - sensor.speedtest_ping
-      - sensor.pi_zero_virtual_memory
-      - sensor.desktop_generic_memory_load_memory
-      - sensor.desktop_amd_radeon_tm_r7_360_series_load_gpu_core
-      - sensor.kitchen_display_time_remaining_alarm
-      - sensor.kitchen_display_time_remaining_timer
-      # Lock
-      - sensor.last_lock_code_name
-      # Fitbit
-      - sensor.fitbit_time_active
-      # Presence
-      - input_boolean.away
-      - input_boolean.presence_automations
-      - input_boolean.config_updated
-      - input_boolean.temp_lock_code_set
-      - input_boolean.parents_lock_code
       - input_boolean.butters_home
-      - binary_sensor.front_door_sensor_73
   exclude:
     entities:
-      - device_tracker.kitchen_display
       - switch.hdmi_4
       - switch.hdmi_b
       - switch.front_door_sensor_73

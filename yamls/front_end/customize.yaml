@@ -46,6 +46,10 @@ switch.bathroom_fan:
 switch.yi_power:
   friendly_name: Camera
   icon: mdi:webcam
+switch.furnace_switch_29:
+  entity_picture: /local/pictures/furnace-off.png
+switch.lamp:
+  entity_picture: /local/pictures/lamp-off.jpg
 ### SYSTEM SENSORS ###
 sensor.disk_use_percent:
   friendly_name: HA Disk Usage

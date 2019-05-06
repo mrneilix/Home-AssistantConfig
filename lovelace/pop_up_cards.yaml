@@ -142,18 +142,18 @@ device_tracker.parents:
             secondary_info: last-changed
           - entity: binary_sensor.lock_code_entered_parents
             secondary_info: last-changed
-      - type: 'custom:button-card'
-        name: Fam Code
-        entity: input_boolean.parents_lock_code
-        tap_action:
-          action: toggle
-        hold_action:
-          action: more-info
-        color: rgb(57, 111, 182)
-        color_type: icon
-        size: 10%
-        style:
-          - padding: 5px 0px
+      # - type: 'custom:button-card'
+        # name: Fam Code
+        # entity: input_boolean.parents_lock_code
+        # tap_action:
+          # action: toggle
+        # hold_action:
+          # action: more-info
+        # color: rgb(57, 111, 182)
+        # color_type: icon
+        # size: 10%
+        # style:
+          # - padding: 5px 0px
 device_tracker.gina:
   title: Gina
   card:
@@ -209,92 +209,6 @@ input_boolean.notifications_on:
           action: toggle
         color: rgb(57, 111, 182)
         color_type: icon
-input_boolean.temp_lock_code_set:
-  title: Temp Code
-  card:
-    type: vertical-stack
-    cards:
-      - type: horizontal-stack
-        cards:
-          - type: entities
-            entities:
-              - input_text.lock_code_temp
-              - input_select.temp_code_single_use
-      - type: horizontal-stack
-        cards:
-          - type: 'custom:button-card'
-            name: Temp Code
-            entity: input_boolean.temp_lock_code_set
-            tap_action:
-              action: toggle
-            color: rgb(57, 111, 182)
-            color_type: icon
-input_boolean.parents_lock_code:
-  title: Parents Lock Code
-  card:
-    type: vertical-stack
-    cards:
-      - type: history-graph
-        entities:
-          - input_boolean.parents_lock_code
-      - type: 'custom:button-card'
-        name: Fam Code
-        entity: input_boolean.parents_lock_code
-        tap_action:
-          action: toggle
-        color: rgb(57, 111, 182)
-        color_type: icon
-sensor.last_lock_code_name:
-  title: Lock Info
-  card:
-    type: vertical-stack
-    cards:
-      - type: history-graph
-        title: Last Lock Code
-        entities:
-          - sensor.last_lock_code_name
-      - type: history-graph
-        title: Lock
-        entities:
-          - lock.schlage_deadbolt_47
-      - type: 'custom:button-card'
-        name: Lock
-        entity: switch.front_door_lock
-        tap_action:
-          action: toggle
-        color: rgb(57, 111, 182)
-        color_type: icon
-      - type: entities
-        entities:
-          - sensor.lock_battery_level
-      - type: horizontal-stack
-        cards:
-          - type: 'custom:button-card'
-            name: Temp Code
-            entity: input_boolean.temp_lock_code_set
-            tap_action:
-              action: toggle
-            color: rgb(57, 111, 182)
-            color_type: icon
-          - type: 'custom:button-card'
-            entity: input_boolean.parents_lock_code
-            name: Fam Code
-            tap_action:
-              action: toggle
-            color: rgb(57, 111, 182)
-            color_type: icon
-# sensor.sonarr_upcoming:
-  # title: Sonarr
-  # large: true
-  # card:
-    # type: iframe
-    # url: !secret sonarr_weblink
-# sensor.radarr_upcoming:
-  # title: Radarr
-  # large: true
-  # card:
-    # type: iframe
-    # url: !secret radarr_weblink
 
 sensor.upcoming_downloads:
   title: Upcoming Downloads
@@ -313,3 +227,101 @@ sensor.plex_recently_added:
   card:
     type: custom:upcoming-media-card
     entity: sensor.plex_recently_added
+
+sensor.dark_sky_daytime_high_temperature_0d:
+  title: Dark Sky Summary
+  card:
+     type: glance
+     entities:
+      - sensor.dark_sky_temperature
+      - sensor.dark_sky_apparent_temperature
+      - sensor.dark_sky_daytime_high_temperature_0d
+      - sensor.dark_sky_overnight_low_temperature_0d
+      - sensor.dark_sky_daytime_high_apparent_temperature_0d
+      - sensor.dark_sky_overnight_low_apparent_temperature_0d
+      - sensor.dark_sky_precip_intensity
+      - sensor.dark_sky_precip_probability
+      - sensor.dark_sky_wind_speed
+      - sensor.dark_sky_nearest_storm_distance
+      - sensor.dark_sky_humidity
+      - sensor.dark_sky_visibility
+      - sensor.dark_sky_cloud_coverage
+      - sensor.dark_sky_moon_phase_0d
+      - sensor.allergy_index_today_2
+
+sensor.dark_sky_overnight_low_temperature_0d: sensor.dark_sky_daytime_high_temperature_0d
+
+# input_boolean.temp_lock_code_set:
+  # title: Temp Code
+  # card:
+    # type: vertical-stack
+    # cards:
+      # - type: horizontal-stack
+        # cards:
+          # - type: entities
+            # entities:
+              # - input_text.lock_code_temp
+              # - input_select.temp_code_single_use
+      # - type: horizontal-stack
+        # cards:
+          # - type: 'custom:button-card'
+            # name: Temp Code
+            # entity: input_boolean.temp_lock_code_set
+            # tap_action:
+              # action: toggle
+            # color: rgb(57, 111, 182)
+            # color_type: icon
+# input_boolean.parents_lock_code:
+  # title: Parents Lock Code
+  # card:
+    # type: vertical-stack
+    # cards:
+      # - type: history-graph
+        # entities:
+          # - input_boolean.parents_lock_code
+      # - type: 'custom:button-card'
+        # name: Fam Code
+        # entity: input_boolean.parents_lock_code
+        # tap_action:
+          # action: toggle
+        # color: rgb(57, 111, 182)
+        # color_type: icon
+# sensor.last_lock_code_name:
+  # title: Lock Info
+  # card:
+    # type: vertical-stack
+    # cards:
+      # - type: history-graph
+        # title: Last Lock Code
+        # entities:
+          # - sensor.last_lock_code_name
+      # - type: history-graph
+        # title: Lock
+        # entities:
+          # - lock.schlage_deadbolt_47
+      # - type: 'custom:button-card'
+        # name: Lock
+        # entity: switch.front_door_lock
+        # tap_action:
+          # action: toggle
+        # color: rgb(57, 111, 182)
+        # color_type: icon
+      # - type: entities
+        # entities:
+          # - sensor.lock_battery_level
+      # - type: horizontal-stack
+        # cards:
+          # - type: 'custom:button-card'
+            # name: Temp Code
+            # entity: input_boolean.temp_lock_code_set
+            # tap_action:
+              # action: toggle
+            # color: rgb(57, 111, 182)
+            # color_type: icon
+          # - type: 'custom:button-card'
+            # entity: input_boolean.parents_lock_code
+            # name: Fam Code
+            # tap_action:
+              # action: toggle
+            # color: rgb(57, 111, 182)
+            # color_type: icon
