@@ -13,9 +13,10 @@ cards:
       - type: 'custom:button-card'
         name: Furnace Switch
         entity: switch.furnace_switch_29
-        show_icon: false
+        show_icon: true
         show_entity_picture: true
         show_state: true
+        entity_picture: /local/pictures/furnace-off.png
         hold_action:
           action: more-info
         tap_action:
@@ -24,14 +25,13 @@ cards:
         state:
           - value: 'on'
             entity_picture: /local/pictures/furnace.png
-          - value: 'off'
-            entity_picture: /local/pictures/furnace-off.png
       - type: 'custom:button-card'
         name: Lamp
         entity: switch.lamp
-        show_icon: false
+        show_icon: true
         show_entity_picture: true
         show_state: true
+        entity_picture: /local/pictures/lamp-off.jpg
         hold_action:
           action: more-info
         tap_action:
@@ -40,8 +40,6 @@ cards:
         state:
           - value: 'on'
             entity_picture: /local/pictures/lamp.jpg
-          - value: 'off'
-            entity_picture: /local/pictures/lamp-off.jpg
   - type: horizontal-stack
     cards:
       - type: 'custom:button-card'
