@@ -1,22 +1,3 @@
-- id: couch_color_slider
-  alias: 'Couch Color Slider'
-  trigger:
-  - platform: state
-    entity_id: input_number.couch_r
-  - platform: state
-    entity_id: input_number.couch_g
-  - platform: state
-    entity_id: input_number.couch_b
-  condition:
-    - condition: state
-      entity_id: input_boolean.restart_complete
-      state: 'on'
-    - condition: state
-      entity_id: input_boolean.couch_light_script_running
-      state: 'off'
-  action:
-    service: script.couch_color_input_numbers
-
 - id: couch_lights_sensor_changed
   alias: 'Couch Lights Sensor Changed'
   trigger:

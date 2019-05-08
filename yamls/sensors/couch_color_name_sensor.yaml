@@ -2,6 +2,7 @@
     sensors:
       couch_light_color_name:
         friendly_name: "Couch Color Name"
+        entity_id: sensor.couch_light_color
         value_template: >-
           {%- if states.light.couch.state == 'off' or states.light.couch.state == 'unavailable' %}
             Disable
@@ -14,7 +15,7 @@
           {% elif is_state_attr('light.couch', 'rgb_color', (240,248,255)) %}
             Alice Blue
           {% elif is_state_attr('light.couch', 'rgb_color', (250,235,215)) %}
-            Antiquewhite
+            Antique White
           {% elif is_state_attr('light.couch', 'rgb_color', (0,255,255)) %}
             Aqua
           {% elif is_state_attr('light.couch', 'rgb_color', (127,255,212)) %}
@@ -26,7 +27,7 @@
           {% elif is_state_attr('light.couch', 'rgb_color', (255,228,196)) %}
             Bisque
           {% elif is_state_attr('light.couch', 'rgb_color', (0,0,0)) %}
-            Black
+            Disable
           {% elif is_state_attr('light.couch', 'rgb_color', (255,235,205)) %}
             Blanche Dalmond
           {% elif is_state_attr('light.couch', 'rgb_color', (0,0,255)) %}
@@ -147,161 +148,161 @@
             Lemonchiffon
           {% elif is_state_attr('light.couch', 'rgb_color', (173,216,230)) %}
             Light Blue
-          {% elif is_state_attr('Light .couch', 'rgb_color', (240,128,128)) %}
+          {% elif is_state_attr('light.couch', 'rgb_color', (240,128,128)) %}
             Light coral
-          {% elif is_state_attr('Light .couch', 'rgb_color', (224,255,255)) %}
+          {% elif is_state_attr('light.couch', 'rgb_color', (224,255,255)) %}
             Light Cyan
-          {% elif is_state_attr('Light .couch', 'rgb_color', (250,250,210)) %}
+          {% elif is_state_attr('light.couch', 'rgb_color', (250,250,210)) %}
             Light Goldenrod Yellow
-          {% elif is_state_attr('Light .couch', 'rgb_color', (211,211,211)) %}
+          {% elif is_state_attr('light.couch', 'rgb_color', (211,211,211)) %}
             Light Gray
-          {% elif is_state_attr('Light .couch', 'rgb_color', (144,238,144)) %}
+          {% elif is_state_attr('light.couch', 'rgb_color', (144,238,144)) %}
             Light Green
-          {% elif is_state_attr('Light .couch', 'rgb_color', (211,211,211)) %}
+          {% elif is_state_attr('light.couch', 'rgb_color', (211,211,211)) %}
             Light Grey
-          {% elif is_state_attr('Light .couch', 'rgb_color', (255,182,193)) %}
+          {% elif is_state_attr('light.couch', 'rgb_color', (255,182,193)) %}
             Light Pink
-          {% elif is_state_attr('Light .couch', 'rgb_color', (255,160,122)) %}
+          {% elif is_state_attr('light.couch', 'rgb_color', (255,160,122)) %}
             Light Salmon
-          {% elif is_state_attr('Light .couch', 'rgb_color', (32,178,170)) %}
+          {% elif is_state_attr('light.couch', 'rgb_color', (32,178,170)) %}
             Light Sea Green
-          {% elif is_state_attr('Light .couch', 'rgb_color', (135,206,250)) %}
+          {% elif is_state_attr('light.couch', 'rgb_color', (135,206,250)) %}
             Light Sky Blue
-          {% elif is_state_attr('Light .couch', 'rgb_color', (119,136,153)) %}
+          {% elif is_state_attr('light.couch', 'rgb_color', (119,136,153)) %}
             Light Slate Gray
-          {% elif is_state_attr('Light .couch', 'rgb_color', (119,136,153)) %}
+          {% elif is_state_attr('light.couch', 'rgb_color', (119,136,153)) %}
             Light Slate Grey
-          {% elif is_state_attr('Light .couch', 'rgb_color', (176,196,222)) %}
+          {% elif is_state_attr('light.couch', 'rgb_color', (176,196,222)) %}
             Light Steel Blue
-          {% elif is_state_attr('Light .couch', 'rgb_color', (255,255,224)) %}
+          {% elif is_state_attr('light.couch', 'rgb_color', (255,255,224)) %}
             Light Yellow
-          {% elif is_state_attr('Light .couch', 'rgb_color', (0,255,0)) %}
+          {% elif is_state_attr('light.couch', 'rgb_color', (0,255,0)) %}
             Lime
-          {% elif is_state_attr('Light .couch', 'rgb_color', (50,205,50)) %}
+          {% elif is_state_attr('light.couch', 'rgb_color', (50,205,50)) %}
             Lime Green
-          {% elif is_state_attr('Light .couch', 'rgb_color', (250,240,230)) %}
+          {% elif is_state_attr('light.couch', 'rgb_color', (250,240,230)) %}
             Linen
-          {% elif is_state_attr('Light .couch', 'rgb_color', (255,0,255)) %}
+          {% elif is_state_attr('light.couch', 'rgb_color', (255,0,255)) %}
             Magenta
-          {% elif is_state_attr('Light .couch', 'rgb_color', (128,0,0)) %}
+          {% elif is_state_attr('light.couch', 'rgb_color', (128,0,0)) %}
             Maroon
-          {% elif is_state_attr('Light .couch', 'rgb_color', (102,205,170)) %}
+          {% elif is_state_attr('light.couch', 'rgb_color', (102,205,170)) %}
             Medium Aquamarine
-          {% elif is_state_attr('Light .couch', 'rgb_color', (0,0,205)) %}
+          {% elif is_state_attr('light.couch', 'rgb_color', (0,0,205)) %}
             Medium Blue
-          {% elif is_state_attr('Light .couch', 'rgb_color', (186,85,211)) %}
+          {% elif is_state_attr('light.couch', 'rgb_color', (186,85,211)) %}
             Medium Orchid
-          {% elif is_state_attr('Light .couch', 'rgb_color', (147,112,219)) %}
+          {% elif is_state_attr('light.couch', 'rgb_color', (147,112,219)) %}
             Medium Purple
-          {% elif is_state_attr('Light .couch', 'rgb_color', (60,179,113)) %}
+          {% elif is_state_attr('light.couch', 'rgb_color', (60,179,113)) %}
             Medium Sea Green
-          {% elif is_state_attr('Light .couch', 'rgb_color', (123,104,238)) %}
+          {% elif is_state_attr('light.couch', 'rgb_color', (123,104,238)) %}
             Medium Slate Blue
-          {% elif is_state_attr('Light .couch', 'rgb_color', (0,250,154)) %}
+          {% elif is_state_attr('light.couch', 'rgb_color', (0,250,154)) %}
             MediumspringGreen
-          {% elif is_state_attr('Light .couch', 'rgb_color', (72,209,204)) %}
+          {% elif is_state_attr('light.couch', 'rgb_color', (72,209,204)) %}
             Medium Turquoise
-          {% elif is_state_attr('Light .couch', 'rgb_color', (199,21,133)) %}
+          {% elif is_state_attr('light.couch', 'rgb_color', (199,21,133)) %}
             Medium Violet Red
-          {% elif is_state_attr('Light .couch', 'rgb_color', (25,25,112)) %}
+          {% elif is_state_attr('light.couch', 'rgb_color', (25,25,112)) %}
             Midnight Blue
-          {% elif is_state_attr('Light .couch', 'rgb_color', (245,255,250)) %}
+          {% elif is_state_attr('light.couch', 'rgb_color', (245,255,250)) %}
             Mint Cream
-          {% elif is_state_attr('Light .couch', 'rgb_color', (255,228,225)) %}
+          {% elif is_state_attr('light.couch', 'rgb_color', (255,228,225)) %}
             Misty Rose
-          {% elif is_state_attr('Light .couch', 'rgb_color', (255,228,181)) %}
+          {% elif is_state_attr('light.couch', 'rgb_color', (255,228,181)) %}
             Moccasin
-          {% elif is_state_attr('Light .couch', 'rgb_color', (255,222,173)) %}
+          {% elif is_state_attr('light.couch', 'rgb_color', (255,222,173)) %}
             Navajo White
-          {% elif is_state_attr('Light .couch', 'rgb_color', (0,0,128)) %}
+          {% elif is_state_attr('light.couch', 'rgb_color', (0,0,128)) %}
             Navy
-          {% elif is_state_attr('Light .couch', 'rgb_color', (253,245,230)) %}
+          {% elif is_state_attr('light.couch', 'rgb_color', (253,245,230)) %}
             Oldlace
-          {% elif is_state_attr('Light .couch', 'rgb_color', (128,128,0)) %}
+          {% elif is_state_attr('light.couch', 'rgb_color', (128,128,0)) %}
             Olive
-          {% elif is_state_attr('Light .couch', 'rgb_color', (107,142,35)) %}
+          {% elif is_state_attr('light.couch', 'rgb_color', (107,142,35)) %}
             Olive Drab
-          {% elif is_state_attr('Light .couch', 'rgb_color', (255,165,0)) %}
+          {% elif is_state_attr('light.couch', 'rgb_color', (255,165,0)) %}
             Orange
-          {% elif is_state_attr('Light .couch', 'rgb_color', (255,69,0)) %}
+          {% elif is_state_attr('light.couch', 'rgb_color', (255,69,0)) %}
             Orange Red
-          {% elif is_state_attr('Light .couch', 'rgb_color', (218,112,214)) %}
+          {% elif is_state_attr('light.couch', 'rgb_color', (218,112,214)) %}
             Orchid
-          {% elif is_state_attr('Light .couch', 'rgb_color', (238,232,170)) %}
+          {% elif is_state_attr('light.couch', 'rgb_color', (238,232,170)) %}
             Pale Goldenrod
-          {% elif is_state_attr('Light .couch', 'rgb_color', (152,251,152)) %}
+          {% elif is_state_attr('light.couch', 'rgb_color', (152,251,152)) %}
             Pale Green
-          {% elif is_state_attr('Light .couch', 'rgb_color', (175,238,238)) %}
+          {% elif is_state_attr('light.couch', 'rgb_color', (175,238,238)) %}
             PaleTurquoise
-          {% elif is_state_attr('Light .couch', 'rgb_color', (219,112,147)) %}
+          {% elif is_state_attr('light.couch', 'rgb_color', (219,112,147)) %}
             Paleviolet Red
-          {% elif is_state_attr('Light .couch', 'rgb_color', (255,239,213)) %}
+          {% elif is_state_attr('light.couch', 'rgb_color', (255,239,213)) %}
             Papayawhip
-          {% elif is_state_attr('Light .couch', 'rgb_color', (255,218,185)) %}
+          {% elif is_state_attr('light.couch', 'rgb_color', (255,218,185)) %}
             Peachpuff
-          {% elif is_state_attr('Light .couch', 'rgb_color', (205,133,63)) %}
+          {% elif is_state_attr('light.couch', 'rgb_color', (205,133,63)) %}
             Peru
-          {% elif is_state_attr('Light .couch', 'rgb_color', (255,192,203)) %}
+          {% elif is_state_attr('light.couch', 'rgb_color', (255,192,203)) %}
             Pink
-          {% elif is_state_attr('Light .couch', 'rgb_color', (221,160,221)) %}
+          {% elif is_state_attr('light.couch', 'rgb_color', (221,160,221)) %}
             Plum
-          {% elif is_state_attr('Light .couch', 'rgb_color', (176,224,230)) %}
+          {% elif is_state_attr('light.couch', 'rgb_color', (176,224,230)) %}
             Powder Blue
-          {% elif is_state_attr('Light .couch', 'rgb_color', (255,0,255)) %}
+          {% elif is_state_attr('light.couch', 'rgb_color', (127,0,127)) %}
             Purple
-          {% elif is_state_attr('Light .couch', 'rgb_color', (255,0,0)) %}
+          {% elif is_state_attr('light.couch', 'rgb_color', (255,0,0)) %}
             Red
-          {% elif is_state_attr('Light .couch', 'rgb_color', (188,143,143)) %}
+          {% elif is_state_attr('light.couch', 'rgb_color', (188,143,143)) %}
             Rosy Brown
-          {% elif is_state_attr('Light .couch', 'rgb_color', (65,105,225)) %}
+          {% elif is_state_attr('light.couch', 'rgb_color', (65,105,225)) %}
             Royal Blue
-          {% elif is_state_attr('Light .couch', 'rgb_color', (139,69,19)) %}
+          {% elif is_state_attr('light.couch', 'rgb_color', (139,69,19)) %}
             Saddle Brown
-          {% elif is_state_attr('Light .couch', 'rgb_color', (250,128,114)) %}
+          {% elif is_state_attr('light.couch', 'rgb_color', (250,128,114)) %}
             Salmon
-          {% elif is_state_attr('Light .couch', 'rgb_color', (244,164,96)) %}
+          {% elif is_state_attr('light.couch', 'rgb_color', (244,164,96)) %}
             Sandy Brown
-          {% elif is_state_attr('Light .couch', 'rgb_color', (46,139,87)) %}
+          {% elif is_state_attr('light.couch', 'rgb_color', (46,139,87)) %}
             Sea Green
-          {% elif is_state_attr('Light .couch', 'rgb_color', (255,245,238)) %}
+          {% elif is_state_attr('light.couch', 'rgb_color', (255,245,238)) %}
             Seashell
-          {% elif is_state_attr('Light .couch', 'rgb_color', (160,82,45)) %}
+          {% elif is_state_attr('light.couch', 'rgb_color', (160,82,45)) %}
             Sienna
-          {% elif is_state_attr('Light .couch', 'rgb_color', (192,192,192)) %}
+          {% elif is_state_attr('light.couch', 'rgb_color', (192,192,192)) %}
             Silver
-          {% elif is_state_attr('Light .couch', 'rgb_color', (135,206,235)) %}
+          {% elif is_state_attr('light.couch', 'rgb_color', (135,206,235)) %}
             Sky Blue
-          {% elif is_state_attr('Light .couch', 'rgb_color', (106,90,205)) %}
+          {% elif is_state_attr('light.couch', 'rgb_color', (106,90,205)) %}
             Slate Blue
-          {% elif is_state_attr('Light .couch', 'rgb_color', (112,128,144)) %}
+          {% elif is_state_attr('light.couch', 'rgb_color', (112,128,144)) %}
             Slate Gray
-          {% elif is_state_attr('Light .couch', 'rgb_color', (112,128,144)) %}
+          {% elif is_state_attr('light.couch', 'rgb_color', (112,128,144)) %}
             Slate Grey
-          {% elif is_state_attr('Light .couch', 'rgb_color', (255,250,250)) %}
+          {% elif is_state_attr('light.couch', 'rgb_color', (255,250,250)) %}
             Snow
-          {% elif is_state_attr('Light .couch', 'rgb_color', (0,255,127)) %}
+          {% elif is_state_attr('light.couch', 'rgb_color', (0,255,127)) %}
             Spring Green
-          {% elif is_state_attr('Light .couch', 'rgb_color', (70,130,180)) %}
+          {% elif is_state_attr('light.couch', 'rgb_color', (70,130,180)) %}
             Steel Blue
-          {% elif is_state_attr('Light .couch', 'rgb_color', (210,180,140)) %}
+          {% elif is_state_attr('light.couch', 'rgb_color', (210,180,140)) %}
             tan
-          {% elif is_state_attr('Light .couch', 'rgb_color', (0,128,128)) %}
+          {% elif is_state_attr('light.couch', 'rgb_color', (0,128,128)) %}
             Teal
-          {% elif is_state_attr('Light .couch', 'rgb_color', (216,191,216)) %}
+          {% elif is_state_attr('light.couch', 'rgb_color', (216,191,216)) %}
             Thistle
-          {% elif is_state_attr('Light .couch', 'rgb_color', (255,99,71)) %}
+          {% elif is_state_attr('light.couch', 'rgb_color', (255,99,71)) %}
             Tomato
-          {% elif is_state_attr('Light .couch', 'rgb_color', (64,224,208)) %}
+          {% elif is_state_attr('light.couch', 'rgb_color', (64,224,208)) %}
             Turquoise
-          {% elif is_state_attr('Light .couch', 'rgb_color', (238,130,238)) %}
+          {% elif is_state_attr('light.couch', 'rgb_color', (238,130,238)) %}
             Violet
-          {% elif is_state_attr('Light .couch', 'rgb_color', (245,222,179)) %}
+          {% elif is_state_attr('light.couch', 'rgb_color', (245,222,179)) %}
             Wheat
-          {% elif is_state_attr('Light .couch', 'rgb_color', (245,245,245)) %}
+          {% elif is_state_attr('light.couch', 'rgb_color', (245,245,245)) %}
             White Smoke
-          {% elif is_state_attr('Light .couch', 'rgb_color', (255,255,0)) %}
+          {% elif is_state_attr('light.couch', 'rgb_color', (255,255,0)) %}
             Yellow
-          {% elif is_state_attr('Light .couch', 'rgb_color', (154,205,50)) %}
+          {% elif is_state_attr('light.couch', 'rgb_color', (154,205,50)) %}
             Yellow Green
           {% else %}
             Custom

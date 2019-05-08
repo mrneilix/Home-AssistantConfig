@@ -13,7 +13,6 @@ couch_color_input_text:
         entity_id: light.couch
         color_name: '{{ color_name }}'
         brightness: 100
-    - service: script.couch_light_update_input_numbers
     - delay: 00:00:01
     - service: script.couch_light_update_all_controls
 
@@ -29,8 +28,6 @@ couch_color_name_from_input_text:
         color_name: '{{ states.input_text.couch_color.state }}'
         brightness: 100
     - delay: 00:00:01
-    - service: script.couch_light_update_input_numbers
-    - delay: 00:00:01
     - service: script.couch_light_update_all_controls
 
 couch_color_google_voice:
@@ -40,23 +37,7 @@ couch_color_google_voice:
       data:
         entity_id: input_boolean.couch_light_script_running
     - delay: 00:00:01
-    - service: script.couch_light_update_input_numbers
     - delay: 00:00:01
-    - service: script.couch_light_update_all_controls
-
-
-couch_color_input_numbers:
-  alias: Couch Colors
-  sequence:
-    - service: input_boolean.turn_on
-      data:
-        entity_id: input_boolean.couch_light_script_running
-    - delay: 00:00:01
-    - service: light.turn_on
-      data_template:
-        entity_id: light.couch
-        rgb_color: ['{{ states.input_number.couch_r.state | int }}', '{{ states.input_number.couch_g.state | int}}', '{{ states.input_number.couch_b.state | int}}']
-    - delay: 00:00:02
     - service: script.couch_light_update_all_controls
 
 couch_light_update_all_controls:
@@ -69,7 +50,6 @@ couch_light_update_all_controls:
           {% else %}
             script.do_nothing
           {% endif %}
-    - service: script.couch_light_update_input_numbers
     - delay: 00:00:02
     - service: input_boolean.turn_off
       data:
@@ -92,7 +72,6 @@ couch_light_scripts_trigger_light_already_on:
   alias: Couch Light Scripts Trigger Light Already On
   sequence:
     - delay: 00:00:01
-    - service: script.couch_light_update_input_numbers
     - service: script.couch_light_update_input_text
     - delay: 00:00:02
     - service: input_boolean.turn_off
@@ -105,22 +84,6 @@ couch_light_scripts_trigger_light_already_off:
     - delay: 00:00:02
     - service: script.couch_light_scripts_trigger_light_already_on
 
-couch_light_update_input_numbers:
-  alias: Couch Light Update Input Numbers
-  sequence:
-    - service: input_number.set_value
-      data_template:
-        entity_id: input_number.couch_r
-        value: '{{ states.sensor.couch_red.state | int }}'
-    - service: input_number.set_value
-      data_template:
-        entity_id: input_number.couch_g
-        value: '{{ states.sensor.couch_green.state | int }}'
-    - service: input_number.set_value
-      data_template:
-        entity_id: input_number.couch_b
-        value: '{{ states.sensor.couch_blue.state | int }}'
-
 couch_light_update_input_text:
   alias: Couch Light Update Input Text
   sequence:
@@ -128,34 +91,3 @@ couch_light_update_input_text:
       data_template:
         entity_id: input_text.couch_color
         value: '{{ states.sensor.couch_light_color_name.state }}'
-
-couch_white:
-  alias: Couch White
-  sequence:
-    - service: scene.turn_on
-      entity_id: scene.couch_white
-couch_soft_white:
-  alias: Couch Soft White
-  sequence:
-    - service: scene.turn_on
-      entity_id: scene.couch_soft_white
-couch_blue:
-  alias: Couch Blue
-  sequence:
-    - service: scene.turn_on
-      entity_id: scene.couch_blue
-couch_red:
-  alias: Couch Red
-  sequence:
-    - service: scene.turn_on
-      entity_id: scene.couch_red
-couch_green:
-  alias: Couch Green
-  sequence:
-    - service: scene.turn_on
-      entity_id: scene.couch_green
-couch_purple:
-  alias: Couch Purple
-  sequence:
-    - service: scene.turn_on
-      entity_id: scene.couch_purple

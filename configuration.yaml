@@ -115,7 +115,6 @@ influxdb: !include yamls/databases/influxdb.yaml
 
 # Include Inputs
 input_boolean: !include yamls/inputs/input_boolean.yaml
-input_number: !include yamls/inputs/input_numbers.yaml
 input_select: !include yamls/inputs/input_select.yaml
 input_text: !include yamls/inputs/input_text.yaml
 

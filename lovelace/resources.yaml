@@ -36,3 +36,7 @@
   url: /local/custom-lovelace/vertical-stack-in-card/vertical-stack-in-card.js?track=true
 - type: js
   url: /local/custom-lovelace/layout-card/layout-card.js?track=true
+- type: js
+  url: /local/custom-lovelace/light-entity-card/light-entity-card.js?track=true
+- type: module
+  url: /local/custom-lovelace/config-template-card/config-template-card.js?track=true

@@ -7,89 +7,134 @@ card:
   cards:
     - type: horizontal-stack
       cards:
-        - type: 'custom:button-card'
-          name: White
-          entity: script.couch_white
-          tap_action:
-            action: call-service
-            service: script.couch_white
-          state:
-            - value: 'off'
+        - type: 'custom:config-template-card'
+          entities:
+            - sensor.couch_light_color_name
+          card:
+            type: 'custom:card-modder'
+            style:
+              --paper-card-background-color: "${ states['sensor.couch_light_color_name'].state == 'White' ? '#37464f' : '#263137' }"
+            card:
+              type: 'custom:button-card'
+              name: White
+              tap_action:
+                action: call-service
+                service: light.turn_on
+                service_data:
+                  entity_id: light.couch
+                  rgb_color: [255, 255, 255]
               color: 'rgb(255, 255, 255)'
-            - value: 'on'
-              color: 'rgb(255, 255, 255)'
-          color_type: icon
-          icon: mdi:sofa
-        - type: 'custom:button-card'
-          name: Soft White
-          entity: script.couch_soft_white
-          tap_action:
-            action: call-service
-            service: script.couch_soft_white
-          state:
-            - value: 'off'
+              color_type: icon
+              icon: mdi:sofa
+        - type: 'custom:config-template-card'
+          entities:
+            - sensor.couch_light_color_name
+          card:
+            type: 'custom:card-modder'
+            style:
+              --paper-card-background-color: "${ states['sensor.couch_light_color_name'].state == 'Soft White' ? '#37464f' : '#263137' }"
+            card:
+              type: 'custom:button-card'
+              name: Soft White
+              tap_action:
+                action: call-service
+                service: light.turn_on
+                service_data:
+                  entity_id: light.couch
+                  rgb_color: [255, 242, 230]
               color: 'rgb(255, 242, 230)'
-            - value: 'on'
-              color: 'rgb(255, 242, 230)'
-          color_type: icon
-          icon: mdi:sofa
-        - type: 'custom:button-card'
-          name: Blue
-          entity: script.couch_blue
-          tap_action:
-            action: call-service
-            service: script.couch_blue
-          state:
-            - value: 'off'
+              color_type: icon
+              icon: mdi:sofa
+        - type: 'custom:config-template-card'
+          entities:
+            - sensor.couch_light_color_name
+          card:
+            type: 'custom:card-modder'
+            style:
+              --paper-card-background-color: "${ states['sensor.couch_light_color_name'].state == 'Blue' ? '#37464f' : '#263137' }"
+            card:
+              type: 'custom:button-card'
+              name: Blue
+              tap_action:
+                action: call-service
+                service: light.turn_on
+                service_data:
+                  entity_id: light.couch
+                  rgb_color: [0, 0, 255]
               color: 'rgb(0, 0, 255)'
-            - value: 'on'
-              color: 'rgb(0, 0, 255)'
-          color_type: icon
-          icon: mdi:sofa
+              color_type: icon
+              icon: mdi:sofa
     - type: horizontal-stack
       cards:
-        - type: 'custom:button-card'
-          name: Red
-          entity: script.couch_red
-          tap_action:
-            action: call-service
-            service: script.couch_red
-          state:
-            - value: 'off'
+        - type: 'custom:config-template-card'
+          entities:
+            - sensor.couch_light_color_name
+          card:
+            type: 'custom:card-modder'
+            style:
+              --paper-card-background-color: "${ states['sensor.couch_light_color_name'].state == 'Red' ? '#37464f' : '#263137' }"
+            card:
+              type: 'custom:button-card'
+              name: Red
+              tap_action:
+                action: call-service
+                service: light.turn_on
+                service_data:
+                  entity_id: light.couch
+                  rgb_color: [255, 0, 0]
               color: 'rgb(255, 0, 0)'
-            - value: 'on'
-              color: 'rgb(255, 0, 0)'
-          color_type: icon
-          icon: mdi:sofa
-        - type: 'custom:button-card'
-          name: Green
-          entity: script.couch_green
-          tap_action:
-            action: call-service
-            service: script.couch_green
-          state:
-            - value: 'off'
+              color_type: icon
+              icon: mdi:sofa
+        - type: 'custom:config-template-card'
+          entities:
+            - sensor.couch_light_color_name
+          card:
+            type: 'custom:card-modder'
+            style:
+              --paper-card-background-color: "${ states['sensor.couch_light_color_name'].state == 'Green' ? '#37464f' : '#263137' }"
+            card:
+              type: 'custom:button-card'
+              name: Green
+              tap_action:
+                action: call-service
+                service: light.turn_on
+                service_data:
+                  entity_id: light.couch
+                  rgb_color: [0, 255, 0]
               color: 'rgb(0, 255, 0)'
-            - value: 'on'
-              color: 'rgb(0, 255, 0)'
-          color_type: icon
-          icon: mdi:sofa
-        - type: 'custom:button-card'
-          name: Purple
-          entity: script.couch_purple
-          tap_action:
-            action: call-service
-            service: script.couch_purple
-          state:
-            - value: 'off'
+              color_type: icon
+              icon: mdi:sofa
+        - type: 'custom:config-template-card'
+          entities:
+            - sensor.couch_light_color_name
+          card:
+            type: 'custom:card-modder'
+            style:
+              --paper-card-background-color: "${ states['sensor.couch_light_color_name'].state == 'Fuchsia' ? '#37464f' : '#263137' }"
+            card:
+              type: 'custom:button-card'
+              name: Fuchsia
+              tap_action:
+                action: call-service
+                service: light.turn_on
+                service_data:
+                  entity_id: light.couch
+                  rgb_color: [255, 0, 255]
               color: 'rgb(255, 0, 255)'
-            - value: 'on'
-              color: 'rgb(255, 0, 255)'
-          color_type: icon
-          icon: mdi:sofa
-    - type: entities
-      entities:
-        - input_text.couch_color
-        - input_number.couch_r
-        - input_number.couch_g
-        - input_number.couch_b
+              color_type: icon
+              icon: mdi:sofa
+    - type: horizontal-stack
+      cards:
+        - type: entities
+          entities:
+            - input_text.couch_color
+    - type: horizontal-stack
+      cards:
+        - type: custom:light-entity-card
+          entity: light.couch
+          header: false
+          brightness: false
+          color_temp: false
+          white_value: false
+          color_picker: true
+          effects_list: false
