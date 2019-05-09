@@ -1,0 +1,16 @@
+type: vertical-stack
+cards:
+  - type: history-graph
+    entities:
+      - sensor.kitchen_display_time_remaining_timer
+  - type: 'custom:button-card'
+    name: Clear Timer
+    entity: script.google_home_clear_timer
+    tap_action:
+      action: call-service
+      service: script.google_home_clear_timer
+    color: rgb(57, 111, 182)
+    icon: 'mdi:timer-sand'
+    size: 10%
+    style:
+      - padding: 5px 0px

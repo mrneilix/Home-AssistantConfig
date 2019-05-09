@@ -62,7 +62,7 @@ vera:
   exclude: [58]
 
 wemo:
-  discovery: false
+  discovery: true
   static:
     - !secret yi_cam_outlet
 
@@ -99,7 +99,6 @@ proximity: !include yamls/home_assistant_yamls/proximity.yaml
 # Commands and Notify
 rest_command: !include yamls/commands_and_notify/rest_command.yaml
 shell_command: !include yamls/commands_and_notify/shell_commands.yaml
-scene: !include yamls/commands_and_notify/scenes.yaml
 notify: !include yamls/commands_and_notify/notify.yaml
 joaoapps_join: !include yamls/commands_and_notify/join.yaml
 
@@ -115,13 +114,11 @@ influxdb: !include yamls/databases/influxdb.yaml
 
 # Include Inputs
 input_boolean: !include yamls/inputs/input_boolean.yaml
-input_select: !include yamls/inputs/input_select.yaml
+# input_select: !include yamls/inputs/input_select.yaml
 input_text: !include yamls/inputs/input_text.yaml
 
 # Include Devices Yamls
 device_tracker: !include yamls/devices/device_tracker.yaml
-# switch: !include yamls/devices/switches.yaml
-media_player: !include yamls/devices/media_player.yaml
 light: !include yamls/devices/lights.yaml
 climate: !include yamls/devices/climate.yaml
 mqtt: !include yamls/devices/mqtt.yaml

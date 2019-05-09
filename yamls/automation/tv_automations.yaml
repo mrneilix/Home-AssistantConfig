@@ -109,3 +109,22 @@
       state: 'on'
   action:
     - service: script.tv_turn_on_theater_mode
+
+- id: tv_off_turn_devices_off
+  alias: 'TV Off Turn Devices Off'
+  trigger:
+    - platform: state
+      entity_id: switch.hdmi_0
+      to: 'off'
+      from: 'on'
+      for:
+        seconds: 30
+  condition:
+    - condition: state
+      entity_id: input_boolean.restart_complete
+      state: 'on'
+    - condition: state
+      entity_id: input_boolean.presence_running
+      state: 'off'
+  action:
+    - service: script.tv_off_turn_devices_off

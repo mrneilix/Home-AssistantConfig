@@ -22,38 +22,38 @@ notify_parents_home:
           icon: '/local/pictures/mom-dad.jpg'
           badge: '/local/pictures/lock-badge.png'
 
-notify_guest_code_entered:
-  alias: Notify Guest Code Entered
-  sequence:
-    - service: notify.html5
-      data_template:
-        message: "{{ states('sensor.last_lock_code_name') }} unlocked the door at {{ as_timestamp(now()) | timestamp_custom('%I:%M:%S %p', true) }}"
-        title: "Door Unlocked"
-        data:
-          tag: 'door-unlocked'
-          icon: '/local/pictures/guest.png'
-          badge: '/local/pictures/lock-badge.png'
+# notify_guest_code_entered:
+  # alias: Notify Guest Code Entered
+  # sequence:
+    # - service: notify.html5
+      # data_template:
+        # message: "{{ states('sensor.last_lock_code_name') }} unlocked the door at {{ as_timestamp(now()) | timestamp_custom('%I:%M:%S %p', true) }}"
+        # title: "Door Unlocked"
+        # data:
+          # tag: 'door-unlocked'
+          # icon: '/local/pictures/guest.png'
+          # badge: '/local/pictures/lock-badge.png'
 
-notify_temp_code_entered:
-  alias: Notify Temp Code Entered
-  sequence:
-    - service: notify.html5
-      data_template:
-        message: "{{ states('sensor.last_lock_code_name') }} unlocked the door at {{ as_timestamp(now()) | timestamp_custom('%I:%M:%S %p', true) }}"
-        title: "Door Unlocked"
-        data:
-          tag: 'door-unlocked'
-          icon: '/local/pictures/guest.png'
-          badge: '/local/pictures/lock-badge.png'
+# notify_temp_code_entered:
+  # alias: Notify Temp Code Entered
+  # sequence:
+    # - service: notify.html5
+      # data_template:
+        # message: "{{ states('sensor.last_lock_code_name') }} unlocked the door at {{ as_timestamp(now()) | timestamp_custom('%I:%M:%S %p', true) }}"
+        # title: "Door Unlocked"
+        # data:
+          # tag: 'door-unlocked'
+          # icon: '/local/pictures/guest.png'
+          # badge: '/local/pictures/lock-badge.png'
 
-notify_lock_unlocked_unknown_code:
-  alias: Notify Lock Unlocked Unknown Code
-  sequence:
-    - service: notify.html5
-      data_template:
-        message: "Door was unlocked at {{ as_timestamp(now()) | timestamp_custom('%I:%M:%S %p', true) }}"
-        title: "Door Unlocked"
-        data:
-          tag: 'door-unlocked'
-          icon: '/local/pictures/lock.jpg'
-          badge: '/local/pictures/lock-badge.png'
+# notify_lock_unlocked_unknown_code:
+  # alias: Notify Lock Unlocked Unknown Code
+  # sequence:
+    # - service: notify.html5
+      # data_template:
+        # message: "Door was unlocked at {{ as_timestamp(now()) | timestamp_custom('%I:%M:%S %p', true) }}"
+        # title: "Door Unlocked"
+        # data:
+          # tag: 'door-unlocked'
+          # icon: '/local/pictures/lock.jpg'
+          # badge: '/local/pictures/lock-badge.png'

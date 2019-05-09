@@ -5,6 +5,7 @@
       - device_tracker
       - switch
       - proximity
+      - media_player
     entities:
       - light.kitchen
       - light.couch

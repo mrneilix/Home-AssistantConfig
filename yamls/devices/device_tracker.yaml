@@ -33,14 +33,14 @@
     - platform: composite
       name: parents
       entity_id:
-        - binary_sensor.lock_code_entered_parents
+        # - binary_sensor.lock_code_entered_parents
         - device_tracker.mom_phone
         - device_tracker.dad_phone
     - platform: composite
       name: gina
       entity_id:
         - device_tracker.gina_phone
-        - binary_sensor.lock_code_entered_gina
+        # - binary_sensor.lock_code_entered_gina
     - platform: composite
       name: neil_pixel_gps
       entity_id:

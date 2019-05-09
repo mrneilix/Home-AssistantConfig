@@ -13,22 +13,22 @@
     initial: off 
   away:
     name: No One Home
-  autolock:
-    name: Autolock Door
-    icon: mdi:lock-smart
-    initial: on
-  temp_lock_code_set:
-    icon: mdi:lock
-    name: Temp Code
+  # autolock:
+    # name: Autolock Door
+    # icon: mdi:lock-smart
+    # initial: on
+  # temp_lock_code_set:
+    # icon: mdi:lock
+    # name: Temp Code
   weather_notifications:
     icon: mdi:white-balance-sunny
     name: Weather Notifications
   weather_dont_renotify:
     name: Weather Notifications Off
     initial: off
-  parents_lock_code:
-    icon: mdi:human-female-boy
-    name: Fam Code
+  # parents_lock_code:
+    # icon: mdi:human-female-boy
+    # name: Fam Code
   butters_home:
     icon: mdi:dog-side
     name: Butters

@@ -1,9 +1,3 @@
-  - platform: plex
-    host: !secret desktop_ip
-    port: !secret plex_port
-    username: !secret plex_username
-    password: !secret plex_pw
-
   - platform: tautulli
     host: !secret base_url
     ssl: true

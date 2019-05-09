@@ -14,6 +14,7 @@ badges:
   - sensor.dark_sky_overnight_low_temperature_0d
   - sensor.daylight_remaining_hm
   - sensor.illuminance
+  - sensor.fitbit_steps
   # - sensor.last_lock_code_name
 cards:
   - !include compact_custom_header.yaml

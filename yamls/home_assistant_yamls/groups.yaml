@@ -7,4 +7,3 @@ auto_lock_automations:
 bathroom: switch.bathroom_light, switch.bathroom_fan
 
 switches: switch.furnace_switch_29, switch.lamp, switch.bathroom_light, switch.bathroom_fan
-

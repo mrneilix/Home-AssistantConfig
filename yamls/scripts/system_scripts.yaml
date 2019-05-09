@@ -14,9 +14,6 @@ startup_scripts:
           {% else %}
             script.system_turn_on_automations_on_restart
           {% endif %}
-    # - condition: template
-      # value_template: "{{ is_state('sensor.pi_zero_monitor_offline', 'offline') or is_state('sensor.pi_zero_monitor_offline', 'unknown') }}"
-    # - service: shell_command.restart_monitor
 
 startup_presence:
   alias: Startup Presence

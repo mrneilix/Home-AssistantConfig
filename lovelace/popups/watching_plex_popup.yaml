@@ -1,0 +1,18 @@
+type: custom:card-modder
+style:
+  background-image: url("/local/pictures/lovelace-pictures/plex.png")
+  background-repeat: no-repeat
+  background-color: rgb(31,31,31)
+  background-position: right
+  background-size: contain
+card:
+  type: custom:auto-entities
+  show_empty: false
+  card:
+    type: entities
+    show_header_toggle: false
+  filter:
+    include:
+      - entity_id: "sensor.tautulli_watching_*"
+    exclude:
+      - state: "Nothing"

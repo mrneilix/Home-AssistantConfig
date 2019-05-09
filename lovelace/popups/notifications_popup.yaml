@@ -1,0 +1,16 @@
+type: horizontal-stack
+cards:
+  - type: 'custom:button-card'
+    name: Weather
+    entity: input_boolean.weather_notifications
+    tap_action:
+      action: toggle
+    color: rgb(57, 111, 182)
+    color_type: icon
+  - type: 'custom:button-card'
+    name: Notify
+    entity: input_boolean.notifications_on
+    tap_action:
+      action: toggle
+    color: rgb(57, 111, 182)
+    color_type: icon

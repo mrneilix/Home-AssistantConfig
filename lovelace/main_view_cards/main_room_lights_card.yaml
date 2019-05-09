@@ -21,6 +21,7 @@ cards:
         show_entity_picture: true
         show_state: true
         entity_picture: /local/pictures/furnace-off.png
+        icon: mdi:radiator
         hold_action:
           action: more-info
         tap_action:
@@ -36,6 +37,7 @@ cards:
         show_entity_picture: true
         show_state: true
         entity_picture: /local/pictures/lamp-off.jpg
+        icon: mdi:ceiling-light
         hold_action:
           action: more-info
         tap_action:
