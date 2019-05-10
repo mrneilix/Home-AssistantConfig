@@ -7,5 +7,5 @@ cards:
     entities:
       - entity: device_tracker.gina_phone
         secondary_info: last-changed
-      # - entity: binary_sensor.lock_code_entered_gina
-        # secondary_info: last-changed
+      - entity: binary_sensor.lock_code_entered_gina
+        secondary_info: last-changed

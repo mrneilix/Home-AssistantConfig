@@ -28,17 +28,17 @@
         - Couch
         - Couch Light
         - Couch Lights
-    # lock.schlage_deadbolt_47:
-      # name: Lock
-      # room: Entryway
-      # expose: true
-      # aliases:
-        # - Door
-        # - Door Lock
-        # - Unlock the Door
-        # - Unlock the Front Door
-        # - Door unlock
-        # - front door unlock
+    lock.schlage_deadbolt_91:
+      name: Lock
+      room: Entryway
+      expose: true
+      aliases:
+        - Door
+        - Door Lock
+        - Unlock the Door
+        - Unlock the Front Door
+        - Door unlock
+        - front door unlock
     light.bed:
       name: Bed Light
       room: Bedroom

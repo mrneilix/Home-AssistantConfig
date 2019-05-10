@@ -32,28 +32,28 @@ notify_update_available:
         title: 'New Home Assistant Release'
         message: "Home Assistant  {{ states.updater.updater.state }}  is now available."
 
-# notify_lock_battery_low:
-  # alias: Notify Lock Battery Low
-  # sequence:
-    # - service: notify.html5
-      # data_template:
-        # message: "Lock Battery Low"
-        # title: "Lock Battery Low"
-        # data:
-          # tag: 'lock-low-battery'
-          # renotify: 0
-          # icon: '/local/lock.jpg'
-          # badge: '/local/lock-badge.png'
+notify_lock_battery_low:
+  alias: Notify Lock Battery Low
+  sequence:
+    - service: notify.html5
+      data_template:
+        message: "Lock Battery Low"
+        title: "Lock Battery Low"
+        data:
+          tag: 'lock-low-battery'
+          renotify: 0
+          icon: '/local/lock.jpg'
+          badge: '/local/lock-badge.png'
 
-# notify_lock_battery_very_low:
-  # alias: Notify Lock Battery Very Low
-  # sequence:
-    # - service: notify.html5
-      # data_template:
-        # message: "Lock Battery Very Low"
-        # title: "Lock Battery Very Low"
-        # data:
-          # tag: 'lock-low-battery'
-          # renotify: 0
-          # icon: '/local/lock.jpg'
-          # badge: '/local/lock-badge.png'
+notify_lock_battery_very_low:
+  alias: Notify Lock Battery Very Low
+  sequence:
+    - service: notify.html5
+      data_template:
+        message: "Lock Battery Very Low"
+        title: "Lock Battery Very Low"
+        data:
+          tag: 'lock-low-battery'
+          renotify: 0
+          icon: '/local/lock.jpg'
+          badge: '/local/lock-badge.png'

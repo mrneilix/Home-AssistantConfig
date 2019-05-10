@@ -10,10 +10,14 @@
       data_template:
         name: Starting
         message: Hass is Starting
-    # - service: scene.turn_on
-      # entity_id: scene.startup_reset_variables
+    - service: scene.turn_on
+      entity_id: scene.startup_reset_variables
     - delay: 00:00:05
     - service: shell_command.restart_pi_sys_stat
+    - service: logbook.log
+      data_template:
+        name: Shell Command
+        message: Restart Pi Zero System Stats
     - delay: 00:00:50
     - service: script.startup_scripts
 
@@ -53,6 +57,10 @@
       state: 'on'
   action:
     - service: shell_command.restart_monitor
+    - service: logbook.log
+      data_template:
+        name: Shell Command
+        message: Restart Monitor
 
 - id: system_scheduled_reboot_pi
   alias: 'System Scheduled Reboot Pi'
@@ -67,7 +75,7 @@
       weekday:
       - mon
   action:
-    - service: shell_command.reboot_pi_zero
+    - service: script.reboot_pi_zero
     - delay: 00:10:00
     - service: script.system_reboot
 
@@ -132,7 +140,7 @@
       entity_id: input_boolean.restart_complete
       state: 'on'
   action:
-    - service: shell_command.git_backup
+    - service: script.system_git_backup
     - delay: 00:00:60
     - service: hassio.snapshot_full
       data_template:
@@ -141,7 +149,7 @@
       data:
         entity_id: input_boolean.config_updated
     - delay: 00:10:00
-    - service: shell_command.desktop_backup_sync
+    - service: script.system_desktop_display_off
     - delay: 00:00:10
     - condition: time
       weekday:

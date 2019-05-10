@@ -1,8 +1,8 @@
   couch_color:
     name: Couch Color Name
     initial: Color Name
-  # lock_code_temp:
-    # name: Temporary Lock Code
-    # initial: Code
-    # min: 4
-    # max: 4
+  lock_code_temp:
+    name: Temporary Lock Code
+    initial: Code
+    min: 4
+    max: 4

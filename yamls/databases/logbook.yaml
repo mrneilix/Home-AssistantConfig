@@ -17,8 +17,6 @@
       - automation.system_backup_config
       - automation.system_scheduled_reboot_pi
       - automation.system_restart_ha_if_mqtt_did_not_update
-      - automation.thermostat_set_temp_when_home_after_11_am
-      - automation.thermostat_set_temp_when_home_after_6_am
       - automation.thermostat_set_when_away
       # System
       - sensor.pi_zero_monitor_offline
@@ -49,8 +47,10 @@
       - script.presence_no_humans_home
       - script.presence_parents_home
       - script.presence_someone_arrived
+      - script.presence_leave_turn_stuff_off
       - script.system_restart_if_just_rebooted
       - script.system_turn_on_automations_on_restart
+      - script.system_reboot
   exclude:
     entities:
       - light.front_kitchen_31

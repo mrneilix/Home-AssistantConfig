@@ -1,42 +1,42 @@
-  # - platform: mqtt
-    # name: "Last Lock Code Used"
-    # state_topic: "Vera/Events/Last Lock Code"
-    # value_template: '{{ value_json.Variable1 }}'
+  - platform: mqtt
+    name: "Last Lock Code Used"
+    state_topic: "Vera/Events/Last Lock Code"
+    value_template: '{{ value_json.Variable1 }}'
 
-  # - platform: template
-    # sensors:
-      # last_lock_code_name:
-        # friendly_name: Lock History
-        # value_template: >-
-          # {%- if 'Temporary' in states.sensor.last_lock_code_used.state %}
-              # Temp
-          # {%  elif 'Neil' in states.sensor.last_lock_code_used.state %}
-              # Neil
-          # {%  elif 'Gina' in states.sensor.last_lock_code_used.state %}
-              # Gina
-          # {%  elif 'Parents' in states.sensor.last_lock_code_used.state %}
-              # Parents
-          # {%  elif 'Guest' in states.sensor.last_lock_code_used.state %}
-              # Guest
-          # {% else %}
-              # Blank
-          # {%- endif %}
-        # entity_picture_template: >-
-          # {%- if 'Temporary' in states.sensor.last_lock_code_used.state %}
-              # /local/pictures/guest.png
-          # {%  elif 'Neil' in states.sensor.last_lock_code_used.state %}
-              # /local/pictures/Me.jpg
-          # {%  elif 'Gina' in states.sensor.last_lock_code_used.state %}
-              # /local/pictures/gina.jpg
-          # {%  elif 'Parents' in states.sensor.last_lock_code_used.state %}
-              # /local/pictures/mom-dad.jpg
-          # {%  elif 'Guest' in states.sensor.last_lock_code_used.state %}
-              # /local/pictures/guest.png
-          # {% else %}
-              # Blank
-          # {%- endif %}
-      # lock_battery_level:
-        # value_template: "{{ state_attr('lock.schlage_deadbolt_47', 'battery_level') }}"
-        # unit_of_measurement: '%'
-        # friendly_name: Lock Battery Level
-        # icon_template: mdi:battery
+  - platform: template
+    sensors:
+      last_lock_code_name:
+        friendly_name: Lock History
+        value_template: >-
+          {%- if 'Temporary' in states.sensor.last_lock_code_used.state %}
+              Temp
+          {%  elif 'Neil' in states.sensor.last_lock_code_used.state %}
+              Neil
+          {%  elif 'Gina' in states.sensor.last_lock_code_used.state %}
+              Gina
+          {%  elif 'Parents' in states.sensor.last_lock_code_used.state %}
+              Parents
+          {%  elif 'Guest' in states.sensor.last_lock_code_used.state %}
+              Guest
+          {% else %}
+              Blank
+          {%- endif %}
+        entity_picture_template: >-
+          {%- if 'Temporary' in states.sensor.last_lock_code_used.state %}
+              /local/pictures/guest.png
+          {%  elif 'Neil' in states.sensor.last_lock_code_used.state %}
+              /local/pictures/Me.jpg
+          {%  elif 'Gina' in states.sensor.last_lock_code_used.state %}
+              /local/pictures/gina.jpg
+          {%  elif 'Parents' in states.sensor.last_lock_code_used.state %}
+              /local/pictures/mom-dad.jpg
+          {%  elif 'Guest' in states.sensor.last_lock_code_used.state %}
+              /local/pictures/guest.png
+          {% else %}
+              Blank
+          {%- endif %}
+      lock_battery_level:
+        value_template: "{{ state_attr('lock.schlage_deadbolt_91', 'battery_level') }}"
+        unit_of_measurement: '%'
+        friendly_name: Lock Battery Level
+        icon_template: mdi:battery

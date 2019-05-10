@@ -1,13 +1,17 @@
 startup_scripts:
   alias: Startup Scripts
   sequence:
-    # - service: lock.lock
-      # entity_id: lock.schlage_deadbolt_47
+    - service: lock.lock
+      entity_id: lock.schlage_deadbolt_91
     - service: script.startup_input_booleans
-    - service: script.startup_couch_colors
+    - delay: 00:00:02
+    - service: script.couch_light_update_input_text
     - delay: 00:00:02
     - service: script.startup_presence
-    - delay: 00:01:00
+    - delay: 00:00:30
+    - service: scene.turn_on
+      entity_id: scene.last_lock_code_used
+    - delay: 00:00:30
     - service_template: >
           {% if (((as_timestamp(now()) - as_timestamp(states.sensor.last_boot.state)) )| int) < 360 %}
             script.system_restart_if_just_rebooted
@@ -93,6 +97,10 @@ system_restart_if_just_rebooted:
   alias: System Restart If Just Rebooted
   sequence:
     - service: shell_command.phlex_login
+    - service: logbook.log
+      data_template:
+        name: Shell Command
+        message: Desktop Log Into Phlex and Grafana
     - delay: 00:01:00
     - service: script.restart_homeassistant
 
@@ -109,6 +117,10 @@ reboot_pi_zero:
   alias: Reboot Pi Zero
   sequence:
     - service: shell_command.reboot_pi_zero
+    - service: logbook.log
+      data_template:
+        name: Shell Command
+        message: Reboot Pi Zero
 
 confirm_system_reboot:
   alias: Confirm System Reboot
@@ -141,20 +153,22 @@ system_reboot:
     - delay: 00:00:02
     - service: hassio.host_reboot
 
-startup_couch_colors:
-  alias: Startup Load Couch
-  sequence:
-    - delay: 00:00:02
-    - service: script.couch_light_update_all_controls
-
 system_git_backup:
   alias: Startup Load Couch
   sequence:
+    - service: logbook.log
+      data_template:
+        name: Shell Command
+        message: Git Backup
     - service: shell_command.git_backup
 
 system_desktop_display_off:
   alias: System Desktop Display Off
   sequence:
+    - service: logbook.log
+      data_template:
+        name: Shell Command
+        message: Desktop Display Off
     - service: shell_command.desktop_screen_off
 do_nothing:
   alias: Do Nothing

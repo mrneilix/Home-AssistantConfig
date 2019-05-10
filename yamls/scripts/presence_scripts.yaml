@@ -4,8 +4,8 @@ presence_someone_arrived:
     - service: input_boolean.turn_on
       data:
         entity_id: input_boolean.presence_running
-    # - service: lock.unlock
-      # entity_id: lock.schlage_deadbolt_47
+    - service: lock.unlock
+      entity_id: lock.schlage_deadbolt_91
     - service: input_boolean.turn_off
       data:
         entity_id: input_boolean.away
@@ -56,7 +56,7 @@ presence_neil_arrived_home:
       data_template:
         message: 'Hello, Neil'
     - delay: 00:00:50
-    # - service: script.lock_clear_parents_lock_code
+    - service: script.lock_clear_parents_lock_code
 
 
 presence_arrive_dark_out:
@@ -73,7 +73,7 @@ presence_no_humans_home:
     - service: input_boolean.turn_on
       data:
         entity_id: input_boolean.presence_running
-    # - service: script.lock_set_parents_lock_code
+    - service: script.lock_set_parents_lock_code
     - service: script.presence_leave_turn_stuff_off
     - delay: 00:00:02
     - service: joaoapps_join.fire_send_tasker

@@ -1,88 +1,11 @@
-couch_color_input_text:
-  alias: Couch Color Input Text
-  sequence:
-    - service: input_boolean.turn_on
-      data:
-        entity_id: input_boolean.couch_light_script_running
-    - service: input_text.set_value
-      data_template:
-        entity_id: input_text.couch_color
-        value: '{{ color_name }}'
-    - service: light.turn_on
-      data_template:
-        entity_id: light.couch
-        color_name: '{{ color_name }}'
-        brightness: 100
-    - delay: 00:00:01
-    - service: script.couch_light_update_all_controls
-
 couch_color_name_from_input_text:
   alias: Couch Color Name From Input Text
   sequence:
-    - service: input_boolean.turn_on
-      data:
-        entity_id: input_boolean.couch_light_script_running
     - service: light.turn_on
       data_template:
         entity_id: light.couch
         color_name: '{{ states.input_text.couch_color.state }}'
         brightness: 100
-    - delay: 00:00:01
-    - service: script.couch_light_update_all_controls
-
-couch_color_google_voice:
-  alias: Couch Color Google Voice
-  sequence:
-    - service: input_boolean.turn_on
-      data:
-        entity_id: input_boolean.couch_light_script_running
-    - delay: 00:00:01
-    - delay: 00:00:01
-    - service: script.couch_light_update_all_controls
-
-couch_light_update_all_controls:
-  alias: Couch Light Update All Controls
-  sequence:
-    - delay: 00:00:02
-    - service_template: >
-          {% if not is_state('sensor.couch_light_color_name', 'Custom') %}
-            script.couch_light_update_input_text
-          {% else %}
-            script.do_nothing
-          {% endif %}
-    - delay: 00:00:02
-    - service: input_boolean.turn_off
-      data:
-        entity_id: input_boolean.couch_light_script_running
-
-couch_light_scripts_trigger:
-  alias: Couch Light Script Trigger
-  sequence:
-    - service: input_boolean.turn_on
-      data:
-        entity_id: input_boolean.couch_light_script_running
-    - service_template: >
-          {% if is_state('light.couch', 'on') %}
-            script.couch_light_scripts_trigger_light_already_on
-          {% else %}
-            script.couch_light_scripts_trigger_light_already_off
-          {% endif %}
-
-couch_light_scripts_trigger_light_already_on:
-  alias: Couch Light Scripts Trigger Light Already On
-  sequence:
-    - delay: 00:00:01
-    - service: script.couch_light_update_input_text
-    - delay: 00:00:02
-    - service: input_boolean.turn_off
-      data:
-        entity_id: input_boolean.couch_light_script_running
-
-couch_light_scripts_trigger_light_already_off:
-  alias: Couch Light Scripts Trigger Light Already On
-  sequence:
-    - delay: 00:00:02
-    - service: script.couch_light_scripts_trigger_light_already_on
 
 couch_light_update_input_text:
   alias: Couch Light Update Input Text

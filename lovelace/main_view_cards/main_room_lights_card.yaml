@@ -56,6 +56,8 @@ cards:
         tap_action:
           action: toggle
         color: var(--primary-color)
+        show_state: true
+        layout: name_state
       - type: 'custom:button-card'
         name: Bathroom Fan
         entity: switch.bathroom_fan
@@ -64,3 +66,5 @@ cards:
         tap_action:
           action: toggle
         color: var(--primary-color)
+        show_state: true
+        layout: name_state

@@ -4,44 +4,34 @@
     domains:
       - scene
     entities:
-      - binary_sensor.lock_code_entered 
-      - binary_sensor.lock_code_entered_gina 
-      - binary_sensor.lock_code_entered_neil 
-      - binary_sensor.lock_code_entered_parents 
-      - binary_sensor.mqtt_status 
+      - binary_sensor.lock_code_entered
+      - binary_sensor.lock_code_entered_gina
+      - binary_sensor.lock_code_entered_neil
+      - binary_sensor.lock_code_entered_parents
+      - binary_sensor.mqtt_status
       - binary_sensor.vera_up
-      - input_boolean.couch_light_script_running 
-      - script.do_nothing 
-      - script.notify_lock_battery_low 
-      - script.notify_lock_battery_very_low 
-      - script.notify_lock_unlocked_unknown_code 
-      - script.notify_rain 
-      - script.notify_sleet 
-      - script.notify_snow 
-      - script.notify_temp_code_entered 
-      - script.ps4_button_back 
-      - script.ps4_button_down 
-      - script.ps4_button_enter 
-      - script.ps4_button_left 
-      - script.ps4_button_option 
-      - script.ps4_button_ps 
-      - script.ps4_button_right 
-      - script.ps4_button_up 
-      - script.ps4_power_off 
-      - script.startup_couch_colors 
-      - script.system_desktop_display_off 
-      - script.system_git_backup 
-      - script.tv_input_chromecast 
-      - script.tv_input_playstation 
-      - script.tv_notify_theater_mode 
-      - script.tv_turn_on_theater_mode 
+      - script.do_nothing
+      - script.notify_lock_battery_low
+      - script.notify_lock_battery_very_low
+      - script.notify_lock_unlocked_unknown_code
+      - script.notify_rain
+      - script.notify_sleet
+      - script.notify_snow
+      - script.notify_temp_code_entered
+      - script.ps4_button_back
+      - script.ps4_button_down
+      - script.ps4_button_enter
+      - script.ps4_button_left
+      - script.ps4_button_option
+      - script.ps4_button_ps
+      - script.ps4_button_right
+      - script.ps4_button_up
+      - script.ps4_power_off
+      - script.tv_input_chromecast
+      - script.tv_input_playstation
       - sensor.allergy_index_today_2
-      - sensor.couch_blue 
-      - sensor.couch_green 
-      - sensor.couch_light_color 
-      - sensor.couch_red 
-      - sensor.current_version 
-      - sensor.custom_card_tracker 
+      - sensor.current_version
+      - sensor.custom_card_tracker
       - sensor.custom_component_tracker
       - sensor.dark_sky_cloud_coverage
       - sensor.dark_sky_cloud_coverage_0d
@@ -82,33 +72,31 @@
       - sensor.desktop_amd_radeon_tm_r7_360_series_controls_gpu_fan
       - sensor.desktop_amd_radeon_tm_r7_360_series_temperatures_gpu_core
       - sensor.desktop_amd_radeon_tm_r7_360_series_voltages_gpu_core
-      - sensor.gfiberrouter_bytes_received 
-      - sensor.gfiberrouter_bytes_sent 
-      - sensor.gfiberrouter_kbytesec_received 
-      - sensor.gfiberrouter_kbytesec_sent 
-      - sensor.gfiberrouter_packets_received 
-      - sensor.gfiberrouter_packets_sent 
-      - sensor.gfiberrouter_packetssec_received 
-      - sensor.gfiberrouter_packetssec_sent 
+      - sensor.gfiberrouter_bytes_received
+      - sensor.gfiberrouter_bytes_sent
+      - sensor.gfiberrouter_kbytesec_received
+      - sensor.gfiberrouter_kbytesec_sent
+      - sensor.gfiberrouter_packets_received
+      - sensor.gfiberrouter_packets_sent
+      - sensor.gfiberrouter_packetssec_received
+      - sensor.gfiberrouter_packetssec_sent
       - sensor.ha_uptime
       - sensor.last_boot
-      - sensor.last_boot_date_time 
-      - sensor.last_lock_code_name 
-      - sensor.last_lock_code_used 
-      - sensor.latest_version 
-      - sensor.lock_battery_level 
+      - sensor.last_boot_date_time
+      - sensor.latest_version
+      - sensor.lock_battery_level
       - sensor.memory_free
-      - sensor.monitor_status 
-      - sensor.precipitation_soon 
-      - sensor.radarr_disk_space 
-      - sensor.radarr_upcoming 
-      - sensor.radarr_upcoming_list 
-      - sensor.radarr_upcoming_media 
+      - sensor.monitor_status
+      - sensor.precipitation_soon
+      - sensor.radarr_disk_space
+      - sensor.radarr_upcoming
+      - sensor.radarr_upcoming_list
+      - sensor.radarr_upcoming_media
       - sensor.since_last_boot
       - sensor.since_last_boot_templated
-      - sensor.sonarr_upcoming 
-      - sensor.sonarr_upcoming_list 
+      - sensor.sonarr_upcoming
+      - sensor.sonarr_upcoming_list
       - sensor.sonarr_upcoming_media
-      - sensor.time 
+      - sensor.time
       - sensor.upcoming_downloads
       - sensor.uptime

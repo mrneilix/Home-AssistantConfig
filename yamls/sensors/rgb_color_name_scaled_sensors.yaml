@@ -1,0 +1,251 @@
+  - platform: template
+    sensors:
+    # COUCH
+      couch_light_color:
+        friendly_name: "Couch Color"
+        value_template: >-
+          {%- if states.light.couch.state == 'off' or states.light.couch.state == 'unavailable' %}
+            (0,0,0)
+          {% else %}
+            {{ states.light.couch.attributes.rgb_color }}
+          {%- endif %}
+
+      couch_light_color_name:
+        friendly_name: "Couch Color Name"
+        entity_id: sensor.couch_light_color
+        value_template: >-
+          {%- if states.light.couch.state == 'off' or states.light.couch.state == 'unavailable' %}
+            Disable
+          {% elif is_state_attr('light.couch', 'rgb_color', (0,0,0)) %}
+            Disable
+          {% elif is_state_attr('light.couch', 'rgb_color', (255,255,255)) %}
+            White
+          {% elif is_state_attr('light.couch', 'rgb_color', (255,240,227)) %}
+            Soft White
+          {% elif is_state_attr('light.couch', 'rgb_color', (240,248,255)) %}
+            Alice Blue
+          {% elif is_state_attr('light.couch', 'rgb_color', (255,239,219)) %}
+            Antique White
+          {% elif is_state_attr('light.couch', 'rgb_color', (127,255,212)) %}
+            Aquamarine
+          {% elif is_state_attr('light.couch', 'rgb_color', (255,255,228)) %}
+            Beige
+          {% elif is_state_attr('light.couch', 'rgb_color', (255,228,196)) %}
+            Bisque
+          {% elif is_state_attr('light.couch', 'rgb_color', (255,235,205)) %}
+            Blanche Dalmond
+          {% elif is_state_attr('light.couch', 'rgb_color', (0,0,255)) %}
+            Blue
+          {% elif is_state_attr('light.couch', 'rgb_color', (155,48,255)) %}
+            Blue Violet
+          {% elif is_state_attr('light.couch', 'rgb_color', (255,64,64)) %}
+            Brown
+          {% elif is_state_attr('light.couch', 'rgb_color', (255,211,155)) %}
+            Burlywood
+          {% elif is_state_attr('light.couch', 'rgb_color', (151,251,255)) %}
+            Cadet Blue
+          {% elif is_state_attr('light.couch', 'rgb_color', (127,255,0)) %}
+            Chartreuse
+          {% elif is_state_attr('light.couch', 'rgb_color', (255,127,36)) %}
+            Chocolate
+          {% elif is_state_attr('light.couch', 'rgb_color', (255,127,80)) %}
+            Coral
+          {% elif is_state_attr('light.couch', 'rgb_color', (107,160,255)) %}
+            Cornflower Blue
+          {% elif is_state_attr('light.couch', 'rgb_color', (255,248,220)) %}
+            Cornsilk
+          {% elif is_state_attr('light.couch', 'rgb_color', (255,23,69)) %}
+            Crimson
+          {% elif is_state_attr('light.couch', 'rgb_color', (0,255,255)) %}
+            Cyan
+          {% elif is_state_attr('light.couch', 'rgb_color', (255,185,15)) %}
+            Dark Goldenrod
+          {% elif is_state_attr('light.couch', 'rgb_color', (255,246,144)) %}
+            Dark Khaki
+          {% elif is_state_attr('light.couch', 'rgb_color', (202,255,112)) %}
+            Dark Olive Green
+          {% elif is_state_attr('light.couch', 'rgb_color', (255,140,0)) %}
+            Dark Orange
+          {% elif is_state_attr('light.couch', 'rgb_color', (191,62,255)) %}
+            Dark Orchid
+          {% elif is_state_attr('light.couch', 'rgb_color', (255,164,133)) %}
+            Dark Salmon
+          {% elif is_state_attr('light.couch', 'rgb_color', (193,255,193)) %}
+            Dark Sea Green
+          {% elif is_state_attr('light.couch', 'rgb_color', (132,111,255)) %}
+            Dark Slate Blue
+          {% elif is_state_attr('light.couch', 'rgb_color', (151,255,255)) %}
+            Dark Slate Gray
+          {% elif is_state_attr('light.couch', 'rgb_color', (0,251,255)) %}
+            Dark Turquoise
+          {% elif is_state_attr('light.couch', 'rgb_color', (178,0,255)) %}
+            Dark Violet
+          {% elif is_state_attr('light.couch', 'rgb_color', (255,20,147)) %}
+            Deep Pink
+          {% elif is_state_attr('light.couch', 'rgb_color', (0,191,255)) %}
+            Deep Sky Blue
+          {% elif is_state_attr('light.couch', 'rgb_color', (30,144,255)) %}
+            Dodger Blue
+          {% elif is_state_attr('light.couch', 'rgb_color', (255,48,48)) %}
+            Firebrick
+          {% elif is_state_attr('light.couch', 'rgb_color', (255,250,240)) %}
+            Floral White
+          {% elif is_state_attr('light.couch', 'rgb_color', (62,255,62)) %}
+            Forest Green
+          {% elif is_state_attr('light.couch', 'rgb_color', (248,248,255)) %}
+            Ghost White
+          {% elif is_state_attr('light.couch', 'rgb_color', (255,215,0)) %}
+            Gold
+          {% elif is_state_attr('light.couch', 'rgb_color', (255,193,37)) %}
+            Goldenrod
+          {% elif is_state_attr('light.couch', 'rgb_color', (0,255,0)) %}
+            Green
+          {% elif is_state_attr('light.couch', 'rgb_color', (173,255,47)) %}
+            Green Yellow
+          {% elif is_state_attr('light.couch', 'rgb_color', (240,255,240)) %}
+            Honeydew
+          {% elif is_state_attr('light.couch', 'rgb_color', (255,105,180)) %}
+            Hot Pink
+          {% elif is_state_attr('light.couch', 'rgb_color', (255,114,114)) %}
+            Indian Red
+          {% elif is_state_attr('light.couch', 'rgb_color', (147,0,255)) %}
+            Indigo
+          {% elif is_state_attr('light.couch', 'rgb_color', (255,255,240)) %}
+            Ivory
+          {% elif is_state_attr('light.couch', 'rgb_color', (255,244,148)) %}
+            Khaki
+          {% elif is_state_attr('light.couch', 'rgb_color', (234,234,255)) %}
+            Lavender
+          {% elif is_state_attr('light.couch', 'rgb_color', (255,240,245)) %}
+            Lavender Blush
+          {% elif is_state_attr('light.couch', 'rgb_color', (125,255,0)) %}
+            Lawngreen
+          {% elif is_state_attr('light.couch', 'rgb_color', (255,250,205)) %}
+            Lemonchiffon
+          {% elif is_state_attr('light.couch', 'rgb_color', (191,239,255)) %}
+            Light Blue
+          {% elif is_state_attr('light.couch', 'rgb_color', (255,136,136)) %}
+            Light coral
+          {% elif is_state_attr('light.couch', 'rgb_color', (224,255,255)) %}
+            Light Cyan
+          {% elif is_state_attr('light.couch', 'rgb_color', (255,255,214)) %}
+            Light Goldenrod Yellow
+          {% elif is_state_attr('light.couch', 'rgb_color', (154,255,154)) %}
+            Light Green
+          {% elif is_state_attr('light.couch', 'rgb_color', (255,182,193)) %}
+            Light Pink
+          {% elif is_state_attr('light.couch', 'rgb_color', (255,160,122)) %}
+            Light Salmon
+          {% elif is_state_attr('light.couch', 'rgb_color', (45,255,243)) %}
+            Light Sea Green
+          {% elif is_state_attr('light.couch', 'rgb_color', (137,210,255)) %}
+            Light Sky Blue
+          {% elif is_state_attr('light.couch', 'rgb_color', (202,225,255)) %}
+            Light Steel Blue
+          {% elif is_state_attr('light.couch', 'rgb_color', (255,255,224)) %}
+            Light Yellow
+          {% elif is_state_attr('light.couch', 'rgb_color', (255,244,234)) %}
+            Linen
+          {% elif is_state_attr('light.couch', 'rgb_color', (126,255,211)) %}
+            Medium Aquamarine
+          {% elif is_state_attr('light.couch', 'rgb_color', (224,102,255)) %}
+            Medium Orchid
+          {% elif is_state_attr('light.couch', 'rgb_color', (171,130,255)) %}
+            Medium Purple
+          {% elif is_state_attr('light.couch', 'rgb_color', (85,255,160)) %}
+            Medium Sea Green
+          {% elif is_state_attr('light.couch', 'rgb_color', (0,255,157)) %}
+            MediumspringGreen
+          {% elif is_state_attr('light.couch', 'rgb_color', (87,255,248)) %}
+            Medium Turquoise
+          {% elif is_state_attr('light.couch', 'rgb_color', (255,26,170)) %}
+            Medium Violet Red
+          {% elif is_state_attr('light.couch', 'rgb_color', (56,56,255)) %}
+            Midnight Blue
+          {% elif is_state_attr('light.couch', 'rgb_color', (245,255,250)) %}
+            Mint Cream
+          {% elif is_state_attr('light.couch', 'rgb_color', (255,228,225)) %}
+            Misty Rose
+          {% elif is_state_attr('light.couch', 'rgb_color', (255,228,181)) %}
+            Moccasin
+          {% elif is_state_attr('light.couch', 'rgb_color', (255,222,173)) %}
+            Navajo White
+          {% elif is_state_attr('light.couch', 'rgb_color', (255,246,231)) %}
+            Oldlace
+          {% elif is_state_attr('light.couch', 'rgb_color', (192,255,62)) %}
+            Olive Drab
+          {% elif is_state_attr('light.couch', 'rgb_color', (255,165,0)) %}
+            Orange
+          {% elif is_state_attr('light.couch', 'rgb_color', (255,69,0)) %}
+            Orange Red
+          {% elif is_state_attr('light.couch', 'rgb_color', (255,131,250)) %}
+            Orchid
+          {% elif is_state_attr('light.couch', 'rgb_color', (255,248,182)) %}
+            Pale Goldenrod
+          {% elif is_state_attr('light.couch', 'rgb_color', (187,255,255)) %}
+            Pale Turquoise
+          {% elif is_state_attr('light.couch', 'rgb_color', (255,130,171)) %}
+            Paleviolet Red
+          {% elif is_state_attr('light.couch', 'rgb_color', (255,239,213)) %}
+            Papayawhip
+          {% elif is_state_attr('light.couch', 'rgb_color', (255,218,185)) %}
+            Peachpuff
+          {% elif is_state_attr('light.couch', 'rgb_color', (255,165,78)) %}
+            Peru
+          {% elif is_state_attr('light.couch', 'rgb_color', (255,192,203)) %}
+            Pink
+          {% elif is_state_attr('light.couch', 'rgb_color', (255,184,255)) %}
+            Plum
+          {% elif is_state_attr('light.couch', 'rgb_color', (195,248,255)) %}
+            Powder Blue
+          {% elif is_state_attr('light.couch', 'rgb_color', (255,0,255)) %}
+            Purple
+          {% elif is_state_attr('light.couch', 'rgb_color', (255,0,0)) %}
+            Red
+          {% elif is_state_attr('light.couch', 'rgb_color', (255,193,193)) %}
+            Rosy Brown
+          {% elif is_state_attr('light.couch', 'rgb_color', (73,119,255)) %}
+            Royal Blue
+          {% elif is_state_attr('light.couch', 'rgb_color', (255,126,34)) %}
+            Saddle Brown
+          {% elif is_state_attr('light.couch', 'rgb_color', (255,130,116)) %}
+            Salmon
+          {% elif is_state_attr('light.couch', 'rgb_color', (255,171,100)) %}
+            Sandy Brown
+          {% elif is_state_attr('light.couch', 'rgb_color', (84,255,159)) %}
+            Sea Green
+          {% elif is_state_attr('light.couch', 'rgb_color', (255,245,238)) %}
+            Seashell
+          {% elif is_state_attr('light.couch', 'rgb_color', (255,130,71)) %}
+            Sienna
+          {% elif is_state_attr('light.couch', 'rgb_color', (146,223,255)) %}
+            Sky Blue
+          {% elif is_state_attr('light.couch', 'rgb_color', (131,111,255)) %}
+            Slate Blue
+          {% elif is_state_attr('light.couch', 'rgb_color', (198,226,255)) %}
+            Slate Gray
+          {% elif is_state_attr('light.couch', 'rgb_color', (255,250,250)) %}
+            Snow
+          {% elif is_state_attr('light.couch', 'rgb_color', (0,255,127)) %}
+            Spring Green
+          {% elif is_state_attr('light.couch', 'rgb_color', (99,184,255)) %}
+            Steel Blue
+          {% elif is_state_attr('light.couch', 'rgb_color', (255,218,170)) %}
+            Tan
+          {% elif is_state_attr('light.couch', 'rgb_color', (255,225,255)) %}
+            Thistle
+          {% elif is_state_attr('light.couch', 'rgb_color', (255,99,71)) %}
+            Tomato
+          {% elif is_state_attr('light.couch', 'rgb_color', (72,255,236)) %}
+            Turquoise
+          {% elif is_state_attr('light.couch', 'rgb_color', (255,139,255)) %}
+            Violet
+          {% elif is_state_attr('light.couch', 'rgb_color', (255,231,186)) %}
+            Wheat
+          {% elif is_state_attr('light.couch', 'rgb_color', (255,255,0)) %}
+            Yellow
+          {% elif is_state_attr('light.couch', 'rgb_color', (191,255,62)) %}
+            Yellow Green
+          {% else %}
+            Custom
+          {%- endif %}

@@ -14,7 +14,7 @@ cards:
     - entity: switch.hdmi_0
       state: 'on'
   card:
-    type: vertical-stack
+    type: custom:vertical-stack-in-card
     cards:
       - type: horizontal-stack
         cards:

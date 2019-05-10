@@ -5,14 +5,30 @@ cards:
       - entity: climate.thermostat
         name: Thermostat
         type: thermostat
-  # - type: vertical-stack
-    # cards:
-      # - type: 'custom:button-card'
-        # action: toggle
-        # entity: switch.front_door_lock
-        # color: var(--primary-color)
-        # icon: attribute
-        # name: Lock
+  - type: horizontal-stack
+    cards:
+      - type: 'custom:button-card'
+        name: Lock
+        entity: lock.schlage_deadbolt_91
+        icon: mdi:lock
+        hold_action:
+          action: more-info
+        tap_action:
+          action: toggle
+        color: var(--primary-color)
+        state:
+          - value: 'unlocked'
+            icon: mdi:lock-open-outline
+            color: var(--paper-item-icon-color)
+      - type: 'custom:button-card'
+        name: Autolock
+        entity: input_boolean.autolock
+        icon: mdi:lock-smart
+        hold_action:
+          action: more-info
+        tap_action:
+          action: toggle
+        color: var(--primary-color)
   - type: horizontal-stack
     cards:
       - type: 'custom:button-card'
@@ -39,23 +55,14 @@ cards:
         tap_action:
           action: toggle
         color: var(--primary-color)
-  # - type: horizontal-stack
-    # cards:
-      # - type: 'custom:button-card'
-        # action: more_info
-        # color: var(--primary-color)
-        # entity: input_boolean.parents_lock_code
-        # icon: attribute
-        # name: Fam Code
-      # - type: 'custom:button-card'
-        # action: more_info
-        # color: var(--primary-color)
-        # entity: input_boolean.temp_lock_code_set
-        # icon: attribute
-        # name: Temp Code
-      # - type: 'custom:button-card'
-        # action: toggle
-        # color: var(--primary-color)
-        # entity: input_boolean.autolock
-        # icon: attribute
-        # name: Autolock
+      - type: 'custom:button-card'
+        name: Temp Code
+        entity: input_boolean.temp_lock_code_set
+        hold_action:
+          action: more-info
+        tap_action:
+          action: more-info
+        color: var(--primary-color)
+        state:
+          - value: 'off'
+            color: var(--paper-item-icon-color)
