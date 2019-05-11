@@ -10,6 +10,7 @@
       - binary_sensor.lock_code_entered_parents
       - binary_sensor.mqtt_status
       - binary_sensor.vera_up
+      - input_boolean.kitchen_lights_running
       - script.do_nothing
       - script.notify_lock_battery_low
       - script.notify_lock_battery_very_low

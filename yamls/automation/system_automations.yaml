@@ -149,8 +149,6 @@
       data:
         entity_id: input_boolean.config_updated
     - delay: 00:10:00
-    - service: script.system_desktop_display_off
-    - delay: 00:00:10
     - condition: time
       weekday:
       - sun
