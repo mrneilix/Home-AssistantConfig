@@ -88,10 +88,12 @@ sensor.plex:
   friendly_name: Plex
 
 ### WEATHER SENSORS ###
-sensor.allergy_index_today_2:
-  friendly_name: Pollen Count
-sensor.allergy_index_tomorrow:
-  friendly_name: Pollen Count Tomorrow
+sensor.allergy_index_today:
+  friendly_name: Pollen Index
+sensor.asthma_index_today:
+  friendly_name: Asthma Index
+sensor.cold_flu_index_today:
+  friendly_name: Flu Index
 sensor.dark_sky_precip_intensity:
   friendly_name: Precip Intensity
 sensor.dark_sky_precip_probability:

@@ -1,0 +1,5 @@
+  zip_code: "30308"
+  monitored_conditions:
+    - allergy_index_today
+    - asthma_index_today
+    - disease_index_today

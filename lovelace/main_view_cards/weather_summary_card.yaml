@@ -37,4 +37,6 @@ cards:
           - sensor.dark_sky_visibility
           - sensor.dark_sky_cloud_coverage
           - sensor.dark_sky_moon_phase_0d
-          - sensor.allergy_index_today_2
+          - sensor.allergy_index_today
+          - sensor.asthma_index_today
+          - sensor.cold_flu_index_today

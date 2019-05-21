@@ -35,11 +35,6 @@
   - platform: illuminance
     entity_id: sensor.dark_sky_icon
 
-  - platform: pollen
-    zip_code: "30308"
-    monitored_conditions:
-    - allergy_index_today
-
   - platform: template
     sensors:
       temp:
