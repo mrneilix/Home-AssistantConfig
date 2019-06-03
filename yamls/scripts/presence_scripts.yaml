@@ -79,12 +79,7 @@ presence_no_humans_home:
     - service: joaoapps_join.fire_send_tasker
       data:
         command: leave
-    - service_template: >
-          {% if is_state('input_boolean.butters_home', 'off') %}
-            script.thermostat_temp_everyone_away
-          {% else %}
-            script.thermostat_set_temp_only_butters_home
-          {% endif %}
+    - service: script.thermostat_leave_set_temp
     - service: input_boolean.turn_off
       data:
         entity_id: input_boolean.presence_running
@@ -146,3 +141,45 @@ presence_set_neil_device_trackers_away:
       data:
         dev_id: neil
         location_name: 'not_home'
+
+presence_lock_code_entered_not_family:
+  alias: Lock Code Entered
+  sequence:
+    - service: input_boolean.turn_on
+      data:
+        entity_id: input_boolean.presence_running
+    - service_template: >
+          {% if is_state('binary_sensor.dark_out', 'on') %}
+            script.presence_arrive_dark_out
+          {% else %}
+            script.do_nothing
+          {% endif %}
+    - delay: 00:00:03
+    - service: light.turn_on
+      entity_id: light.bathroom_orb
+    - service: tts.google_say
+      entity_id: media_player.kitchen_display
+      data_template:
+        message: "Hello, Guest."
+    - delay: 00:00:05
+    - service: script.thermostat_home_set_temp
+    - delay: 00:01:00
+    - service: input_boolean.turn_off
+      data:
+        entity_id: input_boolean.presence_running
+    - service_template: >
+          {% if is_state('sensor.last_lock_code_name', 'Guest') and is_state('input_boolean.notifications_on', 'on') %}
+            script.notify_guest_code_entered
+          {%  elif is_state('sensor.last_lock_code_name', 'Temp') and is_state('input_select.temp_code_single_use', 'Yes') %}
+            script.presence_lock_temp_code_entered
+          {% else %}
+            script.notify_temp_code_entered
+          {% endif %}
+
+presence_lock_temp_code_entered:
+  alias: Lock Temp Code Entered
+  sequence:
+    - service: script.notify_temp_code_entered
+    - service: input_boolean.turn_off
+      data:
+        entity_id: input_boolean.temp_lock_code_set

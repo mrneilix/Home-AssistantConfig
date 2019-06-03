@@ -2,4 +2,4 @@
     port: !secret mqtt_port
     discovery: false
     username: !secret hassio_addon_username
-    password: !secret mqtt_pw
+    password: !secret hassio_addon_password

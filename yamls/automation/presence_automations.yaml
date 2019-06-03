@@ -10,7 +10,7 @@
       state: 'on'
   action:
     - service_template: >
-          {% if is_state('binary_sensor.anyone_home', 'on') and now().hour >= 6 and now().hour < 11 %}
+          {% if is_state('binary_sensor.anyone_home', 'on') %}
             script.thermostat_home_set_temp
           {% else %}
             script.thermostat_temp_everyone_away
@@ -121,12 +121,21 @@
     - platform: state
       entity_id: sensor.last_lock_code_name
       to: 'Temp'
+    - platform: state
+      entity_id: sensor.last_lock_code_name
+      to: 'Guest'
   condition:
     - condition: state
       entity_id: input_boolean.restart_complete
       state: 'on'
+    - condition: state
+      entity_id: binary_sensor.lock_code_entered
+      state: 'on'
+    - condition: state
+      entity_id: binary_sensor.anyone_home
+      state: 'off'
   action:
-    - service: script.lock_temp_code_entered
+    - service: script.presence_lock_code_entered_not_family
 
 - id: presence_turn_desktop_display_off
   alias: 'Presence Turn Desktop Display Off'

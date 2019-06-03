@@ -66,7 +66,7 @@
   alias: 'System Scheduled Reboot Pi'
   trigger:
     platform: time
-    at: '04:00:00'
+    at: '03:40:00'
   condition:
     - condition: state
       entity_id: input_boolean.restart_complete
@@ -76,21 +76,32 @@
       - mon
   action:
     - service: script.reboot_pi_zero
-    - delay: 00:10:00
+    - service_template: >
+          {% if is_state('input_boolean.config_updated', 'on') %}
+            script.system_backup
+          {% else %}
+            script.do_nothing
+          {% endif %}
+    - delay: 00:20:00
+    - service: input_boolean.turn_off
+      data:
+        entity_id: input_boolean.config_updated
     - service: script.system_reboot
 
 - id: system_scheduled_restart_ha
   alias: 'System Scheduled Restart HA'
   trigger:
     platform: time
-    at: '04:30:00'
+    at: '04:00:00'
   condition:
+    - condition: state
+      entity_id: input_boolean.config_updated
+      state: 'off'
     - condition: state
       entity_id: input_boolean.restart_complete
       state: 'on'
     - condition: time
       weekday:
-      - mon
       - wed
       - fri
   action:
@@ -131,7 +142,7 @@
   alias: 'System Backup Config'
   trigger:
     platform: time
-    at: '03:30:00'
+    at: '03:40:00'
   condition:
     - condition: state
       entity_id: input_boolean.config_updated
@@ -140,21 +151,19 @@
       entity_id: input_boolean.restart_complete
       state: 'on'
   action:
-    - service: script.system_git_backup
-    - delay: 00:00:60
-    - service: hassio.snapshot_full
-      data_template:
-        name: Automated Backup {{ now().strftime('%Y-%m-%d') }}
-    - service: input_boolean.turn_off
-      data:
-        entity_id: input_boolean.config_updated
-    - delay: 00:10:00
+    - service: script.system_backup
     - condition: time
       weekday:
       - sun
       - tue
+      - wed
       - thu
+      - fri
       - sat
+    - delay: 00:20:00
+    - service: input_boolean.turn_off
+      data:
+        entity_id: input_boolean.config_updated
     - service: script.restart_homeassistant
 
 - id: system_reboot_confirmed

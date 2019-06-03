@@ -101,3 +101,13 @@ thermostat_set_operation_mode:
           {% else %}
             cool
           {% endif %}
+
+thermostat_leave_set_temp:
+  alias: Thermostat Leave Set Temp
+  sequence:
+    - service_template: >
+          {% if is_state('input_boolean.butters_home', 'off') %}
+            script.thermostat_temp_everyone_away
+          {% else %}
+            script.thermostat_set_temp_only_butters_home
+          {% endif %}

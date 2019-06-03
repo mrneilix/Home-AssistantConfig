@@ -66,7 +66,7 @@
       entity_id: binary_sensor.anyone_home
       state: 'off'
   action:
-    - service: script.lock_code_entered_not_family
+    - service: script.presence_lock_code_entered_not_family
 
 # Auto Lock
 - id: lock_door_auto_lock

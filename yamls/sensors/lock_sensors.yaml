@@ -1,12 +1,12 @@
   - platform: mqtt
     name: "Last Lock Code Used"
-    state_topic: "Vera/Events/Last Lock Code"
-    value_template: '{{ value_json.Variable1 }}'
+    state_topic: "Vera/Events/Lock Info"
+    value_template: '{{ value_json.Variable3 }}'
 
   - platform: template
     sensors:
       last_lock_code_name:
-        friendly_name: Lock History
+        friendly_name: Last Lock Code
         value_template: >-
           {%- if 'Temporary' in states.sensor.last_lock_code_used.state %}
               Temp
@@ -38,5 +38,13 @@
       lock_battery_level:
         value_template: "{{ state_attr('lock.schlage_deadbolt_91', 'battery_level') }}"
         unit_of_measurement: '%'
-        friendly_name: Lock Battery Level
+        friendly_name: Lock Battery
         icon_template: mdi:battery
+      lock_set_temp_code_input_number:
+        entity_id: input_number.lock_code_temp
+        value_template: >
+          {% if (states.input_number.lock_code_temp.state | int) > 1000 %}
+            {{ states.input_number.lock_code_temp.state | int }}
+          {% else %}
+            0
+          {% endif %}

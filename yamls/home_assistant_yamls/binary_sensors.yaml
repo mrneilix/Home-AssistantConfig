@@ -152,6 +152,7 @@
         value_template: '{{ (((  as_timestamp(strptime(states.calendar.facebook_events.attributes.start_time, "%d.%m.%Y")) - as_timestamp(now()) ) / 86400 ) | round(0) < 30 ) }}'
       show_calendar_deliveries:
         value_template: '{{ (((  as_timestamp(strptime(states.calendar.deliveries.attributes.start_time, "%d.%m.%Y")) - as_timestamp(now()) ) / 86400 ) | round(0) < 30 ) }}'
+
 # MQTT Status
       mqtt_status:
         device_class: connectivity
@@ -166,6 +167,24 @@
           {%- else -%}
             False
           {%- endif %}
+
+# Thermostat Set Home
+      thermostat_set_home:
+        friendly_name: Thermostat Set Home
+        value_template: >-
+          {%- if states.script.thermostat_leave_set_temp.attributes.last_triggered == none %}
+            True
+          {%-elif states.script.thermostat_home_set_temp.attributes.last_triggered == none %}
+            False
+          {%-elif ( as_timestamp(states.script.thermostat_leave_set_temp.attributes.last_triggered) | int ) < ( as_timestamp(states.script.thermostat_home_set_temp.attributes.last_triggered) | int ) %}
+            True
+          {%- else -%}
+            False
+          {%- endif %}
+        entity_id:
+          - script.thermostat_leave_set_temp
+          - script.thermostat_home_set_temp
+
   - platform: ping
     host: 192.168.1.126
     count: 5

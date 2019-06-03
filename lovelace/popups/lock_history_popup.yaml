@@ -1,0 +1,27 @@
+type: vertical-stack
+cards:
+  - type: glance
+    entities:
+      - sensor.last_lock_code_name
+      - sensor.lock_battery_level
+  - type: history-graph
+    title: Last Lock Code
+    entities:
+      - sensor.last_lock_code_name
+      - input_boolean.parents_lock_code
+      - input_boolean.temp_lock_code_set
+  - type: history-graph
+    title: Lock
+    entities:
+      - lock.schlage_deadbolt_91
+  - type: 'custom:button-card'
+    name: Lock
+    entity: lock.schlage_deadbolt_91
+    icon: mdi:lock
+    tap_action:
+      action: toggle
+    color: var(--primary-color)
+    state:
+      - value: 'unlocked'
+        icon: mdi:lock-open-outline
+        color: var(--paper-item-icon-color)

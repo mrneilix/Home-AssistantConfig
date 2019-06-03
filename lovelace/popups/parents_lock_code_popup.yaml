@@ -1,0 +1,11 @@
+type: vertical-stack
+cards:
+  - type: history-graph
+    entities:
+      - input_boolean.parents_lock_code
+  - type: 'custom:button-card'
+    name: Fam Code
+    entity: input_boolean.parents_lock_code
+    tap_action:
+      action: call-service
+      service: script.lock_toggle_parents_lock_code

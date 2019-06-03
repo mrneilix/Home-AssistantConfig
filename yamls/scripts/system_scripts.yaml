@@ -23,12 +23,10 @@ startup_presence:
   alias: Startup Presence
   sequence:
     - service_template: >
-          {% if is_state('device_tracker.neil', 'home') %}
-            script.startup_neil_home
-          {%-elif is_state('binary_sensor.anyone_home', 'on') %}
-            script.startup_neil_not_home
+          {% if is_state('binary_sensor.anyone_home', 'off') %}
+            script.thermostat_leave_set_temp
           {% else %}
-            script.presence_no_humans_home
+            script.startup_someone_home
           {% endif %}
 
 startup_input_booleans:
@@ -59,8 +57,8 @@ startup_input_booleans:
       data:
         entity_id: input_boolean.butters_home
 
-startup_neil_home:
-  alias: Startup Neil Home
+startup_someone_home:
+  alias: Startup Someone Home
   sequence:
     - service: switch.turn_off
       entity_id: switch.yi_power
@@ -71,20 +69,6 @@ startup_neil_home:
             script.do_nothing
           {% endif %}
     - service: script.thermostat_home_set_temp
-
-startup_neil_not_home:
-  alias: Startup Neil Not Home
-  sequence:
-    - service: switch.turn_off
-      entity_id: switch.yi_power
-    - service_template: >
-          {% if is_state('binary_sensor.anyone_home', 'on') %}
-            script.thermostat_home_set_temp
-          {%-elif is_state('input_boolean.butters_home', 'off') %}
-            script.thermostat_temp_everyone_away
-          {% else %}
-            script.thermostat_set_temp_only_butters_home
-          {% endif %}
 
 restart_homeassistant:
   alias: Restart Home Assistant
@@ -153,8 +137,17 @@ system_reboot:
     - delay: 00:00:02
     - service: hassio.host_reboot
 
+system_backup:
+  alias: System Backup
+  sequence:
+    - service: script.system_git_backup
+    - delay: 00:00:60
+    - service: hassio.snapshot_full
+      data_template:
+        name: Automated Backup {{ now().strftime('%Y-%m-%d') }}
+
 system_git_backup:
-  alias: Startup Load Couch
+  alias: System Git Backup
   sequence:
     - service: logbook.log
       data_template:
@@ -174,4 +167,3 @@ do_nothing:
   alias: Do Nothing
   sequence:
     - delay: 00:00:01
-

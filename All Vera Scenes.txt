@@ -1,0 +1,80 @@
+Vera Scenes:
+
+29: Add Parents Lock Code:
+luup.call_action('urn:micasaverde-com:serviceId:DoorLock1', 'SetPin', {UserCodeName='Parents', newPin=[PinISetForMyParents], user=1},[LockID])
+
+------------------------------------------------
+47: Add Temp Lock Code (Trigger: V4_level_goes_above)
+local waittimeon=60000;
+local waittimeoff=100;
+local waittimeclear=1000;
+local tempcodeset= luup.variable_get("urn:upnp-org:serviceId:VContainer1", "Variable1", [VContainerID]) #Variable1 is to tell if a Temp Lock Code is On
+local tempcode = luup.variable_get("urn:upnp-org:serviceId:VContainer1", "Variable4", [VContainerID]) #Variable4 is linked to my rest command to send the Temp Lock Code
+if (tempcodeset == "On") then
+  luup.call_action('urn:micasaverde-com:serviceId:DoorLock1', 'ClearPin', {UserCode= 9}, [LockID])
+  luup.sleep(waittimeon)
+else
+  luup.sleep(waittimeoff)
+end
+luup.call_action('urn:micasaverde-com:serviceId:DoorLock1', 'SetPin', {UserCodeName='Temporary', newPin=tempcode, user=9}, [LockID])
+luup.sleep(waittimeclear)
+luup.variable_set("urn:upnp-org:serviceId:VContainer1", "Variable4","0", [VContainerID])
+
+------------------------------------------------
+32: Check Lock Codes (Trigger1: Schlage Deadbolt: A PIN code was removed from the lock) (Trigger2: Schlage Deadbolt: A PIN code was programmed into the lock)
+local waittime=10000;
+luup.variable_set("urn:upnp-org:serviceId:VContainer1", "Variable1","", [VContainerID])
+luup.variable_set("urn:upnp-org:serviceId:VContainer1", "Variable2","", [VContainerID]) #Variable2 is to tell if my Parents Lock Code is On
+luup.variable_set("urn:upnp-org:serviceId:VContainer1", "Variable3","", [VContainerID]) #Variable3 is to tell the last lock code entered
+luup.sleep(waittime)
+local lockcodes= luup.variable_get("urn:micasaverde-com:serviceId:DoorLock1","PinCodes",[LockID])
+if string.find(lockcodes, "Parents") then
+  luup.variable_set("urn:upnp-org:serviceId:VContainer1", "Variable2","On", [VContainerID])
+else
+  luup.variable_set("urn:upnp-org:serviceId:VContainer1", "Variable2","Off", [VContainerID])
+end
+if string.find(lockcodes, "Temporary") then
+  luup.variable_set("urn:upnp-org:serviceId:VContainer1", "Variable1","On", [VContainerID])
+else
+  luup.variable_set("urn:upnp-org:serviceId:VContainer1", "Variable1","Off", [VContainerID])
+end
+luup.sleep(waittime)
+luup.call_action('urn:micasaverde-com:serviceId:HomeAutomationGateway1', "RunScene", {SceneNum = "48"}, 0)
+
+------------------------------------------------
+48: Last Lock Code Used:
+luup.variable_set("urn:upnp-org:serviceId:VContainer1", "Variable3","", [VContainerID])
+local locklastusercode = luup.variable_get("urn:micasaverde-com:serviceId:DoorLock1", "sl_UserCode", [LockID])
+if string.find(locklastusercode, "[MYUSER1]") then
+  luup.variable_set("urn:upnp-org:serviceId:VContainer1", "Variable3","[MYUSER1]", [VContainerID])
+elseif string.find(locklastusercode, "[MYUSER2]") then
+  luup.variable_set("urn:upnp-org:serviceId:VContainer1", "Variable3","[MYUSER2]", [VContainerID])
+elseif string.find(locklastusercode, "[MYUSER3]") then
+  luup.variable_set("urn:upnp-org:serviceId:VContainer1", "Variable3","[MYUSER3]", [VContainerID])
+elseif string.find(locklastusercode, "[MYUSER4]") then
+  luup.variable_set("urn:upnp-org:serviceId:VContainer1", "Variable3","[MYUSER4]", [VContainerID])
+elseif string.find(locklastusercode, "[MYUSER5]") then
+  luup.variable_set("urn:upnp-org:serviceId:VContainer1", "Variable3","[MYUSER5]", [VContainerID])
+else
+  luup.variable_set("urn:upnp-org:serviceId:VContainer1", "Variable3",locklastusercode , [VContainerID])
+end
+
+------------------------------------------------
+30: Clear Parents Code:
+luup.call_action('urn:micasaverde-com:serviceId:DoorLock1', 'ClearPin', {UserCode='1'}, [LockID])
+
+------------------------------------------------
+31: Clear Temp Code:
+luup.call_action('urn:micasaverde-com:serviceId:DoorLock1', 'ClearPin', {UserCode= 9}, [LockID])
+
+
+------------------------------------------------
+51: Pin Code Entered (Trigger: PIN Code #* is entered on Schlage Deadbolt)
+luup.call_action('urn:micasaverde-com:serviceId:HomeAutomationGateway1', "RunScene", {SceneNum = "48"}, 0)
+
+------------------------------------------------
+34: Startup Reset Variables:
+local waittime=10000;
+luup.call_action('urn:micasaverde-com:serviceId:HomeAutomationGateway1', "RunScene", {SceneNum = "32"}, 0)
+luup.sleep(waittime)
+luup.call_action('urn:micasaverde-com:serviceId:HomeAutomationGateway1', "RunScene", {SceneNum = "48"}, 0)

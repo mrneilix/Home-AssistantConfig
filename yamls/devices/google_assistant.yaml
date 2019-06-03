@@ -28,17 +28,6 @@
         - Couch
         - Couch Light
         - Couch Lights
-    lock.schlage_deadbolt_91:
-      name: Lock
-      room: Entryway
-      expose: true
-      aliases:
-        - Door
-        - Door Lock
-        - Unlock the Door
-        - Unlock the Front Door
-        - Door unlock
-        - front door unlock
     light.bed:
       name: Bed Light
       room: Bedroom
@@ -47,45 +36,6 @@
         - Bed
         - Bed Light
         - Bed Lights
-    switch.space_heater_75:
-      name: Space Heater
-      room: Bedroom
-      expose: true
-      aliases:
-        - Space Heater
-    switch.furnace_switch_29:
-      name: Furnace Switch
-      room: Hallway
-      expose: true
-      aliases:
-        - Furnace switch
-        - Furnace light
-    switch.bathroom_light:
-      name: Bathroom Light
-      room: Bathroom
-      expose: true
-      aliases:
-        - Bathroom light
-    switch.bathroom_fan:
-      name: Bathroom Fan
-      room: Bathroom
-      expose: true
-      aliases:
-        - Bathroom fan
-    switch.lamp:
-      name: Lamp
-      room: Lamp
-      expose: true
-      aliases:
-        - Lamp
-    switch.yi_power:
-      name: Yi Power
-      room: Home
-      expose: true
-      aliases:
-        - Webcam
-        - Cam
-        - Camera
     input_boolean.autolock:
       name: Autolock
       room: Entryway
@@ -94,6 +44,15 @@
         - Autolock
         - Door Auto lock
         - Front Door Auto lock
+    script.lock_unlock_door:
+      name: Door Lock
+      room: Entryway
+      expose: true
+      aliases:
+        - Unlock the Door
+        - Unlock the Front Door
+        - Door unlock
+        - front door unlock
     script.presence_no_humans_home:
       name: Away
       room: Home
@@ -145,3 +104,42 @@
       aliases:
         - Restart Home Assistant
         - Reboot Home Assistant
+    switch.space_heater_75:
+      name: Space Heater
+      room: Bedroom
+      expose: true
+      aliases:
+        - Space Heater
+    switch.furnace_switch_29:
+      name: Furnace Switch
+      room: Hallway
+      expose: true
+      aliases:
+        - Furnace switch
+        - Furnace light
+    switch.bathroom_light:
+      name: Bathroom Light
+      room: Bathroom
+      expose: true
+      aliases:
+        - Bathroom light
+    switch.bathroom_fan:
+      name: Bathroom Fan
+      room: Bathroom
+      expose: true
+      aliases:
+        - Bathroom fan
+    switch.lamp:
+      name: Lamp
+      room: Lamp
+      expose: true
+      aliases:
+        - Lamp
+    switch.yi_power:
+      name: Yi Power
+      room: Home
+      expose: true
+      aliases:
+        - Webcam
+        - Cam
+        - Camera

@@ -3,10 +3,10 @@
   initial_state: true
   trigger:
     - platform: mqtt
-      topic: "Vera/Events/Parents Lock Code"
+      topic: "Vera/Events/Lock Info"
   condition:
     condition: template
-    value_template: "{{ trigger.payload_json.Variable1 == 'On' }}"
+    value_template: "{{ trigger.payload_json.Variable2 == 'On' }}"
   action:
     - service: automation.turn_off
       entity_id: automation.lock_parents_lock_code_toggle
@@ -23,10 +23,10 @@
   initial_state: true
   trigger:
     - platform: mqtt
-      topic: "Vera/Events/Parents Lock Code"
+      topic: "Vera/Events/Lock Info"
   condition:
     condition: template
-    value_template: "{{ trigger.payload_json.Variable1 == 'Off' }}"
+    value_template: "{{ trigger.payload_json.Variable2 == 'Off' }}"
   action:
     - service: automation.turn_off
       entity_id: automation.lock_parents_lock_code_toggle
@@ -43,7 +43,7 @@
   initial_state: true
   trigger:
     - platform: mqtt
-      topic: "Vera/Events/Temp Lock Code"
+      topic: "Vera/Events/Lock Info"
   condition:
     condition: template
     value_template: "{{ trigger.payload_json.Variable1 == 'On' }}"
@@ -57,7 +57,7 @@
   initial_state: true
   trigger:
     - platform: mqtt
-      topic: "Vera/Events/Temp Lock Code"
+      topic: "Vera/Events/Lock Info"
   condition:
     condition: template
     value_template: "{{ trigger.payload_json.Variable1 == 'Off' }}"
