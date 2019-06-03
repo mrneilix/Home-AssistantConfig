@@ -79,13 +79,11 @@ sensor.dark_sky_overnight_low_temperature_0d: sensor.dark_sky_daytime_high_tempe
 
 sensor.fitbit_steps:
   title: FitBit
-  large: true
   card:
     type: vertical-stack
     cards:
-      - !include fitbit_view_cards/fitbit_picture_elements_card.yaml
-      - !include fitbit_view_cards/fitbit_activity_card.yaml
-      - !include fitbit_view_cards/fitbit_sleep_card.yaml
+      - !include popups/fitbit_popup.yaml
+
 input_boolean.temp_lock_code_set:
   title: Temp Code
   card:
