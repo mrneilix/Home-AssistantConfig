@@ -37,6 +37,9 @@ cards:
         tap_action:
           action: call-service
           service: script.confirm_system_reboot
+        dbltap_action:
+          action: call-service
+          service: script.system_reboot
         state:
           - value: 'off'
             color: rgb(57, 111, 182)
@@ -92,7 +95,8 @@ cards:
           action: navigate
           navigation_path: /lovelace/system_monitor_view
         color: var(--primary-color)
-        size: 20%
         icon: mdi:desktop-classic
-        style:
-        - padding: 5px 0px
+        size: 20%
+        styles:
+          card:
+            - height: 175px

@@ -33,6 +33,13 @@ input_number.couch_b:
 ### LIGHT ###
 light.bathroom_orb:
   friendly_name: Bathroom Orb
+  icon: mdi:shower-head
+light.kitchen:
+  icon: mdi:fridge
+light.couch:
+  icon: mdi:sofa
+light.bed:
+  icon: mdi:hotel
 ### SWITCHES ###
 switch.hdmi_0d:
   friendly_name: TV

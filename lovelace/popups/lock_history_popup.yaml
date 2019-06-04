@@ -1,9 +1,43 @@
 type: vertical-stack
 cards:
+  # - type: custom:vertical-stack-in-card
+    # cards:
+    # - type: horizontal-stack
+      # cards:
+        # - type: glance
+          # entities:
+            # - sensor.last_lock_code_name
+        # - type: custom:circle-sensor-card
+          # entity: sensor.lock_battery_level
+          # name: Lock Battery
+          # show_card: true
+          # fill: rgb(38, 49, 55)
+          # color_stops:
+            # 50: '#FF0000'
+            # 75: '#FFFF00'
+            # 100: '#FF5555'
+          # font_style:
+            # font-size: 1.1em
+            # font-color: white
+            # text-shadow: '2px 2px black'
+          # style:
+            # card:
+              # width: 120px
+              # height: 120px
   - type: glance
     entities:
       - sensor.last_lock_code_name
       - sensor.lock_battery_level
+  - type: glance
+    entities:
+      - entity: device_tracker.neil
+        tap_action: more-info
+      - entity: device_tracker.gina
+        tap_action: more-info
+      - entity: device_tracker.parents
+        tap_action: more-info
+      - entity: device_tracker.butters
+        tap_action: more-info
   - type: history-graph
     title: Last Lock Code
     entities:
@@ -14,14 +48,3 @@ cards:
     title: Lock
     entities:
       - lock.schlage_deadbolt_91
-  - type: 'custom:button-card'
-    name: Lock
-    entity: lock.schlage_deadbolt_91
-    icon: mdi:lock
-    tap_action:
-      action: toggle
-    color: var(--primary-color)
-    state:
-      - value: 'unlocked'
-        icon: mdi:lock-open-outline
-        color: var(--paper-item-icon-color)

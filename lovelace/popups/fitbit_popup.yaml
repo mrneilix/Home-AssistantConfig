@@ -223,9 +223,10 @@ cards:
         top: 22%
         color: white
         transform: none
-  - type: entities
+  - type: glance
     show_header_toggle: false
     title: Activity
+    columns: 3
     entities:
       - sensor.activity_calories
       - sensor.calories_bmr
@@ -233,9 +234,10 @@ cards:
       - sensor.time_fairly_active
       - sensor.time_lightly_active
       - sensor.time_sedentary
-  - type: entities
+  - type: glance
     show_header_toggle: false
     title: Sleep
+    columns: 4
     entities:
       - sensor.sleep_efficiency
       - sensor.sleep_time_asleep

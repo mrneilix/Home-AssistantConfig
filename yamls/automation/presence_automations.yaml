@@ -115,8 +115,8 @@
   action:
     - service: script.presence_someone_arrived
 
-- id: lock_temp_lock_code_used
-  alias: 'Lock Temp Lock Code Used'
+- id: lock_code_used_not_family
+  alias: 'Lock Code Used Not Family'
   trigger:
     - platform: state
       entity_id: sensor.last_lock_code_name
@@ -133,6 +133,15 @@
       state: 'on'
     - condition: state
       entity_id: binary_sensor.anyone_home
+      state: 'off'
+    - condition: state
+      entity_id: binary_sensor.lock_code_entered_neil
+      state: 'off'
+    - condition: state
+      entity_id: binary_sensor.lock_code_entered_gina
+      state: 'off'
+    - condition: state
+      entity_id: binary_sensor.lock_code_entered_parents
       state: 'off'
   action:
     - service: script.presence_lock_code_entered_not_family

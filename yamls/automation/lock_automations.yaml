@@ -48,26 +48,6 @@
   action:
     - service: script.notify_lock_unlocked_unknown_code
 
-# Lock Pin Entered
-- id: lock_code_entered
-  alias: 'Lock Code Entered'
-  trigger:
-    - platform: state
-      entity_id: binary_sensor.lock_code_entered
-      to: 'on'
-  condition:
-    - condition: state
-      entity_id: input_boolean.restart_complete
-      state: 'on'
-    - condition: state
-      entity_id: input_boolean.presence_automations
-      state: 'on'
-    - condition: state
-      entity_id: binary_sensor.anyone_home
-      state: 'off'
-  action:
-    - service: script.presence_lock_code_entered_not_family
-
 # Auto Lock
 - id: lock_door_auto_lock
   alias: 'Lock Door Auto Lock'
