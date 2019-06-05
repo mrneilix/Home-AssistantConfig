@@ -48,6 +48,13 @@ sensor.tautulli:
     cards:
       - !include popups/plex_popup.yaml
 
+sensor.sonarr_upcoming:
+  title: Sonarr Calendar
+  card:
+    type: vertical-stack
+    cards:
+      - !include popups/sonarr_popup.yaml
+
 input_boolean.notifications_on:
   title: Notify
   card:

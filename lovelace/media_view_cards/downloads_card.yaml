@@ -10,8 +10,7 @@ cards:
         layout: name_state
         color: var(--primary-color)
         tap_action:
-          action: navigate
-          navigation_path: /lovelace/sonarr_view
+          action: more-info
         hold_action:
           action: url
           url: !secret sonarr_weblink
