@@ -163,6 +163,20 @@ system_desktop_display_off:
         name: Shell Command
         message: Desktop Display Off
     - service: shell_command.desktop_screen_off
+
+system_magic_mirror_rotate_display_on:
+  alias: System Magic Mirror Rotate Display On
+  sequence:
+    - service: mqtt.publish
+      data:
+        topic: 'START_ROTATION'
+
+system_magic_mirror_rotate_display_off:
+  alias: System Magic Mirror Rotate Display Off
+  sequence:
+    - service: mqtt.publish
+      data:
+        topic: 'STOP_ROTATION'
 do_nothing:
   alias: Do Nothing
   sequence:
