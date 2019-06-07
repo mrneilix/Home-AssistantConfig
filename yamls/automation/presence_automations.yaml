@@ -160,3 +160,4 @@
       state: 'on'
   action:
     - service: shell_command.desktop_screen_off
+    - service: rest_command.mirror_hide_all_modules

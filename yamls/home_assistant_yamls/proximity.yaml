@@ -15,5 +15,5 @@
     zone: home
     tolerance: 100
     devices:
-      - device_tracker.tile_ba7ceb56d53379ac
+      - device_tracker.tile_70e3c9fefea64a42
     unit_of_measurement: mi
