@@ -55,6 +55,13 @@ sensor.sonarr_upcoming:
     cards:
       - !include popups/sonarr_popup.yaml
 
+sensor.radarr_upcoming:
+  title: Radarr Calendar
+  card:
+    type: vertical-stack
+    cards:
+      - !include popups/radarr_popup.yaml
+
 input_boolean.notifications_on:
   title: Notify
   card:

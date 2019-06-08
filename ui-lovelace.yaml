@@ -4,13 +4,6 @@ title: Atlanta Condo
 views:
   - !include lovelace/00_main_view.yaml
   - !include lovelace/01_media_player_view.yaml
-  - !include lovelace/03_weather_and_calendar_view.yaml
-  - !include lovelace/04_system_view.yaml
-  - !include lovelace/05_qbittorrent_view.yaml
-  - !include lovelace/06_system_monitor_view.yaml
-  - !include lovelace/07_sonarr_view.yaml
-  - !include lovelace/08_radarr_view.yaml
-  - !include lovelace/09_tautulli_view.yaml
-  - !include lovelace/11_grafana_view.yaml
-  - !include lovelace/12_phlex_view.yaml
-  - !include lovelace/13_mqtt_view.yaml
+  - !include lovelace/02_weather_and_calendar_view.yaml
+  - !include lovelace/03_system_view.yaml
+  - !include lovelace/04_system_monitor_view.yaml
