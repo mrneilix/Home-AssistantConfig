@@ -9,37 +9,20 @@ scene.theater_mode:
   icon: mdi:movie
   friendly_name: Theater Mode
 
-### SCRIPTS ###
-script.couch_white:
-  icon: mdi:sofa
-script.couch_soft_white:
-  icon: mdi:sofa
-script.couch_blue:
-  icon: mdi:sofa
-script.couch_red:
-  icon: mdi:sofa
-script.couch_green:
-  icon: mdi:sofa
-script.couch_purple:
-  icon: mdi:sofa
-
-### INPUT NUMBERS ###
-input_number.couch_r:
-  entity_picture: /local/pictures/couch_red.jpg
-input_number.couch_g:
-  entity_picture: /local/pictures/couch_green.jpg
-input_number.couch_b:
-  entity_picture: /local/pictures/couch_blue.jpg
 ### LIGHT ###
 light.bathroom_orb:
   friendly_name: Bathroom Orb
   icon: mdi:shower-head
 light.kitchen:
+  friendly_name: Kitchen
   icon: mdi:fridge
 light.couch:
+  friendly_name: Couch
   icon: mdi:sofa
 light.bed:
+  friendly_name: Bed
   icon: mdi:hotel
+
 ### SWITCHES ###
 switch.hdmi_0d:
   friendly_name: TV
@@ -53,10 +36,17 @@ switch.bathroom_fan:
 switch.yi_power:
   friendly_name: Camera
   icon: mdi:webcam
+switch.parents_lock_code:
+  friendly_name: Fam Code
+  icon: mdi:human-female-boy
 switch.furnace_switch_29:
   entity_picture: /local/pictures/furnace-off.png
 switch.lamp:
   entity_picture: /local/pictures/lamp-off.jpg
+switch.temp_lock_code:
+  friendly_name: Temp Code
+  icon: mdi:timelapse
+
 ### SYSTEM SENSORS ###
 sensor.disk_use_percent:
   friendly_name: HA Disk Usage
@@ -141,4 +131,35 @@ sensor.dark_sky_summary:
   friendly_name: Current Weather
 sensor.dark_sky_moon_phase_0d:
   friendly_name: Moon Phase
-  
+
+### STOCKS ###
+sensor.stock_cgc:
+  friendly_name: CGC
+  icon: mdi:currency-usd
+sensor.stock_cron:
+  friendly_name: CRON
+  icon: mdi:currency-usd
+sensor.stock_ddd:
+  friendly_name: DDD
+  icon: mdi:currency-usd
+sensor.stock_mj:
+  friendly_name: MJ
+  icon: mdi:currency-usd
+sensor.stock_mt:
+  friendly_name: MT
+  icon: mdi:currency-usd
+sensor.stock_nok:
+  friendly_name: NOK
+  icon: mdi:currency-usd
+sensor.stock_ssys:
+  friendly_name: SSYS
+  icon: mdi:currency-usd
+sensor.stock_tan:
+  friendly_name: TAN
+  icon: mdi:currency-usd
+sensor.stock_ugaz:
+  friendly_name: UGAZ
+  icon: mdi:currency-usd
+sensor.stock_vod:
+  friendly_name: VOD
+  icon: mdi:currency-usd

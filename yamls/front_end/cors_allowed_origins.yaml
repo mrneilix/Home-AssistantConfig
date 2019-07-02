@@ -3,3 +3,10 @@
     - !secret tautulli_url
     - !secret pi_zero_url
     - !secret mosquitto_url
+    - !secret grafana_weblink
+    - !secret influx_db_weblink
+    - !secret google_fiber_box_weblink
+    - !secret vera_weblink
+    - !secret QBitTorrent_weblink
+    - !secret sonarr_weblink
+    - !secret radarr_weblink

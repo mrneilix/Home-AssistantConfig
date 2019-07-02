@@ -2,10 +2,15 @@ type: vertical-stack
 cards:
   - type: history-graph
     entities:
-      - input_boolean.parents_lock_code
+      - switch.parents_lock_code
   - type: 'custom:button-card'
     name: Fam Code
-    entity: input_boolean.parents_lock_code
+    entity: switch.parents_lock_code
+    hold_action:
+      action: more-info
     tap_action:
-      action: call-service
-      service: script.lock_toggle_parents_lock_code
+      action: toggle
+    color: var(--primary-color)
+    state:
+      - value: 'off'
+        color: var(--paper-item-icon-color)

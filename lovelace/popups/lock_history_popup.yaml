@@ -1,33 +1,9 @@
 type: vertical-stack
 cards:
-  # - type: custom:vertical-stack-in-card
-    # cards:
-    # - type: horizontal-stack
-      # cards:
-        # - type: glance
-          # entities:
-            # - sensor.last_lock_code_name
-        # - type: custom:circle-sensor-card
-          # entity: sensor.lock_battery_level
-          # name: Lock Battery
-          # show_card: true
-          # fill: rgb(38, 49, 55)
-          # color_stops:
-            # 50: '#FF0000'
-            # 75: '#FFFF00'
-            # 100: '#FF5555'
-          # font_style:
-            # font-size: 1.1em
-            # font-color: white
-            # text-shadow: '2px 2px black'
-          # style:
-            # card:
-              # width: 120px
-              # height: 120px
   - type: glance
     entities:
       - sensor.last_lock_code_name
-      - sensor.lock_battery_level
+      - sensor.schlage_camelot_battery
   - type: glance
     entities:
       - entity: device_tracker.neil
@@ -42,9 +18,9 @@ cards:
     title: Last Lock Code
     entities:
       - sensor.last_lock_code_name
-      - input_boolean.parents_lock_code
-      - input_boolean.temp_lock_code_set
+      - switch.parents_lock_code
+      - switch.temp_lock_code
   - type: history-graph
     title: Lock
     entities:
-      - lock.schlage_deadbolt_91
+      - lock.schlage_camelot

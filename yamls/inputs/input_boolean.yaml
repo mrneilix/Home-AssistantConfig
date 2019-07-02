@@ -15,18 +15,15 @@
     name: Autolock Door
     icon: mdi:lock-smart
     initial: on
-  temp_lock_code_set:
-    icon: mdi:timelapse
-    name: Temp Code
   weather_notifications:
     icon: mdi:white-balance-sunny
     name: Weather Notifications
+  birthday_notifications:
+    icon: mdi:cake
+    name: Birthday Notifications
   weather_dont_renotify:
     name: Weather Notifications Off
     initial: off
-  parents_lock_code:
-    icon: mdi:human-female-boy
-    name: Fam Code
   butters_home:
     icon: mdi:dog-side
     name: Butters
@@ -36,3 +33,5 @@
     initial: off
   door_open:
     initial: off
+  show_tautulli_history:
+    initial: on

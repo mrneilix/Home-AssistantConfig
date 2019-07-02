@@ -85,7 +85,7 @@
       - sensor.last_boot
       - sensor.last_boot_date_time
       - sensor.latest_version
-      - sensor.lock_battery_level
+      - sensor.schlage_camelot_battery
       - sensor.memory_free
       - sensor.monitor_status
       - sensor.precipitation_soon

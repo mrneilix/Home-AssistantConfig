@@ -3,7 +3,7 @@
   alias: 'Lock Battery Low Notify'
   trigger:
     platform: numeric_state
-    entity_id: sensor.lock_battery_level
+    entity_id: sensor.schlage_camelot_battery
     below: '50'
     above: '25'
   condition:
@@ -17,7 +17,7 @@
   alias: 'Lock Battery Very Low Notify'
   trigger:
     platform: numeric_state
-    entity_id: sensor.lock_battery_level
+    entity_id: sensor.schlage_camelot_battery
     below: '25'
   condition:
     - condition: state
@@ -53,7 +53,7 @@
   alias: 'Lock Door Auto Lock'
   trigger:
     - platform: state
-      entity_id: lock.schlage_deadbolt_91
+      entity_id: lock.schlage_camelot
       to: 'unlocked'
       from: 'locked'
       for:
@@ -87,7 +87,7 @@
     from: 'off'
   condition:
     - condition: state
-      entity_id: lock.schlage_deadbolt_91
+      entity_id: lock.schlage_camelot
       state: 'unlocked'
     - condition: state
       entity_id: input_boolean.restart_complete
@@ -113,7 +113,7 @@
   alias: 'Lock Auto Lock Door Switch Update Locked'
   trigger:
     platform: state
-    entity_id: lock.schlage_deadbolt_91
+    entity_id: lock.schlage_camelot
     to: 'locked'
     from: 'unlocked'
   condition:
@@ -138,7 +138,7 @@
       state: 'on'
   action:
     - service: lock.unlock
-      entity_id: lock.schlage_deadbolt_91
+      entity_id: lock.schlage_camelot
 
 - id: lock_minimote_button_3_pressed
   alias: 'Lock Minimote button 3 Pressed'
@@ -169,21 +169,3 @@
     - service: input_boolean.turn_on
       data:
         entity_id: input_boolean.door_open
-
-- id: lock_door_opened_poll_lock
-  alias: 'Lock Door Opened Poll Lock'
-  trigger:
-    platform: state
-    entity_id: input_boolean.door_open
-    to: 'on'
-    for:
-      seconds: 60
-  condition:
-    - condition: state
-      entity_id: input_boolean.restart_complete
-      state: 'on'
-  action:
-    - service: scene.turn_on
-      entity_id: scene.poll_front_door_when_opened
-    - delay: 00:00:30
-    - service: script.lock_update_door_open_boolean

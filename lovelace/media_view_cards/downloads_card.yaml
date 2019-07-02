@@ -63,3 +63,16 @@ cards:
         size: 20%
         style:
         - padding: 5px 0px
+      - type: 'custom:button-card'
+        name: Watch Hist
+        entity: input_boolean.show_tautulli_history
+        show_state: false
+        show_name: true
+        icon: mdi:history
+        color: var(--primary-color)
+        tap_action:
+          action: more-info
+        size: 20%
+        style:
+        - padding: 5px 0px
+        

@@ -1,9 +1,0 @@
-type: conditional
-conditions:
-  - entity: sensor.custom_card_tracker
-    state_not: "0"
-card:
-  type: 'custom:tracker-card'
-  title: Custom Cards
-  trackers:
-    - sensor.custom_card_tracker

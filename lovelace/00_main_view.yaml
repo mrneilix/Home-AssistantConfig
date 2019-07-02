@@ -16,8 +16,8 @@ badges:
   - sensor.illuminance
   - sensor.fitbit_steps
   - sensor.last_lock_code_name
+  - sensor.portfolio_change
 cards:
-  - !include compact_custom_header.yaml
   - !include main_view_cards/main_room_lights_card.yaml
   - !include main_view_cards/bathroom_couch_lights_card.yaml
   - !include main_view_cards/timers_and_alarms_card.yaml

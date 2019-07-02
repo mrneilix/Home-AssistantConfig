@@ -36,7 +36,7 @@
     at: '09:00:00'
   condition:
     - condition: state
-      entity_id: input_boolean.notifications_on
+      entity_id: input_boolean.birthday_notifications
       state: 'on'
     - condition: state
       entity_id: calendar.family_birthdays
@@ -61,7 +61,7 @@
     at: '09:00:00'
   condition:
     - condition: state
-      entity_id: input_boolean.notifications_on
+      entity_id: input_boolean.birthday_notifications
       state: 'on'
     - condition: state
       entity_id: calendar.friend_birthdays

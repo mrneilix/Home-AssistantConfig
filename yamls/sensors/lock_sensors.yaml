@@ -1,50 +1,26 @@
-  - platform: mqtt
-    name: "Last Lock Code Used"
-    state_topic: "Vera/Events/Lock Info"
-    value_template: '{{ value_json.Variable3 }}'
-
   - platform: template
     sensors:
       last_lock_code_name:
         friendly_name: Last Lock Code
         value_template: >-
-          {%- if 'Temporary' in states.sensor.last_lock_code_used.state %}
-              Temp
-          {%  elif 'Neil' in states.sensor.last_lock_code_used.state %}
+          {%- if state_attr('light.lock_code', 'brightness') < 30 %}
               Neil
-          {%  elif 'Gina' in states.sensor.last_lock_code_used.state %}
-              Gina
-          {%  elif 'Parents' in states.sensor.last_lock_code_used.state %}
+          {%  elif state_attr('light.lock_code', 'brightness') < 60 %}
               Parents
-          {%  elif 'Guest' in states.sensor.last_lock_code_used.state %}
+          {%  elif state_attr('light.lock_code', 'brightness') < 90 %}
+              Gina
+          {%  elif state_attr('light.lock_code', 'brightness') < 115 %}
               Guest
           {% else %}
-              Blank
+              Temp
           {%- endif %}
         entity_picture_template: >-
-          {%- if 'Temporary' in states.sensor.last_lock_code_used.state %}
-              /local/pictures/guest.png
-          {%  elif 'Neil' in states.sensor.last_lock_code_used.state %}
+          {%- if state_attr('light.lock_code', 'brightness') < 30 %}
               /local/pictures/Me.jpg
-          {%  elif 'Gina' in states.sensor.last_lock_code_used.state %}
-              /local/pictures/gina.jpg
-          {%  elif 'Parents' in states.sensor.last_lock_code_used.state %}
+          {%  elif state_attr('light.lock_code', 'brightness') < 60 %}
               /local/pictures/mom-dad.jpg
-          {%  elif 'Guest' in states.sensor.last_lock_code_used.state %}
+          {%  elif state_attr('light.lock_code', 'brightness') < 90 %}
+              /local/pictures/gina.jpg
+          {% else %}
               /local/pictures/guest.png
-          {% else %}
-              Blank
           {%- endif %}
-      lock_battery_level:
-        value_template: "{{ state_attr('lock.schlage_deadbolt_91', 'battery_level') }}"
-        unit_of_measurement: '%'
-        friendly_name: Lock Battery
-        icon_template: mdi:battery
-      lock_set_temp_code_input_number:
-        entity_id: input_number.lock_code_temp
-        value_template: >
-          {% if (states.input_number.lock_code_temp.state | int) > 1000 %}
-            {{ states.input_number.lock_code_temp.state | int }}
-          {% else %}
-            0
-          {% endif %}

@@ -42,8 +42,8 @@ notify_lock_battery_low:
         data:
           tag: 'lock-low-battery'
           renotify: 0
-          icon: '/local/lock.jpg'
-          badge: '/local/lock-badge.png'
+          icon: '/local/pictures/lock-alert.png'
+          badge: '/local/pictures/lock-alert.png'
 
 notify_lock_battery_very_low:
   alias: Notify Lock Battery Very Low
@@ -55,5 +55,5 @@ notify_lock_battery_very_low:
         data:
           tag: 'lock-low-battery'
           renotify: 0
-          icon: '/local/lock.jpg'
-          badge: '/local/lock-badge.png'
+          icon: '/local/pictures/lock-alert.png'
+          badge: '/local/pictures/lock-alert.png'

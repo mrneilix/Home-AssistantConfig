@@ -48,6 +48,13 @@ sensor.tautulli:
     cards:
       - !include popups/plex_popup.yaml
 
+input_boolean.show_tautulli_history:
+  title: Tautulli History
+  card:
+    type: vertical-stack
+    cards:
+      - !include popups/tautulli_history_popup.yaml
+
 sensor.sonarr_upcoming:
   title: Sonarr Calendar
   card:
@@ -98,23 +105,10 @@ sensor.fitbit_steps:
     cards:
       - !include popups/fitbit_popup.yaml
 
-input_boolean.temp_lock_code_set:
-  title: Temp Code
-  card:
-    type: vertical-stack
-    cards:
-      - !include popups/temp_lock_code_popup.yaml
-input_boolean.parents_lock_code:
-  title: Parents Lock Code
-  card:
-    type: vertical-stack
-    cards:
-      - !include popups/parents_lock_code_popup.yaml
-
 sensor.last_lock_code_name:
   title: Lock Info
   card:
     type: vertical-stack
     cards:
       - !include popups/lock_history_popup.yaml
-lock.schlage_deadbolt_91: sensor.last_lock_code_name
+lock.schlage_camelot: sensor.last_lock_code_name

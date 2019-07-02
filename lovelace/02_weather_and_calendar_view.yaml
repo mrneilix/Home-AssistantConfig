@@ -8,9 +8,8 @@ badges:
   - device_tracker.parents
   - device_tracker.butters
 cards:
-  - !include compact_custom_header.yaml
   - !include main_view_cards/weather_summary_card.yaml
   - !include weather_calendar_cards/calendar_events_card.yaml
   - !include weather_calendar_cards/calendar_birthdays_card.yaml
-  # - !include weather_calendar_cards/lock_details_card.yaml
+  - !include weather_calendar_cards/finance_card.yaml
   - !include weather_calendar_cards/package_tracking_card.yaml

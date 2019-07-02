@@ -1,6 +1,0 @@
-  lock_code_temp:
-    name: Temporary Lock Code
-    initial: 0
-    min: 0
-    max: 9999
-    mode: box

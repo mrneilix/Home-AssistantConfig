@@ -2,10 +2,8 @@ title: System
 icon: mdi:desktop-classic
 path: system_view
 theme: darkblue
-cards:
   - !include compact_custom_header.yaml
+cards:
+  - !include system_view_cards/system_weblinks_card.yaml
   - !include system_view_cards/system_controls_card.yaml
   - !include system_view_cards/system_info_sensors_card.yaml
-  - !include system_view_cards/system_weblinks_card.yaml
-  - !include system_view_cards/system_custom_card_tracker_card.yaml
-  - !include system_view_cards/system_custom_component_tracker_card.yaml

@@ -1,11 +1,13 @@
-type: custom:compact-custom-header
-voice: hide
-menu: show
-notifications: show
-options: clock
-clock_format: 12
-clock_am_pm: true
-header: true
-tab_indicator_color: rgb(19, 172, 198)
-redirect: false
-show_tabs: 0,1,2,3
+cch:
+  voice: hide
+  menu: show
+  notifications: show
+  options: clock
+  clock_format: 12
+  clock_am_pm: true
+  header: true
+  tab_indicator_color: rgb(19, 172, 198)
+  redirect: false
+  show_tabs: 0,1,2,3
+  swipe: true
+  swipe_animate: flip

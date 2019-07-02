@@ -14,3 +14,10 @@ cards:
       action: toggle
     color: rgb(57, 111, 182)
     color_type: icon
+  - type: 'custom:button-card'
+    name: Birthdays
+    entity: input_boolean.birthday_notifications
+    tap_action:
+      action: toggle
+    color: rgb(57, 111, 182)
+    color_type: icon

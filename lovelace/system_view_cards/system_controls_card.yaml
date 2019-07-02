@@ -96,7 +96,10 @@ cards:
           navigation_path: /lovelace/system_monitor_view
         color: var(--primary-color)
         icon: mdi:desktop-classic
-        size: 20%
-        styles:
-          card:
-            - height: 175px
+      - type: 'custom:button-card'
+        name: Toggle Mirror Rotation
+        entity: binary_sensor.magic_mirror_display_rotation_off
+        icon: mdi:rotate-3d-variant
+        tap_action:
+          action: call-service
+          service: script.system_magic_mirror_rotate_display_toggle

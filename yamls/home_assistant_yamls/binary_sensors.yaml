@@ -148,7 +148,21 @@
         entity_id:
           - script.thermostat_leave_set_temp
           - script.thermostat_home_set_temp
-
+# MagicMirror Display Rotating
+      magic_mirror_display_rotation_off:
+        value_template: >-
+          {%- if states.script.system_magic_mirror_rotate_display_on.attributes.last_triggered == none %}
+            True
+          {%-elif states.script.system_magic_mirror_rotate_display_off.attributes.last_triggered == none %}
+            False
+          {%-elif ( as_timestamp(states.script.system_magic_mirror_rotate_display_on.attributes.last_triggered) | int ) < ( as_timestamp(states.script.system_magic_mirror_rotate_display_off.attributes.last_triggered) | int ) %}
+            True
+          {%- else -%}
+            False
+          {%- endif %}
+        entity_id:
+          - script.system_magic_mirror_rotate_display_off
+          - script.system_magic_mirror_rotate_display_on
   - platform: ping
     host: 192.168.1.126
     count: 5
