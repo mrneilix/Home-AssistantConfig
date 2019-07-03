@@ -1,0 +1,183 @@
+type: custom:swipe-card
+effect: coverflow
+grabCursor: true
+centeredSlides: true
+slidesPerView: auto
+autoHeight: true
+loop: true
+coverflowEffect:
+  rotate: 50
+  stretch: 0
+  depth: 100
+  modifier: 1
+  slideShadows: true
+pagination:
+  type: bullets
+cards:
+  - type: custom:vertical-stack-in-card
+    cards:
+      - type: horizontal-stack
+        cards:
+          - type: 'custom:button-card'
+            name: Router
+            entity: sensor.speedtest_download
+            icon: mdi:router-wireless
+            show_state: true
+            layout: name_state
+            color: var(--primary-color)
+            tap_action:
+              action: url
+              url: !secret google_fiber_box_weblink
+          - type: 'custom:button-card'
+            name: Vera
+            entity: binary_sensor.vera_up
+            icon: mdi:spa
+            show_state: true
+            layout: name_state
+            color: var(--primary-color)
+            tap_action:
+              action: url
+              url: !secret vera_weblink
+      - type: horizontal-stack
+        cards:
+          - type: 'custom:button-card'
+            name: MQTT
+            entity: binary_sensor.mqtt_status
+            icon: mdi:bug
+            show_state: true
+            layout: name_state
+            color: var(--primary-color)
+            tap_action:
+              action: url
+              url: !secret mosquitto_url
+          - type: 'custom:button-card'
+            name: QBitTorrent
+            entity: sensor.downloading_down_speed
+            icon: mdi:download
+            show_state: true
+            layout: name_state
+            color: var(--primary-color)
+            tap_action:
+              action: url
+              url: !secret QBitTorrent_weblink
+      - type: horizontal-stack
+        cards:
+          - type: 'custom:button-card'
+            name: Grafana
+            icon: mdi:chart-areaspline
+            color: var(--primary-color)
+            tap_action:
+              action: url
+              url: !secret grafana_weblink
+          - type: 'custom:button-card'
+            name: Phlex TV
+            icon: mdi:microphone
+            color: var(--primary-color)
+            tap_action:
+              action: url
+              url: !secret phlex_url
+  - type: custom:vertical-stack-in-card
+    cards:
+      - type: horizontal-stack
+        cards:
+          - type: 'custom:button-card'
+            name: Restart HA
+            entity: script.restart_homeassistant
+            icon: 'mdi:home-assistant'
+            tap_action:
+              action: call-service
+              service: script.restart_homeassistant
+            state:
+              - value: 'off'
+                color: rgb(57, 111, 182)
+              - value: 'on'
+                color: rgb(57, 111, 182)
+            color_type: icon
+          - type: 'custom:button-card'
+            name: Reboot Vera
+            entity: scene.reboot_vera
+            icon: 'mdi:spa'
+            tap_action:
+              action: call-service
+              service: scene.turn_on
+              service_data:
+                entity_id: scene.reboot_vera
+            state:
+              - value: 'scening'
+                color: rgb(57, 111, 182)
+            color_type: icon
+      - type: horizontal-stack
+        cards:
+          - type: 'custom:button-card'
+            name: Reboot System
+            entity: script.confirm_system_reboot
+            icon: 'mdi:power-cycle'
+            tap_action:
+              action: call-service
+              service: script.confirm_system_reboot
+            dbltap_action:
+              action: call-service
+              service: script.system_reboot
+            state:
+              - value: 'off'
+                color: rgb(57, 111, 182)
+              - value: 'on'
+                color: rgb(57, 111, 182)
+            color_type: icon
+          - type: 'custom:button-card'
+            name: Reboot Pi Zero
+            entity: script.reboot_pi_zero
+            icon: 'mdi:numeric-0-box'
+            tap_action:
+              action: call-service
+              service: script.reboot_pi_zero
+            state:
+              - value: 'off'
+                color: rgb(57, 111, 182)
+              - value: 'on'
+                color: rgb(57, 111, 182)
+            color_type: icon
+      - type: horizontal-stack
+        cards:
+          - type: 'custom:button-card'
+            name: Monitor Off
+            entity: script.system_desktop_display_off
+            icon: 'mdi:monitor'
+            tap_action:
+              action: call-service
+              service: script.system_desktop_display_off
+            state:
+              - value: 'off'
+                color: rgb(57, 111, 182)
+              - value: 'on'
+                color: rgb(57, 111, 182)
+            color_type: icon
+          - type: 'custom:button-card'
+            name: Git Backup
+            entity: script.system_git_backup
+            icon: 'mdi:github-circle'
+            tap_action:
+              action: call-service
+              service: script.system_git_backup
+            state:
+              - value: 'off'
+                color: rgb(57, 111, 182)
+              - value: 'on'
+                color: rgb(57, 111, 182)
+            color_type: icon
+      - type: horizontal-stack
+        cards:
+          - type: 'custom:button-card'
+            name: Show System Stats
+            tap_action:
+              action: navigate
+              navigation_path: /lovelace/system_monitor_view
+            color: var(--primary-color)
+            icon: mdi:desktop-classic
+          - type: 'custom:button-card'
+            name: Toggle Mirror Rotation
+            entity: binary_sensor.magic_mirror_display_rotation_off
+            icon: mdi:rotate-3d-variant
+            tap_action:
+              action: call-service
+              service: script.system_magic_mirror_rotate_display_toggle

@@ -48,9 +48,6 @@ cards:
         color: var(--primary-color)
         tap_action:
           action: more-info
-        size: 20%
-        style:
-        - padding: 5px 0px
       - type: 'custom:button-card'
         name: Recent Downloads
         entity: sensor.plex_recently_added
@@ -60,9 +57,6 @@ cards:
         color: var(--primary-color)
         tap_action:
           action: more-info
-        size: 20%
-        style:
-        - padding: 5px 0px
       - type: 'custom:button-card'
         name: Watch Hist
         entity: input_boolean.show_tautulli_history
@@ -72,7 +66,4 @@ cards:
         color: var(--primary-color)
         tap_action:
           action: more-info
-        size: 20%
-        style:
-        - padding: 5px 0px
         

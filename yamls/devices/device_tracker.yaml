@@ -16,35 +16,32 @@
 
     - platform: composite
       name: neil
+      time_as: local
       entity_id:
         - device_tracker.neil_bluetooth
         - device_tracker.neil_wifi
-        - device_tracker.monitor_neil
-        - device_tracker.tile_p_7231d50c4a0512da2532d71db7a524f9
+        - device_tracker.pi_zero_mqtt_pixel
         - binary_sensor.lock_code_entered_neil
     - platform: composite
-      name: monitor_neil
-      entity_id:
-        - device_tracker.pi_zero_mqtt_pixel
-        - device_tracker.pi_zero_mqtt_fitbit
-    - platform: composite
       name: butters
+      time_as: local
       entity_id:
         - device_tracker.tile_70e3c9fefea64a42
         - device_tracker.pi_zero_mqtt_butters_tile
     - platform: composite
       name: parents
+      time_as: local
       entity_id:
         - binary_sensor.lock_code_entered_parents
         - device_tracker.mom_phone
         - device_tracker.dad_phone
     - platform: composite
       name: gina
+      time_as: local
       entity_id:
         - device_tracker.gina_phone
         - binary_sensor.lock_code_entered_gina
     - platform: mqtt
       devices:
-          pi_zero_mqtt_fitbit: 'monitor/monitor/fitbit/device_tracker'
           pi_zero_mqtt_pixel: 'monitor/monitor/neilpixel/device_tracker'
           pi_zero_mqtt_butters_tile: 'monitor/monitor/butterstile/device_tracker'

@@ -1,7 +1,7 @@
 - type: module
   url: /community_plugin/button-card/button-card.js
 - type: module
-  url: /community_plugin/weather-card/weather-card.js
+  url: https://cdn.jsdelivr.net/gh/bramkragten/weather-card/dist/weather-card.min.js
 - type: js
   url: /community_plugin/upcoming-media-card/upcoming-media-card.js
 - type: module
@@ -42,3 +42,9 @@
   url: /community_plugin/secondaryinfo-entity-row/secondaryinfo-entity-row.js
 - type: js
   url: /community_plugin/lovelace-card-loader/card-loader.js
+- type: js
+  url: /community_plugin/group-card/group-card.js
+- type: js
+  url: /community_plugin/lovelace-state-switch/state-switch.js
+- type: module
+  url: /community_plugin/lovelace-markdown-mod/markdown-mod.js

@@ -2,6 +2,7 @@ title: default_view
 icon: mdi:home
 path: home
 theme: darkblue
+popup_cards: !include main_view_cards/main_view_popup_cards.yaml
 badges:
   - device_tracker.neil
   - device_tracker.butters
@@ -12,7 +13,6 @@ badges:
   - sensor.dark_sky_apparent_temperature
   - sensor.dark_sky_daytime_high_temperature_0d
   - sensor.dark_sky_overnight_low_temperature_0d
-  - sensor.daylight_remaining_hm
   - sensor.illuminance
   - sensor.fitbit_steps
   - sensor.last_lock_code_name

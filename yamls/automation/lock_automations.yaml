@@ -169,3 +169,13 @@
     - service: input_boolean.turn_on
       data:
         entity_id: input_boolean.door_open
+
+- id: lock_restart_smartthings_virtual_light
+  alias: 'Lock Restart Smartthings Virtual Light'
+  trigger:
+    platform: state
+    entity_id: light.lock_code
+    to: 'off'
+  action:
+    service: light.turn_on
+    entity_id: light.lock_code

@@ -10,7 +10,7 @@ cch:
   clock_am_pm: true
   header: true
   tab_indicator_color: rgb(19, 172, 198)
-  redirect: false
+  redirect: true
   show_tabs: 0,1,2,3
   swipe: true
   swipe_animate: flip
@@ -22,4 +22,5 @@ views:
   - !include lovelace/01_media_player_view.yaml
   - !include lovelace/02_weather_and_calendar_view.yaml
   - !include lovelace/03_system_view.yaml
+  # - !include lovelace/03_system_view_mobile.yaml
   - !include lovelace/04_system_monitor_view.yaml

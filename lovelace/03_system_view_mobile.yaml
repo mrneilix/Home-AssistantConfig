@@ -1,0 +1,7 @@
+title: System
+icon: mdi:desktop-classic
+path: system_view_mobile
+theme: darkblue
+cards:
+  - !include system_view_cards/system_view_scroll_state_switch.yaml
+  - !include system_view_cards/system_info_sensors_card.yaml

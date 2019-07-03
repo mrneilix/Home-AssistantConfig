@@ -55,10 +55,11 @@ discovery:
   ignore:
     - roku
     - google_cast
-
-sun: !include yamls/home_assistant_yamls/sun.yaml
+    - plex_mediaserver
 
 tts: !include yamls/commands_and_notify/tts.yaml
+
+sun:
 
 vera:
   vera_controller_url: !secret vera_controller_url
@@ -100,6 +101,7 @@ folder_watcher: !include yamls/home_assistant_yamls/folder_watcher.yaml
 zone: !include yamls/home_assistant_yamls/zone.yaml
 proximity: !include yamls/home_assistant_yamls/proximity.yaml
 iqvia: !include yamls/home_assistant_yamls/iqvia.yaml
+# coinbase: !include yamls/home_assistant_yamls/coinbase.yaml
 
 # Commands and Notify
 rest_command: !include yamls/commands_and_notify/rest_command.yaml

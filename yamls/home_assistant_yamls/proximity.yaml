@@ -2,15 +2,8 @@
     zone: home
     tolerance: 100
     devices:
-      - device_tracker.phone_pixelowntracks
+      - device_tracker.tile_p_7231d50c4a0512da2532d71db7a524f9
     unit_of_measurement: mi
-  neil_composite_tracker:
-    zone: home
-    tolerance: 100
-    devices:
-      - device_tracker.neil_pixel_gps
-    unit_of_measurement: mi
-
   butters_home:
     zone: home
     tolerance: 100

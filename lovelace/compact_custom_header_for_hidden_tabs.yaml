@@ -1,8 +1,0 @@
-type: custom:compact-custom-header
-voice: hide
-menu: hide
-notifications: hide
-options: hide
-header: true
-redirect: false
-show_tabs: 0,1,2,3,4

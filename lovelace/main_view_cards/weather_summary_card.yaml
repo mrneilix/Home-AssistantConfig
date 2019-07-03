@@ -2,7 +2,6 @@ type: custom:vertical-stack-in-card
 cards:
 - type: custom:weather-card
   entity: weather.dark_sky
-  icons: '/local/custom-lovelace/weather-card/icons/animated/'
 - type: entities
   show_header_toggle: false
   title: Weather Summary
@@ -11,32 +10,3 @@ cards:
     - sensor.dark_sky_minutely_summary
     - sensor.dark_sky_hourly_summary
     - sensor.dark_sky_daily_summary
-- type: custom:fold-entity-row
-  head:
-    type: section
-    label: More Details
-  items:
-    - type: custom:card-modder
-      style:
-        box-shadow: none
-        margin-left: -40px
-      card:
-         type: glance
-         entities:
-          - sensor.dark_sky_temperature
-          - sensor.dark_sky_apparent_temperature
-          - sensor.dark_sky_daytime_high_temperature_0d
-          - sensor.dark_sky_overnight_low_temperature_0d
-          - sensor.dark_sky_daytime_high_apparent_temperature_0d
-          - sensor.dark_sky_overnight_low_apparent_temperature_0d
-          - sensor.dark_sky_precip_intensity
-          - sensor.dark_sky_precip_probability
-          - sensor.dark_sky_wind_speed
-          - sensor.dark_sky_nearest_storm_distance
-          - sensor.dark_sky_humidity
-          - sensor.dark_sky_visibility
-          - sensor.dark_sky_cloud_coverage
-          - sensor.dark_sky_moon_phase_0d
-          - sensor.allergy_index_today
-          - sensor.asthma_index_today
-          - sensor.cold_flu_index_today

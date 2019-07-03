@@ -1,114 +1,150 @@
-sensor.kitchen_display_time_remaining_alarm:
-  title: Alarm
-  card:
-    type: vertical-stack
-    cards:
-      - !include popups/kitchen_display_time_remaining_alarm_popup.yaml
-
-sensor.kitchen_display_time_remaining_timer:
-  title: Timer
-  card:
-    type: vertical-stack
-    cards:
-      - !include popups/kitchen_display_time_remaining_timer_popup.yaml
-
 device_tracker.neil:
   title: Neil
   card:
     type: vertical-stack
     cards:
-      - !include popups/neil_device_tracker_popup.yaml
+      - type: history-graph
+        entities:
+          - device_tracker.neil
+      - type: entities
+        entities:
+          - entity: device_tracker.neil
+            secondary_info: last-changed
+          - entity: device_tracker.neil_bluetooth
+            secondary_info: last-changed
+          - entity: device_tracker.neil_wifi
+            secondary_info: last-changed
+          - entity: device_tracker.pi_zero_mqtt_pixel
+            secondary_info: last-changed
+          - entity: device_tracker.tile_p_7231d50c4a0512da2532d71db7a524f9
+            secondary_info: last-changed
+      - type: 'custom:button-card'
+        name: Leave
+        entity: device_tracker.neil
+        icon: 'mdi:walk'
+        tap_action:
+          action: call-service
+          service: script.presence_set_neil_device_trackers_away
+        color_type: icon
+        layout: icon_name
+        state:
+          - value: 'home'
+            color: var(--paper-item-icon-color)
+          - value: 'not_home'
+            color: var(--primary-color)
+        size: 40%
+        style:
+          - padding-top: 5px
+          - padding-bottom: 5px
+          - border-radius: 25px;
+      # - type: markdown
+        # title: Address
+        # content: |
+          # [[ sensor.neil_phone_address.attributes.['Formatted Address'] ]]
+      - type: 'custom:config-template-card'
+        variables:
+          - states['sensor.neil_phone_address'].attributes['Formatted Address']
+        entities:
+          - sensor.neil_phone_address
+        card:
+          type: 'custom:hui-entities-card'
+          title: Address
+          show_header_toggle: false
+          entities:
+            - type: "custom:secondaryinfo-entity-row"
+              entity: sensor.neil_phone_address
+              secondary_info: "${vars[0]}"
 
 device_tracker.butters:
   title: Butters
   card:
     type: vertical-stack
     cards:
-      - !include popups/butters_device_tracker_popup.yaml
-
-device_tracker.parents:
-  title: Parents
-  card:
-    type: vertical-stack
-    cards:
-      - !include popups/parents_device_tracker_popup.yaml
-
-device_tracker.gina:
-  title: Gina
-  card:
-    type: vertical-stack
-    cards:
-      - !include popups/gina_device_tracker_popup.yaml
-
-sensor.tautulli:
-  title: Plex
-  large: true
-  card:
-    type: vertical-stack
-    cards:
-      - !include popups/plex_popup.yaml
-
-input_boolean.show_tautulli_history:
-  title: Tautulli History
-  card:
-    type: vertical-stack
-    cards:
-      - !include popups/tautulli_history_popup.yaml
-
-sensor.sonarr_upcoming:
-  title: Sonarr Calendar
-  card:
-    type: vertical-stack
-    cards:
-      - !include popups/sonarr_popup.yaml
-
-sensor.radarr_upcoming:
-  title: Radarr Calendar
-  card:
-    type: vertical-stack
-    cards:
-      - !include popups/radarr_popup.yaml
-
-input_boolean.notifications_on:
-  title: Notify
-  card:
-    type: horizontal-stack
-    cards:
-      - !include popups/notifications_popup.yaml
-
-sensor.upcoming_downloads:
-  title: Upcoming Downloads
-  card:
-    type: horizontal-stack
-    cards:
-      - !include popups/upcoming_downloads_popup.yaml
-
-sensor.plex_recently_added:
-  title: Recent Downloads
-  card:
-    type: custom:upcoming-media-card
-    entity: sensor.plex_recently_added
+      - type: history-graph
+        entities:
+          - device_tracker.butters
+      - type: entities
+        entities:
+          - entity: device_tracker.butters
+            secondary_info: last-changed
+          - entity: device_tracker.tile_70e3c9fefea64a42 
+            secondary_info: last-changed
+      - type: 'custom:button-card'
+        name: Butters Home
+        entity: input_boolean.butters_home
+        tap_action:
+          action: toggle
+        hold_action:
+          action: more-info
+        color: rgb(57, 111, 182)
+        color_type: icon
+        layout: icon_name_state
+        size: 40%
+        style:
+          - padding-top: 5px
+          - padding-bottom: 5px
+          - border-radius: 25px;
 
 sensor.dark_sky_daytime_high_temperature_0d:
   title: Dark Sky Summary
   card:
-    type: vertical-stack
-    cards:
-      - !include popups/weather_details_card.yaml
+    type: custom:card-loader
+    wait:
+      - group-card
+    card:
+      type: custom:group-card
+      card:
+        type: glance
+      group: group.dark_sky_sensors
 
 sensor.dark_sky_overnight_low_temperature_0d: sensor.dark_sky_daytime_high_temperature_0d
+sensor.dark_sky_summary: sensor.dark_sky_daytime_high_temperature_0d
+sensor.dark_sky_minutely_summary: sensor.dark_sky_daytime_high_temperature_0d
+sensor.dark_sky_hourly_summary: sensor.dark_sky_daytime_high_temperature_0d
+sensor.dark_sky_daily_summary: sensor.dark_sky_daytime_high_temperature_0d
 
-sensor.fitbit_steps:
-  title: FitBit
+sensor.portfolio_change:
+  title: Finance
+  large: true
   card:
-    type: vertical-stack
-    cards:
-      - !include popups/fitbit_popup.yaml
-
-sensor.last_lock_code_name:
-  title: Lock Info
-  card:
-    type: vertical-stack
-    cards:
-      - !include popups/lock_history_popup.yaml
-lock.schlage_camelot: sensor.last_lock_code_name
+    type: custom:card-loader
+    wait:
+      - card-modder
+      - auto-entities
+    card:
+      type: vertical-stack
+      cards:
+        - type: custom:card-modder
+          style:
+            --paper-item-icon-color: '#00ff00'
+          card:
+            type: custom:auto-entities
+            card:
+              type: entities
+              title: Up
+              show_header_toggle: false
+            filter:
+              include:
+                - entity_id: sensor.stock_*
+                  options:
+                    type: "custom:secondaryinfo-entity-row"
+                    secondary_info: "Percent:<b style='color:green'> [[ {entity}.attributes.changePercent ]]% </b> Change: <b style='color:green'>$[[ {entity}.attributes.change ]] </b>"
+                  attributes:
+                    change: "> 0"
+        - type: custom:card-modder
+          style:
+            --paper-item-icon-color: '#ff0000'
+          card:
+            type: custom:auto-entities
+            card:
+              type: entities
+              title: Down
+              show_header_toggle: false
+            filter:
+              include:
+                - entity_id: sensor.stock_*
+                  options:
+                    type: "custom:secondaryinfo-entity-row"
+                    secondary_info: "Percent:<b style='color:red'> [[ {entity}.attributes.changePercent ]]%</b> Change: <b style='color:red'>$[[ {entity}.attributes.change ]] </b>"
+                  attributes:
+                    change: "< 0"

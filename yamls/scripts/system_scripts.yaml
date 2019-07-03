@@ -9,9 +9,6 @@ startup_scripts:
     - delay: 00:00:02
     - service: script.startup_presence
     - delay: 00:00:30
-    - service: scene.turn_on
-      entity_id: scene.last_lock_code_used
-    - delay: 00:00:30
     - service_template: >
           {% if (((as_timestamp(now()) - as_timestamp(states.sensor.last_boot.state)) )| int) < 360 %}
             script.system_restart_if_just_rebooted

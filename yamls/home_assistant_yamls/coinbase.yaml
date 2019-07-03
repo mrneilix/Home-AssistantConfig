@@ -1,0 +1,2 @@
+  api_key: !secret coinbase_api
+  api_secret: !secret coinbase_secret

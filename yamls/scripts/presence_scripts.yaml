@@ -92,7 +92,7 @@ presence_leave_turn_stuff_off:
   alias: Presence Leave Turn Stuff Off
   sequence:
     - service: light.turn_off
-      entity_id: group.all_lights
+      entity_id: group.alllights
     - service: switch.turn_off
       entity_id: group.switches
     - service: script.tv_off
@@ -136,7 +136,7 @@ presence_set_neil_device_trackers_away:
         location_name: 'not_home'
     - service: device_tracker.see
       data:
-        dev_id: monitor_neil
+        dev_id: pi_zero_mqtt_pixel
         location_name: 'not_home'
     - service: device_tracker.see
       data:

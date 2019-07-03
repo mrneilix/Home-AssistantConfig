@@ -20,7 +20,7 @@
       lock_code_entered:
         friendly_name: Lock Code Entered
         value_template: >-
-          {% if (as_timestamp(now()) - as_timestamp(states.sensor.last_lock_code_used.last_changed) < 300 ) and (as_timestamp(now()) - as_timestamp(states.binary_sensor.front_door_sensor_73.last_changed) < 300 ) and (states('sensor.uptime') | int > 10) %}
+          {% if (as_timestamp(now()) - as_timestamp(states.sensor.last_lock_code_name.last_changed) < 300 ) and (as_timestamp(now()) - as_timestamp(states.binary_sensor.front_door_sensor_73.last_changed) < 300 ) and (states('sensor.uptime') | int > 10) %}
             True
           {% else %}
             False
@@ -148,6 +148,7 @@
         entity_id:
           - script.thermostat_leave_set_temp
           - script.thermostat_home_set_temp
+
 # MagicMirror Display Rotating
       magic_mirror_display_rotation_off:
         value_template: >-

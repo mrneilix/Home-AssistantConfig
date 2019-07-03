@@ -1,0 +1,42 @@
+device_tracker.parents:
+  title: Parents
+  card:
+    type: vertical-stack
+    cards:
+      - type: history-graph
+        entities:
+          - device_tracker.parents
+      - type: entities
+        entities:
+          - entity: device_tracker.dad_phone
+            secondary_info: last-changed
+          - entity: device_tracker.mom_phone
+            secondary_info: last-changed
+          - entity: binary_sensor.lock_code_entered_parents
+            secondary_info: last-changed
+      - type: 'custom:button-card'
+        name: Fam Code
+        entity: switch.parents_lock_code
+        hold_action:
+          action: more-info
+        tap_action:
+          action: toggle
+        color: var(--primary-color)
+        state:
+          - value: 'off'
+            color: var(--paper-item-icon-color)
+
+device_tracker.gina:
+  title: Gina
+  card:
+    type: vertical-stack
+    cards:
+      - type: history-graph
+        entities:
+          - device_tracker.gina
+      - type: entities
+        entities:
+          - entity: device_tracker.gina_phone
+            secondary_info: last-changed
+          - entity: binary_sensor.lock_code_entered_gina
+            secondary_info: last-changed

@@ -47,6 +47,10 @@ switch.temp_lock_code:
   friendly_name: Temp Code
   icon: mdi:timelapse
 
+### Other Sensors ###
+sensor.neil_phone_address:
+  icon: mdi:map-marker
+
 ### SYSTEM SENSORS ###
 sensor.disk_use_percent:
   friendly_name: HA Disk Usage

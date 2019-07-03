@@ -2,6 +2,7 @@ title: General
 icon: mdi:calendar-today
 path: weather_and_calendar
 theme: darkblue
+popup_cards: !include weather_calendar_cards/family_device_tracker_popup_card.yaml
 badges:
   - device_tracker.neil
   - device_tracker.gina

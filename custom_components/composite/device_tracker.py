@@ -1,13 +1,10 @@
 """
 A Device Tracker platform that combines one or more device trackers.
-
-For more details about this platform, please refer to
-https://github.com/pnbruckner/homeassistant-config#composite-device-tracker-platform
 """
-
 from datetime import datetime
 import logging
 import threading
+
 import voluptuous as vol
 
 from homeassistant.components.binary_sensor import DOMAIN as BS_DOMAIN
@@ -15,15 +12,9 @@ from homeassistant.components.device_tracker import (
     ATTR_BATTERY, ATTR_SOURCE_TYPE, PLATFORM_SCHEMA,
     SOURCE_TYPE_BLUETOOTH, SOURCE_TYPE_BLUETOOTH_LE, SOURCE_TYPE_GPS,
     SOURCE_TYPE_ROUTER)
-try:
-    from homeassistant.components.device_tracker.const import ENTITY_ID_FORMAT
-except ImportError:
-    from homeassistant.components.device_tracker import ENTITY_ID_FORMAT
+from homeassistant.components.device_tracker.const import ENTITY_ID_FORMAT
 from homeassistant.components.zone import ENTITY_ID_HOME
-try:
-    from homeassistant.components.zone import async_active_zone
-except ImportError:
-    from homeassistant.components.zone.zone import async_active_zone
+from homeassistant.components.zone import async_active_zone
 from homeassistant.const import (
     ATTR_BATTERY_CHARGING, ATTR_BATTERY_LEVEL,
     ATTR_ENTITY_ID, ATTR_GPS_ACCURACY, ATTR_LATITUDE, ATTR_LONGITUDE,
@@ -36,7 +27,7 @@ import homeassistant.util.dt as dt_util
 
 _LOGGER = logging.getLogger(__name__)
 
-REQUIREMENTS = ['timezonefinderL==2.0.1']
+__version__ = '1.9.0'
 
 CONF_TIME_AS = 'time_as'
 
@@ -74,6 +65,7 @@ PLATFORM_SCHEMA = PLATFORM_SCHEMA.extend({
 def setup_scanner(hass, config, see, discovery_info=None):
     CompositeScanner(hass, config, see)
     return True
+
 
 class CompositeScanner:
     def __init__(self, hass, config, see):
