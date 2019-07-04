@@ -100,6 +100,12 @@ cards:
         name: Toggle Mirror Rotation
         entity: binary_sensor.magic_mirror_display_rotation_off
         icon: mdi:rotate-3d-variant
+        color: rgb(57, 111, 182)
         tap_action:
           action: call-service
           service: script.system_magic_mirror_rotate_display_toggle
+        hold_action:
+          action: more-info
+        state:
+          - value: 'off'
+            spin: true

@@ -3,60 +3,54 @@ cards:
   - type: horizontal-stack
     cards:
       - type: 'custom:button-card'
+        template: system_weblinks_card_template
         name: Router
         entity: sensor.speedtest_download
         icon: mdi:router-wireless
-        show_state: true
-        layout: name_state
-        color: var(--primary-color)
         tap_action:
           action: url
           url: !secret google_fiber_box_weblink
       - type: 'custom:button-card'
+        template: system_weblinks_card_template
         name: Vera
         entity: binary_sensor.vera_up
         icon: mdi:spa
-        show_state: true
-        layout: name_state
-        color: var(--primary-color)
         tap_action:
           action: url
           url: !secret vera_weblink
   - type: horizontal-stack
     cards:
       - type: 'custom:button-card'
+        template: system_weblinks_card_template
         name: MQTT
         entity: binary_sensor.mqtt_status
         icon: mdi:bug
-        show_state: true
-        layout: name_state
-        color: var(--primary-color)
         tap_action:
           action: url
           url: !secret mosquitto_url
       - type: 'custom:button-card'
+        template: system_weblinks_card_template
         name: QBitTorrent
         entity: sensor.downloading_down_speed
         icon: mdi:download
-        show_state: true
-        layout: name_state
-        color: var(--primary-color)
         tap_action:
           action: url
           url: !secret QBitTorrent_weblink
   - type: horizontal-stack
     cards:
       - type: 'custom:button-card'
+        template: system_weblinks_card_template
         name: Grafana
         icon: mdi:chart-areaspline
-        color: var(--primary-color)
+        show_state: false
         tap_action:
           action: url
           url: !secret grafana_weblink
       - type: 'custom:button-card'
+        template: system_weblinks_card_template
         name: Phlex TV
         icon: mdi:microphone
-        color: var(--primary-color)
+        show_state: false
         tap_action:
           action: url
           url: !secret phlex_url

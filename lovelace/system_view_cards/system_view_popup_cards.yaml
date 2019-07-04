@@ -1,0 +1,26 @@
+binary_sensor.magic_mirror_display_rotation_off:
+  title: Mirror Controls
+  card:
+    type: horizontal-stack
+    cards:
+      - type: 'custom:button-card'
+        template: toggle_notification_input_booleans_template
+        name: Next Page
+        icon: mdi:arrow-right-bold
+        tap_action:
+          action: call-service
+          service: rest_command.mirror_next_page
+      - type: 'custom:button-card'
+        template: toggle_notification_input_booleans_template
+        name: Mirror Off
+        icon: mdi:television-off
+        tap_action:
+          action: call-service
+          service: rest_command.mirror_hide_all_modules
+      - type: 'custom:button-card'
+        template: toggle_notification_input_booleans_template
+        name: Mirror On
+        icon: mdi:television
+        tap_action:
+          action: call-service
+          service: rest_command.mirror_show_all_modules

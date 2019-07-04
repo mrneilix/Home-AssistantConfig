@@ -1,5 +1,6 @@
 resources: !include lovelace/resources.yaml
 popup_cards: !include lovelace/pop_up_cards.yaml
+button_card_templates: !include lovelace/button_card_templates.yaml
 title: Atlanta Condo
 cch:
   voice: hide
@@ -13,9 +14,10 @@ cch:
   redirect: true
   show_tabs: 0,1,2,3
   swipe: true
-  swipe_animate: flip
+  swipe_animate: swipe
   sidebar_swipe: true
   hide_help: true
+  hide_unused: true
   sidebar_closed: true
 views:
   - !include lovelace/00_main_view.yaml

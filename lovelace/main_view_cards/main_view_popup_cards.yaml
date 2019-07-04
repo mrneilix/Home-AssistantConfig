@@ -4,26 +4,17 @@ input_boolean.notifications_on:
     type: horizontal-stack
     cards:
       - type: 'custom:button-card'
+        template: toggle_notification_input_booleans_template
         name: Weather
         entity: input_boolean.weather_notifications
-        tap_action:
-          action: toggle
-        color: rgb(57, 111, 182)
-        color_type: icon
       - type: 'custom:button-card'
+        template: toggle_notification_input_booleans_template
         name: Notify
         entity: input_boolean.notifications_on
-        tap_action:
-          action: toggle
-        color: rgb(57, 111, 182)
-        color_type: icon
       - type: 'custom:button-card'
+        template: toggle_notification_input_booleans_template
         name: Birthdays
         entity: input_boolean.birthday_notifications
-        tap_action:
-          action: toggle
-        color: rgb(57, 111, 182)
-        color_type: icon
 
 sensor.kitchen_display_time_remaining_alarm:
   title: Alarm

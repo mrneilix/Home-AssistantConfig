@@ -63,59 +63,29 @@ cards:
       - type: horizontal-stack
         cards:
           - type: 'custom:button-card'
+            template: climate_lock_toggle_buttons
             name: Autolock
             entity: input_boolean.autolock
             icon: mdi:lock-smart
-            hold_action:
-              action: more-info
-            tap_action:
-              action: toggle
-            color: var(--primary-color)
           - type: 'custom:button-card'
+            template: climate_lock_toggle_buttons
             name: Temp Code
             entity: switch.temp_lock_code
-            hold_action:
-              action: more-info
-            tap_action:
-              action: toggle
-            color: var(--primary-color)
-            state:
-              - value: 'off'
-                color: var(--paper-item-icon-color)
           - type: 'custom:button-card'
+            template: climate_lock_toggle_buttons
             name: Fam Code
             entity: switch.parents_lock_code
-            hold_action:
-              action: more-info
-            tap_action:
-              action: toggle
-            color: var(--primary-color)
-            state:
-              - value: 'off'
-                color: var(--paper-item-icon-color)
       - type: horizontal-stack
         cards:
           - type: 'custom:button-card'
+            template: climate_lock_toggle_buttons
             name: Notify
             entity: input_boolean.notifications_on
-            tap_action:
-              action: more-info
-            hold_action:
-              action: toggle
-            color: var(--primary-color)
           - type: 'custom:button-card'
+            template: climate_lock_toggle_buttons
             name: Presence
             entity: input_boolean.presence_automations
-            hold_action:
-              action: more-info
-            tap_action:
-              action: toggle
-            color: var(--primary-color)
           - type: 'custom:button-card'
             name: Camera
+            template: climate_lock_toggle_buttons
             entity: switch.yi_power
-            hold_action:
-              action: more-info
-            tap_action:
-              action: toggle
-            color: var(--primary-color)

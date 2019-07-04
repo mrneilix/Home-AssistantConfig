@@ -1,8 +1,0 @@
-type: horizontal-stack
-cards:
-- type: custom:upcoming-media-card
-  entity: sensor.sonarr_upcoming_media
-  title: TV
-- type: custom:upcoming-media-card
-  entity: sensor.radarr_upcoming_media
-  title: Movies

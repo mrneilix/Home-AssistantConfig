@@ -48,3 +48,5 @@
   url: /community_plugin/lovelace-state-switch/state-switch.js
 - type: module
   url: /community_plugin/lovelace-markdown-mod/markdown-mod.js
+- type: js
+  url: /community_plugin/flex-table-card/flex-table-card.js

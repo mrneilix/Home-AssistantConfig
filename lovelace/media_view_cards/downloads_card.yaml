@@ -3,67 +3,46 @@ cards:
   - type: horizontal-stack
     cards:
       - type: 'custom:button-card'
+        template: download_card_templates
         name: Sonarr
         entity: sensor.sonarr_upcoming
         icon: mdi:television-classic
-        show_state: true
-        layout: name_state
-        color: var(--primary-color)
-        tap_action:
-          action: more-info
         hold_action:
           action: url
           url: !secret sonarr_weblink
       - type: 'custom:button-card'
+        template: download_card_templates
         name: Radarr
         entity: sensor.radarr_upcoming
         icon: mdi:filmstrip
-        show_state: true
-        layout: name_state
-        color: var(--primary-color)
-        tap_action:
-          action: more-info
         hold_action:
           action: url
           url: !secret radarr_weblink
       - type: 'custom:button-card'
+        template: download_card_templates
         name: Tautulli
         entity: sensor.tautulli
         icon: mdi:view-stream
-        show_state: true
-        layout: name_state
-        color: var(--primary-color)
         tap_action:
           action: url
           url: !secret tautulli_url
   - type: horizontal-stack
     cards:
       - type: 'custom:button-card'
+        template: download_card_templates
         name: Upcoming Downloads
         icon: mdi:video
         entity: sensor.upcoming_downloads
         show_state: false
-        show_name: true
-        layout: name_state
-        color: var(--primary-color)
-        tap_action:
-          action: more-info
       - type: 'custom:button-card'
+        template: download_card_templates
         name: Recent Downloads
         entity: sensor.plex_recently_added
         show_state: false
-        show_name: true
         icon: mdi:plex
-        color: var(--primary-color)
-        tap_action:
-          action: more-info
       - type: 'custom:button-card'
+        template: download_card_templates
         name: Watch Hist
         entity: input_boolean.show_tautulli_history
         show_state: false
-        show_name: true
         icon: mdi:history
-        color: var(--primary-color)
-        tap_action:
-          action: more-info
-        

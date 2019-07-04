@@ -35,3 +35,6 @@
   mirror_stop_rotation:
     url: !secret mirror_stop_rotation
     method: get
+  mirror_next_page:
+    url: !secret mirror_next_page
+    method: get

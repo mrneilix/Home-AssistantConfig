@@ -1,0 +1,36 @@
+toggle_presence_template:
+  color_type: icon
+  layout: icon_name
+  size: 40%
+  style:
+    - padding-top: 5px
+    - padding-bottom: 5px
+    - border-radius: 25px;
+
+toggle_notification_input_booleans_template:
+  tap_action:
+    action: toggle
+  color: rgb(57, 111, 182)
+  color_type: icon
+
+climate_lock_toggle_buttons:
+  hold_action:
+    action: more-info
+  tap_action:
+    action: toggle
+  color: var(--primary-color)
+  state:
+    - value: 'off'
+      color: var(--paper-item-icon-color)
+      
+download_card_templates:
+  show_state: true
+  layout: name_state
+  color: var(--primary-color)
+  tap_action:
+    action: more-info
+    
+system_weblinks_card_template:
+  show_state: true
+  layout: name_state
+  color: var(--primary-color)
