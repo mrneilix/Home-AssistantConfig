@@ -3,3 +3,8 @@
     origin: device_tracker.tile_p_7231d50c4a0512da2532d71db7a524f9
     options: street_number, street, city
     api_key: !secret google_geocode_api
+  - platform: google_geocode
+    name: Butters Tile Address
+    origin: device_tracker.tile_70e3c9fefea64a42
+    options: street_number, street, city
+    api_key: !secret google_geocode_api

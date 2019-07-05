@@ -77,3 +77,8 @@
         icon_template: mdi:cash
         value_template: >-
           {{ (state_attr('sensor.stock_cgc', 'shares') * state_attr('sensor.stock_cgc', 'change')) + (state_attr('sensor.stock_cron', 'shares') * state_attr('sensor.stock_cron', 'change')) +(state_attr('sensor.stock_ddd', 'shares') * state_attr('sensor.stock_ddd', 'change')) +(state_attr('sensor.stock_mj', 'shares') * state_attr('sensor.stock_mj', 'change')) +(state_attr('sensor.stock_mt', 'shares') * state_attr('sensor.stock_mt', 'change')) +(state_attr('sensor.stock_nok', 'shares') * state_attr('sensor.stock_nok', 'change')) +(state_attr('sensor.stock_tan', 'shares') * state_attr('sensor.stock_tan', 'change')) +(state_attr('sensor.stock_ugaz', 'shares') * state_attr('sensor.stock_ugaz', 'change')) +(state_attr('sensor.stock_vod', 'shares') * state_attr('sensor.stock_vod', 'change')) }}
+      bitcoin_wallet:
+        friendly_name: Bitcoin
+        unit_of_measurement: 'USD'
+        icon_template: mdi:bitcoin
+        value_template: "{{ state_attr('sensor.coinbase_btc_wallet', 'Balance in native currency')|replace('USD','') | float }}"

@@ -31,19 +31,10 @@ device_tracker.neil:
             color: var(--paper-item-icon-color)
           - value: 'not_home'
             color: var(--primary-color)
-      - type: 'custom:config-template-card'
-        variables:
-          - states['sensor.neil_phone_address'].attributes['Formatted Address']
-        entities:
-          - sensor.neil_phone_address
-        card:
-          type: 'custom:hui-entities-card'
-          title: Address
-          show_header_toggle: false
-          entities:
-            - type: "custom:secondaryinfo-entity-row"
-              entity: sensor.neil_phone_address
-              secondary_info: "${vars[0]}"
+      - type: markdown
+        title: Address
+        content: |
+          <ha-icon icon="mdi:map-marker"></ha-icon> [[ sensor.neil_gps_address_zone.state ]]
 
 device_tracker.butters:
   title: Butters
@@ -65,6 +56,10 @@ device_tracker.butters:
         entity: input_boolean.butters_home
         tap_action:
           action: toggle
+      - type: markdown
+        title: Address
+        content: |
+          <ha-icon icon="mdi:map-marker"></ha-icon> [[ sensor.butters_gps_address_zone.state ]]
 
 sensor.dark_sky_daytime_high_temperature_0d:
   title: Dark Sky Summary
@@ -87,19 +82,28 @@ sensor.dark_sky_daily_summary: sensor.dark_sky_daytime_high_temperature_0d
 sensor.portfolio_change:
   title: Finance
   card:
-    type: custom:flex-table-card 
-    title: Stocks
-    entities:
-      include: sensor.stock_*
-    sort_by: changePercent-
-    columns:
-      - name: Stock
-        attr: friendly_name
-      - name: Price
-        prop: state
-      - name: Change
-        attr: change
-      - name: Percent Change
-        attr: changePercent
-      - name: Gain Loss
-        attr: gain_loss
+    type: custom:vertical-stack-in-card
+    cards:
+    - type: custom:flex-table-card 
+      title: Stocks
+      entities:
+        include: sensor.stock_*
+      sort_by: changePercent-
+      columns:
+        - name: Stock
+          attr: friendly_name
+        - name: Price
+          prop: state
+        - name: Change
+          attr: change
+        - name: Percent Change
+          attr: changePercent
+        - name: Gain Loss
+          attr: gain_loss
+    - type: custom:mini-graph-card
+      name: Bitcoin
+      entities:
+        - entity: sensor.bitcoin_wallet
+          show_state: true
+          show_indicator: true
+          line_color: '#f7931a'

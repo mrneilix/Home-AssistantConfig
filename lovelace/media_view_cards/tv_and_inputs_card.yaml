@@ -56,66 +56,66 @@ cards:
                 color: rgb(57, 111, 182)
       - type: horizontal-stack
         cards:
-          - type: custom:card-modder
-            style:
-              border-radius: 5px
-            card:
-              type: custom:mini-media-player
-              entity: media_player.playstation_4
-              artwork: full-cover
-              source: full
-              max_volume: false
-              info: short
-              toggle_power: false
-              group: true
-              hide:
-                source: false
-                volume: true
-                icon: true
-                power_state: false
-                progress: true
-                controls: false
-                mute: true
-                info: false
-              shortcuts:
-                columns: 4
-                buttons:
-                  - name: HBO GO
-                    type: source
-                    id: HBO GO®
-                  - name: Netflix
-                    type: source
-                    id: Netflix
-                  - name: Plex
-                    type: source
-                    id: Plex
-                  - name: YouTube
-                    type: source
-                    id: YouTube
-                  - icon: 'mdi:playstation'
-                    type: script
-                    id: script.ps4_button_ps
-                  - icon: 'mdi:menu'
-                    type: script
-                    id: script.ps4_button_option
-                  - icon: 'mdi:arrow-left-circle'
-                    type: script
-                    id: script.ps4_button_back
-                  - icon: 'mdi:select'
-                    type: script
-                    id: script.ps4_button_enter
-                  - icon: 'mdi:arrow-left-bold'
-                    type: script
-                    id: script.ps4_button_left
-                  - icon: 'mdi:arrow-up-bold'
-                    type: script
-                    id: script.ps4_button_up
-                  - icon: 'mdi:arrow-down-bold'
-                    type: script
-                    id: script.ps4_button_down
-                  - icon: 'mdi:arrow-right-bold'
-                    type: script
-                    id: script.ps4_button_right
-                  - icon: 'mdi:power-cycle'
-                    type: script
-                    id: script.ps4_power_off
+          - type: custom:mini-media-player
+            style: |
+              ha-card {
+                border-radius: 5px;
+              }
+            entity: media_player.playstation_4
+            artwork: full-cover
+            source: full
+            max_volume: false
+            info: short
+            toggle_power: false
+            group: true
+            hide:
+              source: false
+              volume: true
+              icon: true
+              power_state: false
+              progress: true
+              controls: false
+              mute: true
+              info: false
+            shortcuts:
+              columns: 4
+              buttons:
+                - name: HBO GO
+                  type: source
+                  id: HBO GO®
+                - name: Netflix
+                  type: source
+                  id: Netflix
+                - name: Plex
+                  type: source
+                  id: Plex
+                - name: YouTube
+                  type: source
+                  id: YouTube
+                - icon: 'mdi:playstation'
+                  type: script
+                  id: script.ps4_button_ps
+                - icon: 'mdi:menu'
+                  type: script
+                  id: script.ps4_button_option
+                - icon: 'mdi:arrow-left-circle'
+                  type: script
+                  id: script.ps4_button_back
+                - icon: 'mdi:select'
+                  type: script
+                  id: script.ps4_button_enter
+                - icon: 'mdi:arrow-left-bold'
+                  type: script
+                  id: script.ps4_button_left
+                - icon: 'mdi:arrow-up-bold'
+                  type: script
+                  id: script.ps4_button_up
+                - icon: 'mdi:arrow-down-bold'
+                  type: script
+                  id: script.ps4_button_down
+                - icon: 'mdi:arrow-right-bold'
+                  type: script
+                  id: script.ps4_button_right
+                - icon: 'mdi:power-cycle'
+                  type: script
+                  id: script.ps4_power_off

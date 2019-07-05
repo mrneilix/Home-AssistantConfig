@@ -89,12 +89,10 @@ lock.schlage_camelot: sensor.last_lock_code_name
 
 sensor.tautulli:
   title: Plex
-  large: true
   card:
     type: custom:card-loader
     wait:
       - swipe-card
-      - card-modder
       - auto-entities
     card:
       type: custom:swipe-card
@@ -108,28 +106,36 @@ sensor.tautulli:
           draggable: true
           snapOnRelease: true
       cards:
-        - type: custom:card-modder
-          style:
-            background-image: url("/local/pictures/lovelace-pictures/plex.png")
-            background-repeat: no-repeat
-            background-color: rgb(31,31,31)
-            background-position: right
-            background-size: contain
-          card:
-            type: custom:auto-entities
-            show_empty: false
-            card:
-              type: entities
-              show_header_toggle: false
-            filter:
-              include:
-                - entity_id: "sensor.tautulli_watching_*"
-              exclude:
-                - state: "Nothing"
         - type: history-graph
-          hours_to_show: 48
           entities:
-            - sensor.tautulli
+            - entity: sensor.tautulli
+              name: Plex History
+          style: |
+            ha-card {
+              background-image: url("/local/pictures/lovelace-pictures/plex.png");
+              background-repeat: no-repeat;
+              background-color: rgb(0,0,0);
+              background-size: 100% 100%;
+            }
+        - type: custom:auto-entities
+          show_empty: false
+          card:
+            type: entities
+            show_header_toggle: false
+            style: |
+              ha-card {
+                background-image: url("/local/pictures/lovelace-pictures/plex.png");
+                background-repeat: no-repeat;
+                background-color: rgb(31,31,31);
+                background-position: right;
+                background-size: contain;
+              }
+          filter:
+            include:
+              - entity_id: "sensor.tautulli_watching_*"
+            exclude:
+              - state: "Nothing"
+
 
 sensor.fitbit_steps:
   title: FitBit

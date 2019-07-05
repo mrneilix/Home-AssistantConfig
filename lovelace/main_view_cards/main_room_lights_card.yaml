@@ -2,13 +2,13 @@ type: custom:vertical-stack-in-card
 cards:
   - type: horizontal-stack
     cards:
-      - type: custom:card-modder
-        style:
-          --paper-item-icon-active-color: yellow
-        card:
-          entity: light.kitchen
-          type: light
-          name: Kitchen
+      - type: light
+        entity: light.kitchen
+        name: Kitchen
+        style: |
+            ha-card {
+              --paper-item-icon-active-color: yellow;
+            }
       - entity: light.bed
         type: light
         name: Bed

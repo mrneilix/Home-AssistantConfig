@@ -1,32 +1,32 @@
 type: custom:vertical-stack-in-card
 cards:
-- type: custom:card-modder
-  style:
-    background-image: url("/local/pictures/lovelace-pictures/plex.png")
-    background-repeat: no-repeat
-    background-color: rgb(0,0,0)
-    background-size: 100% 100%
+- type: sensor
+  icon: mdi:plex
+  entity: sensor.tautulli
+  name: Plex History
+  detail: 2
+  graph: line
+  style: |
+      ha-card {
+        background-image: url("/local/pictures/lovelace-pictures/plex.png");
+        background-repeat: no-repeat;
+        background-color: rgb(0,0,0);
+        background-size: 100% 100%;
+      }
+- type: custom:auto-entities
+  show_empty: false
   card:
-    type: sensor
-    icon: mdi:plex
-    entity: sensor.tautulli
-    name: Plex History
-    detail: 2
-    graph: line
-- type: custom:card-modder
-  style:
-    background-image: url("/local/pictures/lovelace-pictures/plex.png")
-    background-repeat: no-repeat
-    background-color: rgb(0,0,0)
-    background-size: 100% 100%
-  card:
-    type: custom:auto-entities
-    show_empty: false
-    card:
-      type: entities
-      show_header_toggle: false
-    filter:
-      include:
-        - entity_id: "sensor.tautulli_watching_*"
-      exclude:
-        - state: "Nothing"
+    type: entities
+    show_header_toggle: false
+    style: |
+        ha-card {
+          background-image: url("/local/pictures/lovelace-pictures/plex.png");
+          background-repeat: no-repeat;
+          background-color: rgb(0,0,0);
+          background-size: 100% 100%;
+        }
+  filter:
+    include:
+      - entity_id: "sensor.tautulli_watching_*"
+    exclude:
+      - state: "Nothing"
