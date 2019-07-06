@@ -55,7 +55,7 @@ card:
               - entity_id: sensor.stock_*
                 options:
                   type: "custom:secondaryinfo-entity-row"
-                  secondary_info: "Percent:<b style='color:red'> [[ {entity}.attributes.changePercent ]]%</b> Change: <b style='color:red'>$[[ {entity}.attributes.change ]] </b> Loss: <b style='color:green'>$[[ {entity}.attributes.gain_loss ]] </b>"
+                  secondary_info: "Percent:<b style='color:red'> [[ {entity}.attributes.changePercent ]]%</b> Change: <b style='color:red'>$[[ {entity}.attributes.change ]] </b> Loss: <b style='color:red'>$[[ {entity}.attributes.gain_loss ]] </b>"
                 attributes:
                   change: "< 0"
         - type: custom:mini-graph-card

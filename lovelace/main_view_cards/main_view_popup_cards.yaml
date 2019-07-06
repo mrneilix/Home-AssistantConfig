@@ -94,22 +94,33 @@ sensor.tautulli:
     wait:
       - swipe-card
       - auto-entities
+      - mini-graph-card
     card:
       type: custom:swipe-card
       parameters:
         spaceBetween: 0
+        autoHeight: true
         preventClicks: true
         preventClicksPropagation: true
         touchStartForcePreventDefault: true
+        effect: slide
         scrollbar:
           hide: false
           draggable: true
           snapOnRelease: true
       cards:
-        - type: history-graph
+        - type: custom:mini-graph-card
+          more_info: false
+          show:
+            points: hover
+            extrema: true
+            labels: false
+            name: false
+            icon: false
+          line_color: '#f7931a'
           entities:
             - entity: sensor.tautulli
-              name: Plex History
+              show_state: true
           style: |
             ha-card {
               background-image: url("/local/pictures/lovelace-pictures/plex.png");

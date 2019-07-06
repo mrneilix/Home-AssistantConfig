@@ -1,0 +1,178 @@
+  # - platform: template
+    # sensors:
+      # tautulli_history_watching_neil:
+        # friendly_name: "I am Watching"
+        # value_template: >
+          # {{ states.sensor.tautulli_watching_neil.state }}
+        # icon_template: >
+          # {% if (as_timestamp(now()) - as_timestamp(states.sensor.tautulli_watching_neil.last_changed) < 86400 ) %}
+            # mdi:plex
+          # {% endif %}
+      # tautulli_history_watching_abbas:
+        # friendly_name: "Abbas is Watching"
+        # value_template: >
+          # {{ states.sensor.tautulli_watching_abbas.state }}
+        # icon_template: >
+          # {% if (as_timestamp(now()) - as_timestamp(states.sensor.tautulli_watching_abbas.last_changed) < 86400 ) %}
+            # mdi:plex
+          # {% endif %}
+      # tautulli_history_watching_austin:
+        # friendly_name: "Austin is Watching"
+        # value_template: >
+          # {{ states.sensor.tautulli_watching_austin.state }}
+        # icon_template: >
+          # {% if (as_timestamp(now()) - as_timestamp(states.sensor.tautulli_watching_austin.last_changed) < 86400 ) %}
+            # mdi:plex
+          # {% endif %}
+      # tautulli_history_watching_tina:
+        # friendly_name: "Tina is Watching"
+        # value_template: >
+          # {{ states.sensor.tautulli_watching_tina.state }}
+        # icon_template: >
+          # {% if (as_timestamp(now()) - as_timestamp(states.sensor.tautulli_watching_tina.last_changed) < 86400 ) %}
+            # mdi:plex
+          # {% endif %}
+      # tautulli_history_watching_chili:
+        # friendly_name: "Chili is Watching"
+        # value_template: >
+          # {{ states.sensor.tautulli_watching_adroit4.state }}
+        # icon_template: >
+          # {% if (as_timestamp(now()) - as_timestamp(states.sensor.tautulli_watching_adroit4.last_changed) < 86400 ) %}
+            # mdi:plex
+          # {% endif %}
+      # tautulli_history_watching_eyesbrow:
+        # friendly_name: "Eyesbrow is Watching"
+        # value_template: >
+          # {{ states.sensor.tautulli_watching_eyesbrow_1.state }}
+        # icon_template: >
+          # {% if (as_timestamp(now()) - as_timestamp(states.sensor.tautulli_watching_eyesbrow_1 .last_changed) < 86400 ) %}
+            # mdi:plex
+          # {% endif %}
+      # tautulli_history_watching_atul_neeta:
+        # friendly_name: "Atul and Neeta are Watching"
+        # value_template: >
+          # {{ states.sensor.tautulli_watching_atul_neeta.state }}
+        # icon_template: >
+          # {% if (as_timestamp(now()) - as_timestamp(states.sensor.tautulli_watching_atul_neeta.last_changed) < 86400 ) %}
+            # mdi:plex
+          # {% endif %}
+      # tautulli_history_watching_brian:
+        # friendly_name: "Brian is Watching"
+        # value_template: >
+          # {{ states.sensor.tautulli_watching_brian.state }}
+        # icon_template: >
+          # {% if (as_timestamp(now()) - as_timestamp(states.sensor.tautulli_watching_brian.last_changed) < 86400 ) %}
+            # mdi:plex
+          # {% endif %}
+      # tautulli_history_watching_manish:
+        # friendly_name: "Manish is Watching"
+        # value_template: >
+          # {{ states.sensor.tautulli_watching_manish.state }}
+        # icon_template: >
+          # {% if (as_timestamp(now()) - as_timestamp(states.sensor.tautulli_watching_manish.last_changed) < 86400 ) %}
+            # mdi:plex
+          # {% endif %}
+      # tautulli_history_watching_karina:
+        # friendly_name: "Karina is Watching"
+        # value_template: >
+          # {{ states.sensor.tautulli_watching_karina.state }}
+        # icon_template: >
+          # {% if (as_timestamp(now()) - as_timestamp(states.sensor.tautulli_watching_karina.last_changed) < 86400 ) %}
+            # mdi:plex
+          # {% endif %}
+      # tautulli_history_watching_kiel:
+        # friendly_name: "Kiel is Watching"
+        # value_template: >
+          # {{ states.sensor.tautulli_watching_kiel.state }}
+        # icon_template: >
+          # {% if (as_timestamp(now()) - as_timestamp(states.sensor.tautulli_watching_kiel.last_changed) < 86400 ) %}
+            # mdi:plex
+          # {% endif %}
+      # tautulli_history_watching_kris:
+        # friendly_name: "Kris is Watching"
+        # value_template: >
+          # {{ states.sensor.tautulli_watching_kris.state }}
+        # icon_template: >
+          # {% if (as_timestamp(now()) - as_timestamp(states.sensor.tautulli_watching_kris.last_changed) < 86400 ) %}
+            # mdi:plex
+          # {% endif %}
+      # tautulli_history_watching_mike:
+        # friendly_name: "Mike is Watching"
+        # value_template: >
+          # {{ states.sensor.tautulli_watching_mike.state }}
+        # icon_template: >
+          # {% if (as_timestamp(now()) - as_timestamp(states.sensor.tautulli_watching_mike.last_changed) < 86400 ) %}
+            # mdi:plex
+          # {% endif %}
+      # tautulli_history_watching_pallav:
+        # friendly_name: "Pallav is Watching"
+        # value_template: >
+          # {{ states.sensor.tautulli_watching_pallav.state }}
+        # icon_template: >
+          # {% if (as_timestamp(now()) - as_timestamp(states.sensor.tautulli_watching_pallav.last_changed) < 86400 ) %}
+            # mdi:plex
+          # {% endif %}
+      # tautulli_history_watching_peter:
+        # friendly_name: "Peter is Watching"
+        # value_template: >
+          # {{ states.sensor.tautulli_watching_peter.state }}
+        # icon_template: >
+          # {% if (as_timestamp(now()) - as_timestamp(states.sensor.tautulli_watching_peter.last_changed) < 86400 ) %}
+            # mdi:plex
+          # {% endif %}
+      # tautulli_history_watching_eyesbrow_2:
+        # friendly_name: "Eyesbrow is Watching"
+        # value_template: >
+          # {{ states.sensor.tautulli_watching_eyesbrow_2.state }}
+        # icon_template: >
+          # {% if (as_timestamp(now()) - as_timestamp(states.sensor.tautulli_watching_eyesbrow_2.last_changed) < 86400 ) %}
+            # mdi:plex
+          # {% endif %}
+      # tautulli_history_watching_shappell:
+        # friendly_name: "Shappell is Watching"
+        # value_template: >
+          # {{ states.sensor.tautulli_watching_shappell.state }}
+        # icon_template: >
+          # {% if (as_timestamp(now()) - as_timestamp(states.sensor.tautulli_watching_shappell.last_changed) < 86400 ) %}
+            # mdi:plex
+          # {% endif %}
+      # tautulli_history_watching_emily:
+        # friendly_name: "Emily is Watching"
+        # value_template: >
+          # {{ states.sensor.tautulli_watching_emily.state }}
+        # icon_template: >
+          # {% if (as_timestamp(now()) - as_timestamp(states.sensor.tautulli_watching_emily.last_changed) < 86400 ) %}
+            # mdi:plex
+          # {% endif %}
+      # tautulli_history_watching_ben:
+        # friendly_name: "Ben is Watching"
+        # value_template: >
+          # {{ states.sensor.tautulli_watching_ben.state }}
+        # icon_template: >
+          # {% if (as_timestamp(now()) - as_timestamp(states.sensor.tautulli_watching_ben.last_changed) < 86400 ) %}
+            # mdi:plex
+          # {% endif %}
+      # tautulli_history_watching_anuj:
+        # friendly_name: "Anuj is Watching"
+        # value_template: >
+          # {{ states.sensor.tautulli_watching_anuj.state }}
+        # icon_template: >
+          # {% if (as_timestamp(now()) - as_timestamp(states.sensor.tautulli_watching_anuj.last_changed) < 86400 ) %}
+            # mdi:plex
+          # {% endif %}
+      # tautulli_history_watching_ruchi:
+        # friendly_name: "Ruchi is Watching"
+        # value_template: >
+          # {{ states.sensor.tautulli_watching_ruchi.state }}
+        # icon_template: >
+          # {% if (as_timestamp(now()) - as_timestamp(states.sensor.tautulli_watching_ruchi.last_changed) < 86400 ) %}
+            # mdi:plex
+          # {% endif %}
+      # tautulli_history_watching_jenny:
+        # friendly_name: "Jenny is Watching"
+        # value_template: >
+          # {{ states.sensor.tautulli_watching_jenny.state }}
+        # icon_template: >
+          # {% if (as_timestamp(now()) - as_timestamp(states.sensor.tautulli_watching_jenny.last_changed) < 86400 ) %}
+            # mdi:plex
+          # {% endif %}

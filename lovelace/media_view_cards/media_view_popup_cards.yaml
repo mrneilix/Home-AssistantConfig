@@ -5,11 +5,14 @@ input_boolean.show_tautulli_history:
     type: custom:card-loader
     wait:
       - group-card
+      - vertical-stack-in-card
     card:
-      type: custom:group-card
-      card:
-        type: history-graph
-      group: group.watching_plex_names
+      type: custom:vertical-stack-in-card
+      cards:
+        - type: custom:group-card
+          card:
+            type: history-graph
+          group: group.watching_plex_names
 
 sensor.sonarr_upcoming:
   title: Sonarr Calendar
@@ -67,7 +70,7 @@ sensor.plex_recently_added:
 
 sensor.tautulli:
   title: Plex
-  large: true
   card:
     type: iframe
     url: !secret grafana_watching_plex
+    aspect_ratio: 300%

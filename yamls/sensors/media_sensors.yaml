@@ -8,6 +8,7 @@
       - stream_count
       - full_title
       - friendly_name
+      - user
 
   - platform: qbittorrent
     url: !secret qbittorrent_ip
