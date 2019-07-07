@@ -33,5 +33,6 @@ tts/*
 /yamls/sensors/zone_template_address_sensors.yaml
 .ps4-games.json
 community_plugin/*
-appdaemon/*appdaemon/
+appdaemon/*
+appdaemon/
 appdaemon/apps
