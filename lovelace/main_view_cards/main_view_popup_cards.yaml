@@ -74,6 +74,9 @@ sensor.last_lock_code_name:
             tap_action: more-info
           - entity: device_tracker.butters
             tap_action: more-info
+      - type: entities
+        entities:
+          - entity: input_number.autolock_delay
       - type: history-graph
         title: Last Lock Code
         entities:

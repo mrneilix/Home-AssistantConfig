@@ -1,0 +1,7 @@
+  autolock_delay:
+    name: Autolock Delay
+    min: 30
+    max: 240
+    step: 1
+    initial: 30
+    icon: mdi:lock-smart

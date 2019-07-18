@@ -24,3 +24,6 @@
           {% else %}
               /local/pictures/guest.png
           {%- endif %}
+  - platform: mqtt
+    state_topic: "smartthings/Schlage Camelot/battery/state"
+    name: "Schlage Camelot Battery"

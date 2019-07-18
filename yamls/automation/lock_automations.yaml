@@ -56,13 +56,9 @@
       entity_id: lock.schlage_camelot
       to: 'unlocked'
       from: 'locked'
-      for:
-        seconds: 20
     - platform: state
       entity_id: input_boolean.door_open
       to: 'on'
-      for:
-        seconds: 20
   condition:
     - condition: state
       entity_id: input_boolean.autolock
@@ -71,7 +67,8 @@
       entity_id: input_boolean.restart_complete
       state: 'on'
   action:
-    - delay: 00:00:10
+    - delay:
+        seconds: '{{ states("input_number.autolock_delay") | int }}'
     - condition: state
       entity_id: input_boolean.autolock
       state: 'on'

@@ -1,0 +1,18 @@
+  - platform: mqtt
+    name: Parents Lock Code
+    command_topic: "smartthings/Parents Lock Code/switch/cmd"
+    state_topic: "smartthings/Parents Lock Code/switch/state"
+    state_on: "on"
+    state_off: "off"
+    payload_on: "on"
+    payload_off: "off"
+    retain: true
+  - platform: mqtt
+    name: Temp Lock Code
+    command_topic: "smartthings/Temp Lock Code/switch/cmd"
+    state_topic: "smartthings/Temp Lock Code/switch/state"
+    state_on: "on"
+    state_off: "off"
+    payload_on: "on"
+    payload_off: "off"
+    retain: true

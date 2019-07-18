@@ -1,0 +1,9 @@
+  - platform: mqtt
+    name: Schlage Camelot
+    state_topic: "smartthings/Schlage Camelot/lock/state"
+    command_topic: "smartthings/Schlage Camelot/lock/cmd"
+    payload_lock: "locked"
+    payload_unlock: "unlocked"
+    optimistic: false
+    qos: 1
+    retain: true

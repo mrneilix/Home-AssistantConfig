@@ -122,6 +122,7 @@ influxdb: !include yamls/databases/influxdb.yaml
 # Include Inputs
 input_boolean: !include yamls/inputs/input_boolean.yaml
 input_text: !include yamls/inputs/input_text.yaml
+input_number: !include yamls/inputs/input_number.yaml
 
 # Include Devices Yamls
 device_tracker: !include yamls/devices/device_tracker.yaml
@@ -134,3 +135,5 @@ googlehome: !include yamls/devices/googlehome.yaml
 tplink: !include yamls/devices/tplink.yaml
 tuya: !include yamls/devices/tuya.yaml
 google_assistant: !include yamls/devices/google_assistant.yaml
+switch:  !include yamls/devices/switch.yaml
+lock:  !include yamls/devices/lock.yaml
