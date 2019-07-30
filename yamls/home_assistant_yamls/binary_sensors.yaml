@@ -100,9 +100,9 @@
         friendly_name: Dark Outside
         value_template: >-
           {% if states('sensor.illuminance') | int < 5500 %}
-          True
+            True
           {%- else -%}
-          False
+            False
           {%- endif %}
         entity_id:
           - sensor.illuminance
@@ -115,7 +115,14 @@
       show_calendar_facebook:
         value_template: '{{ (((  as_timestamp(strptime(states.calendar.facebook_events.attributes.start_time, "%d.%m.%Y")) - as_timestamp(now()) ) / 86400 ) | round(0) < 30 ) }}'
       show_calendar_deliveries:
-        value_template: '{{ (((  as_timestamp(strptime(states.calendar.deliveries.attributes.start_time, "%d.%m.%Y")) - as_timestamp(now()) ) / 86400 ) | round(0) < 30 ) }}'
+        value_template: >-
+          {% if states.calendar.deliveries.attributes.message == '' %}
+            False
+          {% elif ((( as_timestamp(strptime(states.calendar.deliveries.attributes.start_time, "%d.%m.%Y")) - as_timestamp(now()) ) / 86400 ) | round(0) < 30 ) %}
+            True
+          {% else %}
+            False
+          {% endif %}
 
 # MQTT Status
       mqtt_status:

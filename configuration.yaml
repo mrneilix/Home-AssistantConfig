@@ -45,6 +45,7 @@ logger:
   logs:
     homeassistant.components.system_log: fatal
     homeassistant.components.tplink: fatal
+    homeassistant.components.sensor.tautulli: debug
 
 lovelace:
   mode: yaml

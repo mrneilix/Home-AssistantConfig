@@ -155,7 +155,7 @@ system_desktop_display_off:
       data_template:
         name: Shell Command
         message: Desktop Display Off
-    - service: shell_command.desktop_screen_off
+    - service: rest_command.desktop_screen_off
 
 system_magic_mirror_rotate_display_on:
   alias: System Magic Mirror Rotate Display On

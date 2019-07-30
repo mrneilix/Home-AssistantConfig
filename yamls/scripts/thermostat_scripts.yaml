@@ -1,7 +1,7 @@
 thermostat_set_home_not_morning:
   alias: Thermostat Temp Not Morning
   sequence:
-    - service: script.thermostat_set_operation_mode
+    - service: script.thermostat_set_hvac_mode
     - delay: 00:00:10
     - service: climate.set_temperature
       entity_id: climate.thermostat
@@ -24,7 +24,7 @@ thermostat_set_home_not_morning:
 thermostat_set_home_morning:
   alias: Thermostat Temp Home Morning
   sequence:
-    - service: script.thermostat_set_operation_mode
+    - service: script.thermostat_set_hvac_mode
     - delay: 00:00:10
     - service: climate.set_temperature
       entity_id: climate.thermostat
@@ -60,7 +60,7 @@ thermostat_home_set_temp:
 thermostat_temp_everyone_away:
   alias: Thermostat Temp Away
   sequence:
-    - service: script.thermostat_set_operation_mode
+    - service: script.thermostat_set_hvac_mode
     - delay: 00:00:10
     - service: climate.set_temperature
       entity_id: climate.thermostat
@@ -76,7 +76,7 @@ thermostat_temp_everyone_away:
 thermostat_set_temp_only_butters_home:
   alias: Thermostat Set Temp Only Butters Home
   sequence:
-    - service: script.thermostat_set_operation_mode
+    - service: script.thermostat_set_hvac_mode
     - delay: 00:00:10
     - service: climate.set_temperature
       entity_id: climate.thermostat
@@ -89,13 +89,13 @@ thermostat_set_temp_only_butters_home:
           {% endif %}
     - delay: 00:00:05
 
-thermostat_set_operation_mode:
+thermostat_set_hvac_mode:
   alias: Thermostat Set Operation Mode
   sequence:
-    - service: climate.set_operation_mode
+    - service: climate.set_hvac_mode
       entity_id: climate.thermostat
       data_template:
-        operation_mode: >
+        hvac_mode: >
           {% if is_state('sensor.temp', 'Cold') or is_state('sensor.temp', 'FuckingCold') or is_state('sensor.temp', 'ReallyFuckingCold') %}
             heat
           {% else %}

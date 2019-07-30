@@ -38,3 +38,9 @@
   mirror_next_page:
     url: !secret mirror_next_page
     method: get
+  desktop_screen_off:
+    url: !secret desktop_screen_off
+    method: get
+  desktop_backup_sync:
+    url: !secret desktop_backup_sync
+    method: get
