@@ -75,11 +75,7 @@ restart_homeassistant:
 system_restart_if_just_rebooted:
   alias: System Restart If Just Rebooted
   sequence:
-    - service: shell_command.phlex_login
-    - service: logbook.log
-      data_template:
-        name: Shell Command
-        message: Desktop Log Into Phlex and Grafana
+    - service: rest_command.desktop_logins
     - delay: 00:01:00
     - service: script.restart_homeassistant
 

@@ -44,3 +44,6 @@
   desktop_backup_sync:
     url: !secret desktop_backup_sync
     method: get
+  desktop_logins:
+    url: !secret desktop_logins
+    method: get

@@ -1,5 +1,5 @@
     - !secret terminal_url
-    - !secret base_url
+    - !secret new_url
     - !secret tautulli_url
     - !secret pi_zero_url
     - !secret mosquitto_url
