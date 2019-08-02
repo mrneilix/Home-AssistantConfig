@@ -34,3 +34,11 @@ system_weblinks_card_template:
   show_state: true
   layout: name_state
   color: var(--primary-color)
+
+google_keep_card_template:
+  type: custom:google-keep-card
+  theme: dark
+  alpha: 0.7
+  show:
+    - checked
+    - unchecked

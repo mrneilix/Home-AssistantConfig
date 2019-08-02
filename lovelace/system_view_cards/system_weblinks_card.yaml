@@ -30,12 +30,12 @@ cards:
           url: !secret mosquitto_url
       - type: 'custom:button-card'
         template: system_weblinks_card_template
-        name: QBitTorrent
-        entity: sensor.downloading_down_speed
+        name: SABnzbd
+        entity: sensor.sab_status
         icon: mdi:download
         tap_action:
           action: url
-          url: !secret QBitTorrent_weblink
+          url: !secret sabnzbd_url
   - type: horizontal-stack
     cards:
       - type: 'custom:button-card'

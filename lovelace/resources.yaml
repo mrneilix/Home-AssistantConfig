@@ -52,3 +52,7 @@
   url: /community_plugin/flex-table-card/flex-table-card.js
 - type: module
   url: /community_plugin/lovelace-card-mod/card-mod.js
+- type: js
+  url: /community_plugin/tracking-number-card/tracking-number-card.js
+- type: module
+  url: /community_plugin/lovelace-google-keep-card/google-keep-card.js

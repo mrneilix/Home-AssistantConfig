@@ -137,3 +137,4 @@ tuya: !include yamls/devices/tuya.yaml
 google_assistant: !include yamls/devices/google_assistant.yaml
 switch:  !include yamls/devices/switch.yaml
 lock:  !include yamls/devices/lock.yaml
+sabnzbd: !include yamls/devices/sab.yaml

@@ -1,0 +1,14 @@
+  api_key: !secret sab_api_key
+  host: !secret desktop_domain
+  name: sab
+  port: 9090
+  ssl: true
+  sensors:
+    - current_status
+    - speed
+    - queue_size
+    - queue_remaining
+    - queue_count
+    - day_size
+    - week_size
+    - month_size

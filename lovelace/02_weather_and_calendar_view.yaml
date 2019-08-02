@@ -14,3 +14,4 @@ cards:
   - !include weather_calendar_cards/calendar_birthdays_card.yaml
   - !include weather_calendar_cards/finance_card.yaml
   - !include weather_calendar_cards/package_tracking_card.yaml
+  - !include weather_calendar_cards/keep_list_card.yaml
