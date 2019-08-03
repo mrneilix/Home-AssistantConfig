@@ -1,18 +1,18 @@
-  # - platform: keep_notes_sensor
-    # name: "keep_atl_restaurants"
-    # username: !secret email
-    # password: !secret keep_app_password
-    # list_id: !secret keep_atl_restaurants
-  # - platform: keep_notes_sensor
-    # name: "keep_nyc_restaurants"
-    # username: !secret email
-    # password: !secret keep_app_password
-    # list_id: !secret keep_nyc_restaurants
-  # - platform: keep_notes_sensor
-    # name: "keep_bourbon_restaurants"
-    # username: !secret email
-    # password: !secret keep_app_password
-    # list_id: !secret keep_bourbons_to_try
+  - platform: keep_notes_sensor
+    name: "keep_atl_restaurants"
+    username: !secret email
+    password: !secret keep_app_password
+    list_id: !secret keep_atl_restaurants
+  - platform: keep_notes_sensor
+    name: "keep_nyc_restaurants"
+    username: !secret email
+    password: !secret keep_app_password
+    list_id: !secret keep_nyc_restaurants
+  - platform: keep_notes_sensor
+    name: "keep_bourbon_to_try"
+    username: !secret email
+    password: !secret keep_app_password
+    list_id: !secret keep_bourbons_to_try
   - platform: google_keep
     name: keep_nyc_restaurants
     username: !secret email

@@ -111,7 +111,7 @@ joaoapps_join: !include yamls/commands_and_notify/join.yaml
 
 # Include Front End
 weblink: !include yamls/front_end/weblink.yaml
-# google_domains: !include yamls/front_end/google_domains.yaml
+google_domains: !include yamls/front_end/google_domains.yaml
 
 # Include DBs
 recorder: !include yamls/databases/recorder.yaml

@@ -40,5 +40,4 @@ google_keep_card_template:
   theme: dark
   alpha: 0.7
   show:
-    - checked
     - unchecked
