@@ -1,6 +1,6 @@
   - platform: tautulli
-    host: !secret base_url_new_domain
-    ssl: true
+    host: !secret hass_ip
+    ssl: false
     api_key: !secret tautulli_api
     port: !secret tautulli_port
     path: !secret tautulli_path

@@ -121,14 +121,14 @@
         icon_template: mdi:clock
         value_template: "{{ as_timestamp(states('sensor.last_boot')) | timestamp_custom('%H:%M') }} {{ as_timestamp(states('sensor.last_boot')) | timestamp_custom('%m/%d') }}"
 
-      network_downloaded:
-        friendly_name: Downloaded
-        icon_template: mdi:server-network
-        unit_of_measurement: "GiB"
-        value_template: "{{ ( states('sensor.network_in_eth0') | float / 1024 ) | int }}"
-
-      network_uploaded:
-        friendly_name: Uploaded
-        icon_template: mdi:server-network
-        unit_of_measurement: "GiB"
-        value_template: "{{ ( states('sensor.network_out_eth0') | float / 1024 ) | int }}"
+    #   network_downloaded:
+        # friendly_name: Downloaded
+        # icon_template: mdi:server-network
+        # unit_of_measurement: "GiB"
+        # value_template: "{{ ( states('sensor.network_in_eth0') | float / 1024 ) | int }}"
+# 
+    #   network_uploaded:
+        # friendly_name: Uploaded
+        # icon_template: mdi:server-network
+        # unit_of_measurement: "GiB"
+        # value_template: "{{ ( states('sensor.network_out_eth0') | float / 1024 ) | int }}"

@@ -32,11 +32,16 @@ websocket_api:
 hassio:
 
 http:
-  api_password: !secret http_password
-  ssl_certificate: !secret ssl_cert_domain
-  ssl_key: !secret ssl_key_domain
-  base_url: !secret new_url
+  # api_password: !secret http_password
+  # ssl_certificate: !secret ssl_cert_domain
+  # ssl_key: !secret ssl_key_domain
+  base_url: !secret hass_ip
   cors_allowed_origins: !include yamls/front_end/cors_allowed_origins.yaml
+  use_x_forwarded_for: true
+  trusted_proxies:
+    - !secret trusted_network
+    - !secret desktop_ip
+    - !secret hass_ip
 
 api:
 
@@ -45,6 +50,11 @@ logger:
   logs:
     homeassistant.components.system_log: fatal
     homeassistant.components.tplink: fatal
+    async_upnp_client.profiles.igd: debug
+    async_upnp_client.traffic: debug
+    async_upnp_client: debug
+    homeassistant.components.vera: debug
+    homeassistant.components.tautulli: debug
 
 lovelace:
   mode: yaml
