@@ -1,23 +1,5 @@
 type: custom:vertical-stack-in-card
 cards:
-  # - type: custom:google-keep-card
-    # template: google_keep_card_template
-    # entity: sensor.sensor.keep_atl_restaurants_1001054518
-    # show:
-      # - unchecked
-      # - checked
-  # - type: custom:google-keep-card
-    # template: google_keep_card_template
-    # entity: sensor.keep_bourbon_restaurants_812178120
-    # show:
-      # - unchecked
-      # - checked
-  # - type: custom:google-keep-card
-    # template: google_keep_card_template
-    # entity: sensor.keep_nyc_restaurants_1992815107
-    # show:
-      # - unchecked
-      # - checked
   - type: custom:keep-notes-card
     entity: sensor.keep_atl_restaurants
   - type: custom:keep-notes-card

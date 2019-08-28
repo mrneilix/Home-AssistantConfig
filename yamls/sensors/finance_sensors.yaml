@@ -57,14 +57,14 @@
   - platform: avanza_stock
     stock: 360598
     name: Stock UGAZ
-    shares: 300
+    shares: 1500
     monitored_conditions:
       - changePercent
       - change
   - platform: avanza_stock
     stock: 202198
     name: Stock VOD
-    shares: 300
+    shares: 500
     monitored_conditions:
       - changePercent
       - change

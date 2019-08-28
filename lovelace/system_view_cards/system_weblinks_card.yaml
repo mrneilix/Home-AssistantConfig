@@ -22,16 +22,15 @@ cards:
     cards:
       - type: 'custom:button-card'
         template: system_weblinks_card_template
-        name: MQTT
-        entity: binary_sensor.mqtt_status
+        name: Control
         icon: mdi:bug
         tap_action:
           action: url
-          url: !secret mosquitto_url
+          url: !secret control_hass_url
       - type: 'custom:button-card'
         template: system_weblinks_card_template
         name: SABnzbd
-        entity: sensor.sab_status
+        entity: sensor.sabnzbd_status
         icon: mdi:download
         tap_action:
           action: url

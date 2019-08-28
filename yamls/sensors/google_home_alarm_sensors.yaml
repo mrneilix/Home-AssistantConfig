@@ -1,99 +1,99 @@
-  - platform: rest
-    name: Kitchen_Display_Alarm_ID
-    json_attributes:
-      - alarm
-    resource: !secret google_home_alarms
-    value_template: '{% if value_json.alarm[0] is defined %}{{ value_json.alarm[0].id }}{% endif %}'
-    force_update: true
+  # - platform: rest
+    # name: Kitchen_Display_Alarm_ID
+    # json_attributes:
+      # - alarm
+    # resource: !secret google_home_alarms
+    # value_template: '{% if value_json.alarm[0] is defined %}{{ value_json.alarm[0].id }}{% endif %}'
+    # force_update: true
 
-  - platform: rest
-    name: Kitchen_Display_Timer_ID
-    json_attributes:
-      - timer
-    resource: !secret google_home_alarms
-    value_template: '{% if value_json.timer[0] is defined %}{{ value_json.timer[0].id }}{% endif %}'
-    force_update: true
+  # - platform: rest
+    # name: Kitchen_Display_Timer_ID
+    # json_attributes:
+      # - timer
+    # resource: !secret google_home_alarms
+    # value_template: '{% if value_json.timer[0] is defined %}{{ value_json.timer[0].id }}{% endif %}'
+    # force_update: true
 
-  - platform: template
-    sensors:
-      kitchen_display_time_remaining_alarm:
-        icon_template: mdi:alarm
-        friendly_name: "Google Home Alarm"
-        entity_id: sensor.time
-        value_template: >
-          {% if is_state('sensor.kitchen_display_alarm', 'unavailable') %}
-            Not Set
-          {% else %}
-            {% set time = (as_timestamp(states.sensor.kitchen_display_alarm.state)) - (as_timestamp(now()) )| int %}
-            {% set seconds = (time % 60) | int %}
-            {% set minutes = ((time % 3600) / 60) | int %}
-            {% set hours = ((time % 86400) / 3600) | int %}
-            {% set days = (time / 86400) | int %}
+  # - platform: template
+    # sensors:
+      # kitchen_display_time_remaining_alarm:
+        # icon_template: mdi:alarm
+        # friendly_name: "Google Home Alarm"
+        # entity_id: sensor.time
+        # value_template: >
+          # {% if is_state('sensor.kitchen_display_alarm', 'unavailable') or is_state('sensor.kitchen_display_alarm', 'unknown') %}
+            # Not Set
+          # {% else %}
+            # {% set time = (as_timestamp(states.sensor.kitchen_display_alarm.state)) - (as_timestamp(now()) )| int %}
+            # {% set seconds = (time % 60) | int %}
+            # {% set minutes = ((time % 3600) / 60) | int %}
+            # {% set hours = ((time % 86400) / 3600) | int %}
+            # {% set days = (time / 86400) | int %}
 
-            {%- if time < 60 -%}
-              {{seconds}}s
-            {%- else -%}
-              {%- if days > 0 -%}
-                {{ days }}d
-              {%- endif -%}
-              {%- if hours > 0 -%}
-                {%- if days > 0 -%}
-                  {{ ' ' }}
-                {%- endif -%}
-                {{ hours }}h
-              {%- endif -%}
-              {%- if minutes > 0 -%}
-                {%- if days > 0 or hours > 0 -%}
-                  {{ ' ' }}
-                {%- endif -%}
-                {{ minutes }}m
-              {%- endif -%}
-              {%- if seconds > 0 -%}
-                {%- if days > 0 or hours > 0 or minutes > 0 -%}
-                  {{ ' ' }}
-                {%- endif -%}
-                {{ seconds }}s
-              {%- endif -%}
-            {%- endif -%}
-          {% endif %}
+            # {%- if time < 60 -%}
+              # {{seconds}}s
+            # {%- else -%}
+              # {%- if days > 0 -%}
+                # {{ days }}d
+              # {%- endif -%}
+              # {%- if hours > 0 -%}
+                # {%- if days > 0 -%}
+                  # {{ ' ' }}
+                # {%- endif -%}
+                # {{ hours }}h
+              # {%- endif -%}
+              # {%- if minutes > 0 -%}
+                # {%- if days > 0 or hours > 0 -%}
+                  # {{ ' ' }}
+                # {%- endif -%}
+                # {{ minutes }}m
+              # {%- endif -%}
+              # {%- if seconds > 0 -%}
+                # {%- if days > 0 or hours > 0 or minutes > 0 -%}
+                  # {{ ' ' }}
+                # {%- endif -%}
+                # {{ seconds }}s
+              # {%- endif -%}
+            # {%- endif -%}
+          # {% endif %}
 
-      kitchen_display_time_remaining_timer:
-        icon_template: mdi:timer-sand
-        friendly_name: "Google Home Timer"
-        entity_id: sensor.time
-        value_template: >
-          {% if is_state('sensor.kitchen_display_timer', 'unavailable') %}
-            Not Set
-          {% else %}
-            {% set time = (as_timestamp(states.sensor.kitchen_display_timer.state)) - (as_timestamp(now()) )| int %}
-            {% set seconds = (time % 60) | int %}
-            {% set minutes = ((time % 3600) / 60) | int %}
-            {% set hours = ((time % 86400) / 3600) | int %}
-            {% set days = (time / 86400) | int %}
+      # kitchen_display_time_remaining_timer:
+        # icon_template: mdi:timer-sand
+        # friendly_name: "Google Home Timer"
+        # entity_id: sensor.time
+        # value_template: >
+          # {% if is_state('sensor.kitchen_display_timer', 'unavailable') or is_state('sensor.kitchen_display_timer', 'unknown') %}
+            # Not Set
+          # {% else %}
+            # {% set time = (as_timestamp(states.sensor.kitchen_display_timer.state)) - (as_timestamp(now()) )| int %}
+            # {% set seconds = (time % 60) | int %}
+            # {% set minutes = ((time % 3600) / 60) | int %}
+            # {% set hours = ((time % 86400) / 3600) | int %}
+            # {% set days = (time / 86400) | int %}
 
-            {%- if time < 60 -%}
-              {{seconds}}s
-            {%- else -%}
-              {%- if days > 0 -%}
-                {{ days }}d
-              {%- endif -%}
-              {%- if hours > 0 -%}
-                {%- if days > 0 -%}
-                  {{ ' ' }}
-                {%- endif -%}
-                {{ hours }}h
-              {%- endif -%}
-              {%- if minutes > 0 -%}
-                {%- if days > 0 or hours > 0 -%}
-                  {{ ' ' }}
-                {%- endif -%}
-                {{ minutes }}m
-              {%- endif -%}
-              {%- if seconds > 0 -%}
-                {%- if days > 0 or hours > 0 or minutes > 0 -%}
-                  {{ ' ' }}
-                {%- endif -%}
-                {{ seconds }}s
-              {%- endif -%}
-            {%- endif -%}
-          {% endif %}
+            # {%- if time < 60 -%}
+              # {{seconds}}s
+            # {%- else -%}
+              # {%- if days > 0 -%}
+                # {{ days }}d
+              # {%- endif -%}
+              # {%- if hours > 0 -%}
+                # {%- if days > 0 -%}
+                  # {{ ' ' }}
+                # {%- endif -%}
+                # {{ hours }}h
+              # {%- endif -%}
+              # {%- if minutes > 0 -%}
+                # {%- if days > 0 or hours > 0 -%}
+                  # {{ ' ' }}
+                # {%- endif -%}
+                # {{ minutes }}m
+              # {%- endif -%}
+              # {%- if seconds > 0 -%}
+                # {%- if days > 0 or hours > 0 or minutes > 0 -%}
+                  # {{ ' ' }}
+                # {%- endif -%}
+                # {{ seconds }}s
+              # {%- endif -%}
+            # {%- endif -%}
+          # {% endif %}

@@ -1,14 +1,16 @@
   api_key: !secret sab_api_key
-  host: !secret desktop_domain
-  name: sab
+  host: !secret desktop_ip
   port: 9090
-  ssl: true
+  name: "sabnzbd"
   sensors:
     - current_status
     - speed
     - queue_size
     - queue_remaining
+    - disk_size
+    - disk_free
     - queue_count
     - day_size
     - week_size
     - month_size
+    - total_size

@@ -1,4 +1,4 @@
-title: General
+title: Weather and Calendar
 icon: mdi:calendar-today
 path: weather_and_calendar
 theme: darkblue
@@ -15,3 +15,4 @@ cards:
   - !include weather_calendar_cards/finance_card.yaml
   - !include weather_calendar_cards/package_tracking_card.yaml
   - !include weather_calendar_cards/keep_list_card.yaml
+  - !include cast_card.yaml

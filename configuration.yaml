@@ -66,6 +66,7 @@ discovery:
     - roku
     - google_cast
     - plex_mediaserver
+    - igd
 
 tts: !include yamls/commands_and_notify/tts.yaml
 

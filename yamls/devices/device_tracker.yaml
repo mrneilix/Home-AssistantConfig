@@ -2,7 +2,7 @@
       consider_home: 480
       interval_seconds: 3
       new_device_defaults:
-        track_new_devices: false
+        # track_new_devices: false
         hide_if_away: true
     - platform: ping
       consider_home: 480

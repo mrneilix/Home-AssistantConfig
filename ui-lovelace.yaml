@@ -15,10 +15,8 @@ cch:
   show_tabs: 0,1,2,3
   swipe: true
   swipe_animate: swipe
-  sidebar_swipe: true
   hide_help: true
   hide_unused: true
-  sidebar_closed: true
 views:
   - !include lovelace/00_main_view.yaml
   - !include lovelace/01_media_player_view.yaml

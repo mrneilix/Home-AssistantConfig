@@ -134,6 +134,7 @@ system_backup:
     - service: hassio.snapshot_full
       data_template:
         name: Automated Backup {{ now().strftime('%Y-%m-%d') }}
+    - service: shell_command.desktop_backup_sync
 
 system_git_backup:
   alias: System Git Backup

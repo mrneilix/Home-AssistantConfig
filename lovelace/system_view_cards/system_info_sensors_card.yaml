@@ -9,6 +9,6 @@ entities:
   - sensor.pi_zero_uptime
   - sensor.pi_zero_last_system_poll
   - type: divider
-  - sensor.network_downloaded
-  - sensor.network_uploaded
+  - sensor.network_in_eth0
+  - sensor.network_out_eth0
   - sensor.speedtest_ping

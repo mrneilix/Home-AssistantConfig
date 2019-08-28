@@ -8,3 +8,69 @@
     origin: device_tracker.tile_70e3c9fefea64a42
     options: street_number, street, city
     api_key: !secret google_geocode_api
+  - platform: template
+    sensors:
+      neil_gps_address_zone:
+        friendly_name: "Phone GPS"
+        value_template: >
+          {% if is_state('sensor.neil_phone_address', 'Home') %}
+              565 Peachtree Street NE, Atlanta, GA 30308
+          {%  elif is_state('sensor.neil_phone_address', 'home') %}
+              565 Peachtree Street NE, Atlanta, GA 30308
+          {%  elif is_state('sensor.neil_phone_address', 'Dipan') %}
+              3334 Peachtree Rd NE, Atlanta, GA 30326
+          {%  elif is_state('sensor.neil_phone_address', 'Parents') %}
+              735 ARan Drive, Roswell, GA 30076
+          {%  elif is_state('sensor.neil_phone_address', 'Kiel') %}
+              2037 Jordan Terrace NE, Atlanta, GA
+          {%  elif is_state('sensor.neil_phone_address', 'Gina') %}
+              285 Centennial Olympic Park Dr NW, Atlanta, GA 30313
+          {% else %}
+              {{states.sensor.neil_phone_address.attributes.formatted_address}}
+          {% endif %}
+        icon_template: >
+          {% if is_state('sensor.neil_phone_address', 'Home') %}
+              mdi:castle
+          {%  elif is_state('sensor.neil_phone_address', 'home') %}
+              mdi:castle
+          {%  elif is_state('sensor.neil_phone_address', 'Dipan') %}
+              mdi:account
+          {%  elif is_state('sensor.neil_phone_address', 'Parents') %}
+              mdi:human-female-boy
+          {%  elif is_state('sensor.neil_phone_address', 'Kiel') %}
+              mdi:account-group
+          {%  elif is_state('sensor.neil_phone_address', 'Gina') %}
+              mdi:baby-buggy
+          {% else %}
+              mdi:map-marker
+          {% endif %}
+      butters_gps_address_zone:
+        friendly_name: "Buters Tile GPS"
+        value_template: >
+          {% if is_state('sensor.butters_tile_address', 'Home') %}
+              565 Peachtree Street NE, Atlanta, GA 30308
+          {%  elif is_state('sensor.butters_tile_address', 'Dipan') %}
+              3334 Peachtree Rd NE, Atlanta, GA 30326
+          {%  elif is_state('sensor.butters_tile_address', 'Parents') %}
+              735 ARan Drive, Roswell, GA 30076
+          {%  elif is_state('sensor.butters_tile_address', 'Kiel') %}
+              2037 Jordan Terrace NE, Atlanta, GA
+          {%  elif is_state('sensor.butters_tile_address', 'Gina') %}
+              285 Centennial Olympic Park Dr NW, Atlanta, GA 30313
+          {% else %}
+              {{states.sensor.butters_tile_address.attributes.formatted_address}}
+          {% endif %}
+        icon_template: >
+          {% if is_state('sensor.butters_tile_address', 'Home') %}
+              mdi:castle
+          {%  elif is_state('sensor.butters_tile_address', 'Dipan') %}
+              mdi:account
+          {%  elif is_state('sensor.butters_tile_address', 'Parents') %}
+              mdi:human-female-boy
+          {%  elif is_state('sensor.butters_tile_address', 'Kiel') %}
+              mdi:account-group
+          {%  elif is_state('sensor.butters_tile_address', 'Gina') %}
+              mdi:baby-buggy
+          {% else %}
+              mdi:map-marker
+          {% endif %}

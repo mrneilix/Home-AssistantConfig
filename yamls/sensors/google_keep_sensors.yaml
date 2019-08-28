@@ -13,21 +13,3 @@
     username: !secret email
     password: !secret keep_app_password
     list_id: !secret keep_bourbons_to_try
-  # - platform: google_keep
-    # name: keep_nyc_restaurants
-    # username: !secret email
-    # password: !secret keep_app_password
-    # titles:
-      # - "New York places"
-  # - platform: google_keep
-    # name: keep_atl_restaurants
-    # username: !secret email
-    # password: !secret keep_app_password
-    # titles:
-      # - "Atlanta Restaurants"
-  # - platform: google_keep
-    # name: keep_bourbon_restaurants
-    # username: !secret email
-    # password: !secret keep_app_password
-    # titles:
-      # - "Bourbons I need to try"

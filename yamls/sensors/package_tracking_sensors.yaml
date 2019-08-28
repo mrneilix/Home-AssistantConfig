@@ -1,3 +1,0 @@
-  # - platform: email
-    # email: !secret email
-    # password: !secret email_tracking_app_password
