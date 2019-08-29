@@ -23,7 +23,7 @@ cards:
       - type: 'custom:button-card'
         template: system_weblinks_card_template
         name: Control
-        icon: mdi:bug
+        icon: mdi:remote-tv
         tap_action:
           action: url
           url: !secret control_hass_url

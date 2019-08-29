@@ -9,24 +9,34 @@
       - sensor
   exclude:
     entities:
-      - sensor.dark_sky_summary
-      - sensor.dark_sky_precip_intensity
-      - sensor.dark_sky_precip_probability
-      - sensor.dark_sky_wind_speed
+      - sensor.allergy_index_today_2
+      - sensor.current_version
+      - sensor.custom_card_tracker
+      - sensor.custom_component_tracker
       - sensor.dark_sky_cloud_coverage
-      - sensor.dark_sky_humidity
-      - sensor.dark_sky_visibility
+      - sensor.dark_sky_cloud_coverage_0d
+      - sensor.dark_sky_daytime_high_apparent_temperature_0d
+      - sensor.dark_sky_daytime_high_temperature_0d
+      - sensor.dark_sky_dew_point
+      - sensor.dark_sky_dew_point_0d
+      - sensor.dark_sky_dew_point_0h
+      - sensor.dark_sky_dew_point_1h
+      - sensor.dark_sky_humidity_0h
+      - sensor.dark_sky_humidity_1h
       - sensor.dark_sky_icon
-      - sensor.dark_sky_daily_high_temperature
-      - sensor.dark_sky_daily_low_temperature
-      - sensor.last_boot
-      - sensor.network_in_eth0
-      - sensor.memory_free
-      - sensor.network_out_eth0
-      - sensor.since_last_boot_templated
-      - sensor.since_last_boot
-      - sensor.uptime
-      - sensor.ha_uptime
+      - sensor.dark_sky_icon_0d
+      - sensor.dark_sky_icon_0h
+      - sensor.dark_sky_icon_1h
+      - sensor.dark_sky_moon_phase_0d
+      - sensor.dark_sky_nearest_storm_distance
+      - sensor.dark_sky_overnight_low_apparent_temperature_0d
+      - sensor.dark_sky_overnight_low_temperature_0d
+      - sensor.dark_sky_precip_intensity_0d
+      - sensor.dark_sky_summary
+      - sensor.dark_sky_summary_0d
+      - sensor.dark_sky_summary_0h
+      - sensor.dark_sky_summary_1h
+      - sensor.dark_sky_wind_speed_0d
       - sensor.desktop_amd_a8_6600k_apu_with_radeon_hd_graphics_clocks_bus_speed
       - sensor.desktop_amd_a8_6600k_apu_with_radeon_hd_graphics_clocks_cpu_core_1
       - sensor.desktop_amd_a8_6600k_apu_with_radeon_hd_graphics_clocks_cpu_core_2
@@ -42,6 +52,34 @@
       - sensor.desktop_amd_radeon_tm_r7_360_series_controls_gpu_fan
       - sensor.desktop_amd_radeon_tm_r7_360_series_temperatures_gpu_core
       - sensor.desktop_amd_radeon_tm_r7_360_series_voltages_gpu_core
+      - sensor.gfiberrouter_bytes_received
+      - sensor.gfiberrouter_bytes_sent
+      - sensor.gfiberrouter_kbytesec_received
+      - sensor.gfiberrouter_kbytesec_sent
+      - sensor.gfiberrouter_packets_received
+      - sensor.gfiberrouter_packets_sent
+      - sensor.gfiberrouter_packetssec_received
+      - sensor.gfiberrouter_packetssec_sent
+      - sensor.ha_uptime
+      - sensor.last_boot
+      - sensor.last_boot_date_time
+      - sensor.latest_version
+      - sensor.schlage_camelot_battery
+      - sensor.memory_free
+      - sensor.monitor_status
+      - sensor.precipitation_soon
+      - sensor.radarr_disk_space
+      - sensor.radarr_upcoming
+      - sensor.radarr_upcoming_list
+      - sensor.radarr_upcoming_media
+      - sensor.since_last_boot
+      - sensor.since_last_boot_templated
+      - sensor.sonarr_upcoming
+      - sensor.sonarr_upcoming_list
+      - sensor.sonarr_upcoming_media
+      - sensor.time
+      - sensor.upcoming_downloads
+      - sensor.uptime
   tags:
     source: hass
   tags_attributes:

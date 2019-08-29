@@ -142,7 +142,6 @@ climate: !include yamls/devices/climate.yaml
 mqtt: !include yamls/devices/mqtt.yaml
 cast: !include yamls/devices/cast.yaml
 hdmi_cec: !include yamls/devices/cec.yaml
-googlehome: !include yamls/devices/googlehome.yaml
 tplink: !include yamls/devices/tplink.yaml
 tuya: !include yamls/devices/tuya.yaml
 google_assistant: !include yamls/devices/google_assistant.yaml
