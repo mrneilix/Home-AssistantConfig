@@ -143,6 +143,14 @@ presence_set_neil_device_trackers_away:
         dev_id: neil
         location_name: 'not_home'
 
+presence_set_neil_device_tracker_home:
+  alias: Presence Set Neil Device Tracker Home
+  sequence:
+    - service: device_tracker.see
+      data:
+        dev_id: neil_bluetooth
+        location_name: 'home'
+
 presence_lock_code_entered_not_family:
   alias: Lock Code Entered
   sequence:

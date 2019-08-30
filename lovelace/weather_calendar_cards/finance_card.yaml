@@ -42,6 +42,7 @@ card:
                   secondary_info: "Percent:<b style='color:green'> [[ {entity}.attributes.changePercent ]]% </b> Change: <b style='color:green'>$[[ {entity}.attributes.change ]] </b> Gain: <b style='color:green'>$[[ {entity}.attributes.gain_loss ]] </b>"
                 attributes:
                   change: "> 0"
+                  shares: "> 0"
         - type: custom:auto-entities
           card:
             type: entities
@@ -58,6 +59,7 @@ card:
                   secondary_info: "Percent:<b style='color:red'> [[ {entity}.attributes.changePercent ]]%</b> Change: <b style='color:red'>$[[ {entity}.attributes.change ]] </b> Loss: <b style='color:red'>$[[ {entity}.attributes.gain_loss ]] </b>"
                 attributes:
                   change: "< 0"
+                  shares: "> 0"
         - type: custom:mini-graph-card
           name: Bitcoin
           entities:

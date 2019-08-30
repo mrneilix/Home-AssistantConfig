@@ -47,17 +47,17 @@
     monitored_conditions:
       - changePercent
       - change
-  # - platform: avanza_stock
-    # stock: 140540
-    # name: Stock TAN
-    # shares: 300
-    # monitored_conditions:
-      # - changePercent
-      # - change
+  - platform: avanza_stock
+    stock: 140540
+    name: Stock TAN
+    shares: 0
+    monitored_conditions:
+      - changePercent
+      - change
   - platform: avanza_stock
     stock: 360598
     name: Stock UGAZ
-    shares: 1500
+    shares: 1000
     monitored_conditions:
       - changePercent
       - change
