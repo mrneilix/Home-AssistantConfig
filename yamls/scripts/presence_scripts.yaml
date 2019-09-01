@@ -148,7 +148,7 @@ presence_set_neil_device_tracker_home:
   sequence:
     - service: device_tracker.see
       data:
-        dev_id: neil_bluetooth
+        dev_id: neil
         location_name: 'home'
 
 presence_lock_code_entered_not_family:
