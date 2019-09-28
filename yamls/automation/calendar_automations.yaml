@@ -17,7 +17,7 @@
   action:
     - service: joaoapps_join.pixel_send_tasker
       data:
-        command: falcons
+        command: cast=:=falcons
     - service: input_boolean.turn_on
       data:
         entity_id: input_boolean.couch_light_script_running

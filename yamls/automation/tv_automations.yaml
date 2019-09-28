@@ -26,21 +26,21 @@
       data_template:
         command: >
           {% if is_state_attr('media_player.living_room_tv', 'app_name', 'YouTube TV') %}
-            yttv
+            cast=:=yttv
           {%-elif is_state_attr('media_player.living_room_tv', 'app_name', 'Netflix') %}
-            netflix
+            cast=:=netflix
           {%-elif is_state_attr('media_player.living_room_tv', 'app_name', 'YouTube Music') %}
-            ytmusic
+            cast=:=ytmusic
           {%-elif is_state_attr('media_player.living_room_tv', 'app_name', 'YouTube') %}
-            yt
+            cast=:=yt
           {%-elif is_state_attr('media_player.living_room_tv', 'app_name', 'Plex') %}
-            plex
+            cast=:=plex
           {%-elif is_state_attr('media_player.living_room_tv', 'app_name', 'HBO GO') %}
-            hbo
+            cast=:=hbo
           {%-elif is_state_attr('media_player.living_room_tv', 'app_name', 'Starz') %}
-            starz
+            cast=:=starz
           {%-elif is_state_attr('media_player.living_room_tv', 'app_name', 'Showtime Anytime') %}
-            showtime
+            cast=:=showtime
           {% else %}
           {% endif %}
     - service: joaoapps_join.fire_send_tasker
