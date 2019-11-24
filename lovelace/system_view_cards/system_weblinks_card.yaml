@@ -45,11 +45,3 @@ cards:
         tap_action:
           action: url
           url: !secret grafana_weblink
-      - type: 'custom:button-card'
-        template: system_weblinks_card_template
-        name: Phlex TV
-        icon: mdi:microphone
-        show_state: false
-        tap_action:
-          action: url
-          url: !secret phlex_url

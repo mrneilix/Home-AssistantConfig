@@ -75,7 +75,6 @@ restart_homeassistant:
 system_restart_if_just_rebooted:
   alias: System Restart If Just Rebooted
   sequence:
-    - service: rest_command.desktop_logins
     - delay: 00:01:00
     - service: script.restart_homeassistant
 
