@@ -44,6 +44,6 @@
   desktop_backup_sync:
     url: !secret desktop_backup_sync
     method: get
-  desktop_logins:
-    url: !secret desktop_logins
+  desktop_restart_plex:
+    url: !secret desktop_restart_plex
     method: get

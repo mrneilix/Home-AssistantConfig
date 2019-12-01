@@ -45,3 +45,10 @@ cards:
         tap_action:
           action: url
           url: !secret grafana_weblink
+      - type: 'custom:button-card'
+        name: Show System Stats
+        tap_action:
+          action: navigate
+          navigation_path: /lovelace/system_monitor_view
+        color: var(--primary-color)
+        icon: mdi:desktop-classic

@@ -159,5 +159,5 @@
       entity_id: input_boolean.restart_complete
       state: 'on'
   action:
-    - service: shell_command.desktop_screen_off
+    - service: script.system_desktop_display_off
     - service: rest_command.mirror_hide_all_modules

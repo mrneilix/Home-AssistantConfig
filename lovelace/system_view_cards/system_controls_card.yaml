@@ -90,13 +90,6 @@ cards:
   - type: horizontal-stack
     cards:
       - type: 'custom:button-card'
-        name: Show System Stats
-        tap_action:
-          action: navigate
-          navigation_path: /lovelace/system_monitor_view
-        color: var(--primary-color)
-        icon: mdi:desktop-classic
-      - type: 'custom:button-card'
         name: Toggle Mirror Rotation
         entity: binary_sensor.magic_mirror_display_rotation_off
         icon: mdi:rotate-3d-variant
@@ -109,3 +102,16 @@ cards:
         state:
           - value: 'off'
             spin: true
+      - type: 'custom:button-card'
+        name: Restart Plex
+        entity: script.desktop_restart_plex
+        icon: 'mdi:plex'
+        tap_action:
+          action: call-service
+          service: script.desktop_restart_plex
+        state:
+          - value: 'off'
+            color: rgb(57, 111, 182)
+          - value: 'on'
+            color: rgb(57, 111, 182)
+        color_type: icon

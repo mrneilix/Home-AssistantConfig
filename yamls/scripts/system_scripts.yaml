@@ -1,6 +1,9 @@
 startup_scripts:
   alias: Startup Scripts
   sequence:
+    - service: frontend.set_theme
+      data:
+        name: darkblue
     - service: lock.lock
       entity_id: lock.schlage_camelot
     - service: script.startup_input_booleans
@@ -134,6 +137,11 @@ system_backup:
       data_template:
         name: Automated Backup {{ now().strftime('%Y-%m-%d') }}
     - service: shell_command.desktop_backup_sync
+
+desktop_restart_plex:
+  alias: Restart Plex
+  sequence:
+    - service: shell_command.desktop_restart_plex
 
 system_git_backup:
   alias: System Git Backup
