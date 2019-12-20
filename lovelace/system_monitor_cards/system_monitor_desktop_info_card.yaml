@@ -23,7 +23,7 @@ cards:
               yellow: 4
               red: 6
           - type: gauge
-            entity: sensor.desktop_disk_space_i
+            entity: sensor.desktop_disk_space_g
             max: 7.28
             theme: gauge_theme
             severity:

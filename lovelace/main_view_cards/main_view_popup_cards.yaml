@@ -93,62 +93,56 @@ lock.schlage_camelot: sensor.last_lock_code_name
 sensor.tautulli:
   title: Plex
   card:
-    type: custom:card-loader
-    wait:
-      - swipe-card
-      - auto-entities
-      - mini-graph-card
-    card:
-      type: custom:swipe-card
-      parameters:
-        spaceBetween: 0
-        autoHeight: true
-        preventClicks: true
-        preventClicksPropagation: true
-        touchStartForcePreventDefault: true
-        effect: slide
-        scrollbar:
-          hide: false
-          draggable: true
-          snapOnRelease: true
-      cards:
-        - type: custom:auto-entities
-          show_empty: false
-          card:
-            type: entities
-            show_header_toggle: false
-            style: |
-              ha-card {
-                background-image: url("/local/pictures/lovelace-pictures/plex.png");
-                background-repeat: no-repeat;
-                background-color: rgb(31,31,31);
-                background-position: right;
-                background-size: contain;
-              }
-          filter:
-            include:
-              - entity_id: "sensor.tautulli_watching_*"
-            exclude:
-              - state: "Nothing"
-        - type: custom:mini-graph-card
-          more_info: false
-          show:
-            points: hover
-            extrema: true
-            labels: false
-            name: false
-            icon: false
-          line_color: '#f7931a'
-          entities:
-            - entity: sensor.tautulli
-              show_state: true
+    type: custom:swipe-card
+    parameters:
+      spaceBetween: 0
+      autoHeight: true
+      preventClicks: true
+      preventClicksPropagation: true
+      touchStartForcePreventDefault: true
+      effect: slide
+      scrollbar:
+        hide: false
+        draggable: true
+        snapOnRelease: true
+    cards:
+      - type: custom:auto-entities
+        show_empty: false
+        card:
+          type: entities
+          show_header_toggle: false
           style: |
             ha-card {
               background-image: url("/local/pictures/lovelace-pictures/plex.png");
               background-repeat: no-repeat;
-              background-color: rgb(0,0,0);
-              background-size: 100% 100%;
+              background-color: rgb(31,31,31);
+              background-position: right;
+              background-size: contain;
             }
+        filter:
+          include:
+            - entity_id: "sensor.tautulli_watching_*"
+          exclude:
+            - state: "Nothing"
+      - type: custom:mini-graph-card
+        more_info: false
+        show:
+          points: hover
+          extrema: true
+          labels: false
+          name: false
+          icon: false
+        line_color: '#f7931a'
+        entities:
+          - entity: sensor.tautulli
+            show_state: true
+        style: |
+          ha-card {
+            background-image: url("/local/pictures/lovelace-pictures/plex.png");
+            background-repeat: no-repeat;
+            background-color: rgb(0,0,0);
+            background-size: 100% 100%;
+          }
 
 sensor.fitbit_steps:
   title: FitBit

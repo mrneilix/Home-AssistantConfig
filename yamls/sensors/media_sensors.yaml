@@ -117,15 +117,15 @@
               {{ used }}
             {% endif %}
           {% endfor %}
-      desktop_disk_space_i:
-        friendly_name: "I: - Movies"
+      desktop_disk_space_g:
+        friendly_name: "G: - Movies"
         icon_template: mdi:harddisk
         unit_of_measurement: "TB"
         value_template: >
           {% for attr in states.sensor.radarr_disk_space.attributes %}
-            {% if  "I" in attr  %}
-              {%- set i_drive = states.sensor.radarr_disk_space.attributes[attr] -%}
-              {%- set full = i_drive.split('TB')[0] -%}
+            {% if  "G" in attr  %}
+              {%- set g_drive = states.sensor.radarr_disk_space.attributes[attr] -%}
+              {%- set full = g_drive.split('TB')[0] -%}
               {%- set free = full.split('/')[0] | float | round(2) -%}
               {%- set total = full.split('/')[1] | float | round(2) -%}
               {%- set used = (total - free) | float | round(2) -%}
