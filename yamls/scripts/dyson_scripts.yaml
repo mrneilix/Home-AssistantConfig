@@ -1,0 +1,53 @@
+bedroom_dyson_toggle:
+  alias: "Dyson Set Auto Mode"
+  sequence:
+    - service_template: >
+        {% if is_state('binary_sensor.dyson_bedroom_on', 'on') %}
+          script.bedroom_dyson_turn_off
+        {% else %}
+          script.bedroom_dyson_turn_on
+        {% endif %}
+
+bedroom_dyson_turn_off:
+  alias: "Dyson Turn Off Auto Mode"
+  sequence:
+    - service: fan.turn_off
+      data:
+        entity_id: fan.bedroom
+bedroom_dyson_turn_on:
+  alias: "Dyson Turn On Auto Mode"
+  sequence:
+    - service: fan.turn_on
+      data:
+        entity_id: fan.bedroom
+        speed: AUTO
+    - delay: '00:00:02'
+    - service: script.bedroom_dyson_oscillate_on
+    - service: climate.set_fan_mode
+      data:
+        entity_id: climate.bedroom
+        fan_mode: diffuse
+
+bedroom_dyson_toggle_oscillate:
+  alias: "Dyson Toggle Oscillate"
+  sequence:
+    - service_template: >
+        {% if is_state('binary_sensor.dyson_bedroom_oscillation_on', 'on') %}
+          script.bedroom_dyson_oscillate_off
+        {% else %}
+          script.bedroom_dyson_oscillate_on
+        {% endif %}
+bedroom_dyson_oscillate_on:
+  alias: "Dyson Turn On Oscillate"
+  sequence:
+    - service: fan.oscillate
+      data:
+        entity_id: fan.bedroom
+        oscillating: true
+bedroom_dyson_oscillate_off:
+  alias: "Dyson Turn Off Oscillate"
+  sequence:
+    - service: fan.oscillate
+      data:
+        entity_id: fan.bedroom
+        oscillating: false

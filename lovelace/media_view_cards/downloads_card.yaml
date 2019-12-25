@@ -9,7 +9,7 @@ cards:
         icon: mdi:television-classic
         hold_action:
           action: url
-          url: !secret sonarr_weblink
+          url_path: !secret sonarr_weblink
       - type: 'custom:button-card'
         template: download_card_templates
         name: Radarr
@@ -17,7 +17,7 @@ cards:
         icon: mdi:filmstrip
         hold_action:
           action: url
-          url: !secret radarr_weblink
+          url_path: !secret radarr_weblink
       - type: 'custom:button-card'
         template: download_card_templates
         name: Tautulli
@@ -25,7 +25,7 @@ cards:
         icon: mdi:view-stream
         tap_action:
           action: url
-          url: !secret tautulli_url
+          url_path: !secret tautulli_url
   - type: horizontal-stack
     cards:
       - type: 'custom:button-card'

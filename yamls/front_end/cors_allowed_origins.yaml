@@ -1,5 +1,10 @@
     - !secret terminal_url
+    - !secret base_url
     - !secret new_url
+    - !secret google_home_ip
+    - !secret base_url_for_google_home
+    - !secret root_domain
+    - !secret trusted_root_domain
     - !secret tautulli_url
     - !secret pi_zero_url
     - !secret mosquitto_url
@@ -10,3 +15,7 @@
     - !secret QBitTorrent_weblink
     - !secret sonarr_weblink
     - !secret radarr_weblink
+    - !secret chromecast_ip
+    - !secret google_home_mini_ip
+    - !secret chromebook_ip
+    - !secret cast_cors

@@ -1,5 +1,5 @@
   - platform: tautulli
-    host: !secret hass_ip
+    host: !secret localhost
     ssl: false
     api_key: !secret tautulli_api
     port: !secret tautulli_port
@@ -42,7 +42,6 @@
     days: 30
     theaters: false
     max: 10
-    ssl: true
   - platform: plex_recently_added
     token: !secret plex_token
     host: !secret desktop_ip

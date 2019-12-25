@@ -20,6 +20,17 @@ thermostat_set_home_not_morning:
           {% else %}
             72
           {% endif %}
+    - service: climate.set_temperature
+      entity_id: climate.bedroom
+      data_template:
+        temperature: >
+          {% if is_state('sensor.temp', 'FuckingCold') %}
+            72
+          {%-elif is_state('sensor.temp', 'ReallyFuckingCold') %}
+            72
+          {% else %}
+            70
+          {% endif %}
       
 thermostat_set_home_morning:
   alias: Thermostat Temp Home Morning
@@ -42,6 +53,15 @@ thermostat_set_home_morning:
             72
           {% endif %}
     - delay: 00:00:05
+    - service: climate.set_temperature
+      entity_id: climate.bedroom
+      data_template:
+        temperature: >
+          {% if is_state('sensor.temp', 'FuckingCold') or is_state('sensor.temp', 'ReallyFuckingCold') %}
+            72
+          {% else %}
+            70
+          {% endif %}
 
 thermostat_home_set_temp:
   alias: Thermostat Home Set Temp
@@ -94,6 +114,15 @@ thermostat_set_hvac_mode:
   sequence:
     - service: climate.set_hvac_mode
       entity_id: climate.thermostat
+      data_template:
+        hvac_mode: >
+          {% if is_state('sensor.temp', 'Cold') or is_state('sensor.temp', 'FuckingCold') or is_state('sensor.temp', 'ReallyFuckingCold') %}
+            heat
+          {% else %}
+            cool
+          {% endif %}
+    - service: climate.set_hvac_mode
+      entity_id: climate.bedroom
       data_template:
         hvac_mode: >
           {% if is_state('sensor.temp', 'Cold') or is_state('sensor.temp', 'FuckingCold') or is_state('sensor.temp', 'ReallyFuckingCold') %}

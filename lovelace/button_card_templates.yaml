@@ -19,6 +19,7 @@ climate_lock_toggle_buttons:
   tap_action:
     action: toggle
   color: var(--primary-color)
+  layout: name_state
   state:
     - value: 'off'
       color: var(--paper-item-icon-color)

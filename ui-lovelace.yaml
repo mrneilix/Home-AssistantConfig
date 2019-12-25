@@ -2,25 +2,29 @@ resources: !include lovelace/resources.yaml
 popup_cards: !include lovelace/pop_up_cards.yaml
 button_card_templates: !include lovelace/button_card_templates.yaml
 title: Atlanta Condo
-cch:
-  voice: hide
-  menu: show
-  notifications: show
-  options: clock
-  clock_format: 12
-  clock_am_pm: true
-  header: true
-  tab_indicator_color: rgb(19, 172, 198)
+custom_header:
+  button_text:
+    options: '{{ time }}'
+  voice_hide: true
+  active_tab_color: rgb(19, 172, 198)
   redirect: true
   show_tabs: 0,1,2,3
-  swipe: true
-  swipe_animate: swipe
-  hide_help: true
   hide_unused: true
+  compact_mode: true
+  hide_config: true
+  hide_help: true
+  split_mode: false
+  shadow: true
+swipe_nav:
+  wrap: true
+  animate: swipe
+  skip_tabs: 4
+  prevent_default: true
+  swipe_amount: 15
 views:
   - !include lovelace/00_main_view.yaml
   - !include lovelace/01_media_player_view.yaml
-  - !include lovelace/02_weather_and_calendar_view.yaml
+  - !include lovelace/02_calendar_view.yaml
   - !include lovelace/03_system_view.yaml
   # - !include lovelace/03_system_view_mobile.yaml
   - !include lovelace/04_system_monitor_view.yaml

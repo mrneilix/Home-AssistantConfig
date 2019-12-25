@@ -7,4 +7,4 @@ cards:
   - !include system_view_cards/system_weblinks_card.yaml
   - !include system_view_cards/system_controls_card.yaml
   - !include system_view_cards/system_info_sensors_card.yaml
-  - !include cast_card.yaml
+  - !include system_view_cards/system_view_cast_card.yaml

@@ -89,3 +89,22 @@ cards:
             name: Camera
             template: climate_lock_toggle_buttons
             entity: switch.yi_power
+          - type: 'custom:button-card'
+            name: Dyson
+            entity: binary_sensor.dyson_bedroom_on
+            icon: mdi:home-thermometer-outline
+            hold_action:
+              action: more-info
+            tap_action:
+              action: call-service
+              service: script.bedroom_dyson_toggle
+            state:
+              - value: 'off'
+                color: var(--paper-item-icon-color)
+              - value: 'on'
+                color: var(--primary-color)
+            show_label: true
+            label: >
+              [[[
+                return 'Temp: ' + states['sensor.bedroom_temperature'].state;
+              ]]]

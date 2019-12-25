@@ -23,4 +23,4 @@ cards:
   # - !include main_view_cards/timers_and_alarms_card.yaml
   - !include main_view_cards/climate_lock_group_card.yaml
   - !include main_view_cards/weather_summary_card.yaml
-  - !include cast_card.yaml
+  - !include main_view_cards/main_view_cast_card.yaml

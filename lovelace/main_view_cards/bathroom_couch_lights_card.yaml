@@ -5,130 +5,136 @@ cards:
     - type: light
       entity: light.bathroom_orb
       name: Bathroom Orb
-    - type: 'custom:config-template-card'
-      entities:
-        - sensor.couch_light_color
-      card:
-        type: 'custom:card-modder'
-        style:
-          --paper-item-icon-active-color: "${ states['sensor.couch_light_color_name'].state == 'Disable' ? '#B5B5B5' : states['sensor.couch_light_color_name'].state == 'White' ? 'rgb(255, 255, 255)' : 'rgb[[ sensor.couch_light_color ]]' }"
-        card:
-          type: light
-          entity: light.couch
-          name: Couch
-- type: conditional
-  conditions:
-    - entity: light.couch
-      state: 'on'
-  card:
-    type: custom:vertical-stack-in-card
-    cards:
-      - type: horizontal-stack
-        cards:
-          - type: 'custom:button-card'
-            name: White
-            style: |
-              ha-card {
-                --paper-card-background-color: [[ if(sensor.couch_light_color_name == "White", "#37464f", "#263137") ]];
-              }
-            tap_action:
-              action: call-service
-              service: light.turn_on
-              service_data:
-                entity_id: light.couch
-                rgb_color: [255, 255, 255]
-            color: 'rgb(255, 255, 255)'
-            color_type: icon
-            icon: mdi:sofa
-          - type: 'custom:button-card'
-            name: Yellow
-            style: |
-              ha-card {
-                --paper-card-background-color: [[ if(sensor.couch_light_color_name == "Yellow", "#37464f", "#263137") ]];
-              }
-            tap_action:
-              action: call-service
-              service: light.turn_on
-              service_data:
-                entity_id: light.couch
-                rgb_color: [255, 255, 0]
-            color: 'rgb(255, 255, 0)'
-            color_type: icon
-            icon: mdi:sofa
-          - type: 'custom:button-card'
-            name: Blue
-            style: |
-              ha-card {
-                --paper-card-background-color: [[ if(sensor.couch_light_color_name == "Blue", "#37464f", "#263137") ]];
-              }
-            tap_action:
-              action: call-service
-              service: light.turn_on
-              service_data:
-                entity_id: light.couch
-                rgb_color: [0, 0, 255]
-            color: 'rgb(0, 0, 255)'
-            color_type: icon
-            icon: mdi:sofa
-      - type: horizontal-stack
-        cards:
-          - type: 'custom:button-card'
-            name: Red
-            style: |
-              ha-card {
-                --paper-card-background-color: [[ if(sensor.couch_light_color_name == "Red", "#37464f", "#263137") ]];
-              }
-            tap_action:
-              action: call-service
-              service: light.turn_on
-              service_data:
-                entity_id: light.couch
-                rgb_color: [255, 0, 0]
-            color: 'rgb(255, 0, 0)'
-            color_type: icon
-            icon: mdi:sofa
-          - type: 'custom:button-card'
-            name: Green
-            style: |
-              ha-card {
-                --paper-card-background-color: [[ if(sensor.couch_light_color_name == "Green", "#37464f", "#263137") ]];
-              }
-            tap_action:
-              action: call-service
-              service: light.turn_on
-              service_data:
-                entity_id: light.couch
-                rgb_color: [0, 255, 0]
-            color: 'rgb(0, 255, 0)'
-            color_type: icon
-            icon: mdi:sofa
-          - type: 'custom:button-card'
-            name: Purple
-            style: |
-              ha-card {
-                --paper-card-background-color: [[ if(sensor.couch_light_color_name == "Purple", "#37464f", "#263137") ]];
-              }
-            tap_action:
-              action: call-service
-              service: light.turn_on
-              service_data:
-                entity_id: light.couch
-                rgb_color: [255, 0, 255]
-            color: 'rgb(255, 0, 255)'
-            color_type: icon
-            icon: mdi:sofa
-      - type: horizontal-stack
-        cards:
-          - type: entities
-            entities:
-              - input_text.couch_color
-      - type: horizontal-stack
-        cards:
-          - type: custom:light-entity-card
-            entity: light.couch
-            header: false
-            brightness: false
-            color_temp: false
-            white_value: false
-            color_picker: true
-            effects_list: false
+    - type: light
+      entity: light.couch
+      name: Couch
+      style: |
+        :host {
+          --paper-item-icon-active-color:
+           {% if is_state('sensor.couch_light_color_name', 'Disable') %}
+             #B5B5B5
+           {% elif is_state('sensor.couch_light_color_name', 'White') %}
+             rgb(255, 255, 255)
+           {% else %}
+            rgb[[ sensor.couch_light_color ]]
+           {% endif %};
+        }
+- type: custom:state-switch
+  entity: light.couch
+  states:
+    "on":
+      type: custom:vertical-stack-in-card
+      cards:
+        - type: horizontal-stack
+          cards:
+            - type: 'custom:button-card'
+              name: White
+              styles:
+                card:
+                  - background-color: >
+                      [[[
+                        if (states['sensor.couch_light_color_name'].state == 'White')
+                          return "#37464f";
+                        return "#263137";
+                      ]]]
+              tap_action:
+                action: call-service
+                service: light.turn_on
+                service_data:
+                  entity_id: light.couch
+                  rgb_color: [255, 255, 255]
+              color: 'rgb(255, 255, 255)'
+              color_type: icon
+              icon: mdi:sofa
+            - type: 'custom:button-card'
+              name: Yellow
+              style: |
+                ha-card {
+                  --paper-card-background-color: [[ if(sensor.couch_light_color_name == "Yellow", "#37464f", "#263137") ]];
+                }
+              tap_action:
+                action: call-service
+                service: light.turn_on
+                service_data:
+                  entity_id: light.couch
+                  rgb_color: [255, 255, 0]
+              color: 'rgb(255, 255, 0)'
+              color_type: icon
+              icon: mdi:sofa
+            - type: 'custom:button-card'
+              name: Blue
+              style: |
+                ha-card {
+                  --paper-card-background-color: [[ if(sensor.couch_light_color_name == "Blue", "#37464f", "#263137") ]];
+                }
+              tap_action:
+                action: call-service
+                service: light.turn_on
+                service_data:
+                  entity_id: light.couch
+                  rgb_color: [0, 0, 255]
+              color: 'rgb(0, 0, 255)'
+              color_type: icon
+              icon: mdi:sofa
+        - type: horizontal-stack
+          cards:
+            - type: 'custom:button-card'
+              name: Red
+              style: |
+                ha-card {
+                  --paper-card-background-color: [[ if(sensor.couch_light_color_name == "Red", "#37464f", "#263137") ]];
+                }
+              tap_action:
+                action: call-service
+                service: light.turn_on
+                service_data:
+                  entity_id: light.couch
+                  rgb_color: [255, 0, 0]
+              color: 'rgb(255, 0, 0)'
+              color_type: icon
+              icon: mdi:sofa
+            - type: 'custom:button-card'
+              name: Green
+              style: |
+                ha-card {
+                  --paper-card-background-color: [[ if(sensor.couch_light_color_name == "Green", "#37464f", "#263137") ]];
+                }
+              tap_action:
+                action: call-service
+                service: light.turn_on
+                service_data:
+                  entity_id: light.couch
+                  rgb_color: [0, 255, 0]
+              color: 'rgb(0, 255, 0)'
+              color_type: icon
+              icon: mdi:sofa
+            - type: 'custom:button-card'
+              name: Purple
+              style: |
+                ha-card {
+                  --paper-card-background-color: [[ if(sensor.couch_light_color_name == "Purple", "#37464f", "#263137") ]];
+                }
+              tap_action:
+                action: call-service
+                service: light.turn_on
+                service_data:
+                  entity_id: light.couch
+                  rgb_color: [255, 0, 255]
+              color: 'rgb(255, 0, 255)'
+              color_type: icon
+              icon: mdi:sofa
+        - type: horizontal-stack
+          cards:
+            - type: entities
+              entities:
+                - input_text.couch_color
+        - type: horizontal-stack
+          cards:
+            - type: custom:light-entity-card
+              entity: light.couch
+              header: false
+              brightness: false
+              color_temp: false
+              white_value: false
+              color_picker: true
+              effects_list: false

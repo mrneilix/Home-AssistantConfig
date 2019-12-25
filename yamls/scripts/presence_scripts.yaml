@@ -52,6 +52,7 @@ presence_neil_arrived_home:
       data:
         entity_id: input_boolean.notifications_on
     - delay: 00:00:05
+    - service: script.bedroom_dyson_turn_on
     - service: tts.google_say
       entity_id: media_player.kitchen_display
       data_template:
@@ -81,6 +82,7 @@ presence_no_humans_home:
       data:
         command: leave
     - service: script.thermostat_leave_set_temp
+    - service: script.bedroom_dyson_turn_off
     - service: input_boolean.turn_off
       data:
         entity_id: input_boolean.presence_running

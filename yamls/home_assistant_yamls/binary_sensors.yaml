@@ -116,7 +116,7 @@
         value_template: '{{ (((  as_timestamp(strptime(states.calendar.facebook_events.attributes.start_time, "%d.%m.%Y")) - as_timestamp(now()) ) / 86400 ) | round(0) < 30 ) }}'
       show_calendar_deliveries:
         value_template: >-
-          {% if states.calendar.deliveries.attributes.message == '' %}
+          {% if states.calendar.deliveries.attributes.message == '' or states.calendar.deliveries.state == 'off' %}
             False
           {% elif ((( as_timestamp(strptime(states.calendar.deliveries.attributes.start_time, "%d.%m.%Y")) - as_timestamp(now()) ) / 86400 ) | round(0) < 30 ) %}
             True
@@ -156,6 +156,27 @@
           - script.thermostat_leave_set_temp
           - script.thermostat_home_set_temp
 
+      dyson_bedroom_on:
+        friendly_name: Dyson Bedroom Fan On
+        value_template: >-
+          {%- if states.fan.bedroom.attributes.auto_mode == true %}
+            True
+          {%- else -%}
+            False
+          {%- endif %}
+        entity_id:
+          - fan.bedroom
+
+      dyson_bedroom_oscillation_on:
+        friendly_name: Dyson Bedroom Oscillate On
+        value_template: >-
+          {%- if states.fan.bedroom.attributes.oscillating == true %}
+            True
+          {%- else -%}
+            False
+          {%- endif %}
+        entity_id:
+          - fan.bedroom
 # MagicMirror Display Rotating
       magic_mirror_display_rotation_off:
         value_template: >-

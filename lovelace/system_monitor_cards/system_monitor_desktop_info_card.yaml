@@ -24,12 +24,12 @@ cards:
               red: 6
           - type: gauge
             entity: sensor.desktop_disk_space_g
-            max: 7.28
+            max: 9.10
             theme: gauge_theme
             severity:
               green: 0
               yellow: 4
-              red: 6
+              red: 8
   - type: horizontal-stack
     cards:
       - type: gauge

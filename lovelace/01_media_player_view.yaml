@@ -8,4 +8,4 @@ cards:
   - !include media_view_cards/cast_card.yaml
   - !include media_view_cards/watching_plex_card.yaml
   - !include media_view_cards/downloads_card.yaml
-  - !include cast_card.yaml
+  - !include media_view_cards/media_view_cast_card.yaml

@@ -7,3 +7,4 @@ cards:
   - !include system_monitor_cards/system_monitor_memory_usage_card.yaml
   - !include system_monitor_cards/system_monitor_cpu_usage_card.yaml
   - !include system_monitor_cards/system_monitor_desktop_info_card.yaml
+  - !include system_monitor_cards/system_monitor_view_cast_card.yaml

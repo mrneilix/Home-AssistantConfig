@@ -10,18 +10,17 @@ homeassistant:
     - /config/
     - /
   auth_providers:
-    - type: homeassistant
     - type: trusted_networks
+      allow_bypass_login: true
       trusted_networks:
         - 127.0.0.1
         - !secret trusted_network
         - 172.30.32.0/24
+        - !secret trusted_home_network
+    - type: homeassistant
     - type: legacy_api_password
       api_password: !secret http_password
 frontend: !include yamls/front_end/frontend.yaml
-
-hacs:
-  token: !secret hacs_token
 
 breaking_changes:
 
@@ -31,17 +30,20 @@ websocket_api:
 
 hassio:
 
+browser_mod:
+
 http:
-  # api_password: !secret http_password
-  # ssl_certificate: !secret ssl_cert_domain
-  # ssl_key: !secret ssl_key_domain
-  base_url: !secret hass_ip
+  base_url: !secret base_url
   cors_allowed_origins: !include yamls/front_end/cors_allowed_origins.yaml
   use_x_forwarded_for: true
   trusted_proxies:
+    - 127.0.0.1
     - !secret trusted_network
     - !secret desktop_ip
     - !secret hass_ip
+    - !secret trusted_home_network
+  ip_ban_enabled: true
+  login_attempts_threshold: 5
 
 api:
 

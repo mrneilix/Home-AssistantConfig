@@ -1,0 +1,17 @@
+title: Weather and Calendar
+icon: mdi:calendar-today
+path: calendar
+theme: darkblue
+popup_cards: !include calendar_view_cards/family_device_tracker_popup_card.yaml
+badges:
+  - device_tracker.neil
+  - device_tracker.gina
+  - device_tracker.parents
+  - device_tracker.butters
+cards:
+  - !include calendar_view_cards/calendar_events_card.yaml
+  - !include calendar_view_cards/calendar_birthdays_card.yaml
+  - !include calendar_view_cards/finance_card.yaml
+  - !include calendar_view_cards/package_tracking_card.yaml
+  - !include calendar_view_cards/keep_list_card.yaml
+  - !include calendar_view_cards/calenar_view_cast_card.yaml

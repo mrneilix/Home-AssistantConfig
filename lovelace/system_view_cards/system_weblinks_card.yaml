@@ -9,7 +9,7 @@ cards:
         icon: mdi:router-wireless
         tap_action:
           action: url
-          url: !secret google_fiber_box_weblink
+          url_path: !secret google_fiber_box_weblink
       - type: 'custom:button-card'
         template: system_weblinks_card_template
         name: Vera
@@ -17,16 +17,16 @@ cards:
         icon: mdi:spa
         tap_action:
           action: url
-          url: !secret vera_weblink
+          url_path: !secret vera_weblink
   - type: horizontal-stack
     cards:
       - type: 'custom:button-card'
         template: system_weblinks_card_template
-        name: Control
-        icon: mdi:remote-tv
+        name: qBittorrent
+        icon: mdi:cloud-download-outline
         tap_action:
           action: url
-          url: !secret control_hass_url
+          url_path: !secret QBitTorrent_weblink
       - type: 'custom:button-card'
         template: system_weblinks_card_template
         name: SABnzbd
@@ -34,7 +34,25 @@ cards:
         icon: mdi:download
         tap_action:
           action: url
-          url: !secret sabnzbd_url
+          url_path: !secret sabnzbd_url
+  - type: horizontal-stack
+    cards:
+      - type: 'custom:button-card'
+        template: system_weblinks_card_template
+        name: Home Page
+        show_entity_picture: true
+        entity_picture: /local/pictures/home.png
+        tap_action:
+          action: url
+          url_path: !secret home_page_url
+      - type: 'custom:button-card'
+        name: Control Hass
+        template: system_weblinks_card_template
+        icon: mdi:remote-tv
+        show_state: false
+        tap_action:
+          action: url
+          url_path: !secret control_hass_url
   - type: horizontal-stack
     cards:
       - type: 'custom:button-card'
@@ -44,7 +62,7 @@ cards:
         show_state: false
         tap_action:
           action: url
-          url: !secret grafana_weblink
+          url_path: !secret grafana_weblink
       - type: 'custom:button-card'
         name: Show System Stats
         tap_action:
