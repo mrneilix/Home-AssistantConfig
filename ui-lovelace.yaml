@@ -13,7 +13,6 @@ custom_header:
   compact_mode: true
   hide_config: true
   hide_help: true
-  split_mode: false
   shadow: true
 swipe_nav:
   wrap: true

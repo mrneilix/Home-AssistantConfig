@@ -1,36 +1,34 @@
 type: vertical-stack
 cards:
-  - type: conditional
-    conditions:
-      - entity: binary_sensor.show_calendar_events
-        state: 'on'
-    card:
-      type: "custom:atomic-calendar"
-      title: "Events"
-      enableModeChange: true
-      defaultMode: 1
-      showProgressBar: True
-      showDate: true
-      maxDaysToShow: 14
-      hoursFormat: 12h
-      timeColor: rgb(175, 152, 55)
-      entities:
-        - entity: calendar.events
-          type: icon2
-  - type: conditional
-    conditions:
-      - entity: binary_sensor.show_calendar_facebook
-        state: 'on'
-    card:
-      type: "custom:atomic-calendar"
-      title: "Facebook Events"
-      enableModeChange: true
-      defaultMode: 1
-      showDate: true
-      showProgressBar: True
-      maxDaysToShow: 30
-      hoursFormat: 12h
-      timeColor: rgb(175, 152, 55)
-      entities:
-        - entity: calendar.facebook_events
-          type: icon2
+  - type: 'custom:state-switch'
+    entity: binary_sensor.show_calendar_events
+    states:
+      "on":
+        type: "custom:atomic-calendar"
+        title: "Events"
+        enableModeChange: true
+        defaultMode: 1
+        showProgressBar: True
+        showDate: true
+        maxDaysToShow: 14
+        hoursFormat: 12h
+        timeColor: rgb(175, 152, 55)
+        entities:
+          - entity: calendar.events
+            type: icon2
+  - type: 'custom:state-switch'
+    entity: binary_sensor.show_calendar_facebook
+    states:
+      "on":
+        type: "custom:atomic-calendar"
+        title: "Facebook Events"
+        enableModeChange: true
+        defaultMode: 1
+        showDate: true
+        showProgressBar: True
+        maxDaysToShow: 30
+        hoursFormat: 12h
+        timeColor: rgb(175, 152, 55)
+        entities:
+          - entity: calendar.facebook_events
+            type: icon2

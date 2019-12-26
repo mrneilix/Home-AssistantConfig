@@ -1,23 +1,22 @@
-type: conditional
-conditions:
-  - entity: binary_sensor.show_calendar_deliveries
-    state: 'on'
-card:
-  type: "custom:atomic-calendar"
-  title: "Deliveries"
-  enableModeChange: true
-  defaultMode: 1
-  CalEventIcon1: 'mdi:amazon'
-  CalEventIcon2: 'mdi:package-variant'
-  CalEventIcon3: 'mdi:mailbox'
-  CalEventIcon1Filter: Amazon
-  CalEventIcon2Filter: FedEx,UPS
-  CalEventIcon3Filter: USPS
-  showDate: true
-  showProgressBar: false
-  showMonth: true
-  maxDaysToShow: 30
-  fullDayEventText: ' '
-  entities:
-    - entity: calendar.deliveries
-      type: icon1,icon2,icon3
+type: 'custom:state-switch'
+entity: binary_sensor.show_calendar_deliveries
+states:
+  "on":
+    type: "custom:atomic-calendar"
+    title: "Deliveries"
+    enableModeChange: true
+    defaultMode: 1
+    CalEventIcon1: 'mdi:amazon'
+    CalEventIcon2: 'mdi:package-variant'
+    CalEventIcon3: 'mdi:mailbox'
+    CalEventIcon1Filter: Amazon
+    CalEventIcon2Filter: FedEx,UPS
+    CalEventIcon3Filter: USPS
+    showDate: true
+    showProgressBar: false
+    showMonth: true
+    maxDaysToShow: 30
+    fullDayEventText: ' '
+    entities:
+      - entity: calendar.deliveries
+        type: icon1,icon2,icon3

@@ -16,7 +16,7 @@
   url: /community_plugin/atomic_calendar/atomic_calendar.js
 - type: js
   url: /community_plugin/text-element/text-element.js
-- type: js
+- type: module
   url: /community_plugin/lovelace-card-tools/card-tools.js
 - type: js
   url: /community_plugin/lovelace-auto-entities/auto-entities.js
@@ -34,18 +34,16 @@
   url: /community_plugin/lovelace-layout-card/layout-card.js
 - type: js
   url: /community_plugin/light-entity-card/light-entity-card.js
+# - type: module
+  # url: /community_plugin/config-template-card/config-template-card.js
 - type: module
-  url: /community_plugin/config-template-card/config-template-card.js
-- type: module
-  url: https://cdn.jsdelivr.net/gh/bramkragten/custom-ui@master/swipe-card/swipe-card.js
+  url: /community_plugin/swipe-card/swipe-card.js
 - type: js
   url: /community_plugin/secondaryinfo-entity-row/secondaryinfo-entity-row.js
 - type: js
   url: /community_plugin/group-card/group-card.js
 - type: module
   url: /community_plugin/lovelace-state-switch/state-switch.js
-- type: module
-  url: /local/community/lovelace-markdown-mod/markdown-mod.js
 - type: js
   url: /community_plugin/flex-table-card/flex-table-card.js
 - type: module
@@ -54,3 +52,5 @@
   url: /community_plugin/lovelace-keep-notes-card/keep-notes-card.js
 - type: js
   url: /community_plugin/fitbit-card/fitbit-card.js
+- type: module
+  url: /community_plugin/lovelace-google-keep-card/google-keep-card.js

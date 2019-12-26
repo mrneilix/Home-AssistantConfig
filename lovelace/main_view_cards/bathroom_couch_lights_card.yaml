@@ -48,10 +48,14 @@ cards:
               icon: mdi:sofa
             - type: 'custom:button-card'
               name: Yellow
-              style: |
-                ha-card {
-                  --paper-card-background-color: [[ if(sensor.couch_light_color_name == "Yellow", "#37464f", "#263137") ]];
-                }
+              styles:
+                card:
+                  - background-color: >
+                      [[[
+                        if (states['sensor.couch_light_color_name'].state == 'Yellow')
+                          return "#37464f";
+                        return "#263137";
+                      ]]]
               tap_action:
                 action: call-service
                 service: light.turn_on
@@ -63,10 +67,14 @@ cards:
               icon: mdi:sofa
             - type: 'custom:button-card'
               name: Blue
-              style: |
-                ha-card {
-                  --paper-card-background-color: [[ if(sensor.couch_light_color_name == "Blue", "#37464f", "#263137") ]];
-                }
+              styles:
+                card:
+                  - background-color: >
+                      [[[
+                        if (states['sensor.couch_light_color_name'].state == 'Blue')
+                          return "#37464f";
+                        return "#263137";
+                      ]]]
               tap_action:
                 action: call-service
                 service: light.turn_on
@@ -80,10 +88,14 @@ cards:
           cards:
             - type: 'custom:button-card'
               name: Red
-              style: |
-                ha-card {
-                  --paper-card-background-color: [[ if(sensor.couch_light_color_name == "Red", "#37464f", "#263137") ]];
-                }
+              styles:
+                card:
+                  - background-color: >
+                      [[[
+                        if (states['sensor.couch_light_color_name'].state == 'Red')
+                          return "#37464f";
+                        return "#263137";
+                      ]]]
               tap_action:
                 action: call-service
                 service: light.turn_on
@@ -95,10 +107,14 @@ cards:
               icon: mdi:sofa
             - type: 'custom:button-card'
               name: Green
-              style: |
-                ha-card {
-                  --paper-card-background-color: [[ if(sensor.couch_light_color_name == "Green", "#37464f", "#263137") ]];
-                }
+              styles:
+                card:
+                  - background-color: >
+                      [[[
+                        if (states['sensor.couch_light_color_name'].state == 'Green')
+                          return "#37464f";
+                        return "#263137";
+                      ]]]
               tap_action:
                 action: call-service
                 service: light.turn_on
@@ -110,10 +126,14 @@ cards:
               icon: mdi:sofa
             - type: 'custom:button-card'
               name: Purple
-              style: |
-                ha-card {
-                  --paper-card-background-color: [[ if(sensor.couch_light_color_name == "Purple", "#37464f", "#263137") ]];
-                }
+              styles:
+                card:
+                  - background-color: >
+                      [[[
+                        if (states['sensor.couch_light_color_name'].state == 'Purple')
+                          return "#37464f";
+                        return "#263137";
+                      ]]]
               tap_action:
                 action: call-service
                 service: light.turn_on

@@ -202,15 +202,19 @@ sensor.tautulli:
     type: custom:swipe-card
     parameters:
       spaceBetween: 0
-      autoHeight: true
-      preventClicks: true
-      preventClicksPropagation: true
-      touchStartForcePreventDefault: true
-      effect: slide
+      centerInsufficientSlides: true
+      preventClicks: false
+      navigation:
+      slidesPerView: 'auto'
+      loop: true
+      loopedSlides: 2
+      allowTouchMove: true
       scrollbar:
         hide: false
         draggable: true
         snapOnRelease: true
+      pagination:
+        type: 'bullets'
     cards:
       - type: custom:auto-entities
         show_empty: false
@@ -221,7 +225,7 @@ sensor.tautulli:
             ha-card {
               background-image: url("/local/pictures/lovelace-pictures/plex.png");
               background-repeat: no-repeat;
-              background-color: rgb(31,31,31);
+              --ha-card-background: rgb(31,31,31);
               background-position: right;
               background-size: contain;
             }
@@ -243,12 +247,12 @@ sensor.tautulli:
           - entity: sensor.tautulli
             show_state: true
         style: |
-          ha-card {
-            background-image: url("/local/pictures/lovelace-pictures/plex.png");
-            background-repeat: no-repeat;
-            background-color: rgb(0,0,0);
-            background-size: 100% 100%;
-          }
+            ha-card {
+              background: url("/local/pictures/lovelace-pictures/plex.png");
+              background-repeat: no-repeat;
+              background-size: 100% 100%;
+              --ha-card-background: rgba(0,0,0,1);
+            }
 binary_sensor.dyson_bedroom_on:
   title: Dyson Bedroom
   card:

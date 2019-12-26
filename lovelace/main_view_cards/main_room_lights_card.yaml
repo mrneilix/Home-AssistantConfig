@@ -7,7 +7,7 @@ cards:
         name: Kitchen
         style: |
             ha-card {
-              --paper-item-icon-active-color: yellow;
+              --paper-item-icon-active-color: white;
             }
       - entity: light.bed
         type: light

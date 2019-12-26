@@ -24,6 +24,7 @@
   - platform: openhardwaremonitor
     host: !secret desktop_ip
 
+  - platform: websocket_api
   - platform: version
 
   - platform: time_date

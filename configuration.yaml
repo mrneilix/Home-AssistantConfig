@@ -31,6 +31,7 @@ websocket_api:
 hassio:
 
 browser_mod:
+  prefix: "browser_"
 
 http:
   base_url: !secret base_url
@@ -52,11 +53,8 @@ logger:
   logs:
     homeassistant.components.system_log: fatal
     homeassistant.components.tplink: fatal
-    async_upnp_client.profiles.igd: debug
-    async_upnp_client.traffic: debug
-    async_upnp_client: debug
-    homeassistant.components.vera: debug
-    homeassistant.components.tautulli: debug
+    homeassistant.helpers.template: debug
+    homeassistant.core: debug
 
 lovelace:
   mode: yaml

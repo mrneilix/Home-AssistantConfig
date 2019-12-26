@@ -1,13 +1,19 @@
 type: custom:swipe-card
 parameters:
   spaceBetween: 0
-  preventClicks: true
-  preventClicksPropagation: true
-  touchStartForcePreventDefault: true
+  centerInsufficientSlides: true
+  preventClicks: false
+  navigation:
+  slidesPerView: 'auto'
+  allowTouchMove: true
+  loop: true
+  loopedSlides: 2
   scrollbar:
     hide: false
     draggable: true
     snapOnRelease: true
+  pagination:
+    type: 'bullets'
 cards:
   - type: custom:vertical-stack-in-card
     cards:
@@ -16,10 +22,15 @@ cards:
         show_header_toggle: false
         style: |
           ha-card {
-            --paper-item-icon-color: [[ if(sensor.portfolio_change <= "0", "red", "green") ]];
-          }
+            --paper-item-icon-color:
+             {% if states(config.entity)|int <= 0 %}
+               rgb(255, 0, 0)
+             {% else %}
+               rgb(0, 255, 0)
+             {% endif %};
+            }
         entities:
-          - sensor.portfolio_change
+          - entity: sensor.portfolio_change
       - type: custom:auto-entities
         card:
           type: entities
