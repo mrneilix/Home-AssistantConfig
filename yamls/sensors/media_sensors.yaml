@@ -9,11 +9,11 @@
       - friendly_name
       - user
 
-  # - platform: qbittorrent
-    # url: !secret qbittorrent_ip
-    # name: "downloading"
-    # username: !secret qbittorrent_username
-    # password: !secret http_password
+  - platform: qbittorrent
+    url: !secret QBitTorrent_weblink
+    name: "qbittorrent"
+    username: !secret qbittorrent_username
+    password: !secret http_password
 
   - platform: sonarr
     api_key: !secret sonarr_api
@@ -161,3 +161,18 @@
       # {% else %}
         # {{ state_attr('sensor.tautulli', 'USERNAME') ['full_title'] }}
       # {% endif %}
+
+      view_to_cast:
+        friendly_name: "View to Cast"
+        value_template: >
+          {% if is_state('input_select.cast_view', 'Home') %}
+            home
+          {% elif is_state('input_select.cast_view', 'Media Players') %}
+            media_players
+          {% elif is_state('input_select.cast_view', 'Calendars') %}
+            calendar
+          {% elif is_state('input_select.cast_view', 'System View') %}
+            system_view
+          {% else %}
+            system_monitor_view
+          {% endif %}

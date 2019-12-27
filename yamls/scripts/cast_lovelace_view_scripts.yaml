@@ -1,0 +1,36 @@
+cast_view_to_home_hub:
+  alias: Cast View to Home Hub
+  sequence:
+    - data_template:
+        entity_id: media_player.kitchen_display
+        view_path: >
+          {% if is_state('input_select.cast_view', 'Home') %}
+            home
+          {% elif is_state('input_select.cast_view', 'Media Players') %}
+            media_players
+          {% elif is_state('input_select.cast_view', 'Calendars') %}
+            calendar
+          {% elif is_state('input_select.cast_view', 'System View') %}
+            system_view
+          {% else %}
+            system_monitor_view
+          {% endif %}
+      service: cast.show_lovelace_view
+cast_view_to_tv:
+  alias: Cast View to TV
+  sequence:
+    - data_template:
+        entity_id: media_player.living_room_tv
+        view_path: >
+          {% if is_state('input_select.cast_view', 'Home') %}
+            home
+          {% elif is_state('input_select.cast_view', 'Media Players') %}
+            media_players
+          {% elif is_state('input_select.cast_view', 'Calendars') %}
+            calendar
+          {% elif is_state('input_select.cast_view', 'System View') %}
+            system_view
+          {% else %}
+            system_monitor_view
+          {% endif %}
+      service: cast.show_lovelace_view

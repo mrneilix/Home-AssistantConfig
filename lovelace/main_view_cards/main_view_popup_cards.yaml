@@ -1,109 +1,3 @@
-device_tracker.neil:
-  title: Neil
-  card:
-    type: vertical-stack
-    cards:
-      - type: history-graph
-        entities:
-          - device_tracker.neil
-      - type: entities
-        entities:
-          - entity: device_tracker.neil
-            secondary_info: last-changed
-          - entity: device_tracker.neil_bluetooth
-            secondary_info: last-changed
-          - entity: device_tracker.neil_wifi
-            secondary_info: last-changed
-          - entity: device_tracker.pi_zero_mqtt_pixel
-            secondary_info: last-changed
-          - entity: device_tracker.tile_p_7231d50c4a0512da2532d71db7a524f9
-            secondary_info: last-changed
-      - type: 'custom:button-card'
-        template: toggle_presence_template
-        name: Leave
-        entity: device_tracker.neil
-        icon: 'mdi:walk'
-        tap_action:
-          action: call-service
-          service: script.presence_set_neil_device_trackers_away
-        state:
-          - value: 'home'
-            color: var(--paper-item-icon-color)
-          - value: 'not_home'
-            color: var(--primary-color)
-      - type: markdown
-        title: Address
-        content: |
-          <ha-icon icon="mdi:map-marker"></ha-icon> [[ sensor.neil_gps_address_zone.state ]]
-
-device_tracker.butters:
-  title: Butters
-  card:
-    type: vertical-stack
-    cards:
-      - type: history-graph
-        entities:
-          - device_tracker.butters
-      - type: entities
-        entities:
-          - entity: device_tracker.butters
-            secondary_info: last-changed
-          - entity: device_tracker.tile_70e3c9fefea64a42 
-            secondary_info: last-changed
-      - type: 'custom:button-card'
-        template: toggle_presence_template
-        name: Butters Home
-        entity: input_boolean.butters_home
-        tap_action:
-          action: toggle
-      - type: markdown
-        title: Address
-        content: |
-          <ha-icon icon="mdi:map-marker"></ha-icon> [[ sensor.butters_gps_address_zone.state ]]
-
-sensor.dark_sky_daytime_high_temperature_0d:
-  title: Dark Sky Summary
-  card:
-    type: custom:group-card
-    card:
-      type: glance
-    group: group.dark_sky_sensors
-
-sensor.dark_sky_overnight_low_temperature_0d: sensor.dark_sky_daytime_high_temperature_0d
-sensor.dark_sky_summary: sensor.dark_sky_daytime_high_temperature_0d
-sensor.dark_sky_minutely_summary: sensor.dark_sky_daytime_high_temperature_0d
-sensor.dark_sky_hourly_summary: sensor.dark_sky_daytime_high_temperature_0d
-sensor.dark_sky_daily_summary: sensor.dark_sky_daytime_high_temperature_0d
-
-sensor.portfolio_change:
-  title: Finance
-  card:
-    type: custom:vertical-stack-in-card
-    cards:
-    - type: custom:flex-table-card 
-      title: Stocks
-      entities:
-        include: sensor.stock_*
-      sort_by: changePercent-
-      columns:
-        - name: Stock
-          attr: friendly_name
-        - name: Price
-          prop: state
-        - name: Change
-          attr: change
-        - name: Percent Change
-          attr: changePercent
-        - name: Gain Loss
-          attr: gain_loss
-    - type: custom:mini-graph-card
-      name: Bitcoin
-      entities:
-        - entity: sensor.bitcoin_wallet
-          show_state: true
-          show_indicator: true
-          line_color: '#f7931a'
-
 input_boolean.notifications_on:
   title: Notify
   card:
@@ -136,7 +30,7 @@ sensor.kitchen_display_time_remaining_alarm:
         tap_action:
           action: call-service
           service: script.google_home_clear_alarm
-        color: rgb(57, 111, 182)
+        template: toggle_notification_input_booleans_template
         icon: 'mdi:alarm'
         size: 10%
         style:
@@ -156,45 +50,19 @@ sensor.kitchen_display_time_remaining_timer:
         tap_action:
           action: call-service
           service: script.google_home_clear_timer
-        color: rgb(57, 111, 182)
+        template: toggle_notification_input_booleans_template
         icon: 'mdi:timer-sand'
         size: 10%
         style:
           - padding: 5px 0px
 sensor.last_lock_code_name:
   title: Lock Info
-  card:
-    type: vertical-stack
-    cards:
-      - type: glance
-        entities:
-          - sensor.last_lock_code_name
-          - sensor.schlage_camelot_battery
-      - type: glance
-        entities:
-          - entity: device_tracker.neil
-            tap_action: more-info
-          - entity: device_tracker.gina
-            tap_action: more-info
-          - entity: device_tracker.parents
-            tap_action: more-info
-          - entity: device_tracker.butters
-            tap_action: more-info
-      - type: entities
-        entities:
-          - entity: input_number.autolock_delay
-      - type: history-graph
-        title: Last Lock Code
-        entities:
-          - sensor.last_lock_code_name
-          - switch.parents_lock_code
-          - switch.temp_lock_code
-      - type: history-graph
-        title: Lock
-        entities:
-          - lock.schlage_camelot
+  card: !include /config/lovelace/global_cards/lock_details.yaml
 
-lock.schlage_camelot: sensor.last_lock_code_name
+
+lock.schlage_camelot:
+  title: Lock Info
+  card: !include /config/lovelace/global_cards/lock_details.yaml
 
 sensor.tautulli:
   title: Plex
@@ -216,43 +84,8 @@ sensor.tautulli:
       pagination:
         type: 'bullets'
     cards:
-      - type: custom:auto-entities
-        show_empty: false
-        card:
-          type: entities
-          show_header_toggle: false
-          style: |
-            ha-card {
-              background-image: url("/local/pictures/lovelace-pictures/plex.png");
-              background-repeat: no-repeat;
-              --ha-card-background: rgb(31,31,31);
-              background-position: right;
-              background-size: contain;
-            }
-        filter:
-          include:
-            - entity_id: "sensor.tautulli_watching_*"
-          exclude:
-            - state: "Nothing"
-      - type: custom:mini-graph-card
-        more_info: false
-        show:
-          points: hover
-          extrema: true
-          labels: false
-          name: false
-          icon: false
-        line_color: '#f7931a'
-        entities:
-          - entity: sensor.tautulli
-            show_state: true
-        style: |
-            ha-card {
-              background: url("/local/pictures/lovelace-pictures/plex.png");
-              background-repeat: no-repeat;
-              background-size: 100% 100%;
-              --ha-card-background: rgba(0,0,0,1);
-            }
+      - !include /config/lovelace/global_cards/watching_plex_list.yaml
+      - !include /config/lovelace/global_cards/watching_plex_graph.yaml
 binary_sensor.dyson_bedroom_on:
   title: Dyson Bedroom
   card:
@@ -288,6 +121,10 @@ binary_sensor.dyson_bedroom_on:
             - value: 'on'
               color: var(--primary-color)
           icon: 'mdi:rotate-orbit'
+
+sensor.portfolio_change:
+  title: Finance
+  card: !include /config/lovelace/global_cards/portfolio_list_card.yaml
 
 sensor.fitbit_steps:
   title: FitBit

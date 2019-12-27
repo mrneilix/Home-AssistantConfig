@@ -5,10 +5,6 @@ cards:
       - type: light
         entity: light.kitchen
         name: Kitchen
-        style: |
-            ha-card {
-              --paper-item-icon-active-color: white;
-            }
       - entity: light.bed
         type: light
         name: Bed

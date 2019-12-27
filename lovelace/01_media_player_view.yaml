@@ -1,11 +1,12 @@
 title: Media Players
 icon: mdi:video
 path: media_players
-theme: darkblue
 popup_cards: !include media_view_cards/media_view_popup_cards.yaml
 cards:
   - !include media_view_cards/tv_and_inputs_card.yaml
   - !include media_view_cards/cast_card.yaml
-  - !include media_view_cards/watching_plex_card.yaml
+  # - !include media_view_cards/watching_plex_card.yaml
+  - !include /config/lovelace/global_cards/watching_plex_graph.yaml
+  - !include /config/lovelace/global_cards/watching_plex_list.yaml
   - !include media_view_cards/downloads_card.yaml
-  - !include media_view_cards/media_view_cast_card.yaml
+  - !include global_cards/cast_view_card.yaml

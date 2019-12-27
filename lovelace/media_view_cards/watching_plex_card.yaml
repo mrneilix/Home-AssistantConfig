@@ -1,33 +1,4 @@
 type: custom:vertical-stack-in-card
 cards:
-- type: sensor
-  style: |
-    :host {
-      background: url("/local/pictures/lovelace-pictures/plex.png");
-      background-repeat: no-repeat;
-      background-size: 100% 100%;
-      --ha-card-background: rgba(0,0,0,1);
-    }
-  entity: sensor.tautulli
-  name: Plex History
-  detail: 2
-  graph: line
-- type: custom:mod-card
-  style: |
-    ha-card {
-      background: url("/local/pictures/lovelace-pictures/plex2.png");
-      background-repeat: no-repeat;
-      background-size: 100% 100%;
-      --ha-card-background: rgba(0,0,0,1);
-    }
-  card:
-    type: custom:auto-entities
-    show_empty: false
-    card:
-      type: entities
-      show_header_toggle: false
-    filter:
-      include:
-        - entity_id: "sensor.tautulli_watching_*"
-      exclude:
-        - state: "Nothing"
+- !include /config/lovelace/global_cards/watching_plex_graph.yaml
+- !include /config/lovelace/global_cards/watching_plex_list.yaml

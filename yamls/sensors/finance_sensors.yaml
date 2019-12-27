@@ -1,14 +1,14 @@
   - platform: avanza_stock
     stock: 854153
     name: Stock CGC
-    shares: 100
+    shares: 0
     monitored_conditions:
       - changePercent
       - change
   - platform: avanza_stock
     stock: 831013
     name: Stock CRON
-    shares: 100
+    shares: 0
     monitored_conditions:
       - changePercent
       - change
@@ -22,7 +22,7 @@
   - platform: avanza_stock
     stock: 719076
     name: Stock MJ
-    shares: 500
+    shares: 700
     monitored_conditions:
       - changePercent
       - change
@@ -36,7 +36,7 @@
   - platform: avanza_stock
     stock: 4444
     name: Stock NOK
-    shares: 2000
+    shares: 0
     monitored_conditions:
       - changePercent
       - change
@@ -57,14 +57,21 @@
   - platform: avanza_stock
     stock: 360598
     name: Stock UGAZ
-    shares: 1000
+    shares: 400
     monitored_conditions:
       - changePercent
       - change
   - platform: avanza_stock
     stock: 202198
     name: Stock VOD
-    shares: 500
+    shares: 0
+    monitored_conditions:
+      - changePercent
+      - change
+  - platform: avanza_stock
+    stock: 446036
+    name: Stock TVIX
+    shares: 50
     monitored_conditions:
       - changePercent
       - change
@@ -76,7 +83,7 @@
         unit_of_measurement: 'USD'
         icon_template: mdi:cash
         value_template: >-
-          {{ (state_attr('sensor.stock_cgc', 'shares') * state_attr('sensor.stock_cgc', 'change')) + (state_attr('sensor.stock_cron', 'shares') * state_attr('sensor.stock_cron', 'change')) +(state_attr('sensor.stock_ddd', 'shares') * state_attr('sensor.stock_ddd', 'change')) +(state_attr('sensor.stock_mj', 'shares') * state_attr('sensor.stock_mj', 'change')) +(state_attr('sensor.stock_mt', 'shares') * state_attr('sensor.stock_mt', 'change')) +(state_attr('sensor.stock_nok', 'shares') * state_attr('sensor.stock_nok', 'change')) +(state_attr('sensor.stock_tan', 'shares') * state_attr('sensor.stock_tan', 'change')) +(state_attr('sensor.stock_ugaz', 'shares') * state_attr('sensor.stock_ugaz', 'change')) +(state_attr('sensor.stock_vod', 'shares') * state_attr('sensor.stock_vod', 'change')) }}
+          {{ (state_attr('sensor.stock_cgc', 'shares') * state_attr('sensor.stock_cgc', 'change')) + (state_attr('sensor.stock_cron', 'shares') * state_attr('sensor.stock_cron', 'change')) +(state_attr('sensor.stock_ddd', 'shares') * state_attr('sensor.stock_ddd', 'change')) +(state_attr('sensor.stock_mj', 'shares') * state_attr('sensor.stock_mj', 'change')) +(state_attr('sensor.stock_mt', 'shares') * state_attr('sensor.stock_mt', 'change')) +(state_attr('sensor.stock_nok', 'shares') * state_attr('sensor.stock_nok', 'change')) +(state_attr('sensor.stock_tan', 'shares') * state_attr('sensor.stock_tan', 'change')) +(state_attr('sensor.stock_ugaz', 'shares') * state_attr('sensor.stock_ugaz', 'change')) +(state_attr('sensor.stock_vod', 'shares') * state_attr('sensor.stock_vod', 'change')) +(state_attr('sensor.stock_tvix', 'shares') * state_attr('sensor.stock_tvix', 'change')) }}
       bitcoin_wallet:
         friendly_name: Bitcoin
         unit_of_measurement: 'USD'

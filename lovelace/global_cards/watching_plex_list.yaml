@@ -1,0 +1,18 @@
+type: custom:auto-entities
+show_empty: false
+card:
+  type: entities
+  show_header_toggle: false
+  style: |
+    ha-card {
+      background-image: url("/local/pictures/lovelace-pictures/plex2.png");
+      background-repeat: no-repeat;
+      --ha-card-background: rgb(31,31,31);
+      background-position: right;
+      background-size: contain;
+    }
+filter:
+  include:
+    - entity_id: "sensor.tautulli_watching_*"
+  exclude:
+    - state: "Nothing"

@@ -1,0 +1,9 @@
+  cast_view:
+    name: View
+    options:
+      - Home
+      - Media Players
+      - Calendars
+      - System View
+      - System Monitor
+    icon: mdi:cast

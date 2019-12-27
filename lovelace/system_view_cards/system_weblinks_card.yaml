@@ -23,6 +23,7 @@ cards:
       - type: 'custom:button-card'
         template: system_weblinks_card_template
         name: qBittorrent
+        entity: sensor.qbittorrent_status
         icon: mdi:cloud-download-outline
         tap_action:
           action: url
@@ -68,5 +69,5 @@ cards:
         tap_action:
           action: navigate
           navigation_path: /lovelace/system_monitor_view
-        color: var(--primary-color)
+        template: system_weblinks_card_template
         icon: mdi:desktop-classic

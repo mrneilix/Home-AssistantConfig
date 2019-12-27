@@ -10,7 +10,7 @@ toggle_presence_template:
 toggle_notification_input_booleans_template:
   tap_action:
     action: toggle
-  color: rgb(57, 111, 182)
+  color: var(--paper-item-icon-active-color)
   color_type: icon
 
 climate_lock_toggle_buttons:
@@ -18,23 +18,43 @@ climate_lock_toggle_buttons:
     action: more-info
   tap_action:
     action: toggle
-  color: var(--primary-color)
+  color: var(--paper-item-icon-active-color)
   layout: name_state
   state:
     - value: 'off'
       color: var(--paper-item-icon-color)
-      
+
 download_card_templates:
   show_state: true
   layout: name_state
-  color: var(--primary-color)
+  color: var(--paper-item-icon-active-color)
   tap_action:
     action: more-info
-    
+
 system_weblinks_card_template:
   show_state: true
   layout: name_state
-  color: var(--primary-color)
+  color: var(--paper-item-icon-active-color)
+
+system_control_card_template:
+  show_state: false
+  color: var(--paper-item-icon-active-color)
+  color_type: icon
+  state:
+    - value: 'on'
+      color: var(--paper-item-icon-active-color)
+    - value: 'off'
+      color: var(--paper-item-icon-active-color)
+
+tv_input_card_template:
+  show_state: false
+  color: var(--paper-item-icon-active-color)
+  color_type: icon
+  state:
+    - value: 'on'
+      color: var(--paper-item-icon-active-color)
+    - value: 'off'
+      color: var(--paper-item-icon-active-color)
 
 google_keep_card_template:
   type: custom:google-keep-card

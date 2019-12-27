@@ -32,8 +32,6 @@
       - script.tv_input_playstation
       - sensor.allergy_index_today_2
       - sensor.current_version
-      - sensor.custom_card_tracker
-      - sensor.custom_component_tracker
       - sensor.dark_sky_cloud_coverage
       - sensor.dark_sky_cloud_coverage_0d
       - sensor.dark_sky_daytime_high_apparent_temperature_0d
@@ -73,6 +71,14 @@
       - sensor.desktop_amd_radeon_tm_r7_360_series_controls_gpu_fan
       - sensor.desktop_amd_radeon_tm_r7_360_series_temperatures_gpu_core
       - sensor.desktop_amd_radeon_tm_r7_360_series_voltages_gpu_core
+      - sensor.desktop_generic_memory_data_available_memory
+      - sensor.desktop_generic_memory_data_used_memory
+      - sensor.desktop_generic_memory_load_memory
+      - sensor.desktop_disk_space_c
+      - sensor.desktop_disk_space_e
+      - sensor.desktop_disk_space_f
+      - sensor.desktop_disk_space_g
+      - sensor.desktop_disk_space_j
       - sensor.gfiberrouter_bytes_received
       - sensor.gfiberrouter_bytes_sent
       - sensor.gfiberrouter_kbytesec_received

@@ -1,18 +1,33 @@
-resources: !include lovelace/resources.yaml
-popup_cards: !include lovelace/pop_up_cards.yaml
-button_card_templates: !include lovelace/button_card_templates.yaml
+resources: !include lovelace/global_cards/resources.yaml
+popup_cards: !include lovelace/global_cards/pop_up_cards.yaml
+button_card_templates: !include lovelace/global_cards/button_card_templates.yaml
 title: Atlanta Condo
 custom_header:
   button_text:
     options: '{{ time }}'
   voice_hide: true
   active_tab_color: rgb(19, 172, 198)
-  redirect: true
   show_tabs: 0,1,2,3
   hide_unused: true
   compact_mode: true
+  hidden_tab_redirect: false
+  exceptions:
+    - conditions:
+        user: Neil
+      config:
+        compact_mode: false
+    - conditions:
+        query_string: kiosk
+      config:
+        hide_header: true
+        hide_tabs: 0,1,2,3,4
+        disable_sidebar: true
+        hide_help: true
+        compact_mode: true
+        kiosk_mode: true
   hide_config: true
-  hide_help: true
+  hide_raw: true
+  hide_help: false
   shadow: true
 swipe_nav:
   wrap: true
@@ -25,5 +40,5 @@ views:
   - !include lovelace/01_media_player_view.yaml
   - !include lovelace/02_calendar_view.yaml
   - !include lovelace/03_system_view.yaml
-  # - !include lovelace/03_system_view_mobile.yaml
   - !include lovelace/04_system_monitor_view.yaml
+  - !include lovelace/05_tautulli_watch_history.yaml

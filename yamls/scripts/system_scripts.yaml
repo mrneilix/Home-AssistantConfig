@@ -3,7 +3,7 @@ startup_scripts:
   sequence:
     - service: frontend.set_theme
       data:
-        name: darkblue
+        name: clear-dark
     - service: lock.lock
       entity_id: lock.schlage_camelot
     - service: script.startup_input_booleans

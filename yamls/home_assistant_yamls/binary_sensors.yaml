@@ -129,9 +129,7 @@
         device_class: connectivity
         friendly_name: MQTT Status
         value_template: >-
-          {%if (as_timestamp(now()) - as_timestamp(states.sensor.monitor_status.last_updated) < 300 ) and not is_state("sensor.monitor_status", "offline") %}
-            True
-          {%-elif (as_timestamp(now()) - as_timestamp(states.sensor.pi_zero_uptime.last_updated) < 300 ) and not is_state("sensor.pi_zero_uptime", "unknown") %}
+          {%-if (as_timestamp(now()) - as_timestamp(states.sensor.pi_zero_uptime.last_updated) < 300 ) and not is_state("sensor.pi_zero_uptime", "unknown") %}
             True
           {%-elif (as_timestamp(now()) - as_timestamp(states.device_tracker.neil_pixel_tasker.last_updated) < 6000 ) %}
             True

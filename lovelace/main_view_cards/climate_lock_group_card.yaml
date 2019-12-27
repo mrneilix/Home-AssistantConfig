@@ -22,7 +22,7 @@ cards:
               - value: 'off'
                 color: var(--paper-item-icon-color)
               - value: 'on'
-                color: var(--primary-color)
+                color: var(--paper-item-icon-active-color)
           - type: 'custom:button-card'
             name: Set Away
             entity: binary_sensor.thermostat_set_home
@@ -38,7 +38,7 @@ cards:
               - value: 'on'
                 color: var(--paper-item-icon-color)
               - value: 'off'
-                color: var(--primary-color)
+                color: var(--paper-item-icon-active-color)
   - type: custom:vertical-stack-in-card
     cards:
       - type: horizontal-stack
@@ -51,7 +51,7 @@ cards:
               action: more-info
             tap_action:
               action: toggle
-            color: var(--primary-color)
+            color: var(--paper-item-icon-active-color)
             size: 20%
             styles:
               card:
@@ -90,7 +90,7 @@ cards:
             template: climate_lock_toggle_buttons
             entity: switch.yi_power
           - type: 'custom:button-card'
-            name: Dyson
+            name: Bedroom
             entity: binary_sensor.dyson_bedroom_on
             icon: mdi:home-thermometer-outline
             hold_action:
@@ -102,7 +102,7 @@ cards:
               - value: 'off'
                 color: var(--paper-item-icon-color)
               - value: 'on'
-                color: var(--primary-color)
+                color: var(--paper-item-icon-active-color)
             show_label: true
             label: >
               [[[

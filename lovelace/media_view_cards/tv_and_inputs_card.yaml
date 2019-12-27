@@ -1,4 +1,4 @@
-type: 'custom:vertical-stack-in-card'
+type: custom:vertical-stack-in-card
 cards:
 - type: 'custom:button-card'
   name: TV
@@ -13,7 +13,7 @@ cards:
   entity: switch.hdmi_0
   states:
     "on":
-      type: custom:vertical-stack-in-card
+      type: vertical-stack
       cards:
         - type: horizontal-stack
           cards:
@@ -24,11 +24,7 @@ cards:
               tap_action:
                 action: call-service
                 service: script.tv_input_chromecast
-              state:
-                - value: 'off'
-                  color: rgb(57, 111, 182)
-                - value: 'on'
-                  color: rgb(57, 111, 182)
+              template: tv_input_card_template
             - type: 'custom:button-card'
               name: Playstation
               entity: script.tv_input_playstation
@@ -36,11 +32,7 @@ cards:
               tap_action:
                 action: call-service
                 service: script.tv_input_playstation
-              state:
-                - value: 'off'
-                  color: rgb(57, 111, 182)
-                - value: 'on'
-                  color: rgb(57, 111, 182)
+              template: tv_input_card_template
             - type: 'custom:button-card'
               name: Theater Mode
               icon: 'mdi:movie'
@@ -48,18 +40,10 @@ cards:
               tap_action:
                 action: call-service
                 service: script.tv_turn_on_theater_mode
-              state:
-                - value: 'off'
-                  color: rgb(57, 111, 182)
-                - value: 'on'
-                  color: rgb(57, 111, 182)
+              template: tv_input_card_template
         - type: horizontal-stack
           cards:
             - type: custom:mini-media-player
-              style: |
-                ha-card {
-                  border-radius: 5px;
-                }
               entity: media_player.playstation_4
               artwork: full-cover
               source: full

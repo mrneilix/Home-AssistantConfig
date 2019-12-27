@@ -32,6 +32,9 @@ watching_plex_names:
     - sensor.tautulli_watching_ruchi
     - sensor.tautulli_watching_shappell
     - sensor.tautulli_watching_tina
+    - sensor.tautulli_watching_mike_kennedy
+    - sensor.tautulli_watching_paul_sarker
+    - sensor.tautulli_watching_bobby_malhotra
 dark_sky_sensors:
   entities:
     - sensor.dark_sky_temperature

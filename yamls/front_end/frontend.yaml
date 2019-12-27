@@ -1,2 +1,2 @@
-  themes: !include_dir_merge_named /config/yamls/themes/
+  themes: !include_dir_merge_named /config/themes
   javascript_version: latest

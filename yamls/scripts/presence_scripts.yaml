@@ -125,6 +125,16 @@ presence_gina_home:
       state: 'on'
     - service: script.notify_gina_home
 
+presence_toggle_neil_device_tracker:
+  alias: Presence Toggle Neil Device Tracker
+  sequence:
+    - service_template: > 
+          {% if is_state('device_tracker.neil', 'home') %}
+            script.presence_set_neil_device_trackers_away
+          {% else %}
+            script.presence_set_neil_device_tracker_home
+          {% endif %}
+
 presence_set_neil_device_trackers_away:
   alias: Presence Set Neil Device Trackers Away
   sequence:

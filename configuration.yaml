@@ -32,6 +32,11 @@ hassio:
 
 browser_mod:
   prefix: "browser_"
+  devices:
+    180fffa4_a74390c9:
+      name: browser_desktop
+    b25c0b27_ed74df28:
+      name: browser_phone
 
 http:
   base_url: !secret base_url
@@ -42,9 +47,8 @@ http:
     - !secret trusted_network
     - !secret desktop_ip
     - !secret hass_ip
+    - !secret my_phone_wifi
     - !secret trusted_home_network
-  ip_ban_enabled: true
-  login_attempts_threshold: 5
 
 api:
 
@@ -54,7 +58,11 @@ logger:
     homeassistant.components.system_log: fatal
     homeassistant.components.tplink: fatal
     homeassistant.helpers.template: debug
-    homeassistant.core: debug
+    custom_components.google_keep: fatal
+    homeassistant.components.frontend: fatal
+    frontend: fatal
+    homeassistant.components.tautulli: fatal
+    pytautulli : fatal
 
 lovelace:
   mode: yaml
@@ -134,6 +142,7 @@ influxdb: !include yamls/databases/influxdb.yaml
 input_boolean: !include yamls/inputs/input_boolean.yaml
 input_text: !include yamls/inputs/input_text.yaml
 input_number: !include yamls/inputs/input_number.yaml
+input_select: !include yamls/inputs/input_select.yaml
 
 # Include Devices Yamls
 device_tracker: !include yamls/devices/device_tracker.yaml

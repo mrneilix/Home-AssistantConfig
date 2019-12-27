@@ -35,7 +35,7 @@ cards:
                       [[[
                         if (states['sensor.couch_light_color_name'].state == 'White')
                           return "#37464f";
-                        return "#263137";
+                        return "var(--paper-card-background-color)";
                       ]]]
               tap_action:
                 action: call-service
@@ -54,7 +54,7 @@ cards:
                       [[[
                         if (states['sensor.couch_light_color_name'].state == 'Yellow')
                           return "#37464f";
-                        return "#263137";
+                        return "var(--paper-card-background-color)";
                       ]]]
               tap_action:
                 action: call-service
@@ -73,7 +73,7 @@ cards:
                       [[[
                         if (states['sensor.couch_light_color_name'].state == 'Blue')
                           return "#37464f";
-                        return "#263137";
+                        return "var(--paper-card-background-color)";
                       ]]]
               tap_action:
                 action: call-service
@@ -94,7 +94,7 @@ cards:
                       [[[
                         if (states['sensor.couch_light_color_name'].state == 'Red')
                           return "#37464f";
-                        return "#263137";
+                        return "var(--paper-card-background-color)";
                       ]]]
               tap_action:
                 action: call-service
@@ -113,7 +113,7 @@ cards:
                       [[[
                         if (states['sensor.couch_light_color_name'].state == 'Green')
                           return "#37464f";
-                        return "#263137";
+                        return "var(--paper-card-background-color)";
                       ]]]
               tap_action:
                 action: call-service
@@ -132,7 +132,7 @@ cards:
                       [[[
                         if (states['sensor.couch_light_color_name'].state == 'Purple')
                           return "#37464f";
-                        return "#263137";
+                        return "var(--paper-card-background-color)";
                       ]]]
               tap_action:
                 action: call-service

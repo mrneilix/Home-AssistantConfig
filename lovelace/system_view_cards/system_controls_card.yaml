@@ -9,12 +9,7 @@ cards:
         tap_action:
           action: call-service
           service: script.restart_homeassistant
-        state:
-          - value: 'off'
-            color: rgb(57, 111, 182)
-          - value: 'on'
-            color: rgb(57, 111, 182)
-        color_type: icon
+        template: system_control_card_template
       - type: 'custom:button-card'
         name: Reboot Vera
         entity: scene.reboot_vera
@@ -24,10 +19,7 @@ cards:
           service: scene.turn_on
           service_data:
             entity_id: scene.reboot_vera
-        state:
-          - value: 'scening'
-            color: rgb(57, 111, 182)
-        color_type: icon
+        template: system_control_card_template
   - type: horizontal-stack
     cards:
       - type: 'custom:button-card'
@@ -40,12 +32,7 @@ cards:
         dbltap_action:
           action: call-service
           service: script.system_reboot
-        state:
-          - value: 'off'
-            color: rgb(57, 111, 182)
-          - value: 'on'
-            color: rgb(57, 111, 182)
-        color_type: icon
+        template: system_control_card_template
       - type: 'custom:button-card'
         name: Reboot Pi Zero
         entity: script.reboot_pi_zero
@@ -53,12 +40,8 @@ cards:
         tap_action:
           action: call-service
           service: script.reboot_pi_zero
-        state:
-          - value: 'off'
-            color: rgb(57, 111, 182)
-          - value: 'on'
-            color: rgb(57, 111, 182)
-        color_type: icon
+        template: system_control_card_template
+
   - type: horizontal-stack
     cards:
       - type: 'custom:button-card'
@@ -68,12 +51,7 @@ cards:
         tap_action:
           action: call-service
           service: script.system_desktop_display_off
-        state:
-          - value: 'off'
-            color: rgb(57, 111, 182)
-          - value: 'on'
-            color: rgb(57, 111, 182)
-        color_type: icon
+        template: system_control_card_template
       - type: 'custom:button-card'
         name: Git Backup
         entity: script.system_git_backup
@@ -81,19 +59,14 @@ cards:
         tap_action:
           action: call-service
           service: script.system_git_backup
-        state:
-          - value: 'off'
-            color: rgb(57, 111, 182)
-          - value: 'on'
-            color: rgb(57, 111, 182)
-        color_type: icon
+        template: system_control_card_template
   - type: horizontal-stack
     cards:
       - type: 'custom:button-card'
         name: Toggle Mirror Rotation
         entity: binary_sensor.magic_mirror_display_rotation_off
         icon: mdi:rotate-3d-variant
-        color: rgb(57, 111, 182)
+        template: system_control_card_template
         tap_action:
           action: call-service
           service: script.system_magic_mirror_rotate_display_toggle
@@ -109,9 +82,4 @@ cards:
         tap_action:
           action: call-service
           service: script.desktop_restart_plex
-        state:
-          - value: 'off'
-            color: rgb(57, 111, 182)
-          - value: 'on'
-            color: rgb(57, 111, 182)
-        color_type: icon
+        template: system_control_card_template
