@@ -1,7 +1,6 @@
 title: Calendar
 icon: mdi:calendar-today
 path: calendar
-
 popup_cards: !include calendar_view_cards/family_device_tracker_popup_card.yaml
 badges:
   - device_tracker.neil
@@ -13,5 +12,5 @@ cards:
   - !include calendar_view_cards/calendar_birthdays_card.yaml
   - !include calendar_view_cards/finance_card.yaml
   - !include calendar_view_cards/package_tracking_card.yaml
-  - !include calendar_view_cards/keep_list_card.yaml
+  # - !include calendar_view_cards/keep_list_card.yaml
   - !include global_cards/cast_view_card.yaml

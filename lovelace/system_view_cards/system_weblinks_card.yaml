@@ -1,4 +1,4 @@
-type: custom:vertical-stack-in-card
+type: vertical-stack
 cards:
   - type: horizontal-stack
     cards:
@@ -23,19 +23,19 @@ cards:
       - type: 'custom:button-card'
         template: system_weblinks_card_template
         name: qBittorrent
-        entity: sensor.qbittorrent_status
+        entity: sensor.qbittorrent_down_speed
         icon: mdi:cloud-download-outline
         tap_action:
           action: url
           url_path: !secret QBitTorrent_weblink
       - type: 'custom:button-card'
         template: system_weblinks_card_template
-        name: SABnzbd
-        entity: sensor.sabnzbd_status
+        name: NZBGet
+        entity: sensor.nzbget_speed
         icon: mdi:download
         tap_action:
           action: url
-          url_path: !secret sabnzbd_url
+          url_path: !secret nzbget_url
   - type: horizontal-stack
     cards:
       - type: 'custom:button-card'

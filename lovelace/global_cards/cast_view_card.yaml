@@ -1,4 +1,4 @@
-type: custom:vertical-stack-in-card
+type: vertical-stack
 cards:
   - type: entities
     show_header_toggle: false
@@ -6,17 +6,25 @@ cards:
       - input_select.cast_view
   - type: horizontal-stack
     cards:
-      - type: 'custom:button-card'
+      - type: entity-button
         name: Home Hub
-        template: climate_lock_toggle_buttons
+        entity: script.cast_view_to_home_hub
+        icon: mdi:google-classroom
         tap_action:
           action: call-service
           service: script.cast_view_to_home_hub
-        icon: mdi:google-classroom
-      - type: 'custom:button-card'
+        style: |
+          :host {
+            --paper-item-icon-color: var(--paper-item-icon-active-color);
+            }
+      - type: entity-button
         name: TV
-        template: climate_lock_toggle_buttons
+        entity: script.cast_view_to_tv
+        icon: mdi:cast-connected
         tap_action:
           action: call-service
           service: script.cast_view_to_tv
-        icon: mdi:cast-connected
+        style: |
+          :host {
+            --paper-item-icon-color: var(--paper-item-icon-active-color);
+            }

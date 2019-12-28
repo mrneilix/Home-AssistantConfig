@@ -1,4 +1,4 @@
-type: custom:vertical-stack-in-card
+type: vertical-stack
 cards:
   - type: horizontal-stack
     cards:
@@ -34,14 +34,13 @@ cards:
           service: script.system_reboot
         template: system_control_card_template
       - type: 'custom:button-card'
-        name: Reboot Pi Zero
-        entity: script.reboot_pi_zero
-        icon: 'mdi:numeric-0-box'
+        name: Restart Plex
+        entity: script.desktop_restart_plex
+        icon: 'mdi:plex'
         tap_action:
           action: call-service
-          service: script.reboot_pi_zero
+          service: script.desktop_restart_plex
         template: system_control_card_template
-
   - type: horizontal-stack
     cards:
       - type: 'custom:button-card'
@@ -75,11 +74,3 @@ cards:
         state:
           - value: 'off'
             spin: true
-      - type: 'custom:button-card'
-        name: Restart Plex
-        entity: script.desktop_restart_plex
-        icon: 'mdi:plex'
-        tap_action:
-          action: call-service
-          service: script.desktop_restart_plex
-        template: system_control_card_template

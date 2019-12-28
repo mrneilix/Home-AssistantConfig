@@ -5,9 +5,7 @@ entities:
   - sensor.last_boot_date_time
   - sensor.since_last_boot_templated
   - sensor.ha_uptime
-  - type: divider
-  - sensor.pi_zero_uptime
-  - sensor.pi_zero_last_system_poll
+  - sensor.rpi_power_status
   - type: divider
   - sensor.network_in_eth0
   - sensor.network_out_eth0

@@ -12,42 +12,9 @@
         message: Hass is Starting
     - service: scene.turn_on
       entity_id: scene.startup_reset_variables
-    - delay: 00:00:05
-    - service: shell_command.restart_pi_sys_stat
-    - service: logbook.log
-      data_template:
-        name: Shell Command
-        message: Restart Pi Zero System Stats
     - delay: 00:00:50
     - service: script.startup_scripts
-
-# - id: system_internet_down
-  # alias: 'System Internet Down'
-  # trigger: 
-    # - platform: template
-      # value_template: '{{ states.sensor.speedtest_download.state| float < 5 }}'
-  # condition:
-    # - condition: state
-      # entity_id: input_boolean.restart_complete
-      # state: 'on'
-  # action:      
-    # - service: script.restart_homeassistant
     
-- id: system_restart_monitor
-  alias: 'System Restart Monitor'
-  trigger: 
-    platform: time
-    at: '12:00:00'
-  condition:
-    - condition: state
-      entity_id: input_boolean.restart_complete
-      state: 'on'
-  action:
-    - service: shell_command.restart_monitor
-    - service: logbook.log
-      data_template:
-        name: Shell Command
-        message: Restart Monitor
 
 - id: system_scheduled_reboot_pi
   alias: 'System Scheduled Reboot Pi'
@@ -62,7 +29,6 @@
       weekday:
       - mon
   action:
-    - service: script.reboot_pi_zero
     - service_template: >
           {% if is_state('input_boolean.config_updated', 'on') %}
             script.system_backup
@@ -166,3 +132,29 @@
       state: 'on'
   action:
     - service: script.system_reboot
+
+- id: system_reload_lovelace
+  alias: 'System Reload Lovelace'
+  trigger:
+    - platform: event
+      event_type: folder_watcher
+      event_data:
+        event_type: created
+    - platform: event
+      event_type: folder_watcher
+      event_data:
+        event_type: modified
+    - platform: event
+      event_type: folder_watcher
+      event_data:
+        event_type: deleted
+    - platform: event
+      event_type: folder_watcher
+      event_data:
+        event_type: moved
+  condition:
+    - condition: state
+      entity_id: input_boolean.restart_complete
+      state: 'on'
+  action:
+    - service: browser_mod.lovelace_reload

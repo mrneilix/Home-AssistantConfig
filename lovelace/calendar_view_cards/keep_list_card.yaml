@@ -2,40 +2,35 @@ type: custom:swipe-card
 parameters:
   spaceBetween: 0
   centerInsufficientSlides: true
-  preventClicks: false
   navigation:
-  slidesPerView: 'auto'
+  slidesPerView: auto
   allowTouchMove: true
   loop: true
-  loopedSlides: 4
-  scrollbar:
-    hide: false
-    draggable: true
-    snapOnRelease: true
+  loopedSlides: 2
   pagination:
     type: 'bullets'
 cards:
   - type: custom:google-keep-card
     entity: sensor.google_keep_groceries_b9818068c1
     title: Groceries
+    theme: dark
     show:
-      - checked
       - unchecked
   - type: custom:google-keep-card
     entity: sensor.google_keep_atl_restaurants_4cc3d29b79
     title: ATL Restaurants
+    theme: dark
     show:
-      - checked
       - unchecked
   - type: custom:google-keep-card
     entity: sensor.google_keep_bourbons_e395c71428
     title: Bourbons 
+    theme: dark
     show:
-      - checked
       - unchecked
   - type: custom:google-keep-card
     entity: sensor.google_keep_nyc_restaurants_fa8db1f8fe
     title: NYC Restaurants
+    theme: dark
     show:
-      - checked
       - unchecked

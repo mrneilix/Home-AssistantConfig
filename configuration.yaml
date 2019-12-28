@@ -35,7 +35,7 @@ browser_mod:
   devices:
     180fffa4_a74390c9:
       name: browser_desktop
-    b25c0b27_ed74df28:
+    693774a8_248dd846:
       name: browser_phone
 
 http:
@@ -49,6 +49,10 @@ http:
     - !secret hass_ip
     - !secret my_phone_wifi
     - !secret trusted_home_network
+
+# favicon:
+#   title: Home
+#   icon_path: /local/favicons/
 
 api:
 
@@ -157,4 +161,5 @@ tuya: !include yamls/devices/tuya.yaml
 google_assistant: !include yamls/devices/google_assistant.yaml
 switch:  !include yamls/devices/switch.yaml
 lock:  !include yamls/devices/lock.yaml
-sabnzbd: !include yamls/devices/sab.yaml
+nzbget: !include yamls/devices/nzbget.yaml
+googlehome: !include yamls/devices/google_home.yaml

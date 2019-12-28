@@ -6,6 +6,7 @@ custom_header:
   button_text:
     options: '{{ time }}'
   voice_hide: true
+  background: '#363941'
   active_tab_color: rgb(19, 172, 198)
   show_tabs: 0,1,2,3
   hide_unused: true
@@ -13,18 +14,13 @@ custom_header:
   hidden_tab_redirect: false
   exceptions:
     - conditions:
+        query_string: kiosk
+      config:
+        kiosk_mode: true
+    - conditions:
         user: Neil
       config:
         compact_mode: false
-    - conditions:
-        query_string: kiosk
-      config:
-        hide_header: true
-        hide_tabs: 0,1,2,3,4
-        disable_sidebar: true
-        hide_help: true
-        compact_mode: true
-        kiosk_mode: true
   hide_config: true
   hide_raw: true
   hide_help: false
@@ -32,7 +28,7 @@ custom_header:
 swipe_nav:
   wrap: true
   animate: swipe
-  skip_tabs: 4
+  skip_tabs: 4,5
   prevent_default: true
   swipe_amount: 15
 views:

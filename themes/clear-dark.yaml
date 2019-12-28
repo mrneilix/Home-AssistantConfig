@@ -7,10 +7,10 @@ clear-dark:
   text-medium-light-color: '#A0A2A8'                                              # Medium-light grey text
   text-medium-color: '#000000'                                                    # Medium grey text
   text-dark-color: '#6A6B74'                                                      # Dark grey text
-  accent-color: '#008bef'                                                         # Blue
+  primary-color: '#008bef'                                                        # Blue
   accent-medium-color: '#2686c1'                                                  # Decent blue
   background-color: '#3b4049'                                                     # Dark grey background
-  background-color-2: '#37464f'                                                   # Light grey background
+  background-color-2: '#323c44'                                                   # Light grey background
   background-card-color: '#434952'                                                # Grey background
   border-color: '#383C46'                                                         # Grey border
   label-badge-background-color: '#3c4348'
@@ -18,7 +18,7 @@ clear-dark:
   label-badge-red: 'var(--paper-card-background-color)'
 
   # Header
-  primary-color: '#363941'                                                        # Background color
+  accent-color: 'var(--primary-color)'                                            # Background color
   text-primary-color: 'var(--text-color)'                                         # Text
 
   # Left Menu
@@ -46,7 +46,7 @@ clear-dark:
 
   # Icons
   paper-item-icon-color: 'var(--text-dark-color)'                                 # Off
-  paper-item-icon-active-color: 'var(--accent-color)'                             # On
+  paper-item-icon-active-color: 'var(--primary-color)'                             # On
 
   # Switches
   switch-checked-button-color: 'var(--text-medium-light-color)'                   # Knob On
@@ -55,17 +55,17 @@ clear-dark:
   switch-unchecked-track-color: '#767682'                                         # Background Off
 
   # Slider
-  paper-slider-active-color: 'var(--accent-color)'                                # Line On
+  paper-slider-active-color: 'var(--primary-color)'                                # Line On
   paper-slider-knob-color: 'var(--text-medium-light-color)'                       # Knob On
   paper-slider-container-color: 'var(--text-dark-color)'                          # Line Off
   paper-slider-knob-start-color: 'var(--text-medium-light-color)'                 # Knob Off
   round-slider-handle-color: 'var(--paper-item-icon-active-color)'
 
   # Shadows
-  ha-card-box-shadow: 'inset 0px 0px 0px 1px var(--border-color)'
+  ha-card-box-shadow: 'inset 0px 0px 0px 1px #70788b'
 
   # HACS
-  hacs-badge-color: 'var(--accent-color)'                                         # New Badge
+  hacs-badge-color: 'var(--primary-color)'                                         # New Badge
   hacs-status-installed: 'var(--text-color)'                                      # Installed Icon
   hacs-status-pending-restart: 'var(--text-dark-color)'                           # Restart Icon
-  hacs-status-pending-update: 'var(--accent-color)'                               # Update Icon
+  hacs-status-pending-update: 'var(--primary-color)'                               # Update Icon

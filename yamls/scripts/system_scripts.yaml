@@ -90,14 +90,6 @@ system_turn_on_automations_on_restart:
       data:
         entity_id: input_boolean.restart_complete
 
-reboot_pi_zero:
-  alias: Reboot Pi Zero
-  sequence:
-    - service: shell_command.reboot_pi_zero
-    - service: logbook.log
-      data_template:
-        name: Shell Command
-        message: Reboot Pi Zero
 
 confirm_system_reboot:
   alias: Confirm System Reboot

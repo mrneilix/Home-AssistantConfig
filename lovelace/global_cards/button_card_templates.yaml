@@ -48,7 +48,6 @@ system_control_card_template:
 
 tv_input_card_template:
   show_state: false
-  color: var(--paper-item-icon-active-color)
   color_type: icon
   state:
     - value: 'on'
@@ -62,3 +61,11 @@ google_keep_card_template:
   alpha: 0.7
   show:
     - unchecked
+    
+couch_light_template:
+  show_state: false
+  color_type: icon
+  icon: mdi:sofa
+  styles:
+    card:
+      - background-color: var(--paper-card-background-color)

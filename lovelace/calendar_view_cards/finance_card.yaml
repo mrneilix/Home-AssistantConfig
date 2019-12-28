@@ -2,16 +2,11 @@ type: custom:swipe-card
 parameters:
   spaceBetween: 0
   centerInsufficientSlides: true
-  preventClicks: false
   navigation:
-  slidesPerView: 'auto'
+  slidesPerView: auto
   allowTouchMove: true
   loop: true
   loopedSlides: 2
-  scrollbar:
-    hide: false
-    draggable: true
-    snapOnRelease: true
   pagination:
     type: 'bullets'
 cards:

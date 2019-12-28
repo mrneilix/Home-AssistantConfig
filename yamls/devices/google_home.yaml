@@ -1,0 +1,10 @@
+  adb_host: 127.0.0.1
+  adb_port: 5037
+  adb_device: cce3814c-adb
+  devices:
+    - host: !secret google_home_ip
+      track_alarms: true
+      track_devices: false
+    - host: !secret google_home_mini_ip
+      track_alarms: true
+      track_devices: false

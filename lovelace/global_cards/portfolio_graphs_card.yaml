@@ -1,32 +1,32 @@
-type: custom:vertical-stack-in-card
+type: vertical-stack
 cards:
-- type: horizontal-stack
-  cards:
-    - type: custom:mini-graph-card
-      line_color: purple
-      entities:
-        - sensor.stock_ugaz
-    - type: custom:mini-graph-card
-      line_color: green
-      entities:
-        - sensor.stock_mj
-- type: horizontal-stack
-  cards:
-    - type: custom:mini-graph-card
-      line_color: grey
-      entities:
-        - sensor.stock_mt
-    - type: custom:mini-graph-card
-      line_color: blue
-      entities:
-        - sensor.stock_tvix
-- type: horizontal-stack
-  cards:
-    - type: custom:mini-graph-card
-      line_color: red
-      entities:
-        - sensor.stock_ssys
-    - type: custom:mini-graph-card
-      line_color: orange
-      entities:
-        - sensor.stock_ddd
+  - type: horizontal-stack
+    cards:
+      - type: custom:mini-graph-card
+        line_color: purple
+        entities:
+          - sensor.stock_ugaz
+      - type: custom:mini-graph-card
+        line_color: green
+        entities:
+          - sensor.stock_mj
+  - type: horizontal-stack
+    cards:
+      - type: custom:mini-graph-card
+        line_color: grey
+        entities:
+          - sensor.stock_mt
+      - type: custom:mini-graph-card
+        line_color: blue
+        entities:
+          - sensor.stock_tvix
+  - type: horizontal-stack
+    cards:
+      - type: custom:mini-graph-card
+        line_color: red
+        entities:
+          - sensor.stock_ssys
+      - type: custom:mini-graph-card
+        line_color: orange
+        entities:
+          - sensor.stock_ddd

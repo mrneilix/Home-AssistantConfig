@@ -8,7 +8,6 @@ cards:
         entities:
           - sensor.memory_use_percent
           - sensor.desktop_generic_memory_load_memory
-          - sensor.pi_zero_virtual_memory
   - type: horizontal-stack
     cards:
       - type: gauge
@@ -19,11 +18,3 @@ cards:
           green: 0
           yellow: 15
           red: 30
-      - type: gauge
-        entity: sensor.pi_zero_disk_usage_total
-        max: 14.5
-        theme: gauge_theme
-        severity:
-          green: 0
-          yellow: 3
-          red: 10

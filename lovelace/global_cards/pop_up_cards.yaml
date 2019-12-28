@@ -14,8 +14,6 @@ device_tracker.neil:
             secondary_info: last-changed
           - entity: device_tracker.neil_wifi
             secondary_info: last-changed
-          - entity: device_tracker.pi_zero_mqtt_pixel
-            secondary_info: last-changed
           - entity: device_tracker.tile_p_7231d50c4a0512da2532d71db7a524f9
             secondary_info: last-changed
       - type: 'custom:button-card'
@@ -48,8 +46,6 @@ device_tracker.butters:
       - type: entities
         entities:
           - entity: device_tracker.butters
-            secondary_info: last-changed
-          - entity: device_tracker.tile_70e3c9fefea64a42 
             secondary_info: last-changed
       - type: 'custom:button-card'
         template: toggle_presence_template

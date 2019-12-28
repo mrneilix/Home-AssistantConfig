@@ -1,4 +1,4 @@
-type: custom:vertical-stack-in-card
+type: vertical-stack
 cards:
   - type: horizontal-stack
     cards:
@@ -49,13 +49,17 @@ cards:
           service_data:
             title: Tautulli Watch History
             card:
-              type: custom:layout-card
-              max_width: 500
-              column_width: 500
-              max_columns: 1
-              cards:
-                - type: iframe
-                  url: tautulli_watch_history?kiosk
-                  aspect_ratio: 200%
+              type: iframe
+              url: tautulli_watch_history?kiosk
+              aspect_ratio: 200%
+              style: |
+                paper-dialog {
+                  width: 700px;
+                }
+                ha-paper-dialog {
+                  width: 700px;
+                }
+            deviceID:
+              - this
         show_state: false
         icon: mdi:history

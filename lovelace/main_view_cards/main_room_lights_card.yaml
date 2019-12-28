@@ -1,4 +1,4 @@
-type: custom:vertical-stack-in-card
+type: vertical-stack
 cards:
   - type: horizontal-stack
     cards:
@@ -44,7 +44,7 @@ cards:
             entity_picture: /local/pictures/lamp.jpg
   - type: horizontal-stack
     cards:
-      - type: 'custom:button-card'
+      - type: entity-button
         name: Bathroom Light
         entity: switch.bathroom_light
         icon: mdi:shower
@@ -52,16 +52,10 @@ cards:
           action: more-info
         tap_action:
           action: toggle
-        color: var(--primary-color)
-        show_state: true
-        layout: name_state
-      - type: 'custom:button-card'
+      - type: entity-button
         name: Bathroom Fan
         entity: switch.bathroom_fan
         hold_action:
           action: more-info
         tap_action:
           action: toggle
-        color: var(--primary-color)
-        show_state: true
-        layout: name_state

@@ -5,6 +5,7 @@ style: |
     background-repeat: no-repeat;
     background-size: 100% 100%;
     --ha-card-background: rgba(0,0,0,1);
+    accent-color: '#edad08';
   }
 entity: sensor.tautulli
 name: Plex History

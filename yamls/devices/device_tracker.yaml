@@ -20,14 +20,12 @@
       entity_id:
         - device_tracker.neil_bluetooth
         - device_tracker.neil_wifi
-        - device_tracker.pi_zero_mqtt_pixel
         - binary_sensor.lock_code_entered_neil
     - platform: composite
       name: butters
       time_as: local
       entity_id:
         - device_tracker.tile_70e3c9fefea64a42
-        - device_tracker.pi_zero_mqtt_butters_tile
     - platform: composite
       name: parents
       time_as: local
@@ -41,7 +39,3 @@
       entity_id:
         - device_tracker.gina_phone
         - binary_sensor.lock_code_entered_gina
-    - platform: mqtt
-      devices:
-          pi_zero_mqtt_pixel: 'monitor/monitor/neilpixel/device_tracker'
-          pi_zero_mqtt_butters_tile: 'monitor/monitor/butterstile/device_tracker'

@@ -1,12 +1,13 @@
-type: custom:vertical-stack-in-card
+type: vertical-stack
 cards:
-- type: custom:weather-card
-  entity: weather.dark_sky
-- type: entities
-  show_header_toggle: false
-  title: Weather Summary
-  entities:
-    - sensor.dark_sky_summary
-    - sensor.dark_sky_minutely_summary
-    - sensor.dark_sky_hourly_summary
-    - sensor.dark_sky_daily_summary
+  - type: custom:weather-card
+    entity: weather.dark_sky
+    icons: "/community_plugin/weather-card/card-icons/"
+  - type: entities
+    show_header_toggle: false
+    title: Weather Summary
+    entities:
+      - sensor.dark_sky_summary
+      - sensor.dark_sky_minutely_summary
+      - sensor.dark_sky_hourly_summary
+      - sensor.dark_sky_daily_summary

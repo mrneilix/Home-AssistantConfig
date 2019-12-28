@@ -148,10 +148,6 @@ presence_set_neil_device_trackers_away:
         location_name: 'not_home'
     - service: device_tracker.see
       data:
-        dev_id: pi_zero_mqtt_pixel
-        location_name: 'not_home'
-    - service: device_tracker.see
-      data:
         dev_id: neil
         location_name: 'not_home'
 

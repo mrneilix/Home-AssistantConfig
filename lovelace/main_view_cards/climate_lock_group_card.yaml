@@ -1,45 +1,53 @@
 type: vertical-stack
 cards:
-  - type: custom:vertical-stack-in-card
+  - type: vertical-stack
     cards:
       - entity: climate.thermostat
         name: Thermostat
         type: thermostat
       - type: horizontal-stack
         cards:
-          - type: 'custom:button-card'
+          - type: entity-button
             name: Set Home
             entity: binary_sensor.thermostat_set_home
             icon: mdi:home-plus
-            layout: icon_name
+            icon_height: 30px
             tap_action:
               action: call-service
               service: script.thermostat_home_set_temp
-            styles:
-              card:
-                - height: 75px
-            state:
-              - value: 'off'
-                color: var(--paper-item-icon-color)
-              - value: 'on'
-                color: var(--paper-item-icon-active-color)
-          - type: 'custom:button-card'
+            style: |
+              ha-card {
+                height: 75px;
+              }
+              :host {
+                --iron-icon-fill-color: 
+                  {% if is_state(config.entity, 'on') %}
+                    var(--paper-item-icon-active-color)
+                  {% else %}
+                    var(--paper-item-icon-color)
+                  {% endif %};
+              }
+          - type: entity-button
             name: Set Away
             entity: binary_sensor.thermostat_set_home
             icon: mdi:home-minus
-            layout: icon_name
+            icon_height: 30px
             tap_action:
               action: call-service
               service: script.thermostat_leave_set_temp
-            styles:
-              card:
-                - height: 75px
-            state:
-              - value: 'on'
-                color: var(--paper-item-icon-color)
-              - value: 'off'
-                color: var(--paper-item-icon-active-color)
-  - type: custom:vertical-stack-in-card
+            style: |
+              ha-card {
+                height: 75px;
+              }
+              :host {
+                --iron-icon-fill-color: 
+                  {% if is_state(config.entity, 'off') %}
+                    var(--paper-item-icon-active-color)
+                  {% else %}
+                    var(--paper-item-icon-color)
+                  {% endif %};
+              }
+  - type: vertical-stack
     cards:
       - type: horizontal-stack
         cards:
@@ -62,33 +70,105 @@ cards:
                 color: var(--paper-item-icon-color)
       - type: horizontal-stack
         cards:
-          - type: 'custom:button-card'
-            template: climate_lock_toggle_buttons
+          - type: entity-button
             name: Autolock
             entity: input_boolean.autolock
+            hold_action:
+              action: more-info
+            tap_action:
+              action: toggle
             icon: mdi:lock-smart
-          - type: 'custom:button-card'
-            template: climate_lock_toggle_buttons
+            style: |
+              :host {
+                --iron-icon-fill-color:
+                  {% if is_state('input_boolean.autolock', 'on') %}
+                    var(--paper-item-icon-active-color)
+                  {% else %}
+                    var(--paper-item-icon-color)
+                  {% endif %};
+              }
+          - type: entity-button
             name: Temp Code
             entity: switch.temp_lock_code
-          - type: 'custom:button-card'
-            template: climate_lock_toggle_buttons
+            hold_action:
+              action: more-info
+            tap_action:
+              action: toggle
+            style: |
+              :host {
+                --iron-icon-fill-color:
+                  {% if is_state('switch.temp_lock_code', 'on') %}
+                    var(--paper-item-icon-active-color)
+                  {% else %}
+                    var(--paper-item-icon-color)
+                  {% endif %};
+              }
+          - type: entity-button
             name: Fam Code
             entity: switch.parents_lock_code
+            hold_action:
+              action: more-info
+            tap_action:
+              action: toggle
+            style: |
+              :host {
+                --iron-icon-fill-color:
+                  {% if is_state('switch.parents_lock_code', 'on') %}
+                    var(--paper-item-icon-active-color)
+                  {% else %}
+                    var(--paper-item-icon-color)
+                  {% endif %};
+              }
       - type: horizontal-stack
         cards:
-          - type: 'custom:button-card'
-            template: climate_lock_toggle_buttons
+          - type: entity-button
             name: Notify
             entity: input_boolean.notifications_on
-          - type: 'custom:button-card'
-            template: climate_lock_toggle_buttons
+            hold_action:
+              action: more-info
+            tap_action:
+              action: toggle
+            style: |
+              :host {
+                --iron-icon-fill-color:
+                  {% if is_state('input_boolean.notifications_on', 'on') %}
+                    var(--paper-item-icon-active-color)
+                  {% else %}
+                    var(--paper-item-icon-color)
+                  {% endif %};
+              }
+          - type: entity-button
             name: Presence
             entity: input_boolean.presence_automations
-          - type: 'custom:button-card'
+            hold_action:
+              action: more-info
+            tap_action:
+              action: toggle
+            style: |
+              :host {
+                --iron-icon-fill-color:
+                  {% if is_state('input_boolean.presence_automations', 'on') %}
+                    var(--paper-item-icon-active-color)
+                  {% else %}
+                    var(--paper-item-icon-color)
+                  {% endif %};
+              }
+          - type: entity-button
             name: Camera
-            template: climate_lock_toggle_buttons
             entity: switch.yi_power
+            hold_action:
+              action: more-info
+            tap_action:
+              action: toggle
+            style: |
+              :host {
+                --iron-icon-fill-color:
+                  {% if is_state('switch.yi_power', 'on') %}
+                    var(--paper-item-icon-active-color)
+                  {% else %}
+                    var(--paper-item-icon-color)
+                  {% endif %};
+              }
           - type: 'custom:button-card'
             name: Bedroom
             entity: binary_sensor.dyson_bedroom_on

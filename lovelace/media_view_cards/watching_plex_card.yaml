@@ -1,4 +1,0 @@
-type: custom:vertical-stack-in-card
-cards:
-- !include /config/lovelace/global_cards/watching_plex_graph.yaml
-- !include /config/lovelace/global_cards/watching_plex_list.yaml
