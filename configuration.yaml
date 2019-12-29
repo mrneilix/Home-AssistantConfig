@@ -35,7 +35,7 @@ browser_mod:
   devices:
     180fffa4_a74390c9:
       name: browser_desktop
-    693774a8_248dd846:
+    f34e5616_7ed10eb1:
       name: browser_phone
 
 http:
@@ -49,10 +49,6 @@ http:
     - !secret hass_ip
     - !secret my_phone_wifi
     - !secret trusted_home_network
-
-# favicon:
-#   title: Home
-#   icon_path: /local/favicons/
 
 api:
 

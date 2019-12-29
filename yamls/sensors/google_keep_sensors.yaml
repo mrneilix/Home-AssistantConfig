@@ -13,31 +13,31 @@
     # username: !secret email
     # password: !secret keep_app_password
     # list_id: !secret keep_bourbons_to_try
-  - platform: google_keep
-    name: google_keep_groceries
-    username: !secret email
-    password: !secret keep_app_password
-    titles:
-      - 'Groceries'
-    pinned: false
-  - platform: google_keep
-    name: google_keep_atl_restaurants
-    username: !secret email
-    password: !secret keep_app_password
-    titles:
-      - 'Atlanta Restaurants'
-    pinned: false
-  - platform: google_keep
-    name: google_keep_nyc_restaurants
-    username: !secret email
-    password: !secret keep_app_password
-    titles:
-      - 'New York Restaurants'
-    pinned: false
-  - platform: google_keep
-    name: google_keep_bourbons
-    username: !secret email
-    password: !secret keep_app_password
-    titles:
-      - 'Bourbons I need to try'
-    pinned: false
+  # - platform: google_keep
+    # name: google_keep_groceries
+    # username: !secret email
+    # password: !secret keep_app_password
+    # titles:
+      # - 'Groceries'
+    # pinned: false
+  # - platform: google_keep
+    # name: google_keep_atl_restaurants
+    # username: !secret email
+    # password: !secret keep_app_password
+    # titles:
+      # - 'Atlanta Restaurants'
+    # pinned: false
+  # - platform: google_keep
+    # name: google_keep_nyc_restaurants
+    # username: !secret email
+    # password: !secret keep_app_password
+    # titles:
+      # - 'New York Restaurants'
+    # pinned: false
+  # - platform: google_keep
+    # name: google_keep_bourbons
+    # username: !secret email
+    # password: !secret keep_app_password
+    # titles:
+      # - 'Bourbons I need to try'
+    # pinned: false
