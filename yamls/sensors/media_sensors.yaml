@@ -9,11 +9,11 @@
       - friendly_name
       - user
 
-  - platform: qbittorrent
-    url: !secret QBitTorrent_weblink
-    name: "qbittorrent"
-    username: !secret qbittorrent_username
-    password: !secret http_password
+  # - platform: qbittorrent
+    # url: !secret QBitTorrent_weblink
+    # name: "qbittorrent"
+    # username: !secret qbittorrent_username
+    # password: !secret http_password
 
   - platform: sonarr
     api_key: !secret sonarr_api
