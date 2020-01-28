@@ -1,6 +1,7 @@
   project_id: !secret gactions_project_id
-  api_key: !secret gactions_homegraph_api_key
+  service_account: !include /config/Smart-Home-7d670836393d.json
   expose_by_default: false
+  report_state: true
   exposed_domains:
     - switch
     - light

@@ -17,12 +17,11 @@ homeassistant:
         - !secret trusted_network
         - 172.30.32.0/24
         - !secret trusted_home_network
+        - !secret trusted_network2
     - type: homeassistant
     - type: legacy_api_password
       api_password: !secret http_password
 frontend: !include yamls/front_end/frontend.yaml
-
-breaking_changes:
 
 config:
 

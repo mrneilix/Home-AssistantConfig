@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "smart-home-f3596",
+  "private_key_id": "7d670836393d1bc27af7773fdc44473655168a1b",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQCQ5s+sosra3oCz\n29w9YNzlN7qDVp/FRNCqInQknpgXiMkFFqpHlplCLmjUG2g6YllvNu9LZ5dDobHM\nneDhK8p0E0isfkCdG9I43iaAOC0myxG4PV9uWP9iqVbym+uPgkbIrCsjR8xBbkFT\nC2d/wQkgfZSjK8uwUiug4HNNaCBRUK1BxGO/w5W1nyv3nXWQBdW5+riCJF2CjUHS\nliPP8iz2wHrJ2uTqAOeCr2iGnheJnfQfZX4WRC7V3aly+uhUzdjwe47F+W7TT8Z3\n0HjXL5xJ0YIAItZnQzcqYKGTbIoP+9F2ZkS88+ucNatC+iOTUoN/ZCIRaKxJXEc1\njraCr8DxAgMBAAECggEAE2URfwX7KPiHOYvAGucQKg4fhNzfXcQsOdmKuiwQJ3ZD\nkc7K0/IwaU9U8K8KcGYhmmU7+lfPQ1otNjobk4gM/SRnoc70TxMePEZf2OGsCXk8\n0fBFCbwX0tjfrnF4Qikp2EpTK9G8YTWkwLzSCaOI2TR15LFD/kHBXTMtu7qoOLnk\nJ3IxMMaELGSQjtE1i19G+S0+jWW5lj72HrFuigYjO/IRlKY7s6Jb4oE5vxIuiAHj\nGyZXIRluykctN4Hrb55NmYxMx6DYhDgPRytKzXkYcdGs7ZFJmurben2k5lwIUjNY\nAygZSaKlGKRqSpR+IXOXU80EGeep9ZETKwRAHN160QKBgQDB4hO4w0GT6Wwee4Wx\n3g4E0O2OVGZY+99BdA0ju6s/SNqpnTds8ktNxeeiY3rfwfBSgw9aiS5xUhlDg7o6\nkWlCS0izmhC1IKJGnwO0+k3RdwIZJHULufohhYrPjALMVro+U1g4ghewg9s/90Zp\nS+X6RmIeuUw01THH3E/BQnxdawKBgQC/U11M7ZMFzGlOhjJ8eEbk29qgWq1arWtz\np726hV+juaZiqeaUvyZDj84SAaL++5z2zAn2CnElpp0Svapa1iLyowq/geU4F0la\n+yllKxjztmG3F7uXMNUYwaLTMjpEuJDF9eAKi4azeEPrnetF1l/KB0TJ00YHPEcx\nXe6rcRD2EwKBgA+MmhhPUIsURV+MeIRzUpyARQ0NJ8grKxSMwiEDhBBnP2IrAa7z\nH6b1IEadw9T+MM/tQuX36omcE/qeLelUkCSI9SOyT3S3UUxopFt3V5Zc/QYXLmvq\nVm0p0KAkknTg377v4Dtn845shMD0i+kV9TPFQUlFgx8Zmgx1VtAhDOhRAoGALPy7\nKYWLVoe0E0S2xlG5ycJwa9gmfvXcGDvO/vaxgFv85aIxl7RCmQxNViqQWwhq5hUg\nGnxmEoZU1L1IO0eyu/7eXh16+m9vTjdUindRzKyL2XN5JpnS4ZlWYfajgNktIX8p\nCRG5wKV8wwBE/AzmRSjkYdiN1NG1o8QEhMd3R4UCgYEAuuxV152fgeYxr1jv1diS\nGNxLroi9OWfrcGlr6FAlPE6+fUjC9BwWkaAXIfA9vBrpmNfNo4vWh1W1JY3yhAx3\ndNkPuNvkBvXpfwHNd0BbFdIBUDCpWBNXtF8lLT9yqCMzg8M3dte4nAxkfOiBbA6e\nnIn12upkQCrcFnU02ikD3P8=\n-----END PRIVATE KEY-----\n",
+  "client_email": "hassio@smart-home-f3596.iam.gserviceaccount.com",
+  "client_id": "106161962486189742987",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/hassio%40smart-home-f3596.iam.gserviceaccount.com"
+}
