@@ -34,5 +34,6 @@ tts/*
 .ps4-games.json
 community_plugin/*
 appdaemon/*
-appdaemon/
+appdaemon/*
 appdaemon/apps
+*.json
