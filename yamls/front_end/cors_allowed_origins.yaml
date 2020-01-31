@@ -19,3 +19,6 @@
     - !secret google_home_mini_ip
     - !secret chromebook_ip
     - !secret cast_cors
+    - !secret appdaemon_url
+    - !secret appdaemon_ws_url
+    - !secret appdaemon_local_url
