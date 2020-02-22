@@ -1,5 +1,5 @@
 #!/bin/bash
-
+### HASSIO Cron doesn't work, so I stopped using this ###
 SUCRONFILE="/etc/periodic/15min/su-logs"
 var=$(grep 'sys_commands_path' '/config/secrets.yaml' | tail -n1); var=${var//sys_commands_path: /}; log_path=$var'/supervisor.log';
 if [ ! -s $SUCRONFILE ]; then
