@@ -1,5 +1,5 @@
 #!/bin/bash
-
+### I added this to SSH Web Terminal as an Init Command, so it acts as a watchdog for my hass instance ###
 var=$(grep 'sys_commands_path' '/config/secrets.yaml' | tail -n1);
 script_path=${var//sys_commands_path: /};
 
