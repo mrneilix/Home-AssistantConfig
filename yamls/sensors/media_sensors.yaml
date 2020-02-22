@@ -46,9 +46,7 @@
     token: !secret plex_token
     host: !secret desktop_ip
     port: !secret plex_port
-    server_name: !secret plex_server_name
-    ssl: false
-    download_images: false
+    download_images: true
     max: 5
 
   - platform: template

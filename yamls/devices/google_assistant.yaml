@@ -1,5 +1,7 @@
   project_id: !secret gactions_project_id
-  service_account: !include /config/Smart-Home-7d670836393d.json
+  service_account:
+    private_key: !secret gactions_private_key
+    client_email: !secret gactions_client_email
   expose_by_default: false
   report_state: true
   exposed_domains:
@@ -9,6 +11,14 @@
     - scene
     - input_boolean
   entity_config:
+    climate.bedroom:
+      name: Bedroom Fan
+      room: Bedroom
+      expose: true
+      aliases:
+        - Bedroom Fan
+        - Bedroom Heater
+        - Dyson
     light.kitchen:
       name: Kitchen Lights
       room: Kitchen

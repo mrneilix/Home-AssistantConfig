@@ -1,0 +1,4 @@
+  - platform: marta
+    friendly_name: Marta Card
+    card_number: !secret marta_card_number
+    state: trips

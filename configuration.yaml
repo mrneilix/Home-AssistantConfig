@@ -19,15 +19,18 @@ homeassistant:
         - !secret trusted_home_network
         - !secret trusted_network2
     - type: homeassistant
-    - type: legacy_api_password
-      api_password: !secret http_password
 frontend: !include yamls/front_end/frontend.yaml
 
+sun:
+uilogs:
+api:
 config:
-
 websocket_api:
-
 hassio:
+system_health:
+lovelace:
+  mode: yaml
+breaking_changes:
 
 browser_mod:
   prefix: "browser_"
@@ -41,6 +44,8 @@ http:
   base_url: !secret base_url
   cors_allowed_origins: !include yamls/front_end/cors_allowed_origins.yaml
   use_x_forwarded_for: true
+  ip_ban_enabled: true
+  login_attempts_threshold: 5
   trusted_proxies:
     - 127.0.0.1
     - !secret trusted_network
@@ -48,25 +53,14 @@ http:
     - !secret hass_ip
     - !secret my_phone_wifi
     - !secret trusted_home_network
+    - !secret trusted_network2
 
-api:
+tts: !include yamls/commands_and_notify/tts.yaml
+
 
 logger:
   default: error
-  logs:
-    homeassistant.components.system_log: fatal
-    homeassistant.components.tplink: fatal
-    homeassistant.helpers.template: debug
-    custom_components.google_keep: fatal
-    homeassistant.components.frontend: fatal
-    frontend: fatal
-    homeassistant.components.tautulli: fatal
-    pytautulli : fatal
 
-lovelace:
-  mode: yaml
-
-system_health:
 
 discovery:
   ignore:
@@ -74,10 +68,6 @@ discovery:
     - google_cast
     - plex_mediaserver
     - igd
-
-tts: !include yamls/commands_and_notify/tts.yaml
-
-sun:
 
 vera:
   vera_controller_url: !secret vera_controller_url
@@ -118,7 +108,6 @@ group: !include yamls/home_assistant_yamls/groups.yaml
 folder_watcher: !include yamls/home_assistant_yamls/folder_watcher.yaml
 zone: !include yamls/home_assistant_yamls/zone.yaml
 proximity: !include yamls/home_assistant_yamls/proximity.yaml
-iqvia: !include yamls/home_assistant_yamls/iqvia.yaml
 coinbase: !include yamls/home_assistant_yamls/coinbase.yaml
 
 # Commands and Notify
@@ -127,13 +116,9 @@ shell_command: !include yamls/commands_and_notify/shell_commands.yaml
 notify: !include yamls/commands_and_notify/notify.yaml
 joaoapps_join: !include yamls/commands_and_notify/join.yaml
 
-# Include Front End
-weblink: !include yamls/front_end/weblink.yaml
-# google_domains: !include yamls/front_end/google_domains.yaml
-
 # Include DBs
 recorder: !include yamls/databases/recorder.yaml
-logbook: !include yamls/databases/logbook.yaml
+# logbook: !include yamls/databases/logbook.yaml
 history: !include yamls/databases/history.yaml
 influxdb: !include yamls/databases/influxdb.yaml
 
@@ -148,7 +133,7 @@ device_tracker: !include yamls/devices/device_tracker.yaml
 light: !include yamls/devices/lights.yaml
 climate: !include yamls/devices/climate.yaml
 dyson: !include yamls/devices/dyson.yaml
-mqtt: !include yamls/devices/mqtt.yaml
+# mqtt: !include yamls/devices/mqtt.yaml
 cast: !include yamls/devices/cast.yaml
 hdmi_cec: !include yamls/devices/cec.yaml
 tplink: !include yamls/devices/tplink.yaml
@@ -157,4 +142,3 @@ google_assistant: !include yamls/devices/google_assistant.yaml
 switch:  !include yamls/devices/switch.yaml
 lock:  !include yamls/devices/lock.yaml
 nzbget: !include yamls/devices/nzbget.yaml
-googlehome: !include yamls/devices/google_home.yaml

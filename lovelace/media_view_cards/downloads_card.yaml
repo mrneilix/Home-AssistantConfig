@@ -6,7 +6,7 @@ cards:
         template: download_card_templates
         name: Sonarr
         entity: sensor.sonarr_upcoming
-        icon: mdi:television-classic
+        entity_picture: /local/icons/sonarr.png
         hold_action:
           action: url
           url_path: !secret sonarr_weblink
@@ -14,7 +14,7 @@ cards:
         template: download_card_templates
         name: Radarr
         entity: sensor.radarr_upcoming
-        icon: mdi:filmstrip
+        entity_picture: /local/icons/radarr.png
         hold_action:
           action: url
           url_path: !secret radarr_weblink
@@ -22,7 +22,7 @@ cards:
         template: download_card_templates
         name: Tautulli
         entity: sensor.tautulli
-        icon: mdi:view-stream
+        entity_picture: /local/icons/tautulli.png
         tap_action:
           action: url
           url_path: !secret tautulli_url
@@ -31,7 +31,7 @@ cards:
       - type: 'custom:button-card'
         template: download_card_templates
         name: Upcoming Downloads
-        icon: mdi:video
+        entity_picture: /local/icons/upcoming_downloads.png
         entity: sensor.upcoming_downloads
         show_state: false
       - type: 'custom:button-card'
@@ -62,4 +62,4 @@ cards:
             deviceID:
               - this
         show_state: false
-        icon: mdi:history
+        entity_picture: /local/icons/plex.png

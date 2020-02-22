@@ -104,5 +104,8 @@
       state: 'on'
     - condition: template
       value_template: "{{ ( states('sensor.latest_version') | string ) != ( states('sensor.current_version') | string ) }}"
+    - condition: time
+      weekday:
+      - tue
   action:
     - service: script.notify_update_available

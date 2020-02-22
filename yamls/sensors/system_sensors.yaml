@@ -15,12 +15,6 @@
     name: uptime
     unit_of_measurement: minutes
 
-  # - platform: mqtt
-    # name: Monitor Status
-    # state_topic: "monitor/monitor/status"
-    # force_update: true
-    # json_attributes_topic: "monitor/monitor/status"
-
   - platform: rpi_power
     text_state: true
 

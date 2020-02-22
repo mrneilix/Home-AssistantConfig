@@ -1,6 +1,3 @@
-restart_monitor: !secret restart_monitor
-restart_pi_sys_stat: !secret restart_pi_sys_stat
-reboot_pi_zero: !secret reboot_pi_zero
 git_backup: !secret git_backup
 desktop_restart_flask_server: !secret desktop_restart_flask_server
 desktop_backup_sync: !secret desktop_backup_sync

@@ -28,12 +28,14 @@ download_card_templates:
   show_state: true
   layout: name_state
   color: var(--paper-item-icon-active-color)
+  show_entity_picture: true
   tap_action:
     action: more-info
 
 system_weblinks_card_template:
   show_state: true
   layout: name_state
+  show_entity_picture: true
   color: var(--paper-item-icon-active-color)
 
 system_control_card_template:

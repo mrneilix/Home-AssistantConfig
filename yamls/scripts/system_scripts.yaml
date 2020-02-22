@@ -1,6 +1,10 @@
 startup_scripts:
   alias: Startup Scripts
   sequence:
+    - service: hassio.addon_stdin
+      data:
+        addon: a0d7b954_ssh
+        input: '/config/sys_commands/su-log-to-file.sh'
     - service: frontend.set_theme
       data:
         name: clear-dark
@@ -73,7 +77,10 @@ startup_someone_home:
 restart_homeassistant:
   alias: Restart Home Assistant
   sequence:
-    - service: homeassistant.restart
+    - service: hassio.addon_stdin
+      data:
+        addon: a0d7b954_ssh
+        input: 'ha core restart'
 
 system_restart_if_just_rebooted:
   alias: System Restart If Just Rebooted
@@ -118,7 +125,10 @@ system_reboot:
   alias: Reboot System
   sequence:
     - delay: 00:00:02
-    - service: hassio.host_reboot
+    - service: hassio.addon_stdin
+      data:
+        addon: a0d7b954_ssh
+        input: ha host reboot
 
 system_backup:
   alias: System Backup
@@ -138,19 +148,11 @@ desktop_restart_plex:
 system_git_backup:
   alias: System Git Backup
   sequence:
-    - service: logbook.log
-      data_template:
-        name: Shell Command
-        message: Git Backup
     - service: shell_command.git_backup
 
 system_desktop_display_off:
   alias: System Desktop Display Off
   sequence:
-    - service: logbook.log
-      data_template:
-        name: Shell Command
-        message: Desktop Display Off
     - service: rest_command.desktop_screen_off
 
 system_magic_mirror_rotate_display_on:

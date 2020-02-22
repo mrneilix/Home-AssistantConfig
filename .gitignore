@@ -30,10 +30,14 @@ tts/*
 *.pyc
 *.sh
 /yamls/sensors/plex_watching_sensors.yaml
+/yamls/sensors/finance_sensors.yaml
 /yamls/sensors/zone_template_address_sensors.yaml
-.ps4-games.json
 community_plugin/*
 appdaemon/*
-appdaemon/*
-appdaemon/apps
 *.json
+*.css
+*.png
+*.svg
+/custom_icons/*
+ip_bans.yaml
+sys_commands/*

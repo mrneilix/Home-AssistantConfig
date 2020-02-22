@@ -1,23 +1,18 @@
 - id: system_startup
   alias: 'System Startup'
-  hide_entity: true
   initial_state: true
   trigger:
     platform: homeassistant
     event: start
   action:
-    - service: logbook.log
-      data_template:
-        name: Starting
-        message: Hass is Starting
     - service: scene.turn_on
       entity_id: scene.startup_reset_variables
     - delay: 00:00:50
     - service: script.startup_scripts
     
 
-- id: system_scheduled_reboot_pi
-  alias: 'System Scheduled Reboot Pi'
+- id: system_scheduled_reboot
+  alias: 'System Scheduled Reboot'
   trigger:
     platform: time
     at: '03:40:00'
@@ -41,24 +36,6 @@
         entity_id: input_boolean.config_updated
     - service: script.system_reboot
 
-# - id: system_scheduled_restart_ha
-  # alias: 'System Scheduled Restart HA'
-  # trigger:
-    # platform: time
-    # at: '04:00:00'
-  # condition:
-    # - condition: state
-      # entity_id: input_boolean.config_updated
-      # state: 'off'
-    # - condition: state
-      # entity_id: input_boolean.restart_complete
-      # state: 'on'
-    # - condition: time
-      # weekday:
-      # - wed
-      # - fri
-  # action:
-    # - service: script.restart_homeassistant
 
 - id: system_update_input_boolean_for_config_backup
   alias: 'System Update Input Boolean for Config Backup'

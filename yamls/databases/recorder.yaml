@@ -3,6 +3,7 @@
   exclude:
     domains:
       - scene
+      - shell_command
     entities:
       - binary_sensor.lock_code_entered
       - binary_sensor.lock_code_entered_gina

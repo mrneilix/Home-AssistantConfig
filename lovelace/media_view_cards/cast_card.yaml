@@ -1,11 +1,17 @@
 type: vertical-stack
 cards:
   - type: custom:mini-media-player
+    entity: media_player.living_room_tv
+    artwork: full-cover
+  - type: custom:mini-media-player
     entity: media_player.kitchen_display
     artwork: full-cover
     tts:
       platform: google
       entity_id: media_player.kitchen_display
   - type: custom:mini-media-player
-    entity: media_player.living_room_tv
+    entity: media_player.bedroom_speaker
     artwork: full-cover
+    tts:
+      platform: google
+      entity_id: media_player.bedroom_speaker

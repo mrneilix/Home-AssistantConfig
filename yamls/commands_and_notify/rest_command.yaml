@@ -1,25 +1,15 @@
-  neil_code_entered:
-    method: post
-    url: !secret neil_code_entered_url # https://[Hass Address]/api/states/device_tracker.[Device Tracker name]?api_password=[API Password]
-    headers:
-      accept: 'application/json'
-    content_type: 'application/json'
-    payload: !secret neil_code_entered_payload # Json Attributes to set Device Tracker Home
-  google_home_clear_alarm:
-    method: post
-    url: !secret clear_google_home_alarm_url # http://[Local IP of Google Home]:8008/setup/assistant/alarms/delete
-    headers:
-      Content-Type: application/json
-    payload: '{"ids": ["{{ states.sensor.Kitchen_Display_Alarm_ID.state | replace("/", "\/") }}"]}'
-  google_home_clear_timer:
-    method: post
-    url: !secret clear_google_home_alarm_url
-    headers:
-      Content-Type: application/json
-    payload: '{"ids": ["{{ states.sensor.Kitchen_Display_Timer_ID.state | replace("/", "\/") }}"]}'
-  set_temp_lock_code:
-    url: !secret set_temp_lock_code # http://[Vera IP]:[Vera Port]/data_request?id=variableset&DeviceNum=[Device Number of VContainer]&serviceId=urn:upnp-org:serviceId:VContainer1&Variable=Variable[Variable of VContainer you want to set]&Value={{ states('sensor.lock_set_temp_code_input_number') }}`
-    method: post
+  # google_home_clear_alarm:
+    # method: post
+    # url: !secret clear_google_home_alarm_url # http://[Local IP of Google Home]:8008/setup/assistant/alarms/delete
+    # headers:
+      # Content-Type: application/json
+    # payload: '{"ids": ["{{ states.sensor.Kitchen_Display_Alarm_ID.state | replace("/", "\/") }}"]}'
+  # google_home_clear_timer:
+    # method: post
+    # url: !secret clear_google_home_alarm_url
+    # headers:
+      # Content-Type: application/json
+    # payload: '{"ids": ["{{ states.sensor.Kitchen_Display_Timer_ID.state | replace("/", "\/") }}"]}'
   mirror_querry_rotating:
     url: !secret mirror_querry_rotating
     method: get
