@@ -1,10 +1,6 @@
 startup_scripts:
   alias: Startup Scripts
   sequence:
-    - service: hassio.addon_stdin
-      data:
-        addon: a0d7b954_ssh
-        input: '/config/sys_commands/su-log-to-file.sh'
     - service: frontend.set_theme
       data:
         name: clear-dark
@@ -85,6 +81,10 @@ restart_homeassistant:
 system_restart_if_just_rebooted:
   alias: System Restart If Just Rebooted
   sequence:
+    - service: hassio.addon_stdin
+      data:
+        addon: a0d7b954_ssh
+        input: 'rm /config/sys_commands/api-fail-count.log'
     - delay: 00:01:00
     - service: script.restart_homeassistant
 
