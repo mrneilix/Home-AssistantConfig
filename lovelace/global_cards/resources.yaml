@@ -42,5 +42,7 @@
   url: /community_plugin/lovelace-google-keep-card/google-keep-card.js
 - type: module
   url: /community_plugin/lovelace-layout-card/layout-card.js
+- type: module
+  url: /community_plugin/lovelace-thermostat-card/main.js
 - type: css
   url: /local/css/links.css

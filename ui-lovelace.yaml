@@ -11,8 +11,6 @@ custom_header:
   hide_config: true
   hide_raw: true
   hide_help: true
-  header_text: Atlanta Condo
-  background: '#363941'
   active_tab_color: rgb(19, 172, 198)
   show_tabs: 0,1,2,3
   compact_mode: true
