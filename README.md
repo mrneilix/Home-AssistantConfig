@@ -28,8 +28,11 @@ Main view with Couch Lights Off
 Main view with Couch Lights On
 ![Main View With Couch Lights On](Screenshots/main-view-couch-on.png)
 
-Main view with Notification Control Popup (Input Booleans)
+Main view with Notification Control Popup
 ![Main view with Notification Control Popup](Screenshots/main-view-popup-control-input-booleans-for-notifications.png)
+
+Main view with setting a temporary lock code popup
+![Main View With Temporary Lock Code Popup](Screenshots/main-view-temp-lock-code-popup.png)
 
 Media
 -----
