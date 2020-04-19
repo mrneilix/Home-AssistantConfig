@@ -37,6 +37,7 @@ appdaemon/*
 *.json
 *.css
 *.png
+!/Screenshots/*.png
 *.svg
 /custom_icons/*
 ip_bans.yaml

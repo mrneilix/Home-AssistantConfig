@@ -34,6 +34,9 @@ Main view with Notification Control Popup
 Main view with setting a temporary lock code popup
 ![Main View With Temporary Lock Code Popup](Screenshots/main-view-temp-lock-code-popup.png)
 
+Fitbit popup
+![Fitbit View](Screenshots/fitbit_view.png)
+
 Media
 -----
 Media View with TV Off
@@ -42,19 +45,17 @@ Media View with TV Off
 Media View with TV On
 ![Media View With TV On](Screenshots/media-view-tv-on.png)
 
-Media View with Tautulli Popup
+Media View with an Popup iFrame to Grafana, showing Tautulli history
 ![Media View With Tautulli Popup](Screenshots/media-view-tautulli-popup.png)
+
+Media View with an Popup showing Tautulli history by user
+![Media View With Tautulli Popup](Screenshots/media-view-tautulli-history.png)
 
 Media View with Upcoming Downloads Popup
 ![Media View With Upcoming Downloads Popup](Screenshots/media-view-upcoming-downloads-popup.png)
 
 Media View with Recently Added to Plex Popup
 ![Media View With Recently Added to Plex Popup](Screenshots/media-view-recent-downloads-popup.png)
-
-Fitbit
-------
-Fitbit View
-![Fitbit View](Screenshots/fitbit_view.png)
 
 Calendar
 --------
