@@ -79,7 +79,7 @@ Router
 ![Router](Screenshots/weblink-router.png)
 Vera
 ![Vera](Screenshots/weblink-vera.png)
-QBittorrent
+QBittorrent 
 ![QBittorrent](Screenshots/weblink-qbittorrent.png)
 Sonarr
 ![Sonarr](Screenshots/weblink-tv.png)
