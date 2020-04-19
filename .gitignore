@@ -43,3 +43,4 @@ ip_bans.yaml
 *.log
 *.env
 .env
+custom_components/*
