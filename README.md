@@ -86,54 +86,18 @@ Sonarr
 Radarr
 ![MQTT](Screenshots/weblink-movies.png)
 
-Custom Components
+HACS Integrations and Plugins
 =================
-
-Sun, Composite Device Tracker, and Illumination Sensor: https://github.com/pnbruckner/homeassistant-config/
-
-Custom Updater: https://github.com/custom-components/custom_updater
-
-Plex Recently Added: https://github.com/custom-components/sensor.plex_recently_added
-
-Sonarr Upcoming: https://github.com/custom-components/sensor.sonarr_upcoming_media
-
-Radarr Upcoming: https://github.com/custom-components/sensor.radarr_upcoming_media
-
-
-Custom Cards
-============
-
-Card | View Used In | Link
----- | ------------ | ----
-Card Modder (to updated the background image of a couple cards) | Throughout | https://github.com/thomasloven/lovelace-card-modder
-Card Tools (Many of the custom cards have this as a dependency) | Throughout | https://github.com/thomasloven/lovelace-card-tools
-Custom Button (Used Throughout) | Throughout | https://github.com/custom-cards/button-card
-Popup Card (Used Throughout) | Throughout | https://github.com/thomasloven/lovelace-popup-card
-Compact Custom Header | Throughout | https://github.com/maykar/custom-lovelace/tree/master/compact-custom-header
-Animated Weather Card | [Main View](#Main) and [Calendar View](#Calendar) | https://github.com/bramkragten/custom-ui/tree/master/weather-card
-Fold Entity Row (Main View and Calendar View) | [Main View](#Main) and [Calendar View](#Calendar) | https://github.com/thomasloven/lovelace-fold-entity-row
-Mini Media Player Card for Cast Devices and the PS4 Card inputs and controls | [Media View](#Media) | https://github.com/kalkih/mini-media-player
-Upcoming Media | [Media View](#Media) | https://github.com/custom-cards/upcoming-media-card
-Auto Entries to show hide who is not currently watching my Plex | [Media View](#Media) | https://github.com/thomasloven/lovelace-auto-entities
-Circle Sensor Card | [Fitbit View](#Fitbit) | https://github.com/custom-cards/circle-sensor-card
-Text Element | [Fitbit View](#Fitbit) | https://github.com/custom-cards/text-element
-Atomic Calendar Card for a more detailed and customizable Calendar View | [Calendar View](#Calendar) | https://github.com/atomic7777/atomic_calendar
-Tracker Card | [System View](#System) | https://github.com/custom-cards/tracker-card
-Mini Graph card | [System View](#System) | https://github.com/kalkih/mini-graph-card
-Gauge Card | [System View](#System) | https://github.com/ciotlosm/custom-lovelace/tree/master/gauge-card
-Layout Card for the iFrames | [Hidden Views with embedded iFrames](#Hidden-Views-with-embedded-iFrames) | https://github.com/thomasloven/lovelace-layout-card
-Vertical Stack in Card for hiding the borders that show in a normal vertical stack | [Hidden Views with embedded iFrames](#Hidden-Views-with-embedded-iFrames) | https://github.com/custom-cards/vertical-stack-in-card
+![HACS](Screenshots/HACS-integrations-and-plugins.png)
 
 Hardware
 ========
 
-Raspberry Pi 3B
-
-Raspberry Pi Zero W (for Monitor and My TV Control)
+Raspberry Pi 4 Running Raspbian Docker on an SSD
 
 Numerous Z Wave Switches
 
-Schlage Camelot Z Wave Lock (Not working anymore)
+Schlage Camelot Z Wave Lock 
 
 Monoprice Z Wave Door Sensor (Vera has been annoying about my lock, so I have to use that to tell when the door is opened)
 
@@ -148,5 +112,3 @@ Vera Hub for Z-Wave control
 Google Home and Chromecast
 
 Join/Tasker on my phone for YouTube TV and presence control
-
-Monitor on my Pi Zero: https://github.com/andrewjfreyer/monitor/blob/master/monitor.sh
