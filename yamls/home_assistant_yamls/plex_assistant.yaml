@@ -1,0 +1,8 @@
+  url: !secret plex_full_ip
+  token: !secret plex_token
+  default_cast: 'Living Room TV'
+  language: 'en'
+  tts_errors: true
+  aliases:
+    Living Room TV: plex_plex_cast_chromecast
+    Desktop: plex_plex_for_windows_desktop

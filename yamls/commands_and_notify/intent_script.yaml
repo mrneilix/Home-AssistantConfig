@@ -1,0 +1,7 @@
+  Plex:
+    speech:
+      text: Command sent to Plex.
+    action:
+      - service_template: plex_assistant.command
+        data_template:
+          command: "{{command}}"

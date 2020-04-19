@@ -7,6 +7,6 @@ entities:
   - sensor.ha_uptime
   - sensor.rpi_power_status
   - type: divider
-  - sensor.network_in_eth0
-  - sensor.network_out_eth0
+  - sensor.network_downloaded
+  - sensor.network_uploaded
   - sensor.speedtest_ping

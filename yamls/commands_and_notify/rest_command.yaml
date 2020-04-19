@@ -31,9 +31,6 @@
   desktop_screen_off:
     url: !secret desktop_screen_off
     method: get
-  desktop_backup_sync:
-    url: !secret desktop_backup_sync
-    method: get
-  desktop_restart_plex:
-    url: !secret desktop_restart_plex
-    method: get
+  set_temp_lock_code:
+    url: !secret set_temp_lock_code
+    method: post

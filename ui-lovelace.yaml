@@ -1,6 +1,14 @@
 resources: !include lovelace/global_cards/resources.yaml
 popup_cards: !include lovelace/global_cards/pop_up_cards.yaml
 button_card_templates: !include lovelace/global_cards/button_card_templates.yaml
+preload_cards:
+  - iframe
+  - custom:mini-media-player
+  - custom:swipe-card
+  - custom:auto-entities
+  - custom:mini-graph-card
+  - custom:state-switch
+  - custom:button-card
 title: Home Control
 custom_header:
   button_text:
@@ -11,6 +19,7 @@ custom_header:
   hide_config: true
   hide_raw: true
   hide_help: true
+  background: '#3b4049'
   active_tab_color: rgb(19, 172, 198)
   show_tabs: 0,1,2,3
   compact_mode: true
@@ -24,7 +33,6 @@ custom_header:
 swipe_nav:
   wrap: true
   animate: swipe
-  skip_tabs: 4,5
   prevent_default: true
   swipe_amount: 15
 views:
@@ -32,5 +40,3 @@ views:
   - !include lovelace/01_media_player_view.yaml
   - !include lovelace/02_calendar_view.yaml
   - !include lovelace/03_system_view.yaml
-  - !include lovelace/04_system_monitor_view.yaml
-  - !include lovelace/05_tautulli_watch_history.yaml

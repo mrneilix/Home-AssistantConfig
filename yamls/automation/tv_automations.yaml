@@ -93,6 +93,9 @@
     - condition: state
       entity_id: input_boolean.restart_complete
       state: 'on'
+    - condition: state
+      entity_id: light.couch
+      state: 'off'
   action:
     - service: script.tv_notify_theater_mode
 
@@ -128,3 +131,18 @@
       state: 'off'
   action:
     - service: script.tv_off_turn_devices_off
+    
+- id: plex_assistant
+  alias: Plex Assistant
+  trigger:
+    platform: event
+    event_type: ifttt_webhook_received
+    event_data:
+      action: call_service
+  condition:
+    condition: template
+    value_template: "{{ trigger.event.data.service == 'plex_assistant.command' }}"
+  action:
+    - data_template:
+        command: "{{ trigger.event.data.command }}"
+      service_template: '{{ trigger.event.data.service }}'

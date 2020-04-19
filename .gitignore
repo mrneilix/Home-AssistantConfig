@@ -32,7 +32,7 @@ tts/*
 /yamls/sensors/plex_watching_sensors.yaml
 /yamls/sensors/finance_sensors.yaml
 /yamls/sensors/zone_template_address_sensors.yaml
-community_plugin/*
+hacsfiles/*
 appdaemon/*
 *.json
 *.css
@@ -41,3 +41,5 @@ appdaemon/*
 /custom_icons/*
 ip_bans.yaml
 *.log
+*.env
+.env

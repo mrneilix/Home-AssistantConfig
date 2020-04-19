@@ -11,14 +11,6 @@
     - scene
     - input_boolean
   entity_config:
-    climate.bedroom:
-      name: Bedroom Fan
-      room: Bedroom
-      expose: true
-      aliases:
-        - Bedroom Fan
-        - Bedroom Heater
-        - Dyson
     light.kitchen:
       name: Kitchen Lights
       room: Kitchen

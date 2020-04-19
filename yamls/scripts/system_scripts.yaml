@@ -73,20 +73,7 @@ startup_someone_home:
 restart_homeassistant:
   alias: Restart Home Assistant
   sequence:
-    - service: hassio.addon_stdin
-      data:
-        addon: a0d7b954_ssh
-        input: 'ha core restart'
-
-system_restart_if_just_rebooted:
-  alias: System Restart If Just Rebooted
-  sequence:
-    - service: hassio.addon_stdin
-      data:
-        addon: a0d7b954_ssh
-        input: 'rm /config/sys_commands/api-fail-count.log'
-    - delay: 00:01:00
-    - service: script.restart_homeassistant
+    - service: homeassistant.restart
 
 system_turn_on_automations_on_restart:
   alias: System Turn On Automations On Restart
@@ -125,20 +112,7 @@ system_reboot:
   alias: Reboot System
   sequence:
     - delay: 00:00:02
-    - service: hassio.addon_stdin
-      data:
-        addon: a0d7b954_ssh
-        input: ha host reboot
-
-system_backup:
-  alias: System Backup
-  sequence:
-    - service: script.system_git_backup
-    - delay: 00:00:60
-    - service: hassio.snapshot_full
-      data_template:
-        name: Automated Backup {{ now().strftime('%Y-%m-%d') }}
-    - service: shell_command.desktop_backup_sync
+    - service: shell_command.reboot_hassio
 
 desktop_restart_plex:
   alias: Restart Plex

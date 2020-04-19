@@ -1,2 +1,4 @@
   themes: !include_dir_merge_named /config/themes
   javascript_version: latest
+  extra_html_url:
+    - /local/base.html

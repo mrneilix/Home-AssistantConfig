@@ -86,41 +86,6 @@ sensor.tautulli:
     cards:
       - !include /config/lovelace/global_cards/watching_plex_list.yaml
       - !include /config/lovelace/global_cards/watching_plex_graph.yaml
-binary_sensor.dyson_bedroom_on:
-  title: Dyson Bedroom
-  card:
-    type: vertical-stack
-    cards:
-      - entity: climate.bedroom
-        name: Dyson Bedroom
-        type: thermostat
-      - type: horizontal-stack
-        cards:
-        - type: 'custom:button-card'
-          name: Fan
-          entity: binary_sensor.dyson_bedroom_on
-          icon: 'mdi:fan'
-          tap_action:
-            action: call-service
-            service: script.bedroom_dyson_toggle
-          state:
-            - value: 'off'
-              color: var(--paper-item-icon-color)
-              icon: 'mdi:fan-off'
-            - value: 'on'
-              color: var(--primary-color)
-        - type: 'custom:button-card'
-          name: Oscillate
-          entity: binary_sensor.dyson_bedroom_oscillation_on
-          tap_action:
-            action: call-service
-            service: script.bedroom_dyson_toggle_oscillate
-          state:
-            - value: 'off'
-              color: var(--paper-item-icon-color)
-            - value: 'on'
-              color: var(--primary-color)
-          icon: 'mdi:rotate-orbit'
 
 sensor.portfolio_change:
   title: Finance

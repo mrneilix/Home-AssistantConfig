@@ -1,38 +1,41 @@
 sensor.sonarr_upcoming:
   title: Sonarr Calendar
   card:
-    type: vertical-stack
-    cards:
-    - type: "custom:atomic-calendar"
-      title: "Sonarr Calendar"
-      enableModeChange: true
-      defaultMode: 1
-      showDate: true
-      showProgressBar: false
-      showMonth: true
-      maxDaysToShow: 7
-      fullDayEventText: ' '
-      entities:
-        - entity: calendar.sonarr_tv_schedule
-          type: icon1
-
+    type: custom:upcoming-media-card
+    entity: sensor.sonarr_upcoming_media
+    # type: vertical-stack
+    # cards:
+    # - type: "custom:atomic-calendar"
+      # title: "Sonarr Calendar"
+      # enableModeChange: true
+      # defaultMode: 1
+      # showDate: true
+      # showProgressBar: false
+      # showMonth: true
+      # maxDaysToShow: 7
+      # fullDayEventText: ' '
+      # entities:
+        # - entity: calendar.sonarr_tv_schedule
+          # type: icon1
 sensor.radarr_upcoming:
   title: Radarr Calendar
   card:
-    type: vertical-stack
-    cards:
-    - type: "custom:atomic-calendar"
-      title: "Radarr Calendar"
-      enableModeChange: true
-      defaultMode: 1
-      showDate: true
-      showProgressBar: false
-      showMonth: true
-      maxDaysToShow: 30
-      fullDayEventText: ' '
-      entities:
-        - entity: calendar.radarr_movies_calendar
-          type: icon1
+    type: custom:upcoming-media-card
+    entity: sensor.radarr_upcoming_media
+    # type: vertical-stack
+    # cards:
+    # - type: "custom:atomic-calendar"
+      # title: "Radarr Calendar"
+      # enableModeChange: true
+      # defaultMode: 1
+      # showDate: true
+      # showProgressBar: false
+      # showMonth: true
+      # maxDaysToShow: 30
+      # fullDayEventText: ' '
+      # entities:
+        # - entity: calendar.radarr_movies_calendar
+          # type: icon1
 
 sensor.upcoming_downloads:
   title: Upcoming Downloads
@@ -51,6 +54,7 @@ sensor.plex_recently_added:
   card:
     type: custom:upcoming-media-card
     entity: sensor.plex_recently_added
+    image_style: poster
 
 sensor.tautulli:
   title: Plex

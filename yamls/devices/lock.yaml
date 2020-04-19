@@ -2,8 +2,8 @@
     name: Schlage Camelot
     state_topic: "smartthings/Schlage Camelot/lock/state"
     command_topic: "smartthings/Schlage Camelot/lock/cmd"
-    payload_lock: "LOCK"
-    payload_unlock: "UNLOCK"
+    payload_lock: "locked"
+    payload_unlock: "unlocked"
     state_locked: "locked"
     state_unlocked: "unlocked"
     optimistic: false

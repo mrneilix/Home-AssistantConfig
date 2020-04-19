@@ -23,10 +23,6 @@ notify_restart_complete:
           renotify: 0
           icon: '/local/pictures/restart-ha.png'
           badge: '/local/pictures/restart-ha.png'
-    - service: mqtt.publish
-      data:
-        topic: 'HASSIO'
-        payload: 'Complete'
 
 notify_update_available:
   alias: Notify Update Available

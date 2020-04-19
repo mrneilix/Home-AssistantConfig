@@ -1,18 +1,20 @@
-  - platform: mqtt
-    name: Parents Lock Code
-    command_topic: "smartthings/Parents Lock Code/switch/cmd"
-    state_topic: "smartthings/Parents Lock Code/switch/state"
-    state_on: "on"
-    state_off: "off"
-    payload_on: "on"
-    payload_off: "off"
-    retain: true
-  - platform: mqtt
-    name: Temp Lock Code
-    command_topic: "smartthings/Temp Lock Code/switch/cmd"
-    state_topic: "smartthings/Temp Lock Code/switch/state"
-    state_on: "on"
-    state_off: "off"
-    payload_on: "on"
-    payload_off: "off"
-    retain: true
+  - platform: template
+    switches:
+      temp_lock_code:
+        value_template: "{{ is_state('binary_sensor.temp_lock_code', 'on') }}"
+        turn_on:
+          service: script.lock_temp_code_popup
+        turn_off:
+          service: scene.turn_on
+          data:
+            entity_id: scene.temp_code_off
+      parents_lock_code:
+        value_template: "{{ is_state('binary_sensor.parents_lock_code', 'on') }}"
+        turn_on:
+          service: scene.turn_on
+          data:
+            entity_id: scene.parents_code_on
+        turn_off:
+          service: scene.turn_on
+          data:
+            entity_id: scene.parents_code_off

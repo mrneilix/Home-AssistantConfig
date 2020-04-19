@@ -1,4 +1,3 @@
 git_backup: !secret git_backup
-desktop_restart_flask_server: !secret desktop_restart_flask_server
-desktop_backup_sync: !secret desktop_backup_sync
-desktop_restart_plex: !secret desktop_restart_plex
+reboot_hassio: !secret reboot_hassio
+install_nano: !secret install_nano

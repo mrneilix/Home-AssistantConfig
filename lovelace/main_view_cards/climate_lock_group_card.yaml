@@ -2,117 +2,54 @@ type: vertical-stack
 cards:
   - type: vertical-stack
     cards:
-      - type: custom:swipe-card
-        parameters:
-          spaceBetween: 0
-          centerInsufficientSlides: true
-          preventClicks: false
-          navigation:
-          slidesPerView: 'auto'
-          loop: true
-          loopedSlides: 2
-          allowTouchMove: true
-          scrollbar:
-            hide: false
-            draggable: true
-            snapOnRelease: true
-          pagination:
-            type: 'bullets'
+      - type: custom:thermostat-card
+        entity: climate.thermostat
+        title: Thermostat
+        small_i: true
+        highlight_tap: true
+        step: 1
+      - type: horizontal-stack
         cards:
-          - type: vertical-stack
-            cards:
-              - type: custom:thermostat-card
-                entity: climate.thermostat
-                title: Thermostat
-                small_i: true
-                highlight_tap: true
-              - type: horizontal-stack
-                cards:
-                  - type: entity-button
-                    name: Set Home
-                    entity: binary_sensor.thermostat_set_home
-                    icon: mdi:home-plus
-                    icon_height: 30px
-                    tap_action:
-                      action: call-service
-                      service: script.thermostat_home_set_temp
-                    style: |
-                      ha-card {
-                        height: 75px;
-                      }
-                      :host {
-                        --iron-icon-fill-color: 
-                          {% if is_state(config.entity, 'on') %}
-                            var(--paper-item-icon-active-color)
-                          {% else %}
-                            var(--paper-item-icon-color)
-                          {% endif %};
-                      }
-                  - type: entity-button
-                    name: Set Away
-                    entity: binary_sensor.thermostat_set_home
-                    icon: mdi:home-minus
-                    icon_height: 30px
-                    tap_action:
-                      action: call-service
-                      service: script.thermostat_leave_set_temp
-                    style: |
-                      ha-card {
-                        height: 75px;
-                      }
-                      :host {
-                        --iron-icon-fill-color: 
-                          {% if is_state(config.entity, 'off') %}
-                            var(--paper-item-icon-active-color)
-                          {% else %}
-                            var(--paper-item-icon-color)
-                          {% endif %};
-                      }
-          - type: vertical-stack
-            cards:
-              - type: custom:thermostat-card
-                entity: climate.bedroom
-                title: Bedroom
-                small_i: true
-                highlight_tap: true
-                step: 1
-                ambient_temperature: sensor.bedroom_temperature
-              - type: horizontal-stack
-                cards:
-                  - type: entity-button
-                    name: Fan
-                    entity: binary_sensor.dyson_bedroom_on
-                    icon: mdi:fan
-                    icon_height: 30px
-                    tap_action:
-                      action: call-service
-                      service: script.bedroom_dyson_toggle
-                    state:
-                      - value: 'off'
-                        color: var(--paper-item-icon-color)
-                      - value: 'on'
-                        color: var(--primary-color)
-                    style: |
-                      ha-card {
-                        height: 75px;
-                      }
-                  - type: entity-button
-                    name: Oscilate
-                    entity: binary_sensor.dyson_bedroom_oscillation_on
-                    icon: mdi:rotate-orbit
-                    icon_height: 30px
-                    tap_action:
-                      action: call-service
-                      service: script.bedroom_dyson_toggle_oscillate
-                    state:
-                      - value: 'off'
-                        color: var(--paper-item-icon-color)
-                      - value: 'on'
-                        color: var(--primary-color)
-                    style: |
-                      ha-card {
-                        height: 75px;
-                      }
+          - type: entity-button
+            name: Set Home
+            entity: binary_sensor.thermostat_set_home
+            icon: mdi:home-plus
+            icon_height: 30px
+            tap_action:
+              action: call-service
+              service: script.thermostat_home_set_temp
+            style: |
+              ha-card {
+                height: 75px;
+              }
+              :host {
+                --iron-icon-fill-color: 
+                  {% if is_state(config.entity, 'on') %}
+                    var(--paper-item-icon-active-color)
+                  {% else %}
+                    var(--paper-item-icon-color)
+                  {% endif %};
+              }
+          - type: entity-button
+            name: Set Away
+            entity: binary_sensor.thermostat_set_home
+            icon: mdi:home-minus
+            icon_height: 30px
+            tap_action:
+              action: call-service
+              service: script.thermostat_leave_set_temp
+            style: |
+              ha-card {
+                height: 75px;
+              }
+              :host {
+                --iron-icon-fill-color: 
+                  {% if is_state(config.entity, 'off') %}
+                    var(--paper-item-icon-active-color)
+                  {% else %}
+                    var(--paper-item-icon-color)
+                  {% endif %};
+              }
   - type: vertical-stack
     cards:
       - type: horizontal-stack
@@ -156,10 +93,12 @@ cards:
           - type: entity-button
             name: Temp Code
             entity: switch.temp_lock_code
-            hold_action:
-              action: more-info
             tap_action:
-              action: toggle
+              action: call-service
+              service: script.lock_temp_code_toggle_or_popup
+              service_data:
+                deviceID:
+                  - this
             style: |
               :host {
                 --iron-icon-fill-color:

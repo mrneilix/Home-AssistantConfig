@@ -1,5 +1,5 @@
   - platform: tautulli
-    host: !secret localhost
+    host: !secret hass_ip
     ssl: false
     api_key: !secret tautulli_api
     port: !secret tautulli_port
@@ -8,13 +8,11 @@
       - full_title
       - friendly_name
       - user
-
-  # - platform: qbittorrent
-    # url: !secret QBitTorrent_weblink
-    # name: "qbittorrent"
-    # username: !secret qbittorrent_username
-    # password: !secret http_password
-
+  - platform: qbittorrent
+    url: !secret qbittorrent_ip
+    name: "qbittorrent"
+    username: !secret desktop_username
+    password: !secret http_password
   - platform: sonarr
     api_key: !secret sonarr_api
     host: !secret desktop_ip
@@ -34,11 +32,13 @@
   - platform: sonarr_upcoming_media
     api_key: !secret sonarr_api
     host: !secret desktop_ip
+    urlbase: /sonarr
     days: 2
     max: 10
   - platform: radarr_upcoming_media
     api_key: !secret radarr_api
     host: !secret desktop_ip
+    urlbase: /radarr
     days: 30
     theaters: false
     max: 10
@@ -51,24 +51,6 @@
 
   - platform: template
     sensors:
-      # sonarr_upcoming_list:
-        # friendly_name: Upcoming Episodes
-        # icon_template: mdi:television
-        # value_template: >
-          # {% for attr in states.sensor.sonarr_upcoming.attributes %}
-           # {% if not attr=="friendly_name" and not attr=="icon" and not attr=="unit_of_measurement" and not attr=="hidden" and not attr=="custom_ui_state_card" %}
-            # {{attr}}: {{states.sensor.sonarr_upcoming.attributes[attr]}} {{" |  "}}
-           # {% endif %}
-          # {% endfor %}
-      # radarr_upcoming_list:
-        # friendly_name: Upcoming Movies
-        # icon_template: mdi:video
-        # value_template: >
-          # {% for attr in states.sensor.radarr_upcoming.attributes %}
-          # {% if not attr=="friendly_name" and not attr=="icon" and not attr=="unit_of_measurement" and not attr=="hidden" and not attr=="custom_ui_state_card" %}
-            # {{attr}} {{" |  "}}
-           # {% endif %}
-          # {% endfor %}
       desktop_disk_space_c:
         friendly_name: "C: - Main"
         icon_template: mdi:harddisk
@@ -78,9 +60,9 @@
             {% if  "C" in attr  %}
               {%- set c_drive = states.sensor.sonarr_disk_space.attributes[attr] -%}
               {%- set full = c_drive.split('GB')[0] -%}
-              {%- set free = full.split('/')[0] | float | round(1) -%}
-              {%- set total = full.split('/')[1] | float | round(1) -%}
-              {%- set used = total - free | float | round(1) -%}
+              {%- set free = full.split('/')[0] | float | round(2) -%}
+              {%- set total = full.split('/')[1] | float | round(2) -%}
+              {%- set used = (total - free) | float | round(2) -%}
               {{ used }}
             {% endif %}
           {% endfor %}
@@ -149,16 +131,12 @@
         icon_template: mdi:video
         value_template: >- 
           {{ (states('sensor.radarr_upcoming') | float | int) + (states('sensor.sonarr_upcoming') | float | int) }}
-### Sample for my Tautulli Sensors by Username
-  # tautulli_watching_me:
-    # icon_template: mdi:plex
-    # friendly_name: "I am Watching"
-    # value_template: >
-      # {% if state_attr('sensor.tautulli', 'USERNAME') ['full_title'] | string == "" %}
-        # Nothing
-      # {% else %}
-        # {{ state_attr('sensor.tautulli', 'USERNAME') ['full_title'] }}
-      # {% endif %}
+
+      qbittorrent_download_speed:
+        friendly_name: "qBittorrent Down Speed"
+        unit_of_measurement: "MB/s"
+        value_template: >- 
+          {{ ( states('sensor.qbittorrent_down_speed') | float / 1024 ) | round(2) }}
 
       view_to_cast:
         friendly_name: "View to Cast"
@@ -174,3 +152,31 @@
           {% else %}
             system_monitor_view
           {% endif %}
+### Sample for my Tautulli Sensors by Username
+  # tautulli_watching_me:
+    # icon_template: mdi:plex
+    # friendly_name: "I am Watching"
+    # value_template: >
+      # {% if state_attr('sensor.tautulli', 'USERNAME') ['full_title'] | string == "" %}
+        # Nothing
+      # {% else %}
+        # {{ state_attr('sensor.tautulli', 'USERNAME') ['full_title'] }}
+      # {% endif %}
+      # sonarr_upcoming_list:
+        # friendly_name: Upcoming Episodes
+        # icon_template: mdi:television
+        # value_template: >
+          # {% for attr in states.sensor.sonarr_upcoming.attributes %}
+           # {% if not attr=="friendly_name" and not attr=="icon" and not attr=="unit_of_measurement" and not attr=="hidden" and not attr=="custom_ui_state_card" %}
+            # {{attr}}: {{states.sensor.sonarr_upcoming.attributes[attr]}} {{" |  "}}
+           # {% endif %}
+          # {% endfor %}
+      # radarr_upcoming_list:
+        # friendly_name: Upcoming Movies
+        # icon_template: mdi:video
+        # value_template: >
+          # {% for attr in states.sensor.radarr_upcoming.attributes %}
+          # {% if not attr=="friendly_name" and not attr=="icon" and not attr=="unit_of_measurement" and not attr=="hidden" and not attr=="custom_ui_state_card" %}
+            # {{attr}} {{" |  "}}
+           # {% endif %}
+          # {% endfor %}

@@ -1,25 +1,11 @@
 kitchen_lights_on:
   alias: Kitchen Lights On
   sequence:
-    - service: input_boolean.turn_on
-      data:
-        entity_id: input_boolean.kitchen_lights_running
     - service: scene.turn_on
       entity_id: scene.kitchen_lights_on
-    - delay: 00:00:03
-    - service: input_boolean.turn_off
-      data:
-        entity_id: input_boolean.kitchen_lights_running
 
 kitchen_lights_off:
   alias: Kitchen Lights Off
   sequence:
-    - service: input_boolean.turn_on
-      data:
-        entity_id: input_boolean.kitchen_lights_running
     - service: scene.turn_on
       entity_id: scene.kitchen_lights_off
-    - delay: 00:00:03
-    - service: input_boolean.turn_off
-      data:
-        entity_id: input_boolean.kitchen_lights_running

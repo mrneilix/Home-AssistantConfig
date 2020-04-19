@@ -23,8 +23,8 @@ cards:
       - type: 'custom:button-card'
         template: system_weblinks_card_template
         name: qBittorrent
-        entity: sensor.qbittorrent_down_speed
-        entity_picture: /local/icons/qbittorrent.png
+        entity: sensor.qbittorrent_download_speed
+        entity_picture: /local/link_icons/qbittorrent.png
         tap_action:
           action: url
           url_path: !secret QBitTorrent_weblink
@@ -32,7 +32,7 @@ cards:
         template: system_weblinks_card_template
         name: NZBGet
         entity: sensor.nzbget_speed
-        entity_picture: /local/icons/nzbget.png
+        entity_picture: /local/link_icons/nzbget.png
         tap_action:
           action: url
           url_path: !secret nzbget_url
@@ -63,7 +63,7 @@ cards:
       - type: 'custom:button-card'
         template: system_weblinks_card_template
         name: Grafana
-        entity_picture: /local/icons/grafana.png
+        entity_picture: /local/link_icons/grafana.png
         show_state: false
         tap_action:
           action: url
@@ -72,6 +72,6 @@ cards:
         name: Show System Stats
         tap_action:
           action: navigate
-          navigation_path: /lovelace/system_monitor_view
+          navigation_path: /lovelace-system_monitor/sys_monitor
         template: system_weblinks_card_template
         icon: mdi:desktop-classic

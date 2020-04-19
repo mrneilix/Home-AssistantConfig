@@ -4,24 +4,24 @@ presence_someone_arrived:
     - service: input_boolean.turn_on
       data:
         entity_id: input_boolean.presence_running
-    - service: lock.unlock
-      entity_id: lock.schlage_camelot
     - service: input_boolean.turn_off
       data:
         entity_id: input_boolean.away
+    - service: rest_command.mirror_show_all_modules
+    - service: script.thermostat_home_set_temp
+    - service: lock.unlock
+      entity_id: lock.schlage_camelot
     - service: switch.turn_off
       entity_id: switch.yi_power
-    - service: rest_command.mirror_show_all_modules
     - service_template: >
           {% if is_state('binary_sensor.dark_out', 'on') %}
             script.presence_arrive_dark_out
           {% else %}
             script.do_nothing
           {% endif %}
-    - delay: 00:00:03
     - service: light.turn_on
       entity_id: light.bathroom_orb
-    - delay: 00:00:02
+    - delay: 00:00:05
     - service_template: >
           {% if is_state('device_tracker.neil', 'home') %}
             script.presence_neil_arrived_home
@@ -30,8 +30,6 @@ presence_someone_arrived:
           {% else %}
             script.presence_gina_home
           {% endif %}
-    - delay: 00:00:05
-    - service: script.thermostat_home_set_temp
     - delay: 00:01:00
     - service: input_boolean.turn_off
       data:
@@ -52,7 +50,6 @@ presence_neil_arrived_home:
       data:
         entity_id: input_boolean.notifications_on
     - delay: 00:00:05
-    - service: script.bedroom_dyson_turn_on
     - service: tts.google_say
       entity_id: media_player.kitchen_display
       data_template:
@@ -82,7 +79,6 @@ presence_no_humans_home:
       data:
         command: leave
     - service: script.thermostat_leave_set_temp
-    - service: script.bedroom_dyson_turn_off
     - service: input_boolean.turn_off
       data:
         entity_id: input_boolean.presence_running

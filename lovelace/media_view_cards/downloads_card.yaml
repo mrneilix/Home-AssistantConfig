@@ -6,7 +6,7 @@ cards:
         template: download_card_templates
         name: Sonarr
         entity: sensor.sonarr_upcoming
-        entity_picture: /local/icons/sonarr.png
+        entity_picture: /local/link_icons/sonarr.png
         hold_action:
           action: url
           url_path: !secret sonarr_weblink
@@ -14,7 +14,7 @@ cards:
         template: download_card_templates
         name: Radarr
         entity: sensor.radarr_upcoming
-        entity_picture: /local/icons/radarr.png
+        entity_picture: /local/link_icons/radarr.png
         hold_action:
           action: url
           url_path: !secret radarr_weblink
@@ -22,7 +22,7 @@ cards:
         template: download_card_templates
         name: Tautulli
         entity: sensor.tautulli
-        entity_picture: /local/icons/tautulli.png
+        entity_picture: /local/link_icons/tautulli.png
         tap_action:
           action: url
           url_path: !secret tautulli_url
@@ -31,7 +31,7 @@ cards:
       - type: 'custom:button-card'
         template: download_card_templates
         name: Upcoming Downloads
-        entity_picture: /local/icons/upcoming_downloads.png
+        entity_picture: /local/link_icons/upcoming_downloads.png
         entity: sensor.upcoming_downloads
         show_state: false
       - type: 'custom:button-card'
@@ -50,7 +50,7 @@ cards:
             title: Tautulli Watch History
             card:
               type: iframe
-              url: tautulli_watch_history?kiosk
+              url: /lovelace-tautulli/tautulli_watch_history
               aspect_ratio: 200%
               style: |
                 paper-dialog {
@@ -62,4 +62,4 @@ cards:
             deviceID:
               - this
         show_state: false
-        entity_picture: /local/icons/plex.png
+        entity_picture: /local/link_icons/plex.png

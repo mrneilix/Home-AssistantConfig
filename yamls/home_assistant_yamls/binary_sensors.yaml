@@ -1,3 +1,10 @@
+  - platform: rest
+    resource: !secret temp_code_status
+    name: Temp Lock Code
+  - platform: rest
+    resource: !secret parents_code_status
+    name: Parents Lock Code
+
 #PRESENCE
   - platform: template
     sensors:
@@ -124,19 +131,6 @@
             False
           {% endif %}
 
-# MQTT Status
-      mqtt_status:
-        device_class: connectivity
-        friendly_name: MQTT Status
-        value_template: >-
-          {%-if (as_timestamp(now()) - as_timestamp(states.sensor.pi_zero_uptime.last_updated) < 300 ) and not is_state("sensor.pi_zero_uptime", "unknown") %}
-            True
-          {%-elif (as_timestamp(now()) - as_timestamp(states.device_tracker.neil_pixel_tasker.last_updated) < 6000 ) %}
-            True
-          {%- else -%}
-            False
-          {%- endif %}
-
 # Thermostat Set Home
       thermostat_set_home:
         friendly_name: Thermostat Set Home
@@ -154,27 +148,7 @@
           - script.thermostat_leave_set_temp
           - script.thermostat_home_set_temp
 
-      dyson_bedroom_on:
-        friendly_name: Dyson Bedroom Fan On
-        value_template: >-
-          {%- if states.fan.bedroom.attributes.auto_mode == true %}
-            True
-          {%- else -%}
-            False
-          {%- endif %}
-        entity_id:
-          - fan.bedroom
 
-      dyson_bedroom_oscillation_on:
-        friendly_name: Dyson Bedroom Oscillate On
-        value_template: >-
-          {%- if states.fan.bedroom.attributes.oscillating == true %}
-            True
-          {%- else -%}
-            False
-          {%- endif %}
-        entity_id:
-          - fan.bedroom
 # MagicMirror Display Rotating
       magic_mirror_display_rotation_off:
         value_template: >-

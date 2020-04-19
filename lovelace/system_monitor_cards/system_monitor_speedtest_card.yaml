@@ -1,6 +1,0 @@
-type: custom:mini-graph-card
-name: Speed Test
-icon: mdi:wan
-entities:
-  - sensor.speedtest_download
-  - sensor.speedtest_upload

@@ -1,6 +1,0 @@
-type: custom:mini-graph-card
-name: CPU Usage
-icon: mdi:chip
-entities:
-  - sensor.processor_use
-  - sensor.desktop_amd_a8_6600k_apu_with_radeon_hd_graphics_load_cpu_total

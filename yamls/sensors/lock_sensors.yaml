@@ -1,29 +1,43 @@
+  - platform: rest
+    resource: !secret get_last_lock_code
+    name: last_lock_code_used
   - platform: template
     sensors:
       last_lock_code_name:
         friendly_name: Last Lock Code
         value_template: >-
-          {%- if state_attr('light.lock_code', 'brightness') < 30 %}
+          {%- if 'Temporary' in states.sensor.last_lock_code_used.state %}
+              Temp
+          {%  elif 'Neil' in states.sensor.last_lock_code_used.state %}
               Neil
-          {%  elif state_attr('light.lock_code', 'brightness') < 60 %}
-              Parents
-          {%  elif state_attr('light.lock_code', 'brightness') < 90 %}
+          {%  elif 'Gina' in states.sensor.last_lock_code_used.state %}
               Gina
-          {%  elif state_attr('light.lock_code', 'brightness') < 115 %}
+          {%  elif 'Parents' in states.sensor.last_lock_code_used.state %}
+              Parents
+          {%  elif 'Guest' in states.sensor.last_lock_code_used.state %}
               Guest
           {% else %}
-              Temp
+              Blank
           {%- endif %}
         entity_picture_template: >-
-          {%- if state_attr('light.lock_code', 'brightness') < 30 %}
+          {%- if 'Neil' in states.sensor.last_lock_code_used.state %}
               /local/pictures/Me.jpg
-          {%  elif state_attr('light.lock_code', 'brightness') < 60 %}
+          {%  elif 'Parents' in states.sensor.last_lock_code_used.state %}
               /local/pictures/mom-dad.jpg
-          {%  elif state_attr('light.lock_code', 'brightness') < 90 %}
+          {%  elif 'Gina' in states.sensor.last_lock_code_used.state %}
               /local/pictures/gina.jpg
           {% else %}
               /local/pictures/guest.png
           {%- endif %}
-  - platform: mqtt
-    state_topic: "smartthings/Schlage Camelot/battery/state"
-    name: "Schlage Camelot Battery"
+      schlage_camelot_battery:
+        friendly_name: Last Battery
+        value_template: >-
+            {{ states.lock.schlage_camelot.attributes.battery_level }}
+      lock_set_temp_code_input_number:
+        entity_id: input_number.lock_code_temp
+        value_template: >
+          {% if (states.input_number.lock_code_temp.state | int) > 1000 %}
+            {{ states.input_number.lock_code_temp.state | int }}
+          {% else %}
+            0
+          {% endif %}
