@@ -66,25 +66,8 @@ System
 System View
 ![System View](Screenshots/system_view.png)
 
-System View With Tracker Card Showing
-![System View](Screenshots/system_view_tracker_card_not_hidden.png)
-
 I made a hidden view here using Compact Custom Header, so it'll navigate to the hidden System Monitor View
 ![System View With Hidden System Monitor View](Screenshots/system_view_system_monitor_view.png)
-
-Hidden Views with embedded iFrames
-----------------------------------
-I made a hidden view here using Compact Custom Header and an iFrame, so it'll navigate to the hidden iFrame to Sonarr
-![Media View With Sonarr Hidden View and iFrame](Screenshots/hidden-view-sonarr-view-iframe.png)
-
-I made a hidden view here using Compact Custom Header and an iFrame, so it'll navigate to the hidden iFrame to Radarr
-![Media View With Radarr Hidden View and iFrame](Screenshots/hidden-view-radarr-view-iframe.png)
-
-I made a hidden view here using Compact Custom Header and an iFrame, so it'll navigate to the hidden iFrame to Tautulli
-![Media View With Tautulli Hidden View and iFrame](Screenshots/hidden-view-tautulli-view-iframe.png)
-
-I made a hidden view here using Compact Custom Header and an iFrame, so it'll navigate to the hidden iFrame to QBittorrent
-![System View With QBittorrent Hidden View and iFrame](Screenshots/hidden-view-qbittorrent-view-iframe.png)
 
 Weblinks
 --------
@@ -94,8 +77,6 @@ Vera
 ![Vera](Screenshots/weblink-vera.png)
 QBittorrent
 ![QBittorrent](Screenshots/weblink-qbittorrent.png)
-MQTT
-![MQTT](Screenshots/weblink-mqtt.png)
 Sonarr
 ![Sonarr](Screenshots/weblink-tv.png)
 Radarr
