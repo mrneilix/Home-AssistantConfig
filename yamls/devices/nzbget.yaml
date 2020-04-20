@@ -1,3 +1,3 @@
   host: !secret desktop_ip
-  username: !secret downloaders_username
+  username: !secret nzbget_username
   password: !secret http_password

@@ -71,7 +71,7 @@ vera:
   vera_controller_url: !secret vera_controller_url
 
 wemo:
-  discovery: true
+  discovery: false
   static:
     - !secret yi_cam_outlet
 
@@ -137,6 +137,4 @@ tplink: !include yamls/devices/tplink.yaml
 tuya: !include yamls/devices/tuya.yaml
 google_assistant: !include yamls/devices/google_assistant.yaml
 switch:  !include yamls/devices/switch.yaml
-# lock:  !include yamls/devices/lock.yaml
 nzbget: !include yamls/devices/nzbget.yaml
-# mqtt: !include yamls/devices/mqtt.yaml

@@ -84,15 +84,6 @@
         - Restart Pi
         - Restart System
         - Reboot System
-    script.reboot_pi_zero:
-      room: Home
-      expose: true
-      name: Reboot Pi Zero
-      aliases:
-        - Reboot Raspberry Pi Zero
-        - Reboot Pi Zero
-        - Restart Raspberry Pi Zero
-        - Restart Pi Zero
     scene.reboot_vera:
       room: Home
       expose: true
@@ -107,12 +98,6 @@
       aliases:
         - Restart Home Assistant
         - Reboot Home Assistant
-    switch.space_heater_75:
-      name: Space Heater
-      room: Bedroom
-      expose: true
-      aliases:
-        - Space Heater
     switch.furnace_switch_29:
       name: Furnace Switch
       room: Hallway

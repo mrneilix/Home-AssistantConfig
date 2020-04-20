@@ -1,6 +1,0 @@
-    broker: !secret mqtt_ip
-    port: !secret mqtt_port
-    username: !secret hassio_addon_username
-    password: !secret hassio_addon_password
-    discovery: true
-    discovery_prefix: smartthings

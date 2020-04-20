@@ -5,10 +5,6 @@
       - type: disk_use
         arg: /
       - type: memory_use_percent
-      - type: network_in
-        arg: eth0
-      - type: network_out
-        arg: eth0
       - type: processor_use
       - type: last_boot
   - platform: uptime
@@ -123,10 +119,10 @@
         friendly_name: Downloaded
         icon_template: mdi:server-network
         unit_of_measurement: "GiB"
-        value_template: "{{ ( states('sensor.network_in_eth0') | float / 1024 ) | round(2) }}"
+        value_template: "{{ ( states('sensor.gfiberrouter_bytes_received') | float / 1073741824 ) | round(2) }}"
 
       network_uploaded:
         friendly_name: Uploaded
         icon_template: mdi:server-network
         unit_of_measurement: "GiB"
-        value_template: "{{ ( states('sensor.network_out_eth0') | float / 1024 ) | round(2) }}"
+        value_template: "{{ ( states('sensor.gfiberrouter_bytes_sent') | float / 1073741824 ) | round(2) }}"

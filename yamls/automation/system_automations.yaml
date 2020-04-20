@@ -6,7 +6,7 @@
     event: start
   action:
     - service: shell_command.install_nano
-    - delay: 00:00:50
+    - delay: 00:00:20
     - service: script.startup_scripts
 
 - id: system_update_input_boolean_for_config_backup
@@ -53,7 +53,7 @@
       entity_id: input_boolean.restart_complete
       state: 'on'
   action:
-    - service: script.system_backup
+    - service: script.system_git_backup
     - condition: time
       weekday:
       - sun

@@ -193,6 +193,4 @@ presence_lock_temp_code_entered:
   alias: Lock Temp Code Entered
   sequence:
     - service: script.notify_temp_code_entered
-    - service: input_boolean.turn_off
-      data:
-        entity_id: input_boolean.temp_lock_code_set
+    - service: script.lock_clear_temp_code

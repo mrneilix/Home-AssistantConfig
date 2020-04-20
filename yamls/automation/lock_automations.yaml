@@ -191,3 +191,18 @@
     - service: input_boolean.turn_on
       data:
         entity_id: input_boolean.door_open
+- id: lock_set_temp_code_ifttt
+  alias: Lock Set Temp Code by IFTTT
+  trigger:
+    platform: event
+    event_type: ifttt_webhook_received
+    event_data:
+      action: call_service
+  condition:
+    condition: template
+    value_template: "{{ trigger.event.data.service == 'input_number.set_value' }}"
+  action:
+    - service: input_number.set_value
+      data_template:
+        entity_id: "{{ trigger.event.data.entity_id }}"
+        value: "{{ trigger.event.data.value }}"
