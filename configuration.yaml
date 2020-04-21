@@ -42,7 +42,7 @@ browser_mod:
       name: browser_phone
 
 http:
-  cors_allowed_origins: !include yamls/front_end/cors_allowed_origins.yaml
+  cors_allowed_origins: !include cors_allowed_origins.yaml
   use_x_forwarded_for: true
   ip_ban_enabled: true
   login_attempts_threshold: 5
@@ -55,50 +55,39 @@ http:
     - !secret my_phone_wifi
     - !secret trusted_home_network
     - !secret trusted_network2
-
-
 logger:
   default: error
-
-
 discovery:
   ignore:
     - roku
     - google_cast
     - igd
-
 vera:
   vera_controller_url: !secret vera_controller_url
-
 wemo:
   discovery: false
   static:
     - !secret yi_cam_outlet
-
 google:
   client_id: !secret gcal_client_id
   client_secret: !secret gcal_client_secret
-
 ifttt:
   key: !secret ifttt_key
-
 updater:
   include_used_components: true
-
 weather:
   - platform: darksky
     mode: daily
     api_key: !secret darksky_api_key
-
 speedtestdotnet:
   scan_interval:
     minutes: 15
+
 
 # Include Folders
 automation: !include_dir_merge_list yamls/automation
 script: !include_dir_merge_named yamls/scripts
 sensor: !include_dir_merge_list yamls/sensors
-python_script:
 
 # Include HA Yamls
 binary_sensor: !include yamls/home_assistant_yamls/binary_sensors.yaml
@@ -121,6 +110,8 @@ recorder: !include yamls/databases/recorder.yaml
 history: !include yamls/databases/history.yaml
 influxdb: !include yamls/databases/influxdb.yaml
 
+# Front End
+python_script:
 # Include Inputs
 input_boolean: !include yamls/inputs/input_boolean.yaml
 input_text: !include yamls/inputs/input_text.yaml

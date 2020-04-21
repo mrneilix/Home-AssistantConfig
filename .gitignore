@@ -45,3 +45,5 @@ ip_bans.yaml
 *.env
 .env
 custom_components/*
+cors_allowed_origins.yaml
+python_scripts/*

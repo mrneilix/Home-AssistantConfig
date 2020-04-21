@@ -1,7 +1,6 @@
 title: System
 icon: mdi:desktop-classic
 path: system_view
-
 popup_cards: !include system_view_cards/system_view_popup_cards.yaml
 cards:
   - !include system_view_cards/system_weblinks_card.yaml

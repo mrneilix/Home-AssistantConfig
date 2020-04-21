@@ -1,7 +1,6 @@
 title: Home
 icon: mdi:home
 path: home
-
 popup_cards: !include main_view_cards/main_view_popup_cards.yaml
 badges:
   - device_tracker.neil

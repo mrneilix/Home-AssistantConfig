@@ -6,6 +6,7 @@
     event: start
   action:
     - service: shell_command.install_nano
+    - service: shell_command.update_index_html
     - delay: 00:00:20
     - service: script.startup_scripts
 
