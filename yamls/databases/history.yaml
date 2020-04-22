@@ -19,6 +19,7 @@
       - device_tracker.gina
       - device_tracker.butters
       - device_tracker.monitor_neil
+      - input_boolean.config_updated
   exclude:
     entities:
       - switch.hdmi_4
