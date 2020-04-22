@@ -74,7 +74,6 @@
       - sensor.desktop_amd_radeon_tm_r7_360_series_voltages_gpu_core
       - sensor.desktop_generic_memory_data_available_memory
       - sensor.desktop_generic_memory_data_used_memory
-      - sensor.desktop_generic_memory_load_memory
       - sensor.desktop_disk_space_c
       - sensor.desktop_disk_space_e
       - sensor.desktop_disk_space_f
