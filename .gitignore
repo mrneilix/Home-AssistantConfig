@@ -28,7 +28,6 @@ tts/*
 /custom_components/*
 *.pyc
 *.sh
-!sys_commands/*.sh
 /yamls/sensors/plex_watching_sensors.yaml
 /yamls/sensors/finance_sensors.yaml
 /yamls/sensors/zone_template_address_sensors.yaml
@@ -44,6 +43,7 @@ ip_bans.yaml
 *.log
 *.env
 .env
-custom_components/*
+custom_components
 cors_allowed_origins.yaml
-python_scripts/*
+python_scripts
+sys_commands
