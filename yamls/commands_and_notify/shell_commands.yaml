@@ -1,4 +1,4 @@
 git_backup: !secret git_backup
 reboot_hassio: !secret reboot_hassio
-install_nano: !secret install_nano
+download_nano_if_not_installed: !secret download_nano_if_not_installed
 update_index_html: !secret update_index_html

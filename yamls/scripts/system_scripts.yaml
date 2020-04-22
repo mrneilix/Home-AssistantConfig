@@ -1,9 +1,6 @@
 startup_scripts:
   alias: Startup Scripts
   sequence:
-    - service: frontend.set_theme
-      data:
-        name: clear-dark
     - service: lock.lock
       entity_id: lock.schlage_camelot
     - service: script.startup_input_booleans
@@ -156,3 +153,9 @@ do_nothing:
   alias: Do Nothing
   sequence:
     - delay: 00:00:01
+system_run_startup_shell_commands_on_boot:
+  alias: Run Startup Shell Commands on Boot
+  sequence:
+    - service: shell_command.update_index_html
+    - delay: 00:00:10
+    - service: shell_command.download_nano_if_not_installed

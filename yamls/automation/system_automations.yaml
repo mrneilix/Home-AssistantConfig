@@ -5,8 +5,10 @@
     platform: homeassistant
     event: start
   action:
-    - service: shell_command.install_nano
-    - service: shell_command.update_index_html
+    - service: script.system_run_startup_shell_commands_on_boot
+    - service: frontend.set_theme
+      data:
+        name: clear-dark2
     - delay: 00:00:20
     - service: script.startup_scripts
 

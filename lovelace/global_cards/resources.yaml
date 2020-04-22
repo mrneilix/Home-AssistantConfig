@@ -5,7 +5,7 @@
 - type: js
   url: /hacsfiles/lovelace-swipe-navigation/swipe-navigation.js
 - type: module
-  url: /hacsfiles/weather-card/weather-card.js
+  url: https://cdn.jsdelivr.net/gh/bramkragten/weather-card/dist/weather-card.min.js
 - type: js
   url: /hacsfiles/upcoming-media-card/upcoming-media-card.js
 - type: module
@@ -24,6 +24,8 @@
   url: /hacsfiles/mini-media-player/mini-media-player.js
 - type: js
   url: /hacsfiles/vertical-stack-in-card/vertical-stack-in-card.js
+- type: module
+  url: /hacsfiles/stack-in-card/stack-in-card.js
 - type: js
   url: /hacsfiles/light-entity-card/light-entity-card.js
 - type: module
@@ -36,15 +38,9 @@
   url: /hacsfiles/lovelace-state-switch/state-switch.js
 - type: module
   url: /hacsfiles/lovelace-card-mod/card-mod.js
-- type: js
-  url: /hacsfiles/fitbit-card/fitbit-card.js
-- type: module
-  url: /hacsfiles/lovelace-google-keep-card/google-keep-card.js
 - type: module
   url: /hacsfiles/lovelace-layout-card/layout-card.js
 - type: module
   url: /hacsfiles/lovelace-thermostat-card/main.js
 - type: css
   url: /local/css/links.css
-- type: js
-  url: /hacsfiles/lovelace-card-preloader/lovelace-card-preloader.js
