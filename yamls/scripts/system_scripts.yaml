@@ -124,7 +124,7 @@ system_git_backup:
 system_desktop_display_off:
   alias: System Desktop Display Off
   sequence:
-    - service: rest_command.desktop_screen_off
+    - service: shell_command.desktop_screen_off
 
 system_magic_mirror_rotate_display_on:
   alias: System Magic Mirror Rotate Display On

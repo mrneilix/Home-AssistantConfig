@@ -84,29 +84,3 @@
       state: 'on'
   action:
     - service: script.system_reboot
-
-- id: system_reload_lovelace
-  alias: 'System Reload Lovelace'
-  trigger:
-    - platform: event
-      event_type: folder_watcher
-      event_data:
-        event_type: created
-    - platform: event
-      event_type: folder_watcher
-      event_data:
-        event_type: modified
-    - platform: event
-      event_type: folder_watcher
-      event_data:
-        event_type: deleted
-    - platform: event
-      event_type: folder_watcher
-      event_data:
-        event_type: moved
-  condition:
-    - condition: state
-      entity_id: input_boolean.restart_complete
-      state: 'on'
-  action:
-    - service: browser_mod.lovelace_reload

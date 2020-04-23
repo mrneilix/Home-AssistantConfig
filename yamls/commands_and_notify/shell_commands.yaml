@@ -2,3 +2,4 @@ git_backup: !secret git_backup
 reboot_hassio: !secret reboot_hassio
 download_nano_if_not_installed: !secret download_nano_if_not_installed
 update_index_html: !secret update_index_html
+desktop_screen_off: !secret desktop_screen_off
