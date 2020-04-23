@@ -1,3 +1,6 @@
   couch_color:
     name: Couch Color Name
     initial: Color Name
+  test_variable:
+    name: For Testing
+    initial: Type Something
