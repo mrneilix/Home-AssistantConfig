@@ -3,4 +3,4 @@
     initial: Color Name
   test_variable:
     name: For Testing
-    initial: Type Something
+    initial: 0
