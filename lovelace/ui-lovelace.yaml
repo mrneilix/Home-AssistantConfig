@@ -3,35 +3,25 @@ popup_cards: !include lovelace/global_cards/pop_up_cards.yaml
 button_card_templates: !include lovelace/global_cards/button_card_templates.yaml
 title: Home Control
 custom_header:
-  header_text: 'Home Control - {{ viewTitle }}'
+  header_text: 'Home Control'
   button_text:
     options: '{{ time }}'
   hide_unused: true
   voice_hide: true
-  menu_hide: false
   default_tab_on_refresh: false
   hide_config: true
   hide_raw: true
-  hide_ch_settings: false
   hide_help: true
   background: '#3b4049'
   active_tab_color: rgb(19, 172, 198)
-  show_tabs: 0,1,2,3
   compact_mode: true
-  hidden_tab_redirect: false
   indicator_top: true
-  default_tab: 0
+  default_tab: home
   exceptions:
     - conditions:
         query_string: kiosk
       config:
         kiosk_mode: true
-  shadow: true
-swipe_nav:
-  wrap: true
-  animate: swipe
-  prevent_default: true
-  swipe_amount: 15
 views:
   - !include lovelace/00_main_view.yaml
   - !include lovelace/01_media_player_view.yaml

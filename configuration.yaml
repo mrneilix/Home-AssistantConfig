@@ -1,5 +1,5 @@
 homeassistant:
-  name: Atlanta Condo
+  name: Home Control
   latitude: !secret latitude_loc_home
   longitude: !secret longitude_loc_home
   elevation: 363
@@ -29,8 +29,7 @@ system_health:
 tts: !include yamls/commands_and_notify/tts.yaml
 dialogflow:
 lovelace:
-  mode: yaml
-  resources: !include lovelace/global_cards/resources.yaml
+  mode: storage
 breaking_changes:
 config_check:
 browser_mod:
