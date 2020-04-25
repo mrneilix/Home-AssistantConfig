@@ -8,6 +8,7 @@
       - full_title
       - friendly_name
       - user
+      - user_id
   - platform: qbittorrent
     url: !secret qbittorrent_ip
     name: "qbittorrent"

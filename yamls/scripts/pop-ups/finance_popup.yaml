@@ -1,0 +1,63 @@
+popup_finance:
+  sequence:
+    service: browser_mod.popup
+    data_template:
+      title: Finance
+      card:
+        type: vertical-stack
+        cards:
+          - type: entities
+            title: Stocks
+            show_header_toggle: false
+            style: |
+              ha-card {
+                --paper-item-icon-color:
+                 {% if states('sensor.portfolio_change') |int <= 0 %}
+                   rgb(255, 0, 0)
+                 {% else %}
+                   rgb(0, 255, 0)
+                 {% endif %};
+                }
+            entities:
+              - entity: sensor.portfolio_change
+          - type: custom:auto-entities
+            card:
+              type: entities
+              show_header_toggle: false
+              style: |
+                ha-card {
+                  --paper-item-icon-color: green;
+                }
+            filter:
+              include:
+                - entity_id: sensor.stock_*
+                  options:
+                    type: "custom:secondaryinfo-entity-row"
+                    secondary_info: "Percent:<b style='color:green'> [[ {entity}.attributes.changePercent ]]% </b> Change: <b style='color:green'>$[[ {entity}.attributes.change ]] </b> Gain: <b style='color:green'>$[[ {entity}.attributes.gain_loss ]] </b>"
+                  attributes:
+                    change: "> 0"
+                    shares: "> 0"
+          - type: custom:auto-entities
+            card:
+              type: entities
+              show_header_toggle: false
+              style: |
+                ha-card {
+                  --paper-item-icon-color: red;
+                }
+            filter:
+              include:
+                - entity_id: sensor.stock_*
+                  options:
+                    type: "custom:secondaryinfo-entity-row"
+                    secondary_info: "Percent:<b style='color:red'> [[ {entity}.attributes.changePercent ]]%</b> Change: <b style='color:red'>$[[ {entity}.attributes.change ]] </b> Loss: <b style='color:red'>$[[ {entity}.attributes.gain_loss ]] </b>"
+                  attributes:
+                    change: "< 0"
+                    shares: "> 0"
+          - type: custom:mini-graph-card
+            name: Bitcoin
+            entities:
+              - entity: sensor.bitcoin_wallet
+                show_state: true
+                show_indicator: true
+                line_color: '#f7931a'

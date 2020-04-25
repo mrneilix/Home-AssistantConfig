@@ -1,0 +1,3 @@
+plex-card-theme:
+  background: contain / no-repeat url("/local/pictures/lovelace-pictures/plex2.png") right;
+  background-card-color: rgb(31,31,31);

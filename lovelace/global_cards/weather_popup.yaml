@@ -1,0 +1,11 @@
+weather_popup:
+  sequence:
+    - service: browser_mod.popup
+      data_template:
+        deviceID: "{{ deviceID }}"
+        title: Dark Sky Summary
+        card:
+          type: custom:group-card
+          card:
+            type: glance
+          group: group.dark_sky_sensors

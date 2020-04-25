@@ -39,18 +39,8 @@ lock_temp_code_toggle_or_popup:
           {%- if is_state('switch.temp_lock_code', 'on') %}
             script.lock_clear_temp_code
           {% else %}
-            script.lock_temp_code_popup
+            script.popup_lock_temp_code
           {% endif %}
-lock_temp_code_popup:
-  alias: Lock Temp Code Popup
-  sequence:
-    service: browser_mod.popup
-    data_template:
-      title: Set Temp Code
-      card:
-        type: entities
-        entities:
-          - input_number.lock_code_temp
 
 lock_set_temp_lock_code_input_number:
   alias: Lock Set Temp Lock Code Input Number

@@ -1,0 +1,62 @@
+popup_tautulli:
+  sequence:
+    service: browser_mod.popup
+    data_template:
+      title: Plex
+      card:
+        type: custom:swipe-card
+        parameters:
+          spaceBetween: 0
+          centerInsufficientSlides: true
+          preventClicks: false
+          navigation:
+          slidesPerView: 'auto'
+          loop: true
+          loopedSlides: 2
+          allowTouchMove: true
+          scrollbar:
+            hide: false
+            draggable: true
+            snapOnRelease: true
+          pagination:
+            type: 'bullets'
+        cards:
+          - type: custom:auto-entities
+            show_empty: false
+            card:
+              type: entities
+              show_header_toggle: false
+              style: |
+                ha-card {
+                  background-image: url("/local/pictures/lovelace-pictures/plex2.png");
+                  background-repeat: no-repeat;
+                  --ha-card-background: rgb(31,31,31);
+                  background-position: right;
+                  background-size: contain;
+                }
+            filter:
+              include:
+                - entity_id: "sensor.tautulli_watching_*"
+              exclude:
+                - state: "Nothing"
+          - type: 'custom:mini-graph-card'
+            line_color: orange
+            entities:
+              - sensor.tautulli
+            tap_action:
+              action: call-service
+              service: browser_mod.popup
+              service_data:
+                title: Plex
+                card:
+                  type: iframe
+                  aspect_ratio: 300%
+                  url: /plex-user-history/Users
+            style: |
+              ha-card {
+                  background-image: url("/local/pictures/lovelace-pictures/plex2.png");
+                  background-repeat: no-repeat;
+                  --ha-card-background: rgb(31,31,31);
+                  background-position: right;
+                  background-size: contain;
+                }
