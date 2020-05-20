@@ -4,3 +4,4 @@ download_nano_if_not_installed: !secret download_nano_if_not_installed
 update_index_html: !secret update_index_html
 desktop_screen_off: !secret desktop_screen_off
 template_shell_command: python /config/python_scripts/commands/user_input.py {{ states.input_text.test_variable.state }}
+setup_ssh_on_boot: !secret setup_ssh_on_boot

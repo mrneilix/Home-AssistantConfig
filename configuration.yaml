@@ -128,3 +128,4 @@ tuya: !include yamls/devices/tuya.yaml
 google_assistant: !include yamls/devices/google_assistant.yaml
 switch:  !include yamls/devices/switch.yaml
 nzbget: !include yamls/devices/nzbget.yaml
+ombi: !include yamls/devices/ombi.yaml

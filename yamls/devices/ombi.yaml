@@ -1,0 +1,5 @@
+  host: !secret hass_ip
+  username: !secret hassio_addon_username
+  api_key: !secret ombi_api_key
+  port: !secret ombi_port
+  urlbase: !secret ombi_url_base

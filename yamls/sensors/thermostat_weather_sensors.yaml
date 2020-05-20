@@ -2,9 +2,16 @@
     api_key: !secret darksky_api_key
     forecast:
       - 0
+      - 1
+      - 2
+      - 3
+      - 4
+      - 5
     hourly_forecast:
       - 0
       - 1
+      - 2
+      - 3
     scan_interval:
       minutes: 10
     monitored_conditions:
@@ -13,8 +20,14 @@
       - nearest_storm_distance
       - precip_intensity
       - precip_probability
+      - precip_accumulation
+      - precip_intensity_max
       - temperature
+      - temperature_high
+      - temperature_low
       - apparent_temperature
+      - apparent_temperature_high
+      - apparent_temperature_low
       - dew_point
       - wind_speed
       - cloud_cover
@@ -23,12 +36,12 @@
       - minutely_summary
       - hourly_summary
       - daily_summary
-      - temperature_high
-      - temperature_low
-      - apparent_temperature_high
-      - apparent_temperature_low
-      - precip_intensity_max
       - moon_phase
+      - pressure
+      - uv_index
+      - nearest_storm_bearing
+      - wind_bearing
+      - precip_type
 
   - platform: illuminance
     entity_id: sensor.dark_sky_icon
@@ -77,3 +90,24 @@
           {% else %}
               None
           {%- endif %}
+      dark_sky_current_text:
+        value_template: >-
+           {% if is_state("sensor.dark_sky_icon","clear-day") %} Clear
+           {% elif is_state("sensor.dark_sky_icon","clear-night") %} Clear
+           {% elif is_state("sensor.dark_sky_icon","rain") %} Rain
+           {% elif is_state("sensor.dark_sky_icon","snow") %} Snowy
+           {% elif is_state("sensor.dark_sky_icon","fog") %} Foggy
+           {% elif is_state("sensor.dark_sky_icon","sleet") %} Sleet
+           {% elif is_state("sensor.dark_sky_icon","wind") %} Windy
+           {% elif is_state("sensor.dark_sky_icon","cloudy") %} Cloudy
+           {% elif is_state("sensor.dark_sky_icon","partly-cloudy-day") %} Partly Cloudy
+           {% elif is_state("sensor.dark_sky_icon","partly-cloudy-night") %} Partly Cloudy
+           {% elif is_state("sensor.dark_sky_icon","hail") %} Hailing
+           {% elif is_state("sensor.dark_sky_icon","lightning") %} Lightning
+           {% elif is_state("sensor.dark_sky_icon","thunderstorm") %} Thunderstorm
+           {% endif %}
+
+      dark_sky_alt_wind:
+        value_template: >-
+          {% set winddir = ['North','North-Northeast','Northeast','East-Northeast','East','East-Southeast','Southeast','South-Southeast','South','South-Southwest','Southwest','West-Southwest','West','West-Northwest','Northwest','North-Northwest','North'] %}
+          {{ states('sensor.dark_sky_wind_speed') | round }} mi/h from the {{ winddir[((states('sensor.dark_sky_wind_bearing') | float / 360)*16) | round]}}
