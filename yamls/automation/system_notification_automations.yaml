@@ -88,24 +88,3 @@
       data:
         entity_id: input_boolean.weather_notifications
 
-- id: notify_update_available
-  alias: 'Notify Update Available'
-  trigger:
-    - platform: state
-      entity_id: updater.updater
-    - platform: time
-      at: '09:00:00'
-  condition:
-    - condition: state
-      entity_id: input_boolean.notifications_on
-      state: 'on'
-    - condition: state
-      entity_id: input_boolean.restart_complete
-      state: 'on'
-    - condition: template
-      value_template: "{{ ( states('sensor.latest_version') | string ) != ( states('sensor.current_version') | string ) }}"
-    - condition: time
-      weekday:
-      - tue
-  action:
-    - service: script.notify_update_available

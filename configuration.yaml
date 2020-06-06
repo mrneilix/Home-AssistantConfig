@@ -60,7 +60,6 @@ discovery:
   ignore:
     - roku
     - google_cast
-    - igd
 vera:
   vera_controller_url: !secret vera_controller_url
 wemo:

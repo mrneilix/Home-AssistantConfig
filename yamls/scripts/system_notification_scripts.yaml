@@ -24,13 +24,6 @@ notify_restart_complete:
           icon: '/local/pictures/restart-ha.png'
           badge: '/local/pictures/restart-ha.png'
 
-notify_update_available:
-  alias: Notify Update Available
-  sequence:
-    - service: notify.html5
-      data_template: 
-        title: 'New Home Assistant Release'
-        message: "Home Assistant  {{ states.updater.updater.state }}  is now available."
 
 notify_lock_battery_low:
   alias: Notify Lock Battery Low
