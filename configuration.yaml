@@ -10,6 +10,7 @@ homeassistant:
     - /config/
     - /
   auth_providers:
+    - type: homeassistant
     - type: trusted_networks
       allow_bypass_login: true
       trusted_networks:
@@ -18,7 +19,10 @@ homeassistant:
         - 172.30.32.0/24
         - !secret trusted_home_network
         - !secret trusted_network2
-    - type: homeassistant
+      trusted_users:
+        192.168.1.0/24:
+          - !secret trusted_user_neil
+          - !secret trusted_user_phone
 frontend: !include yamls/front_end/frontend.yaml
 
 sun:
@@ -35,9 +39,9 @@ config_check:
 browser_mod:
   prefix: "browser_"
   devices:
-    180fffa4_a74390c9:
+    aeef20b8-d0ff9a8d:
       name: browser_desktop
-    f34e5616_7ed10eb1:
+    c3e3e250-07ac1fc0:
       name: browser_phone
 
 http:

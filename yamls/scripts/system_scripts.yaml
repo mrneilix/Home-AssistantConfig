@@ -129,16 +129,12 @@ system_desktop_display_off:
 system_magic_mirror_rotate_display_on:
   alias: System Magic Mirror Rotate Display On
   sequence:
-    - service: mqtt.publish
-      data:
-        topic: 'START_ROTATION'
+    - service: rest_command.mirror_start_rotation
 
 system_magic_mirror_rotate_display_off:
   alias: System Magic Mirror Rotate Display Off
   sequence:
-    - service: mqtt.publish
-      data:
-        topic: 'STOP_ROTATION'
+    - service: rest_command.mirror_stop_rotation
 
 system_magic_mirror_rotate_display_toggle:
   alias: System Magic Mirror Rotate Display Toggle

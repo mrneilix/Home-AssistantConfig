@@ -14,9 +14,6 @@
   - platform: rpi_power
     text_state: true
 
-  - platform: openhardwaremonitor
-    host: !secret desktop_ip
-
   - platform: websocket_api
   - platform: version
 

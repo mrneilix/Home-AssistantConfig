@@ -1,5 +1,5 @@
   url: !secret plex_full_ip
-  token: !secret plex_token
+  token: !secret plex_token_quotes
   default_cast: 'Living Room TV'
   language: 'en'
   tts_errors: true
