@@ -1,3 +1,5 @@
 light.browser_180fffa4_a74390c9:
   deviceID: desktop
   type: browser_mod
+light.bathroom_orb:
+  supported_features: 63

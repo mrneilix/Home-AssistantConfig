@@ -60,3 +60,11 @@ popup_tautulli:
                   background-position: right;
                   background-size: contain;
                 }
+popup_tautulli_grafana:
+  sequence:
+    service: browser_mod.popup
+    data_template:
+      title: Grafana
+      card:
+        type: iframe
+        url: /lovelace-grafana/

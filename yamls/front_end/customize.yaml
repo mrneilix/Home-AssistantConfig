@@ -13,6 +13,7 @@ scene.theater_mode:
 light.bathroom_orb:
   friendly_name: Bathroom Orb
   icon: mdi:shower-head
+  supported_features: 63
 light.kitchen:
   friendly_name: Kitchen
   icon: mdi:fridge

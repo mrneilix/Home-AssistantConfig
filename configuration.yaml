@@ -39,10 +39,16 @@ config_check:
 browser_mod:
   prefix: "browser_"
   devices:
-    aeef20b8-d0ff9a8d:
+    bd4c13ae-6c43cf55:
       name: browser_desktop
+      disable:
+        -light
+        - media_player
     c3e3e250-07ac1fc0:
       name: browser_phone
+      disable:
+        -light
+        - media_player
 
 http:
   cors_allowed_origins: !include cors_allowed_origins.yaml
@@ -61,9 +67,6 @@ http:
 logger:
   default: error
 discovery:
-  ignore:
-    - roku
-    - google_cast
 vera:
   vera_controller_url: !secret vera_controller_url
 wemo:
@@ -127,7 +130,7 @@ climate: !include yamls/devices/climate.yaml
 cast: !include yamls/devices/cast.yaml
 hdmi_cec: !include yamls/devices/cec.yaml
 tplink: !include yamls/devices/tplink.yaml
-tuya: !include yamls/devices/tuya.yaml
+#tuya: !include yamls/devices/tuya.yaml
 google_assistant: !include yamls/devices/google_assistant.yaml
 switch:  !include yamls/devices/switch.yaml
 nzbget: !include yamls/devices/nzbget.yaml

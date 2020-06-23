@@ -1,12 +1,13 @@
-  - platform: deluge
-    host: !secret desktop_ip
-    password: !secret http_password
-    monitored_variables:
-      - 'current_status'
-      - 'download_speed'
-      - 'upload_speed'
+#  - platform: deluge
+#    host: !secret desktop_ip
+#    password: !secret http_password
+#    monitored_variables:
+#      - 'current_status'
+#      - 'download_speed'
+#      - 'upload_speed'
+  - platform: plex_assistant
   - platform: tautulli
-    host: !secret hass_ip
+    host: !secret desktop_ip
     ssl: false
     api_key: !secret tautulli_api
     port: !secret tautulli_port
@@ -16,11 +17,11 @@
       - friendly_name
       - user
       - user_id
-  - platform: qbittorrent
-    url: !secret qbittorrent_ip
-    name: "qbittorrent"
-    username: !secret desktop_username
-    password: !secret http_password
+#  - platform: qbittorrent
+#    url: !secret qbittorrent_ip
+#    name: "qbittorrent"
+#    username: !secret desktop_username
+#    password: !secret http_password
   - platform: sonarr
     api_key: !secret sonarr_api
     host: !secret desktop_ip

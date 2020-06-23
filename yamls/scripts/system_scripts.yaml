@@ -154,3 +154,4 @@ system_run_startup_shell_commands_on_boot:
   sequence:
     - service: shell_command.download_nano_if_not_installed
     - service: shell_command.setup_ssh_on_boot
+    - service: shell_command.fix_network_helpers_issue
