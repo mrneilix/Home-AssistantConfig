@@ -6,6 +6,8 @@ homeassistant:
   unit_system: imperial
   time_zone: America/New_York
   customize: !include yamls/front_end/customize.yaml
+  external_url: !secret base_url
+  internal_url: !secret base_url
   whitelist_external_dirs:
     - /config/
     - /
@@ -42,12 +44,12 @@ browser_mod:
     bd4c13ae-6c43cf55:
       name: browser_desktop
       disable:
-        -light
+        - light
         - media_player
     c3e3e250-07ac1fc0:
       name: browser_phone
       disable:
-        -light
+        - light
         - media_player
 
 http:

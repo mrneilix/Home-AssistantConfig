@@ -18,3 +18,13 @@
           service: scene.turn_on
           data:
             entity_id: scene.parents_code_off
+      guest_lock_code:
+        value_template: "{{ is_state('binary_sensor.guest_lock_code', 'on') }}"
+        turn_on:
+          service: scene.turn_on
+          data:
+            entity_id: scene.guest_code_on
+        turn_off:
+          service: scene.turn_on
+          data:
+            entity_id: scene.guest_code_off

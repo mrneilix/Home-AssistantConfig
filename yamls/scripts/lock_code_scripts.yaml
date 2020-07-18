@@ -22,6 +22,18 @@ lock_set_parents_lock_code:
     - service: switch.turn_on
       entity_id: switch.parents_lock_code
 
+lock_clear_guest_lock_code:
+  alias: Lock Clear Guest Lock Code
+  sequence:
+    - service: switch.turn_off
+      entity_id: switch.guest_lock_code
+
+lock_set_guest_lock_code:
+  alias: Lock Set Guest Lock Code
+  sequence:
+    - service: switch.turn_on
+      entity_id: switch.guest_lock_code
+
 lock_toggle_parents_lock_code:
   alias: Lock Toggle Parents Lock Code
   sequence:

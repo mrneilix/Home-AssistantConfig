@@ -4,6 +4,9 @@
   - platform: rest
     resource: !secret parents_code_status
     name: Parents Lock Code
+  - platform: rest
+    resource: !secret guest_code_status
+    name: Guest Lock Code
 
 #PRESENCE
   - platform: template
@@ -164,6 +167,20 @@
         entity_id:
           - script.system_magic_mirror_rotate_display_off
           - script.system_magic_mirror_rotate_display_on
+      magic_mirror_display_on:
+        value_template: >-
+          {%- if states.script.system_magic_mirror_display_on.attributes.last_triggered == none %}
+            True
+          {%-elif states.script.system_magic_mirror_display_off.attributes.last_triggered == none %}
+            False
+          {%-elif ( as_timestamp(states.script.system_magic_mirror_display_on.attributes.last_triggered) | int ) < ( as_timestamp(states.script.system_magic_mirror_display_off.attributes.last_triggered) | int ) %}
+            True
+          {%- else -%}
+            False
+          {%- endif %}
+        entity_id:
+          - script.system_magic_mirror_display_off
+          - script.system_magic_mirror_display_on
   - platform: ping
     host: 192.168.1.126
     count: 5

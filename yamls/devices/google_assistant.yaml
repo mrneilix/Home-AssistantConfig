@@ -56,6 +56,10 @@
         - Unlock the Front Door
         - Door unlock
         - front door unlock
+    switch.guest_lock_code:
+      name: Guest Code
+      room: Entryway
+      expose: true
     script.presence_no_humans_home:
       name: Away
       room: Home

@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- THIS DATA SUBJECT TO DISCLAIMER(S) INCLUDED WITH THE PRODUCT OF ORIGIN. -->
+<prdcfgdyn2:ProductConfigDyn xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:dd="http://www.hp.com/schemas/imaging/con/dictionaries/1.0/" xmlns:prdcfgdyn2="http://www.hp.com/schemas/imaging/con/ledm/productconfigdyn/2009/03/16" xmlns:prdcfgdyn="http://www.hp.com/schemas/imaging/con/ledm/productconfigdyn/2007/11/05" xsi:schemaLocation="http://www.hp.com/schemas/imaging/con/ledm/productconfigdyn/2009/03/16 ../schemas/ledm2/ProductConfigDyn.xsd                               http://www.hp.com/schemas/imaging/con/ledm/productconfigdyn/2007/11/05 ../schemas/ProductConfigDyn.xsd                               http://www.hp.com/schemas/imaging/con/dictionaries/1.0/ ../schemas/dd/DataDictionaryMasterLEDM.xsd">
+	<dd:Version>
+		<dd:Revision>SVN-IPG-LEDM.783</dd:Revision>
+	</dd:Version>
+	<prdcfgdyn:ProductInformation>
+		<dd:BoardInfo>
+			<dd:BoardTypeEnum>markingEngineControl</dd:BoardTypeEnum>
+			<dd:ModelNumber>12400</dd:ModelNumber>
+		</dd:BoardInfo>
+		<dd:BoardInfo>
+			<dd:BoardTypeEnum>systemControl</dd:BoardTypeEnum>
+			<dd:ModelNumber>8G2BC2K</dd:ModelNumber>
+		</dd:BoardInfo>
+		<dd:Version>
+			<dd:Date>2018-08-09</dd:Date>
+		</dd:Version>
+		<dd:MakeAndModel>HP LaserJet MFP M29w</dd:MakeAndModel>
+		<dd:MakeAndModelBase>HP LaserJet MFP M29w</dd:MakeAndModelBase>
+		<dd:MakeAndModelFamily>HP LaserJet MFP M28-M31</dd:MakeAndModelFamily>
+		<dd:MakeAndModelFirmwareDownload>HP LaserJet MFP M29w</dd:MakeAndModelFirmwareDownload>
+		<dd:UUID>564E4233-5233-3234-3235-9C7BEF94A511</dd:UUID>
+		<dd:SerialNumber>VNB3R32425</dd:SerialNumber>
+		<dd:ProductNumber>Y5S53A</dd:ProductNumber>
+		<dd:ServiceID>29282</dd:ServiceID>
+		<dd:AvailableLanguages>
+			<dd:Language>en</dd:Language>
+			<dd:Language>fr</dd:Language>
+			<dd:Language>de</dd:Language>
+			<dd:Language>it</dd:Language>
+			<dd:Language>es</dd:Language>
+			<dd:Language>pt</dd:Language>
+			<dd:Language>ru</dd:Language>
+			<dd:Language>zh-CN</dd:Language>
+		</dd:AvailableLanguages>
+		<dd:PasswordStatus >notSet</dd:PasswordStatus>
+		<dd:PowerSave >on</dd:PowerSave>
+		<dd:DuplexUnit>NotInstalled</dd:DuplexUnit>
+		<dd:ControlPanel>
+			<dd:Display>LEDIcon</dd:Display>
+		</dd:ControlPanel>
+	</prdcfgdyn:ProductInformation>
+	<prdcfgdyn2:ProductSettings>
+		<dd:FriendlyName>HP LaserJet MFP M29w</dd:FriendlyName>
+		<dd:PowerSaveTimeout>1minute</dd:PowerSaveTimeout>
+		<prdcfgdyn2:ShutDownDelay>4hours</prdcfgdyn2:ShutDownDelay>
+		<prdcfgdyn2:ShutDownDelayApply >true</prdcfgdyn2:ShutDownDelayApply>
+		<prdcfgdyn:ProductLanguage>
+			<dd:DeviceLanguage>en</dd:DeviceLanguage>
+			<dd:ColdResetLanguage>en</dd:ColdResetLanguage>
+		</prdcfgdyn:ProductLanguage>
+		<prdcfgdyn:CountryAndRegionName >unitedStates</prdcfgdyn:CountryAndRegionName>
+		<dd:ManualFeed >disabled</dd:ManualFeed>
+		<prdcfgdyn:DeviceInformation>
+			<dd:DeviceLocation ></dd:DeviceLocation>
+		</prdcfgdyn:DeviceInformation>
+	</prdcfgdyn2:ProductSettings>
+</prdcfgdyn2:ProductConfigDyn>
