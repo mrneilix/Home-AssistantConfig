@@ -128,7 +128,10 @@ input_select: !include yamls/inputs/input_select.yaml
 # Include Devices Yamls
 device_tracker: !include yamls/devices/device_tracker.yaml
 light: !include yamls/devices/lights.yaml
-climate: !include yamls/devices/climate.yaml
+climate: #!include yamls/devices/climate.yaml
+  - platform: honeywell
+    username: !secret climate_username
+    password: !secret climate_pw
 cast: !include yamls/devices/cast.yaml
 hdmi_cec: !include yamls/devices/cec.yaml
 tplink: !include yamls/devices/tplink.yaml

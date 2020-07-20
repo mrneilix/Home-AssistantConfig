@@ -1,3 +1,3 @@
-    platform: honeywell
-    username: !secret climate_username
-    password: !secret climate_pw
+  platform: honeywell
+  username: !secret climate_username
+  password: !secret climate_pw
