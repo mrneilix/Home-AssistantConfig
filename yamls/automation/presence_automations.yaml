@@ -146,18 +146,18 @@
   action:
     - service: script.presence_lock_code_entered_not_family
 
-#- id: presence_turn_desktop_display_off
-  #alias: 'Presence Turn Desktop Display Off'
-  #trigger: 
-    #- platform: state
-      #entity_id: device_tracker.neil
-      #to: 'not_home'
-      #for:
-        #hours: 1
-  #condition:
-    #- condition: state
-      #entity_id: input_boolean.restart_complete
-      #state: 'on'
-  #action:
-    #- service: script.system_desktop_display_off
-    #- service: rest_command.mirror_hide_all_modules
+- id: presence_turn_desktop_display_off
+  alias: 'Presence Turn Desktop Display Off'
+  trigger: 
+    - platform: state
+      entity_id: device_tracker.neil
+      to: 'not_home'
+      for:
+        hours: 1
+  condition:
+    - condition: state
+      entity_id: input_boolean.restart_complete
+      state: 'on'
+  action:
+    - service: script.system_desktop_display_off
+    - service: rest_command.mirror_hide_all_modules

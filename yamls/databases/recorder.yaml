@@ -1,3 +1,4 @@
+  db_url: !secret db_url
   purge_keep_days: 3
   exclude:
     domains:
@@ -56,28 +57,6 @@
       - sensor.dark_sky_summary_0h
       - sensor.dark_sky_summary_1h
       - sensor.dark_sky_wind_speed_0d
-      - sensor.desktop_amd_a8_6600k_apu_with_radeon_hd_graphics_clocks_bus_speed
-      - sensor.desktop_amd_a8_6600k_apu_with_radeon_hd_graphics_clocks_cpu_core_1
-      - sensor.desktop_amd_a8_6600k_apu_with_radeon_hd_graphics_clocks_cpu_core_2
-      - sensor.desktop_amd_a8_6600k_apu_with_radeon_hd_graphics_clocks_cpu_core_3
-      - sensor.desktop_amd_a8_6600k_apu_with_radeon_hd_graphics_clocks_cpu_core_4
-      - sensor.desktop_amd_a8_6600k_apu_with_radeon_hd_graphics_load_cpu_core_1
-      - sensor.desktop_amd_a8_6600k_apu_with_radeon_hd_graphics_load_cpu_core_2
-      - sensor.desktop_amd_a8_6600k_apu_with_radeon_hd_graphics_load_cpu_core_3
-      - sensor.desktop_amd_a8_6600k_apu_with_radeon_hd_graphics_load_cpu_core_4
-      - sensor.desktop_amd_a8_6600k_apu_with_radeon_hd_graphics_temperatures_core_1_4
-      - sensor.desktop_amd_radeon_tm_r7_360_series_clocks_gpu_core
-      - sensor.desktop_amd_radeon_tm_r7_360_series_clocks_gpu_memory
-      - sensor.desktop_amd_radeon_tm_r7_360_series_controls_gpu_fan
-      - sensor.desktop_amd_radeon_tm_r7_360_series_temperatures_gpu_core
-      - sensor.desktop_amd_radeon_tm_r7_360_series_voltages_gpu_core
-      - sensor.desktop_generic_memory_data_available_memory
-      - sensor.desktop_generic_memory_data_used_memory
-      - sensor.desktop_disk_space_c
-      - sensor.desktop_disk_space_e
-      - sensor.desktop_disk_space_f
-      - sensor.desktop_disk_space_g
-      - sensor.desktop_disk_space_j
       - sensor.gfiberrouter_bytes_received
       - sensor.gfiberrouter_bytes_sent
       - sensor.gfiberrouter_kbytesec_received

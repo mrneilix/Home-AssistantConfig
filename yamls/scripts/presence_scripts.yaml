@@ -7,7 +7,7 @@ presence_someone_arrived:
     - service: input_boolean.turn_off
       data:
         entity_id: input_boolean.away
-    #- service: rest_command.mirror_show_all_modules
+    - service: rest_command.mirror_show_all_modules
     - service: script.thermostat_home_set_temp
     - service: lock.unlock
       entity_id: lock.schlage_camelot
