@@ -10,7 +10,7 @@
 Press [OK] to continue.</psdyn:LocString>
 	</psdyn:Status>
 	<psdyn:AlertTable>
-		<dd:ModificationNumber>4</dd:ModificationNumber>
+		<dd:ModificationNumber>2</dd:ModificationNumber>
 		<psdyn:Alert>
 			<ad:ProductStatusAlertID>printerMispick</ad:ProductStatusAlertID>
 			<dd:SequenceNumber>2</dd:SequenceNumber>

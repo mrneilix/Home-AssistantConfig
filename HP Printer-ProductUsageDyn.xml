@@ -5,21 +5,21 @@
 		<dd:Revision>SVN-IPG-LEDM.977</dd:Revision>
 	</dd:Version>
 	<pudyn:PrinterSubunit>
-		<dd:TotalImpressions>65</dd:TotalImpressions>
+		<dd:TotalImpressions>67</dd:TotalImpressions>
 		<dd:JamEvents>4</dd:JamEvents>
-		<dd:MispickEvents>1</dd:MispickEvents>
+		<dd:MispickEvents>3</dd:MispickEvents>
 	</pudyn:PrinterSubunit>
 	<pudyn:ConsumableSubunit>
 		<pudyn:Consumable>
 			<dd:ConsumableStation>0</dd:ConsumableStation>
 			<dd:MarkerColor>Black</dd:MarkerColor>
 			<dd:ConsumableTypeEnum>toner</dd:ConsumableTypeEnum>
-			<dd:TotalImpressions>66</dd:TotalImpressions>
+			<dd:TotalImpressions>68</dd:TotalImpressions>
 			<dd:A4EquivalentImpressions>
-				<dd:TotalImpressions>65</dd:TotalImpressions>
+				<dd:TotalImpressions>67</dd:TotalImpressions>
 			</dd:A4EquivalentImpressions>
-			<dd:EstimatedPagesRemaining>200</dd:EstimatedPagesRemaining>
-			<dd:ConsumableRawPercentageLevelRemaining>76</dd:ConsumableRawPercentageLevelRemaining>
+			<dd:EstimatedPagesRemaining>150</dd:EstimatedPagesRemaining>
+			<dd:ConsumableRawPercentageLevelRemaining>74</dd:ConsumableRawPercentageLevelRemaining>
 			<pudyn:PreviousCartridgeData>
 				<dd:TotalImpressions>0</dd:TotalImpressions>
 				<dd:A4EquivalentImpressions>
@@ -38,7 +38,7 @@
 		</pudyn:Consumable>
 	</pudyn:ConsumableSubunit>
 	<pudyn:ScannerEngineSubunit>
-		<dd:FlatbedImages>14</dd:FlatbedImages>
+		<dd:FlatbedImages>15</dd:FlatbedImages>
 	</pudyn:ScannerEngineSubunit>
 	<pudyn:CopyApplicationSubunit>
 		<dd:TotalImpressions>3</dd:TotalImpressions>
