@@ -56,7 +56,7 @@ cards:
         cards:
           - type: 'custom:button-card'
             name: Lock
-            entity: lock.schlage_camelot
+            entity: lock.schlage_camelot_99
             icon: mdi:lock
             hold_action:
               action: more-info

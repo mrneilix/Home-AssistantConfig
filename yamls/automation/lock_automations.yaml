@@ -53,7 +53,7 @@
   alias: 'Lock Door Auto Lock'
   trigger:
     - platform: state
-      entity_id: lock.schlage_camelot
+      entity_id: lock.schlage_camelot_99
       to: 'unlocked'
       from: 'locked'
     - platform: state
@@ -84,7 +84,7 @@
     from: 'off'
   condition:
     - condition: state
-      entity_id: lock.schlage_camelot
+      entity_id: lock.schlage_camelot_99
       state: 'unlocked'
     - condition: state
       entity_id: input_boolean.restart_complete
@@ -110,7 +110,7 @@
   alias: 'Lock Auto Lock Door Switch Update Locked'
   trigger:
     platform: state
-    entity_id: lock.schlage_camelot
+    entity_id: lock.schlage_camelot_99
     to: 'locked'
     from: 'unlocked'
   condition:
@@ -160,7 +160,7 @@
       state: 'on'
   action:
     - service: lock.unlock
-      entity_id: lock.schlage_camelot
+      entity_id: lock.schlage_camelot_99
 
 - id: lock_minimote_button_3_pressed
   alias: 'Lock Minimote button 3 Pressed'

@@ -26,4 +26,4 @@ cards:
   - type: history-graph
     title: Lock
     entities:
-      - lock.schlage_camelot
+      - lock.schlage_camelot_99

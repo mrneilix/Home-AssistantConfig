@@ -10,7 +10,7 @@ presence_someone_arrived:
     - service: rest_command.mirror_show_all_modules
     - service: script.thermostat_home_set_temp
     - service: lock.unlock
-      entity_id: lock.schlage_camelot
+      entity_id: lock.schlage_camelot_99
     - service: switch.turn_off
       entity_id: switch.yi_power
     - service_template: >

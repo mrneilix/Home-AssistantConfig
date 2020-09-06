@@ -32,7 +32,7 @@
 			<dd:DefaultAction>acknowledge</dd:DefaultAction>
 		</dd:ConsumableStateAvailableActions>
 		<dd:ConsumableLowThreshold>7</dd:ConsumableLowThreshold>
-		<dd:ConsumablePercentageLevelRemaining>80</dd:ConsumablePercentageLevelRemaining>
+		<dd:ConsumablePercentageLevelRemaining>70</dd:ConsumablePercentageLevelRemaining>
 		<dd:ConsumableSelectibilityNumber>48A</dd:ConsumableSelectibilityNumber>
 		<dd:ConsumableStation>0</dd:ConsumableStation>
 		<dd:ConsumableTypeEnum>toner</dd:ConsumableTypeEnum>

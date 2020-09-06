@@ -60,7 +60,7 @@ sensor.last_lock_code_name:
   card: !include /config/lovelace/global_cards/lock_details.yaml
 
 
-lock.schlage_camelot:
+lock.schlage_camelot_99:
   title: Lock Info
   card: !include /config/lovelace/global_cards/lock_details.yaml
 

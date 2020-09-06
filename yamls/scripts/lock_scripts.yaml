@@ -3,7 +3,7 @@ lock_unlock_door:
   alias: Unlock Door
   sequence:
     - service: lock.unlock
-      entity_id: lock.schlage_camelot
+      entity_id: lock.schlage_camelot_99
 
 lock_auto_lock_door_on:
   alias: Turn on Door Auto Lock
@@ -12,10 +12,10 @@ lock_auto_lock_door_on:
       data:
         entity_id: input_boolean.autolock
     - service: lock.lock
-      entity_id: lock.schlage_camelot
+      entity_id: lock.schlage_camelot_99
     - delay: 00:00:10
     - condition: state
-      entity_id: lock.schlage_camelot
+      entity_id: lock.schlage_camelot_99
       state: 'locked'
     - service: script.lock_update_door_open_boolean
 
@@ -30,7 +30,7 @@ lock_auto_lock_door_off:
         entity_id: input_boolean.autolock
     - delay: 00:00:01
     - service: lock.unlock
-      entity_id: lock.schlage_camelot
+      entity_id: lock.schlage_camelot_99
     - delay: 00:00:05
     - service: input_boolean.turn_off
       data:
@@ -43,10 +43,10 @@ lock_auto_lock_door:
   alias: Auto Lock door
   sequence:
     - service: lock.lock
-      entity_id: lock.schlage_camelot
+      entity_id: lock.schlage_camelot_99
     - delay: 00:00:15
     - service_template: >
-          {% if is_state('lock.schlage_camelot', 'locked') %}
+          {% if is_state('lock.schlage_camelot_99', 'locked') %}
             script.lock_update_door_open_boolean
           {% else %}
             script.lock_auto_lock_door_loop_if_fails

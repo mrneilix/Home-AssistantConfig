@@ -2,7 +2,7 @@ startup_scripts:
   alias: Startup Scripts
   sequence:
     - service: lock.lock
-      entity_id: lock.schlage_camelot
+      entity_id: lock.schlage_camelot_99
     - service: script.startup_input_booleans
     - delay: 00:00:02
     - service: script.couch_light_update_input_text
