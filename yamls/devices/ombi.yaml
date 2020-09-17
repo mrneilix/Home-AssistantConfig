@@ -1,4 +1,4 @@
-  host: !secret hass_ip
+  host: !secret nas_ip
   username: !secret hassio_addon_username
   api_key: !secret ombi_api_key
   port: !secret ombi_port

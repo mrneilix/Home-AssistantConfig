@@ -1,10 +1,3 @@
-#  - platform: deluge
-#    host: !secret desktop_ip
-#    password: !secret http_password
-#    monitored_variables:
-#      - 'current_status'
-#      - 'download_speed'
-#      - 'upload_speed'
   - platform: plex_assistant
   - platform: tautulli
     host: !secret desktop_ip
@@ -17,14 +10,9 @@
       - friendly_name
       - user
       - user_id
-#  - platform: qbittorrent
-#    url: !secret qbittorrent_ip
-#    name: "qbittorrent"
-#    username: !secret desktop_username
-#    password: !secret http_password
   - platform: radarr
     api_key: !secret radarr_api
-    host: !secret desktop_ip
+    host: !secret nas_ip
     monitored_conditions:
       - upcoming
       - diskspace
@@ -32,13 +20,13 @@
     unit: TB
   - platform: sonarr_upcoming_media
     api_key: !secret sonarr_api
-    host: !secret desktop_ip
+    host: !secret nas_ip
     urlbase: /sonarr
     days: 2
     max: 10
   - platform: radarr_upcoming_media
     api_key: !secret radarr_api
-    host: !secret desktop_ip
+    host: !secret nas_ip
     urlbase: /radarr
     days: 30
     theaters: false
