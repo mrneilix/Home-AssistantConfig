@@ -7,24 +7,21 @@ homeassistant:
   time_zone: America/New_York
   customize: !include yamls/front_end/customize.yaml
   external_url: !secret base_url
-  internal_url: !secret base_url
-  whitelist_external_dirs:
+  internal_url: !secret hass_http_ip
+  allowlist_external_dirs:
     - /config/
     - /
   auth_providers:
     - type: homeassistant
     - type: trusted_networks
-      allow_bypass_login: true
       trusted_networks:
         - 127.0.0.1
-        - !secret trusted_network
-        - 172.30.32.0/24
         - !secret trusted_home_network
-        - !secret trusted_network2
       trusted_users:
         192.168.1.0/24:
           - !secret trusted_user_neil
           - !secret trusted_user_phone
+      allow_bypass_login: true
 frontend: !include yamls/front_end/frontend.yaml
 
 sun:
@@ -57,15 +54,12 @@ http:
   use_x_forwarded_for: true
   ip_ban_enabled: true
   login_attempts_threshold: 5
-  base_url: !secret base_url
   trusted_proxies:
     - 127.0.0.1
-    - !secret trusted_network
-    - !secret desktop_ip
-    - !secret hass_ip
-    - !secret my_phone_wifi
+    - !secret swag_ip
+    - !secret trusted_docker_network
     - !secret trusted_home_network
-    - !secret trusted_network2
+    - !secret authelia_ip
 logger:
   default: error
 discovery:
@@ -133,10 +127,9 @@ climate: #!include yamls/devices/climate.yaml
     username: !secret climate_username
     password: !secret climate_pw
 cast: !include yamls/devices/cast.yaml
-hdmi_cec: !include yamls/devices/cec.yaml
+#hdmi_cec: !include yamls/devices/cec.yaml
 tplink: !include yamls/devices/tplink.yaml
-#tuya: !include yamls/devices/tuya.yaml
 google_assistant: !include yamls/devices/google_assistant.yaml
 switch:  !include yamls/devices/switch.yaml
 ombi: !include yamls/devices/ombi.yaml
-pi_hole: !include yamls/devices/pi_hole.yaml
+#pi_hole: !include yamls/devices/pi_hole.yaml

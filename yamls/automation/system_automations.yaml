@@ -84,3 +84,19 @@
       state: 'on'
   action:
     - service: script.system_reboot
+
+- id: system_turn_pi_hole_back_on
+  alias: 'Turn Pihole On'
+  trigger:
+    platform: state
+    entity_id: switch.pi_hole
+    to: 'off'
+    for:
+      minutes: 5
+  condition:
+    - condition: state
+      entity_id: input_boolean.restart_complete
+      state: 'on'
+  action:
+    - service: switch.turn_on
+      entity_id: switch.pi_hole

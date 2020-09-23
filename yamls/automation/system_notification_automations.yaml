@@ -87,4 +87,73 @@
           {% endif %}
       data:
         entity_id: input_boolean.weather_notifications
+- id: notifications_send_pihole_status
+  alias: 'Send Pihole Status'
+  trigger:
+    platform: state
+    entity_id: switch.pi_hole
+  condition:
+    - condition: state
+      entity_id: input_boolean.restart_complete
+      state: 'on'
+  action:
+    - service: joaoapps_join.phone_send_tasker
+      data_template:
+        command: >
+          {% if is_state('switch.pi_hole', 'on') %}
+            pihole=:=on
+          {% else %}
+            pihole=:=off
+          {% endif %}
 
+- id: system_turn_pi_hole_prompt_turn_on
+  alias: 'Notification to Turn Pihole On'
+  trigger:
+    platform: state
+    entity_id: switch.pi_hole
+    to: 'off'
+    for:
+      hours: 1
+  condition:
+    - condition: state
+      entity_id: input_boolean.restart_complete
+      state: 'on'
+    - condition: state
+      entity_id: input_boolean.notifications_on
+      state: 'on'
+  action:
+    - service: notify.html5
+      data:
+        message: 'Pihole has been off for a while'
+        title: 'Want Your Adblocker Back?'
+        data: 
+          renotify: 0
+          tag: 'adblocker'
+          icon: '/local/link_icons/pihole.png'
+          badge: 'mdi:pi-hole'
+          actions: [
+            {
+              action: "block_ads",
+              title: "Wanna Block Ads?"
+            },
+            {
+              action: "dismiss",
+              title: "Dismiss"
+            }
+      ]
+
+
+- id: pihole_notification_confirmed
+  alias: 'Notification to Turn Pihole On Confirmed'
+  trigger:
+    platform: event
+    event_type: html5_notification.clicked
+    event_data:
+      action: block_ads
+  condition:
+    - condition: state
+      entity_id: input_boolean.restart_complete
+      state: 'on'
+  action:
+    - service: switch.turn_on
+      entity_id: switch.pi_hole

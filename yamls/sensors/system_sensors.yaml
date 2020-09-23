@@ -33,7 +33,6 @@
 ## Uptime Templated ####
       since_last_boot_templated:
         friendly_name: System Uptime
-        entity_id: sensor.time
         icon_template: mdi:clock
         value_template: >-
             {% set time = ((as_timestamp(now()) - as_timestamp(states.sensor.last_boot.state)) )| int %}
@@ -63,7 +62,6 @@
 
       ha_uptime:
         friendly_name: Home Assistant Uptime
-        entity_id: sensor.time
         icon_template: mdi:clock
         value_template: >-
           {% if states.sensor.uptime.state is defined %}
@@ -116,10 +114,10 @@
         friendly_name: Downloaded
         icon_template: mdi:server-network
         unit_of_measurement: "GiB"
-        value_template: "{{ ( states('sensor.gfiberrouter_bytes_received') | float / 1073741824 ) | round(2) }}"
+        value_template: "{{ ( states('sensor.rt_ax92u_b_received') | float / 1073741824 ) | round(2) }}"
 
       network_uploaded:
         friendly_name: Uploaded
         icon_template: mdi:server-network
         unit_of_measurement: "GiB"
-        value_template: "{{ ( states('sensor.gfiberrouter_bytes_sent') | float / 1073741824 ) | round(2) }}"
+        value_template: "{{ ( states('sensor.rt_ax92u_b_sent') | float / 1073741824 ) | round(2) }}"

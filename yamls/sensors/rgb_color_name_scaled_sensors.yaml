@@ -12,7 +12,6 @@
 
       couch_light_color_name:
         friendly_name: "Couch Color Name"
-        entity_id: sensor.couch_light_color
         value_template: >-
           {%- if states.light.couch.state == 'off' or states.light.couch.state == 'unavailable' %}
             Disable

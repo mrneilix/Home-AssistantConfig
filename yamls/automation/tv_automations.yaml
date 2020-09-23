@@ -1,72 +1,3 @@
-- id: tv_open_casting_apps
-  alias: 'TV Open Casting Apps'
-  trigger:
-    - platform: template
-      value_template: "{% if is_state_attr('media_player.living_room_tv', 'app_name', 'YouTube TV') %} true{% endif %}"
-    - platform: template
-      value_template: "{% if is_state_attr('media_player.living_room_tv', 'app_name', 'YouTube') %} true{% endif %}"
-    - platform: template
-      value_template: "{% if is_state_attr('media_player.living_room_tv', 'app_name', 'Plex') %} true{% endif %}"
-    - platform: template
-      value_template: "{% if is_state_attr('media_player.living_room_tv', 'app_name', 'HBO GO') %} true{% endif %}"
-    - platform: template
-      value_template: "{% if is_state_attr('media_player.living_room_tv', 'app_name', 'Showtime Anytime') %}true{% endif %}"
-    - platform: template
-      value_template: "{% if is_state_attr('media_player.living_room_tv', 'app_name', 'YouTube Music') %} true{% endif %}"
-    - platform: template
-      value_template: "{% if is_state_attr('media_player.living_room_tv', 'app_name', 'Netflix') %} true{% endif %}"
-    - platform: template
-      value_template: "{% if is_state_attr('media_player.living_room_tv', 'app_name', 'Starz') %} true{% endif %}"
-  condition:
-    - condition: state
-      entity_id: input_boolean.restart_complete
-      state: 'on'
-  action:
-    - service: joaoapps_join.pixel_send_tasker
-      data_template:
-        command: >
-          {% if is_state_attr('media_player.living_room_tv', 'app_name', 'YouTube TV') %}
-            cast=:=yttv
-          {%-elif is_state_attr('media_player.living_room_tv', 'app_name', 'Netflix') %}
-            cast=:=netflix
-          {%-elif is_state_attr('media_player.living_room_tv', 'app_name', 'YouTube Music') %}
-            cast=:=ytmusic
-          {%-elif is_state_attr('media_player.living_room_tv', 'app_name', 'YouTube') %}
-            cast=:=yt
-          {%-elif is_state_attr('media_player.living_room_tv', 'app_name', 'Plex') %}
-            cast=:=plex
-          {%-elif is_state_attr('media_player.living_room_tv', 'app_name', 'HBO GO') %}
-            cast=:=hbo
-          {%-elif is_state_attr('media_player.living_room_tv', 'app_name', 'Starz') %}
-            cast=:=starz
-          {%-elif is_state_attr('media_player.living_room_tv', 'app_name', 'Showtime Anytime') %}
-            cast=:=showtime
-          {% else %}
-          {% endif %}
-    - service: joaoapps_join.fire_send_tasker
-      data:
-        command: max_brightness
-    - service: joaoapps_join.fire_send_tasker
-      data_template:
-        command: >
-          {% if is_state_attr('media_player.living_room_tv', 'app_name', 'YouTube TV') %}
-            yttv
-          # {%-elif is_state_attr('media_player.living_room_tv', 'app_name', 'Netflix') %}
-            # netflix
-          {%-elif is_state_attr('media_player.living_room_tv', 'app_name', 'YouTube Music') %}
-            ytmusic
-          {%-elif is_state_attr('media_player.living_room_tv', 'app_name', 'YouTube') %}
-            yt
-          {%-elif is_state_attr('media_player.living_room_tv', 'app_name', 'Plex') %}
-            plex
-          {%-elif is_state_attr('media_player.living_room_tv', 'app_name', 'HBO GO') %}
-            hbo
-          {%-elif is_state_attr('media_player.living_room_tv', 'app_name', 'Starz') %}
-            starz
-          {%-elif is_state_attr('media_player.living_room_tv', 'app_name', 'Showtime Anytime') %}
-            showtime
-          {% else %}
-          {% endif %}
 
 - id: tv_on_notify_theater_mode
   alias: 'TV On Notify Theater Mode'
@@ -146,3 +77,72 @@
     - data_template:
         command: "{{ trigger.event.data.command }}"
       service_template: '{{ trigger.event.data.service }}'
+#- id: tv_open_casting_apps
+  #alias: 'TV Open Casting Apps'
+  #trigger:
+    #- platform: template
+      #value_template: "{% if is_state_attr('media_player.living_room_tv', 'app_name', 'YouTube TV') %} true{% endif %}"
+    #- platform: template
+      #value_template: "{% if is_state_attr('media_player.living_room_tv', 'app_name', 'YouTube') %} true{% endif %}"
+    #- platform: template
+      #value_template: "{% if is_state_attr('media_player.living_room_tv', 'app_name', 'Plex') %} true{% endif %}"
+    #- platform: template
+      #value_template: "{% if is_state_attr('media_player.living_room_tv', 'app_name', 'HBO GO') %} true{% endif %}"
+    #- platform: template
+      #value_template: "{% if is_state_attr('media_player.living_room_tv', 'app_name', 'Showtime Anytime') %}true{% endif %}"
+    #- platform: template
+      #value_template: "{% if is_state_attr('media_player.living_room_tv', 'app_name', 'YouTube Music') %} true{% endif %}"
+    #- platform: template
+      #value_template: "{% if is_state_attr('media_player.living_room_tv', 'app_name', 'Netflix') %} true{% endif %}"
+    #- platform: template
+      #value_template: "{% if is_state_attr('media_player.living_room_tv', 'app_name', 'Starz') %} true{% endif %}"
+  #condition:
+    #- condition: state
+      #entity_id: input_boolean.restart_complete
+      #state: 'on'
+  #action:
+    #- service: joaoapps_join.pixel_send_tasker
+      #data_template:
+        #command: >
+          #{% if is_state_attr('media_player.living_room_tv', 'app_name', 'YouTube TV') %}
+            #cast=:=yttv
+          #{%-elif is_state_attr('media_player.living_room_tv', 'app_name', 'Netflix') %}
+            #cast=:=netflix
+          #{%-elif is_state_attr('media_player.living_room_tv', 'app_name', 'YouTube Music') %}
+            #cast=:=ytmusic
+          #{%-elif is_state_attr('media_player.living_room_tv', 'app_name', 'YouTube') %}
+            #cast=:=yt
+          #{%-elif is_state_attr('media_player.living_room_tv', 'app_name', 'Plex') %}
+            #cast=:=plex
+          #{%-elif is_state_attr('media_player.living_room_tv', 'app_name', 'HBO GO') %}
+            #cast=:=hbo
+          #{%-elif is_state_attr('media_player.living_room_tv', 'app_name', 'Starz') %}
+            #cast=:=starz
+          #{%-elif is_state_attr('media_player.living_room_tv', 'app_name', 'Showtime Anytime') %}
+            #cast=:=showtime
+          #{% else %}
+          #{% endif %}
+    #- service: joaoapps_join.fire_send_tasker
+      #data:
+        #command: max_brightness
+    #- service: joaoapps_join.fire_send_tasker
+      #data_template:
+        #command: >
+          #{% if is_state_attr('media_player.living_room_tv', 'app_name', 'YouTube TV') %}
+            #yttv
+          #{%-elif is_state_attr('media_player.living_room_tv', 'app_name', 'Netflix') %}
+            #netflix
+          #{%-elif is_state_attr('media_player.living_room_tv', 'app_name', 'YouTube Music') %}
+            #ytmusic
+          #{%-elif is_state_attr('media_player.living_room_tv', 'app_name', 'YouTube') %}
+            #yt
+          #{%-elif is_state_attr('media_player.living_room_tv', 'app_name', 'Plex') %}
+            #plex
+          #{%-elif is_state_attr('media_player.living_room_tv', 'app_name', 'HBO GO') %}
+            #hbo
+          #{%-elif is_state_attr('media_player.living_room_tv', 'app_name', 'Starz') %}
+            #starz
+          #{%-elif is_state_attr('media_player.living_room_tv', 'app_name', 'Showtime Anytime') %}
+            #showtime
+          #{% else %}
+          #{% endif %}

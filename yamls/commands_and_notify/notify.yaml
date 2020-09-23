@@ -1,8 +1,8 @@
   - platform: joaoapps_join
     api_key: !secret join_api_key
-    device_id: !secret join_device_pixel
-    device_name: Pixel
-    name: Pixel
+    device_id: !secret join_device_phone
+    device_name: Phone
+    name: Phone
   - platform: joaoapps_join
     api_key: !secret join_api_key
     device_id: !secret join_device_fire

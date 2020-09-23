@@ -6,6 +6,8 @@ startup_scripts:
     - service: script.startup_input_booleans
     - delay: 00:00:02
     - service: script.couch_light_update_input_text
+    - service: script.system_magic_mirror_rotate_display_off
+    - service: script.system_magic_mirror_display_on
     - delay: 00:00:02
     - service: script.startup_presence
     - delay: 00:00:30

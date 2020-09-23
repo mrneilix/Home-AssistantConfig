@@ -20,7 +20,6 @@
       - nearest_storm_distance
       - precip_intensity
       - precip_probability
-      - precip_accumulation
       - precip_intensity_max
       - temperature
       - temperature_high
@@ -44,7 +43,7 @@
       - precip_type
 
   - platform: illuminance
-    entity_id: sensor.dark_sky_icon
+    entity_id: weather.home_control
 
   - platform: template
     sensors:

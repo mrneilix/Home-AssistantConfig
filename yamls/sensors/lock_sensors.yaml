@@ -34,7 +34,6 @@
         value_template: >-
             {{ states.lock.schlage_camelot_99.attributes.battery_level }}
       lock_set_temp_code_input_number:
-        entity_id: input_number.lock_code_temp
         value_template: >
           {% if (states.input_number.lock_code_temp.state | int) > 1000 %}
             {{ states.input_number.lock_code_temp.state | int }}

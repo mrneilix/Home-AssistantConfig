@@ -22,10 +22,6 @@
           {%- else -%}
           False
           {%- endif %}
-        entity_id:
-          - device_tracker.neil
-          - device_tracker.parents
-          - device_tracker.gina
 
       lock_code_entered:
         friendly_name: Lock Code Entered
@@ -35,10 +31,6 @@
           {% else %}
             False
           {% endif %}
-        entity_id:
-          - sensor.last_lock_code_name
-          - binary_sensor.front_door_sensor_73
-          - sensor.time
 
       lock_code_entered_neil:
         friendly_name: Neil Lock Code Entered
@@ -50,11 +42,6 @@
           {% else %}
             False
           {% endif %}
-        entity_id:
-          - sensor.last_lock_code_name
-          - sensor.time
-          - binary_sensor.lock_code_entered
-          - binary_sensor.front_door_sensor_73
 
       lock_code_entered_parents:
         friendly_name: Parent's Lock Code Entered
@@ -66,11 +53,6 @@
           {% else %}
             False
           {% endif %}
-        entity_id:
-          - sensor.last_lock_code_name
-          - sensor.time
-          - binary_sensor.lock_code_entered
-          - binary_sensor.front_door_sensor_73
 
       lock_code_entered_gina:
         friendly_name: Gina's Lock Code Entered
@@ -82,11 +64,6 @@
           {% else %}
             False
           {% endif %}
-        entity_id:
-          - sensor.last_lock_code_name
-          - sensor.time
-          - binary_sensor.lock_code_entered
-          - binary_sensor.front_door_sensor_73
 
       anyone_home_but_neil:
         friendly_name: Anyone Home But Neil
@@ -100,10 +77,6 @@
           {%- else -%}
             False
           {%- endif %}
-        entity_id:
-          - device_tracker.neil
-          - device_tracker.gina
-          - device_tracker.parents
 
 # Dark Outside
       dark_out:
@@ -114,8 +87,6 @@
           {%- else -%}
             False
           {%- endif %}
-        entity_id:
-          - sensor.illuminance
       show_calendar_events:
         value_template: '{{ (((  as_timestamp(strptime(states.calendar.events.attributes.start_time, "%d.%m.%Y")) - as_timestamp(now()) ) / 86400 ) | round(0) < 14 ) }}'
       show_calendar_family_birthdays:
@@ -147,9 +118,6 @@
           {%- else -%}
             False
           {%- endif %}
-        entity_id:
-          - script.thermostat_leave_set_temp
-          - script.thermostat_home_set_temp
 
 
 # MagicMirror Display Rotating
@@ -164,9 +132,6 @@
           {%- else -%}
             False
           {%- endif %}
-        entity_id:
-          - script.system_magic_mirror_rotate_display_off
-          - script.system_magic_mirror_rotate_display_on
       magic_mirror_display_on:
         value_template: >-
           {%- if states.script.system_magic_mirror_display_on.attributes.last_triggered == none %}
@@ -178,9 +143,6 @@
           {%- else -%}
             False
           {%- endif %}
-        entity_id:
-          - script.system_magic_mirror_display_off
-          - script.system_magic_mirror_display_on
   - platform: ping
     host: 192.168.1.126
     count: 5

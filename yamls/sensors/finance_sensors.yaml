@@ -1,80 +1,26 @@
   - platform: avanza_stock
-    stock: 854153
-    name: Stock CGC
-    shares: 0
-    monitored_conditions:
-      - changePercent
-      - change
-  - platform: avanza_stock
-    stock: 831013
-    name: Stock CRON
-    shares: 0
-    monitored_conditions:
-      - changePercent
-      - change
-  - platform: avanza_stock
-    stock: 300432
-    name: Stock DDD
-    shares: 200
-    monitored_conditions:
-      - changePercent
-      - change
-  - platform: avanza_stock
-    stock: 719076
-    name: Stock MJ
-    shares: 700
-    monitored_conditions:
-      - changePercent
-      - change
-  - platform: avanza_stock
-    stock: 95050
-    name: Stock MT
-    shares: 500
-    monitored_conditions:
-      - changePercent
-      - change
-  - platform: avanza_stock
-    stock: 4444
-    name: Stock NOK
-    shares: 0
-    monitored_conditions:
-      - changePercent
-      - change
-  - platform: avanza_stock
-    stock: 119308
-    name: Stock SSYS
-    shares: 200
-    monitored_conditions:
-      - changePercent
-      - change
-  - platform: avanza_stock
-    stock: 140540
-    name: Stock TAN
-    shares: 0
-    monitored_conditions:
-      - changePercent
-      - change
-  - platform: avanza_stock
-    stock: 169775
-    name: Stock UNG
-    shares: 3000
-    monitored_conditions:
-      - changePercent
-      - change
-  - platform: avanza_stock
-    stock: 202198
-    name: Stock VOD
-    shares: 0
-    monitored_conditions:
-      - changePercent
-      - change
-  - platform: avanza_stock
-    stock: 446036
-    name: Stock TVIX
-    shares: 0
-    monitored_conditions:
-      - changePercent
-      - change
+    stock:
+      - id: 300432
+        name: Stock DDD
+        shares: 200
+      - id: 719076
+        name: Stock MJ
+        shares: 1000
+      - id: 95050
+        name: Stock MT
+        shares: 500
+      - id: 119308
+        name: Stock SSYS
+        shares: 200
+      - id: 169775
+        name: Stock UNG
+        shares: 1000
+      - id: 325239
+        name: Stock SPWR
+        shares: 200
+      - id: 276050
+        name: Stock GEVO
+        shares: 1000
 
   - platform: template
     sensors:
@@ -83,7 +29,7 @@
         unit_of_measurement: 'USD'
         icon_template: mdi:cash
         value_template: >-
-          {{ (state_attr('sensor.stock_cgc', 'shares') * state_attr('sensor.stock_cgc', 'change')) + (state_attr('sensor.stock_cron', 'shares') * state_attr('sensor.stock_cron', 'change')) +(state_attr('sensor.stock_ddd', 'shares') * state_attr('sensor.stock_ddd', 'change')) +(state_attr('sensor.stock_mj', 'shares') * state_attr('sensor.stock_mj', 'change')) +(state_attr('sensor.stock_mt', 'shares') * state_attr('sensor.stock_mt', 'change')) +(state_attr('sensor.stock_nok', 'shares') * state_attr('sensor.stock_nok', 'change')) +(state_attr('sensor.stock_tan', 'shares') * state_attr('sensor.stock_tan', 'change')) +(state_attr('sensor.stock_ung', 'shares') * state_attr('sensor.stock_ung', 'change')) +(state_attr('sensor.stock_vod', 'shares') * state_attr('sensor.stock_vod', 'change')) +(state_attr('sensor.stock_tvix', 'shares') * state_attr('sensor.stock_tvix', 'change')) }}
+          {{ (state_attr('sensor.stock_ssys', 'shares') * state_attr('sensor.stock_ssys', 'change') | float ) + (state_attr('sensor.stock_ddd', 'shares') * state_attr('sensor.stock_ddd', 'change') | float ) + (state_attr('sensor.stock_mj', 'shares') * state_attr('sensor.stock_mj', 'change') | float ) + (state_attr('sensor.stock_mt', 'shares') * state_attr('sensor.stock_mt', 'change') | float ) + (state_attr('sensor.stock_spwr', 'shares') * state_attr('sensor.stock_spwr', 'change') | float ) + (state_attr('sensor.stock_ung', 'shares') * state_attr('sensor.stock_ung', 'change') | float ) + (state_attr('sensor.stock_gevo', 'shares') * state_attr('sensor.stock_gevo', 'change') | float ) }}
       bitcoin_wallet:
         friendly_name: Bitcoin
         unit_of_measurement: 'USD'

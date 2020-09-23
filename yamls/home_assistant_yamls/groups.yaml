@@ -8,6 +8,7 @@ bathroom: switch.bathroom_light, switch.bathroom_fan
 
 switches: switch.furnace_switch_29, switch.lamp, switch.bathroom_light, switch.bathroom_fan
 alllights: light.back_kitchen_30, light.front_kitchen_31, light.kitchen, light.bathroom_orb, light.bed, light.couch
+stocks: sensor.stock_ddd, sensor.stock_mj, sensor.stock_ssys, sensor.stock_mt, sensor.stock_ung, sensor.stock_spwr, sensor.stock_gevo
 watching_plex_names:
   entities:
     - sensor.tautulli_watching_abbas

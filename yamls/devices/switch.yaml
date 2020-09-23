@@ -28,3 +28,9 @@
           service: scene.turn_on
           data:
             entity_id: scene.guest_code_off
+  - platform: rest
+    name: TV
+    resource: http://localhost:5000/device/0/power
+    body_on: '{"state":"on"}'
+    body_off: '{"state":"off"}'
+    is_on_template: '{{ value_json.state == "starting" or value_json.state == "on" }}'

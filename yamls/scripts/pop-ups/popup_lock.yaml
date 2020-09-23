@@ -24,7 +24,7 @@ popup_lock:
             entities:
               - entity: input_number.autolock_delay
           - type: history-graph
-            title: Last Lock Code
+            title: Last Lock Codee"
             entities:
               - sensor.last_lock_code_name
               - switch.parents_lock_code
@@ -42,4 +42,18 @@ popup_lock_temp_code:
       card:
         type: entities
         entities:
-          - input_number.lock_code_temp
+          - entity: input_number.lock_code_temp
+        #type: vertical-stack
+        #cards:
+          #- type: custom:scheduler-card
+            #am_pm: true
+            #time_step: 30
+            #standard_configuration: false
+            #discover_existing: true
+            #entities: 
+              #switch.temp_lock_code:
+                #icon: mdi:timer
+                #name: "How Long?"
+                #actions:
+                  #- service: turn_off
+                    #name: "Deleting the Code then"

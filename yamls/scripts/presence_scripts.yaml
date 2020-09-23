@@ -73,6 +73,8 @@ presence_no_humans_home:
       data:
         entity_id: input_boolean.presence_running
     - service: script.lock_set_parents_lock_code
+    - service: scene.turn_on
+      entity_id: scene.poll_lock_when_opened
     - service: script.presence_leave_turn_stuff_off
     - delay: 00:00:02
     - service: joaoapps_join.fire_send_tasker
