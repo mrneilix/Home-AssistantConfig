@@ -8,6 +8,11 @@
       interval_seconds: 2
       hosts:
         neil_wifi: !secret my_phone_wifi
+    - platform: ping
+      consider_home: 480
+      interval_seconds: 2
+      hosts:
+        neil_wifi: !secret my_phone_wifi2
     - platform: tile
       username: !secret email
       password: !secret tile_password
@@ -19,6 +24,7 @@
       entity_id:
         - device_tracker.neil_bluetooth
         - device_tracker.neil_wifi
+        - device_tracker.neil_s_oneplus_8_pro
         - binary_sensor.lock_code_entered_neil
     - platform: composite
       name: butters
