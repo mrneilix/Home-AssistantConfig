@@ -3,3 +3,5 @@ light.browser_180fffa4_a74390c9:
   type: browser_mod
 light.bathroom_orb:
   supported_features: 63
+device_tracker.neil_s_oneplus_8_pro:
+  entity_picture: /local/pictures/Me.jpg

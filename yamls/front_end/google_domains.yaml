@@ -1,3 +1,0 @@
-  domain: !secret google_domains_fqn
-  username: !secret google_domains_username
-  password: !secret google_domain_password

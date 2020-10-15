@@ -1,3 +1,6 @@
+device_tracker.neil_s_oneplus_8_pro:
+  entity_picture: /local/pictures/Me.jpg
+  friendly_name: Neil Tile
 ### MEDIA PLAYERS ###
 media_player.kitchen_display:
   friendly_name: Google Home Hub
@@ -167,4 +170,13 @@ sensor.stock_ugaz:
   icon: mdi:currency-usd
 sensor.stock_vod:
   friendly_name: VOD
+  icon: mdi:currency-usd
+sensor.stock_spwr:
+  friendly_name: SPWR
+  icon: mdi:currency-usd
+sensor.stock_gevo:
+  friendly_name: GEVO
+  icon: mdi:currency-usd
+sensor.stock_ung:
+  friendly_name: UNG
   icon: mdi:currency-usd

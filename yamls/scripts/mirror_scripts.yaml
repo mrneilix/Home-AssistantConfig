@@ -1,0 +1,8 @@
+mirror_show_all_modules:
+  sequence:
+    - service: rest_command.mirror_set_interval_on
+    - service: rest_command.mirror_show_all_modules
+mirror_hide_all_modules:
+  sequence:
+    - service: rest_command.mirror_set_interval_off
+    - service: rest_command.mirror_hide_all_modules

@@ -4,21 +4,11 @@
       - climate
       - switch
       - proximity
+      - device_tracker
+      - light
     entities:
-      - light.kitchen
-      - light.couch
-      - light.bed
-      - light.bathroom_orb
       - sun.sun
-      # Plex
       - sensor.tautulli
-      - input_boolean.butters_home
-      - device_tracker.neil
-      - device_tracker.neil_pixel_gps
-      - device_tracker.parents
-      - device_tracker.gina
-      - device_tracker.butters
-      - device_tracker.monitor_neil
       - input_boolean.config_updated
   exclude:
     entities:

@@ -7,7 +7,10 @@
   - platform: rest
     resource: !secret guest_code_status
     name: Guest Lock Code
-
+  - platform: rest
+    name: magic_mirror_display_on
+    resource: !secret mirror_querry_state
+    value_template: '{{ value_json.monitor }}'
 #PRESENCE
   - platform: template
     sensors:
@@ -128,17 +131,6 @@
           {%-elif states.script.system_magic_mirror_rotate_display_off.attributes.last_triggered == none %}
             False
           {%-elif ( as_timestamp(states.script.system_magic_mirror_rotate_display_on.attributes.last_triggered) | int ) < ( as_timestamp(states.script.system_magic_mirror_rotate_display_off.attributes.last_triggered) | int ) %}
-            True
-          {%- else -%}
-            False
-          {%- endif %}
-      magic_mirror_display_on:
-        value_template: >-
-          {%- if states.script.system_magic_mirror_display_on.attributes.last_triggered == none %}
-            True
-          {%-elif states.script.system_magic_mirror_display_off.attributes.last_triggered == none %}
-            False
-          {%-elif ( as_timestamp(states.script.system_magic_mirror_display_on.attributes.last_triggered) | int ) < ( as_timestamp(states.script.system_magic_mirror_display_off.attributes.last_triggered) | int ) %}
             True
           {%- else -%}
             False

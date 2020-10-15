@@ -10,8 +10,14 @@
     # headers:
       # Content-Type: application/json
     # payload: '{"ids": ["{{ states.sensor.Kitchen_Display_Timer_ID.state | replace("/", "\/") }}"]}'
-  mirror_querry_rotating:
-    url: !secret mirror_querry_rotating
+  mirror_querry_state:
+    url: !secret mirror_querry_state
+    method: get
+  mirror_set_interval_on:
+    url: !secret mirror_set_interval_on
+    method: get
+  mirror_set_interval_off:
+    url: !secret mirror_set_interval_off
     method: get
   mirror_show_all_modules:
     url: !secret mirror_show_all_modules

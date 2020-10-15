@@ -1,9 +1,7 @@
-  - platform: plex_assistant
+  #- platform: plex_assistant
   - platform: tautulli
-    host: !secret desktop_ip
-    ssl: false
+    host: !secret nas_ip
     api_key: !secret tautulli_api
-    port: !secret tautulli_port
     monitored_conditions:
       - stream_count
       - full_title
@@ -37,7 +35,14 @@
     port: !secret plex_port
     download_images: true
     max: 5
-
+  - platform: deluge
+    host: !secret nas_ip
+    username: !secret hassio_addon_username
+    password: !secret http_password
+    monitored_variables:
+      - 'current_status'
+      - 'download_speed'
+      - 'upload_speed'
   - platform: template
     sensors:
       #desktop_disk_space_c:
@@ -121,11 +126,11 @@
         value_template: >- 
           {{ (states('sensor.radarr_upcoming') | float | int) + (states('sensor.sonarr_upcoming') | float | int) }}
 
-      qbittorrent_download_speed:
-        friendly_name: "qBittorrent Down Speed"
+      deluge_dl_speed:
+        friendly_name: "Deluge Down Speed"
         unit_of_measurement: "MB/s"
         value_template: >- 
-          {{ ( states('sensor.qbittorrent_down_speed') | float / 1024 ) | round(2) }}
+          {{ ( states('sensor.deluge_down_speed') | float / 1024 ) | round(2) }}
 
       view_to_cast:
         friendly_name: "View to Cast"

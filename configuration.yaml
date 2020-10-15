@@ -29,6 +29,7 @@ api:
 config:
 websocket_api:
 system_health:
+uilogs:
 tts: !include yamls/commands_and_notify/tts.yaml
 dialogflow:
 lovelace:
@@ -97,7 +98,7 @@ folder_watcher: !include yamls/home_assistant_yamls/folder_watcher.yaml
 zone: !include yamls/home_assistant_yamls/zone.yaml
 proximity: !include yamls/home_assistant_yamls/proximity.yaml
 coinbase: !include yamls/home_assistant_yamls/coinbase.yaml
-plex_assistant: !include yamls/home_assistant_yamls/plex_assistant.yaml
+#plex_assistant: !include yamls/home_assistant_yamls/plex_assistant.yaml
 
 # Commands and Notify
 rest_command: !include yamls/commands_and_notify/rest_command.yaml
@@ -110,9 +111,11 @@ joaoapps_join: !include yamls/commands_and_notify/join.yaml
 recorder: !include yamls/databases/recorder.yaml
 history: !include yamls/databases/history.yaml
 influxdb: !include yamls/databases/influxdb.yaml
-
+logbook: !include yamls/databases/logbook.yaml
 # Front End
 python_script:
+panel_iframe: !include yamls/front_end/panel_iframe.yaml
+
 # Include Inputs
 input_boolean: !include yamls/inputs/input_boolean.yaml
 input_text: !include yamls/inputs/input_text.yaml
@@ -132,4 +135,3 @@ tplink: !include yamls/devices/tplink.yaml
 google_assistant: !include yamls/devices/google_assistant.yaml
 switch:  !include yamls/devices/switch.yaml
 ombi: !include yamls/devices/ombi.yaml
-#pi_hole: !include yamls/devices/pi_hole.yaml

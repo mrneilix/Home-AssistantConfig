@@ -1,0 +1,12 @@
+  portainer:
+    title: 'Portainer'
+    url: 'https://portainer.mrneilix.rocks/'
+    icon: mdi:docker
+  grafana:
+    title: 'Grafana'
+    url: 'https://grafana.mrneilix.rocks/'
+    icon: mdi:database
+  synology:
+    title: 'Synology'
+    url: 'https://nas.mrneilix.rocks/'
+    icon: mdi:harddisk
