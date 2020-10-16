@@ -1,8 +1,48 @@
-mirror_show_all_modules:
+system_mirror_show_all_modules:
   sequence:
     - service: rest_command.mirror_set_interval_on
     - service: rest_command.mirror_show_all_modules
-mirror_hide_all_modules:
+system_mirror_hide_all_modules:
   sequence:
     - service: rest_command.mirror_set_interval_off
     - service: rest_command.mirror_hide_all_modules
+
+system_magic_mirror_rotate_display_on:
+  alias: System Magic Mirror Rotate Display On
+  sequence:
+    - service: rest_command.mirror_start_rotation
+
+system_magic_mirror_rotate_display_off:
+  alias: System Magic Mirror Rotate Display Off
+  sequence:
+    - service: rest_command.mirror_stop_rotation
+
+system_magic_mirror_display_on:
+  alias: System Magic Mirror On
+  sequence:
+    - service: rest_command.mirror_show_all_modules
+
+system_magic_mirror_display_off:
+  alias: System Magic Mirror Off
+  sequence:
+    - service: rest_command.mirror_hide_all_modules
+
+system_magic_mirror_rotate_display_toggle:
+  alias: System Magic Mirror Rotate Display Toggle
+  sequence:
+    - service_template: >
+          {%- if is_state('binary_sensor.magic_mirror_display_rotation_off', 'on') %}
+            script.system_magic_mirror_rotate_display_on
+          {% else %}
+            script.system_magic_mirror_rotate_display_off
+          {% endif %}
+
+system_magic_mirror_toggle:
+  alias: System Magic Mirror Toggle
+  sequence:
+    - service_template: >
+          {%- if is_state('binary_sensor.magic_mirror_display_on', 'on') %}
+            script.system_magic_mirror_display_off
+          {% else %}
+            script.system_magic_mirror_display_on
+          {% endif %}

@@ -13,9 +13,7 @@
     host: !secret nas_ip
     monitored_conditions:
       - upcoming
-      - diskspace
     days: 14
-    unit: TB
   - platform: sonarr_upcoming_media
     api_key: !secret sonarr_api
     host: !secret nas_ip
@@ -45,93 +43,16 @@
       - 'upload_speed'
   - platform: template
     sensors:
-      #desktop_disk_space_c:
-        #friendly_name: "C: - Main"
-        #icon_template: mdi:harddisk
-        #unit_of_measurement: "GiB"
-        #value_template: >
-          #{% for attr in states.sensor.sonarr_disk_space.attributes %}
-            #{% if  "C" in attr  %}
-              #{%- set c_drive = states.sensor.sonarr_disk_space.attributes[attr] -%}
-              #{%- set full = c_drive.split('GB')[0] -%}
-              #{%- set free = full.split('/')[0] | float | round(2) -%}
-              #{%- set total = full.split('/')[1] | float | round(2) -%}
-              #{%- set used = (total - free) | float | round(2) -%}
-              #{{ used }}
-            #{% endif %}
-          #{% endfor %}
-      #desktop_disk_space_e:
-        #friendly_name: "E: - TV"
-        #icon_template: mdi:harddisk
-        #unit_of_measurement: "TB"
-        #value_template: >
-          #{% for attr in states.sensor.radarr_disk_space.attributes %}
-            #{% if  "E" in attr  %}
-              #{%- set e_drive = states.sensor.radarr_disk_space.attributes[attr] -%}
-              #{%- set full = e_drive.split('TB')[0] -%}
-              #{%- set free = full.split('/')[0] | float | round(2) -%}
-              #{%- set total = full.split('/')[1] | float | round(2) -%}
-              #{%- set used = (total - free) | float | round(2) -%}
-              #{{ used }}
-            #{% endif %}
-          #{% endfor %}
-      #desktop_disk_space_f:
-        #friendly_name: "F: - Archives"
-        #icon_template: mdi:harddisk
-        #unit_of_measurement: "GiB"
-        #value_template: >
-          #{% for attr in states.sensor.sonarr_disk_space.attributes %}
-            #{% if  "F" in attr  %}
-              #{%- set f_drive = states.sensor.sonarr_disk_space.attributes[attr] -%}
-              #{%- set full = f_drive.split('GB')[0] -%}
-              #{%- set free = full.split('/')[0] | float | round(1) -%}
-              #{%- set total = full.split('/')[1] | float | round(1) -%}
-              #{%- set used = (total - free) | float | round(1) -%}
-              #{{ used }}
-            #{% endif %}
-          #{% endfor %}
-      #desktop_disk_space_g:
-        #friendly_name: "G: - Movies"
-        #icon_template: mdi:harddisk
-        #unit_of_measurement: "TB"
-        #value_template: >
-          #{% for attr in states.sensor.radarr_disk_space.attributes %}
-            #{% if  "G" in attr  %}
-              #{%- set g_drive = states.sensor.radarr_disk_space.attributes[attr] -%}
-              #{%- set full = g_drive.split('TB')[0] -%}
-              #{%- set free = full.split('/')[0] | float | round(2) -%}
-              #{%- set total = full.split('/')[1] | float | round(2) -%}
-              #{%- set used = (total - free) | float | round(2) -%}
-              #{{ used }}
-            #{% endif %}
-          #{% endfor %}
-      #desktop_disk_space_j:
-        #friendly_name: "J: - ETC"
-        #icon_template: mdi:harddisk
-        #unit_of_measurement: "TB"
-        #value_template: >
-          #{% for attr in states.sensor.radarr_disk_space.attributes %}
-            #{% if  "J" in attr  %}
-              #{%- set j_drive = states.sensor.radarr_disk_space.attributes[attr] -%}
-              #{%- set full = j_drive.split('TB')[0] -%}
-              #{%- set free = full.split('/')[0] | float | round(2) -%}
-              #{%- set total = full.split('/')[1] | float | round(2) -%}
-              #{%- set used = (total - free) | float | round(2) -%}
-              #{{ used }}
-            #{% endif %}
-          #{% endfor %}
       upcoming_downloads:
         friendly_name: Upcoming Downloads
         icon_template: mdi:video
         value_template: >- 
           {{ (states('sensor.radarr_upcoming') | float | int) + (states('sensor.sonarr_upcoming') | float | int) }}
-
       deluge_dl_speed:
         friendly_name: "Deluge Down Speed"
         unit_of_measurement: "MB/s"
         value_template: >- 
           {{ ( states('sensor.deluge_down_speed') | float / 1024 ) | round(2) }}
-
       view_to_cast:
         friendly_name: "View to Cast"
         value_template: >

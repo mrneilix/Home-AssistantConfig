@@ -29,7 +29,6 @@ api:
 config:
 websocket_api:
 system_health:
-uilogs:
 tts: !include yamls/commands_and_notify/tts.yaml
 dialogflow:
 lovelace:
