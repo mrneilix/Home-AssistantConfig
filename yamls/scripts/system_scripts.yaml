@@ -126,7 +126,7 @@ system_git_backup:
 system_desktop_display_off:
   alias: System Desktop Display Off
   sequence:
-    - service: shell_command.desktop_screen_off
+    - service: rest_command.desktop_screen_off
 
 do_nothing:
   alias: Do Nothing

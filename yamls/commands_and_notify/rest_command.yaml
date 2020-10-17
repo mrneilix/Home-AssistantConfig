@@ -37,3 +37,6 @@
   set_temp_lock_code:
     url: !secret set_temp_lock_code
     method: post
+  desktop_screen_off:
+    url: !secret desktop_screen_off_rest
+    method: get
