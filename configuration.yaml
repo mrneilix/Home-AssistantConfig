@@ -30,7 +30,6 @@ config:
 websocket_api:
 system_health:
 tts: !include yamls/commands_and_notify/tts.yaml
-dialogflow:
 lovelace:
   mode: storage
 breaking_changes:
@@ -38,12 +37,12 @@ config_check:
 browser_mod:
   prefix: "browser_"
   devices:
-    bd4c13ae-6c43cf55:
+    dc9bb05e-61b3c9be:
       name: browser_desktop
       disable:
         - light
         - media_player
-    c3e3e250-07ac1fc0:
+    8d6fc498-63a52b85:
       name: browser_phone
       disable:
         - light
@@ -61,7 +60,7 @@ http:
     - !secret trusted_home_network
     - !secret authelia_ip
 logger:
-  default: error
+  default: warning
 discovery:
 vera:
   vera_controller_url: !secret vera_controller_url
@@ -78,7 +77,7 @@ updater:
   include_used_components: true
 weather:
   - platform: darksky
-    mode: daily
+    #mode: daily
     api_key: !secret darksky_api_key
 speedtestdotnet:
   scan_interval:
@@ -97,7 +96,7 @@ folder_watcher: !include yamls/home_assistant_yamls/folder_watcher.yaml
 zone: !include yamls/home_assistant_yamls/zone.yaml
 proximity: !include yamls/home_assistant_yamls/proximity.yaml
 coinbase: !include yamls/home_assistant_yamls/coinbase.yaml
-#plex_assistant: !include yamls/home_assistant_yamls/plex_assistant.yaml
+plex_assistant: !include yamls/home_assistant_yamls/plex_assistant.yaml
 
 # Commands and Notify
 rest_command: !include yamls/commands_and_notify/rest_command.yaml
@@ -112,7 +111,6 @@ history: !include yamls/databases/history.yaml
 influxdb: !include yamls/databases/influxdb.yaml
 logbook: !include yamls/databases/logbook.yaml
 # Front End
-python_script:
 panel_iframe: !include yamls/front_end/panel_iframe.yaml
 
 # Include Inputs
@@ -128,7 +126,7 @@ climate: #!include yamls/devices/climate.yaml
   - platform: honeywell
     username: !secret climate_username
     password: !secret climate_pw
-cast: !include yamls/devices/cast.yaml
+#cast: !include yamls/devices/cast.yaml
 #hdmi_cec: !include yamls/devices/cec.yaml
 tplink: !include yamls/devices/tplink.yaml
 google_assistant: !include yamls/devices/google_assistant.yaml

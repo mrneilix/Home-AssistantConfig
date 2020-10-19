@@ -1,4 +1,4 @@
-  #- platform: plex_assistant
+  - platform: plex_assistant
   - platform: tautulli
     host: !secret nas_ip
     api_key: !secret tautulli_api

@@ -43,7 +43,7 @@
       - precip_type
 
   - platform: illuminance
-    entity_id: weather.home_control
+    entity_id: weather.dark_sky
 
   - platform: template
     sensors:
