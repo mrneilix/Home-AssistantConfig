@@ -17,7 +17,7 @@
       anyone_home:
         friendly_name: Anyone Home
         value_template: >-
-          {%- if is_state("device_tracker.neil", "home")
+          {%- if is_state("person.neil", "home")
           or is_state("device_tracker.parents", "home")
           or is_state("device_tracker.gina", "home")
               -%}
@@ -71,7 +71,7 @@
       anyone_home_but_neil:
         friendly_name: Anyone Home But Neil
         value_template: >-
-          {%- if is_state("device_tracker.neil", "home") %}
+          {%- if is_state("person.neil", "home") %}
             False
           {%-elif is_state("device_tracker.gina", "home") %}
             True

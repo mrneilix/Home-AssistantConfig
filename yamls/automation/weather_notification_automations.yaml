@@ -57,7 +57,7 @@
   alias: 'Weather Notifications Off'
   trigger:
     - platform: state
-      entity_id: device_tracker.neil
+      entity_id: person.neil
       to: 'not_home'
       for:
         hours: 6

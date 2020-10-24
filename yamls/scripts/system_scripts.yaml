@@ -32,7 +32,7 @@ startup_input_booleans:
   alias: Startup Input Booleans
   sequence:
     - service_template: >
-          {%- if now().hour >= 8 and now().hour < 23 and is_state('device_tracker.neil', 'home')%}
+          {%- if now().hour >= 8 and now().hour < 23 and is_state('person.neil', 'home')%}
             input_boolean.turn_on
           {% else %}
             input_boolean.turn_off
@@ -40,7 +40,7 @@ startup_input_booleans:
       data:
         entity_id: input_boolean.notifications_on
     - service_template: >
-          {%- if now().hour >= 8 and now().hour < 23 and is_state('device_tracker.neil', 'home') %}
+          {%- if now().hour >= 8 and now().hour < 23 and is_state('person.neil', 'home') %}
             input_boolean.turn_on
           {% else %}
             input_boolean.turn_off
@@ -48,7 +48,7 @@ startup_input_booleans:
       data:
         entity_id: input_boolean.weather_notifications
     - service_template: >
-          {% if is_state('device_tracker.butters', 'home') %}
+          {% if is_state('person.butters', 'home') %}
             input_boolean.turn_on
           {% else %}
             input_boolean.turn_off

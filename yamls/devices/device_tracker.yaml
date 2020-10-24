@@ -27,11 +27,6 @@
         - device_tracker.neil_s_oneplus_8_pro
         - binary_sensor.lock_code_entered_neil
     - platform: composite
-      name: butters
-      time_as: local
-      entity_id:
-        - device_tracker.tile_70e3c9fefea64a42
-    - platform: composite
       name: parents
       time_as: local
       entity_id:

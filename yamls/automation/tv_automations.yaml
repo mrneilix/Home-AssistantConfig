@@ -19,7 +19,7 @@
       entity_id: input_boolean.notifications_on
       state: 'on'
     - condition: state
-      entity_id: device_tracker.neil
+      entity_id: person.neil
       state: 'home'
     - condition: state
       entity_id: input_boolean.restart_complete

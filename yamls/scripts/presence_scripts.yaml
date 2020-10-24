@@ -23,7 +23,7 @@ presence_someone_arrived:
       entity_id: light.bathroom_orb
     - delay: 00:00:05
     - service_template: >
-          {% if is_state('device_tracker.neil', 'home') %}
+          {% if is_state('person.neil', 'home') %}
             script.presence_neil_arrived_home
           {%-elif is_state('device_tracker.parents', 'home') %}
             script.presence_parents_home
@@ -127,7 +127,7 @@ presence_toggle_neil_device_tracker:
   alias: Presence Toggle Neil Device Tracker
   sequence:
     - service_template: > 
-          {% if is_state('device_tracker.neil', 'home') %}
+          {% if is_state('person.neil', 'home') %}
             script.presence_set_neil_device_trackers_away
           {% else %}
             script.presence_set_neil_device_tracker_home
@@ -155,6 +155,14 @@ presence_set_neil_device_tracker_home:
     - service: device_tracker.see
       data:
         dev_id: neil
+        location_name: 'home'
+    - service: device_tracker.see
+      data:
+        dev_id: neil_wifi
+        location_name: 'home'
+    - service: device_tracker.see
+      data:
+        dev_id: neil_bluetooth
         location_name: 'home'
 
 presence_lock_code_entered_not_family:

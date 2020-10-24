@@ -12,7 +12,7 @@
       entity_id: input_boolean.couch_light_script_running
       state: 'off'
     - condition: state
-      entity_id: device_tracker.neil
+      entity_id: person.neil
       state: 'home'
   action:
     - service: joaoapps_join.pixel_send_tasker

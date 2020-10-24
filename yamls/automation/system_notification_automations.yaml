@@ -59,7 +59,7 @@
     at: '08:00:00'
   condition:
     - condition: state
-      entity_id: device_tracker.neil
+      entity_id: person.neil
       state: 'home'
     - condition: state
       entity_id: input_boolean.restart_complete

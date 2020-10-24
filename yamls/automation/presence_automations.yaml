@@ -39,11 +39,11 @@
   alias: 'Presence Update Butters Input Boolean'
   trigger:
     - platform: state
-      entity_id: device_tracker.butters
+      entity_id: person.butters
       to: 'home'
       from: 'not_home'
     - platform: state
-      entity_id: device_tracker.butters
+      entity_id: person.butters
       to: 'not_home'
       from: 'home'
   condition:
@@ -52,7 +52,7 @@
       state: 'on'
   action:
     - service_template: >
-          {% if is_state('device_tracker.butters', 'home') %}
+          {% if is_state('person.butters', 'home') %}
             input_boolean.turn_on
           {% else %}
             input_boolean.turn_off
@@ -67,7 +67,7 @@
       entity_id: input_boolean.butters_home
       to: 'off'
     - platform: state
-      entity_id: device_tracker.neil
+      entity_id: person.neil
       to: 'not_home'
       for:
         minutes: 10
@@ -91,13 +91,13 @@
   alias: 'Presence Someone Home'
   trigger:
     - platform: state
-      entity_id: device_tracker.neil
+      entity_id: person.neil
       to: 'home'
     - platform: state
-      entity_id: device_tracker.parents
+      entity_id: person.parents
       to: 'home'
     - platform: state
-      entity_id: device_tracker.gina
+      entity_id: person.gina
       to: 'home'
   condition:
     - condition: state
@@ -150,7 +150,7 @@
   alias: 'Presence Turn Desktop Display Off'
   trigger: 
     - platform: state
-      entity_id: device_tracker.neil
+      entity_id: person.neil
       to: 'not_home'
       for:
         hours: 1
