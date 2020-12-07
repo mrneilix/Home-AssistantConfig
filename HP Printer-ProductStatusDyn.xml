@@ -5,20 +5,11 @@
 		<dd:Revision>SVN-IPG-LEDM.216</dd:Revision>
 	</dd:Version>
 	<psdyn:Status>
-		<pscat:StatusCategory>printerMispick</pscat:StatusCategory>
-		<psdyn:LocString lang="en">No paper pickup.
-Press [OK] to continue.</psdyn:LocString>
+		<pscat:StatusCategory>inPowerSave</pscat:StatusCategory>
+		<psdyn:LocString lang="en">Sleep mode is on.</psdyn:LocString>
 	</psdyn:Status>
 	<psdyn:AlertTable>
-		<dd:ModificationNumber>2</dd:ModificationNumber>
-		<psdyn:Alert>
-			<ad:ProductStatusAlertID>printerMispick</ad:ProductStatusAlertID>
-			<dd:SequenceNumber>2</dd:SequenceNumber>
-			<ad:Severity>Error</ad:Severity>
-			<ad:AlertDetails>
-				<ad:AlertDetailsUserAction>pressOK</ad:AlertDetailsUserAction>
-			</ad:AlertDetails>
-		</psdyn:Alert>
+		<dd:ModificationNumber>13</dd:ModificationNumber>
 		<psdyn:Alert>
 			<ad:ProductStatusAlertID>genuineHP</ad:ProductStatusAlertID>
 			<dd:SequenceNumber>1</dd:SequenceNumber>

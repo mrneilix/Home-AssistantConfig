@@ -100,14 +100,14 @@
   action:
     - service: switch.turn_on
       entity_id: switch.pi_hole
-- id: system_ping_healthchecks
-  alias: 'System Ping Healthchecks'
-  trigger:
-    platform: time_pattern
-    minutes: "/5"
-  condition:
-    - condition: state
-      entity_id: input_boolean.restart_complete
-      state: 'on'
-  action:
-    - service: shell_command.healthchecks_ping
+# - id: system_ping_healthchecks
+  # alias: 'System Ping Healthchecks'
+  # trigger:
+    # platform: time_pattern
+    # minutes: "/5"
+  # condition:
+    # - condition: state
+      # entity_id: input_boolean.restart_complete
+      # state: 'on'
+  # action:
+    # - service: shell_command.healthchecks_ping
