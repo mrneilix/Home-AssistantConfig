@@ -9,7 +9,6 @@
       - type: last_boot
   - platform: uptime
     name: uptime
-    unit_of_measurement: minutes
 
   - platform: rpi_power
     text_state: true

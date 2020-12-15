@@ -33,14 +33,6 @@
     port: !secret plex_port
     download_images: true
     max: 5
-  - platform: deluge
-    host: !secret nas_ip
-    username: !secret hassio_addon_username
-    password: !secret http_password
-    monitored_variables:
-      - 'current_status'
-      - 'download_speed'
-      - 'upload_speed'
   - platform: template
     sensors:
       upcoming_downloads:

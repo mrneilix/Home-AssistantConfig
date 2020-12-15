@@ -103,7 +103,7 @@ rest_command: !include yamls/commands_and_notify/rest_command.yaml
 shell_command: !include yamls/commands_and_notify/shell_commands.yaml
 notify: !include yamls/commands_and_notify/notify.yaml
 joaoapps_join: !include yamls/commands_and_notify/join.yaml
-# intent_script:  !include yamls/commands_and_notify/intent_script.yaml
+intent_script:  !include yamls/commands_and_notify/intent_script.yaml
 
 # Include DBs
 recorder: !include yamls/databases/recorder.yaml

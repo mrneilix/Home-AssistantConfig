@@ -34,10 +34,4 @@
           service: script.system_mirror_show_all_modules
         turn_off:
           service: script.system_mirror_hide_all_modules
-  - platform: rest
-    name: TV
-    resource: http://localhost:5000/device/0/power
-    body_on: '{"state":"on"}'
-    body_off: '{"state":"off"}'
-    is_on_template: '{{ value_json.state == "starting" or value_json.state == "on" }}'
 

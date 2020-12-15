@@ -20,7 +20,7 @@ cast_view_to_tv:
   alias: Cast View to TV
   sequence:
     - data_template:
-        entity_id: media_player.living_room_tv
+        entity_id:  media_player.sony_bravia_tv
         view_path: >
           {% if is_state('input_select.cast_view', 'Home') %}
             home

@@ -1,0 +1,28 @@
+popup_cast_hass:
+  sequence:
+    service: browser_mod.popup
+    service_data:
+      title: Cast HASS
+      card:
+        type: vertical-stack
+        cards:
+          - type: entities
+            show_header_toggle: false
+            entities:
+              - entity: input_select.cast_view
+          - type: horizontal-stack
+            cards:
+              - type: 'custom:button-card'
+                icon: mdi:google-classroom
+                name: Home Hub
+                color: var(--paper-item-icon-active-color)
+                tap_action:
+                  action: call-service
+                  service: script.cast_view_to_home_hub
+              - type: 'custom:button-card'
+                icon: mdi:cast-connected
+                name: TV
+                color: var(--paper-item-icon-active-color)
+                tap_action:
+                  action: call-service
+                  service: script.cast_view_to_tv

@@ -1,10 +1,8 @@
 tv_off:
   alias: TV Off
   sequence:
-    - service: switch.turn_off
-      entity_id: switch.hdmi_0
     - service: media_player.turn_off
-      entity_id: media_player.living_room_tv
+      entity_id:  media_player.sony_bravia_tv
     - condition: template
       value_template: "{{ not is_state('media_player.playstation_4', 'off') }}"
     - service: media_player.turn_off
@@ -14,23 +12,95 @@ tv_off_turn_devices_off:
   alias: TV Off Turn Devices Off
   sequence:
     - service: media_player.turn_off
-      entity_id: media_player.living_room_tv
+      entity_id:  media_player.sony_bravia_tv
     - service: media_player.turn_off
       entity_id: media_player.playstation_4
 
-tv_input_chromecast:
-  alias: TV Input Chromecast
+tv_input_tv:
+  alias: TV Input TV
   sequence:
-    - service: hdmi_cec.select_device
+    - service: media_player.select_source
       data:
-        device: Chromecast
+        entity_id: media_player.sony_bravia_tv
+        source: TV
+tv_input_plex:
+  alias: TV Input Plex
+  sequence:
+    - service: media_player.select_source
+      data:
+        entity_id: media_player.sony_bravia_tv
+        source: Plex
+tv_input_prime_video:
+  alias: TV Input Prime Video
+  sequence:
+    - service: media_player.select_source
+      data:
+        entity_id: media_player.sony_bravia_tv
+        source: Prime Video
+tv_input_netflix:
+  alias: TV Input Netflix
+  sequence:
+    - service: media_player.select_source
+      data:
+        entity_id: media_player.sony_bravia_tv
+        source: Netflix
+tv_input_hbo:
+  alias: TV Input HBO
+  sequence:
+    - service: media_player.select_source
+      data:
+        entity_id: media_player.sony_bravia_tv
+        source: HBO Max
+tv_input_peacock:
+  alias: TV Input HBO
+  sequence:
+    - service: media_player.select_source
+      data:
+        entity_id: media_player.sony_bravia_tv
+        source: Peacock TV
+tv_input_showtime:
+  alias: TV Input Showtime
+  sequence:
+    - service: media_player.select_source
+      data:
+        entity_id: media_player.sony_bravia_tv
+        source: Showtime Anytime
+tv_input_youtube:
+  alias: TV Input Youtube
+  sequence:
+    - service: media_player.select_source
+      data:
+        entity_id: media_player.sony_bravia_tv
+        source: Youtube
+tv_input_starz:
+  alias: TV Input Starz
+  sequence:
+    - service: media_player.select_source
+      data:
+        entity_id: media_player.sony_bravia_tv
+        source: STARZ
+tv_input_espn:
+  alias: TV Input ESPN
+  sequence:
+    - service: media_player.select_source
+      data:
+        entity_id: media_player.sony_bravia_tv
+        source: ESPN
+tv_input_foxsports:
+  alias: TV Input FOX Sports
+  sequence:
+    - service: media_player.select_source
+      data:
+        entity_id: media_player.sony_bravia_tv
+        source: FOX Sports
 
 tv_input_playstation:
   alias: TV Input PS4
   sequence:
-    - service: hdmi_cec.select_device
+    - service: media_player.select_source
       data:
-        device: PS4
+        entity_id: media_player.sony_bravia_tv
+        source: PlayStation 4
 
 tv_notify_theater_mode:
   alias: Notify Theater Mode

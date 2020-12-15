@@ -1,143 +1,108 @@
-  - platform: climacell
-    api_key: !secret climacell_api
-    name: climacell
-    latitude: !secret latitude_loc_home
-    longitude: !secret longitude_loc_home
-    monitored_conditions:
-      realtime:
-        conditions:
-          - temperature
-          - feels_like
-          - dewpoint
-          - humidity
-          - wind_speed
-          - wind_direction
-          - wind_gust
-          - pressure
-          - precipitation
-          - precipitation_type
-          - sunset
-          - sunrise
-          - visibility
-          - cloud_cover
-          - moon_phase
-          - weather_condition
-          - epa_aqi
-          - epa_primary_pollutant
-          - epa_health_concern
-          - pollen_tree
-          - pollen_weed
-          - pollen_grass
-          - road_risk_score
-          - road_risk_confidence
-          - road_risk_conditions
-          - fire_index
-        update: auto
-        scan_interval:
-          days: 0
-          hours: 0
-          minutes: 30
-          seconds: 0
-          milliseconds: 0
-        exclude_interval:
-          1:
-            - "23:30"
-            - "06:00"
-      daily:
-        forecast_observations: 5
-        conditions:
-          - temperature
-          - feels_like
-          - humidity
-          - pressure
-          - precipitation
-          - precipitation_probability
-          - precipitation_accumulation
-          - sunset
-          - sunrise
-          - visibility
-          - weather_condition
-        scan_interval:
-          days: 0
-          hours: 3
-          minutes: 0
-          seconds: 0
-          milliseconds: 0
-        exclude_interval:
-          1:
-            - "00:00"
-            - "08:30"
-      hourly:
-        forecast_observations: 1
-        conditions:
-          - temperature
-          - feels_like
-          - dewpoint
-          - humidity
-          - wind_speed
-          - wind_direction
-          - wind_gust
-          - pressure
-          - precipitation
-          - precipitation_type
-          - precipitation_probability
-          - sunset
-          - sunrise
-          - visibility
-          - cloud_cover
-          - moon_phase
-          - weather_condition
-          - epa_aqi
-          - epa_primary_pollutant
-          - epa_health_concern
-          - pollen_tree
-          - pollen_weed
-          - pollen_grass
-          - road_risk_score
-          - road_risk_confidence
-          - road_risk_conditions
-        scan_interval:
-          days: 0
-          hours: 1
-          minutes: 0
-          seconds: 0
-          milliseconds: 0
-        exclude_interval:
-          1:
-            - "01:00"
-            - "05:00"
-      nowcast:
-        timestep: 5
-        forecast_observations: 1
-        conditions:
-          - temperature
-          - feels_like
-          - dewpoint
-          - humidity
-          - pressure
-          - precipitation
-          - precipitation_type
-          - sunset
-          - sunrise
-          - visibility
-          - cloud_cover
-          - weather_condition
-          - epa_aqi
-          - epa_primary_pollutant
-          - epa_health_concern
-          - pollen_tree
-          - pollen_weed
-          - pollen_grass
-          - road_risk_score
-          - road_risk_confidence
-          - road_risk_conditions
-        scan_interval:
-          days: 0
-          hours: 0
-          minutes: 10
-          seconds: 0
-          milliseconds: 0
-        exclude_interval:
-          1:
-            - "01:00"
-            - "05:00"
+  # - platform: climacell
+    # api_key: !secret climacell_api
+    # name: climacell
+    # latitude: !secret latitude_loc_home
+    # longitude: !secret longitude_loc_home
+    # monitored_conditions:
+      # realtime:
+        # conditions:
+          # - temperature
+          # - feels_like
+          # - humidity
+          # - wind_speed
+          # - wind_direction
+          # - wind_gust
+          # - precipitation
+          # - precipitation_type
+          # - sunset
+          # - sunrise
+          # - visibility
+          # - cloud_cover
+          # - moon_phase
+          # - weather_condition
+        # update: auto
+        # scan_interval:
+          # days: 0
+          # hours: 0
+          # minutes: 30
+          # seconds: 0
+          # milliseconds: 0
+        # exclude_interval:
+          # 1:
+            # - "23:30"
+            # - "06:00"
+      # daily:
+        # forecast_observations: 5
+        # conditions:
+          # - temperature
+          # - feels_like
+          # - humidity
+          # - precipitation
+          # - precipitation_probability
+          # - precipitation_accumulation
+          # - sunset
+          # - sunrise
+          # - visibility
+          # - weather_condition
+        # scan_interval:
+          # days: 0
+          # hours: 3
+          # minutes: 0
+          # seconds: 0
+          # milliseconds: 0
+        # exclude_interval:
+          # 1:
+            # - "00:00"
+            # - "08:30"
+      # hourly:
+        # forecast_observations: 1
+        # conditions:
+          # - temperature
+          # - feels_like
+          # - humidity
+          # - wind_speed
+          # - wind_direction
+          # - wind_gust
+          # - precipitation
+          # - precipitation_type
+          # - precipitation_probability
+          # - sunset
+          # - sunrise
+          # - visibility
+          # - cloud_cover
+          # - moon_phase
+          # - weather_condition
+        # scan_interval:
+          # days: 0
+          # hours: 1
+          # minutes: 0
+          # seconds: 0
+          # milliseconds: 0
+        # exclude_interval:
+          # 1:
+            # - "01:00"
+            # - "05:00"
+      # nowcast:
+        # timestep: 5
+        # forecast_observations: 1
+        # conditions:
+          # - temperature
+          # - feels_like
+          # - humidity
+          # - precipitation
+          # - precipitation_type
+          # - sunset
+          # - sunrise
+          # - visibility
+          # - cloud_cover
+          # - weather_condition
+        # scan_interval:
+          # days: 0
+          # hours: 0
+          # minutes: 10
+          # seconds: 0
+          # milliseconds: 0
+        # exclude_interval:
+          # 1:
+            # - "01:00"
+            # - "05:00"
