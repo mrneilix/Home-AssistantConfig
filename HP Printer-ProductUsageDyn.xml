@@ -5,7 +5,7 @@
 		<dd:Revision>SVN-IPG-LEDM.977</dd:Revision>
 	</dd:Version>
 	<pudyn:PrinterSubunit>
-		<dd:TotalImpressions>86</dd:TotalImpressions>
+		<dd:TotalImpressions>88</dd:TotalImpressions>
 		<dd:JamEvents>5</dd:JamEvents>
 		<dd:MispickEvents>8</dd:MispickEvents>
 	</pudyn:PrinterSubunit>
@@ -14,9 +14,9 @@
 			<dd:ConsumableStation>0</dd:ConsumableStation>
 			<dd:MarkerColor>Black</dd:MarkerColor>
 			<dd:ConsumableTypeEnum>toner</dd:ConsumableTypeEnum>
-			<dd:TotalImpressions>87</dd:TotalImpressions>
+			<dd:TotalImpressions>89</dd:TotalImpressions>
 			<dd:A4EquivalentImpressions>
-				<dd:TotalImpressions>86</dd:TotalImpressions>
+				<dd:TotalImpressions>88</dd:TotalImpressions>
 			</dd:A4EquivalentImpressions>
 			<dd:EstimatedPagesRemaining>150</dd:EstimatedPagesRemaining>
 			<dd:ConsumableRawPercentageLevelRemaining>68</dd:ConsumableRawPercentageLevelRemaining>
@@ -38,7 +38,7 @@
 		</pudyn:Consumable>
 	</pudyn:ConsumableSubunit>
 	<pudyn:ScannerEngineSubunit>
-		<dd:FlatbedImages>15</dd:FlatbedImages>
+		<dd:FlatbedImages>17</dd:FlatbedImages>
 	</pudyn:ScannerEngineSubunit>
 	<pudyn:CopyApplicationSubunit>
 		<dd:TotalImpressions>3</dd:TotalImpressions>

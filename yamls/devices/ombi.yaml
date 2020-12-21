@@ -1,5 +1,6 @@
   host: !secret nas_ip
   username: !secret hassio_addon_username
-  password: !secret http_password
+  #password: !secret http_password
   port: !secret ombi_port
+  api_key: !secret ombi_api_key
   urlbase: ombi

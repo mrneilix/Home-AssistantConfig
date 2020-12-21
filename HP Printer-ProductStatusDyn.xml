@@ -9,7 +9,16 @@
 		<psdyn:LocString lang="en">Sleep mode is on.</psdyn:LocString>
 	</psdyn:Status>
 	<psdyn:AlertTable>
-		<dd:ModificationNumber>13</dd:ModificationNumber>
+		<dd:ModificationNumber>16</dd:ModificationNumber>
+		<psdyn:Alert>
+			<ad:ProductStatusAlertID>trayEmptyOrOpen</ad:ProductStatusAlertID>
+			<dd:SequenceNumber>14</dd:SequenceNumber>
+			<ad:Severity>Error</ad:Severity>
+			<ad:AlertDetails>
+			</ad:AlertDetails>
+			<dd:ResourceURI>/DevMgmt/MediaHandlingDyn.xml</dd:ResourceURI>
+			<dd:ResourceType>ledm:hpLedmMediaHandlingDyn</dd:ResourceType>
+		</psdyn:Alert>
 		<psdyn:Alert>
 			<ad:ProductStatusAlertID>genuineHP</ad:ProductStatusAlertID>
 			<dd:SequenceNumber>1</dd:SequenceNumber>
