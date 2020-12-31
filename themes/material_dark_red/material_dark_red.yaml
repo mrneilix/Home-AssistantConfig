@@ -8,7 +8,7 @@ material_dark_red:
   disabled-text-color: "#545454"
   divider-color: "#434952"
   light-primary-color: "#e06c6c"
-  paper-card-background-color: "#434952"
+  paper-card-background-color: "#4349521a"
   paper-card-header-color: "var(--paper-item-icon-color)"
   paper-grey-200: "#191919"
   paper-grey-50: "var(--primary-text-color)"
