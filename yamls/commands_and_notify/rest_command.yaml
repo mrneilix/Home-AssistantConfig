@@ -39,4 +39,9 @@
     method: post
   desktop_screen_off:
     url: !secret desktop_screen_off_rest
-    method: get
+    method: post
+    payload: !secret desktop_screen_off_rest_payload
+    headers:
+      Authorization: !secret desktop_screen_off_rest_auth
+      accept: 'application/json, text/html'
+    content_type:  'application/json; charset=utf-8'

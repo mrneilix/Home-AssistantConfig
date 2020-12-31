@@ -37,7 +37,7 @@ config_check:
 browser_mod:
   prefix: "browser_"
   devices:
-    dc9bb05e-61b3c9be:
+    dfdfbd66-98c5c848:
       name: browser_desktop
       disable:
         - light
@@ -132,3 +132,4 @@ tplink: !include yamls/devices/tplink.yaml
 google_assistant: !include yamls/devices/google_assistant.yaml
 switch:  !include yamls/devices/switch.yaml
 ombi: !include yamls/devices/ombi.yaml
+asuswrt: !include yamls/devices/asuswrt.yaml

@@ -10,3 +10,7 @@
     title: 'Synology'
     url: 'https://nas.mrneilix.rocks/'
     icon: mdi:harddisk
+  configurator:
+    title: 'Configurator'
+    url: 'https://hass.mrneilix.rocks/configurator/'
+    icon: mdi:home-edit
