@@ -1,1 +1,114 @@
-HBEGIN:oc_encryption_module:OC_DEFAULT_MODULE:cipher:AES-256-CTR:signed:true:HEND-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------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00iv00MSûcwI|ÚEÎbQÂ00sig0075f34fb775800d9e070df31fa7a96049e97f0d6d7c144e1dcdfee29a5b7db22dxxx
+MrNeilix Hass Config
+====================
+
+Table of Contents
+-----------------
+
+  * [MrNeilix Hass Config](#MrNeilix-Hass-Config)
+  * [ScreenShots](#Screenshots)
+     * [Main](#Main)
+     * [Media](#Media)
+     * [FitBit](#Fitbit)
+     * [Calendar](#Calendar)
+     * [System](#System)
+     * [Hidden Views with embedded iFrames](#Hidden-Views-with-embedded-iFrames)
+     * [Weblinks](#Weblinks)
+  * [Custom Components](#Custom-Components)
+  * [Custom Cards](#Custom-Cards)
+  * [Hardware](#Hardware)
+
+ScreenShots
+===========
+
+Main
+----
+Main view with Couch Lights Off
+![Main View With Couch Lights Off](Screenshots/main-view-couch-off.png)
+
+Main view with Couch Lights On
+![Main View With Couch Lights On](Screenshots/main-view-couch-on.png)
+
+Main view with Notification Control Popup
+![Main view with Notification Control Popup](Screenshots/main-view-popup-control-input-booleans-for-notifications.png)
+
+Main view with setting a temporary lock code popup
+![Main View With Temporary Lock Code Popup](Screenshots/main-view-temp-lock-code-popup.png)
+
+Fitbit popup
+![Fitbit View](Screenshots/fitbit_view.png)
+
+Media
+-----
+Media View with TV Off
+![Media View With TV Off](Screenshots/media-view-tv-off.png)
+
+Media View with TV On
+![Media View With TV On](Screenshots/media-view-tv-on.png)
+
+Media View with an Popup iFrame to Grafana, showing Tautulli history
+![Media View With Tautulli Popup](Screenshots/media-view-tautulli-popup.png)
+
+Media View with an Popup showing Tautulli history by user
+![Media View With Tautulli Popup](Screenshots/media-view-tautulli-history.png)
+
+Media View with Upcoming Downloads Popup
+![Media View With Upcoming Downloads Popup](Screenshots/media-view-upcoming-downloads-popup.png)
+
+Media View with Recently Added to Plex Popup
+![Media View With Recently Added to Plex Popup](Screenshots/media-view-recent-downloads-popup.png)
+
+Calendar
+--------
+Calendar and Device Tracker View
+![Calendar and Device Tracker View](Screenshots/calendar_view.png)
+
+Calendar and Device Tracker View With Device Tracker Popup
+![Calendar and Device Tracker View](Screenshots/calendar_view_device_tacker_popup.png)
+
+System
+------
+System View
+![System View](Screenshots/system_view.png)
+
+I made a hidden view here using Compact Custom Header, so it'll navigate to the hidden System Monitor View
+![System View With Hidden System Monitor View](Screenshots/system_view_system_monitor_view.png)
+
+Weblinks
+--------
+Router
+![Router](Screenshots/weblink-router.png)
+Vera
+![Vera](Screenshots/weblink-vera.png)
+QBittorrent 
+![QBittorrent](Screenshots/weblink-qbittorrent.png)
+Sonarr
+![Sonarr](Screenshots/weblink-tv.png)
+Radarr
+![MQTT](Screenshots/weblink-movies.png)
+
+HACS Integrations and Plugins
+=================
+![HACS](Screenshots/HACS-integrations-and-plugins.png)
+
+Hardware
+========
+
+Raspberry Pi 4 Running Raspbian Docker on an SSD
+
+Numerous Z Wave Switches
+
+Schlage Camelot Z Wave Lock 
+
+Monoprice Z Wave Door Sensor (Vera has been annoying about my lock, so I have to use that to tell when the door is opened)
+
+Nexlux WiFi Wireless LED Smart Controller (And a few RGB Strips)
+
+Wemo Switch for my Webcam
+
+Honeywell Wi-Fi Smart RTH9580
+
+Vera Hub for Z-Wave control
+
+Google Home and Chromecast
+
+Join/Tasker on my phone for YouTube TV and presence control

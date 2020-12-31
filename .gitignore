@@ -47,3 +47,5 @@ custom_components
 cors_allowed_origins.yaml
 python_scripts
 sys_commands
+html5*
+HP*
