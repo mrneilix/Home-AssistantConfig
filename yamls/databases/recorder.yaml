@@ -12,7 +12,6 @@
       - script.ps4_*
       - sensor.dark_sky_*
       - sensor.cc_*
-      - sensor.stock*
       - sensor.memory_*
       - sensor.precipitation*
       - sensor.radarr_*
