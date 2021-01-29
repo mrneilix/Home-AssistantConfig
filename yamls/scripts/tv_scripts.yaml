@@ -7,6 +7,8 @@ tv_off:
       value_template: "{{ not is_state('media_player.playstation_4', 'off') }}"
     - service: media_player.turn_off
       entity_id: media_player.playstation_4
+    - service: media_player.turn_off
+      entity_id: media_player.shield
 
 tv_off_turn_devices_off:
   alias: TV Off Turn Devices Off
@@ -15,6 +17,8 @@ tv_off_turn_devices_off:
       entity_id:  media_player.sony_bravia_tv
     - service: media_player.turn_off
       entity_id: media_player.playstation_4
+    - service: media_player.turn_off
+      entity_id: media_player.shield
 
 tv_input_tv:
   alias: TV Input TV
@@ -28,71 +32,71 @@ tv_input_plex:
   sequence:
     - service: media_player.select_source
       data:
-        entity_id: media_player.sony_bravia_tv
-        source: Plex
+        entity_id: media_player.shield
+        source: com.plexapp.android
 tv_input_prime_video:
   alias: TV Input Prime Video
   sequence:
     - service: media_player.select_source
       data:
-        entity_id: media_player.sony_bravia_tv
+        entity_id: media_player.shield_adb
         source: Prime Video
 tv_input_netflix:
   alias: TV Input Netflix
   sequence:
     - service: media_player.select_source
       data:
-        entity_id: media_player.sony_bravia_tv
+        entity_id: media_player.shield_adb
         source: Netflix
 tv_input_hbo:
   alias: TV Input HBO
   sequence:
     - service: media_player.select_source
       data:
-        entity_id: media_player.sony_bravia_tv
-        source: HBO Max
+        entity_id: media_player.shield_adb
+        source: com.hbo.hbonow
 tv_input_peacock:
-  alias: TV Input HBO
+  alias: TV Input Peacock
   sequence:
     - service: media_player.select_source
       data:
-        entity_id: media_player.sony_bravia_tv
-        source: Peacock TV
+        entity_id: media_player.shield_adb
+        source: com.peacocktv.peacockandroid
 tv_input_showtime:
   alias: TV Input Showtime
   sequence:
     - service: media_player.select_source
       data:
-        entity_id: media_player.sony_bravia_tv
-        source: Showtime Anytime
+        entity_id: media_player.shield_adb
+        source: com.showtime.standalone
 tv_input_youtube:
   alias: TV Input Youtube
   sequence:
     - service: media_player.select_source
       data:
-        entity_id: media_player.sony_bravia_tv
+        entity_id: media_player.shield_adb
         source: Youtube
 tv_input_starz:
   alias: TV Input Starz
   sequence:
     - service: media_player.select_source
       data:
-        entity_id: media_player.sony_bravia_tv
-        source: STARZ
+        entity_id: media_player.shield_adb
+        source: com.bydeluxe.d3.android.program.starz
 tv_input_espn:
   alias: TV Input ESPN
   sequence:
     - service: media_player.select_source
       data:
-        entity_id: media_player.sony_bravia_tv
-        source: ESPN
+        entity_id: media_player.shield_adb
+        source: com.espn.score_center
 tv_input_foxsports:
   alias: TV Input FOX Sports
   sequence:
     - service: media_player.select_source
       data:
-        entity_id: media_player.sony_bravia_tv
-        source: FOX Sports
+        entity_id: media_player.shield_adb
+        source: com.foxsports.android
 
 tv_input_playstation:
   alias: TV Input PS4
@@ -101,6 +105,50 @@ tv_input_playstation:
       data:
         entity_id: media_player.sony_bravia_tv
         source: PlayStation 4
+tv_input_shield:
+  alias: TV Input Shield
+  sequence:
+    - service: media_player.select_source
+      data:
+        entity_id: media_player.sony_bravia_tv
+        source: SHIELD
+
+tv_input_cbs:
+  alias: TV Input CBS
+  sequence:
+    - service: media_player.select_source
+      data:
+        entity_id: media_player.sony_bravia_tv
+        source: WGCL
+
+tv_input_nbc:
+  alias: TV Input NBC
+  sequence:
+    - service: media_player.select_source
+      data:
+        entity_id: media_player.sony_bravia_tv
+        source: WXIA-TV
+tv_input_abc:
+  alias: TV Input ABC
+  sequence:
+    - service: media_player.select_source
+      data:
+        entity_id: media_player.sony_bravia_tv
+        source: WSB-HD
+tv_input_cw:
+  alias: TV Input CW
+  sequence:
+    - service: media_player.select_source
+      data:
+        entity_id: media_player.sony_bravia_tv
+        source: WUPA-HD
+tv_input_fox:
+  alias: TV Input FOX
+  sequence:
+    - service: media_player.select_source
+      data:
+        entity_id: media_player.sony_bravia_tv
+        source: WAGA-HD
 
 tv_notify_theater_mode:
   alias: Notify Theater Mode

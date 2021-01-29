@@ -1,8 +1,9 @@
   url: !secret plex_full_ip
   token: !secret plex_token_quotes
-  default_cast: 'Living Room TV'
+  default_cast: 'SHIELD'
   language: 'en'
   tts_errors: true
   aliases:
     Living Room TV: b36f760084f43df2-com-plexapp-android
     Desktop: snux55xos4jwnngxfdp7umv0
+    SHIELD: 85f398716eff9919-com-plexapp-android

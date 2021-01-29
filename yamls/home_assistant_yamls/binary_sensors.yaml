@@ -18,8 +18,8 @@
         friendly_name: Anyone Home
         value_template: >-
           {%- if is_state("person.neil", "home")
-          or is_state("device_tracker.parents", "home")
-          or is_state("device_tracker.gina", "home")
+          or is_state("person.parents", "home")
+          or is_state("person.gina", "home")
               -%}
           True
           {%- else -%}
@@ -73,9 +73,9 @@
         value_template: >-
           {%- if is_state("person.neil", "home") %}
             False
-          {%-elif is_state("device_tracker.gina", "home") %}
+          {%-elif is_state("person.gina", "home") %}
             True
-          {%-elif is_state("device_tracker.parents", "home") %}
+          {%-elif is_state("person.parents", "home") %}
             True
           {%- else -%}
             False

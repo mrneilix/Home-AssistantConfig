@@ -134,3 +134,4 @@ switch:  !include yamls/devices/switch.yaml
 ombi: !include yamls/devices/ombi.yaml
 asuswrt: !include yamls/devices/asuswrt.yaml
 camera: !include yamls/devices/camera.yaml
+media_player: !include yamls/devices/media_player.yaml

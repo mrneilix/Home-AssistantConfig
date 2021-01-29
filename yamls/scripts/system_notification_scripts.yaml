@@ -7,6 +7,8 @@ notify_vera_down:
         title: "Vera Down"
         data:
           tag: 'Vera-down'
+          ttl: 86400
+          priority: high
           renotify: 0
           icon: '/local/pictures/vera.png'
           badge: '/local/pictures/vera.png'
@@ -20,9 +22,11 @@ notify_restart_complete:
         title: "Restart Complete"
         data:
           tag: 'restart_complete'
+          ttl: 86400
+          priority: high
           renotify: 0
           icon: '/local/pictures/restart-ha.png'
-          badge: '/local/pictures/restart-ha.png'
+          badge: '/local/pictures/restart.png'
 
 
 notify_lock_battery_low:
@@ -34,6 +38,8 @@ notify_lock_battery_low:
         title: "Lock Battery Low"
         data:
           tag: 'lock-low-battery'
+          ttl: 86400
+          priority: high
           renotify: 0
           icon: '/local/pictures/lock-alert.png'
           badge: '/local/pictures/lock-alert.png'
@@ -47,6 +53,8 @@ notify_lock_battery_very_low:
         title: "Lock Battery Very Low"
         data:
           tag: 'lock-low-battery'
+          ttl: 86400
+          priority: high
           renotify: 0
           icon: '/local/pictures/lock-alert.png'
           badge: '/local/pictures/lock-alert.png'

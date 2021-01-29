@@ -13,6 +13,10 @@ binary_sensor.lock_code_entered_gina:
   entity_picture: /local/pictures/gina.jpg
   friendly_name: Lock Code Gina
   device_class: presence
+binary_sensor.motion_sensor:
+  friendly_name: Motion Sensor
+sensor.nas_volume_1_used_space:
+  unit_of_measurement: GB
 
 ### MEDIA PLAYERS ###
 media_player.kitchen_display:
@@ -192,4 +196,10 @@ sensor.stock_gevo:
   icon: mdi:currency-usd
 sensor.stock_ung:
   friendly_name: UNG
+  icon: mdi:currency-usd
+sensor.stock_sqqq:
+  friendly_name: SQQQ
+  icon: mdi:currency-usd
+sensor.stock_fslr:
+  friendly_name: FSLR
   icon: mdi:currency-usd

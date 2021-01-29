@@ -59,6 +59,9 @@
           {% else %}
             system_monitor_view
           {% endif %}
+      current_tv_input:
+        value_template: >
+          {{states.media_player.sony_bravia_tv.attributes.source}}
 ### Sample for my Tautulli Sensors by Username
   # tautulli_watching_me:
     # icon_template: mdi:plex

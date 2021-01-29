@@ -115,6 +115,85 @@
   action:
     - service: script.presence_someone_arrived
 
+- id: presence_motion_sensor_tripped
+  alias: 'Presence Motion Sensor Tripped'
+  trigger:
+    - platform: state
+      entity_id: binary_sensor.motion_sensor_108
+      to: 'on'
+  condition:
+    - condition: state
+      entity_id: input_boolean.restart_complete
+      state: 'on'
+  action:
+    - service: input_boolean.turn_on
+      data:
+        entity_id: input_boolean.motion_detected
+
+- id: presence_motion_sensor_turn_off_boolean
+  alias: 'Presence Motion Sensor Turn Off Boolean'
+  trigger:
+    - platform: state
+      entity_id: input_boolean.motion_detected
+      to: 'on'
+      for: "00:10:00"
+  condition:
+    - condition: state
+      entity_id: input_boolean.restart_complete
+      state: 'on'
+  action:
+    - service: input_boolean.turn_off
+      data:
+        entity_id: input_boolean.motion_detected
+
+- id: presence_motion_sensor_tripped_lights_on
+  alias: 'Presence Motion Sensor Lights On'
+  trigger:
+    - platform: state
+      entity_id: input_boolean.motion_detected
+      to: 'on'
+  condition:
+    - condition: state
+      entity_id: input_boolean.restart_complete
+      state: 'on'
+    - condition: state
+      entity_id: input_boolean.presence_automations
+      state: 'on'
+    - condition: state
+      entity_id: light.kitchen
+      state: 'off'
+    - condition: state
+      entity_id: binary_sensor.dark_out
+      state: 'on'
+  action:
+    - service: script.presence_arrive_dark_out
+
+
+- id: presence_motion_sensor_lights_off
+  alias: 'Presence Motion Sensor Lights Off'
+  trigger:
+    - platform: state
+      entity_id: input_boolean.motion_detected
+      to: 'off'
+  condition:
+    - condition: state
+      entity_id: input_boolean.restart_complete
+      state: 'on'
+    - condition: state
+      entity_id: input_boolean.presence_automations
+      state: 'on'
+    - condition: state
+      entity_id: input_boolean.presence_running
+      state: 'off'
+    - condition: state
+      entity_id: binary_sensor.anyone_home
+      state: 'off'
+    - condition: state
+      entity_id: light.kitchen
+      state: 'on'
+  action:
+    - service: script.kitchen_lights_off
+
 - id: lock_code_used_not_family
   alias: 'Lock Code Used Not Family'
   trigger:

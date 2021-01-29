@@ -34,6 +34,9 @@ presence_someone_arrived:
     - service: input_boolean.turn_off
       data:
         entity_id: input_boolean.presence_running
+    - service: input_boolean.turn_off
+      data:
+        entity_id: input_boolean.motion_detected
 
 presence_neil_arrived_home:
   alias: Presence Neil Arrived Home
@@ -81,6 +84,9 @@ presence_no_humans_home:
       data:
         command: leave
     - service: script.thermostat_leave_set_temp
+    - service: input_boolean.turn_off
+      data:
+        entity_id: input_boolean.motion_detected
     - service: input_boolean.turn_off
       data:
         entity_id: input_boolean.presence_running

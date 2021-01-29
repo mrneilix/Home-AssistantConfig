@@ -10,6 +10,8 @@
       - sun.sun
       - sensor.tautulli
       - input_boolean.config_updated
+      - sensor.light_sensor
+      - binary_sensor.motion_sensor
   exclude:
     entities:
       - switch.hdmi_4

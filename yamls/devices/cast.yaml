@@ -1,4 +1,0 @@
-  media_player:
-  - host: !secret chromecast_ip
-  - host: !secret google_home_ip
-  - host: !secret google_home_mini_ip

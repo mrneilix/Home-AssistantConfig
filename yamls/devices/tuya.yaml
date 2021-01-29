@@ -1,4 +1,0 @@
-  username: !secret email
-  password: !secret tuya_pw
-  country_code: '1'
-  platform: 'smart_life'

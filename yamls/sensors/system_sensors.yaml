@@ -18,6 +18,9 @@
       - 'time'
       - 'beat'
 
+  - platform: openhardwaremonitor
+    host: !secret desktop_ip
+
   - platform: rest
     resource: https://pypi.python.org/pypi/homeassistant/json
     name: Latest version
@@ -55,6 +58,11 @@
               {{ minutes }}m
             {%- endif -%}
           {%- endif -%}
+      nas_volume_1_gb_used:
+        unit_of_measurement: GB
+        friendly_name: NAS System
+        value_template: >-
+          {{ ( states('sensor.nas_volume_1_used_space') | float *1024 ) | round(2) }}
 
       ha_uptime:
         friendly_name: Home Assistant Uptime

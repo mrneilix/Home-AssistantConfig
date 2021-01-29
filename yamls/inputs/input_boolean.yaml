@@ -35,3 +35,5 @@
     initial: off
   show_tautulli_history:
     initial: on
+  motion_detected:
+    initial: off

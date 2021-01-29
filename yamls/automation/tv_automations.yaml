@@ -5,7 +5,7 @@
     - platform: state
       entity_id:  media_player.sony_bravia_tv
       from: 'off'
-      to: 'playing'
+      to: 'on'
       for:
         seconds: 60
   condition:

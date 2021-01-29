@@ -9,7 +9,9 @@ notify_rain:
           tag: 'weather'
           icon: '/local/pictures/weather-rainy.png'
           badge: '/local/pictures/weather-rainy.png'
+          ttl: 86400
           priority: high
+          renotify: 0
 
 notify_snow:
   alias: Notify Snow
@@ -22,7 +24,9 @@ notify_snow:
           tag: 'weather'
           icon: '/local/pictures/weather-snowy.png'
           badge: '/local/pictures/weather-snowy.png'
+          ttl: 86400
           priority: high
+          renotify: 0
 
 notify_sleet:
   alias: Notify Sleet
@@ -35,4 +39,6 @@ notify_sleet:
           tag: 'weather'
           icon: '/local/pictures/weather-hail.png'
           badge: '/local/pictures/weather-hail.png'
+          ttl: 86400
           priority: high
+          renotify: 0

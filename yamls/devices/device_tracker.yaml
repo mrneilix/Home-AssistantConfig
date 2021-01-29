@@ -16,7 +16,7 @@
     - platform: tile
       username: !secret email
       password: !secret tile_password
-      show_inactive: true
+      show_inactive: false
 
     - platform: composite
       name: neil
@@ -24,7 +24,6 @@
       entity_id:
         - device_tracker.neil_bluetooth
         - device_tracker.neil_wifi
-        - device_tracker.neil_s_oneplus_8_pro
         - binary_sensor.lock_code_entered_neil
     - platform: composite
       name: parents

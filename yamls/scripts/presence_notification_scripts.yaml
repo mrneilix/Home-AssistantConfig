@@ -9,7 +9,9 @@ notify_gina_home:
           tag: 'door-unlocked'
           icon: '/local/pictures/gina.jpg'
           badge: '/local/pictures/lock-open-outline.png'
+          ttl: 86400
           priority: high
+          renotify: 0
 
 notify_parents_home:
   alias: Notify Parents Home
@@ -22,7 +24,9 @@ notify_parents_home:
           tag: 'door-unlocked'
           icon: '/local/pictures/mom-dad.jpg'
           badge: '/local/pictures/lock-open-outline.png'
+          ttl: 86400
           priority: high
+          renotify: 0
 
 notify_guest_code_entered:
   alias: Notify Guest Code Entered
@@ -35,7 +39,9 @@ notify_guest_code_entered:
           tag: 'door-unlocked'
           icon: '/local/pictures/guest.png'
           badge: '/local/pictures/lock-open-outline.png'
+          ttl: 86400
           priority: high
+          renotify: 0
 
 notify_temp_code_entered:
   alias: Notify Temp Code Entered
@@ -48,7 +54,9 @@ notify_temp_code_entered:
           tag: 'door-unlocked'
           icon: '/local/pictures/guest.png'
           badge: '/local/pictures/lock-open-outline.png'
+          ttl: 86400
           priority: high
+          renotify: 0
 
 notify_lock_unlocked_unknown_code:
   alias: Notify Lock Unlocked Unknown Code
@@ -61,4 +69,6 @@ notify_lock_unlocked_unknown_code:
           tag: 'door-unlocked'
           icon: '/local/pictures/lock-alert.png'
           badge: '/local/pictures/lock-alert.png'
+          ttl: 86400
           priority: high
+          renotify: 0
