@@ -166,7 +166,7 @@
       entity_id: binary_sensor.dark_out
       state: 'on'
   action:
-    - service: script.presence_arrive_dark_out
+    - service: script.kitchen_lights_on
 
 
 - id: presence_motion_sensor_lights_off
