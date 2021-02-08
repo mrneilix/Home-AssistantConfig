@@ -32,8 +32,8 @@ tv_input_plex:
   sequence:
     - service: media_player.select_source
       data:
-        entity_id: media_player.shield
-        source: com.plexapp.android
+        entity_id: media_player.shield_adb
+        source: Plex
 tv_input_prime_video:
   alias: TV Input Prime Video
   sequence:
@@ -75,7 +75,7 @@ tv_input_youtube:
     - service: media_player.select_source
       data:
         entity_id: media_player.shield_adb
-        source: Youtube
+        source: YouTube
 tv_input_starz:
   alias: TV Input Starz
   sequence:
@@ -97,6 +97,76 @@ tv_input_foxsports:
       data:
         entity_id: media_player.shield_adb
         source: com.foxsports.android
+tv_input_shield_home:
+  alias: TV Input Home
+  sequence:
+    - service: androidtv.adb_command
+      data:
+        entity_id: media_player.shield_adb
+        command: HOME
+tv_input_shield_up:
+  alias: TV Input Up
+  sequence:
+    - service: androidtv.adb_command
+      data:
+        entity_id: media_player.shield_adb
+        command: UP
+tv_input_shield_down:
+  alias: TV Input Down
+  sequence:
+    - service: androidtv.adb_command
+      data:
+        entity_id: media_player.shield_adb
+        command: DOWN
+tv_input_shield_left:
+  alias: TV Input Left
+  sequence:
+    - service: androidtv.adb_command
+      data:
+        entity_id: media_player.shield_adb
+        command: LEFT
+tv_input_shield_right:
+  alias: TV Input Right
+  sequence:
+    - service: androidtv.adb_command
+      data:
+        entity_id: media_player.shield_adb
+        command: RIGHT
+tv_input_shield_center:
+  alias: TV Input Center
+  sequence:
+    - service: androidtv.adb_command
+      data:
+        entity_id: media_player.shield_adb
+        command: CENTER
+tv_input_shield_back:
+  alias: TV Input Back
+  sequence:
+    - service: androidtv.adb_command
+      data:
+        entity_id: media_player.shield_adb
+        command: BACK
+tv_input_shield_menu:
+  alias: TV Input Menu
+  sequence:
+    - service: androidtv.adb_command
+      data:
+        entity_id: media_player.shield_adb
+        command: MENU
+tv_input_shield_enter:
+  alias: TV Input Enter
+  sequence:
+    - service: androidtv.adb_command
+      data:
+        entity_id: media_player.shield_adb
+        command: ENTER
+tv_input_shield_power:
+  alias: TV Input Power
+  sequence:
+    - service: androidtv.adb_command
+      data:
+        entity_id: media_player.shield_adb
+        command: POWER
 
 tv_input_playstation:
   alias: TV Input PS4

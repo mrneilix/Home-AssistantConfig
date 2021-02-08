@@ -85,7 +85,7 @@
       dark_out:
         friendly_name: Dark Outside
         value_template: >-
-          {% if states('sensor.illuminance') | int < 5500 %}
+          {% if states('sensor.light_sensor_110') | int < 50 %}
             True
           {%- else -%}
             False

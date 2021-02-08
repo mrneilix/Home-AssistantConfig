@@ -160,9 +160,6 @@
       entity_id: input_boolean.presence_automations
       state: 'on'
     - condition: state
-      entity_id: light.kitchen
-      state: 'off'
-    - condition: state
       entity_id: binary_sensor.dark_out
       state: 'on'
   action:
@@ -183,13 +180,7 @@
       entity_id: input_boolean.presence_automations
       state: 'on'
     - condition: state
-      entity_id: input_boolean.presence_running
-      state: 'off'
-    - condition: state
-      entity_id: binary_sensor.anyone_home
-      state: 'off'
-    - condition: state
-      entity_id: light.kitchen
+      entity_id: input_boolean.away
       state: 'on'
   action:
     - service: script.kitchen_lights_off
