@@ -3,7 +3,7 @@
   alias: 'Lock Battery Low Notify'
   trigger:
     platform: numeric_state
-    entity_id: sensor.schlage_camelot_battery
+    entity_id: sensor.schlage_camelot_battery_level
     below: '50'
     above: '25'
   condition:
@@ -17,7 +17,7 @@
   alias: 'Lock Battery Very Low Notify'
   trigger:
     platform: numeric_state
-    entity_id: sensor.schlage_camelot_battery
+    entity_id: sensor.schlage_camelot_battery_level
     below: '25'
   condition:
     - condition: state
@@ -53,7 +53,7 @@
   alias: 'Lock Door Auto Lock'
   trigger:
     - platform: state
-      entity_id: lock.schlage_camelot_99
+      entity_id: lock.schlage_camelot
       to: 'unlocked'
       from: 'locked'
     - platform: state
@@ -84,7 +84,7 @@
     from: 'off'
   condition:
     - condition: state
-      entity_id: lock.schlage_camelot_99
+      entity_id: lock.schlage_camelot
       state: 'unlocked'
     - condition: state
       entity_id: input_boolean.restart_complete
@@ -110,7 +110,7 @@
   alias: 'Lock Auto Lock Door Switch Update Locked'
   trigger:
     platform: state
-    entity_id: lock.schlage_camelot_99
+    entity_id: lock.schlage_camelot
     to: 'locked'
     from: 'unlocked'
   condition:
@@ -160,7 +160,7 @@
       state: 'on'
   action:
     - service: lock.unlock
-      entity_id: lock.schlage_camelot_99
+      entity_id: lock.schlage_camelot
 
 - id: lock_minimote_button_3_pressed
   alias: 'Lock Minimote button 3 Pressed'

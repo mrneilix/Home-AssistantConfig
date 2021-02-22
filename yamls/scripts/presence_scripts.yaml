@@ -10,7 +10,7 @@ presence_someone_arrived:
     - service: rest_command.mirror_show_all_modules
     - service: script.thermostat_home_set_temp
     - service: lock.unlock
-      entity_id: lock.schlage_camelot_99
+      entity_id: lock.schlage_camelot
     - service: switch.turn_off
       entity_id: switch.yi_power
     - service_template: >
@@ -76,8 +76,7 @@ presence_no_humans_home:
       data:
         entity_id: input_boolean.presence_running
     - service: script.lock_set_parents_lock_code
-    - service: scene.turn_on
-      entity_id: scene.poll_lock_when_opened
+    - service: script.lock_door_if_auto_lock_on
     - service: script.presence_leave_turn_stuff_off
     - delay: 00:00:02
     - service: joaoapps_join.fire_send_tasker

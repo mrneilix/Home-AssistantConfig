@@ -1,5 +1,6 @@
 homeassistant:
   name: Home Control
+  packages: !include_dir_named packages
   latitude: !secret latitude_loc_home
   longitude: !secret longitude_loc_home
   elevation: 363
@@ -59,6 +60,12 @@ http:
     - !secret trusted_docker_network
     - !secret trusted_home_network
     - !secret authelia_ip
+# zwave:
+  # usb_path: /dev/ttyACM0
+  # network_key: !secret zwave_network_key2
+  # polling_interval: 30000
+  # device_config: !include zwave_device_config.yaml
+
 logger:
   default: warning
 discovery:
@@ -96,7 +103,7 @@ folder_watcher: !include yamls/home_assistant_yamls/folder_watcher.yaml
 zone: !include yamls/home_assistant_yamls/zone.yaml
 proximity: !include yamls/home_assistant_yamls/proximity.yaml
 coinbase: !include yamls/home_assistant_yamls/coinbase.yaml
-plex_assistant: !include yamls/home_assistant_yamls/plex_assistant.yaml
+#plex_assistant: !include yamls/home_assistant_yamls/plex_assistant.yaml
 
 # Commands and Notify
 rest_command: !include yamls/commands_and_notify/rest_command.yaml

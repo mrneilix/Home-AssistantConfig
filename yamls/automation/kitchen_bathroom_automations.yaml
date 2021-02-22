@@ -10,7 +10,7 @@
       to: 'on'
       from: 'off'
     - platform: state
-      entity_id: switch.furnace_switch_29
+      entity_id: switch.furnace_switch
       to: 'on'
       from: 'off'
   condition:
@@ -38,7 +38,7 @@
       to: 'off'
       from: 'on'
     - platform: state
-      entity_id: switch.furnace_switch_29
+      entity_id: switch.furnace_switch
       to: 'off'
       from: 'on'
   condition:

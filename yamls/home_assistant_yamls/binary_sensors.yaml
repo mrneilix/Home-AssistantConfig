@@ -1,12 +1,12 @@
-  - platform: rest
-    resource: !secret temp_code_status
-    name: Temp Lock Code
-  - platform: rest
-    resource: !secret parents_code_status
-    name: Parents Lock Code
-  - platform: rest
-    resource: !secret guest_code_status
-    name: Guest Lock Code
+  # - platform: rest
+    # resource: !secret temp_code_status
+    # name: Temp Lock Code
+  # - platform: rest
+    # resource: !secret parents_code_status
+    # name: Parents Lock Code
+  # - platform: rest
+    # resource: !secret guest_code_status
+    # name: Guest Lock Code
   - platform: rest
     name: magic_mirror_display_on
     resource: !secret mirror_querry_state
@@ -85,7 +85,7 @@
       dark_out:
         friendly_name: Dark Outside
         value_template: >-
-          {% if states('sensor.light_sensor_110') | int < 50 %}
+          {% if states('sensor.illuminance') | int < 5000 %}
             True
           {%- else -%}
             False

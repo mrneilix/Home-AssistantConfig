@@ -1,44 +1,44 @@
 lock_clear_temp_code:
   alias: Lock Clear Temp Code
   sequence:
-    - service: switch.turn_off
-      entity_id: switch.temp_lock_code
-    - service: script.lock_poll_when_updated
+    - service: input_boolean.turn_off
+      data:
+        entity_id: input_boolean.enabled_schlage_camelot_8
 
 lock_set_temp_lock_code:
   alias: Lock Set Temp Lock Code
   sequence:
-    - service: switch.turn_on
-      entity_id: switch.temp_lock_code
-    - service: script.lock_poll_when_updated
+    - service: input_boolean.turn_on
+      data:
+        entity_id: input_boolean.enabled_schlage_camelot_9
 
 lock_clear_parents_lock_code:
   alias: Lock Clear Parents Lock Code
   sequence:
-    - service: switch.turn_off
-      entity_id: switch.parents_lock_code
-    - service: script.lock_poll_when_updated
+    - service: input_boolean.turn_off
+      data:
+        entity_id: input_boolean.enabled_schlage_camelot_8
 
 lock_set_parents_lock_code:
   alias: Lock Set Parents Lock Code
   sequence:
-    - service: switch.turn_on
-      entity_id: switch.parents_lock_code
-    - service: script.lock_poll_when_updated
+    - service: input_boolean.turn_on
+      data:
+        entity_id: input_boolean.enabled_schlage_camelot_8
 
 lock_clear_guest_lock_code:
   alias: Lock Clear Guest Lock Code
   sequence:
-    - service: switch.turn_off
-      entity_id: switch.guest_lock_code
-    - service: script.lock_poll_when_updated
+    - service: input_boolean.turn_off
+      data:
+        entity_id: input_boolean.enabled_schlage_camelot_7
 
 lock_set_guest_lock_code:
   alias: Lock Set Guest Lock Code
   sequence:
-    - service: switch.turn_on
-      entity_id: switch.guest_lock_code
-    - service: script.lock_poll_when_updated
+    - service: input_boolean.turn_on
+      data:
+        entity_id: input_boolean.enabled_schlage_camelot_7
 
 lock_toggle_parents_lock_code:
   alias: Lock Toggle Parents Lock Code
@@ -64,26 +64,25 @@ lock_set_temp_lock_code_input_number:
   alias: Lock Set Temp Lock Code Input Number
   sequence:
     - delay: 00:00:05
-    - service: rest_command.set_temp_lock_code
+    - service: script.lock_set_temp_lock_code
     - delay: 00:00:10
     - service: input_number.set_value
       data:
         entity_id: input_number.lock_code_temp
         value: '0.0'
-    - service: script.lock_poll_when_updated
-    - delay: 00:01:30
-    - condition: state
-      entity_id: input_boolean.temp_lock_code_set
-      state: 'off'
-    - service: notify.html5
-      data_template:
-        message: "Temporary Lock Code Did Not Update"
-        title: "Temporary Lock Code Not On"
-        data:
-          tag: 'lock_not_updated'
-          renotify: 0
-          icon: '/local/pictures/lock-alert.png'
-          badge: '/local/pictures/lock-alert.png'
+    # - delay: 00:01:30
+    # - condition: state
+      # entity_id: input_boolean.temp_lock_code_set
+      # state: 'off'
+    # - service: notify.html5
+      # data_template:
+        # message: "Temporary Lock Code Did Not Update"
+        # title: "Temporary Lock Code Not On"
+        # data:
+          # tag: 'lock_not_updated'
+          # renotify: 0
+          # icon: '/local/pictures/lock-alert.png'
+          # badge: '/local/pictures/lock-alert.png'
 
 lock_poll_when_updated:
   alias: Lock Poll When Updated
