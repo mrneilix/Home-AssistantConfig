@@ -3,7 +3,7 @@
   alias: 'Lock Battery Low Notify'
   trigger:
     platform: numeric_state
-    entity_id: sensor.schlage_camelot_battery_level
+    entity_id: sensor.schlage_battery_level
     below: '50'
     above: '25'
   condition:
@@ -17,7 +17,7 @@
   alias: 'Lock Battery Very Low Notify'
   trigger:
     platform: numeric_state
-    entity_id: sensor.schlage_camelot_battery_level
+    entity_id: sensor.schlage_battery_level
     below: '25'
   condition:
     - condition: state

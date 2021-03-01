@@ -1,0 +1,267 @@
+## WARNING ##
+# This file is auotmaticly generated, any changes
+# will be overwritten.
+
+##################################################
+################  COMMON ENTITIES  ###############
+##################################################
+
+###############  input_boolean:  #################
+input_boolean:
+  schlage_lock_notifications:
+    name: schlage Lock Notifications
+  schlage_dooraccess_notifications:
+    name: schlage Door Notifications
+  schlage_garageacess_notifications:
+    name: schlage Garage Notifications
+  schlage_reset_lock:
+    name: schlage reset lock
+
+###################  script:  ####################
+script:
+  schlage_reset_lock:
+    sequence:
+      - service: script.schlage_manual_notify
+        data_template:
+          title: "reset"
+          message: "schlage"
+
+  schlage_conditional_notify:
+    sequence:
+      - condition: template
+        value_template: >-
+          {% set inputbool = boolean %}
+          {% if states(inputbool) == 'on'%}
+            true
+          {% else %}
+            false
+          {% endif %}
+      - service: script.schlage_manual_notify
+        data_template:
+          title: "{{title}}"
+          message: "{{message}}"
+
+  schlage_reset_codeslot:
+    mode: parallel
+    fields:
+      code_slot:
+        description: The code slot to reset
+        example: 1
+    variables:
+      # Constant used later to loop through day specific entities
+      days: ['sun', 'mon', 'tue', 'wed', 'thu', 'fri', 'sat']
+    sequence:
+      - service: input_boolean.turn_off
+        data_template:
+          entity_id: "input_boolean.enabled_schlage_{{ code_slot | string }}"
+      - service: input_text.set_value
+        data_template:
+          entity_id: "input_text.schlage_name_{{ code_slot | string }}"
+          value: ""
+      - service: input_text.set_value
+        data_template:
+          entity_id: "input_text.schlage_pin_{{ code_slot | string }}"
+          value: ""
+      - service: input_boolean.turn_off
+        data_template:
+          entity_id: "input_boolean.notify_schlage_{{ code_slot | string }}"
+      - service: input_number.set_value
+        data_template:
+          entity_id: "input_number.accesscount_schlage_{{ code_slot | string }}"
+          value: "0"
+      - service: input_datetime.set_datetime
+        data_template:
+          entity_id: "input_datetime.start_date_schlage_{{ code_slot | string }}"
+          date: >
+            {{ now().strftime('%Y-%m-%d') }}
+      - service: input_datetime.set_datetime
+        data_template:
+          entity_id: "input_datetime.end_date_schlage_{{ code_slot | string }}"
+          date: >
+            {{ now().strftime('%Y-%m-%d') }} 
+      - service: input_boolean.turn_off
+        data_template:
+          entity_id: "input_boolean.daterange_schlage_{{ code_slot | string }}"
+      - service: input_boolean.turn_off
+        data_template:
+          entity_id: "input_boolean.accesslimit_schlage_{{ code_slot | string }}"
+      - service: input_boolean.turn_off
+        data_template:
+          entity_id: "input_boolean.reset_codeslot_schlage_{{ code_slot | string }}"
+      # Loop through each day of the week and reset the entities related to each one
+      - repeat:
+          count: 7
+          sequence:
+            - service: input_datetime.set_datetime
+              data_template:
+                entity_id: "input_datetime.{{ days[repeat.index - 1] }}_start_date_schlage_{{ code_slot | string }}"
+                time: "{{ '00:00' | timestamp_custom('%H:%M') }}"
+            - service: input_datetime.set_datetime
+              data_template:
+                entity_id: "input_datetime.{{ days[repeat.index - 1] }}_end_date_schlage_{{ code_slot | string }}"
+                time: "{{ '00:00' | timestamp_custom('%H:%M') }}"
+            - service: input_boolean.turn_on
+              data_template:
+                entity_id: "input_boolean.{{ days[repeat.index - 1] }}_schlage_{{ code_slot | string }}"
+            - service: input_boolean.turn_on
+              data_template:
+                entity_id: "input_boolean.{{ days[repeat.index - 1] }}_inc_schlage_{{ code_slot | string }}"
+
+  schlage_refreshnodeinfo:
+    description:  'Send MQTT RefreshNodeInfo command'
+    sequence:
+      - service: system_log.write
+        data_template:
+          message: "schlage_TEMPLATENUM started noderefreshinfo: {{ now() }}"
+          level: debug  
+      - service: mqtt.publish
+        data:
+          topic: 'OpenZWave/1/command/refreshnodeinfo/'
+          payload: >-
+            {% set node_id = state_attr('lock.schlage_camelot','node_id') %}
+            { "node": {{ node_id }} }
+          retain: true
+          
+###################  automation:  ####################
+automation:
+
+  - alias: reset_codeslot_schlage
+    trigger:
+      entity_id: input_boolean.reset_codeslot_schlage_1,input_boolean.reset_codeslot_schlage_2,input_boolean.reset_codeslot_schlage_3,input_boolean.reset_codeslot_schlage_4,input_boolean.reset_codeslot_schlage_5,input_boolean.reset_codeslot_schlage_6
+      platform: state
+      to: 'on'
+    action:
+      - service: script.schlage_reset_codeslot
+        data_template:
+          code_slot: "{{ trigger.entity_id.split('_')[-1] }}"
+
+  - alias: schlage Lock Notifications
+    trigger:
+      platform: event
+      event_type: keymaster_lock_state_changed
+      event_data:
+        lockname: schlage
+    condition:
+      - condition: state
+        entity_id: "input_boolean.allow_automation_execution"
+        state: "on"
+    action:
+      - service: script.schlage_conditional_notify
+        data_template:
+          boolean: input_boolean.schlage_lock_notifications
+          title: schlage
+          message: "{{ trigger.event.data.action_text }}"
+
+  - alias: schlage User Notifications
+    trigger:
+      platform: event
+      event_type: keymaster_lock_state_changed
+      event_data:
+        lockname: schlage
+    condition:
+      - condition: state
+        entity_id: "input_boolean.allow_automation_execution"
+        state: "on"
+      - condition: template
+        value_template: "{{ trigger.event.data.code_slot > 0 }}"
+      - condition: template
+        value_template: "{{ is_state('input_boolean.notify_schlage_' + trigger.event.data.code_slot | string, 'on') }}"
+    action:
+      - service: script.schlage_manual_notify
+        data_template:
+          title: "{{ trigger.event.data.action_text }}"
+          message: "{{ trigger.event.data.code_slot_name }}"
+
+  - alias: schlage Sensor Close
+    condition:
+      - condition: state
+        entity_id: "input_boolean.allow_automation_execution"
+        state: "on"
+    trigger:
+      entity_id: binary_sensor.fake
+      platform: state
+      to: "off"
+    action:
+      - service: script.schlage_conditional_notify
+        data_template:
+          boolean: input_boolean.schlage_dooraccess_notifications
+          title: schlage
+          message: "Closed"
+
+  - alias: schlage Sensor Opened
+    condition:
+      - condition: state
+        entity_id: "input_boolean.allow_automation_execution"
+        state: "on"
+    trigger:
+      entity_id: binary_sensor.fake
+      platform: state
+      to: "on"
+    action:
+      - service: script.schlage_conditional_notify
+        data_template:
+          boolean: input_boolean.schlage_dooraccess_notifications
+          title: schlage
+          message: "Opened"
+
+  - alias: schlage Changed Code
+    trigger:
+      entity_id: input_text.schlage_pin_1,input_text.schlage_pin_2,input_text.schlage_pin_3,input_text.schlage_pin_4,input_text.schlage_pin_5,input_text.schlage_pin_6
+      platform: state
+    condition:
+      - condition: state
+        entity_id: "input_boolean.allow_automation_execution"
+        state: "on"
+      - condition: template
+        value_template: >-
+          {{
+            is_state('input_boolean.schlage_enabled_' + trigger.entity_id.split('_')[-1], 'on')
+            and
+            (trigger.from_state.state != trigger.to_state.state)
+          }}
+    action:
+      - service: persistent_notification.create
+        data_template:
+          title: schlage LOCK MANAGER
+          message: >-
+            {{ 'You changed the PIN for schlage code slot ' + trigger.entity_id.split('_')[-1] + '. Please enable it in order to make it active.'}}
+      - service: input_boolean.turn_off
+        data_template:
+          entity_id: >-
+            {{ 'input_boolean.enabled_schlage_' + trigger.entity_id.split('_')[-1] }}
+
+  - alias: schlage Reset
+    condition:
+      - condition: state
+        entity_id: "input_boolean.allow_automation_execution"
+        state: "on"
+    trigger:
+      entity_id: input_boolean.schlage_reset_lock
+      platform: state
+      from: "off"
+      to: "on"
+    action:
+      - service: script.schlage_reset_lock
+      - service: input_boolean.turn_off
+        entity_id: input_boolean.schlage_reset_lock
+
+  - alias: schlage Decrement Access Count
+    trigger:
+      platform: event
+      event_type: keymaster_lock_state_changed
+      event_data:
+        lockname: schlage
+    condition:
+      - condition: state
+        entity_id: "input_boolean.allow_automation_execution"
+        state: "on"
+      - condition: template
+        # make sure decrementing access entries is enabled 
+        value_template: "{{ is_state('input_boolean.accesslimit_schlage_' + trigger.event.data.code_slot | string, 'on') }}"
+      - condition: template
+        # Check for Keypad Unlock code
+        value_template: "{{ trigger.event.data.code_slot > 0 and trigger.event.data.action_code in (6, 19)}}"
+    action:
+      - service: input_number.decrement
+        data_template:
+          entity_id: "{{ 'input_number.accesscount_schlage_' + trigger.event.data.code_slot | string }}"

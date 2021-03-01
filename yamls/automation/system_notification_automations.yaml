@@ -1,24 +1,24 @@
-- id: notify_vera_down
-  alias: 'Notify Vera Down'
-  trigger:
-    - platform: state
-      entity_id: binary_sensor.vera_up
-      to: 'off'
-      from: 'on'
-    - platform: time
-      at: '08:00:00'
-  condition:
-    - condition: state
-      entity_id: input_boolean.notifications_on
-      state: 'on'
-    - condition: state
-      entity_id: input_boolean.restart_complete
-      state: 'on'
-    - condition: state
-      entity_id: binary_sensor.vera_up
-      state: 'off'
-  action:
-    - service: script.notify_vera_down
+# - id: notify_vera_down
+  # alias: 'Notify Vera Down'
+  # trigger:
+    # - platform: state
+      # entity_id: binary_sensor.vera_up
+      # to: 'off'
+      # from: 'on'
+    # - platform: time
+      # at: '08:00:00'
+  # condition:
+    # - condition: state
+      # entity_id: input_boolean.notifications_on
+      # state: 'on'
+    # - condition: state
+      # entity_id: input_boolean.restart_complete
+      # state: 'on'
+    # - condition: state
+      # entity_id: binary_sensor.vera_up
+      # state: 'off'
+  # action:
+    # - service: script.notify_vera_down
 
 - id: notify_restart_complete
   alias: 'Notify Restart Complete'

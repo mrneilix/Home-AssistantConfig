@@ -135,7 +135,3 @@
           {%- else -%}
             False
           {%- endif %}
-  - platform: ping
-    host: 192.168.1.126
-    count: 5
-    name: vera_up

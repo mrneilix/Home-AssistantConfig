@@ -1,0 +1,68 @@
+  - name: Docker PI4
+    containers:
+      - mqtt
+      - heimdall
+      - grafana
+      - varken
+      - influxdb
+      - home-assistant
+      - hass-configurator
+      - zwavejs
+      - healthchecks
+      - portainer
+    rename:
+      mqtt: Mosquitto
+      heimdall: Heimdall
+      grafana: Grafana
+      varken: Varken
+      influxdb: InfluxDB
+      home-assistant: Home Assistant
+      influxdb: InfluxDB
+      zwavejs: ZWaveJS
+      hass-configurator: Configurator
+      healthchecks: Healthchecks
+      portainer: Portainer
+    monitored_conditions:
+      - version
+      - containers_running
+      - containers_total
+      - state
+      - status
+      - containers_cpu_percentage
+      - containers_memory_percentage
+      - cpu_percentage
+      - memory_percentage
+      - health
+      - allinone
+  - name: Docker NAS
+    url: !secret nas_docker_host_ip
+    containers:
+      - radarr
+      - radarr4k
+      - ombi
+      - tautulli
+      - bazarr
+      - sonarr
+      - jackett
+      - deluge
+    rename:
+      radarr: Radarr
+      radarr4k: Radarr4K
+      sonarr: Sonarr
+      ombi: Ombi
+      tautulli: Tautulli
+      bazarr: Bazarr
+      jackett: Jackett
+      deluge: Deluge
+    monitored_conditions:
+      - version
+      - containers_running
+      - containers_total
+      - state
+      - status
+      - containers_cpu_percentage
+      - containers_memory_percentage
+      - cpu_percentage
+      - memory_percentage
+      - health
+      - allinone

@@ -1,0 +1,13 @@
+  symbols:
+    - MJ
+    - BASFY
+    - UVXY
+    - BAYRY
+    - DDD
+    - SSYS
+    - AMNL
+    - UNG
+    - SQQQ
+  scan_interval:
+    minutes: 10
+  show_trending_icon: true

@@ -60,17 +60,11 @@ http:
     - !secret trusted_docker_network
     - !secret trusted_home_network
     - !secret authelia_ip
-# zwave:
-  # usb_path: /dev/ttyACM0
-  # network_key: !secret zwave_network_key2
-  # polling_interval: 30000
-  # device_config: !include zwave_device_config.yaml
 
 logger:
   default: warning
 discovery:
-vera:
-  vera_controller_url: !secret vera_controller_url
+
 wemo:
   discovery: false
   static:
@@ -84,7 +78,6 @@ updater:
   include_used_components: true
 weather:
   - platform: darksky
-    #mode: daily
     api_key: !secret darksky_api_key
 speedtestdotnet:
   scan_interval:
@@ -103,7 +96,8 @@ folder_watcher: !include yamls/home_assistant_yamls/folder_watcher.yaml
 zone: !include yamls/home_assistant_yamls/zone.yaml
 proximity: !include yamls/home_assistant_yamls/proximity.yaml
 coinbase: !include yamls/home_assistant_yamls/coinbase.yaml
-#plex_assistant: !include yamls/home_assistant_yamls/plex_assistant.yaml
+monitor_docker: !include yamls/home_assistant_yamls/monitor_docker.yaml
+yahoofinance: !include yamls/home_assistant_yamls/yahoofinance.yaml
 
 # Commands and Notify
 rest_command: !include yamls/commands_and_notify/rest_command.yaml
@@ -133,8 +127,6 @@ climate: #!include yamls/devices/climate.yaml
   - platform: honeywell
     username: !secret climate_username
     password: !secret climate_pw
-#cast: !include yamls/devices/cast.yaml
-#hdmi_cec: !include yamls/devices/cec.yaml
 tplink: !include yamls/devices/tplink.yaml
 google_assistant: !include yamls/devices/google_assistant.yaml
 switch:  !include yamls/devices/switch.yaml

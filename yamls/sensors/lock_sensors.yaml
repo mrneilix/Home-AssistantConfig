@@ -1,38 +1,36 @@
   - platform: rest
     resource: !secret get_last_lock_code
     name: last_lock_code_used
+  - platform: mqtt
+    name: Last Lock Code Slot
+    state_topic: "zwave/Schlage/notification/Keypad_unlock_operation_userId"
+    value_template: "{{ value_json.value }}"
   - platform: template
     sensors:
       last_lock_code_name:
         friendly_name: Last Lock Code
-        value_template: >-
-          {%- if 'Temporary' in states.sensor.last_lock_code_used.state %}
-              Temp
-          {%  elif 'Neil' in states.sensor.last_lock_code_used.state %}
+        value_template: >
+          {% if states.sensor.last_lock_code_slot.state | int == 1 %}
               Neil
-          {%  elif 'Gina' in states.sensor.last_lock_code_used.state %}
-              Gina
-          {%  elif 'Parents' in states.sensor.last_lock_code_used.state %}
-              Parents
-          {%  elif 'Guest' in states.sensor.last_lock_code_used.state %}
+          {% elif states.sensor.last_lock_code_slot.state | int == 2 %}
               Guest
+          {% elif states.sensor.last_lock_code_slot.state | int == 3 %}
+              Parents
+          {% elif states.sensor.last_lock_code_slot.state | int == 4 %}
+              Gina
           {% else %}
-              Blank
-          {%- endif %}
-        entity_picture_template: >-
-          {%- if 'Neil' in states.sensor.last_lock_code_used.state %}
+              Temp
+          {% endif %}
+        entity_picture_template: >
+          {% if states.sensor.last_lock_code_slot.state | int == 1 %}
               /local/pictures/Me.jpg
-          {%  elif 'Parents' in states.sensor.last_lock_code_used.state %}
+          {% elif states.sensor.last_lock_code_slot.state | int == 3 %}
               /local/pictures/mom-dad.jpg
-          {%  elif 'Gina' in states.sensor.last_lock_code_used.state %}
+          {% elif states.sensor.last_lock_code_slot.state | int == 4 %}
               /local/pictures/gina.jpg
           {% else %}
               /local/pictures/guest.png
-          {%- endif %}
-      schlage_camelot_battery:
-        friendly_name: Last Battery
-        value_template: >-
-            {{ states.lock.schlage_camelot_99.attributes.battery_level }}
+          {% endif %}
       lock_set_temp_code_input_number:
         value_template: >
           {% if (states.input_number.lock_code_temp.state | int) > 1000 %}
